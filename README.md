@@ -15,6 +15,7 @@ universal estimator.
 The canonical comparative report is [`RESULTS.md`](RESULTS.md). It gives the
 metric, provenance class, failure boundary and interpretation for every track.
 [`REPRODUCTION.md`](REPRODUCTION.md) documents the clean-clone workflow. The
+next-session status and handoff are kept in [`HANDOFF.md`](HANDOFF.md). The
 exact upstream revisions are pinned in
 [`upstream/upstream.lock.json`](upstream/upstream.lock.json).
 
