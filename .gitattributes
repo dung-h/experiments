@@ -1,0 +1,8 @@
+# Preserve exact whitespace in imported overlays and in a patch whose context
+# must apply byte-for-byte to the pinned upstream source.
+tracks/qonductor/qonductor_local_replication.patch whitespace=-trailing-space
+tracks/mali/overlay/** whitespace=-trailing-space
+tracks/cdaa_qcre/independent/** whitespace=-trailing-space
+
+# Baseline CSVs are repository data, not platform-specific text files.
+artifacts/**/*.csv text eol=lf

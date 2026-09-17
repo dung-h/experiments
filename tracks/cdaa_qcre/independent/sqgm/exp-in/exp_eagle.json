@@ -1,0 +1,22 @@
+{
+    "bench_path": "qasm/original/",
+    "bench_filter": "",
+    "qasm_path": "qasm/compiled/",
+    "csv_path": "",
+    "ag": "eagle",
+    "reps": 5,
+    "objective": "depth",
+    "mode": "best",
+    "rep_splits": [],
+    "base_routers": [
+        "sabre0330",
+        "sqgm"
+    ],
+    "heuristics": [
+        "decay"
+    ],
+    "inc_cc": 0,
+    "inc_naive_h": 0,
+    "exp_qasm": 1,
+    "exp_csv": 0
+}

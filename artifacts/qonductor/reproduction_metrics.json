@@ -1,0 +1,70 @@
+{
+  "artifacts": {
+    "execution_time_estimations": 100,
+    "fidelity_estimations": 100,
+    "fidelity_runtime": 25,
+    "end_to_end_qonductor": 100,
+    "end_to_end_fcfs": 100,
+    "end_to_end_utilization": 100
+  },
+  "target_semantics": {
+    "execution_estimator": "archived IBM execution-time target; repository plot labels error in ms",
+    "fidelity_estimator": "archived IBM circuit/job fidelity proxy; unitless",
+    "pareto_runtime": "resource-estimator runtime axis in seconds",
+    "end_to_end_JCT": "workflow/job completion time in seconds",
+    "utilization": "QPU utilization percentage points"
+  },
+  "execution_time": {
+    "qonductor_vs_real": {
+      "n": 100,
+      "mae": 502.3589198879488,
+      "rmse": 1059.619502404695,
+      "r2": 0.9386347722408748,
+      "mape_percent": 7.659059506088904,
+      "bias_prediction_minus_target": -20.41173631223808
+    },
+    "dag_vs_real": {
+      "n": 100,
+      "mae": 915.6094887590184,
+      "rmse": 1451.5020434388346,
+      "r2": 0.8848516371292685,
+      "mape_percent": 14.409813359580445,
+      "bias_prediction_minus_target": 144.06890088470223
+    }
+  },
+  "fidelity": {
+    "qonductor_vs_real": {
+      "n": 100,
+      "mae": 0.0714786175788821,
+      "rmse": 0.10291675440486202,
+      "r2": 0.7932100363837801,
+      "mape_percent": 21.32589957890764,
+      "bias_prediction_minus_target": -0.003377034398119293
+    },
+    "numerical_model_vs_real": {
+      "n": 100,
+      "mae": 0.11538532871540451,
+      "rmse": 0.1557587321352486,
+      "r2": 0.5263450285165194,
+      "mape_percent": 30.755533846916304,
+      "bias_prediction_minus_target": 0.01847704781708771
+    }
+  },
+  "pareto": {
+    "nondominated_points": 5,
+    "runtime_mean_seconds": 103.01630910491627,
+    "fidelity_mean": 0.4844812265555109
+  },
+  "end_to_end": {
+    "qonductor_mean_JCT_seconds": 5675.0,
+    "fcfs_mean_JCT_seconds": 10925.0,
+    "mean_JCT_reduction_percent": 48.05491990846682,
+    "qonductor_mean_fidelity": 0.729582530407295,
+    "fcfs_mean_fidelity": 0.7497018074337819,
+    "relative_fidelity_loss_percent": 2.6836372577725065,
+    "qonductor_mean_utilization_percent": 74.58253040729494,
+    "fcfs_mean_utilization_percent": 44.95663446310046,
+    "utilization_gain_percentage_points": 29.625895944194482,
+    "relative_utilization_gain_percent": 65.89882961214735
+  }
+}

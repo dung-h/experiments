@@ -1,0 +1,36 @@
+{
+  "provenance_class": "OUR_PROXY",
+  "source_repo": "https://github.com/mooselab/Quantum-Execution-Time-Prediction.git",
+  "source_commit": "32c392a6ece276f1ff046d4e30052d0571ff6dc6",
+  "circuit": "qwalk-noancilla_indep_qiskit_9",
+  "qasm_path_in_clone": "data/quantum_circuits/qwalk-noancilla_indep_qiskit_9.qasm",
+  "qasm_sha256": "e8037a4f622df36c65c0e756e11a6c6e3b8b40fbabaffb6cd59ff1cc79f49063",
+  "split": {
+    "seed": 1234,
+    "fold": 10,
+    "test_device": "osaka",
+    "train_device_copy": "kyoto"
+  },
+  "labels_seconds": {
+    "osaka": 13.696209741,
+    "kyoto": 13.376375165333334
+  },
+  "predictions_seconds": {
+    "pretrained_osaka_test": 36.0312,
+    "from_scratch_osaka_test": 12.8724,
+    "pretrained_kyoto_train": 13.355,
+    "from_scratch_kyoto_train": 13.461
+  },
+  "simulator_labels_seconds": {
+    "fake_washington": 42.43,
+    "fake_sherbrooke": 73.24
+  },
+  "source_rows": {
+    "osaka_csv": "data/osaka_time_taken.csv:35",
+    "kyoto_csv": "data/kyoto_time_taken.csv:25",
+    "proxy_manifest_osaka": "data/osaka_kyoto_fake_manifest.csv:35",
+    "proxy_manifest_kyoto": "data/osaka_kyoto_fake_manifest.csv:217"
+  },
+  "related_report": "MA_LI_TRANSFER_BASELINE_COMPARISON.md",
+  "interpretation": "One pretrained fake-snapshot fold is dominated by this Osaka QWalk row; it is not the paper's exact historical real-QPU result."
+}

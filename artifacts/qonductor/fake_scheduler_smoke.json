@@ -1,0 +1,24 @@
+{
+  "backends": [
+    "fake_algiers",
+    "fake_cairo"
+  ],
+  "backend_qubits": [
+    27,
+    27
+  ],
+  "circuits": 2,
+  "circuit_widths": [
+    5,
+    5
+  ],
+  "shots": 4000,
+  "assignments": 1,
+  "rejected": 0,
+  "solution_execution_times": [
+    5.069156409270798
+  ],
+  "transpilation_time_seconds": 0.14465274099893577,
+  "estimation_time_seconds": 0.06753785399996559,
+  "optimization_time_seconds": 0.18247343199982424
+}

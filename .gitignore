@@ -1,0 +1,20 @@
+# Python environments and transient files
+.venv*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# External source checkouts materialized by scripts/bootstrap_upstreams.sh
+work/
+work-*/
+
+# GPU/compiler outputs from a new local run. Baseline fixtures under artifacts/
+# are versioned; reruns must use an explicit directory under work/.
+run-output/
+
+# Credentials and machine-local runtime state
+.env
+*.pem
+*.key
+client_secret*.json
+.DS_Store

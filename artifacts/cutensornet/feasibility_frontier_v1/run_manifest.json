@@ -1,0 +1,28 @@
+{
+  "started_at_utc": "2026-09-10T08:25:49.247471+00:00",
+  "runner": "experiments/simulator_benchmark/run_cutensornet_runtime_benchmark.sh",
+  "families": [
+    "ghz",
+    "hea",
+    "qaoa_cycle",
+    "random_brickwork",
+    "qft"
+  ],
+  "qubits": [
+    16,
+    20,
+    24,
+    28,
+    30
+  ],
+  "depth_multipliers": [
+    0.5,
+    1.0,
+    2.0
+  ],
+  "warmups": 2,
+  "repeats": 5,
+  "cell_timeout_s": 60.0,
+  "memory_limit": "70%",
+  "seed": 42
+}

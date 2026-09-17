@@ -1,0 +1,7 @@
+bqskit==1.2.0
+importlib_metadata==8.6.1
+matplotlib==3.10.1
+numpy==1.26.4
+pytket==2.0.1
+qiskit==1.4.1
+qiskit-ibm-runtime==0.36.1

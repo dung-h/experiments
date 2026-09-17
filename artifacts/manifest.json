@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "scope": "Four independent runtime-estimator replication tracks; never pooled.",
+  "artifacts": [
+    {
+      "path": "artifacts/mali/MA_LI_REPLICATION_REPORT.md",
+      "provenance_class": "OUR_REPLICATION",
+      "runtime_semantics": "simulator DAG prediction and recorded real-QPU result.time_taken"
+    },
+    {
+      "path": "artifacts/mali/MA_LI_TRANSFER_BASELINE_COMPARISON.md",
+      "provenance_class": "OUR_PROXY",
+      "runtime_semantics": "fake-snapshot adaptation of recorded Osaka/Kyoto labels",
+      "critical_fixture": "artifacts/mali/fold10_qwalk_outlier.json"
+    },
+    {
+      "path": "artifacts/qonductor/reproduction_metrics.json",
+      "provenance_class": "DERIVED_RECOMPUTE",
+      "runtime_semantics": "archived Qonductor one-job execution estimate; queue excluded"
+    },
+    {
+      "path": "artifacts/qonductor/fake_scheduler_smoke.json",
+      "provenance_class": "OUR_REPLICATION",
+      "runtime_semantics": "fake-backend scheduler smoke; not live IBM execution"
+    },
+    {
+      "path": "artifacts/cdaa_qcre/REPLICATION_REPORT.md",
+      "provenance_class": "AUTHOR_ARTIFACT plus OUR_PROXY",
+      "runtime_semantics": "compiled-circuit duration from archived instruction durations"
+    },
+    {
+      "path": "artifacts/cutensornet/cutensornet_runtime_benchmark.csv",
+      "provenance_class": "OUR_REPLICATION",
+      "runtime_semantics": "RTX 5070 Ti scalar tensor-network RUNTIME_EST and separate CUDA-event timing columns"
+    }
+  ]
+}

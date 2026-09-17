@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "purpose": "Pinned upstream sources for the four-track replication capsule.",
+  "tracks": {
+    "mali": {
+      "repository": "https://github.com/mooselab/Quantum-Execution-Time-Prediction.git",
+      "commit": "32c392a6ece276f1ff046d4e30052d0571ff6dc6",
+      "checkout_directory": "work/mali",
+      "license_note": "No license file was found in the checked public checkout; source is cloned, not redistributed."
+    },
+    "qonductor": {
+      "repository": "https://github.com/manosgior/Qonductor-SC25.git",
+      "commit": "5d1ac8a90cd574a23e7544e1044681641354ff67",
+      "checkout_directory": "work/qonductor",
+      "overlay": "tracks/qonductor/qonductor_local_replication.patch"
+    },
+    "cdaa": {
+      "repository": "https://github.com/mtkgv/cdaa.git",
+      "commit": "3c09c4c4feed19aea7cf710d22144c36063f0ebd",
+      "checkout_directory": "work/cdaa"
+    },
+    "qcre": {
+      "repository": "https://github.com/mtkgv/qcre.git",
+      "commit": "b3505da6bfa6d1184c21eb8410708cb759eadc48",
+      "checkout_directory": "work/qcre"
+    },
+    "cutensornet": {
+      "distribution": "cuquantum-python-cu13==26.6.0",
+      "cupy_distribution": "cupy-cuda13x[ctk]",
+      "reference_hardware": "NVIDIA RTX 5070 Ti",
+      "precision": "complex64",
+      "runtime_semantics": "pre-run scalar-contraction estimate versus local GPU timing"
+    }
+  }
+}
