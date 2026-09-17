@@ -1,8 +1,10 @@
 # Ma–Li / QCRE gate-aware proxy validation
 
 This is an `OUR_PROXY` analysis, not exact historical hardware validation.
-The observed target is Ma–Li's device-labelled `time_taken`; the circuit
-is transpiled with the current FakeOsaka/FakeKyoto target and a
+The observed target is Ma–Li's device-labelled `time_taken`; labels come
+from the upstream `result.time_taken` path with 1024 shots (averaged over
+the upstream repeated runs). The circuit is transpiled with the current
+FakeOsaka/FakeKyoto target and a
 backend-target weighted critical path is used as the gate-aware proxy.
 
 Rows: **340**; seed: **1234**; transpile level: **1**.

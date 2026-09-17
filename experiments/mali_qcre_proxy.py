@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import math
 import os
@@ -22,7 +23,9 @@ import random
 from typing import Iterable
 
 import numpy as np
+import qiskit
 from qiskit import QuantumCircuit, transpile
+import qiskit_ibm_runtime
 from qiskit_ibm_runtime.fake_provider import FakeKyoto, FakeOsaka
 
 
@@ -34,6 +37,28 @@ FEATURES = (
     "physical_two_qubit_depth",
     "qcre_weighted_critical_path_seconds",
 )
+
+
+def backend_metadata() -> dict[str, object]:
+    """Record the exact FakeBackend target used by the proxy."""
+    metadata: dict[str, object] = {
+        "qiskit_version": qiskit.__version__,
+        "qiskit_ibm_runtime_version": qiskit_ibm_runtime.__version__,
+        "backends": {},
+    }
+    for name, backend in (("osaka", FakeOsaka()), ("kyoto", FakeKyoto())):
+        edges = [list(edge) for edge in backend.coupling_map.get_edges()]
+        metadata["backends"][name] = {
+            "class": type(backend).__name__,
+            "backend_version": getattr(backend, "backend_version", None),
+            "fake_backend_api_version": getattr(backend, "version", None),
+            "num_qubits": int(backend.num_qubits),
+            "dt_seconds": float(backend.dt),
+            "basis_gates": list(backend.configuration().basis_gates),
+            "target_operation_names": sorted(backend.operation_names),
+            "coupling_map_edges": edges,
+        }
+    return metadata
 
 
 def resolve_mali_root(value: str | None) -> Path:
@@ -156,7 +181,11 @@ def row_from_circuits(
         "circuit": circuit_name,
         "backend_label": backend_name,
         "target_time_taken_seconds": target_seconds,
-        "target_semantics": "Ma-Li upstream observed time_taken; device-labelled run",
+        "target_semantics": (
+            "Ma-Li upstream Osaka/Kyoto observed result.time_taken; execute shots=1024; "
+            "averaged upstream runs; queue semantics per upstream"
+        ),
+        "shots": 1024,
         "logical_width": original.num_qubits,
         "logical_depth": original.depth(),
         "logical_two_qubit_depth": two_qubit_depth(original),
@@ -334,6 +363,7 @@ def build_rows(
         # Keep the artifact portable: the checkout root is supplied by the
         # reviewer, so only the path relative to that root is recorded.
         row["qasm_path"] = str(qasm_path.relative_to(mali_root))
+        row["qasm_sha256"] = hashlib.sha256(qasm_path.read_bytes()).hexdigest()
         rows.append(row)
     return rows
 
@@ -348,6 +378,8 @@ def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
 
 
 def summarize(rows: list[dict[str, object]], seed: int) -> dict[str, object]:
+    for row in rows:
+        row.setdefault("shots", 1024)
     target = np.asarray([float(row["target_time_taken_seconds"]) for row in rows])
     feature_summary: dict[str, object] = {}
     for feature in FEATURES:
@@ -386,13 +418,17 @@ def summarize(rows: list[dict[str, object]], seed: int) -> dict[str, object]:
 
     return {
         "provenance_class": "OUR_PROXY",
-        "target_semantics": "Ma-Li observed time_taken; queue semantics inherited from upstream labels",
+        "target_semantics": (
+            "Ma-Li upstream Osaka/Kyoto observed result.time_taken from execute(shots=1024), "
+            "averaged upstream runs; queue semantics inherited from upstream labels"
+        ),
         "proxy_semantics": "current FakeOsaka/FakeKyoto transpile + backend-target weighted critical path; not historical physical circuit truth",
         "n": len(rows),
         "seed": seed,
         "features": feature_summary,
         "per_backend": per_backend,
         "held_out_backend_log_calibration": held_out_backend,
+        "software_and_backend_metadata": backend_metadata(),
     }
 
 
@@ -401,8 +437,10 @@ def write_report(path: Path, summary: dict[str, object]) -> None:
         "# Ma–Li / QCRE gate-aware proxy validation",
         "",
         "This is an `OUR_PROXY` analysis, not exact historical hardware validation.",
-        "The observed target is Ma–Li's device-labelled `time_taken`; the circuit",
-        "is transpiled with the current FakeOsaka/FakeKyoto target and a",
+        "The observed target is Ma–Li's device-labelled `time_taken`; labels come",
+        "from the upstream `result.time_taken` path with 1024 shots (averaged over",
+        "the upstream repeated runs). The circuit is transpiled with the current",
+        "FakeOsaka/FakeKyoto target and a",
         "backend-target weighted critical path is used as the gate-aware proxy.",
         "",
         f"Rows: **{summary['n']}**; seed: **{summary['seed']}**; "
@@ -483,6 +521,15 @@ def main() -> None:
     if args.features_csv:
         with args.features_csv.open(newline="", encoding="utf-8") as handle:
             rows = list(csv.DictReader(handle))
+        for row in rows:
+            row["target_semantics"] = (
+                "Ma-Li upstream Osaka/Kyoto observed result.time_taken; execute shots=1024; "
+                "averaged upstream runs; queue semantics per upstream"
+            )
+            row.setdefault("shots", 1024)
+            qasm_path = mali_root / str(row["qasm_path"])
+            if qasm_path.is_file():
+                row["qasm_sha256"] = hashlib.sha256(qasm_path.read_bytes()).hexdigest()
     else:
         labels = load_labels(mali_root)
         if args.limit is not None:

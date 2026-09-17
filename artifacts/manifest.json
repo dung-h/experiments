@@ -36,6 +36,18 @@
       "critical_fixture": "artifacts/validation/mali_qcre_proxy/mali_qcre_proxy_summary.json"
     },
     {
+      "path": "artifacts/validation/mali_qcre_final/MALI_QCRE_FINAL_VALIDATION_REPORT.md",
+      "provenance_class": "OUR_VALIDATION",
+      "runtime_semantics": "QASM-hash grouped out-of-sample calibration, duration audit and ablation",
+      "critical_fixture": "artifacts/validation/mali_qcre_final/mali_qcre_validation_summary.json"
+    },
+    {
+      "path": "artifacts/validation/mali_qcre_seed_sensitivity/MALI_QCRE_SEED_SENSITIVITY_REPORT.md",
+      "provenance_class": "OUR_VALIDATION",
+      "runtime_semantics": "three-seed FakeOsaka/FakeKyoto transpiler sensitivity",
+      "critical_fixture": "artifacts/validation/mali_qcre_seed_sensitivity/mali_qcre_seed_sensitivity_summary.json"
+    },
+    {
       "path": "artifacts/cdaa_qcre/REPLICATION_REPORT.md",
       "provenance_class": "AUTHOR_ARTIFACT plus OUR_PROXY",
       "runtime_semantics": "compiled-circuit duration from archived instruction durations"

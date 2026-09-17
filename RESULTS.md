@@ -130,6 +130,50 @@ ranking/structure plus an explicitly fitted calibration, not direct equality.
 All row-level features, paths, correlations and held-out scores are in
 [artifacts/validation/mali_qcre_proxy/](artifacts/validation/mali_qcre_proxy/).
 
+### 2.3 Final leakage, duration and ablation checks
+
+The validation pass groups by logical-QASM SHA-256 before splitting. The 340
+rows reduce to 170 logical circuits; 134 hashes occur on both devices, so an
+Osaka/Kyoto copy cannot land in different folds. Grouped five-fold calibration
+gives physical-depth R² `0.7879` (MAE `0.6763 s`, MedAE `0.5344 s`) and weighted
+path R² `0.6692` (MAE `0.8276 s`, MedAE `0.6594 s`). The grouped median baseline
+has R² `-0.0122` and MAE `1.4342 s`.
+
+The incremental ablation uses exactly those folds:
+
+| Feature set | R² | MAE (s) | MedAE (s) |
+| --- | ---: | ---: | ---: |
+| Physical depth | 0.7879 | 0.6763 | 0.5344 |
+| + physical 2-qubit depth | 0.7906 | 0.6712 | 0.5386 |
+| + weighted path | 0.7910 | 0.6850 | 0.5652 |
+| + physical 2-qubit depth + weighted path | 0.7946 | 0.6778 | 0.5770 |
+
+Thus the timing-aware path adds only a small incremental R² (`~0.003`) over
+compiled structural features. The defensible claim is that physical compiled
+structure carries most of the transferable signal; the duration proxy is
+useful for calibration but is not independently dominant. Multiplying the path
+by the upstream `shots=1024` and fitting an out-of-sample affine map gives R²
+`0.7536` (MAE `0.7209 s`), with fold intercepts around 3.1–3.3 s and slopes
+near 1.0. Duration coverage is complete: 0 unsupported operations, negative
+or non-finite durations, or zero-duration rows; barriers are skipped and
+measurement/reset/delay handling is explicit in the script.
+
+The transpiler-seed sensitivity reran all 340 rows at seeds 1234, 2025 and
+31415 under the same Qiskit 1.4.1/FakeBackend/optimization-level-1 protocol and
+the same grouped folds:
+
+| Feature | Mean R² | Std | Range |
+| --- | ---: | ---: | ---: |
+| Physical depth | 0.7847 | 0.0059 | 0.7764–0.7897 |
+| Physical 2-qubit depth | 0.7720 | 0.0045 | 0.7661–0.7769 |
+| Weighted path | 0.6628 | 0.0138 | 0.6437–0.6756 |
+
+The seed range is narrow enough to retain a central estimate, while still being
+reported rather than hidden. Full fold details and row-level seed outputs are
+in [artifacts/validation/mali_qcre_seed_sensitivity/](artifacts/validation/mali_qcre_seed_sensitivity/);
+the grouped validation is in
+[artifacts/validation/mali_qcre_final/](artifacts/validation/mali_qcre_final/).
+
 ## 3. CDAA/QCRE: schedule agreement versus hardware truth
 
 QCRE reproduces the supplied Qiskit schedule-duration reference in 30 of 45

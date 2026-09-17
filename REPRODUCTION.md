@@ -95,6 +95,34 @@ The resulting weighted path is a current FakeBackend target proxy. It is not a
 recovered historical IBM calibration snapshot and is not interchangeable with
 the Ma–Li observed `time_taken` target.
 
+Run the final leakage/ablation pass (no transpilation required):
+
+```bash
+python experiments/mali_qcre_validation.py --mali-root work/mali
+```
+
+This groups repeated logical circuits by QASM SHA-256 and uses the same five
+folds for every feature set. For transpiler-seed sensitivity, rerun the 340
+rows with three seeds (the committed run used Qiskit 1.4.1, optimization level
+1):
+
+```bash
+python experiments/mali_qcre_seed_sensitivity.py --mali-root work/mali \
+  --seeds 1234,2025,31415 --optimization-level 1
+```
+
+The seed run takes substantially longer than the report-only validation since
+each seed repeats topology mapping and routing.
+
+Once the seed-row CSV exists, report generation can be checked without
+retranspiling:
+
+```bash
+python experiments/mali_qcre_seed_sensitivity.py --mali-root work/mali \
+  --rows-csv artifacts/validation/mali_qcre_seed_sensitivity/mali_qcre_seed_sensitivity_rows.csv \
+  --seeds 1234,2025,31415 --optimization-level 1
+```
+
 ## CDAA/QCRE
 
 Use the environment notes in tracks/cdaa_qcre/README.md. Bundled artifact

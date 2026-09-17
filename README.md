@@ -7,7 +7,7 @@ universal estimator.
 
 | Track | Estimator under study | Evidence class | Central finding |
 | --- | --- | --- | --- |
-| Ma–Li | Graph Transformer over circuit DAG | Local reproduction plus fake-snapshot proxy | The simulator-pretrained initialization fails catastrophically on one held-out QWalk fold, while a matched from-scratch control remains accurate. |
+| Ma–Li | Graph Transformer over circuit DAG | Local reproduction plus fake-snapshot and grouped QCRE proxy validation | The simulator-pretrained initialization fails catastrophically on one held-out QWalk fold, while compiled physical structure remains stable across transpiler seeds in the separate proxy check. |
 | Qonductor | Job/circuit regression in a cloud scheduler | Metric recomputation plus local fake-backend smoke | The public regression predictions outperform the numerical DAG baseline on the supplied 100-row evaluation CSV. |
 | CDAA/QCRE | Gate-aware compiled-circuit duration estimate | Bundled-artifact reproduction plus offline compiler proxy | Gate-aware depth closely follows the artifact's schedule-duration reference, but the reference is not measured QPU wall-clock. |
 | cuTensorNet | NVIDIA pre-run contraction-path `RUNTIME_EST` | Local RTX 5070 Ti measurement | The estimate is conservative for easy warm contractions and much closer for hard QFT contractions. |
