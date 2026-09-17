@@ -173,6 +173,9 @@ reported rather than hidden. Full fold details and row-level seed outputs are
 in [artifacts/validation/mali_qcre_seed_sensitivity/](artifacts/validation/mali_qcre_seed_sensitivity/);
 the grouped validation is in
 [artifacts/validation/mali_qcre_final/](artifacts/validation/mali_qcre_final/).
+The stricter two-direction transfer gives R² `0.6705` for Osaka → Kyoto and
+`0.6798` for Kyoto → Osaka; these are kept separate from the grouped
+five-fold diagnostics.
 
 ## 3. CDAA/QCRE: schedule agreement versus hardware truth
 

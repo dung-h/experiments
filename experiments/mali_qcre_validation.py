@@ -21,10 +21,10 @@ import sys
 import numpy as np
 
 try:
-    from mali_qcre_proxy import backend_metadata, regression_metrics
+    from mali_qcre_proxy import backend_metadata, held_out_group_calibration, regression_metrics
 except ImportError:  # pragma: no cover - allows direct import from another cwd
     sys.path.insert(0, str(Path(__file__).resolve().parent))
-    from mali_qcre_proxy import backend_metadata, regression_metrics
+    from mali_qcre_proxy import backend_metadata, held_out_group_calibration, regression_metrics
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -359,6 +359,26 @@ def report(summary: dict[str, object]) -> str:
     lines.extend(
         [
             "",
+            "## Leave-one-backend-out: the two transfer directions",
+            "",
+            "These are the two domain-transfer directions, each trained on one",
+            "backend and evaluated on the other. They are not five iid folds.",
+            "",
+            "| Train backend | Held-out backend | n | MAE (s) | RMSE (s) | R² |",
+            "|---|---|---:|---:|---:|---:|",
+        ]
+    )
+    for held_out, result in summary["leave_one_backend_out_weighted_path"].items():
+        metric = result["metrics"]
+        train_backend = ", ".join(result["train_groups"])
+        lines.append(
+            f"| `{train_backend}` | `{held_out}` | {result['n']} | "
+            f"{metric['mae_seconds']:.4f} | {metric['rmse_seconds']:.4f} | "
+            f"{metric['r2_seconds']:.4f} |"
+        )
+    lines.extend(
+        [
+            "",
             "## Reading the result",
             "",
             "The grouped scores are the defensible numbers for this artifact. If",
@@ -416,6 +436,9 @@ def main() -> None:
         "ablation_grouped_cv": ablation,
         "shots_scaled_affine_grouped_cv": affine,
         "per_backend_weighted_path": per_backend(rows, weighted_prediction),
+        "leave_one_backend_out_weighted_path": held_out_group_calibration(
+            rows, WEIGHTED_FEATURE, "backend_label"
+        ),
         "protocol": {
             "same_folds_for_all_features": True,
             "calibration": "log1p(target) ~ 1 + log1p(feature), fit on train groups only",

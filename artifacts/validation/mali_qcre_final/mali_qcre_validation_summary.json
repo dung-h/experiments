@@ -1049,6 +1049,36 @@
       "medae_seconds": 0.6593705847725144
     }
   },
+  "leave_one_backend_out_weighted_path": {
+    "kyoto": {
+      "n": 148,
+      "train_groups": [
+        "osaka"
+      ],
+      "metrics": {
+        "mae_seconds": 0.8131965213881986,
+        "rmse_seconds": 1.075712143349402,
+        "r2_seconds": 0.6704530120659701,
+        "mae_log1p_seconds": 0.087370997432133,
+        "rmse_log1p_seconds": 0.114411437554686,
+        "r2_log1p_seconds": 0.7427348344533482
+      }
+    },
+    "osaka": {
+      "n": 192,
+      "train_groups": [
+        "kyoto"
+      ],
+      "metrics": {
+        "mae_seconds": 0.8201049491187856,
+        "rmse_seconds": 1.0910566169495475,
+        "r2_seconds": 0.6797621754998119,
+        "mae_log1p_seconds": 0.09196808105153846,
+        "rmse_log1p_seconds": 0.12227372174591448,
+        "r2_log1p_seconds": 0.7354603692039554
+      }
+    }
+  },
   "protocol": {
     "same_folds_for_all_features": true,
     "calibration": "log1p(target) ~ 1 + log1p(feature), fit on train groups only",

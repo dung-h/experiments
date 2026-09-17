@@ -53,6 +53,16 @@ calibration, then sliced by backend for diagnostics.
 | `kyoto` | 148 | 8.7236 | 8.4658 | 0.8170 | 0.6594 | 0.6697 |
 | `osaka` | 192 | 8.5839 | 8.3541 | 0.8358 | 0.6594 | 0.6666 |
 
+## Leave-one-backend-out: the two transfer directions
+
+These are the two domain-transfer directions, each trained on one
+backend and evaluated on the other. They are not five iid folds.
+
+| Train backend | Held-out backend | n | MAE (s) | RMSE (s) | R² |
+|---|---|---:|---:|---:|---:|
+| `osaka` | `kyoto` | 148 | 0.8132 | 1.0757 | 0.6705 |
+| `kyoto` | `osaka` | 192 | 0.8201 | 1.0911 | 0.6798 |
+
 ## Reading the result
 
 The grouped scores are the defensible numbers for this artifact. If
