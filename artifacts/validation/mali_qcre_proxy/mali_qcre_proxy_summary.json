@@ -1,0 +1,274 @@
+{
+  "provenance_class": "OUR_PROXY",
+  "target_semantics": "Ma-Li observed time_taken; queue semantics inherited from upstream labels",
+  "proxy_semantics": "current FakeOsaka/FakeKyoto transpile + backend-target weighted critical path; not historical physical circuit truth",
+  "n": 340,
+  "seed": 1234,
+  "features": {
+    "logical_depth": {
+      "log1p_pearson": 0.0609988115271991,
+      "log1p_spearman": 0.23542588985232007,
+      "five_fold_log_calibration": {
+        "mae_seconds": 1.4841209142942107,
+        "rmse_seconds": 1.926068742385284,
+        "r2_seconds": -0.018755506053262927,
+        "mae_log1p_seconds": 0.16747987844553544,
+        "rmse_log1p_seconds": 0.23445295593548043,
+        "r2_log1p_seconds": -0.0132258213042582
+      }
+    },
+    "logical_two_qubit_depth": {
+      "log1p_pearson": 0.2355134187289286,
+      "log1p_spearman": 0.31547662832107654,
+      "five_fold_log_calibration": {
+        "mae_seconds": 1.3941176844014223,
+        "rmse_seconds": 1.8234039630584906,
+        "r2_seconds": 0.0869549817579427,
+        "mae_log1p_seconds": 0.15879568736491492,
+        "rmse_log1p_seconds": 0.2272766132012683,
+        "r2_log1p_seconds": 0.04785230184817002
+      }
+    },
+    "physical_depth": {
+      "log1p_pearson": 0.9095681194848602,
+      "log1p_spearman": 0.817491733564991,
+      "five_fold_log_calibration": {
+        "mae_seconds": 0.6792612413127017,
+        "rmse_seconds": 0.8853628599113552,
+        "r2_seconds": 0.7847371915381873,
+        "mae_log1p_seconds": 0.07542701954130568,
+        "rmse_log1p_seconds": 0.09865833480910655,
+        "r2_log1p_seconds": 0.8205834977722073
+      }
+    },
+    "physical_two_qubit_depth": {
+      "log1p_pearson": 0.9029567624947746,
+      "log1p_spearman": 0.7974990890095078,
+      "five_fold_log_calibration": {
+        "mae_seconds": 0.7106665371467155,
+        "rmse_seconds": 0.9158497548799805,
+        "r2_seconds": 0.7696570791959244,
+        "mae_log1p_seconds": 0.07886742880945274,
+        "rmse_log1p_seconds": 0.10203423513111935,
+        "r2_log1p_seconds": 0.8080948409125368
+      }
+    },
+    "qcre_weighted_critical_path_seconds": {
+      "log1p_pearson": 0.8606521778018723,
+      "log1p_spearman": 0.7999873599042572,
+      "five_fold_log_calibration": {
+        "mae_seconds": 0.8251311264000586,
+        "rmse_seconds": 1.101728778489278,
+        "r2_seconds": 0.6666689347534054,
+        "mae_log1p_seconds": 0.09070058291294647,
+        "rmse_log1p_seconds": 0.12004050280675155,
+        "r2_log1p_seconds": 0.7343863221176581
+      }
+    }
+  },
+  "per_backend": {
+    "kyoto": {
+      "n": 148,
+      "features": {
+        "logical_depth": {
+          "log1p_pearson": 0.05882226728629479,
+          "log1p_spearman": 0.22050729197931576
+        },
+        "logical_two_qubit_depth": {
+          "log1p_pearson": 0.22974475013743345,
+          "log1p_spearman": 0.2970961792010408
+        },
+        "physical_depth": {
+          "log1p_pearson": 0.9075134981175936,
+          "log1p_spearman": 0.8068981412088078
+        },
+        "physical_two_qubit_depth": {
+          "log1p_pearson": 0.9011386211266175,
+          "log1p_spearman": 0.7870615595396353
+        },
+        "qcre_weighted_critical_path_seconds": {
+          "log1p_pearson": 0.8628727737785725,
+          "log1p_spearman": 0.7870122035888086
+        }
+      }
+    },
+    "osaka": {
+      "n": 192,
+      "features": {
+        "logical_depth": {
+          "log1p_pearson": 0.05849120437000517,
+          "log1p_spearman": 0.24578027497847907
+        },
+        "logical_two_qubit_depth": {
+          "log1p_pearson": 0.2371387134369935,
+          "log1p_spearman": 0.32972004277943145
+        },
+        "physical_depth": {
+          "log1p_pearson": 0.9114854242089774,
+          "log1p_spearman": 0.8233128377532155
+        },
+        "physical_two_qubit_depth": {
+          "log1p_pearson": 0.9045842984704848,
+          "log1p_spearman": 0.8040640969811429
+        },
+        "qcre_weighted_critical_path_seconds": {
+          "log1p_pearson": 0.8586570528786155,
+          "log1p_spearman": 0.8068828563277347
+        }
+      }
+    }
+  },
+  "held_out_backend_log_calibration": {
+    "logical_depth": {
+      "kyoto": {
+        "n": 148,
+        "train_groups": [
+          "osaka"
+        ],
+        "metrics": {
+          "mae_seconds": 1.4818855948030722,
+          "rmse_seconds": 1.9111368903342318,
+          "r2_seconds": -0.04018070952683228,
+          "mae_log1p_seconds": 0.16465492680753427,
+          "rmse_log1p_seconds": 0.22671499406984605,
+          "r2_log1p_seconds": -0.01018889005781487
+        }
+      },
+      "osaka": {
+        "n": 192,
+        "train_groups": [
+          "kyoto"
+        ],
+        "metrics": {
+          "mae_seconds": 1.46852381465536,
+          "rmse_seconds": 1.9112942901426604,
+          "r2_seconds": 0.017272347792386178,
+          "mae_log1p_seconds": 0.16785875589690313,
+          "rmse_log1p_seconds": 0.23879721497635825,
+          "r2_log1p_seconds": -0.008981016305759537
+        }
+      }
+    },
+    "logical_two_qubit_depth": {
+      "kyoto": {
+        "n": 148,
+        "train_groups": [
+          "osaka"
+        ],
+        "metrics": {
+          "mae_seconds": 1.4046372905004714,
+          "rmse_seconds": 1.8174801408498988,
+          "r2_seconds": 0.059270956705369304,
+          "mae_log1p_seconds": 0.15741583302513387,
+          "rmse_log1p_seconds": 0.2208220418957522,
+          "r2_log1p_seconds": 0.04164382976812375
+        }
+      },
+      "osaka": {
+        "n": 192,
+        "train_groups": [
+          "kyoto"
+        ],
+        "metrics": {
+          "mae_seconds": 1.3858966969958413,
+          "rmse_seconds": 1.8233048694751834,
+          "r2_seconds": 0.10567239667169637,
+          "mae_log1p_seconds": 0.15981508463210473,
+          "rmse_log1p_seconds": 0.23222743573724322,
+          "r2_log1p_seconds": 0.04577336713107438
+        }
+      }
+    },
+    "physical_depth": {
+      "kyoto": {
+        "n": 148,
+        "train_groups": [
+          "osaka"
+        ],
+        "metrics": {
+          "mae_seconds": 0.663988964858525,
+          "rmse_seconds": 0.8824437074275379,
+          "r2_seconds": 0.7782318236677768,
+          "mae_log1p_seconds": 0.07226297452693145,
+          "rmse_log1p_seconds": 0.09600456994821344,
+          "r2_log1p_seconds": 0.818855182450613
+        }
+      },
+      "osaka": {
+        "n": 192,
+        "train_groups": [
+          "kyoto"
+        ],
+        "metrics": {
+          "mae_seconds": 0.6861730470598973,
+          "rmse_seconds": 0.8761378762730138,
+          "r2_seconds": 0.7934986176910674,
+          "mae_log1p_seconds": 0.07713343415495849,
+          "rmse_log1p_seconds": 0.09910583430331638,
+          "r2_log1p_seconds": 0.8262107439456741
+        }
+      }
+    },
+    "physical_two_qubit_depth": {
+      "kyoto": {
+        "n": 148,
+        "train_groups": [
+          "osaka"
+        ],
+        "metrics": {
+          "mae_seconds": 0.6791566255785211,
+          "rmse_seconds": 0.9065202257460075,
+          "r2_seconds": 0.765965329033154,
+          "mae_log1p_seconds": 0.07392820555754454,
+          "rmse_log1p_seconds": 0.09890468462161436,
+          "r2_log1p_seconds": 0.8077458047645756
+        }
+      },
+      "osaka": {
+        "n": 192,
+        "train_groups": [
+          "kyoto"
+        ],
+        "metrics": {
+          "mae_seconds": 0.7253850324519258,
+          "rmse_seconds": 0.9093923334428375,
+          "r2_seconds": 0.7775253004458101,
+          "mae_log1p_seconds": 0.08131409750779654,
+          "rmse_log1p_seconds": 0.10251284673842119,
+          "r2_log1p_seconds": 0.8140564714657771
+        }
+      }
+    },
+    "qcre_weighted_critical_path_seconds": {
+      "kyoto": {
+        "n": 148,
+        "train_groups": [
+          "osaka"
+        ],
+        "metrics": {
+          "mae_seconds": 0.8131965213881986,
+          "rmse_seconds": 1.075712143349402,
+          "r2_seconds": 0.6704530120659701,
+          "mae_log1p_seconds": 0.087370997432133,
+          "rmse_log1p_seconds": 0.114411437554686,
+          "r2_log1p_seconds": 0.7427348344533482
+        }
+      },
+      "osaka": {
+        "n": 192,
+        "train_groups": [
+          "kyoto"
+        ],
+        "metrics": {
+          "mae_seconds": 0.8201049491187856,
+          "rmse_seconds": 1.0910566169495475,
+          "r2_seconds": 0.6797621754998119,
+          "mae_log1p_seconds": 0.09196808105153846,
+          "rmse_log1p_seconds": 0.12227372174591448,
+          "r2_log1p_seconds": 0.7354603692039554
+        }
+      }
+    }
+  },
+  "transpile_optimization_level": "1"
+}

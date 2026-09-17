@@ -24,8 +24,16 @@ REQUIRED = (
     "tracks/cdaa_qcre/independent/sqgm/exp-in/exp_eagle.json",
     "tracks/cdaa_qcre/independent/sqgm/exp-in/exp_heron.json",
     "tracks/cutensornet/code/run_cutensornet_runtime_benchmark.py",
+    "experiments/qonductor_mapping_audit.py",
+    "experiments/mali_qcre_proxy.py",
+    "experiments/README.md",
     "artifacts/mali/fold10_qwalk_outlier.json",
     "artifacts/qonductor/reproduction_metrics.json",
+    "artifacts/validation/qonductor_mapping/QONDUCTOR_MAPPING_AUDIT.md",
+    "artifacts/validation/qonductor_mapping/qonductor_mapping_audit.json",
+    "artifacts/validation/mali_qcre_proxy/MALI_QCRE_PROXY_REPORT.md",
+    "artifacts/validation/mali_qcre_proxy/mali_qcre_proxy_features.csv",
+    "artifacts/validation/mali_qcre_proxy/mali_qcre_proxy_summary.json",
     "artifacts/cdaa_qcre/independent_all_metrics.csv",
     "artifacts/cutensornet/cutensornet_runtime_benchmark.csv",
 )
@@ -42,7 +50,7 @@ def main() -> int:
     require(set(lock["tracks"]) == {"mali", "qonductor", "cdaa", "qcre", "cutensornet"},
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 6,
+    require(len(artifact_manifest["artifacts"]) == 8,
             "unexpected replication artifact manifest size")
 
     qonductor = json.loads((ROOT / "artifacts/qonductor/reproduction_metrics.json").read_text())
@@ -51,6 +59,35 @@ def main() -> int:
             "Qonductor regression R2 fixture changed")
     require(abs(execution["dag_vs_real"]["r2"] - 0.8848516371292685) < 1e-12,
             "Qonductor DAG R2 fixture changed")
+
+    mapping = json.loads(
+        (ROOT / "artifacts/validation/qonductor_mapping/qonductor_mapping_audit.json").read_text()
+    )
+    require(mapping["csv"]["rows"] == 100, "Qonductor mapping CSV row count changed")
+    require(mapping["csv"]["has_stable_join_key"] is False,
+            "Qonductor mapping unexpectedly gained a stable join key")
+
+    with (ROOT / "artifacts/validation/mali_qcre_proxy/mali_qcre_proxy_features.csv").open(
+        newline=""
+    ) as handle:
+        proxy_rows = list(csv.DictReader(handle))
+    require(len(proxy_rows) == 340, "Ma-Li/QCRE proxy row count changed")
+    require({row["backend_label"] for row in proxy_rows} == {"osaka", "kyoto"},
+            "Ma-Li/QCRE proxy backend labels changed")
+    require(all(not row["qasm_path"].startswith("/") for row in proxy_rows),
+            "Ma-Li/QCRE proxy contains non-portable absolute QASM paths")
+    proxy_summary = json.loads(
+        (ROOT / "artifacts/validation/mali_qcre_proxy/mali_qcre_proxy_summary.json").read_text()
+    )
+    require(proxy_summary["n"] == 340, "Ma-Li/QCRE proxy summary row count changed")
+    require(
+        abs(
+            proxy_summary["features"]["physical_depth"]["five_fold_log_calibration"]["r2_seconds"]
+            - 0.7847371915381873
+        )
+        < 1e-12,
+        "Ma-Li/QCRE proxy metric fixture changed",
+    )
 
     with (ROOT / "artifacts/cutensornet/cutensornet_runtime_benchmark.csv").open(newline="") as handle:
         cutn_rows = list(csv.DictReader(handle))

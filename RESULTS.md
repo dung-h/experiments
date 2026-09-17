@@ -17,7 +17,10 @@ byte-for-byte, and its fake scheduler smoke completed without credentials.
 For Ma–Li, a ten-sample fake-snapshot build plus one-epoch DAG and ten-fold
 pretrained/from-scratch adaptation smokes completed on CPU. The full 340-row,
 500-epoch numbers below remain the committed experiment outputs; the smoke is
-only an execution/path check. For CDAA, all 90 Qiskit and 45 TKET proxy files
+only an execution/path check. The separate 340-row Ma–Li/QCRE proxy was also
+run locally with the current FakeOsaka/FakeKyoto target at transpile level 1;
+its output is marked `OUR_PROXY` and does not replace the historical Ma–Li
+adaptation result. For CDAA, all 90 Qiskit and 45 TKET proxy files
 were generated in the clean work directory, and a one-circuit SQGM/SABRE run
 completed under the pinned old-Terra environment. cuTensorNet was not rerun in
 this packaging check because it requires the RTX 5070 Ti/CUDA stack; its
@@ -90,6 +93,42 @@ a calibrated critical-path sum, not another learned model. The failure boundary
 is provenance: this does not establish new-backend transfer, live IBM
 execution, queue-time prediction, or a newly trained model. Details and
 fixtures are under [artifacts/qonductor/](artifacts/qonductor/).
+
+### 2.1 Qonductor mapping audit
+
+The additional audit confirms why the public Qonductor resource-estimator
+numbers cannot currently be joined to individual circuits. The CSV has 100
+rows and only `predicted`, `real`, and `dag`; the SQLite database has 7,449
+jobs, 166,093 circuits and 17 backend labels. There is no shared
+`job_id`/`circuit_id`/`ibm_quantum_id`. Matching by row order or nearest runtime
+would therefore be fabricated. The audit and its machine-readable evidence are
+[artifacts/validation/qonductor_mapping/QONDUCTOR_MAPPING_AUDIT.md](artifacts/validation/qonductor_mapping/QONDUCTOR_MAPPING_AUDIT.md).
+
+## 2.2 Ma–Li / QCRE gate-aware proxy validation
+
+To test whether compiled, gate-aware structure explains the Ma–Li labels, we
+transpiled all 340 Osaka/Kyoto QASM circuits with Qiskit 1.4.1 `FakeOsaka` or
+`FakeKyoto` (seed 1234, optimization level 1). Instead of Qiskit's ALAP pass,
+which fails on some large inputs in this environment, the script reconstructs
+a weighted critical path from the current FakeBackend target durations. This
+is a current-target `OUR_PROXY`, not the historical physical circuit or
+calibration snapshot used to create the labels.
+
+| Feature | log Pearson | log Spearman | 5-fold calibrated R² |
+| --- | ---: | ---: | ---: |
+| Logical depth | 0.0610 | 0.2354 | -0.0188 |
+| Logical two-qubit depth | 0.2355 | 0.3155 | 0.0870 |
+| Physical depth after transpile | 0.9096 | 0.8175 | 0.7847 |
+| Physical two-qubit depth | 0.9030 | 0.7975 | 0.7697 |
+| Weighted target-duration path | 0.8607 | 0.8000 | 0.6667 |
+
+The same one-feature calibration held out an entire backend at a time: the
+weighted path reached R² 0.6705 on Kyoto and 0.6798 on Osaka. The raw scale is
+not a hardware runtime: the median observed label is 8.637 s while the median
+weighted path is 0.00510 s (about 1,708× smaller). Thus the useful result is
+ranking/structure plus an explicitly fitted calibration, not direct equality.
+All row-level features, paths, correlations and held-out scores are in
+[artifacts/validation/mali_qcre_proxy/](artifacts/validation/mali_qcre_proxy/).
 
 ## 3. CDAA/QCRE: schedule agreement versus hardware truth
 

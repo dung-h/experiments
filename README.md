@@ -41,6 +41,7 @@ at pinned commits and overlaid only with the changes recorded here.
 ```text
 tracks/                 code, overlays and track-specific instructions
 artifacts/              committed reports, metrics and expected fixtures
+experiments/            cross-track validation scripts (Qonductor/Ma–Li)
 scripts/                bootstrap and integrity verification
 upstream/               upstream revisions, licenses and data boundaries
 RESULTS.md              report of findings and failure modes

@@ -1,0 +1,63 @@
+{
+  "provenance_class": "DERIVED_RECOMPUTE",
+  "csv": {
+    "path": "/home/server/Documents/Qonductor-SC25/data/resource_estimator/execution_time_estimations.csv",
+    "rows": 100,
+    "columns": [
+      "predicted",
+      "real",
+      "dag"
+    ],
+    "has_stable_join_key": false,
+    "real_value_range": [
+      1367.435015566978,
+      17912.382874556155
+    ]
+  },
+  "database": {
+    "path": "/home/server/Documents/Qonductor-SC25/data/database/quantum_scheduler.db",
+    "job_rows": 7449,
+    "circuit_rows": 166093,
+    "distinct_backends": 17,
+    "job_columns": [
+      "backend_name",
+      "backend_version",
+      "id",
+      "ibm_quantum_id",
+      "date",
+      "taken_time",
+      "shots"
+    ],
+    "circuit_columns": [
+      "id",
+      "name",
+      "filename",
+      "job_id"
+    ],
+    "taken_time_seconds_range": [
+      0.0004687309265136719,
+      762.3488961539999
+    ]
+  },
+  "circuit_archive": {
+    "path": "/home/server/Documents/Qonductor-SC25/data/database/circuits.zip",
+    "qasm_files": 166093
+  },
+  "nearest_time_checks": [
+    {
+      "scale_csv_to_db": 1.0,
+      "n": 100,
+      "nearest_median_absolute_difference": 6404.241522573244,
+      "nearest_min_absolute_difference": 605.0861194129782,
+      "exact_matches_below_1e-6": 0
+    },
+    {
+      "scale_csv_to_db": 0.001,
+      "n": 100,
+      "nearest_median_absolute_difference": 0.0011188611053896125,
+      "nearest_min_absolute_difference": 8.860806396171483e-06,
+      "exact_matches_below_1e-6": 0
+    }
+  ],
+  "conclusion": "No safe row-level join is established: the 100-row resource CSV has only predicted/real/dag columns, while circuit/job keys live in a separate database. Do not attach QCRE values by row order or nearest time."
+}

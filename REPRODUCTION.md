@@ -32,6 +32,17 @@ Compare outputs with artifacts/qonductor/. This recomputes metrics from
 author-generated predictions and runs a fake-backend smoke test; it does not
 retrain Qonductor or contact IBM.
 
+The resource-estimator CSV is not safely joinable to the circuit/job database;
+run the credential-free audit before attempting any row-level comparison:
+
+```bash
+python experiments/qonductor_mapping_audit.py --qonductor-root work/qonductor
+```
+
+It should report 100 resource rows, no stable join key, 7,449 database jobs
+and 166,093 archived circuits. Do not attach those rows by position or nearest
+runtime.
+
 ## Ma–Li
 
 Bootstrap overlays the local DAG/preprocessing fixes, fake properties, manifests
@@ -63,6 +74,26 @@ python experiments/adapt_mali_real_qpu.py \
 
 The expected aggregate JSON and fold-10 fixture are committed. Checkpoints are
 derived, large and unnecessary to audit the reported predictions.
+
+For the separate gate-aware proxy against the recorded Ma–Li labels, use a
+Qiskit 1.4.1 environment containing NumPy and the IBM Runtime fake provider:
+
+```bash
+python experiments/mali_qcre_proxy.py --mali-root work/mali
+```
+
+This transpiles all 340 Osaka/Kyoto QASM rows (seed 1234, optimization level
+1) and writes `artifacts/validation/mali_qcre_proxy/`. To re-check the
+statistics without repeating transpilation, pass the committed feature CSV:
+
+```bash
+python experiments/mali_qcre_proxy.py --mali-root work/mali \
+  --features-csv artifacts/validation/mali_qcre_proxy/mali_qcre_proxy_features.csv
+```
+
+The resulting weighted path is a current FakeBackend target proxy. It is not a
+recovered historical IBM calibration snapshot and is not interchangeable with
+the Ma–Li observed `time_taken` target.
 
 ## CDAA/QCRE
 

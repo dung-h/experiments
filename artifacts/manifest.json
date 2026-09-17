@@ -24,6 +24,18 @@
       "runtime_semantics": "fake-backend scheduler smoke; not live IBM execution"
     },
     {
+      "path": "artifacts/validation/qonductor_mapping/QONDUCTOR_MAPPING_AUDIT.md",
+      "provenance_class": "DERIVED_RECOMPUTE",
+      "runtime_semantics": "credential-free audit of resource-estimator-to-circuit/job joinability",
+      "critical_fixture": "artifacts/validation/qonductor_mapping/qonductor_mapping_audit.json"
+    },
+    {
+      "path": "artifacts/validation/mali_qcre_proxy/MALI_QCRE_PROXY_REPORT.md",
+      "provenance_class": "OUR_PROXY",
+      "runtime_semantics": "FakeOsaka/FakeKyoto target-duration proxy against Ma-Li observed labels",
+      "critical_fixture": "artifacts/validation/mali_qcre_proxy/mali_qcre_proxy_summary.json"
+    },
+    {
       "path": "artifacts/cdaa_qcre/REPLICATION_REPORT.md",
       "provenance_class": "AUTHOR_ARTIFACT plus OUR_PROXY",
       "runtime_semantics": "compiled-circuit duration from archived instruction durations"
