@@ -84,6 +84,12 @@ def main():
     ap.add_argument("--timeout-s", type=int, default=900)
     ap.add_argument("--seed-transpiler", type=int, default=1234)
     ap.add_argument("--seed-simulator", type=int, default=1234)
+    ap.add_argument("--max-parallel-threads", type=int, default=0,
+                    help="limit Aer CPU threads; 0 keeps Aer default")
+    ap.add_argument("--max-parallel-shots", type=int, default=0,
+                    help="limit Aer shot parallelism; 0 keeps Aer default")
+    ap.add_argument("--max-parallel-experiments", type=int, default=0,
+                    help="limit Aer experiment parallelism; 0 keeps Aer default")
     ap.add_argument("--backends", default="FakeWashingtonV2,FakeSherbrooke")
     ap.add_argument("--optimization-levels", default="0,1,2,3")
     ap.add_argument("--exclude-families", default="", help="comma-separated families to omit from a bounded pilot")
@@ -146,6 +152,9 @@ def main():
             "max_qubits": args.max_qubits,
             "seed_transpiler": args.seed_transpiler,
             "seed_simulator": args.seed_simulator,
+            "max_parallel_threads": args.max_parallel_threads or None,
+            "max_parallel_shots": args.max_parallel_shots or None,
+            "max_parallel_experiments": args.max_parallel_experiments or None,
             "backends": selected_backend_names,
             "optimization_levels": opt_levels,
             "excluded_families": sorted(excluded_families),
@@ -158,6 +167,12 @@ def main():
         for backend_name in selected_backend_names:
             backend = BACKENDS[backend_name]()
             simulator = AerSimulator.from_backend(backend)
+            if args.max_parallel_threads:
+                simulator.set_options(max_parallel_threads=args.max_parallel_threads)
+            if args.max_parallel_shots:
+                simulator.set_options(max_parallel_shots=args.max_parallel_shots)
+            if args.max_parallel_experiments:
+                simulator.set_options(max_parallel_experiments=args.max_parallel_experiments)
             warmup = QuantumCircuit(1)
             warmup.measure_all()
             simulator.run(warmup, shots=1, seed_simulator=args.seed_simulator).result()

@@ -148,3 +148,17 @@ paper's 900-second/HPC run.
 
 The independent report must compare trends and failure modes, not claim the
 paper's exact R2 values without the missing artifact.
+
+## Resource-bounded width frontier probe
+
+`run_resource_canary.py` runs one matrix row per isolated child process and
+samples aggregate RSS/CPU from `/proc`. It accepts an RSS cap and wall cap so a
+memory-heavy row cannot take down the complete probe. Aer parallelism can be
+made explicit with `--max-parallel-threads`, `--max-parallel-shots` and
+`--max-parallel-experiments`; these settings are part of the protocol and must
+not be mixed with the default-parallelism q<=9 result.
+
+The committed q10--q16 canary is intentionally partial: seven rows were
+retained, four exceeded the 16 GiB cap and three completed. Read
+`artifacts/azizov_independent/Q10_Q16_RESOURCE_CANARY_PARTIAL_REPORT.md`
+before attempting a larger frontier run.

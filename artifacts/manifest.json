@@ -83,6 +83,13 @@
       "provenance_class": "OUR_VALIDATION_LOCAL_FEASIBLE_SUBSET",
       "runtime_semantics": "random-row, grouped-circuit, family-held-out and fake-backend-held-out baseline evaluation on 1,192 successful local Aer rows",
       "critical_fixture": "artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.md"
+    },
+    {
+      "path": "artifacts/azizov_independent/Q10_Q16_RESOURCE_CANARY_PARTIAL_REPORT.md",
+      "provenance_class": "OUR_RESOURCE_SCREEN_PARTIAL",
+      "runtime_semantics": "isolated local Aer resource/timeout screen for seven width-10--16 rows; not a complete training matrix",
+      "critical_fixture": "artifacts/azizov_independent/q10_q16_resource_canary_partial.csv",
+      "related_fixture": "artifacts/azizov_independent/q10_q16_resource_canary_partial.environment.json"
     }
   ]
 }

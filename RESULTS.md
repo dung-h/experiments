@@ -346,3 +346,23 @@ same snapshots. The random-row result is optimistic because another row for
 the same logical circuit can be present in training; it is not the primary
 generalization claim. These are local baselines, not the paper's full
 1,402-circuit GNN result.
+
+### Width-10--16 resource boundary probe
+
+The next-width canary was process-isolated and sampled RSS and CPU from
+`/proc`, with a 16 GiB RSS cap and 180-second wall cap. It was stopped after
+seven of the 41 planned width-10--16 source circuits because several rows were
+already long enough to make a full canary disproportionate on this machine.
+Four `FakeWashingtonV2` rows (`ae_q10`, `ae_q12`, `dj_q10`, `dj_q11`) hit the
+16 GiB cap within about six seconds. Three rows completed: `dj_q16` in
+0.681 s at 0.42 GiB peak RSS, `ghz_q10` in 66.367 s at 0.96 GiB, and `ghz_q11`
+in 67.936 s at 1.05 GiB. The raw rows and protocol are in
+[Q10_Q16_RESOURCE_CANARY_PARTIAL_REPORT.md](artifacts/azizov_independent/Q10_Q16_RESOURCE_CANARY_PARTIAL_REPORT.md).
+
+This is a resource-boundary finding, not a failed reproduction. It shows that
+logical width is not a sufficient capacity predictor: a sparse 16-qubit DJ
+instance completed while some 10--12-qubit instances exceeded the RSS cap.
+The result is specific to the current FakeWashington/Aer/default-parallelism
+configuration and is not a claim that those circuits are impossible on another
+Aer method, thread policy or machine. The partial probe is kept separate from
+the 1,192-row q<=9 training/evaluation table.

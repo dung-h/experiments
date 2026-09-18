@@ -147,6 +147,14 @@ protocols; the grouped-circuit result is the primary local estimate. Do not
 describe the 10.6% as a hardware capacity theorem; it is the subset confirmed
 under this Aer/noise/version protocol.
 
+A process-isolated width-10--16 resource canary was attempted after the q<=9
+matrix. It retained seven exploratory rows before being stopped: four
+FakeWashington rows hit a 16 GiB RSS safety cap, while DJ q16 and GHZ q10/q11
+completed. Keep this partial probe separate from model-training data; it is
+evidence that circuit structure and Aer parallelism matter beyond logical
+width. The report and raw rows are under
+`artifacts/azizov_independent/Q10_Q16_RESOURCE_CANARY_PARTIAL_REPORT.md`.
+
 ## Claims to preserve
 
 - Do not call the FakeOsaka/FakeKyoto proxy historical calibration truth.

@@ -58,6 +58,7 @@ REQUIRED = (
     "tracks/azizov_independent/scripts/summarize_matrix.py",
     "tracks/azizov_independent/scripts/build_feasible_subset.py",
     "tracks/azizov_independent/scripts/evaluate_subset_splits.py",
+    "tracks/azizov_independent/scripts/run_resource_canary.py",
     "artifacts/azizov_independent/p1_q16_stratified3.csv",
     "artifacts/azizov_independent/p1_q16_stratified3.environment.json",
     "artifacts/azizov_independent/P1_Q16_STRATIFIED3_REPORT.md",
@@ -72,6 +73,9 @@ REQUIRED = (
     "artifacts/azizov_independent/feasible_q9_feature_ablation.json",
     "artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.md",
     "artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.json",
+    "artifacts/azizov_independent/Q10_Q16_RESOURCE_CANARY_PARTIAL_REPORT.md",
+    "artifacts/azizov_independent/q10_q16_resource_canary_partial.csv",
+    "artifacts/azizov_independent/q10_q16_resource_canary_partial.environment.json",
 )
 
 def require(condition: bool, message: str) -> None:
@@ -86,7 +90,7 @@ def main() -> int:
     require(set(lock["tracks"]) == {"mali", "qonductor", "cdaa", "qcre", "cutensornet"},
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 14,
+    require(len(artifact_manifest["artifacts"]) == 15,
             "unexpected replication artifact manifest size")
 
     qonductor = json.loads((ROOT / "artifacts/qonductor/reproduction_metrics.json").read_text())
@@ -229,6 +233,22 @@ def main() -> int:
         "backend_held_out_FakeSherbrooke",
         "backend_held_out_FakeWashingtonV2",
     }, "Azizov feasible split-evaluation split set changed")
+    with (ROOT / "artifacts/azizov_independent/q10_q16_resource_canary_partial.csv").open(
+        newline=""
+    ) as handle:
+        canary_rows = list(csv.DictReader(handle))
+    require(len(canary_rows) == 7, "unexpected partial q10-q16 canary row count")
+    require(sum(row["status"] == "ok" for row in canary_rows) == 3,
+            "q10-q16 canary success count changed")
+    require(sum(row["status"] == "resource_limit" for row in canary_rows) == 4,
+            "q10-q16 canary resource-limit count changed")
+    require(max(float(row["peak_rss_mb"]) for row in canary_rows) > 16_000,
+            "q10-q16 canary RSS evidence changed")
+    canary_env = json.loads(
+        (ROOT / "artifacts/azizov_independent/q10_q16_resource_canary_partial.environment.json").read_text()
+    )
+    require(canary_env["processed_rows"] == 7 and canary_env["completion_status"].startswith("aborted"),
+            "q10-q16 canary provenance changed")
 
     with (ROOT / "tracks/cdaa_qcre/data/instruction_durations/SNAPSHOT_MANIFEST.csv").open(
         newline=""
