@@ -76,6 +76,9 @@ REQUIRED = (
     "artifacts/azizov_independent/Q10_Q16_RESOURCE_CANARY_PARTIAL_REPORT.md",
     "artifacts/azizov_independent/q10_q16_resource_canary_partial.csv",
     "artifacts/azizov_independent/q10_q16_resource_canary_partial.environment.json",
+    "artifacts/azizov_independent/Q10_Q16_HIGHMEM_CHECK_REPORT.md",
+    "artifacts/azizov_independent/q10_q16_highmem_canary.csv",
+    "artifacts/azizov_independent/q10_q16_highmem_canary.environment.json",
 )
 
 def require(condition: bool, message: str) -> None:
@@ -90,7 +93,7 @@ def main() -> int:
     require(set(lock["tracks"]) == {"mali", "qonductor", "cdaa", "qcre", "cutensornet"},
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 15,
+    require(len(artifact_manifest["artifacts"]) == 16,
             "unexpected replication artifact manifest size")
 
     qonductor = json.loads((ROOT / "artifacts/qonductor/reproduction_metrics.json").read_text())
@@ -249,6 +252,20 @@ def main() -> int:
     )
     require(canary_env["processed_rows"] == 7 and canary_env["completion_status"].startswith("aborted"),
             "q10-q16 canary provenance changed")
+    with (ROOT / "artifacts/azizov_independent/q10_q16_highmem_canary.csv").open(
+        newline=""
+    ) as handle:
+        highmem_rows = list(csv.DictReader(handle))
+    require(len(highmem_rows) == 2, "unexpected high-memory canary row count")
+    require({row["status"] for row in highmem_rows} == {"resource_limit"},
+            "high-memory canary status changed")
+    require(all(row["stop_reason"].startswith("wall_timeout") for row in highmem_rows),
+            "high-memory canary stop reason changed")
+    highmem_env = json.loads(
+        (ROOT / "artifacts/azizov_independent/q10_q16_highmem_canary.environment.json").read_text()
+    )
+    require(highmem_env["max_rss_gib"] == 36.0 and highmem_env["processed_rows"] == 2,
+            "high-memory canary provenance changed")
 
     with (ROOT / "tracks/cdaa_qcre/data/instruction_durations/SNAPSHOT_MANIFEST.csv").open(
         newline=""

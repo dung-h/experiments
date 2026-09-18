@@ -90,6 +90,13 @@
       "runtime_semantics": "isolated local Aer resource/timeout screen for seven width-10--16 rows; not a complete training matrix",
       "critical_fixture": "artifacts/azizov_independent/q10_q16_resource_canary_partial.csv",
       "related_fixture": "artifacts/azizov_independent/q10_q16_resource_canary_partial.environment.json"
+    },
+    {
+      "path": "artifacts/azizov_independent/Q10_Q16_HIGHMEM_CHECK_REPORT.md",
+      "provenance_class": "OUR_RESOURCE_SENSITIVITY_CHECK",
+      "runtime_semantics": "targeted 36 GiB RSS-cap sensitivity check for two width-10--12 Aer rows; both wall-time censored",
+      "critical_fixture": "artifacts/azizov_independent/q10_q16_highmem_canary.csv",
+      "related_fixture": "artifacts/azizov_independent/q10_q16_highmem_canary.environment.json"
     }
   ]
 }

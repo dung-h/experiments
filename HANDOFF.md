@@ -154,6 +154,10 @@ completed. Keep this partial probe separate from model-training data; it is
 evidence that circuit structure and Aer parallelism matter beyond logical
 width. The report and raw rows are under
 `artifacts/azizov_independent/Q10_Q16_RESOURCE_CANARY_PARTIAL_REPORT.md`.
+Raising the safety cap to 36 GiB on `ae_q10`/`ae_q12` still produced wall-time
+censoring at about 16.8 GiB RSS, so do not equate more RAM with a larger
+feasible noisy-Aer frontier. The targeted check is recorded in
+`artifacts/azizov_independent/Q10_Q16_HIGHMEM_CHECK_REPORT.md`.
 
 ## Claims to preserve
 

@@ -366,3 +366,9 @@ The result is specific to the current FakeWashington/Aer/default-parallelism
 configuration and is not a claim that those circuits are impossible on another
 Aer method, thread policy or machine. The partial probe is kept separate from
 the 1,192-row q<=9 training/evaluation table.
+
+Raising the guard to 36 GiB was also tested on `ae_q10` and `ae_q12`. Both
+remained around 16.8 GiB RSS but hit the 180-second wall cap. Thus extra RAM
+alone does not resolve the frontier bottleneck; a 40 GiB cap would leave only
+about 5 GiB for the host and would mainly increase swap/OOM risk. Details are
+in [Q10_Q16_HIGHMEM_CHECK_REPORT.md](artifacts/azizov_independent/Q10_Q16_HIGHMEM_CHECK_REPORT.md).
