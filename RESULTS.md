@@ -2,7 +2,7 @@
 
 ## Comparative conclusion
 
-The four studies measure different target semantics. Their scores are evidence
+The five studies measure different target semantics. Their scores are evidence
 about their own estimator/target pairs; they are not entries in one leaderboard.
 
 ## Packaging verification (2026-09-17)
@@ -36,6 +36,7 @@ results retain their original provenance and hardware boundaries.
 | Qonductor | regression MAE 502.359 ms, R² 0.9386; DAG MAE 915.609 ms, R² 0.8849 | Supplied regression predictions beat the numerical DAG baseline | Derived recompute, not live IBM/retraining |
 | CDAA/QCRE | 30/45 verification rows agree; maximum delta 3.50e-16 s | QCRE matches the supplied schedule-duration reference | Schedule duration is not observed QPU wall-clock |
 | cuTensorNet | warm median actual / RUNTIME_EST = 0.196; QFT-28/30 0.960/0.946 | The pre-run signal is conservative on easy contractions and closer on QFT | One GPU/software/precision setting |
+| Azizov et al. independent P0 | 168/168 successful local runs; grouped Ridge `R²_log=0.758` on the smoke subset | Current FakeWashingtonV2/FakeSherbrooke + Aer pipeline is executable and captures backend/family spread | P0 uses 21 small families; not the paper's full HPC dataset or exact artifact |
 
 ## 1. Ma–Li: seed 1234, fold 10
 
@@ -243,3 +244,33 @@ allocation and Python dispatch are outside the warm CUDA-event target. First
 contraction, warm contraction and end-to-end latency are separate columns, not
 three cuTensorNet estimates. The detailed result is
 [artifacts/cutensornet/CUTENSORNET_RUNTIME_ESTIMATOR_INITIAL_RESULTS.md](artifacts/cutensornet/CUTENSORNET_RUNTIME_ESTIMATOR_INITIAL_RESULTS.md).
+
+## 5. Azizov et al.: independent reproduction status
+
+The paper studies measured Qiskit Aer noisy-simulation execution time after
+backend-aware transpilation. Its starting pool is described as 1,510 Ma–Li
+circuits, reduced to 1,402 unique circuits in 22 families, with two fake
+backends, four optimization levels and 1,024 shots. The authors' code and raw
+runtime table are not public yet, so this track is explicitly an independent
+reproduction of the protocol rather than an exact numerical replication.
+
+The P0 smoke run uses the pinned public Ma–Li QASM pool, source-hash
+deduplication, one representative circuit per family with at most eight logical
+qubits, current `FakeWashingtonV2` and `FakeSherbrooke`, and one timed Aer run
+after one untimed backend warm-up. It produced 168 successful rows (21
+families × 2 backends × 4 optimization levels). `T_transpile` and `T_exec` are
+stored separately. The grouped baseline uses a circuit-ID grouped 80/20 split,
+not a row-random split.
+
+The committed P0 artifacts are:
+
+- [P0 report](artifacts/azizov_independent/P0_REPORT.md)
+- [raw P0 measurements](artifacts/azizov_independent/p0_smoke.csv)
+- [environment record](artifacts/azizov_independent/p0_smoke.environment.json)
+- [grouped baseline metrics](artifacts/azizov_independent/p0_baselines.json)
+- [track instructions](tracks/azizov_independent/README.md)
+
+These local seconds are not comparable as exact values to the paper's 32-CPU,
+256-GB HPC measurements. P1 must add all unique circuits, per-run timeout and
+censoring records; P2 must add backend-held-out, family-held-out and
+transpiler-seed sensitivity tests.

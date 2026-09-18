@@ -1,0 +1,107 @@
+{
+  "protocol": "same grouped 80/20 circuit-id split for all blocks",
+  "input_rows": 168,
+  "train_circuits": 16,
+  "test_circuits": 5,
+  "seed": 1234,
+  "blocks": {
+    "source": {
+      "features": [
+        "logical_width",
+        "logical_depth",
+        "logical_ops",
+        "logical_two_qubit_ops",
+        "optimization_level",
+        "backend_is_sherbrooke"
+      ],
+      "models": {
+        "ridge": {
+          "r2_log": 0.7763974977860428,
+          "r2_seconds": 0.6863146139563365,
+          "rmse_seconds": 0.5792383791222618,
+          "mae_seconds": 0.2776191497703344
+        },
+        "random_forest": {
+          "r2_log": 0.7488079618485208,
+          "r2_seconds": 0.6130416764977624,
+          "rmse_seconds": 0.643342559946473,
+          "mae_seconds": 0.31293162070884306
+        },
+        "hist_gradient_boosting": {
+          "r2_log": 0.6642492733802643,
+          "r2_seconds": 0.478742009244308,
+          "rmse_seconds": 0.7466834909832107,
+          "mae_seconds": 0.3346722577530533
+        }
+      }
+    },
+    "compiled": {
+      "features": [
+        "physical_width",
+        "physical_depth",
+        "physical_ops",
+        "physical_two_qubit_ops",
+        "swap_count",
+        "dag_node_count",
+        "optimization_level",
+        "backend_is_sherbrooke"
+      ],
+      "models": {
+        "ridge": {
+          "r2_log": 0.8248929319637497,
+          "r2_seconds": 0.7889357297844959,
+          "rmse_seconds": 0.47513557275587137,
+          "mae_seconds": 0.2768473631423893
+        },
+        "random_forest": {
+          "r2_log": 0.7376316311729796,
+          "r2_seconds": 0.5964100557461816,
+          "rmse_seconds": 0.6570226702010658,
+          "mae_seconds": 0.33558826016774534
+        },
+        "hist_gradient_boosting": {
+          "r2_log": 0.7604814026720115,
+          "r2_seconds": 0.6461301252899907,
+          "rmse_seconds": 0.6152221776261784,
+          "mae_seconds": 0.2969668477422053
+        }
+      }
+    },
+    "hybrid": {
+      "features": [
+        "logical_width",
+        "logical_depth",
+        "logical_ops",
+        "logical_two_qubit_ops",
+        "physical_width",
+        "physical_depth",
+        "physical_ops",
+        "physical_two_qubit_ops",
+        "swap_count",
+        "dag_node_count",
+        "optimization_level",
+        "backend_is_sherbrooke"
+      ],
+      "models": {
+        "ridge": {
+          "r2_log": 0.7578493478528532,
+          "r2_seconds": 0.6433710677271998,
+          "rmse_seconds": 0.6176159072368115,
+          "mae_seconds": 0.3087005130805312
+        },
+        "random_forest": {
+          "r2_log": 0.7381373000355276,
+          "r2_seconds": 0.5979067030958708,
+          "rmse_seconds": 0.6558033081021112,
+          "mae_seconds": 0.33263886497492356
+        },
+        "hist_gradient_boosting": {
+          "r2_log": 0.7788384278883516,
+          "r2_seconds": 0.7006764208351839,
+          "rmse_seconds": 0.5658230707007006,
+          "mae_seconds": 0.31075031233079564
+        }
+      }
+    }
+  }
+}

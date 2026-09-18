@@ -8,13 +8,15 @@ Latest local commit: `3bc2d23 Add dated Osaka Kyoto calibration drift audit`
 
 ## What is complete
 
-The repository is a reproducibility capsule for four separate tracks. Targets
+The repository is a reproducibility capsule for five separate tracks. Targets
 are not pooled into one universal runtime column.
 
 1. Ma–Li DAG replication and fake-snapshot pretrained/from-scratch adaptation.
 2. Qonductor public-artifact metric recomputation and mapping audit.
 3. CDAA/QCRE schedule-duration reproduction.
 4. cuTensorNet `RUNTIME_EST` versus separate GPU clocks on the RTX 5070 Ti.
+5. Azizov et al. transpilation-aware Aer noisy-simulator runtime (independent
+   reproduction; P0 complete, P1/P2 pending).
 
 The additional Ma–Li/QCRE proxy validation is complete for all 340 Osaka/Kyoto
 rows. It uses current Qiskit 1.4.1 `FakeOsaka`/`FakeKyoto` targets, optimization
@@ -82,6 +84,8 @@ runtime. This is a reproducibility limitation, not a failed model experiment.
 4. `artifacts/validation/mali_qcre_seed_sensitivity/MALI_QCRE_SEED_SENSITIVITY_REPORT.md` — three-seed stability.
 5. `artifacts/validation/mali_snapshot_variability/SNAPSHOT_VARIABILITY_REPORT.md` — public temporal calibration audit.
 6. `experiments/README.md` — commands for the validation scripts.
+7. `artifacts/azizov_independent/P0_REPORT.md` — first independent
+   transpilation-aware Aer reproduction and feature-block smoke ablation.
 
 For next-week reporting, read
 `artifacts/mali/MA_LI_QWALK_AND_QCRE_INTERPRETATION.md` immediately after
@@ -113,6 +117,21 @@ python experiments/qonductor_mapping_audit.py --qonductor-root work/qonductor
 The seed command retranspiles 340 rows per seed and is the slow step. To check
 only report generation, pass the committed `--features-csv` or `--rows-csv`
 artifacts as documented in `experiments/README.md`.
+
+## Azizov et al. P0 status
+
+The independent track uses the public Ma–Li QASM pool and current
+`FakeWashingtonV2`/`FakeSherbrooke` snapshots. P0 has 168 successful rows
+(21 small families × 2 backends × 4 optimization levels), with 1,024 shots and
+separate transpile/execution clocks. The grouped Ridge smoke score is
+`R²_log=0.758`; compiled global features outperform source-only features for
+Ridge on this small split (`0.8249` versus `0.7764` in log-R²). These are local
+diagnostics, not the paper's exact HPC metrics.
+
+Rerun commands and artifact boundaries are in
+`tracks/azizov_independent/README.md`. P1 (all unique circuits with explicit
+900-second censoring) and P2 (backend/family hold-outs and seed sensitivity)
+remain pending.
 
 ## Claims to preserve
 

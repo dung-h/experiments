@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "scope": "Four independent runtime-estimator replication tracks; never pooled.",
+  "scope": "Five independent runtime-estimator replication tracks; never pooled.",
   "artifacts": [
     {
       "path": "artifacts/mali/MA_LI_REPLICATION_REPORT.md",
@@ -56,6 +56,13 @@
       "path": "artifacts/cutensornet/cutensornet_runtime_benchmark.csv",
       "provenance_class": "OUR_REPLICATION",
       "runtime_semantics": "RTX 5070 Ti scalar tensor-network RUNTIME_EST and separate CUDA-event timing columns"
+    },
+    {
+      "path": "artifacts/azizov_independent/p0_smoke.csv",
+      "provenance_class": "OUR_REPLICATION_P0",
+      "runtime_semantics": "local Qiskit Aer noisy-simulator execution after current fake-backend transpilation; transpile time excluded",
+      "critical_fixture": "artifacts/azizov_independent/p0_baselines.json",
+      "related_fixture": "artifacts/azizov_independent/p0_feature_ablation.json"
     }
   ]
 }

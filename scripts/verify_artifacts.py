@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the versioned four-track capsule without external dependencies."""
+"""Validate the versioned replication capsule without external dependencies."""
 
 from __future__ import annotations
 
@@ -44,6 +44,17 @@ REQUIRED = (
     "artifacts/validation/mali_qcre_seed_sensitivity/mali_qcre_seed_sensitivity_summary.json",
     "artifacts/cdaa_qcre/independent_all_metrics.csv",
     "artifacts/cutensornet/cutensornet_runtime_benchmark.csv",
+    "artifacts/azizov_independent/p0_smoke.csv",
+    "artifacts/azizov_independent/p0_smoke.environment.json",
+    "artifacts/azizov_independent/P0_REPORT.md",
+    "artifacts/azizov_independent/p0_baselines.json",
+    "tracks/azizov_independent/README.md",
+    "tracks/azizov_independent/scripts/build_manifest.py",
+    "tracks/azizov_independent/scripts/run_p0_smoke.py",
+    "tracks/azizov_independent/scripts/summarize_p0.py",
+    "tracks/azizov_independent/scripts/train_p0_baselines.py",
+    "tracks/azizov_independent/scripts/compare_feature_blocks.py",
+    "tracks/azizov_independent/scripts/run_matrix.py",
 )
 
 def require(condition: bool, message: str) -> None:
@@ -58,7 +69,7 @@ def main() -> int:
     require(set(lock["tracks"]) == {"mali", "qonductor", "cdaa", "qcre", "cutensornet"},
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 10,
+    require(len(artifact_manifest["artifacts"]) == 11,
             "unexpected replication artifact manifest size")
 
     qonductor = json.loads((ROOT / "artifacts/qonductor/reproduction_metrics.json").read_text())
@@ -145,6 +156,24 @@ def main() -> int:
         cdaa_rows = list(csv.DictReader(handle))
     require(len(cdaa_rows) == 315, "unexpected CDAA/QCRE independent metric row count")
 
+    with (ROOT / "artifacts/azizov_independent/p0_smoke.csv").open(newline="") as handle:
+        azizov_rows = list(csv.DictReader(handle))
+    require(len(azizov_rows) == 168, "unexpected Azizov P0 row count")
+    require({row["status"] for row in azizov_rows} == {"ok"},
+            "Azizov P0 contains an unexpected failure status")
+    require({row["backend_class"] for row in azizov_rows} == {"FakeWashingtonV2", "FakeSherbrooke"},
+            "Azizov P0 backend coverage changed")
+    azizov_baselines = json.loads(
+        (ROOT / "artifacts/azizov_independent/p0_baselines.json").read_text()
+    )
+    require(azizov_baselines["input_rows"] == 168,
+            "Azizov P0 baseline input row count changed")
+    azizov_ablation = json.loads(
+        (ROOT / "artifacts/azizov_independent/p0_feature_ablation.json").read_text()
+    )
+    require(set(azizov_ablation["blocks"]) == {"source", "compiled", "hybrid"},
+            "Azizov P0 feature blocks changed")
+
     with (ROOT / "tracks/cdaa_qcre/data/instruction_durations/SNAPSHOT_MANIFEST.csv").open(
         newline=""
     ) as handle:
@@ -172,7 +201,7 @@ def main() -> int:
     require(abs(outlier["predictions_seconds"]["from_scratch_osaka_test"] - 12.8724) < 1e-4,
             "Ma-Li from-scratch fixture changed")
 
-    print("OK: four-track reports, fixtures, provenance lock and Ma-Li seed-1234 diagnostic verified")
+    print("OK: replication reports, fixtures, provenance lock and Ma-Li seed-1234 diagnostic verified")
     print("This check does not rerun GPU timing, retrain models or contact external services.")
     return 0
 

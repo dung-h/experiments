@@ -75,6 +75,48 @@ python experiments/adapt_mali_real_qpu.py \
 The expected aggregate JSON and fold-10 fixture are committed. Checkpoints are
 derived, large and unnecessary to audit the reported predictions.
 
+## Azizov et al. independent reproduction
+
+The new track is deliberately separated from the four older target semantics.
+It uses the pinned Ma–Li QASM pool as the public source circuit pool, but its
+target is local Qiskit Aer noisy-simulator execution after transpilation.
+The paper's code and raw runtime table are not public, so the result is not
+advertised as an exact replication.
+
+The credential-free P0 path is:
+
+```bash
+python tracks/azizov_independent/scripts/build_manifest.py \
+  --mali-root work/mali \
+  --output work/azizov_independent/source_manifest.csv
+python tracks/azizov_independent/scripts/run_p0_smoke.py \
+  --mali-root work/mali \
+  --manifest work/azizov_independent/source_manifest.csv \
+  --output artifacts/azizov_independent/p0_smoke.csv
+python tracks/azizov_independent/scripts/summarize_p0.py \
+  --input artifacts/azizov_independent/p0_smoke.csv \
+  --ablation artifacts/azizov_independent/p0_feature_ablation.json \
+  --output artifacts/azizov_independent/P0_REPORT.md
+```
+
+The runner records Qiskit versions, fake-backend class, seeds and the timing
+protocol. It uses 1,024 shots, optimization levels 0--3 and one timed
+`AerSimulator.run(...).result()` after an untimed warm-up. The committed P0
+baseline is fitted with a circuit-ID grouped split:
+
+```bash
+python tracks/azizov_independent/scripts/train_p0_baselines.py \
+  --input artifacts/azizov_independent/p0_smoke.csv \
+  --output artifacts/azizov_independent/p0_baselines.json
+python tracks/azizov_independent/scripts/compare_feature_blocks.py \
+  --input artifacts/azizov_independent/p0_smoke.csv \
+  --output artifacts/azizov_independent/p0_feature_ablation.json
+```
+
+P1 (all unique circuits, explicit 900-second censoring) and P2 (backend/family
+held-out and transpiler-seed sensitivity) are intentionally separate commands
+to prevent a smoke run from being mistaken for the paper-scale experiment.
+
 For the separate gate-aware proxy against the recorded Ma–Li labels, use a
 Qiskit 1.4.1 environment containing NumPy and the IBM Runtime fake provider:
 

@@ -1,6 +1,6 @@
-# Quantum Runtime Estimator: four replication studies
+# Quantum Runtime Estimator: five replication studies
 
-This repository is a reproducibility capsule for four distinct runtime-
+This repository is a reproducibility capsule for five distinct runtime-
 estimation studies. It records our code, patches, expected outputs and failure
 analysis; it does not merge their targets into one training table or claim a
 universal estimator.
@@ -11,6 +11,7 @@ universal estimator.
 | Qonductor | Job/circuit regression in a cloud scheduler | Metric recomputation plus local fake-backend smoke | The public regression predictions outperform the numerical DAG baseline on the supplied 100-row evaluation CSV. |
 | CDAA/QCRE | Gate-aware compiled-circuit duration estimate | Bundled-artifact reproduction plus offline compiler proxy | Gate-aware depth closely follows the artifact's schedule-duration reference, but the reference is not measured QPU wall-clock. |
 | cuTensorNet | NVIDIA pre-run contraction-path `RUNTIME_EST` | Local RTX 5070 Ti measurement | The estimate is conservative for easy warm contractions and much closer for hard QFT contractions. |
+| Azizov et al. | Transpilation-aware Aer noisy-simulation runtime | Independent P0 reproduction; paper code/data not yet public | The current fake-provider pipeline runs end-to-end; full numerical replication remains blocked on the missing artifact. |
 
 The canonical comparative report is [`RESULTS.md`](RESULTS.md). It gives the
 metric, provenance class, failure boundary and interpretation for every track.
@@ -31,6 +32,8 @@ Each track has its own target semantics:
   IBM instruction-duration snapshots;
 - cuTensorNet: local GPU scalar tensor-network contraction, with warm CUDA
   event time distinct from first-call end-to-end latency.
+- Azizov et al.: Qiskit Aer noisy-simulator execution time after transpilation,
+  with transpile time and simulator setup kept separate.
 
 The repository intentionally excludes QPU/cloud ETL, Aer CPU resource-aware
 P0–P7 experiments, generated visualization HTML, virtual environments,
