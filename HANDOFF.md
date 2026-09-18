@@ -4,7 +4,7 @@ Last updated: 2026-09-17
 Repository: `https://github.com/dung-h/experiments.git`
 Local checkout: `/home/server/Documents/quantum-runtime-estimator-replications`
 Branch: `main`
-Latest local commit: `e8df805 Add durable next-session handoff`
+Latest local commit: `79d5f7f Document Ma-Li QWalk failure and proxy interpretation`
 
 ## What is complete
 
