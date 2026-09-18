@@ -154,13 +154,20 @@ def write_csv(path: Path, rows: list[dict]) -> None:
             writer.writerow({field: row[field] for field in fields})
 
 
-def write_report(path: Path, fake: dict, public: dict, source: str) -> None:
+def write_report(
+    path: Path, fake: dict, public: dict, source: str, analysis_date: str
+) -> None:
     lines = [
         "# Osaka/Kyoto calibration snapshot variability audit",
+        "",
+        f"**Finding recorded:** {analysis_date}",
         "",
         "## Provenance",
         "",
         f"Public source: `{source}`",
+        "",
+        "Dataset download and rerun instructions: "
+        "[DATASET_README.md](DATASET_README.md)",
         "",
         "The Qiskit fake-provider JSON is a frozen per-backend snapshot. The "
         "DAQEC file contains timestamped aggregate calibration observations, "
@@ -237,6 +244,11 @@ def main() -> None:
     parser.add_argument("--download", action="store_true")
     parser.add_argument("--properties-dir", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument(
+        "--analysis-date",
+        default=datetime.now(timezone.utc).date().isoformat(),
+        help="Date recorded in the report (YYYY-MM-DD).",
+    )
     args = parser.parse_args()
     if bool(args.source_csv) == args.download:
         parser.error("pass exactly one of --source-csv or --download")
@@ -261,6 +273,7 @@ def main() -> None:
         json.dumps(
             {
                 "provenance_class": "OUR_AUDIT",
+                "analysis_date": args.analysis_date,
                 "source_url": DAQEC_URL,
                 "source_reference": source_reference,
                 "fake_provider": fake,
@@ -276,6 +289,7 @@ def main() -> None:
         fake,
         public,
         source_reference,
+        args.analysis_date,
     )
     if temporary is not None:
         Path(temporary.name).unlink(missing_ok=True)

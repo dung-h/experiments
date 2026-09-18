@@ -1,0 +1,21 @@
+{
+  "finding_recorded": "2026-09-18",
+  "source_record": "https://zenodo.org/records/17881116",
+  "source_file_url": "https://zenodo.org/api/records/17881116/files/drift_characterization.csv/content",
+  "raw_file": "drift_characterization.csv",
+  "sha256": "7120288930e59311fd3e88974054a311373c509ce2d876fe513998a2530a71bc",
+  "bytes": 43157,
+  "data_rows": 378,
+  "columns": [
+    "backend",
+    "day",
+    "timestamp_utc",
+    "avg_t1_us",
+    "avg_t2_us",
+    "probe_t1_us",
+    "probe_t2_us"
+  ],
+  "provenance_class": "PUBLIC_DAQEC_CALIBRATION_OBSERVATIONS",
+  "target_semantics": "aggregate calibration T1/T2 observations; not Ma-Li runtime labels",
+  "not_claimed": "historical Ma-Li per-qubit total_ibm_standardization tensor"
+}

@@ -1,8 +1,12 @@
 # Osaka/Kyoto calibration snapshot variability audit
 
+**Finding recorded:** 2026-09-18
+
 ## Provenance
 
-Public source: `https://zenodo.org/api/records/17881116/files/drift_characterization.csv/content`
+Public source: `artifacts/validation/mali_snapshot_variability/drift_characterization.csv`
+
+Dataset download and rerun instructions: [DATASET_README.md](DATASET_README.md)
 
 The Qiskit fake-provider JSON is a frozen per-backend snapshot. The DAQEC file contains timestamped aggregate calibration observations, not the historical Ma–Li per-qubit tensor.
 

@@ -189,6 +189,8 @@ five-fold diagnostics.
 
 ### 2.4 Public calibration snapshot variability
 
+**Finding recorded:** 2026-09-18.
+
 The snapshot audit compares the frozen Qiskit fake-provider pair against the
 public DAQEC-Benchmark `drift_characterization.csv`. The latter contains 42
 timestamp snapshots per backend over 14 days (2025-01-15 through 2025-01-28),
@@ -206,6 +208,8 @@ multi-snapshot sensitivity. It does not identify the exact historical
 per-qubit snapshot used by Ma–Li: the DAQEC file contains aggregate means, not
 the 127-qubit node-level tensor. The reproducible audit and timestamp rows are
 in [artifacts/validation/mali_snapshot_variability/](artifacts/validation/mali_snapshot_variability/).
+The raw input and exact download/hash/rerun instructions are in
+[artifacts/validation/mali_snapshot_variability/DATASET_README.md](artifacts/validation/mali_snapshot_variability/DATASET_README.md).
 
 ## 3. CDAA/QCRE: schedule agreement versus hardware truth
 

@@ -41,12 +41,15 @@ calibration recovery.
 
 ### Calibration snapshot variability
 
+Finding recorded: `2026-09-18`.
+
 - Public DAQEC series: 42 timestamps/backend over 14 days, three rows per
   timestamp.
 - Osaka aggregate T1 range/median: `63.6%`; T2: `50.3%`; CVs `17.3%`/`12.9%`.
 - Kyoto aggregate T1 range/median: `53.0%`; T2: `48.6%`; CVs `16.8%`/`12.8%`.
 - This is a 2025 aggregate series, not the exact per-qubit Ma–Li tensor.
-- Report and rows: `artifacts/validation/mali_snapshot_variability/`.
+- Report, raw CSV, manifest and rerun instructions:
+  `artifacts/validation/mali_snapshot_variability/`.
 
 ### Seed sensitivity
 
