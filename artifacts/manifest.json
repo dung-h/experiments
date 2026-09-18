@@ -77,6 +77,12 @@
       "runtime_semantics": "1,192 local Aer execution rows for the screened q<=9, logical-ops/depth<=4000 subset",
       "critical_fixture": "artifacts/azizov_independent/FEASIBLE_Q9_REPORT.md",
       "related_fixture": "artifacts/azizov_independent/feasible_q9.csv"
+    },
+    {
+      "path": "artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.json",
+      "provenance_class": "OUR_VALIDATION_LOCAL_FEASIBLE_SUBSET",
+      "runtime_semantics": "random-row, grouped-circuit, family-held-out and fake-backend-held-out baseline evaluation on 1,192 successful local Aer rows",
+      "critical_fixture": "artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.md"
     }
   ]
 }

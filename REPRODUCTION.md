@@ -117,6 +117,21 @@ P1 (all unique circuits, explicit 900-second censoring) and P2 (backend/family
 held-out and transpiler-seed sensitivity) are intentionally separate commands
 to prevent a smoke run from being mistaken for the paper-scale experiment.
 
+To reproduce the completed local-feasible subset evaluation from the committed
+rows (without rerunning Aer), run:
+
+```bash
+python tracks/azizov_independent/scripts/evaluate_subset_splits.py \
+  --input artifacts/azizov_independent/feasible_q9_runtime.csv \
+  --output-json artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.json \
+  --output-md artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.md
+```
+
+This evaluates random-row, grouped-circuit, family-held-out and both
+fake-backend-held-out splits. The grouped-circuit split is the primary local
+generalization estimate; random-row results are retained as an optimistic
+diagnostic.
+
 For the separate gate-aware proxy against the recorded Ma–Li labels, use a
 Qiskit 1.4.1 environment containing NumPy and the IBM Runtime fake provider:
 

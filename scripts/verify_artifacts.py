@@ -57,6 +57,7 @@ REQUIRED = (
     "tracks/azizov_independent/scripts/run_matrix.py",
     "tracks/azizov_independent/scripts/summarize_matrix.py",
     "tracks/azizov_independent/scripts/build_feasible_subset.py",
+    "tracks/azizov_independent/scripts/evaluate_subset_splits.py",
     "artifacts/azizov_independent/p1_q16_stratified3.csv",
     "artifacts/azizov_independent/p1_q16_stratified3.environment.json",
     "artifacts/azizov_independent/P1_Q16_STRATIFIED3_REPORT.md",
@@ -69,6 +70,8 @@ REQUIRED = (
     "artifacts/azizov_independent/feasible_q9_runtime.environment.json",
     "artifacts/azizov_independent/feasible_q9_baselines.json",
     "artifacts/azizov_independent/feasible_q9_feature_ablation.json",
+    "artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.md",
+    "artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.json",
 )
 
 def require(condition: bool, message: str) -> None:
@@ -83,7 +86,7 @@ def main() -> int:
     require(set(lock["tracks"]) == {"mali", "qonductor", "cdaa", "qcre", "cutensornet"},
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 13,
+    require(len(artifact_manifest["artifacts"]) == 14,
             "unexpected replication artifact manifest size")
 
     qonductor = json.loads((ROOT / "artifacts/qonductor/reproduction_metrics.json").read_text())
@@ -214,6 +217,18 @@ def main() -> int:
     )
     require(feasible_baselines["input_rows"] == 1192,
             "Azizov feasible baseline input count changed")
+    feasible_split_eval = json.loads(
+        (ROOT / "artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.json").read_text()
+    )
+    require(feasible_split_eval["input_rows"] == 1192,
+            "Azizov feasible split-evaluation input count changed")
+    require(set(feasible_split_eval["splits"]) == {
+        "random_row",
+        "grouped_circuit",
+        "family_held_out",
+        "backend_held_out_FakeSherbrooke",
+        "backend_held_out_FakeWashingtonV2",
+    }, "Azizov feasible split-evaluation split set changed")
 
     with (ROOT / "tracks/cdaa_qcre/data/instruction_durations/SNAPSHOT_MANIFEST.csv").open(
         newline=""

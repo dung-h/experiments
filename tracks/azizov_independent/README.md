@@ -102,6 +102,20 @@ python tracks/azizov_independent/scripts/run_matrix.py \
 Always keep the rejected manifest. A later process-isolated runner may promote
 some rejected circuits after they pass a separate memory/timeout test.
 
+Evaluate the completed subset with grouped and transfer-oriented splits:
+
+```bash
+python tracks/azizov_independent/scripts/evaluate_subset_splits.py \
+  --input artifacts/azizov_independent/feasible_q9_runtime.csv \
+  --output-json artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.json \
+  --output-md artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.md
+```
+
+The report treats grouped circuit ID as the primary split. Random-row scores
+are retained only as an optimistic diagnostic because the same logical circuit
+has multiple backend/optimization rows. Family-held-out and backend-held-out
+scores test the two transfer questions that a row-random split cannot answer.
+
 ## Planned P1/P2 extensions
 
 The checkpointed matrix runner is available for the full or bounded P1 pass:

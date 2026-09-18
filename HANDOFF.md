@@ -16,7 +16,8 @@ are not pooled into one universal runtime column.
 3. CDAA/QCRE schedule-duration reproduction.
 4. cuTensorNet `RUNTIME_EST` versus separate GPU clocks on the RTX 5070 Ti.
 5. Azizov et al. transpilation-aware Aer noisy-simulator runtime (independent
-   reproduction; P0 complete, P1/P2 pending).
+   reproduction; P0, bounded P1 and local-feasible split validation complete;
+   full paper-scale P1 remains pending).
 
 The additional Ma–Li/QCRE proxy validation is complete for all 340 Osaka/Kyoto
 rows. It uses current Qiskit 1.4.1 `FakeOsaka`/`FakeKyoto` targets, optimization
@@ -129,18 +130,22 @@ Ridge on this small split (`0.8249` versus `0.7764` in log-R²). These are local
 diagnostics, not the paper's exact HPC metrics.
 
 Rerun commands and artifact boundaries are in
-`tracks/azizov_independent/README.md`. P1 (all unique circuits with explicit
-900-second censoring) and P2 (backend/family hold-outs and seed sensitivity)
-remain pending. A bounded P1 subset is already archived: 504 successful rows
-from 63 small circuits, with grouped baseline and source/compiled ablation.
+`tracks/azizov_independent/README.md`. Full P1 (all unique circuits with
+explicit 900-second censoring) and repeated-seed robustness remain pending. A
+bounded P1 subset is archived: 504 successful rows from 63 small circuits,
+with grouped baseline and source/compiled ablation. The larger local-feasible
+subset has a separate split evaluation covering grouped, family-held-out and
+backend-held-out tests.
 
 The local-feasibility pass is also complete: 149/1,402 circuits (10.6%) passed
 the conservative `width<=9`, `logical_ops<=4000`, `logical_depth<=4000` screen.
 All 1,192 resulting backend/optimization rows completed successfully. The
 eligible and rejected manifests plus raw runtime table are under
-`artifacts/azizov_independent/`. Do not describe the 10.6% as a hardware
-capacity theorem; it is the subset confirmed under this Aer/noise/version
-protocol.
+`artifacts/azizov_independent/`. A follow-up split evaluation now covers
+random-row, grouped-circuit, family-held-out and both fake-backend-held-out
+protocols; the grouped-circuit result is the primary local estimate. Do not
+describe the 10.6% as a hardware capacity theorem; it is the subset confirmed
+under this Aer/noise/version protocol.
 
 ## Claims to preserve
 

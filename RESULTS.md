@@ -313,3 +313,36 @@ all circuits above nine qubits are impossible. It excludes the unconfirmed
 9-qubit QWalk circuit with 6,199 logical operations and every higher-width
 circuit. A process-isolated runner can later test those rejected rows without
 endangering the main job.
+
+### Feasible-subset split evaluation
+
+The 1,192 successful rows were evaluated with the same four baseline model
+families (Ridge, SVR, Random Forest and HistGradientBoosting) on `log1p(T_exec)`.
+The source block contains logical width/depth/operation counts plus backend
+and optimization level; the compiled block contains post-transpilation width,
+depth, operation counts, SWAP count and DAG-node count; the hybrid block joins
+both. The full model-by-model table is in
+[FEASIBLE_Q9_SPLIT_EVALUATION.md](artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.md),
+with machine-readable values in the accompanying JSON.
+
+The headline results (best model selected by log-scale R² within each block)
+are:
+
+| Split | Source R² (log / seconds) | Compiled R² (log / seconds) | Hybrid R² (log / seconds) |
+| --- | --- | --- | --- |
+| Random row | 0.7331 / 0.4763 | 0.7456 / 0.5438 | 0.7635 / 0.5430 |
+| Grouped circuit (primary) | 0.8200 / 0.8667 | 0.8135 / 0.8006 | **0.8558 / 0.8230** |
+| Family held out | 0.7884 / 0.6326 | 0.7973 / 0.7700 | **0.8375 / 0.7923** |
+| Hold out FakeSherbrooke | 0.5845 / 0.5308 | 0.5308 / 0.5295 | 0.5511 / 0.5337 |
+| Hold out FakeWashingtonV2 | 0.5511 / 0.3357 | 0.5255 / 0.4965 | **0.6297 / 0.5501** |
+
+These numbers support three bounded conclusions. First, the local Aer runtime
+is predictable on this screened domain with ordinary baselines. Second, the
+hybrid representation is the strongest block on the grouped and family
+hold-outs, so compiled structure adds signal but does not replace source
+structure. Third, transfer between the two fake-backend snapshots is clearly
+harder (log-R² about 0.53--0.63) than interpolation among circuits from the
+same snapshots. The random-row result is optimistic because another row for
+the same logical circuit can be present in training; it is not the primary
+generalization claim. These are local baselines, not the paper's full
+1,402-circuit GNN result.
