@@ -1,0 +1,107 @@
+{
+  "protocol": "same grouped 80/20 circuit-id split for all blocks",
+  "input_rows": 504,
+  "train_circuits": 50,
+  "test_circuits": 13,
+  "seed": 1234,
+  "blocks": {
+    "source": {
+      "features": [
+        "logical_width",
+        "logical_depth",
+        "logical_ops",
+        "logical_two_qubit_ops",
+        "optimization_level",
+        "backend_is_sherbrooke"
+      ],
+      "models": {
+        "ridge": {
+          "r2_log": 0.03459034622756196,
+          "r2_seconds": 0.01803578063547684,
+          "rmse_seconds": 0.09800816735026519,
+          "mae_seconds": 0.08336455793653276
+        },
+        "random_forest": {
+          "r2_log": 0.7396401261458574,
+          "r2_seconds": 0.7385237342502585,
+          "rmse_seconds": 0.05057438074180079,
+          "mae_seconds": 0.044437870490368625
+        },
+        "hist_gradient_boosting": {
+          "r2_log": -0.21697204705498296,
+          "r2_seconds": -0.05939351035170137,
+          "rmse_seconds": 0.10179890132418401,
+          "mae_seconds": 0.06489150716638267
+        }
+      }
+    },
+    "compiled": {
+      "features": [
+        "physical_width",
+        "physical_depth",
+        "physical_ops",
+        "physical_two_qubit_ops",
+        "swap_count",
+        "dag_node_count",
+        "optimization_level",
+        "backend_is_sherbrooke"
+      ],
+      "models": {
+        "ridge": {
+          "r2_log": 0.6654166303737832,
+          "r2_seconds": 0.6649787204126689,
+          "rmse_seconds": 0.05724672327296332,
+          "mae_seconds": 0.05028923842390483
+        },
+        "random_forest": {
+          "r2_log": 0.73604848437998,
+          "r2_seconds": 0.737080634368048,
+          "rmse_seconds": 0.05071374991023542,
+          "mae_seconds": 0.04645785427846602
+        },
+        "hist_gradient_boosting": {
+          "r2_log": 0.4505338235566876,
+          "r2_seconds": 0.4515225297981018,
+          "rmse_seconds": 0.07324767316280005,
+          "mae_seconds": 0.05695152094492377
+        }
+      }
+    },
+    "hybrid": {
+      "features": [
+        "logical_width",
+        "logical_depth",
+        "logical_ops",
+        "logical_two_qubit_ops",
+        "physical_width",
+        "physical_depth",
+        "physical_ops",
+        "physical_two_qubit_ops",
+        "swap_count",
+        "dag_node_count",
+        "optimization_level",
+        "backend_is_sherbrooke"
+      ],
+      "models": {
+        "ridge": {
+          "r2_log": 0.4041376095697431,
+          "r2_seconds": 0.3941030203175323,
+          "rmse_seconds": 0.07698636786412245,
+          "mae_seconds": 0.06372349333292912
+        },
+        "random_forest": {
+          "r2_log": 0.7477936017098209,
+          "r2_seconds": 0.7488783393435992,
+          "rmse_seconds": 0.049562878820926456,
+          "mae_seconds": 0.045389739598589426
+        },
+        "hist_gradient_boosting": {
+          "r2_log": 0.4347598534870971,
+          "r2_seconds": 0.45733393036884673,
+          "rmse_seconds": 0.07285859142434781,
+          "mae_seconds": 0.0565130187397181
+        }
+      }
+    }
+  }
+}

@@ -63,6 +63,13 @@
       "runtime_semantics": "local Qiskit Aer noisy-simulator execution after current fake-backend transpilation; transpile time excluded",
       "critical_fixture": "artifacts/azizov_independent/p0_baselines.json",
       "related_fixture": "artifacts/azizov_independent/p0_feature_ablation.json"
+    },
+    {
+      "path": "artifacts/azizov_independent/p1_q16_stratified3.csv",
+      "provenance_class": "OUR_REPLICATION_P1_SUBSET",
+      "runtime_semantics": "local Aer execution after current fake-backend transpilation; 63 circuit subset, 1,024 shots",
+      "critical_fixture": "artifacts/azizov_independent/P1_Q16_STRATIFIED3_REPORT.md",
+      "related_fixture": "artifacts/azizov_independent/p1_q16_stratified3_baselines.json"
     }
   ]
 }

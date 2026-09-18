@@ -84,9 +84,12 @@ def main():
     ap.add_argument("--seed-simulator", type=int, default=1234)
     ap.add_argument("--backends", default="FakeWashingtonV2,FakeSherbrooke")
     ap.add_argument("--optimization-levels", default="0,1,2,3")
+    ap.add_argument("--exclude-families", default="", help="comma-separated families to omit from a bounded pilot")
+    ap.add_argument("--selection-mode", choices=("smallest", "spread"), default="smallest")
     args = ap.parse_args()
     selected_backend_names = [x.strip() for x in args.backends.split(",") if x.strip()]
     opt_levels = [int(x.strip()) for x in args.optimization_levels.split(",") if x.strip()]
+    excluded_families = {x.strip() for x in args.exclude_families.split(",") if x.strip()}
     unknown = set(selected_backend_names) - set(BACKENDS)
     if unknown:
         raise SystemExit(f"Unknown backend(s): {sorted(unknown)}")
@@ -95,17 +98,30 @@ def main():
     candidates = [
         row for row in manifest
         if row.get("source_status") == "ok"
+        and row.get("family") not in excluded_families
         and row.get("logical_width", "").isdigit()
         and int(row["logical_width"]) <= args.max_qubits
     ]
     candidates.sort(key=lambda r: (r["family"], int(r["logical_width"]), r["circuit_id"]))
     if args.limit_per_family:
         kept = []
-        counts = {}
+        by_family = {}
         for row in candidates:
-            if counts.get(row["family"], 0) < args.limit_per_family:
-                kept.append(row)
-                counts[row["family"]] = counts.get(row["family"], 0) + 1
+            by_family.setdefault(row["family"], []).append(row)
+        for family_rows in by_family.values():
+            if len(family_rows) <= args.limit_per_family:
+                kept.extend(family_rows)
+                continue
+            if args.selection_mode == "spread":
+                # Stratify across the available width/depth range instead of
+                # selecting only the smallest circuits in each family.
+                if args.limit_per_family == 1:
+                    positions = [0]
+                else:
+                    positions = [round(i * (len(family_rows) - 1) / (args.limit_per_family - 1)) for i in range(args.limit_per_family)]
+                kept.extend(family_rows[index] for index in positions)
+            else:
+                kept.extend(family_rows[:args.limit_per_family])
         candidates = kept
     existing = load_existing(args.output)
     done = {(r.get("circuit_id"), r.get("backend_class"), int(r.get("optimization_level", -1))) for r in existing}
@@ -128,6 +144,8 @@ def main():
             "seed_simulator": args.seed_simulator,
             "backends": selected_backend_names,
             "optimization_levels": opt_levels,
+            "excluded_families": sorted(excluded_families),
+            "selection_mode": args.selection_mode,
             "measurement_protocol": "separate transpile and Aer execution clocks; one untimed backend warm-up",
         }, indent=2) + "\n")
 

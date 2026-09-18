@@ -55,6 +55,12 @@ REQUIRED = (
     "tracks/azizov_independent/scripts/train_p0_baselines.py",
     "tracks/azizov_independent/scripts/compare_feature_blocks.py",
     "tracks/azizov_independent/scripts/run_matrix.py",
+    "tracks/azizov_independent/scripts/summarize_matrix.py",
+    "artifacts/azizov_independent/p1_q16_stratified3.csv",
+    "artifacts/azizov_independent/p1_q16_stratified3.environment.json",
+    "artifacts/azizov_independent/P1_Q16_STRATIFIED3_REPORT.md",
+    "artifacts/azizov_independent/p1_q16_stratified3_baselines.json",
+    "artifacts/azizov_independent/p1_q16_stratified3_feature_ablation.json",
 )
 
 def require(condition: bool, message: str) -> None:
@@ -69,7 +75,7 @@ def main() -> int:
     require(set(lock["tracks"]) == {"mali", "qonductor", "cdaa", "qcre", "cutensornet"},
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 11,
+    require(len(artifact_manifest["artifacts"]) == 12,
             "unexpected replication artifact manifest size")
 
     qonductor = json.loads((ROOT / "artifacts/qonductor/reproduction_metrics.json").read_text())
@@ -173,6 +179,16 @@ def main() -> int:
     )
     require(set(azizov_ablation["blocks"]) == {"source", "compiled", "hybrid"},
             "Azizov P0 feature blocks changed")
+    with (ROOT / "artifacts/azizov_independent/p1_q16_stratified3.csv").open(newline="") as handle:
+        azizov_p1_rows = list(csv.DictReader(handle))
+    require(len(azizov_p1_rows) == 504, "unexpected Azizov P1 subset row count")
+    require({row["status"] for row in azizov_p1_rows} == {"ok"},
+            "Azizov P1 subset contains an unexpected failure status")
+    p1_baselines = json.loads(
+        (ROOT / "artifacts/azizov_independent/p1_q16_stratified3_baselines.json").read_text()
+    )
+    require(p1_baselines["input_rows"] == 504,
+            "Azizov P1 baseline input row count changed")
 
     with (ROOT / "tracks/cdaa_qcre/data/instruction_durations/SNAPSHOT_MANIFEST.csv").open(
         newline=""

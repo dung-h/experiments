@@ -86,7 +86,10 @@ python tracks/azizov_independent/scripts/run_matrix.py \
 
 It appends one row at a time and can be safely resumed with the same command.
 Rows that exceed `--timeout-s` are retained as `status=timeout` rather than
-being removed from the dataset.
+being removed from the dataset. A bounded pilot may use
+`--exclude-families ae` when a high-width amplitude-estimation circuit exceeds
+local memory; that exclusion must be reported and is not a substitute for the
+paper's 900-second/HPC run.
 
 - P1: all unique circuits, both backends, optimization levels 0--3, 1,024
   shots, with a 900-second per-run timeout and explicit censoring records.

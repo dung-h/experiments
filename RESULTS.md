@@ -274,3 +274,19 @@ These local seconds are not comparable as exact values to the paper's 32-CPU,
 256-GB HPC measurements. P1 must add all unique circuits, per-run timeout and
 censoring records; P2 must add backend-held-out, family-held-out and
 transpiler-seed sensitivity tests.
+
+### P1 bounded subset
+
+A checkpointed subset then measured 63 circuits (three smallest eligible
+circuits per family under a 16-qubit configuration; the observed maximum was
+nine qubits), both fake backends, all four optimization levels and 1,024 shots.
+All 504 rows completed successfully. On the same grouped circuit-ID split,
+Random Forest reached `R²_log=0.7478`; SVR reached `0.7432`. The feature
+ablation is more nuanced: compiled-only Ridge reached `0.6654`, source-only
+Ridge `0.0346`, while Random Forest was similar for source (`0.7396`) and
+compiled (`0.7360`) features. This supports testing compiled structure but does
+not justify a GNN or a universal estimator yet.
+
+The P1 subset is a bounded local pilot, not the paper's full 1,402-circuit
+matrix. Its raw rows, environment and metrics are in
+[artifacts/azizov_independent/](artifacts/azizov_independent/).

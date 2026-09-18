@@ -131,7 +131,8 @@ diagnostics, not the paper's exact HPC metrics.
 Rerun commands and artifact boundaries are in
 `tracks/azizov_independent/README.md`. P1 (all unique circuits with explicit
 900-second censoring) and P2 (backend/family hold-outs and seed sensitivity)
-remain pending.
+remain pending. A bounded P1 subset is already archived: 504 successful rows
+from 63 small circuits, with grouped baseline and source/compiled ablation.
 
 ## Claims to preserve
 

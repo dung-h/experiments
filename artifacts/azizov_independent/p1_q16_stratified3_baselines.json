@@ -1,0 +1,41 @@
+{
+  "protocol": "single grouped 80/20 split by circuit_id; target=log1p(T_exec_s)",
+  "input_rows": 504,
+  "train_rows": 400,
+  "test_rows": 104,
+  "train_circuits": 50,
+  "test_circuits": 13,
+  "seed": 1234,
+  "models": {
+    "median": {
+      "r2_log": -0.0694459273038972,
+      "rmse_seconds": 0.1015434520222363,
+      "mae_seconds": 0.08672115820511375,
+      "r2_seconds": -0.05408339821755015
+    },
+    "ridge": {
+      "r2_log": 0.4041376095697431,
+      "rmse_seconds": 0.07698636786412245,
+      "mae_seconds": 0.06372349333292912,
+      "r2_seconds": 0.3941030203175323
+    },
+    "svr": {
+      "r2_log": 0.743247721521505,
+      "rmse_seconds": 0.05017665698627206,
+      "mae_seconds": 0.04641308894341377,
+      "r2_seconds": 0.7426201326342285
+    },
+    "random_forest": {
+      "r2_log": 0.7477936017098209,
+      "rmse_seconds": 0.049562878820926456,
+      "mae_seconds": 0.045389739598589426,
+      "r2_seconds": 0.7488783393435992
+    },
+    "hist_gradient_boosting": {
+      "r2_log": 0.4347598534870971,
+      "rmse_seconds": 0.07285859142434781,
+      "mae_seconds": 0.0565130187397181,
+      "r2_seconds": 0.45733393036884673
+    }
+  }
+}
