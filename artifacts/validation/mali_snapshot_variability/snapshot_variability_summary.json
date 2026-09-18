@@ -1,0 +1,158 @@
+{
+  "provenance_class": "OUR_AUDIT",
+  "source_url": "https://zenodo.org/api/records/17881116/files/drift_characterization.csv/content",
+  "source_reference": "https://zenodo.org/api/records/17881116/files/drift_characterization.csv/content",
+  "fake_provider": {
+    "osaka": {
+      "provenance_class": "QISKIT_FAKE_PROVIDER_FROZEN",
+      "path": "/home/server/Documents/Quantum-Execution-Time-Prediction/data/fake_backend_properties/osaka.json",
+      "backend_name": "ibm_osaka",
+      "backend_version": "1.0.16",
+      "last_update_date": "2024-02-28 04:34:29-05:00",
+      "n_qubits": 127,
+      "t1": {
+        "mean_us": 280.99554614525425,
+        "median_us": 287.31096890937226,
+        "stdev_us": 95.98414846653945,
+        "min_us": 7.717159571191255,
+        "max_us": 484.46659776125546,
+        "range_us": 476.7494381900642,
+        "range_percent_of_median": 165.93499371075083,
+        "cv_percent": 34.15860136691371
+      },
+      "t2": {
+        "mean_us": 162.5387531929367,
+        "median_us": 139.9604499915221,
+        "stdev_us": 105.24571198341164,
+        "min_us": 8.273185884630292,
+        "max_us": 412.4607077320585,
+        "range_us": 404.18752184742823,
+        "range_percent_of_median": 288.78695508046115,
+        "cv_percent": 64.75115005864657
+      }
+    },
+    "kyoto": {
+      "provenance_class": "QISKIT_FAKE_PROVIDER_FROZEN",
+      "path": "/home/server/Documents/Quantum-Execution-Time-Prediction/data/fake_backend_properties/kyoto.json",
+      "backend_name": "ibm_kyoto",
+      "backend_version": "1.2.29",
+      "last_update_date": "2024-02-28 06:38:20-05:00",
+      "n_qubits": 127,
+      "t1": {
+        "mean_us": 216.94616140561445,
+        "median_us": 220.66059167927955,
+        "stdev_us": 70.04992522834041,
+        "min_us": 0.8683212806704563,
+        "max_us": 375.36563827623746,
+        "range_us": 374.497316995567,
+        "range_percent_of_median": 169.71644739350756,
+        "cv_percent": 32.28908258827001
+      },
+      "t2": {
+        "mean_us": 121.70572273266949,
+        "median_us": 109.59412748402332,
+        "stdev_us": 85.78390290035064,
+        "min_us": 8.295582102753476,
+        "max_us": 351.8149787960892,
+        "range_us": 343.5193966933357,
+        "range_percent_of_median": 313.4469013801986,
+        "cv_percent": 70.48469124888871
+      }
+    }
+  },
+  "public_timestamp_series": {
+    "ibm_brisbane": {
+      "provenance_class": "PUBLIC_DAQEC_CALIBRATION_OBSERVATIONS",
+      "n_timestamp_snapshots": 42,
+      "replicate_rows_per_timestamp": [
+        3
+      ],
+      "first_timestamp_utc": "2025-01-15 08:00:00+00:00",
+      "last_timestamp_utc": "2025-01-28 18:00:00+00:00",
+      "t1": {
+        "mean_us": 149.08402730368957,
+        "median_us": 145.8426207623346,
+        "stdev_us": 27.058547737909315,
+        "min_us": 104.63719448524535,
+        "max_us": 196.84063304374175,
+        "range_us": 92.2034385584964,
+        "range_percent_of_median": 63.22118875575562,
+        "cv_percent": 18.149863689146304
+      },
+      "t2": {
+        "mean_us": 80.87394996146011,
+        "median_us": 81.27163627742064,
+        "stdev_us": 12.06662613348606,
+        "min_us": 58.80877148445743,
+        "max_us": 107.62931195084093,
+        "range_us": 48.8205404663835,
+        "range_percent_of_median": 60.070822617296194,
+        "cv_percent": 14.92028785441582
+      },
+      "t1_slope_us_per_day": -0.37024592630618985,
+      "t2_slope_us_per_day": -0.17543101617898937
+    },
+    "ibm_kyoto": {
+      "provenance_class": "PUBLIC_DAQEC_CALIBRATION_OBSERVATIONS",
+      "n_timestamp_snapshots": 42,
+      "replicate_rows_per_timestamp": [
+        3
+      ],
+      "first_timestamp_utc": "2025-01-15 08:00:00+00:00",
+      "last_timestamp_utc": "2025-01-28 18:00:00+00:00",
+      "t1": {
+        "mean_us": 176.3009565530213,
+        "median_us": 171.05824590593835,
+        "stdev_us": 29.63984426896516,
+        "min_us": 136.48032348575308,
+        "max_us": 227.07178681729405,
+        "range_us": 90.59146333154098,
+        "range_percent_of_median": 52.959424932578514,
+        "cv_percent": 16.81207229301174
+      },
+      "t2": {
+        "mean_us": 98.98924975205811,
+        "median_us": 101.29800337676176,
+        "stdev_us": 12.658338986754666,
+        "min_us": 79.39550857819528,
+        "max_us": 128.64307236351067,
+        "range_us": 49.24756378531539,
+        "range_percent_of_median": 48.6165197177154,
+        "cv_percent": 12.78758958014174
+      },
+      "t1_slope_us_per_day": -0.630158986381795,
+      "t2_slope_us_per_day": 0.226990506281032
+    },
+    "ibm_osaka": {
+      "provenance_class": "PUBLIC_DAQEC_CALIBRATION_OBSERVATIONS",
+      "n_timestamp_snapshots": 42,
+      "replicate_rows_per_timestamp": [
+        3
+      ],
+      "first_timestamp_utc": "2025-01-15 08:00:00+00:00",
+      "last_timestamp_utc": "2025-01-28 18:00:00+00:00",
+      "t1": {
+        "mean_us": 157.1793017968985,
+        "median_us": 151.927486509053,
+        "stdev_us": 27.23816755869008,
+        "min_us": 116.00184563667123,
+        "max_us": 212.7019719144179,
+        "range_us": 96.70012627774666,
+        "range_percent_of_median": 63.6488686146891,
+        "cv_percent": 17.32936032117401
+      },
+      "t2": {
+        "mean_us": 89.61868847240986,
+        "median_us": 90.68314377024677,
+        "stdev_us": 11.544181735834568,
+        "min_us": 68.4558765948064,
+        "max_us": 114.07099662117928,
+        "range_us": 45.61512002637288,
+        "range_percent_of_median": 50.301652688555386,
+        "cv_percent": 12.881444632375509
+      },
+      "t1_slope_us_per_day": -0.8908176847862925,
+      "t2_slope_us_per_day": -0.34745066319935713
+    }
+  }
+}

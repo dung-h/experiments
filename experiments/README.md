@@ -65,3 +65,23 @@ python experiments/mali_qcre_seed_sensitivity.py --mali-root work/mali \
 
 Both reports are diagnostic extensions of the proxy result; they do not turn a
 FakeBackend reconstruction into historical QPU calibration data.
+
+## Public calibration snapshot variability
+
+The temporal audit compares the frozen local fake-provider pair with a public
+timestamped calibration series from the DAQEC-Benchmark (42 timestamps per
+backend over 14 days, three replicate rows per timestamp):
+
+```bash
+python experiments/mali_snapshot_variability.py \
+  --download \
+  --properties-dir /path/to/Quantum-Execution-Time-Prediction/data/fake_backend_properties \
+  --output-dir artifacts/validation/mali_snapshot_variability
+```
+
+For offline reruns, download the DAQEC `drift_characterization.csv` once and
+replace `--download` with `--source-csv /path/to/drift_characterization.csv`.
+The resulting report separates spatial variation inside one frozen snapshot
+from temporal variation across public calibration timestamps. The DAQEC series
+is a 2025 aggregate calibration source, not the missing per-qubit historical
+Ma–Li tensor.

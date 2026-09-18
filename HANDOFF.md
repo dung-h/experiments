@@ -39,6 +39,15 @@ calibration recovery.
 - Median observed label: `8.637 s`; median raw weighted path: `0.00510 s`.
   The path needs calibration and is not a direct QPU wall-clock estimate.
 
+### Calibration snapshot variability
+
+- Public DAQEC series: 42 timestamps/backend over 14 days, three rows per
+  timestamp.
+- Osaka aggregate T1 range/median: `63.6%`; T2: `50.3%`; CVs `17.3%`/`12.9%`.
+- Kyoto aggregate T1 range/median: `53.0%`; T2: `48.6%`; CVs `16.8%`/`12.8%`.
+- This is a 2025 aggregate series, not the exact per-qubit Ma–Li tensor.
+- Report and rows: `artifacts/validation/mali_snapshot_variability/`.
+
 ### Seed sensitivity
 
 All 340 rows were rerun at seeds `1234`, `2025`, `31415`, using the same
@@ -68,7 +77,8 @@ runtime. This is a reproducibility limitation, not a failed model experiment.
 2. `REPRODUCTION.md` — clean-clone and rerun commands.
 3. `artifacts/validation/mali_qcre_final/MALI_QCRE_FINAL_VALIDATION_REPORT.md` — grouped split, duration audit, affine calibration and ablations.
 4. `artifacts/validation/mali_qcre_seed_sensitivity/MALI_QCRE_SEED_SENSITIVITY_REPORT.md` — three-seed stability.
-5. `experiments/README.md` — commands for the validation scripts.
+5. `artifacts/validation/mali_snapshot_variability/SNAPSHOT_VARIABILITY_REPORT.md` — public temporal calibration audit.
+6. `experiments/README.md` — commands for the validation scripts.
 
 For next-week reporting, read
 `artifacts/mali/MA_LI_QWALK_AND_QCRE_INTERPRETATION.md` immediately after

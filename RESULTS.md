@@ -187,6 +187,26 @@ The stricter two-direction transfer gives R² `0.6705` for Osaka → Kyoto and
 `0.6798` for Kyoto → Osaka; these are kept separate from the grouped
 five-fold diagnostics.
 
+### 2.4 Public calibration snapshot variability
+
+The snapshot audit compares the frozen Qiskit fake-provider pair against the
+public DAQEC-Benchmark `drift_characterization.csv`. The latter contains 42
+timestamp snapshots per backend over 14 days (2025-01-15 through 2025-01-28),
+with three replicate rows per timestamp. Timestamp-level aggregate variation
+is material:
+
+| Backend | T1 range / median | T1 CV | T2 range / median | T2 CV |
+|---|---:|---:|---:|---:|
+| Osaka | 63.6% | 17.3% | 50.3% | 12.9% |
+| Kyoto | 53.0% | 16.8% | 48.6% | 12.8% |
+
+The variation is non-monotonic; fitted slopes are only descriptive. This
+supports treating calibration time as a domain variable and running
+multi-snapshot sensitivity. It does not identify the exact historical
+per-qubit snapshot used by Ma–Li: the DAQEC file contains aggregate means, not
+the 127-qubit node-level tensor. The reproducible audit and timestamp rows are
+in [artifacts/validation/mali_snapshot_variability/](artifacts/validation/mali_snapshot_variability/).
+
 ## 3. CDAA/QCRE: schedule agreement versus hardware truth
 
 QCRE reproduces the supplied Qiskit schedule-duration reference in 30 of 45
