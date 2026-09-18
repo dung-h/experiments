@@ -124,6 +124,7 @@ def run_row(args, source, backend_name, temp_root):
         "--max-parallel-experiments", str(args.max_parallel_experiments),
     ]
     started = time.monotonic()
+    label = f"{backend_name} {source['circuit_id']}"
     proc = subprocess.Popen(
         command,
         stdout=subprocess.PIPE,
@@ -134,6 +135,7 @@ def run_row(args, source, backend_name, temp_root):
     previous = None
     peak_rss = peak_single = peak_host = 0.0
     stop_reason = "completed"
+    last_progress = 0.0
     try:
         while proc.poll() is None:
             previous, rss, single, host = sample_tree(proc.pid, previous)
@@ -141,6 +143,13 @@ def run_row(args, source, backend_name, temp_root):
             peak_single = max(peak_single, single)
             peak_host = max(peak_host, host)
             elapsed = time.monotonic() - started
+            if elapsed - last_progress >= args.progress_interval_s:
+                print(
+                    f"progress {label} elapsed={elapsed:.0f}s rss={rss / 1024:.2f}GiB "
+                    f"peak_rss={peak_rss / 1024:.2f}GiB cpu_host={host:.1f}%",
+                    flush=True,
+                )
+                last_progress = elapsed
             if peak_rss >= args.max_rss_gib * 1024:
                 stop_reason = f"rss_cap>{args.max_rss_gib:g}GiB"
                 kill_group(proc)
@@ -197,6 +206,7 @@ def main():
     ap.add_argument("--wall-timeout-s", type=float, default=180)
     ap.add_argument("--max-rss-gib", type=float, default=16.0)
     ap.add_argument("--sample-interval-s", type=float, default=0.5)
+    ap.add_argument("--progress-interval-s", type=float, default=10.0)
     ap.add_argument("--max-parallel-threads", type=int, default=1)
     ap.add_argument("--max-parallel-shots", type=int, default=1)
     ap.add_argument("--max-parallel-experiments", type=int, default=1)
@@ -241,6 +251,7 @@ def main():
         "wall_timeout_s": args.wall_timeout_s,
         "max_rss_gib": args.max_rss_gib,
         "sample_interval_s": args.sample_interval_s,
+        "progress_interval_s": args.progress_interval_s,
         "max_parallel_threads": args.max_parallel_threads,
         "max_parallel_shots": args.max_parallel_shots,
         "max_parallel_experiments": args.max_parallel_experiments,
