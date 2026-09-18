@@ -1,10 +1,10 @@
 # Current handoff: Quantum runtime estimator replications
 
-Last updated: 2026-09-17
+Last updated: 2026-09-18
 Repository: `https://github.com/dung-h/experiments.git`
 Local checkout: `/home/server/Documents/quantum-runtime-estimator-replications`
 Branch: `main`
-Latest local commit: `79d5f7f Document Ma-Li QWalk failure and proxy interpretation`
+Latest local commit: `3bc2d23 Add dated Osaka Kyoto calibration drift audit`
 
 ## What is complete
 
