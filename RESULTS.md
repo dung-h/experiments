@@ -36,7 +36,7 @@ results retain their original provenance and hardware boundaries.
 | Qonductor | regression MAE 502.359 ms, R² 0.9386; DAG MAE 915.609 ms, R² 0.8849 | Supplied regression predictions beat the numerical DAG baseline | Derived recompute, not live IBM/retraining |
 | CDAA/QCRE | 30/45 verification rows agree; maximum delta 3.50e-16 s | QCRE matches the supplied schedule-duration reference | Schedule duration is not observed QPU wall-clock |
 | cuTensorNet | warm median actual / RUNTIME_EST = 0.196; QFT-28/30 0.960/0.946 | The pre-run signal is conservative on easy contractions and closer on QFT | One GPU/software/precision setting |
-| Azizov et al. independent P0 | 168/168 successful local runs; grouped Ridge `R²_log=0.758` on the smoke subset | Current FakeWashingtonV2/FakeSherbrooke + Aer pipeline is executable and captures backend/family spread | P0 uses 21 small families; not the paper's full HPC dataset or exact artifact |
+| Azizov et al. independent | 1,192/1,192 screened local rows successful; 149/1,402 circuits eligible | Current FakeWashingtonV2/FakeSherbrooke + Aer pipeline is executable on a documented local subset | Conservative q≤9/ops/depth screen; not the paper's full HPC dataset or exact artifact |
 
 ## 1. Ma–Li: seed 1234, fold 10
 
@@ -290,3 +290,26 @@ not justify a GNN or a universal estimator yet.
 The P1 subset is a bounded local pilot, not the paper's full 1,402-circuit
 matrix. Its raw rows, environment and metrics are in
 [artifacts/azizov_independent/](artifacts/azizov_independent/).
+
+### Local feasible subset
+
+To separate machine feasibility from paper coverage, a conservative screen was
+applied to the 1,402-circuit manifest:
+
+```text
+logical_width <= 9
+logical_ops <= 4000
+logical_depth <= 4000
+```
+
+This retained 149 circuits (10.6%) and rejected 1,253. The rejected manifest
+records the reason for every exclusion; most are width-related. The complete
+eligible matrix contains 1,192 successful rows (149 circuits × 2 backends × 4
+optimization levels), with zero timeout/error rows. The maximum observed
+`T_exec` is 10.7751 s and the largest transpiled DAG has 153,548 nodes.
+
+This is the current **empirically confirmed local subset**, not a claim that
+all circuits above nine qubits are impossible. It excludes the unconfirmed
+9-qubit QWalk circuit with 6,199 logical operations and every higher-width
+circuit. A process-isolated runner can later test those rejected rows without
+endangering the main job.

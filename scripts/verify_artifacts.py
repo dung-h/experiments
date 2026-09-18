@@ -56,11 +56,19 @@ REQUIRED = (
     "tracks/azizov_independent/scripts/compare_feature_blocks.py",
     "tracks/azizov_independent/scripts/run_matrix.py",
     "tracks/azizov_independent/scripts/summarize_matrix.py",
+    "tracks/azizov_independent/scripts/build_feasible_subset.py",
     "artifacts/azizov_independent/p1_q16_stratified3.csv",
     "artifacts/azizov_independent/p1_q16_stratified3.environment.json",
     "artifacts/azizov_independent/P1_Q16_STRATIFIED3_REPORT.md",
     "artifacts/azizov_independent/p1_q16_stratified3_baselines.json",
     "artifacts/azizov_independent/p1_q16_stratified3_feature_ablation.json",
+    "artifacts/azizov_independent/FEASIBLE_Q9_REPORT.md",
+    "artifacts/azizov_independent/feasible_q9.csv",
+    "artifacts/azizov_independent/rejected_local_screen.csv",
+    "artifacts/azizov_independent/feasible_q9_runtime.csv",
+    "artifacts/azizov_independent/feasible_q9_runtime.environment.json",
+    "artifacts/azizov_independent/feasible_q9_baselines.json",
+    "artifacts/azizov_independent/feasible_q9_feature_ablation.json",
 )
 
 def require(condition: bool, message: str) -> None:
@@ -75,7 +83,7 @@ def main() -> int:
     require(set(lock["tracks"]) == {"mali", "qonductor", "cdaa", "qcre", "cutensornet"},
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 12,
+    require(len(artifact_manifest["artifacts"]) == 13,
             "unexpected replication artifact manifest size")
 
     qonductor = json.loads((ROOT / "artifacts/qonductor/reproduction_metrics.json").read_text())
@@ -189,6 +197,23 @@ def main() -> int:
     )
     require(p1_baselines["input_rows"] == 504,
             "Azizov P1 baseline input row count changed")
+    with (ROOT / "artifacts/azizov_independent/feasible_q9.csv").open(newline="") as handle:
+        eligible_rows = list(csv.DictReader(handle))
+    with (ROOT / "artifacts/azizov_independent/rejected_local_screen.csv").open(newline="") as handle:
+        rejected_rows = list(csv.DictReader(handle))
+    require(len(eligible_rows) == 149 and len(rejected_rows) == 1253,
+            "Azizov local-screen manifest counts changed")
+    with (ROOT / "artifacts/azizov_independent/feasible_q9_runtime.csv").open(newline="") as handle:
+        feasible_runtime_rows = list(csv.DictReader(handle))
+    require(len(feasible_runtime_rows) == 1192,
+            "Azizov feasible runtime row count changed")
+    require({row["status"] for row in feasible_runtime_rows} == {"ok"},
+            "Azizov feasible subset contains a timeout or error")
+    feasible_baselines = json.loads(
+        (ROOT / "artifacts/azizov_independent/feasible_q9_baselines.json").read_text()
+    )
+    require(feasible_baselines["input_rows"] == 1192,
+            "Azizov feasible baseline input count changed")
 
     with (ROOT / "tracks/cdaa_qcre/data/instruction_durations/SNAPSHOT_MANIFEST.csv").open(
         newline=""

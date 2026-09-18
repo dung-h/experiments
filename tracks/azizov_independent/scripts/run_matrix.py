@@ -77,6 +77,8 @@ def main():
     ap.add_argument("--manifest", type=Path, required=True)
     ap.add_argument("--output", type=Path, required=True)
     ap.add_argument("--max-qubits", type=int, default=16)
+    ap.add_argument("--max-logical-ops", type=int, default=0)
+    ap.add_argument("--max-logical-depth", type=int, default=0)
     ap.add_argument("--limit-per-family", type=int, default=0)
     ap.add_argument("--shots", type=int, default=1024)
     ap.add_argument("--timeout-s", type=int, default=900)
@@ -101,6 +103,8 @@ def main():
         and row.get("family") not in excluded_families
         and row.get("logical_width", "").isdigit()
         and int(row["logical_width"]) <= args.max_qubits
+        and (not args.max_logical_ops or int(row.get("logical_ops") or 0) <= args.max_logical_ops)
+        and (not args.max_logical_depth or int(row.get("logical_depth") or 0) <= args.max_logical_depth)
     ]
     candidates.sort(key=lambda r: (r["family"], int(r["logical_width"]), r["circuit_id"]))
     if args.limit_per_family:

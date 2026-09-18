@@ -134,6 +134,14 @@ Rerun commands and artifact boundaries are in
 remain pending. A bounded P1 subset is already archived: 504 successful rows
 from 63 small circuits, with grouped baseline and source/compiled ablation.
 
+The local-feasibility pass is also complete: 149/1,402 circuits (10.6%) passed
+the conservative `width<=9`, `logical_ops<=4000`, `logical_depth<=4000` screen.
+All 1,192 resulting backend/optimization rows completed successfully. The
+eligible and rejected manifests plus raw runtime table are under
+`artifacts/azizov_independent/`. Do not describe the 10.6% as a hardware
+capacity theorem; it is the subset confirmed under this Aer/noise/version
+protocol.
+
 ## Claims to preserve
 
 - Do not call the FakeOsaka/FakeKyoto proxy historical calibration truth.

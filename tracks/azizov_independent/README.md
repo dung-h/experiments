@@ -72,6 +72,36 @@ and transpiled metrics, status/error text, seed and environment versions in
 the CSV. A single timed run is intentionally labelled as P0; the robustness
 pass will add repeated cold/warm measurements.
 
+## Local feasible subset
+
+For a bounded local run, build an auditable screening subset first:
+
+```bash
+python tracks/azizov_independent/scripts/build_feasible_subset.py \
+  --manifest work/azizov_independent/source_manifest.csv \
+  --eligible work/azizov_independent/feasible_q9.csv \
+  --rejected work/azizov_independent/rejected_local_screen.csv
+```
+
+The default screen is `width<=9`, `logical_ops<=4000` and
+`logical_depth<=4000`. It is a **local-machine eligibility screen**, not a
+claim that every eligible circuit will finish under every backend or shot
+count. It is calibrated from the successful P0 observations: the hardest
+confirmed P0 circuits are the eight-qubit Grover/QWalk cases. The screen
+excludes the unconfirmed nine-qubit QWalk circuit with 6,199 operations and all
+higher-width circuits. Run the eligible matrix with:
+
+```bash
+python tracks/azizov_independent/scripts/run_matrix.py \
+  --mali-root work/mali \
+  --manifest work/azizov_independent/feasible_q9.csv \
+  --max-qubits 9 --shots 1024 --timeout-s 900 \
+  --output work/azizov_independent/feasible_q9_runtime.csv
+```
+
+Always keep the rejected manifest. A later process-isolated runner may promote
+some rejected circuits after they pass a separate memory/timeout test.
+
 ## Planned P1/P2 extensions
 
 The checkpointed matrix runner is available for the full or bounded P1 pass:
