@@ -77,6 +77,13 @@ The aggregate gap is therefore largely one localized failure. Historical IBM
 calibration snapshots, the authors' processed tensor/order and a matched
 multi-seed baseline are not public, so this remains an OUR_PROXY adaptation.
 
+The detailed report-style interpretation of the QWalk circuit structure, the
+178-dimensional DAG metadata, the T1/T2 intervention and the separate QCRE
+proxy inference path is preserved in
+[artifacts/mali/MA_LI_QWALK_AND_QCRE_INTERPRETATION.md](artifacts/mali/MA_LI_QWALK_AND_QCRE_INTERPRETATION.md).
+Use that note when presenting why the pretrained model fails on QWalk and why
+compiled physical depth is stronger than logical depth in the proxy audit.
+
 ## 2. Qonductor: regression versus numerical DAG
 
 The public 100-row evaluation file contains author-generated predictions. Our

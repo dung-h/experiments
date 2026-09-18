@@ -70,6 +70,13 @@ runtime. This is a reproducibility limitation, not a failed model experiment.
 4. `artifacts/validation/mali_qcre_seed_sensitivity/MALI_QCRE_SEED_SENSITIVITY_REPORT.md` — three-seed stability.
 5. `experiments/README.md` — commands for the validation scripts.
 
+For next-week reporting, read
+`artifacts/mali/MA_LI_QWALK_AND_QCRE_INTERPRETATION.md` immediately after
+`RESULTS.md`. It records the QWalk circuit structure and fold-10 failure,
+exactly how Ma–Li's DAG/T1/T2 metadata enters inference, the standardized-mean
+intervention, and the distinction between the Ma–Li GNN and the separate QCRE
+compiled-feature proxy. Do not merge the two inference paths in the report.
+
 The machine-readable outputs are:
 
 - `artifacts/validation/mali_qcre_proxy/mali_qcre_proxy_features.csv`;
