@@ -105,7 +105,9 @@ artifacts as documented in `experiments/README.md`.
 
 - Do not call the FakeOsaka/FakeKyoto proxy historical calibration truth.
 - Do not call the Ma–Li fake-snapshot adaptation a reproduction of the paper's
-  missing historical `total_ibm_standardization.npy`/calibration snapshot.
+  exact historical `total_ibm_standardization.npy`/calibration snapshot. Public
+  Osaka/Kyoto candidate captures exist, but they have not been matched to the
+  authors' tensor or label-collection timestamp.
 - Do not call QCRE/CDAA schedule duration observed QPU wall-clock.
 - Do not call cuTensorNet `RUNTIME_EST` a prediction of first-call or complete
   end-to-end latency; first, warm and end-to-end clocks are separate.

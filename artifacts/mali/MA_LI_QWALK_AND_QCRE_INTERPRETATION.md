@@ -134,8 +134,27 @@ or T2 themselves:
 The correct claim is therefore: **the current simulator checkpoint can impose
 a harmful, calibration-conditioned prior on an extreme real-device circuit**.
 It is not evidence that T1/T2 are intrinsically reliable real-QPU runtime
-predictors. Exact attribution would require the missing historical processed
-tensor and calibration snapshot.
+predictors. Exact attribution would require the historical processed tensor
+and the specific calibration snapshot used by the authors. Public candidate
+snapshots exist, but none has yet been matched to that tensor or to the
+collection timestamp of the 340 Ma–Li labels.
+
+### Published snapshot candidates
+
+There are more calibration sources than the single fake-provider pair used in
+the local run:
+
+| Source | What is public | Limitation for exact Ma–Li recovery |
+|---|---|---|
+| Qiskit fake provider | One frozen `FakeOsaka`/`FakeKyoto` property JSON pair used locally; both are dated 2024-02-28 | Simulated snapshot, not necessarily the calibration used for the real labels |
+| [IBM Quantum API](https://quantum.cloud.ibm.com/docs/en/guides/qpu-information) | `backend.properties(datetime=...)` supports historical properties retrieval | Requires IBM access and a date query; the paper's queried dates are not recorded in the public Ma–Li package |
+| [Qwork public experiment page](https://stevetipp.github.io/Qwork.github.io/experiment19.html) | References a Kyoto calibration CSV dated 2024-03-07 | Reference in an experiment page, not a verified complete archive of the Ma–Li tensor |
+| [Provenova hardware corpus](https://provenova.net/hardware) | Lists IBM raw calibration captures for Osaka and Kyoto dated 2024-06-01 | Candidate capture; provenance and per-qubit alignment to Ma–Li still need verification |
+| [DAQEC-Benchmark Zenodo dataset](https://zenodo.org/records/17881116) | 14 days, 42 day-backend clusters, including Osaka and Kyoto, with calibration summaries | Primarily aggregate `cal_t1_mean`/`cal_t2_mean`; not the full 127-qubit node tensor needed by Ma–Li |
+
+The defensible wording is therefore **“the exact historical snapshot used by
+Ma–Li is not identified or bundled with the authors' public package”**, not
+“no Osaka/Kyoto snapshots are publicly available.”
 
 ## 4. Ma–Li/QCRE proxy validation
 

@@ -73,9 +73,12 @@ The likely interacting factors are simulator-to-QPU scale mismatch (the same
 circuit's simulator labels are about 42.43 s and 73.24 s), different
 normalization populations, and a 34-row held-out fold dominated by one extreme
 sample. Without fold 10, mean R² is 0.8690 pretrained and 0.8799 from scratch.
-The aggregate gap is therefore largely one localized failure. Historical IBM
-calibration snapshots, the authors' processed tensor/order and a matched
-multi-seed baseline are not public, so this remains an OUR_PROXY adaptation.
+The aggregate gap is therefore largely one localized failure. The authors'
+processed tensor/order and the exact IBM calibration snapshot used for those
+340 labels are not identified or bundled in the public package. Public
+candidate calibration captures exist, but none has yet been matched to the
+historical tensor or collection timestamp, so this remains an OUR_PROXY
+adaptation.
 
 The detailed report-style interpretation of the QWalk circuit structure, the
 178-dimensional DAG metadata, the T1/T2 intervention and the separate QCRE
