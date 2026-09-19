@@ -4,7 +4,8 @@ Last updated: 2026-09-19
 Repository: `https://github.com/dung-h/experiments.git`
 Local checkout: `/home/server/Documents/quantum-runtime-estimator-replications`
 Branch: `main`
-Latest local commit: `3bc2d23 Add dated Osaka Kyoto calibration drift audit`
+Revision: inspect `git log -1 --oneline` and `git status --short` before a rerun;
+this handoff intentionally does not hard-code a commit SHA.
 
 ## What is complete
 
