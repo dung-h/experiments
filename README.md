@@ -7,7 +7,7 @@ universal estimator.
 
 | Track | Estimator under study | Evidence class | Central finding |
 | --- | --- | --- | --- |
-| Ma–Li | Graph Transformer over circuit DAG | Local reproduction plus fake-snapshot and grouped QCRE proxy validation | The simulator-pretrained initialization fails catastrophically on one held-out QWalk fold, while compiled physical structure remains stable across transpiler seeds in the separate proxy check. |
+| Ma–Li | Graph Transformer over circuit DAG; direct compiled-feature regression | Local reproduction plus fake-snapshot, grouped QCRE proxy and direct source-specific validation | Simulator-pretrained initialization fails on one held-out QWalk fold; a separately evaluated direct compiled-feature estimator improves on physical depth under QASM-grouped tests, but remains a current-FakeBackend proxy. |
 | Qonductor | Job/circuit regression in a cloud scheduler | Metric recomputation plus local fake-backend smoke | The public regression predictions outperform the numerical DAG baseline on the supplied 100-row evaluation CSV. |
 | CDAA/QCRE | Gate-aware compiled-circuit duration estimate | Bundled-artifact reproduction plus offline compiler proxy | Gate-aware depth closely follows the artifact's schedule-duration reference, but the reference is not measured QPU wall-clock. |
 | cuTensorNet | NVIDIA pre-run contraction-path `RUNTIME_EST` | Local RTX 5070 Ti measurement | The estimate is conservative for easy warm contractions and much closer for hard QFT contractions. |
@@ -25,7 +25,7 @@ exact upstream revisions are pinned in
 Each track has its own target semantics:
 
 - Ma–Li: simulator labels during pretraining and recorded Osaka/Kyoto
-  `result.time_taken` labels during adaptation;
+  `result.time_taken` labels during adaptation/direct source-specific regression;
 - Qonductor: Qonductor one-job execution estimate, excluding queue waiting and
   workflow job-completion time;
 - CDAA/QCRE: analytical duration derived from compiled circuits and archived

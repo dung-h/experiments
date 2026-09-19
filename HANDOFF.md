@@ -1,6 +1,6 @@
 # Current handoff: Quantum runtime estimator replications
 
-Last updated: 2026-09-18
+Last updated: 2026-09-19
 Repository: `https://github.com/dung-h/experiments.git`
 Local checkout: `/home/server/Documents/quantum-runtime-estimator-replications`
 Branch: `main`
@@ -24,6 +24,11 @@ rows. It uses current Qiskit 1.4.1 `FakeOsaka`/`FakeKyoto` targets, optimization
 level 1 and `seed_transpiler=1234`; it is labelled `OUR_PROXY`, not historical
 calibration recovery.
 
+The follow-on direct source-specific estimator evaluation is also complete. It
+uses the proxy's pre-run compiled features to predict the same observed Ma–Li
+labels; it does not pool any other source or save a post-hoc selected deployment
+model.
+
 ## Numbers to remember
 
 ### Ma–Li/QCRE grouped validation
@@ -41,6 +46,31 @@ calibration recovery.
   - Kyoto → Osaka: R² `0.6798`.
 - Median observed label: `8.637 s`; median raw weighted path: `0.00510 s`.
   The path needs calibration and is not a direct QPU wall-clock estimate.
+
+### Ma–Li direct source-specific estimator
+
+Finding recorded: `2026-09-19`.
+
+- Same target: 340 observed Osaka/Kyoto `result.time_taken` rows at 1,024
+  shots; queue excluded; 170 logical-QASM SHA-256 groups.
+- Candidate inputs: logical structural features, post-transpile physical
+  structure, weighted target-duration path and backend label. Inputs are
+  reconstructed from current FakeBackends, so this is still `OUR_PROXY`.
+- Aggregate OOF, grouped logical-QASM five-fold:
+  - physical-depth Ridge: log R² `0.8246`, MAE `0.6769 s`;
+  - compiled Ridge: log R² `0.8777`, MAE `0.5116 s`;
+  - duration-proxy + compiled residual RF: log R² `0.8858`, MAE `0.5303 s`.
+- Strict backend plus unseen-logical-circuit 2 × 5 evaluation:
+  - physical-depth Ridge: log R² `0.8215`, MAE `0.6792 s`;
+  - compiled Ridge: log R² `0.8742`, MAE `0.5224 s`;
+  - residual RF: log R² `0.8753`, MAE `0.5565 s`.
+- The paired backend-only diagnostic reaches `0.9052` for compiled Ridge, but
+  is not primary evidence because it permits that logical QASM's other-backend
+  copy in training.
+- Family-held-out OOF is retained, not averaged per small family: residual RF
+  log R² `0.8610`, MAE `0.5630 s`. Duration alone is not isolated as the cause
+  of the improvement; earlier matched ablation found only a small incremental
+  weighted-path gain.
 
 ### Calibration snapshot variability
 
@@ -82,10 +112,11 @@ runtime. This is a reproducibility limitation, not a failed model experiment.
 1. `RESULTS.md` — consolidated findings and claim boundaries.
 2. `REPRODUCTION.md` — clean-clone and rerun commands.
 3. `artifacts/validation/mali_qcre_final/MALI_QCRE_FINAL_VALIDATION_REPORT.md` — grouped split, duration audit, affine calibration and ablations.
-4. `artifacts/validation/mali_qcre_seed_sensitivity/MALI_QCRE_SEED_SENSITIVITY_REPORT.md` — three-seed stability.
-5. `artifacts/validation/mali_snapshot_variability/SNAPSHOT_VARIABILITY_REPORT.md` — public temporal calibration audit.
-6. `experiments/README.md` — commands for the validation scripts.
-7. `artifacts/azizov_independent/P0_REPORT.md` — first independent
+4. `artifacts/validation/mali_direct_estimator/MALI_DIRECT_COMPILED_ESTIMATOR_REPORT.md` — direct estimator, split boundaries and full OOF metrics.
+5. `artifacts/validation/mali_qcre_seed_sensitivity/MALI_QCRE_SEED_SENSITIVITY_REPORT.md` — three-seed stability.
+6. `artifacts/validation/mali_snapshot_variability/SNAPSHOT_VARIABILITY_REPORT.md` — public temporal calibration audit.
+7. `experiments/README.md` — commands for the validation scripts.
+8. `artifacts/azizov_independent/P0_REPORT.md` — first independent
    transpilation-aware Aer reproduction and feature-block smoke ablation.
 
 For next-week reporting, read
@@ -100,6 +131,9 @@ The machine-readable outputs are:
 - `artifacts/validation/mali_qcre_proxy/mali_qcre_proxy_features.csv`;
 - `artifacts/validation/mali_qcre_final/mali_qcre_grouped_validation_rows.csv`;
 - `artifacts/validation/mali_qcre_seed_sensitivity/mali_qcre_seed_sensitivity_rows.csv`;
+- `artifacts/validation/mali_direct_estimator/mali_direct_estimator_oof_predictions.csv`;
+- `artifacts/validation/mali_direct_estimator/mali_direct_estimator_summary.csv`;
+- `artifacts/validation/mali_direct_estimator/mali_direct_estimator_strict_backend_metrics.csv`;
 - the corresponding `*_summary.json` files.
 
 ## Exact rerun commands
@@ -113,6 +147,9 @@ python experiments/mali_qcre_validation.py --mali-root work/mali
 python experiments/mali_qcre_seed_sensitivity.py --mali-root work/mali \
   --seeds 1234,2025,31415 --optimization-level 1
 python experiments/qonductor_mapping_audit.py --qonductor-root work/qonductor
+python3 -m venv .venv-mali-direct
+.venv-mali-direct/bin/pip install -r experiments/requirements-mali-direct-estimator.txt
+.venv-mali-direct/bin/python experiments/run_mali_direct_estimator.py
 ```
 
 The seed command retranspiles 340 rows per seed and is the slow step. To check
@@ -167,14 +204,18 @@ feasible noisy-Aer frontier. The targeted check is recorded in
   Osaka/Kyoto candidate captures exist, but they have not been matched to the
   authors' tensor or label-collection timestamp.
 - Do not call QCRE/CDAA schedule duration observed QPU wall-clock.
+- Do not call the Ma–Li direct estimator a historical-QPU model or a universal
+  runtime estimator: its compiled inputs use the current FakeBackend proxy and
+  its two backend directions are not broad hardware validation.
 - Do not call cuTensorNet `RUNTIME_EST` a prediction of first-call or complete
   end-to-end latency; first, warm and end-to-end clocks are separate.
 - Do not pool simulator, QPU, cloud workflow and service-runtime targets.
 
 ## Next recommended work
 
-Build the multivariate runtime-estimator pilot using the same grouped and
-backend-held-out protocols: compare median, ridge/log-linear, random forest and
-histogram gradient boosting on the compiled features, and report original-scale
-and log-scale metrics. Keep Qonductor as a separate job-estimator track until a
-public stable join key is available.
+Freeze the Ma–Li model-selection rule before fitting any operational model, then
+seek a second real-QPU source with circuit-level join keys or historical
+calibration snapshots. Keep Qonductor as a separate job-estimator track until a
+public stable join key is available. Simulator studies, including bond-dimension
+work, remain controlled pretraining/ablation tracks rather than substitutes for
+the observed-QPU estimator.

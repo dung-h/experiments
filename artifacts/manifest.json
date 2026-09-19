@@ -48,6 +48,13 @@
       "critical_fixture": "artifacts/validation/mali_qcre_seed_sensitivity/mali_qcre_seed_sensitivity_summary.json"
     },
     {
+      "path": "artifacts/validation/mali_direct_estimator/MALI_DIRECT_COMPILED_ESTIMATOR_REPORT.md",
+      "provenance_class": "OUR_PROXY_EVALUATION",
+      "runtime_semantics": "source-specific prediction of Ma-Li observed Osaka/Kyoto result.time_taken from current-FakeBackend compiled features; queue excluded",
+      "critical_fixture": "artifacts/validation/mali_direct_estimator/mali_direct_estimator_summary.csv",
+      "related_fixture": "artifacts/validation/mali_direct_estimator/mali_direct_estimator_provenance.json"
+    },
+    {
       "path": "artifacts/cdaa_qcre/REPLICATION_REPORT.md",
       "provenance_class": "AUTHOR_ARTIFACT plus OUR_PROXY",
       "runtime_semantics": "compiled-circuit duration from archived instruction durations"

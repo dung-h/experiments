@@ -1,0 +1,7 @@
+# Evaluation environment used for the committed Ma--Li direct-estimator fixture.
+# Python 3.14.4 on Linux; use a separate virtual environment from the older
+# Qiskit proxy environment. No Qiskit or IBM credential is needed to rescore
+# the committed feature table.
+numpy==2.5.3
+pandas==3.0.5
+scikit-learn==1.9.0

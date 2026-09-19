@@ -1,0 +1,60 @@
+{
+  "created_at_utc": "2026-09-19T16:58:29.374827+00:00",
+  "input": "artifacts/validation/mali_qcre_proxy/mali_qcre_proxy_features.csv",
+  "input_sha256": "be4e244a8079837927eaa3ea3f5472a5d4b5ad33575e82907d52ea94a0e1974e",
+  "target": "Ma-Li Osaka/Kyoto observed result.time_taken; fixed 1024 shots",
+  "target_semantics": "Ma-Li upstream Osaka/Kyoto observed result.time_taken; execute shots=1024; averaged upstream runs; queue semantics per upstream",
+  "n_rows": 340,
+  "n_logical_circuit_groups": 170,
+  "n_families": 10,
+  "n_backends": 2,
+  "outer_splits": {
+    "backend_and_logical_circuit_held_out": 10,
+    "family_held_out": 10,
+    "grouped_logical_circuit_5fold": 5,
+    "paired_backend_transfer_diagnostic": 2
+  },
+  "model_configuration": {
+    "random_forest": {
+      "n_estimators": 500,
+      "min_samples_leaf": 2,
+      "max_features": 0.8,
+      "seed": 1234
+    },
+    "hist_gradient_boosting": {
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 15,
+      "l2_regularization": 1.0,
+      "seed": 1234
+    },
+    "ridge": {
+      "alpha": 1.0
+    }
+  },
+  "software": {
+    "python": "3.14.4",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "scikit_learn": "1.9.0"
+  },
+  "feature_blocks": {
+    "logical_raw": [
+      "logical_width",
+      "logical_depth",
+      "logical_two_qubit_depth",
+      "logical_total_gate_count"
+    ],
+    "physical_raw": [
+      "physical_depth",
+      "physical_two_qubit_depth",
+      "physical_total_gate_count",
+      "physical_two_qubit_gate_count",
+      "physical_swap_count"
+    ],
+    "duration_proxy": "qcre_weighted_critical_path_seconds",
+    "categorical": [
+      "backend_label"
+    ]
+  },
+  "boundary": "Current-FakeBackend compiled proxy, not historical Ma-Li physical circuit/calibration recovery."
+}

@@ -159,9 +159,36 @@ python experiments/mali_qcre_validation.py --mali-root work/mali
 ```
 
 This groups repeated logical circuits by QASM SHA-256 and uses the same five
-folds for every feature set. For transpiler-seed sensitivity, rerun the 340
-rows with three seeds (the committed run used Qiskit 1.4.1, optimization level
-1):
+folds for every feature set.
+
+To reproduce the direct source-specific estimator evaluation from the committed
+feature table (no transpilation or IBM credential required), create an isolated
+environment and install the pinned evaluation dependencies:
+
+```bash
+python3 -m venv .venv-mali-direct
+.venv-mali-direct/bin/pip install -r experiments/requirements-mali-direct-estimator.txt
+.venv-mali-direct/bin/python experiments/run_mali_direct_estimator.py
+```
+
+It writes grouped-logical-circuit, paired-backend diagnostic, strict
+backend-plus-unseen-circuit and family-held-out OOF predictions to
+`artifacts/validation/mali_direct_estimator/`. The strict split trains on the
+other backend *and* other logical-QASM folds; it is the relevant transfer
+check. The artifact consumes the committed current-FakeBackend feature CSV and
+therefore reproduces our proxy evaluation, not the unavailable historical
+Ma–Li transpilation/calibration state.
+
+For a clean rerun that avoids overwriting the committed baseline, select an
+alternate output directory:
+
+```bash
+.venv-mali-direct/bin/python experiments/run_mali_direct_estimator.py \
+  --output-dir work/mali_direct_estimator_rerun
+```
+
+For transpiler-seed sensitivity, rerun the 340 rows with three seeds (the
+committed run used Qiskit 1.4.1, optimization level 1):
 
 ```bash
 python experiments/mali_qcre_seed_sensitivity.py --mali-root work/mali \

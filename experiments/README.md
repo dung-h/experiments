@@ -66,6 +66,42 @@ python experiments/mali_qcre_seed_sensitivity.py --mali-root work/mali \
 Both reports are diagnostic extensions of the proxy result; they do not turn a
 FakeBackend reconstruction into historical QPU calibration data.
 
+## Ma–Li direct source-specific estimator
+
+The direct evaluation consumes the committed 340-row proxy feature table. It
+does not retranspile or submit a QPU job. Create an isolated recent Python
+environment, then install the pinned evaluation dependencies:
+
+```bash
+python3 -m venv .venv-mali-direct
+.venv-mali-direct/bin/pip install -r experiments/requirements-mali-direct-estimator.txt
+```
+
+Run the evaluator with that interpreter:
+
+```bash
+.venv-mali-direct/bin/python experiments/run_mali_direct_estimator.py
+```
+
+It predicts `log1p(result.time_taken seconds)` from target-specific compiled
+structure and the weighted-path proxy. Its primary split is five-fold by logical
+QASM SHA-256. It also records a deliberately weaker paired-backend diagnostic,
+a strict backend-plus-unseen-logical-circuit 2 × 5 split, and leave-one-family
+out. The latter two must be read as ten correlated outer partitions / two
+backend directions, not as broad device cross-validation.
+
+The output directory contains a report, all model/split aggregate metrics,
+per-fold metrics, strict per-backend metrics, all outer-fold predictions, and
+input provenance:
+
+```text
+artifacts/validation/mali_direct_estimator/
+```
+
+No estimator is fitted and saved for deployment by this script. The output is
+an evaluation artifact: a model/selection protocol must be frozen before
+fitting an operational source-specific model.
+
 ## Public calibration snapshot variability
 
 The temporal audit compares the frozen local fake-provider pair with a public

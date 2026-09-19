@@ -32,7 +32,7 @@ results retain their original provenance and hardware boundaries.
 
 | Track | Primary result | Supported claim | Boundary |
 | --- | --- | --- | --- |
-| Ma–Li | pretrained R² 0.5922 ± 0.8317; scratch R² 0.8855 ± 0.0461 | A simulator prior can harm local fake-snapshot transfer | Not the historical paper environment |
+| Ma–Li | direct compiled Ridge: strict backend+QASM-held-out log R² 0.8742, MAE 0.5224 s; adaptation: pretrained R² 0.5922 ± 0.8317, scratch R² 0.8855 ± 0.0461 | Compiled structure supports a source-specific proxy estimator; a simulator prior can still harm fake-snapshot transfer | Current FakeBackend proxy, not the historical paper environment |
 | Qonductor | regression MAE 502.359 ms, R² 0.9386; DAG MAE 915.609 ms, R² 0.8849 | Supplied regression predictions beat the numerical DAG baseline | Derived recompute, not live IBM/retraining |
 | CDAA/QCRE | 30/45 verification rows agree; maximum delta 3.50e-16 s | QCRE matches the supplied schedule-duration reference | Schedule duration is not observed QPU wall-clock |
 | cuTensorNet | warm median actual / RUNTIME_EST = 0.196; QFT-28/30 0.960/0.946 | The pre-run signal is conservative on easy contractions and closer on QFT | One GPU/software/precision setting |
@@ -211,6 +211,56 @@ the 127-qubit node-level tensor. The reproducible audit and timestamp rows are
 in [artifacts/validation/mali_snapshot_variability/](artifacts/validation/mali_snapshot_variability/).
 The raw input and exact download/hash/rerun instructions are in
 [artifacts/validation/mali_snapshot_variability/DATASET_README.md](artifacts/validation/mali_snapshot_variability/DATASET_README.md).
+
+### 2.5 Direct source-specific compiled estimator
+
+**Finding recorded:** 2026-09-19.
+
+The preceding proxy work evaluated one-feature calibrations. The direct-estimator
+pass asks the more useful operational question: given a logical QASM circuit and
+an intended Osaka/Kyoto target, does a model trained only on the Ma–Li observed
+`result.time_taken` labels predict better than physical depth alone? It uses the
+same 340 labels at fixed 1,024 shots, keeps queue time excluded, and never mixes
+Qonductor, QPack, IonQ or simulator targets into the training table.
+
+Features are available before execution but only after target-specific
+transpilation: logical width/depth/two-qubit-depth/gate-count; physical
+depth/two-qubit-depth/gate-count/two-qubit-count/SWAP count; a reconstructed
+weighted target-duration critical path; and backend identity. Numeric counts
+are log transformed. The compiled features and duration path are still derived
+from the frozen current `FakeOsaka`/`FakeKyoto` protocol, not recovered
+historical physical circuits or calibration snapshots.
+
+All evaluation rows are out of fold by QASM SHA-256. Three views are retained:
+five-fold grouped logical circuits (within this source domain); paired-backend
+diagnostic (the same QASM may appear on the other backend in training); and the
+stricter 2 × 5 protocol that holds out both a backend and its logical-QASM
+fold. Family-held-out leaves one public circuit family out and does not feed
+the family token to the model. The table uses aggregate OOF predictions, not a
+mean of small-fold R² values.
+
+| Evaluation | Physical-depth Ridge: log R² / MAE | Compiled Ridge: log R² / MAE | Proxy + compiled residual RF: log R² / MAE |
+| --- | ---: | ---: | ---: |
+| Grouped logical circuits | 0.8246 / 0.6769 s | 0.8777 / **0.5116 s** | **0.8858** / 0.5303 s |
+| Backend + logical circuit held out | 0.8215 / 0.6792 s | 0.8742 / **0.5224 s** | **0.8753** / 0.5565 s |
+| Family held out | 0.8155 / 0.6890 s | 0.6734 / 0.6869 s | **0.8610** / **0.5630 s** |
+
+The paired-backend value (`compiled Ridge` log R² `0.9052`) is retained in the
+machine-readable result but is not used as primary transfer evidence because
+it can see the paired logical circuit on the other device. The strict directions
+remain separate: when Kyoto is held out, compiled Ridge reaches log R² `0.8491`
+(MAE `0.5554 s`); when Osaka is held out, it reaches `0.8908` (`0.4970 s`).
+There are only two backend directions, so this is evidence from a small,
+source-specific domain rather than broad device generalization.
+
+Within this proxy, compiled representation improves on depth-only structure.
+The experiment does **not** isolate a causal benefit of duration alone: the
+direct compiled models add several structural features at once, and the earlier
+matched Ridge ablation found only a small incremental gain from weighted path.
+No final deployable model is serialized, because selecting one after inspecting
+these comparisons would require an explicit frozen selection rule. The script,
+OOF predictions, per-fold metrics, strict-direction metrics and provenance are
+under [artifacts/validation/mali_direct_estimator/](artifacts/validation/mali_direct_estimator/).
 
 ## 3. CDAA/QCRE: schedule agreement versus hardware truth
 

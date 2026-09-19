@@ -28,6 +28,8 @@ REQUIRED = (
     "experiments/mali_qcre_proxy.py",
     "experiments/mali_qcre_validation.py",
     "experiments/mali_qcre_seed_sensitivity.py",
+    "experiments/run_mali_direct_estimator.py",
+    "experiments/requirements-mali-direct-estimator.txt",
     "experiments/README.md",
     "artifacts/mali/fold10_qwalk_outlier.json",
     "artifacts/qonductor/reproduction_metrics.json",
@@ -42,6 +44,12 @@ REQUIRED = (
     "artifacts/validation/mali_qcre_seed_sensitivity/MALI_QCRE_SEED_SENSITIVITY_REPORT.md",
     "artifacts/validation/mali_qcre_seed_sensitivity/mali_qcre_seed_sensitivity_rows.csv",
     "artifacts/validation/mali_qcre_seed_sensitivity/mali_qcre_seed_sensitivity_summary.json",
+    "artifacts/validation/mali_direct_estimator/MALI_DIRECT_COMPILED_ESTIMATOR_REPORT.md",
+    "artifacts/validation/mali_direct_estimator/mali_direct_estimator_per_fold.csv",
+    "artifacts/validation/mali_direct_estimator/mali_direct_estimator_oof_predictions.csv",
+    "artifacts/validation/mali_direct_estimator/mali_direct_estimator_summary.csv",
+    "artifacts/validation/mali_direct_estimator/mali_direct_estimator_strict_backend_metrics.csv",
+    "artifacts/validation/mali_direct_estimator/mali_direct_estimator_provenance.json",
     "artifacts/cdaa_qcre/independent_all_metrics.csv",
     "artifacts/cutensornet/cutensornet_runtime_benchmark.csv",
     "artifacts/azizov_independent/p0_smoke.csv",
@@ -93,7 +101,7 @@ def main() -> int:
     require(set(lock["tracks"]) == {"mali", "qonductor", "cdaa", "qcre", "cutensornet"},
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 16,
+    require(len(artifact_manifest["artifacts"]) == 17,
             "unexpected replication artifact manifest size")
 
     qonductor = json.loads((ROOT / "artifacts/qonductor/reproduction_metrics.json").read_text())
@@ -169,6 +177,51 @@ def main() -> int:
         seed_summary["stability"]["physical_depth"]["std_r2"] < 0.01,
         "Ma-Li physical-depth seed sensitivity became unstable",
     )
+
+    with (ROOT / "artifacts/validation/mali_direct_estimator/mali_direct_estimator_summary.csv").open(
+        newline=""
+    ) as handle:
+        direct_summary = list(csv.DictReader(handle))
+    require(len(direct_summary) == 28, "unexpected Ma-Li direct-estimator summary size")
+    require(
+        {row["split"] for row in direct_summary}
+        == {
+            "grouped_logical_circuit_5fold",
+            "paired_backend_transfer_diagnostic",
+            "backend_and_logical_circuit_held_out",
+            "family_held_out",
+        },
+        "Ma-Li direct-estimator split set changed",
+    )
+    direct_index = {(row["split"], row["model"]): row for row in direct_summary}
+    direct_grouped = direct_index[("grouped_logical_circuit_5fold", "compiled_ridge")]
+    direct_strict = direct_index[("backend_and_logical_circuit_held_out", "compiled_ridge")]
+    require(int(direct_grouped["n_oof_rows"]) == 340,
+            "Ma-Li direct-estimator grouped OOF coverage changed")
+    require(abs(float(direct_grouped["r2_log"]) - 0.8777095522833426) < 1e-12,
+            "Ma-Li direct-estimator grouped compiled Ridge fixture changed")
+    require(abs(float(direct_strict["r2_log"]) - 0.8741660138813845) < 1e-12,
+            "Ma-Li direct-estimator strict compiled Ridge fixture changed")
+    with (ROOT / "artifacts/validation/mali_direct_estimator/mali_direct_estimator_oof_predictions.csv").open(
+        newline=""
+    ) as handle:
+        direct_predictions = list(csv.DictReader(handle))
+    require(len(direct_predictions) == 9_520,
+            "Ma-Li direct-estimator OOF prediction coverage changed")
+    direct_provenance = json.loads(
+        (ROOT / "artifacts/validation/mali_direct_estimator/mali_direct_estimator_provenance.json").read_text()
+    )
+    require(direct_provenance["input"]
+            == "artifacts/validation/mali_qcre_proxy/mali_qcre_proxy_features.csv",
+            "Ma-Li direct-estimator provenance is no longer portable")
+    require(direct_provenance["n_logical_circuit_groups"] == 170,
+            "Ma-Li direct-estimator logical-group count changed")
+    require(direct_provenance["software"] == {
+        "python": "3.14.4",
+        "numpy": "2.5.3",
+        "pandas": "3.0.5",
+        "scikit_learn": "1.9.0",
+    }, "Ma-Li direct-estimator software fixture changed")
 
     with (ROOT / "artifacts/cutensornet/cutensornet_runtime_benchmark.csv").open(newline="") as handle:
         cutn_rows = list(csv.DictReader(handle))
