@@ -38,6 +38,14 @@ records the target boundary, raw measurements, baseline OOF scores and the
 remaining device/precision transfer failure mode. It is not pooled with Aer,
 CUDA-Q or cuTensorNet.
 
+The [structural v2 follow-up](experiments/simulator_runtime_v2/README.md)
+extends that one kernel with seeded random topologies and a q26/q28 GPU-memory
+frontier. Its [final report](artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/REPORT.md)
+keeps 4 CUDA out-of-memory observations as `resource_limit` rather than
+inventing duration labels. It finds strong in-range circuit-group prediction,
+weaker width extrapolation, and a q24-calibrated peak-memory envelope that
+correctly rejects q28 complex128 despite raw statevector bytes fitting VRAM.
+
 ## Scope
 
 Each track has its own target semantics:

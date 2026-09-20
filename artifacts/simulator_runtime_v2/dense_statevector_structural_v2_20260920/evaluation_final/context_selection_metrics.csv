@@ -1,0 +1,8 @@
+model,complete_circuit_groups,exact_fastest_rate,median_regret_ratio,mean_regret_seconds
+analytical_calibrated_ridge,36,1.0,1.0,0.0
+analytical_hgb,36,1.0,1.0,0.0
+graph_hgb,36,1.0,1.0,0.0
+graph_hgb_with_family,36,1.0,1.0,0.0
+logical_hgb,36,1.0,1.0,0.0
+median_log,36,0.0,4.855152011627049,2.2840911139713476
+structural_ridge,36,1.0,1.0,0.0

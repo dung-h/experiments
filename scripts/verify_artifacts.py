@@ -37,6 +37,14 @@ REQUIRED = (
     "experiments/simulator_runtime_v1/run_torch_statevector_matrix.py",
     "experiments/simulator_runtime_v1/evaluate_torch_statevector_matrix.py",
     "experiments/simulator_runtime_v1/summarize_torch_statevector_matrix.py",
+    "experiments/simulator_runtime_v2/README.md",
+    "experiments/simulator_runtime_v2/EXPERIMENT_PROTOCOL.md",
+    "experiments/simulator_runtime_v2/requirements-evaluation.txt",
+    "experiments/simulator_runtime_v2/features.py",
+    "experiments/simulator_runtime_v2/run_dense_statevector_v2.py",
+    "experiments/simulator_runtime_v2/build_corpus.py",
+    "experiments/simulator_runtime_v2/evaluate_runtime_v2.py",
+    "experiments/simulator_runtime_v2/summarize_runtime_v2.py",
     "experiments/simulator_papers/README.md",
     "experiments/simulator_papers/run_zero_setup_pps_canary.py",
     "experiments/simulator_papers/run_zero_setup_pps_grid.py",
@@ -150,6 +158,20 @@ REQUIRED = (
     "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/evaluation/oof_predictions.csv",
     "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/evaluation/per_fold_metrics.csv",
     "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/evaluation/summary.json",
+    "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/manifest.json",
+    "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/records.jsonl",
+    "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/records.csv",
+    "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/canonical_corpus.csv",
+    "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/canonical_corpus.summary.json",
+    "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/results_summary.json",
+    "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/REPORT.md",
+    "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_final/REPORT.md",
+    "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_final/aggregate_metrics.csv",
+    "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_final/oof_predictions.csv",
+    "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_final/per_fold_metrics.csv",
+    "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_final/resource_envelope.csv",
+    "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_final/resource_frontier_prediction.csv",
+    "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_final/summary.json",
 )
 
 def require(condition: bool, message: str) -> None:
@@ -589,6 +611,53 @@ def main() -> int:
             "dense-statevector grouped HGB fixture changed")
     require(float(width_hgb["r2_log"]) < 0.1,
             "dense-statevector width holdout no longer records the tree extrapolation failure")
+
+    dense_v2_root = ROOT / "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920"
+    with (dense_v2_root / "records.csv").open(newline="") as handle:
+        dense_v2_raw = list(csv.DictReader(handle))
+    require(len(dense_v2_raw) == 112, "unexpected dense-statevector v2 raw row count")
+    require(sum(row["status"] == "ok" for row in dense_v2_raw) == 108,
+            "dense-statevector v2 successful raw coverage changed")
+    require(sum(row["status"] == "resource_limit" for row in dense_v2_raw) == 4,
+            "dense-statevector v2 resource-limit coverage changed")
+    require({row["family"] for row in dense_v2_raw} == {"random_matching", "random_star"},
+            "dense-statevector v2 family coverage changed")
+    with (dense_v2_root / "canonical_corpus.csv").open(newline="") as handle:
+        dense_v2_corpus = list(csv.DictReader(handle))
+    require(len(dense_v2_corpus) == 208, "unexpected dense-statevector v2 canonical row count")
+    require(sum(row["status"] == "ok" for row in dense_v2_corpus) == 204,
+            "dense-statevector v2 canonical duration coverage changed")
+    require({row["source_run"] for row in dense_v2_corpus} == {"v1_reference", "v2_structural"},
+            "dense-statevector v2 source provenance changed")
+    require(len({row["circuit_id"] for row in dense_v2_corpus}) == 68,
+            "dense-statevector v2 logical-circuit coverage changed")
+    require({int(row["num_qubits"]) for row in dense_v2_corpus} == {16, 20, 24, 26, 28},
+            "dense-statevector v2 width coverage changed")
+
+    with (dense_v2_root / "evaluation_final/aggregate_metrics.csv").open(newline="") as handle:
+        dense_v2_metrics = list(csv.DictReader(handle))
+    dense_v2_index = {(row["split"], row["model"]): row for row in dense_v2_metrics}
+    logical_grouped = dense_v2_index[("circuit_group", "logical_hgb")]
+    analytical_width = dense_v2_index[("width_held_out", "analytical_calibrated_ridge")]
+    logical_width = dense_v2_index[("width_held_out", "logical_hgb")]
+    require(int(logical_grouped["n_test"]) == 204 and float(logical_grouped["r2_log"]) > 0.97,
+            "dense-statevector v2 circuit-group logical estimator changed")
+    require(float(analytical_width["r2_log"]) > float(logical_width["r2_log"]),
+            "dense-statevector v2 width-extrapolation finding changed")
+
+    with (dense_v2_root / "evaluation_final/resource_frontier_prediction.csv").open(
+        newline=""
+    ) as handle:
+        frontier_rows = list(csv.DictReader(handle))
+    frontier = {(row["context_id"], int(row["num_qubits"])): row for row in frontier_rows}
+    c128_q28 = frontier[("cuda:complex128", 28)]
+    c64_q28 = frontier[("cuda:complex64", 28)]
+    require(c128_q28["raw_statevector_fits"] == "True" and c128_q28["envelope_fits"] == "False",
+            "dense-statevector v2 q28 complex128 envelope boundary changed")
+    require(int(c128_q28["observed_resource_limit"]) == 4,
+            "dense-statevector v2 q28 complex128 resource evidence changed")
+    require(c64_q28["envelope_fits"] == "True" and int(c64_q28["observed_ok"]) == 4,
+            "dense-statevector v2 q28 complex64 feasibility evidence changed")
 
     with (ROOT / "tracks/cdaa_qcre/data/instruction_durations/SNAPSHOT_MANIFEST.csv").open(
         newline=""

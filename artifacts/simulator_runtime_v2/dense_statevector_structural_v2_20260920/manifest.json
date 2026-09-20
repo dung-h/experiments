@@ -1,0 +1,86 @@
+{
+  "cold_semantics": "first execution after this circuit's gate tensors were materialized; the Python process and CUDA context have already been initialized",
+  "contexts_requested": [
+    "cpu:complex64",
+    "cpu:complex128",
+    "cuda:complex64",
+    "cuda:complex128"
+  ],
+  "hardware": {
+    "cpu_count": 28,
+    "cuda_available": true,
+    "cuda_name": "NVIDIA GeForce RTX 5070 Ti",
+    "cuda_total_bytes": 16608788480,
+    "torch_cpu_threads": 16
+  },
+  "invocations": [
+    {
+      "arguments": {
+        "contexts": "cpu:complex64,cpu:complex128,cuda:complex64,cuda:complex128",
+        "cpu_threads": 16,
+        "dry_run": false,
+        "families": "random_matching,random_star",
+        "max_jobs": 0,
+        "output_dir": "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920",
+        "repeats": 3,
+        "resume": true,
+        "seeds": "17",
+        "warmup": 1,
+        "widths": "16,20,24"
+      },
+      "completed_utc": "2026-09-20T14:43:36+00:00",
+      "newly_emitted_records": 48,
+      "planned_jobs": 48
+    },
+    {
+      "arguments": {
+        "contexts": "cuda:complex64,cuda:complex128",
+        "cpu_threads": 16,
+        "dry_run": false,
+        "families": "random_matching,random_star",
+        "max_jobs": 0,
+        "output_dir": "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920",
+        "repeats": 3,
+        "resume": true,
+        "seeds": "43,101",
+        "warmup": 1,
+        "widths": "16,20,24"
+      },
+      "completed_utc": "2026-09-20T14:54:30+00:00",
+      "newly_emitted_records": 48,
+      "planned_jobs": 48
+    },
+    {
+      "arguments": {
+        "contexts": "cuda:complex64,cuda:complex128",
+        "cpu_threads": 16,
+        "dry_run": false,
+        "families": "random_matching,random_star",
+        "max_jobs": 0,
+        "output_dir": "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920",
+        "repeats": 3,
+        "resume": true,
+        "seeds": "17",
+        "warmup": 1,
+        "widths": "26,28"
+      },
+      "completed_utc": "2026-09-20T15:28:18+00:00",
+      "newly_emitted_records": 16,
+      "planned_jobs": 16
+    }
+  ],
+  "known_boundaries": [
+    "The target is a PyTorch dense-statevector reference kernel, not Aer, CUDA-Q, cuTensorNet or QPU time.",
+    "Runtime and resource-limit labels are separate outcomes; a failed allocation has no invented runtime.",
+    "No cross-GPU conclusion is possible from this one-GPU machine."
+  ],
+  "records_csv": "records.csv",
+  "records_jsonl": "records.jsonl",
+  "schema_version": "torch_dense_statevector_v2",
+  "software": {
+    "python": "3.13.15 (main, Aug 14 2026, 15:34:59) [Clang 22.1.3 ]",
+    "torch": "2.11.0+cu128",
+    "torch_cuda": "12.8"
+  },
+  "target_semantics": "prepared dense-statevector execution: allocate a fresh |0...0> state, apply the materialized gate schedule, and evaluate <Z_0>; excludes schedule construction, gate materialization, compiler/transpiler and sampling"
+}

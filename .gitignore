@@ -12,6 +12,13 @@ work-*/
 # are versioned; reruns must use an explicit directory under work/.
 run-output/
 
+# Local-only intermediate evaluations and an aborted v2 preliminary run. The
+# final, regenerated v2 corpus/report is explicitly versioned below artifacts/.
+artifacts/simulator_runtime_v2/dense_statevector_structural_v2/
+artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_phase1/
+artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_phase1_ablation/
+artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_seed_extension/
+
 # Credentials and machine-local runtime state
 .env
 *.pem

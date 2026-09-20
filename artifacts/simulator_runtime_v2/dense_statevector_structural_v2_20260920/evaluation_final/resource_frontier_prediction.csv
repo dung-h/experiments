@@ -1,0 +1,5 @@
+context_id,num_qubits,statevector_bytes,device_total_memory_bytes,observed_rows,observed_ok,observed_resource_limit,observed_error,calibration_largest_width,calibration_peak_ratio,raw_statevector_fits,envelope_peak_bytes,envelope_fits
+cuda:complex128,26,1073741824,16608788480.0,4,4,0,0,24,4.0859375,True,4387241984.0,True
+cuda:complex128,28,4294967296,16608788480.0,4,0,4,0,24,4.0859375,True,17548967936.0,False
+cuda:complex64,26,536870912,16608788480.0,4,4,0,0,24,4.171875,True,2239758336.0,True
+cuda:complex64,28,2147483648,16608788480.0,4,4,0,0,24,4.171875,True,8959033344.0,True

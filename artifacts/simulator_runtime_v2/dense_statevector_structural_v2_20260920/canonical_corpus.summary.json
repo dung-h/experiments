@@ -1,0 +1,32 @@
+{
+  "rows": 208,
+  "successful_rows": 204,
+  "source_runs": {
+    "v1_reference": 96,
+    "v2_structural": 112
+  },
+  "families": [
+    "ghz",
+    "hea",
+    "qaoa_cycle",
+    "qft",
+    "random_brickwork",
+    "random_matching",
+    "random_star"
+  ],
+  "widths": [
+    16,
+    20,
+    24,
+    26,
+    28
+  ],
+  "contexts": [
+    "cpu:complex128",
+    "cpu:complex64",
+    "cuda:complex128",
+    "cuda:complex64"
+  ],
+  "target": "warm_execution_median_seconds",
+  "protocol": "same prepared_execute_reset_state target; one warm-up and three warm repeats"
+}
