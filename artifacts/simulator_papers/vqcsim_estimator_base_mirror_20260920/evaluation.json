@@ -1,0 +1,29 @@
+{
+  "source": "VQCSim only",
+  "target_semantics": "prepared-circuit, batch-1 local GPU inference mean_wall_ms; preparation and parity excluded",
+  "n_rows": 90,
+  "families": [
+    "qaoa",
+    "qnn",
+    "vqe_real_amp",
+    "vqe_su2",
+    "vqe_two_local"
+  ],
+  "widths": [
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "dataset_variants": [
+    "base",
+    "mirror"
+  ],
+  "grouping": "family::size keeps paired base/mirror records out of the same circuit-group fold",
+  "seed": 1234
+}

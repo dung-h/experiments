@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "purpose": "Pinned upstream sources for the four-track replication capsule.",
+  "purpose": "Pinned upstream sources for the replication capsule.",
   "tracks": {
     "mali": {
       "repository": "https://github.com/mooselab/Quantum-Execution-Time-Prediction.git",
@@ -30,6 +30,18 @@
       "reference_hardware": "NVIDIA RTX 5070 Ti",
       "precision": "complex64",
       "runtime_semantics": "pre-run scalar-contraction estimate versus local GPU timing"
+    },
+    "vqcsim": {
+      "repository": "https://github.com/Security-FIT/VQCSim.git",
+      "commit": "7fc274d448c5e67a7a4149088afa594203cd5707",
+      "checkout_directory": "work/vqcsim",
+      "runtime_semantics": "local Torch-native VQCSim GPU inference after preparation; Qiskit parity is separate"
+    },
+    "zero_setup": {
+      "repository": "https://github.com/arulrhikm/mps-pps-zero-setup-benchmarks.git",
+      "commit": "c4485f1c267410d291a717d05aa12d493559f337",
+      "checkout_directory": "work/zero_setup",
+      "runtime_semantics": "local Qiskit pauli-propagation kernel only; remote BlueQubit MPS/statevector execution is excluded"
     }
   }
 }

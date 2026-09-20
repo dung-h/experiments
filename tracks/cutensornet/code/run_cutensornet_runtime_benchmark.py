@@ -52,8 +52,9 @@ class CircuitFeatures:
 class TensorCircuitBuilder:
     """Build a scalar tensor-network representation while retaining features."""
 
-    def __init__(self, cp: Any, num_qubits: int, family: str, seed: int) -> None:
+    def __init__(self, cp: Any, num_qubits: int, family: str, seed: int, dtype: Any) -> None:
         self.cp = cp
+        self.dtype = dtype
         self.num_qubits = num_qubits
         self.features = CircuitFeatures(family=family, num_qubits=num_qubits)
         self.items: list[Any] = []
@@ -61,7 +62,7 @@ class TensorCircuitBuilder:
         self.qubit_depths = [0] * num_qubits
         self.next_mode = num_qubits
         self.rng = __import__("random").Random(seed)
-        zero = cp.asarray([1.0, 0.0], dtype=cp.complex64)
+        zero = cp.asarray([1.0, 0.0], dtype=self.dtype)
         for qubit in range(num_qubits):
             self.items.extend([zero, (qubit,)])
 
@@ -96,27 +97,27 @@ class TensorCircuitBuilder:
         self.current_modes[q0], self.current_modes[q1] = new0, new1
 
     def finish_scalar_amplitude(self) -> tuple[list[Any], CircuitFeatures]:
-        zero = self.cp.asarray([1.0, 0.0], dtype=self.cp.complex64)
+        zero = self.cp.asarray([1.0, 0.0], dtype=self.dtype)
         for mode in self.current_modes:
             self.items.extend([zero, (mode,)])
         return self.items, self.features
 
     def h(self) -> Any:
-        return self.cp.asarray([[1, 1], [1, -1]], dtype=self.cp.complex64) / math.sqrt(2)
+        return self.cp.asarray([[1, 1], [1, -1]], dtype=self.dtype) / math.sqrt(2)
 
     def rx(self, theta: float) -> Any:
         c, s = math.cos(theta / 2), -1j * math.sin(theta / 2)
-        return self.cp.asarray([[c, s], [s, c]], dtype=self.cp.complex64)
+        return self.cp.asarray([[c, s], [s, c]], dtype=self.dtype)
 
     def ry(self, theta: float) -> Any:
         c, s = math.cos(theta / 2), math.sin(theta / 2)
-        return self.cp.asarray([[c, -s], [s, c]], dtype=self.cp.complex64)
+        return self.cp.asarray([[c, -s], [s, c]], dtype=self.dtype)
 
     def rz(self, theta: float) -> Any:
         return self.cp.asarray(
             [[complex(math.cos(theta / 2), -math.sin(theta / 2)), 0],
              [0, complex(math.cos(theta / 2), math.sin(theta / 2))]],
-            dtype=self.cp.complex64,
+            dtype=self.dtype,
         )
 
     def cx(self) -> Any:
@@ -124,11 +125,11 @@ class TensorCircuitBuilder:
             [[[[(1 if (out0 == in0 and out1 == (in1 ^ in0)) else 0)
                 for in1 in range(2)] for in0 in range(2)]
               for out1 in range(2)] for out0 in range(2)],
-            dtype=self.cp.complex64,
+            dtype=self.dtype,
         )
 
     def controlled_phase(self, theta: float) -> Any:
-        diagonal = self.cp.asarray([1, 1, 1, complex(math.cos(theta), math.sin(theta))], dtype=self.cp.complex64)
+        diagonal = self.cp.asarray([1, 1, 1, complex(math.cos(theta), math.sin(theta))], dtype=self.dtype)
         return self.cp.diag(diagonal).reshape((2, 2, 2, 2))
 
     def rzz(self, theta: float) -> Any:
@@ -138,13 +139,18 @@ class TensorCircuitBuilder:
             complex(math.cos(theta / 2), math.sin(theta / 2)),
             complex(math.cos(-theta / 2), math.sin(-theta / 2)),
         ]
-        return self.cp.diag(self.cp.asarray(phases, dtype=self.cp.complex64)).reshape((2, 2, 2, 2))
+        return self.cp.diag(self.cp.asarray(phases, dtype=self.dtype)).reshape((2, 2, 2, 2))
 
 
 def build_family(
     cp: Any, family: str, num_qubits: int, seed: int, depth_multiplier: float,
+    precision: str = "complex64",
 ) -> tuple[list[Any], CircuitFeatures]:
-    circuit = TensorCircuitBuilder(cp, num_qubits, family, seed)
+    try:
+        dtype = getattr(cp, precision)
+    except AttributeError as exc:
+        raise ValueError(f"Unsupported CuPy precision: {precision}") from exc
+    circuit = TensorCircuitBuilder(cp, num_qubits, family, seed, dtype)
     circuit.features.family_depth_multiplier = depth_multiplier
     if family == "ghz":
         circuit.features.circuit_variant = "chain"
@@ -217,6 +223,8 @@ def benchmark_one(
     warmups: int,
     repeats: int,
     memory_limit: str,
+    optimizer_samples: int,
+    optimizer_seed: int,
 ) -> dict[str, Any]:
     compute_capability = str(cp.cuda.Device().compute_capability)
     # CuPy returns values such as ``"120"`` for Blackwell compute capability
@@ -233,7 +241,8 @@ def benchmark_one(
     network = tn.Network(*operands, options=options)
     try:
         optimizer = tn.OptimizerOptions(
-            samples=16,
+            samples=optimizer_samples,
+            seed=optimizer_seed,
             threads=max(1, (os.cpu_count() or 2) // 2),
             cost_function=cutn.OptimizerCost.TIME_TUNED,
             gpu_arch=gpu_arch,
@@ -279,6 +288,8 @@ def benchmark_one(
             "logical_two_qubit_gate_count": features.logical_two_qubit_gate_count,
             "precision": "complex64",
             "optimizer_cost_function": "TIME_TUNED",
+            "optimizer_samples": optimizer_samples,
+            "optimizer_seed": optimizer_seed,
             "cutensornet_runtime_est_s": runtime_est,
             "cutensornet_effective_flops_est": effective_flops,
             "cutensornet_flop_count": flop_count,
@@ -327,6 +338,16 @@ def main() -> None:
     parser.add_argument("--warmups", type=int, default=3)
     parser.add_argument("--repeats", type=int, default=10)
     parser.add_argument("--memory-limit", default="70%", help="cuTensorNet workspace limit")
+    parser.add_argument(
+        "--optimizer-samples", default="16",
+        help=("Comma-separated cuTensorNet path-search sample budgets. Each budget "
+              "produces one selected candidate plan for the same tensor network."),
+    )
+    parser.add_argument(
+        "--optimizer-seeds", default="42",
+        help=("Comma-separated hyperoptimizer RNG seeds. Multiple values create "
+              "candidate plans for the same circuit and sample budget."),
+    )
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     args = parser.parse_args()
@@ -345,30 +366,42 @@ def main() -> None:
     widths = [int(value) for value in args.qubits.split(",") if value.strip()]
     families = [value.strip() for value in args.families.split(",") if value.strip()]
     depth_multipliers = [float(value) for value in args.depth_multipliers.split(",") if value.strip()]
+    optimizer_samples = [int(value) for value in args.optimizer_samples.split(",") if value.strip()]
+    optimizer_seeds = [int(value) for value in args.optimizer_seeds.split(",") if value.strip()]
+    if not optimizer_samples or any(value < 1 for value in optimizer_samples):
+        raise SystemExit("--optimizer-samples must contain positive integers")
+    if not optimizer_seeds:
+        raise SystemExit("--optimizer-seeds must contain at least one integer")
     for family in families:
         for num_qubits in widths:
             multipliers = (1.0,) if family in {"ghz", "qft"} else depth_multipliers
             for depth_multiplier in multipliers:
-                print(
-                    f"Benchmarking {family}, {num_qubits} qubits, depth multiplier {depth_multiplier:g}",
-                    flush=True,
-                )
-                try:
-                    rows.append(benchmark_one(
-                        cp, np, tn, cutn, family, num_qubits, args.seed, depth_multiplier,
-                        args.warmups, args.repeats, args.memory_limit,
-                    ))
-                except Exception as exc:  # Preserve failed configurations rather than hiding them.
-                    failures.append({
-                        "family": family,
-                        "num_qubits": num_qubits,
-                        "depth_multiplier": depth_multiplier,
-                        "error": repr(exc),
-                    })
-                    print(
-                        f"FAILED {family}/{num_qubits}/x{depth_multiplier:g}: {exc}",
-                        file=sys.stderr, flush=True,
-                    )
+                for sample_budget in optimizer_samples:
+                    for optimizer_seed in optimizer_seeds:
+                        print(
+                            f"Benchmarking {family}, {num_qubits} qubits, depth multiplier "
+                            f"{depth_multiplier:g}, optimizer samples {sample_budget}, "
+                            f"optimizer seed {optimizer_seed}",
+                            flush=True,
+                        )
+                        try:
+                            rows.append(benchmark_one(
+                                cp, np, tn, cutn, family, num_qubits, args.seed, depth_multiplier,
+                                args.warmups, args.repeats, args.memory_limit, sample_budget, optimizer_seed,
+                            ))
+                        except Exception as exc:  # Preserve failed configurations rather than hiding them.
+                            failures.append({
+                                "family": family,
+                                "num_qubits": num_qubits,
+                                "depth_multiplier": depth_multiplier,
+                                "optimizer_samples": sample_budget,
+                                "optimizer_seed": optimizer_seed,
+                                "error": repr(exc),
+                            })
+                            print(
+                                f"FAILED {family}/{num_qubits}/x{depth_multiplier:g}/samples{sample_budget}/seed{optimizer_seed}: {exc}",
+                                file=sys.stderr, flush=True,
+                            )
     write_csv(args.output_dir / "cutensornet_runtime_benchmark.csv", rows)
     failure_path = args.output_dir / "cutensornet_runtime_benchmark_failures.json"
     if failures:

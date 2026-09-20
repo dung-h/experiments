@@ -20,6 +20,17 @@ next-session status and handoff are kept in [`HANDOFF.md`](HANDOFF.md). The
 exact upstream revisions are pinned in
 [`upstream/upstream.lock.json`](upstream/upstream.lock.json).
 
+An additional, separately labelled simulator-data-generation supplement covers
+VQCSim, the independent Azizov reconstruction, and the credential-free local
+part of the Zero-Setup artifact. Start with
+[`experiments/simulator_papers/README.md`](experiments/simulator_papers/README.md)
+and its [initial report](artifacts/simulator_papers/INITIAL_LOCAL_REPRODUCTION_REPORT_2026-09-20.md).
+The completed estimator-validation pass, raw-artifact map and failure analysis
+are in [`SIMULATOR_ESTIMATOR_VALIDATION_REPORT_2026-09-20.md`](artifacts/simulator_papers/SIMULATOR_ESTIMATOR_VALIDATION_REPORT_2026-09-20.md).
+Its [`deep-analysis companion`](artifacts/simulator_papers/DEEP_ANALYSIS_2026-09-20.md)
+records the observed residual patterns and the bounded technical explanations.
+It is not a sixth pooled runtime target.
+
 ## Scope
 
 Each track has its own target semantics:

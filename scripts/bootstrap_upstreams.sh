@@ -55,4 +55,7 @@ overlay "$ROOT/tracks/cdaa_qcre/independent" "$WORK/cdaa_independent/0_compilati
 mkdir -p "$WORK/cdaa_independent/0_compilation/qasm/original"
 cp -a "$WORK/cdaa/0_compilation/qasm/original/." "$WORK/cdaa_independent/0_compilation/qasm/original/"
 
+clone_at vqcsim https://github.com/Security-FIT/VQCSim.git 7fc274d448c5e67a7a4149088afa594203cd5707
+clone_at zero_setup https://github.com/arulrhikm/mps-pps-zero-setup-benchmarks.git c4485f1c267410d291a717d05aa12d493559f337
+
 echo "Upstreams and overlays materialized in: $WORK"

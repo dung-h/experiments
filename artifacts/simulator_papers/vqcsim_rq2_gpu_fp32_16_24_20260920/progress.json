@@ -1,0 +1,16 @@
+{
+  "current_job": null,
+  "elapsed_seconds": 1041.8725745677948,
+  "eta_seconds": 0.0,
+  "phase": "completed",
+  "processed_jobs": 45,
+  "summary": {
+    "records_seen": 45,
+    "terminal_status_histogram": {
+      "ok": 45
+    }
+  },
+  "throughput_jobs_per_second": 0.04319146227519001,
+  "timestamp_utc": "2026-09-19T17:53:08Z",
+  "total_jobs": 45
+}

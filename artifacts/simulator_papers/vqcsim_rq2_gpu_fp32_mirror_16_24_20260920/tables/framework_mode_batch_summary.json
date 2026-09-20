@@ -1,0 +1,14 @@
+[
+  {
+    "framework": "vqcsim",
+    "mode": "inference",
+    "batch_size": 1,
+    "records": 45,
+    "ok_records": 45,
+    "ok_rate": 1.0,
+    "median_wall_ms": 83.08871844433776,
+    "median_peak_vram_mb": 340.0,
+    "min_size_ok": 16,
+    "max_size_ok": 24
+  }
+]

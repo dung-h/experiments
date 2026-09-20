@@ -1,0 +1,2 @@
+framework,mode,training_gradient_policy,vqcsim_compile_policy,vqcsim_batch_policy,ok_rows,share_within_vqcsim_ok,median_wall_ms
+vqcsim,inference,n/a,prepare_once,vectorized,45,1.0,82.22227588895394

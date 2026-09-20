@@ -1,0 +1,4 @@
+case,n_qubits,rows,cols,duration_ns,dt_ns,num_steps,precision,max_bond_dim_limit,max_krylov_dim,max_bond_dimension_observed,peak_rss_mb,peak_state_memory_mb,peak_gpu_allocated_mb,peak_gpu_reserved_mb,sum_step_seconds,wall_seconds,gpu
+n16,16,4,4,200,10.0,20,1e-05,256,40,14,10.270719999999999,0.041408,9.794921875,22.0,13.101678609848022,18.186897116000182,NVIDIA GeForce RTX 5070 Ti
+n24,24,4,6,200,10.0,20,1e-05,256,40,17,10.854911999999999,0.097248,10.35205078125,22.0,17.288321256637573,21.577489519000665,NVIDIA GeForce RTX 5070 Ti
+n30,30,5,6,200,10.0,20,1e-05,256,40,27,12.808192,0.272096,12.21484375,26.0,22.4123113155365,27.595443281999906,NVIDIA GeForce RTX 5070 Ti

@@ -1,0 +1,206 @@
+{
+  "suite": "RQ2_time_vram_crossover",
+  "timestamp_utc": "2026-09-20T03:04:37Z",
+  "config": {
+    "families": [
+      "qaoa",
+      "qnn",
+      "vqe_real_amp",
+      "vqe_su2",
+      "vqe_two_local"
+    ],
+    "frameworks": [
+      "vqcsim"
+    ],
+    "batch_sizes": [
+      1
+    ],
+    "modes": [
+      "inference"
+    ],
+    "size_min": 16,
+    "size_max": 24,
+    "discover_sizes": false,
+    "size_discovery_patience": 3,
+    "strict_defaults_enforced": false,
+    "benchmark_level": "ALG",
+    "generate_mirror_circuit": true,
+    "random_parameters": false,
+    "decompose_reps": 10,
+    "transpile_to_supported_basis": true,
+    "seed_transpiler": 7,
+    "precision_mode": "float32",
+    "training_gradient_policy": "finite_difference",
+    "vqcsim_compile_policy": "prepare_once",
+    "vqcsim_batch_policy": "vectorized",
+    "device": "cuda",
+    "framework_device": "cuda",
+    "require_gpu": true,
+    "gpu_oom_guard": true,
+    "gpu_oom_guard_fraction": 0.9,
+    "gpu_oom_guard_headroom_mb": 256.0,
+    "max_supported_qubits": 24,
+    "reuse_circuit_dirs": [],
+    "historical_timeout_filter_sources": [],
+    "historical_timeout_limit_seconds": 0.0,
+    "generation_timeout_seconds": 60.0,
+    "per_job_timeout_seconds": 300.0,
+    "finite_diff_epsilon": 0.001,
+    "iters": 3,
+    "warmup": 1,
+    "repeats": 3,
+    "gpu_mem_sample_ms": 20,
+    "resume": true,
+    "fail_fast": false,
+    "max_jobs": null,
+    "skip_plots": true
+  },
+  "parity_tolerances": {
+    "fidelity_tol": 1e-07,
+    "state_max_abs_tol": 1e-05,
+    "probability_max_abs_tol": 1e-05,
+    "expectation_max_abs_tol": 1e-05
+  },
+  "size_discovery": {
+    "strategy": "fixed_range",
+    "outcomes": {
+      "qaoa": {
+        "mode": "fixed_range",
+        "min_size": 16,
+        "max_size": 24,
+        "count": 9
+      },
+      "qnn": {
+        "mode": "fixed_range",
+        "min_size": 16,
+        "max_size": 24,
+        "count": 9
+      },
+      "vqe_real_amp": {
+        "mode": "fixed_range",
+        "min_size": 16,
+        "max_size": 24,
+        "count": 9
+      },
+      "vqe_su2": {
+        "mode": "fixed_range",
+        "min_size": 16,
+        "max_size": 24,
+        "count": 9
+      },
+      "vqe_two_local": {
+        "mode": "fixed_range",
+        "min_size": 16,
+        "max_size": 24,
+        "count": 9
+      }
+    },
+    "sizes_by_family": {
+      "qaoa": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "qnn": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "vqe_real_amp": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "vqe_su2": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "vqe_two_local": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    }
+  },
+  "resume": {
+    "enabled": true,
+    "records_file": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/records.json",
+    "loaded_records": 0,
+    "preserved_records_outside_matrix": 0,
+    "reused_records": 0,
+    "skipped_due_policy": 0,
+    "load_error": null
+  },
+  "historical_timeout_filter": {
+    "enabled": false,
+    "requested_sources": [],
+    "resolved_sources": [],
+    "effective_limit_seconds": 300.0,
+    "loaded_rows": 0,
+    "matched_rows": 0,
+    "exact_skip_keys": 0,
+    "boundary_keys": 0,
+    "warnings": []
+  },
+  "progress": {
+    "backend_requested": "line",
+    "backend_active": "line",
+    "progress_every_n": 1,
+    "checkpoint_every_n": 1
+  },
+  "environment": {
+    "python": "3.13.15",
+    "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.43",
+    "system": "Linux",
+    "release": "7.0.0-31-generic",
+    "machine": "x86_64",
+    "torch": "2.11.0+cu128",
+    "torch_cuda": "12.8",
+    "torch_cudnn": "91900",
+    "mqt_bench": "2.1.0",
+    "qiskit": "2.5.2",
+    "pennylane": "unavailable",
+    "tensorcircuit": "unavailable",
+    "qandle": "unavailable",
+    "cudaq": "unavailable",
+    "qiskit_aer": "0.17.2",
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 5070 Ti",
+        "total_memory_mb": 15839.38
+      }
+    ]
+  }
+}

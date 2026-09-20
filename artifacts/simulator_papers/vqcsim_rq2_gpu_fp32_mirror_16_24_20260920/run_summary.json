@@ -1,0 +1,166 @@
+{
+  "suite": "RQ2_time_vram_crossover",
+  "timestamp_utc": "2026-09-20T03:04:37Z",
+  "stats": {
+    "total_records": 45,
+    "ok_records": 45,
+    "semantic_unsupported_records": 0,
+    "unsupported_mode_records": 0,
+    "resource_failure_oom_records": 0,
+    "resource_failure_timeout_records": 0,
+    "runtime_internal_error_records": 0,
+    "other_records": 0,
+    "parity_checked_records": 45,
+    "parity_passed_records": 45,
+    "ok_rate": 1.0,
+    "semantic_support_rate_decidable": 1.0,
+    "terminal_status_histogram": {
+      "ok": 45
+    }
+  },
+  "size_discovery": {
+    "strategy": "fixed_range",
+    "outcomes": {
+      "qaoa": {
+        "mode": "fixed_range",
+        "min_size": 16,
+        "max_size": 24,
+        "count": 9
+      },
+      "qnn": {
+        "mode": "fixed_range",
+        "min_size": 16,
+        "max_size": 24,
+        "count": 9
+      },
+      "vqe_real_amp": {
+        "mode": "fixed_range",
+        "min_size": 16,
+        "max_size": 24,
+        "count": 9
+      },
+      "vqe_su2": {
+        "mode": "fixed_range",
+        "min_size": 16,
+        "max_size": 24,
+        "count": 9
+      },
+      "vqe_two_local": {
+        "mode": "fixed_range",
+        "min_size": 16,
+        "max_size": 24,
+        "count": 9
+      }
+    },
+    "sizes_by_family": {
+      "qaoa": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "qnn": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "vqe_real_amp": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "vqe_su2": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "vqe_two_local": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    }
+  },
+  "jobs": {
+    "planned_matrix_jobs": 45,
+    "processed_jobs": 45,
+    "records_emitted": 45,
+    "preserved_resume_records": 0,
+    "reused_records": 0,
+    "skipped_resume_due_policy": 0,
+    "skipped_after_historical_timeout": 0,
+    "skipped_after_boundary": 0
+  },
+  "historical_timeout_filter": {
+    "enabled": false,
+    "requested_sources": [],
+    "resolved_sources": [],
+    "effective_limit_seconds": 300.0,
+    "loaded_rows": 0,
+    "matched_rows": 0,
+    "exact_skip_keys": 0,
+    "boundary_keys": 0,
+    "warnings": []
+  },
+  "failure_boundaries": [],
+  "plots": {
+    "plotting_available": false,
+    "generated": [],
+    "errors": [
+      "plots skipped (--skip_plots)"
+    ]
+  },
+  "outputs": {
+    "records_json": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/records.json",
+    "records_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/records.csv",
+    "manifest_json": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/manifest.json",
+    "tables_dir": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables",
+    "plots_dir": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/plots",
+    "terminal_status_histogram_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/terminal_status_histogram.csv",
+    "failure_boundaries_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/failure_boundaries.csv",
+    "framework_mode_batch_summary_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/framework_mode_batch_summary.csv",
+    "scaling_points_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/scaling_points.csv",
+    "crossover_points_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/crossover_points.csv",
+    "crossover_summary_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/crossover_summary.csv",
+    "training_gradient_inventory_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/training_gradient_inventory.csv",
+    "training_speedup_fairness_points_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/training_speedup_fairness_points.csv",
+    "training_speedup_fairness_summary_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/training_speedup_fairness_summary.csv",
+    "vqcsim_policy_inventory_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/vqcsim_policy_inventory.csv",
+    "vqcsim_ablation_points_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/vqcsim_ablation_points.csv",
+    "vqcsim_ablation_summary_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/vqcsim_ablation_summary.csv",
+    "statistical_robustness_points_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/statistical_robustness_points.csv",
+    "statistical_robustness_summary_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/statistical_robustness_summary.csv",
+    "statistical_robustness_summary_by_family_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/statistical_robustness_summary_by_family.csv",
+    "statistical_pairing_flow_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/statistical_pairing_flow.csv",
+    "statistical_pairing_flow_by_family_csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/tables/statistical_pairing_flow_by_family.csv"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "target_semantics": "local CPU seconds inside propagate_through_rotation_gates only",
+  "n_successful_rows": 36,
+  "features": [
+    "log_trotter_steps",
+    "neg_log10_delta",
+    "circuit_depth",
+    "circuit_gate_count",
+    "topology_edges"
+  ],
+  "excluded_post_run_features": [
+    "num_paulis",
+    "truncated_norm",
+    "expectation_value"
+  ],
+  "splits": [
+    {
+      "split": "configuration_group_5fold",
+      "model": "median_train_log",
+      "n": 36,
+      "log_mae": 1.6849410265357758,
+      "log_r2": -0.34816289781264187,
+      "mae_seconds": 0.1840506699000072,
+      "r2_seconds": -0.3112134392233181
+    },
+    {
+      "split": "configuration_group_5fold",
+      "model": "ridge",
+      "n": 36,
+      "log_mae": 0.9346381352895828,
+      "log_r2": 0.5208052216572676,
+      "mae_seconds": 0.11380421310703931,
+      "r2_seconds": 0.6060325554117569
+    },
+    {
+      "split": "configuration_group_5fold",
+      "model": "hist_gradient_boosting",
+      "n": 36,
+      "log_mae": 0.9075070654537739,
+      "log_r2": 0.3793002532206198,
+      "mae_seconds": 0.09890581004404171,
+      "r2_seconds": 0.6918231438565794
+    },
+    {
+      "split": "delta_held_out",
+      "model": "median_train_log",
+      "n": 36,
+      "log_mae": 1.730556009263902,
+      "log_r2": -0.35533036598535106,
+      "mae_seconds": 0.18625614826885462,
+      "r2_seconds": -0.31839800325304335
+    },
+    {
+      "split": "delta_held_out",
+      "model": "ridge",
+      "n": 36,
+      "log_mae": 1.0328427340271429,
+      "log_r2": 0.4574651863232716,
+      "mae_seconds": 0.16024493620064123,
+      "r2_seconds": -0.04121005498258978
+    },
+    {
+      "split": "delta_held_out",
+      "model": "hist_gradient_boosting",
+      "n": 36,
+      "log_mae": 1.5431138528223955,
+      "log_r2": 0.0753583981194037,
+      "mae_seconds": 0.179080465161518,
+      "r2_seconds": -0.23232867622267817
+    },
+    {
+      "split": "trotter_steps_held_out",
+      "model": "median_train_log",
+      "n": 36,
+      "log_mae": 1.6731991458646076,
+      "log_r2": -0.4162995622805996,
+      "mae_seconds": 0.18380216808325006,
+      "r2_seconds": -0.3218454461006959
+    },
+    {
+      "split": "trotter_steps_held_out",
+      "model": "ridge",
+      "n": 36,
+      "log_mae": 1.06864407788785,
+      "log_r2": 0.3737935085657075,
+      "mae_seconds": 0.12293983027396006,
+      "r2_seconds": 0.6065779658685805
+    },
+    {
+      "split": "trotter_steps_held_out",
+      "model": "hist_gradient_boosting",
+      "n": 36,
+      "log_mae": 0.8121016226207515,
+      "log_r2": 0.4418367551007273,
+      "mae_seconds": 0.10182168589821089,
+      "r2_seconds": 0.6739057758463316
+    }
+  ]
+}

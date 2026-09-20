@@ -1,0 +1,41 @@
+{
+  "family": "qaoa",
+  "benchmark_level": "ALG",
+  "reused_from_archive": false,
+  "reused_from_path": null,
+  "reuse_fallback_reason": null,
+  "size": 18,
+  "num_qubits": 18,
+  "parameter_order": [
+    "b[0]",
+    "b[1]",
+    "g[0]",
+    "g[1]"
+  ],
+  "deterministic_parameter_values": {
+    "b[0]": 1.2566370614359172,
+    "b[1]": 2.5132741228718345,
+    "g[0]": 3.7699111843077517,
+    "g[1]": 5.026548245743669
+  },
+  "descriptors": {
+    "num_qubits": 18,
+    "depth": 120,
+    "total_gate_count": 492,
+    "two_qubit_gate_count": 292,
+    "two_qubit_gate_density": 0.5934959349593496,
+    "entanglement_pattern_class": "sparse_irregular",
+    "entanglement_class": "sparse_irregular",
+    "parameter_count": 4,
+    "measurement_type": "statevector_no_measurement",
+    "measurement_count": 0,
+    "gate_histogram": {
+      "cx": 292,
+      "u": 200
+    }
+  },
+  "qasm3_path": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_16_24_20260920/circuits/qaoa/qaoa_alg_size_18.qasm3",
+  "qasm3_bound_path": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_16_24_20260920/circuits/qaoa/qaoa_alg_size_18.bound.qasm3",
+  "qasm2_parameterized_path": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_16_24_20260920/circuits/qaoa/qaoa_alg_size_18.normalized.qasm",
+  "qasm2_bound_path": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_16_24_20260920/circuits/qaoa/qaoa_alg_size_18.normalized.bound.qasm"
+}

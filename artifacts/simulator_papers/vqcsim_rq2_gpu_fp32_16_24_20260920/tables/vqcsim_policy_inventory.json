@@ -1,0 +1,12 @@
+[
+  {
+    "framework": "vqcsim",
+    "mode": "inference",
+    "training_gradient_policy": "n/a",
+    "vqcsim_compile_policy": "prepare_once",
+    "vqcsim_batch_policy": "vectorized",
+    "ok_rows": 45,
+    "share_within_vqcsim_ok": 1.0,
+    "median_wall_ms": 82.22227588895394
+  }
+]

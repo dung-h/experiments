@@ -1,0 +1,32 @@
+{
+  "n_labels": 12,
+  "metrics": {
+    "size": {
+      "n": 12,
+      "exact_accuracy": 0.25,
+      "within_one_rung_accuracy": 1.0,
+      "mean_absolute_rung_error": 0.75
+    },
+    "family": {
+      "n": 12,
+      "exact_accuracy": 0.5,
+      "within_one_rung_accuracy": 0.75,
+      "mean_absolute_rung_error": 0.9166666666666666
+    }
+  },
+  "features": [
+    "n_qubits",
+    "rows",
+    "cols",
+    "dt_ns",
+    "precision",
+    "target_fidelity",
+    "pulse_duration_ns",
+    "pulse_segments",
+    "amplitude_max",
+    "amplitude_mean",
+    "detuning_max_abs",
+    "detuning_mean",
+    "family"
+  ]
+}

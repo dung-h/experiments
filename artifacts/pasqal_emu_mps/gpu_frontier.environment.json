@@ -1,0 +1,15 @@
+{
+  "python": "3.10.21",
+  "torch": "2.7.1+cu128",
+  "torch_cuda": "12.8",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti",
+  "emu_mps": "2.9.1",
+  "pulser_core": "1.9.1",
+  "config": {
+    "output": "artifacts/pasqal_emu_mps/gpu_frontier.csv",
+    "duration_ns": 200,
+    "dt_ns": 10.0,
+    "max_bond_dim": 256,
+    "max_krylov_dim": 40
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "target_semantics": "local noisy-Aer execution seconds after fake-backend transpilation; transpilation excluded",
+  "n_successful_rows": 1192,
+  "features": [
+    "logical_width",
+    "logical_depth",
+    "logical_ops",
+    "logical_two_qubit_ops",
+    "physical_width",
+    "physical_depth",
+    "physical_ops",
+    "physical_two_qubit_ops",
+    "swap_count",
+    "dag_node_count",
+    "optimization_level",
+    "backend_is_sherbrooke"
+  ],
+  "coverage_target": 0.9,
+  "splits": [
+    {
+      "split": "grouped_circuit_5fold",
+      "n": 1192,
+      "log_mae": 0.06766985175119039,
+      "log_r2": 0.5590752566616105,
+      "mae_seconds": 0.16715646530394015,
+      "r2_seconds": 0.2388757760855138,
+      "interval_coverage": 0.9052013422818792,
+      "mean_interval_width_seconds": 0.5236125367700616
+    },
+    {
+      "split": "family_held_out",
+      "n": 1192,
+      "log_mae": 0.06670779105265508,
+      "log_r2": 0.5525808309959518,
+      "mae_seconds": 0.15426458124488127,
+      "r2_seconds": 0.3477256199294523,
+      "interval_coverage": 0.875,
+      "mean_interval_width_seconds": 0.36002885938714196
+    },
+    {
+      "split": "backend_held_out",
+      "n": 1192,
+      "log_mae": 0.1329687386178495,
+      "log_r2": 0.3564722381524118,
+      "mae_seconds": 0.2566015938787118,
+      "r2_seconds": 0.4047497891085141,
+      "interval_coverage": 0.21728187919463088,
+      "mean_interval_width_seconds": 0.24709066497257118
+    }
+  ],
+  "censoring_rule": "resource_limit/timeout rows are not imputed as completed runtime labels"
+}

@@ -1,0 +1,13 @@
+{
+  "target_semantics": "T_sim_contract: local GPU tensor-network scalar contraction",
+  "n_pairs": 52,
+  "complex128_over_complex64_time_ratio_median": 3.404781146912584,
+  "complex128_over_complex64_time_ratio_range": [
+    2.46545986660656,
+    4.684718722853548
+  ],
+  "absolute_scalar_difference_max": 3.196426740181042e-08,
+  "relative_scalar_difference_max": 5.4712603836075145e-06,
+  "reference": "complex128 result from the same local cuTensorNet setup",
+  "limitation": "No SGEMM emulation, exponent-statistics selector, RCS/Sycamore corpus or fidelity study is reproduced. The complex128 scalar is only an in-run numerical comparison point."
+}

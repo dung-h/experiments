@@ -1,0 +1,2 @@
+framework,mode,batch_size,records,ok_records,ok_rate,median_wall_ms,median_peak_vram_mb,min_size_ok,max_size_ok
+vqcsim,inference,1,45,45,1.0,82.22227588895394,340.0,16,24

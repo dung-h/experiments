@@ -1,0 +1,44 @@
+[
+  {
+    "family": "random_brickwork",
+    "num_qubits": 10,
+    "candidate_plan": "random_path_0",
+    "error": "MemoryLimitExceeded('GPU memory limit exceeded. Device id: 0.\\nThe memory limit is 8304394240, while the minimum workspace size needed is 12884902400.\\n')"
+  },
+  {
+    "family": "random_brickwork",
+    "num_qubits": 12,
+    "candidate_plan": "random_path_0",
+    "error": "MemoryLimitExceeded('GPU memory limit exceeded. Device id: 0.\\nThe memory limit is 8304394240, while the minimum workspace size needed is 19327353344.\\n')"
+  },
+  {
+    "family": "random_brickwork",
+    "num_qubits": 12,
+    "candidate_plan": "random_path_1",
+    "error": "MemoryLimitExceeded('GPU memory limit exceeded. Device id: 0.\\nThe memory limit is 8304394240, while the minimum workspace size needed is 25769804288.\\n')"
+  },
+  {
+    "family": "qft",
+    "num_qubits": 12,
+    "candidate_plan": "random_path_0",
+    "error": "MemoryLimitExceeded('GPU memory limit exceeded. Device id: 0.\\nThe memory limit is 8304394240, while the minimum workspace size needed is 25803374848.\\n')"
+  },
+  {
+    "family": "qft",
+    "num_qubits": 12,
+    "candidate_plan": "random_path_1",
+    "error": "MemoryLimitExceeded('GPU memory limit exceeded. Device id: 0.\\nThe memory limit is 8304394240, while the minimum workspace size needed is 12884902400.\\n')"
+  },
+  {
+    "family": "qft",
+    "num_qubits": 12,
+    "candidate_plan": "random_path_2",
+    "error": "cuTensorNetError('NOT_SUPPORTED (15): CUTENSORNET_STATUS_NOT_SUPPORTED')"
+  },
+  {
+    "family": "qft",
+    "num_qubits": 12,
+    "candidate_plan": "random_path_3",
+    "error": "MemoryLimitExceeded('GPU memory limit exceeded. Device id: 0.\\nThe memory limit is 8304394240, while the minimum workspace size needed is 36507353344.\\n')"
+  }
+]

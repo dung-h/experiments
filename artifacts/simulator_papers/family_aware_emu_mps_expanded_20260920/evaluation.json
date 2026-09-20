@@ -1,0 +1,43 @@
+{
+  "target_semantics": "smallest EMU-MPS max_bond_dim rung achieving final-state fidelity 0.99 against a local reference",
+  "split": "leave-one-size-out with every family represented in training",
+  "n_labels": 24,
+  "features": [
+    "n_qubits",
+    "rows",
+    "cols",
+    "dt_ns",
+    "precision",
+    "target_fidelity",
+    "pulse_duration_ns",
+    "pulse_segments",
+    "amplitude_max",
+    "amplitude_mean",
+    "detuning_max_abs",
+    "detuning_mean"
+  ],
+  "software": {
+    "python": "3.10.21",
+    "pandas": "2.3.3",
+    "scikit_learn": "1.7.2"
+  },
+  "results": {
+    "shared_numeric": {
+      "n": 24,
+      "exact_accuracy": 0.375,
+      "within_one_rung_accuracy": 1.0,
+      "mean_absolute_rung_error": 0.625
+    },
+    "inferred_family_residual": {
+      "n": 24,
+      "exact_accuracy": 0.375,
+      "within_one_rung_accuracy": 1.0,
+      "mean_absolute_rung_error": 0.625
+    },
+    "family_classifier": {
+      "n": 24,
+      "accuracy": 1.0
+    }
+  },
+  "limitation": "Family labels have deterministic pulse-metadata signatures in this local constructed pulse corpus. This does not test unseen-family generalization or replicate the QASM-based paper corpus."
+}

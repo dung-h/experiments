@@ -1,0 +1,11 @@
+{
+  "target_semantics": "T_sim_contract: local GPU tensor-network scalar contraction",
+  "n_candidate_rows": 45,
+  "n_complete_circuit_groups": 15,
+  "flop_exact_fastest_rate": 0.9333333333333333,
+  "flop_selection_regret_ratio_median": 1.0,
+  "flop_selection_regret_ratio_max": 1.0476190693906213,
+  "native_time_tuned_regret_ratio_median": 1.0,
+  "max_scalar_magnitude_spread": 1.2738169755110995e-07,
+  "limitation": "This compares three transparent local candidates and FLOP cost only. It is not the paper's candidate generation, learned ranking model, benchmark corpus or cross-GPU evaluation."
+}

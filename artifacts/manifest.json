@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "scope": "Five independent runtime-estimator replication tracks; never pooled.",
+  "scope": "Five primary runtime-estimator replication tracks plus separately labelled simulator-paper canaries; never pooled.",
   "artifacts": [
     {
       "path": "artifacts/mali/MA_LI_REPLICATION_REPORT.md",
@@ -104,6 +104,96 @@
       "runtime_semantics": "targeted 36 GiB RSS-cap sensitivity check for two width-10--12 Aer rows; both wall-time censored",
       "critical_fixture": "artifacts/azizov_independent/q10_q16_highmem_canary.csv",
       "related_fixture": "artifacts/azizov_independent/q10_q16_highmem_canary.environment.json"
+    },
+    {
+      "path": "artifacts/azizov_independent/Q10_Q16_30MIN_INSIGHT_REPORT.md",
+      "provenance_class": "OUR_RESOURCE_SCREEN_CENSORED",
+      "runtime_semantics": "two local CPU noisy-Aer attempts after FakeWashingtonV2 transpilation, both right-censored at a 1,800-second wall timeout; not completed runtime labels",
+      "critical_fixture": "artifacts/azizov_independent/q10_q16_30min_canary.csv"
+    },
+    {
+      "path": "artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_16_24_20260920/records.csv",
+      "provenance_class": "OUR_LOCAL_REPRODUCTION_CANARY",
+      "runtime_semantics": "local RTX 5070 Ti GPU float32 VQCSim prepared-circuit inference time; preparation and Qiskit parity are separate",
+      "critical_fixture": "artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_16_24_20260920/run_summary.json",
+      "related_fixture": "artifacts/simulator_papers/INITIAL_LOCAL_REPRODUCTION_REPORT_2026-09-20.md"
+    },
+    {
+      "path": "artifacts/simulator_papers/zero_setup_pps_local_canary_20260920.jsonl",
+      "provenance_class": "OUR_LOCAL_REPRODUCTION_CANARY",
+      "runtime_semantics": "local CPU pauli-prop propagation kernel only for the upstream 127-qubit TFI circuit; circuit build/conversion and BlueQubit cloud times excluded",
+      "critical_fixture": "artifacts/simulator_papers/zero_setup_pps_local_canary_20260920.environment.json",
+      "related_fixture": "artifacts/simulator_papers/INITIAL_LOCAL_REPRODUCTION_REPORT_2026-09-20.md"
+    },
+    {
+      "path": "artifacts/simulator_papers/explicit_plan_ranking_proxy_20260920/candidates.csv",
+      "provenance_class": "OUR_INDEPENDENT_PROXY",
+      "runtime_semantics": "local RTX 5070 Ti warm scalar tensor-network contraction under three explicit candidate plans; path search and first contraction separate",
+      "critical_fixture": "artifacts/simulator_papers/explicit_plan_ranking_proxy_20260920/evaluation.json",
+      "related_fixture": "artifacts/simulator_papers/SP4_SP6_INDEPENDENT_PROBES_2026-09-20.md"
+    },
+    {
+      "path": "artifacts/simulator_papers/family_aware_emu_mps_proxy_20260920/evaluation.csv",
+      "provenance_class": "OUR_INDEPENDENT_PROXY",
+      "runtime_semantics": "EMU-MPS required max-bond-dimension fidelity threshold, not runtime; nested known-family leave-one-size-out evaluation",
+      "critical_fixture": "artifacts/simulator_papers/family_aware_emu_mps_proxy_20260920/evaluation.json",
+      "related_fixture": "artifacts/pasqal_emu_mps/threshold_sweep_labels.csv"
+    },
+    {
+      "path": "artifacts/simulator_papers/precision_selection_proxy_20260920/pairs.csv",
+      "provenance_class": "OUR_INDEPENDENT_PROXY",
+      "runtime_semantics": "matched local RTX 5070 Ti warm scalar tensor-network contractions at complex64 and complex128; complex128 is a numerical comparison point",
+      "critical_fixture": "artifacts/simulator_papers/precision_selection_proxy_20260920/evaluation.json",
+      "related_fixture": "artifacts/simulator_papers/SP4_SP6_INDEPENDENT_PROBES_2026-09-20.md"
+    },
+    {
+      "path": "artifacts/simulator_papers/SIMULATOR_ESTIMATOR_VALIDATION_REPORT_2026-09-20.md",
+      "provenance_class": "OUR_SOURCE_AWARE_VALIDATION_SUMMARY",
+      "runtime_semantics": "index of separate local simulator runtime, plan-feasibility, precision and fidelity-threshold targets; never pooled"
+    },
+    {
+      "path": "artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/records.csv",
+      "provenance_class": "OUR_LOCAL_REPRODUCTION_EXTENSION",
+      "runtime_semantics": "local RTX 5070 Ti GPU float32 VQCSim mirror-circuit prepared-inference time; preparation and parity separate",
+      "critical_fixture": "artifacts/simulator_papers/vqcsim_estimator_base_mirror_20260920/evaluation.json"
+    },
+    {
+      "path": "artifacts/simulator_papers/aer_interval_validation_20260920/evaluation.json",
+      "provenance_class": "OUR_SOURCE_AWARE_VALIDATION",
+      "runtime_semantics": "out-of-fold local noisy-Aer execution interval after fake-backend transpilation; transpilation excluded",
+      "critical_fixture": "artifacts/simulator_papers/aer_interval_validation_20260920/evaluation.md"
+    },
+    {
+      "path": "artifacts/simulator_papers/zero_setup_pps_grid_20260920.jsonl",
+      "provenance_class": "OUR_LOCAL_REPRODUCTION_EXTENSION",
+      "runtime_semantics": "local CPU pauli-prop propagation kernel under predeclared Trotter and approximation controls",
+      "critical_fixture": "artifacts/simulator_papers/zero_setup_pps_estimator_20260920/evaluation.json"
+    },
+    {
+      "path": "artifacts/simulator_papers/explicit_plan_ranking_expanded_20260920/candidates_connected.csv",
+      "provenance_class": "OUR_INDEPENDENT_PROXY_EXTENSION",
+      "runtime_semantics": "feasible local RTX 5070 Ti warm scalar contractions under explicit connected candidate plans; infeasible plans retained separately",
+      "critical_fixture": "artifacts/simulator_papers/explicit_plan_ranking_expanded_20260920/evaluation_connected.json",
+      "related_fixture": "artifacts/simulator_papers/explicit_plan_ranking_expanded_20260920/candidates_connected.failures.json"
+    },
+    {
+      "path": "artifacts/simulator_papers/emu_mps_threshold_extension_20260920/threshold_labels.csv",
+      "provenance_class": "OUR_INDEPENDENT_PROXY_EXTENSION",
+      "runtime_semantics": "EMU-MPS smallest max-bond-dimension rung reaching local-reference fidelity 0.99; threshold, not runtime",
+      "critical_fixture": "artifacts/simulator_papers/family_aware_emu_mps_expanded_20260920/evaluation.json"
+    },
+    {
+      "path": "artifacts/simulator_papers/precision_selection_expanded_20260920/records.csv",
+      "provenance_class": "OUR_INDEPENDENT_PROXY_EXTENSION",
+      "runtime_semantics": "matched local RTX 5070 Ti warm scalar contractions at complex64 and complex128 with a scalar-agreement policy label",
+      "critical_fixture": "artifacts/simulator_papers/precision_selection_expanded_20260920/policy.json",
+      "related_fixture": "artifacts/simulator_papers/precision_selection_expanded_20260920/evaluation.json"
+    },
+    {
+      "path": "artifacts/simulator_papers/DEEP_ANALYSIS_2026-09-20.md",
+      "provenance_class": "OUR_POST_HOC_DIAGNOSTIC",
+      "runtime_semantics": "descriptive analysis of separate dated simulator timing, feasibility, scalar-agreement and threshold artifacts; no pooled target or retraining",
+      "critical_fixture": "artifacts/simulator_papers/DEEP_ANALYSIS_2026-09-20.json"
     }
   ]
 }

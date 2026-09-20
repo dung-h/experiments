@@ -1,0 +1,9 @@
+{
+  "formula": "T = alpha*N^2*chi^3 + beta*N^3*chi^2",
+  "target": "sum_step_seconds",
+  "chi_source": "max_bond_dimension_observed",
+  "alpha": -1.693031814720668e-05,
+  "beta": 1.639726756393429e-05,
+  "condition_number": 48.12382770691737,
+  "n_observations": 3
+}

@@ -24,6 +24,7 @@ REQUIRED = (
     "tracks/cdaa_qcre/independent/sqgm/exp-in/exp_eagle.json",
     "tracks/cdaa_qcre/independent/sqgm/exp-in/exp_heron.json",
     "tracks/cutensornet/code/run_cutensornet_runtime_benchmark.py",
+    "tracks/cutensornet/code/with_cutensornet_env.sh",
     "experiments/qonductor_mapping_audit.py",
     "experiments/mali_qcre_proxy.py",
     "experiments/mali_qcre_validation.py",
@@ -31,6 +32,21 @@ REQUIRED = (
     "experiments/run_mali_direct_estimator.py",
     "experiments/requirements-mali-direct-estimator.txt",
     "experiments/README.md",
+    "experiments/simulator_papers/README.md",
+    "experiments/simulator_papers/run_zero_setup_pps_canary.py",
+    "experiments/simulator_papers/run_zero_setup_pps_grid.py",
+    "experiments/simulator_papers/evaluate_zero_setup_pps_estimator.py",
+    "experiments/simulator_papers/evaluate_vqcsim_runtime_estimator.py",
+    "experiments/simulator_papers/evaluate_aer_runtime_intervals.py",
+    "experiments/simulator_papers/relativize_vqcsim_records.py",
+    "experiments/simulator_papers/run_explicit_plan_ranking_proxy.py",
+    "experiments/simulator_papers/evaluate_explicit_plan_ranking_proxy.py",
+    "experiments/simulator_papers/evaluate_family_aware_threshold_proxy.py",
+    "experiments/simulator_papers/run_precision_selection_proxy.py",
+    "experiments/simulator_papers/evaluate_precision_selection_proxy.py",
+    "experiments/simulator_papers/evaluate_precision_policy.py",
+    "experiments/simulator_papers/analyze_validation_pass.py",
+    "tracks/pasqal_emu_mps/scripts/run_threshold_extension.py",
     "artifacts/mali/fold10_qwalk_outlier.json",
     "artifacts/qonductor/reproduction_metrics.json",
     "artifacts/validation/qonductor_mapping/QONDUCTOR_MAPPING_AUDIT.md",
@@ -87,6 +103,38 @@ REQUIRED = (
     "artifacts/azizov_independent/Q10_Q16_HIGHMEM_CHECK_REPORT.md",
     "artifacts/azizov_independent/q10_q16_highmem_canary.csv",
     "artifacts/azizov_independent/q10_q16_highmem_canary.environment.json",
+    "artifacts/azizov_independent/Q10_Q16_30MIN_INSIGHT_REPORT.md",
+    "artifacts/azizov_independent/q10_q16_30min_canary.csv",
+    "artifacts/simulator_papers/INITIAL_LOCAL_REPRODUCTION_REPORT_2026-09-20.md",
+    "artifacts/simulator_papers/SIMULATOR_ESTIMATOR_VALIDATION_REPORT_2026-09-20.md",
+    "artifacts/simulator_papers/DEEP_ANALYSIS_2026-09-20.md",
+    "artifacts/simulator_papers/DEEP_ANALYSIS_2026-09-20.json",
+    "artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_16_24_20260920/records.csv",
+    "artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_16_24_20260920/records.json",
+    "artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_16_24_20260920/manifest.json",
+    "artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_16_24_20260920/run_summary.json",
+    "artifacts/simulator_papers/zero_setup_pps_local_canary_20260920.jsonl",
+    "artifacts/simulator_papers/zero_setup_pps_local_canary_20260920.environment.json",
+    "artifacts/simulator_papers/SP4_SP6_INDEPENDENT_PROBES_2026-09-20.md",
+    "artifacts/simulator_papers/explicit_plan_ranking_proxy_20260920/candidates.csv",
+    "artifacts/simulator_papers/explicit_plan_ranking_proxy_20260920/evaluation.json",
+    "artifacts/simulator_papers/family_aware_emu_mps_proxy_20260920/evaluation.csv",
+    "artifacts/simulator_papers/family_aware_emu_mps_proxy_20260920/evaluation.json",
+    "artifacts/simulator_papers/precision_selection_proxy_20260920/pairs.csv",
+    "artifacts/simulator_papers/precision_selection_proxy_20260920/evaluation.json",
+    "artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/records.csv",
+    "artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920/run_summary.json",
+    "artifacts/simulator_papers/vqcsim_estimator_base_mirror_20260920/evaluation.json",
+    "artifacts/simulator_papers/aer_interval_validation_20260920/evaluation.json",
+    "artifacts/simulator_papers/zero_setup_pps_grid_20260920.jsonl",
+    "artifacts/simulator_papers/zero_setup_pps_estimator_20260920/evaluation.json",
+    "artifacts/simulator_papers/explicit_plan_ranking_expanded_20260920/candidates_connected.csv",
+    "artifacts/simulator_papers/explicit_plan_ranking_expanded_20260920/candidates_connected.failures.json",
+    "artifacts/simulator_papers/explicit_plan_ranking_expanded_20260920/evaluation_connected.json",
+    "artifacts/simulator_papers/emu_mps_threshold_extension_20260920/threshold_labels.csv",
+    "artifacts/simulator_papers/family_aware_emu_mps_expanded_20260920/evaluation.json",
+    "artifacts/simulator_papers/precision_selection_expanded_20260920/records.csv",
+    "artifacts/simulator_papers/precision_selection_expanded_20260920/policy.json",
 )
 
 def require(condition: bool, message: str) -> None:
@@ -98,10 +146,12 @@ def main() -> int:
         require((ROOT / relative).is_file(), f"missing required artifact: {relative}")
 
     lock = json.loads((ROOT / "upstream/upstream.lock.json").read_text())
-    require(set(lock["tracks"]) == {"mali", "qonductor", "cdaa", "qcre", "cutensornet"},
+    require(set(lock["tracks"]) == {
+        "mali", "qonductor", "cdaa", "qcre", "cutensornet", "vqcsim", "zero_setup"
+    },
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 17,
+    require(len(artifact_manifest["artifacts"]) == 31,
             "unexpected replication artifact manifest size")
 
     qonductor = json.loads((ROOT / "artifacts/qonductor/reproduction_metrics.json").read_text())
@@ -319,6 +369,181 @@ def main() -> int:
     )
     require(highmem_env["max_rss_gib"] == 36.0 and highmem_env["processed_rows"] == 2,
             "high-memory canary provenance changed")
+    with (ROOT / "artifacts/azizov_independent/q10_q16_30min_canary.csv").open(
+        newline=""
+    ) as handle:
+        long_timeout_rows = list(csv.DictReader(handle))
+    require(len(long_timeout_rows) == 2, "unexpected 30-minute q10-q16 canary row count")
+    require({row["status"] for row in long_timeout_rows} == {"timeout"},
+            "30-minute q10-q16 canary must remain right-censored timeouts")
+    require(all(row["stop_reason"].startswith("wall_timeout") for row in long_timeout_rows),
+            "30-minute q10-q16 canary stop reason changed")
+    require(min(float(row["monitor_wall_s"]) for row in long_timeout_rows) >= 1_800,
+            "30-minute q10-q16 canary duration evidence changed")
+    require(max(float(row["peak_rss_mb"]) for row in long_timeout_rows) > 16_000,
+            "30-minute q10-q16 canary RSS evidence changed")
+
+    vqcsim_root = ROOT / "artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_16_24_20260920"
+    with (vqcsim_root / "records.csv").open(newline="") as handle:
+        vqcsim_rows = list(csv.DictReader(handle))
+    require(len(vqcsim_rows) == 45, "unexpected VQCSim local-canary row count")
+    require({row["terminal_status"] for row in vqcsim_rows} == {"ok"},
+            "VQCSim local canary contains a non-ok row")
+    require(all(row["parity_passed"] == "True" for row in vqcsim_rows),
+            "VQCSim local canary lost a parity pass")
+    require({row["family"] for row in vqcsim_rows}
+            == {"qaoa", "qnn", "vqe_real_amp", "vqe_su2", "vqe_two_local"},
+            "VQCSim local-canary family set changed")
+    require({int(row["size"]) for row in vqcsim_rows} == set(range(16, 25)),
+            "VQCSim local-canary width coverage changed")
+    vqcsim_path_fields = (
+        "qasm3_path", "qasm3_bound_path", "qasm2_parameterized_path", "qasm2_bound_path"
+    )
+    require(all(not row[field].startswith("/") for row in vqcsim_rows for field in vqcsim_path_fields),
+            "VQCSim records contain non-portable absolute QASM paths")
+    vqcsim_summary = json.loads((vqcsim_root / "run_summary.json").read_text())
+    require(vqcsim_summary["stats"]["ok_records"] == 45,
+            "VQCSim local-canary summary changed")
+
+    pps_path = ROOT / "artifacts/simulator_papers/zero_setup_pps_local_canary_20260920.jsonl"
+    pps_rows = [json.loads(line) for line in pps_path.read_text().splitlines() if line.strip()]
+    require(len(pps_rows) == 25 and all("error" not in row for row in pps_rows),
+            "Zero-Setup PPS local-canary success coverage changed")
+    expected_deltas = {1e-2, 5e-3, 1e-3, 5e-4, 1e-4}
+    require({float(row["delta"]) for row in pps_rows} == expected_deltas,
+            "Zero-Setup PPS delta grid changed")
+    require(all(sum(float(row["delta"]) == delta for row in pps_rows) == 5
+                for delta in expected_deltas),
+            "Zero-Setup PPS repeat count changed")
+    pps_environment = json.loads(
+        (ROOT / "artifacts/simulator_papers/zero_setup_pps_local_canary_20260920.environment.json").read_text()
+    )
+    require(pps_environment["pauli_prop"] == "0.2.1" and pps_environment["qiskit"] == "2.5.2",
+            "Zero-Setup PPS environment changed")
+
+    plan_root = ROOT / "artifacts/simulator_papers/explicit_plan_ranking_proxy_20260920"
+    with (plan_root / "candidates.csv").open(newline="") as handle:
+        plan_rows = list(csv.DictReader(handle))
+    require(len(plan_rows) == 45 and {row["status"] for row in plan_rows} == {"ok"},
+            "explicit plan-ranking proxy coverage changed")
+    require({row["candidate_plan"] for row in plan_rows}
+            == {"native_time_tuned", "left_fold", "right_fold"},
+            "explicit plan-ranking candidate set changed")
+    plan_summary = json.loads((plan_root / "evaluation.json").read_text())
+    require(plan_summary["n_complete_circuit_groups"] == 15,
+            "explicit plan-ranking group count changed")
+    require(0.9 <= plan_summary["flop_exact_fastest_rate"] <= 1.0,
+            "explicit plan-ranking selection rate is outside checked range")
+
+    family_root = ROOT / "artifacts/simulator_papers/family_aware_emu_mps_proxy_20260920"
+    with (family_root / "evaluation.csv").open(newline="") as handle:
+        family_rows = list(csv.DictReader(handle))
+    require(len(family_rows) == 24,
+            "family-aware EMU-MPS proxy row count changed")
+    require({row["method"] for row in family_rows}
+            == {"shared_numeric", "inferred_family_residual"},
+            "family-aware EMU-MPS proxy methods changed")
+    family_summary = json.loads((family_root / "evaluation.json").read_text())
+    require(family_summary["n_labels"] == 12,
+            "family-aware EMU-MPS label count changed")
+    require(family_summary["split"].startswith("leave-one-size-out"),
+            "family-aware EMU-MPS split changed")
+
+    precision_root = ROOT / "artifacts/simulator_papers/precision_selection_proxy_20260920"
+    with (precision_root / "pairs.csv").open(newline="") as handle:
+        precision_rows = list(csv.DictReader(handle))
+    require(len(precision_rows) == 40 and {row["precision"] for row in precision_rows}
+            == {"complex64", "complex128"},
+            "precision proxy pair coverage changed")
+    precision_summary = json.loads((precision_root / "evaluation.json").read_text())
+    require(precision_summary["n_pairs"] == 20,
+            "precision proxy matched-pair count changed")
+    require(2.0 < precision_summary["complex128_over_complex64_time_ratio_median"] < 5.0,
+            "precision proxy median time ratio outside checked range")
+
+    vqcsim_mirror_root = ROOT / "artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_mirror_16_24_20260920"
+    with (vqcsim_mirror_root / "records.csv").open(newline="") as handle:
+        vqcsim_mirror_rows = list(csv.DictReader(handle))
+    require(len(vqcsim_mirror_rows) == 45 and {row["terminal_status"] for row in vqcsim_mirror_rows} == {"ok"},
+            "VQCSim mirror extension coverage changed")
+    require(all(row["parity_passed"] == "True" for row in vqcsim_mirror_rows),
+            "VQCSim mirror extension lost a parity pass")
+    vqcsim_expanded = json.loads(
+        (ROOT / "artifacts/simulator_papers/vqcsim_estimator_base_mirror_20260920/evaluation.json").read_text()
+    )
+    require(vqcsim_expanded["n_rows"] == 90 and vqcsim_expanded["dataset_variants"] == ["base", "mirror"],
+            "VQCSim base/mirror estimator coverage changed")
+
+    aer_interval = json.loads(
+        (ROOT / "artifacts/simulator_papers/aer_interval_validation_20260920/evaluation.json").read_text()
+    )
+    require(aer_interval["n_successful_rows"] == 1192 and len(aer_interval["splits"]) == 3,
+            "Aer interval validation coverage changed")
+    aer_by_split = {row["split"]: row for row in aer_interval["splits"]}
+    require(aer_by_split["backend_held_out"]["interval_coverage"] < 0.5,
+            "Aer backend-held-out interval unexpectedly no longer exposes domain shift")
+
+    pps_grid = [
+        json.loads(line)
+        for line in (ROOT / "artifacts/simulator_papers/zero_setup_pps_grid_20260920.jsonl").read_text().splitlines()
+        if line.strip()
+    ]
+    require(len(pps_grid) == 36 and all("error" not in row for row in pps_grid),
+            "Zero-Setup PPS controlled grid coverage changed")
+    require({int(row["num_trotter_steps"]) for row in pps_grid} == {4, 8, 12, 20},
+            "Zero-Setup PPS Trotter grid changed")
+    pps_estimator = json.loads(
+        (ROOT / "artifacts/simulator_papers/zero_setup_pps_estimator_20260920/evaluation.json").read_text()
+    )
+    require(pps_estimator["n_successful_rows"] == 36 and len(pps_estimator["splits"]) == 9,
+            "Zero-Setup PPS estimator evaluation changed")
+
+    plan_expanded_root = ROOT / "artifacts/simulator_papers/explicit_plan_ranking_expanded_20260920"
+    with (plan_expanded_root / "candidates_connected.csv").open(newline="") as handle:
+        plan_expanded_rows = list(csv.DictReader(handle))
+    plan_failures = json.loads((plan_expanded_root / "candidates_connected.failures.json").read_text())
+    require(len(plan_expanded_rows) == 98 and len(plan_failures) == 7,
+            "expanded explicit-plan feasibility coverage changed")
+    plan_expanded = json.loads((plan_expanded_root / "evaluation_connected.json").read_text())
+    require(plan_expanded["n_complete_circuit_groups"] == 15,
+            "expanded explicit-plan group coverage changed")
+    require(abs(plan_expanded["flop_exact_fastest_rate"] - 0.8) < 1e-12,
+            "expanded explicit-plan FLOP baseline fixture changed")
+
+    emu_extension_root = ROOT / "artifacts/simulator_papers/emu_mps_threshold_extension_20260920"
+    with (emu_extension_root / "threshold_labels.csv").open(newline="") as handle:
+        emu_extension_rows = list(csv.DictReader(handle))
+    require(len(emu_extension_rows) == 12,
+            "EMU-MPS threshold extension label count changed")
+    require(all(row["reference_censored"] == "False" for row in emu_extension_rows),
+            "EMU-MPS threshold extension gained a censored reference")
+    emu_expanded = json.loads(
+        (ROOT / "artifacts/simulator_papers/family_aware_emu_mps_expanded_20260920/evaluation.json").read_text()
+    )
+    require(emu_expanded["n_labels"] == 24 and emu_expanded["results"]["shared_numeric"]["n"] == 24,
+            "expanded EMU-MPS threshold evaluation changed")
+
+    precision_expanded_root = ROOT / "artifacts/simulator_papers/precision_selection_expanded_20260920"
+    with (precision_expanded_root / "records.csv").open(newline="") as handle:
+        precision_expanded_rows = list(csv.DictReader(handle))
+    require(len(precision_expanded_rows) == 64 and {row["precision"] for row in precision_expanded_rows} == {"complex64", "complex128"},
+            "precision extension raw coverage changed")
+    precision_policy = json.loads((precision_expanded_root / "policy.json").read_text())
+    require(precision_policy["n_pairs"] == 52 and precision_policy["unsafe_complex64_pairs"] == 28,
+            "precision-policy matched-pair fixture changed")
+
+    deep_analysis = json.loads(
+        (ROOT / "artifacts/simulator_papers/DEEP_ANALYSIS_2026-09-20.json").read_text()
+    )
+    require(deep_analysis["vqcsim"]["n_matched_base_mirror_pairs"] == 45,
+            "deep VQCSim paired diagnostic coverage changed")
+    require(deep_analysis["aer"]["backend_held_out_by_backend"]
+            and len(deep_analysis["aer"]["backend_held_out_by_backend"]) == 2,
+            "deep Aer backend diagnostic coverage changed")
+    require(deep_analysis["plan_ranking"]["failure_kinds"] == {"memory_limit": 6, "unsupported": 1},
+            "deep plan-feasibility diagnostic changed")
+    require(deep_analysis["precision"]["family_held_out_unsafe_complex64_selections"] == 2,
+            "deep precision holdout diagnostic changed")
 
     with (ROOT / "tracks/cdaa_qcre/data/instruction_durations/SNAPSHOT_MANIFEST.csv").open(
         newline=""

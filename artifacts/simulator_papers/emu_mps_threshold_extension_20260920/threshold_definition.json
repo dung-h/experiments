@@ -1,0 +1,75 @@
+{
+  "target_semantics": "smallest max_bond_dim rung reaching final-state fidelity against a local reference",
+  "target_fidelity": 0.99,
+  "reference_max_bond_dim": 256,
+  "layouts": [
+    [
+      2,
+      4
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      4
+    ]
+  ],
+  "families": {
+    "moderate": [
+      [
+        700,
+        3.0,
+        0.0
+      ]
+    ],
+    "two_stage_ramp": [
+      [
+        300,
+        1.5,
+        0.0
+      ],
+      [
+        700,
+        4.0,
+        0.0
+      ]
+    ],
+    "detuning_echo": [
+      [
+        500,
+        4.5,
+        -4.0
+      ],
+      [
+        500,
+        4.5,
+        4.0
+      ]
+    ],
+    "strong_relax": [
+      [
+        400,
+        5.0,
+        0.0
+      ],
+      [
+        600,
+        1.5,
+        0.0
+      ]
+    ]
+  },
+  "rungs": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256
+  ]
+}

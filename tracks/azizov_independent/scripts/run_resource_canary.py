@@ -180,7 +180,14 @@ def run_row(args, source, backend_name, temp_root):
             "status": "resource_limit" if stop_reason != "completed" else "error",
             "error": output_text[-1000:].replace("\n", " "),
         }
+    if stop_reason.startswith("rss_cap"):
+        terminal_status = "resource_limit"
+    elif stop_reason.startswith("wall_timeout"):
+        terminal_status = "timeout"
+    else:
+        terminal_status = "error"
     row.update({
+        "status": terminal_status,
         "peak_rss_mb": f"{peak_rss:.2f}",
         "peak_cpu_single_core_pct": f"{peak_single:.2f}",
         "peak_cpu_host_pct": f"{peak_host:.2f}",

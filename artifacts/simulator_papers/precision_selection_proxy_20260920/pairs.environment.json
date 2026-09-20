@@ -1,0 +1,12 @@
+{
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "cuquantum": "26.6.0",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti",
+  "families": "ghz,hea,qaoa_cycle,random_brickwork,qft",
+  "qubits": "8,12,16,20",
+  "precisions": [
+    "complex64",
+    "complex128"
+  ],
+  "target_semantics": "T_sim_contract: local GPU tensor-network scalar contraction"
+}
