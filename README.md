@@ -31,6 +31,13 @@ Its [`deep-analysis companion`](artifacts/simulator_papers/DEEP_ANALYSIS_2026-09
 records the observed residual patterns and the bounded technical explanations.
 It is not a sixth pooled runtime target.
 
+The separately generated [matched dense-statevector matrix](experiments/simulator_runtime_v1/README.md)
+adds 96 actual local execution labels across CPU/GPU and complex64/complex128
+under one PyTorch reference-kernel contract. Its [report](artifacts/simulator_runtime_v1/torch_dense_statevector_v1/REPORT.md)
+records the target boundary, raw measurements, baseline OOF scores and the
+remaining device/precision transfer failure mode. It is not pooled with Aer,
+CUDA-Q or cuTensorNet.
+
 ## Scope
 
 Each track has its own target semantics:

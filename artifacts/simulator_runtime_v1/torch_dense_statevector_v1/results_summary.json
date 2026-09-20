@@ -1,0 +1,124 @@
+{
+  "schema_version": "torch_dense_statevector_v1",
+  "successful_rows": 96,
+  "logical_circuits": 24,
+  "contexts": [
+    {
+      "context_id": "cpu:complex128",
+      "rows": 24,
+      "median_seconds": 0.3766507295003976,
+      "min_seconds": 0.0061228990016388,
+      "max_seconds": 24.011544341003173
+    },
+    {
+      "context_id": "cpu:complex64",
+      "rows": 24,
+      "median_seconds": 0.052053799998247954,
+      "min_seconds": 0.0026268130022799,
+      "max_seconds": 12.519419385993388
+    },
+    {
+      "context_id": "cuda:complex128",
+      "rows": 24,
+      "median_seconds": 0.2368547930018394,
+      "min_seconds": 0.001174605997221,
+      "max_seconds": 12.662863762001509
+    },
+    {
+      "context_id": "cuda:complex64",
+      "rows": 24,
+      "median_seconds": 0.0131539334979606,
+      "min_seconds": 0.0004263139999238,
+      "max_seconds": 0.734370113001205
+    }
+  ],
+  "paired_ratios": [
+    {
+      "paired ratio": "CPU complex128 / complex64",
+      "median": 2.02236335025358,
+      "minimum": 0.9656389735770634,
+      "maximum": 8.389678844007234
+    },
+    {
+      "paired ratio": "CUDA complex128 / complex64",
+      "median": 15.743119265623616,
+      "minimum": 2.7552602012388774,
+      "maximum": 19.69023048735501
+    },
+    {
+      "paired ratio": "CPU / CUDA complex64",
+      "median": 5.055828378423765,
+      "minimum": 2.939537785863819,
+      "maximum": 25.00642020761345
+    },
+    {
+      "paired ratio": "CPU / CUDA complex128",
+      "median": 1.8930688953507029,
+      "minimum": 0.6778354572992673,
+      "maximum": 5.212725812847002
+    }
+  ],
+  "maximum_output_difference": 3.185284044304737e-07,
+  "hgb_aggregate_metrics": [
+    {
+      "split": "circuit_group",
+      "model": "hist_gradient_log",
+      "folds": 4,
+      "n_test": 96,
+      "mae_log": 0.4308979071635172,
+      "rmse_log": 0.6006489602041563,
+      "r2_log": 0.9534429989896044,
+      "mae_seconds": 0.8654272003615767,
+      "rmse_seconds": 2.331468607651336,
+      "r2_seconds": 0.721380544828299
+    },
+    {
+      "split": "context_held_out",
+      "model": "hist_gradient_log",
+      "folds": 4,
+      "n_test": 96,
+      "mae_log": 1.3656322980109554,
+      "rmse_log": 1.6195966805605326,
+      "r2_log": 0.6615010747908014,
+      "mae_seconds": 1.7933956504793436,
+      "rmse_seconds": 3.601331843987557,
+      "r2_seconds": 0.335219033461428
+    },
+    {
+      "split": "family_held_out",
+      "model": "hist_gradient_log",
+      "folds": 5,
+      "n_test": 96,
+      "mae_log": 0.5314410933324604,
+      "rmse_log": 0.7601990058735338,
+      "r2_log": 0.9254241636189868,
+      "mae_seconds": 0.9151211971457358,
+      "rmse_seconds": 2.472345974980667,
+      "r2_seconds": 0.6866925051360864
+    },
+    {
+      "split": "random_row",
+      "model": "hist_gradient_log",
+      "folds": 1,
+      "n_test": 24,
+      "mae_log": 0.2805608418676008,
+      "rmse_log": 0.3976216892226743,
+      "r2_log": 0.9809806901415604,
+      "mae_seconds": 0.2820104696787646,
+      "rmse_seconds": 0.7509741479835882,
+      "r2_seconds": 0.9688038150137168
+    },
+    {
+      "split": "width_held_out",
+      "model": "hist_gradient_log",
+      "folds": 3,
+      "n_test": 96,
+      "mae_log": 2.621639238947082,
+      "rmse_log": 2.8156097977597194,
+      "r2_log": -0.0230302455367468,
+      "mae_seconds": 2.048952303483321,
+      "rmse_seconds": 4.73273004505663,
+      "r2_seconds": -0.1480895401111202
+    }
+  ]
+}

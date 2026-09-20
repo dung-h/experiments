@@ -121,3 +121,17 @@ The resulting report separates spatial variation inside one frozen snapshot
 from temporal variation across public calibration timestamps. The DAQEC series
 is a 2025 aggregate calibration source, not the missing per-qubit historical
 Ma–Li tensor.
+
+## Matched dense-statevector simulator matrix
+
+`simulator_runtime_v1` is a local actual-runtime label set, separate from the
+Aer, CUDA-Q and cuTensorNet targets. It uses the same PyTorch dense-statevector
+implementation for CPU/GPU and complex64/complex128, so device and precision
+are not confounded with framework choice. Its target is prepared execution
+with a fresh statevector and `<Z_0>` evaluation; construction, gate
+materialization, transpilation and sampling remain separate or not applicable.
+
+The completed 96-row baseline and its report are under
+[`artifacts/simulator_runtime_v1/torch_dense_statevector_v1/`](../artifacts/simulator_runtime_v1/torch_dense_statevector_v1/).
+Use the scoped [track README](simulator_runtime_v1/README.md) to regenerate the
+matrix, OOF baseline evaluation and report.

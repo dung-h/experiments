@@ -32,6 +32,11 @@ REQUIRED = (
     "experiments/run_mali_direct_estimator.py",
     "experiments/requirements-mali-direct-estimator.txt",
     "experiments/README.md",
+    "experiments/simulator_runtime_v1/README.md",
+    "experiments/simulator_runtime_v1/requirements-evaluation.txt",
+    "experiments/simulator_runtime_v1/run_torch_statevector_matrix.py",
+    "experiments/simulator_runtime_v1/evaluate_torch_statevector_matrix.py",
+    "experiments/simulator_runtime_v1/summarize_torch_statevector_matrix.py",
     "experiments/simulator_papers/README.md",
     "experiments/simulator_papers/run_zero_setup_pps_canary.py",
     "experiments/simulator_papers/run_zero_setup_pps_grid.py",
@@ -135,6 +140,16 @@ REQUIRED = (
     "artifacts/simulator_papers/family_aware_emu_mps_expanded_20260920/evaluation.json",
     "artifacts/simulator_papers/precision_selection_expanded_20260920/records.csv",
     "artifacts/simulator_papers/precision_selection_expanded_20260920/policy.json",
+    "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/manifest.json",
+    "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/records.jsonl",
+    "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/records.csv",
+    "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/results_summary.json",
+    "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/REPORT.md",
+    "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/evaluation/aggregate_metrics.csv",
+    "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/evaluation/coverage.csv",
+    "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/evaluation/oof_predictions.csv",
+    "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/evaluation/per_fold_metrics.csv",
+    "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/evaluation/summary.json",
 )
 
 def require(condition: bool, message: str) -> None:
@@ -545,6 +560,36 @@ def main() -> int:
     require(deep_analysis["precision"]["family_held_out_unsafe_complex64_selections"] == 2,
             "deep precision holdout diagnostic changed")
 
+    dense_root = ROOT / "artifacts/simulator_runtime_v1/torch_dense_statevector_v1"
+    with (dense_root / "records.csv").open(newline="") as handle:
+        dense_rows = list(csv.DictReader(handle))
+    require(len(dense_rows) == 96, "unexpected dense-statevector matrix row count")
+    require({row["status"] for row in dense_rows} == {"ok"},
+            "dense-statevector matrix contains a non-ok row")
+    require(len({row["circuit_id"] for row in dense_rows}) == 24,
+            "dense-statevector logical-circuit coverage changed")
+    require({row["context_id"] for row in dense_rows} == {
+        "cpu:complex64", "cpu:complex128", "cuda:complex64", "cuda:complex128"
+    }, "dense-statevector execution-context coverage changed")
+    dense_summary = json.loads((dense_root / "results_summary.json").read_text())
+    require(dense_summary["successful_rows"] == 96,
+            "dense-statevector summary success count changed")
+    require(dense_summary["logical_circuits"] == 24,
+            "dense-statevector summary circuit count changed")
+    require(dense_summary["maximum_output_difference"] < 1e-5,
+            "dense-statevector scalar sanity difference became unexpectedly large")
+    with (dense_root / "evaluation/aggregate_metrics.csv").open(newline="") as handle:
+        dense_metrics = list(csv.DictReader(handle))
+    dense_metric_index = {(row["split"], row["model"]): row for row in dense_metrics}
+    require(len(dense_metrics) == 15,
+            "dense-statevector aggregate metric coverage changed")
+    grouped_hgb = dense_metric_index[("circuit_group", "hist_gradient_log")]
+    width_hgb = dense_metric_index[("width_held_out", "hist_gradient_log")]
+    require(int(grouped_hgb["n_test"]) == 96 and float(grouped_hgb["r2_log"]) > 0.9,
+            "dense-statevector grouped HGB fixture changed")
+    require(float(width_hgb["r2_log"]) < 0.1,
+            "dense-statevector width holdout no longer records the tree extrapolation failure")
+
     with (ROOT / "tracks/cdaa_qcre/data/instruction_durations/SNAPSHOT_MANIFEST.csv").open(
         newline=""
     ) as handle:
@@ -572,7 +617,7 @@ def main() -> int:
     require(abs(outlier["predictions_seconds"]["from_scratch_osaka_test"] - 12.8724) < 1e-4,
             "Ma-Li from-scratch fixture changed")
 
-    print("OK: replication reports, fixtures, provenance lock and Ma-Li seed-1234 diagnostic verified")
+    print("OK: replication reports, fixtures, provenance lock, Ma-Li seed-1234 diagnostic and dense-statevector matrix verified")
     print("This check does not rerun GPU timing, retrain models or contact external services.")
     return 0
 

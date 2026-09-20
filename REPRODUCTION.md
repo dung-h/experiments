@@ -252,3 +252,42 @@ Compare target columns separately: cutensornet_runtime_est_s,
 first_contract_gpu_s, contract_gpu_median_s and end_to_end_first_s are not
 interchangeable. A different GPU/software stack produces a new measurement,
 not a failed reproduction.
+
+## Matched dense-statevector runtime matrix
+
+This local supplementary track measures one statevector implementation rather
+than comparing frameworks: allocate a fresh state, apply a materialized gate
+schedule, and calculate `<Z_0>`. It therefore supplies a complete CPU/GPU ×
+complex64/complex128 matrix without conflating a framework change with a
+device change. It excludes sampling and compilation/transpilation.
+
+Use a CUDA-enabled PyTorch environment. The recorded run used Python 3.13,
+PyTorch `2.11.0+cu128` and CUDA 12.8; use the matching wheel index below, or
+an equivalent PyTorch wheel for a different review machine:
+
+```bash
+ROOT=/path/to/quantum-runtime-estimator-replications
+OUT="$ROOT/artifacts/simulator_runtime_v1/torch_dense_statevector_v1"
+
+python3 -m venv "$ROOT/.venv-torch-matrix"
+"$ROOT/.venv-torch-matrix/bin/python" -m pip install 'torch==2.11.0' \
+  --index-url https://download.pytorch.org/whl/cu128
+PY="$ROOT/.venv-torch-matrix/bin/python"
+
+python3 -m venv "$ROOT/.venv-runtime-eval"
+"$ROOT/.venv-runtime-eval/bin/python" -m pip install \
+  -r "$ROOT/experiments/simulator_runtime_v1/requirements-evaluation.txt"
+EVAL_PY="$ROOT/.venv-runtime-eval/bin/python"
+
+"$PY" "$ROOT/experiments/simulator_runtime_v1/run_torch_statevector_matrix.py" \
+  --output-dir "$OUT"
+"$EVAL_PY" "$ROOT/experiments/simulator_runtime_v1/evaluate_torch_statevector_matrix.py" \
+  --input "$OUT/records.csv" --output-dir "$OUT/evaluation"
+"$EVAL_PY" "$ROOT/experiments/simulator_runtime_v1/summarize_torch_statevector_matrix.py" \
+  --run-dir "$OUT"
+```
+
+The runner is append-only and resumes by `record_id`. The checked-in 96-row
+result is a local RTX 5070 Ti/16-CPU-thread measurement, not an external
+simulator or cross-GPU claim. See `experiments/simulator_runtime_v1/README.md`
+for the exact target semantics and output files.
