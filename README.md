@@ -53,6 +53,9 @@ first CUDA-Q matched simulator pilot is under
 [`artifacts/cudaq_runtime/cudaq_matrix_20260921/`](artifacts/cudaq_runtime/cudaq_matrix_20260921/).
 It keeps CPU QPP FP64, GPU FP32 and GPU FP64 `sample` wall-clock labels
 separate, with first-call and warm-call timing reported independently.
+The follow-up [CUDA-Q MPS pilot](artifacts/cudaq_runtime/cudaq_mps_20260921/REPORT.md)
+adds configured bond-cap, observed tensor-bond and fidelity diagnostics while
+keeping post-run bond observations out of the static estimator feature block.
 
 ## Scope
 

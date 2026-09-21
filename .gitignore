@@ -7,10 +7,14 @@ __pycache__/
 # External source checkouts materialized by scripts/bootstrap_upstreams.sh
 work/
 work-*/
+/profiles/
 
 # GPU/compiler outputs from a new local run. Baseline fixtures under artifacts/
 # are versioned; reruns must use an explicit directory under work/.
 run-output/
+
+# Scratch MPS canaries are superseded by the committed cap/width matrix.
+artifacts/cudaq_runtime/cudaq_mps_20260921/canary_*
 
 # Local-only intermediate evaluations and an aborted v2 preliminary run. The
 # final, regenerated v2 corpus/report is explicitly versioned below artifacts/.

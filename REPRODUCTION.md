@@ -344,3 +344,36 @@ The checked-in run is
 44-row coverage, target semantics, raw timing table and small-corpus split
 diagnostics. Do not append CUDA-Q rows to the PyTorch, Aer or cuTensorNet
 tables without preserving the target contract.
+
+### CUDA-Q MPS extension
+
+The MPS experiment freezes one bond-cap/cutoff configuration per process and
+records both `cudaq.get_state` and `cudaq.sample` timings. It also reads the
+returned tensor extents to record post-run bond/storage diagnostics. Recreate
+the checked-in 48-row matrix with:
+
+```bash
+ROOT=/path/to/quantum-runtime-estimator-replications
+CUDAQ_PY=/path/to/Capstone-Project/.venv-cudaq313/bin/python
+OUT="$ROOT/artifacts/cudaq_runtime/<run>"
+mkdir -p "$OUT"
+for cap in 2 4 8 16; do
+  CUDA_VISIBLE_DEVICES=0 "$CUDAQ_PY" \
+    "$ROOT/experiments/cudaq_runtime/run_cudaq_mps_matrix.py" \
+    --families ghz,hea,qaoa_cycle,random_brickwork \
+    --widths 16,20,24 --max-bond "$cap" --abs-cutoff 1e-12 \
+    --precision fp64 --shots 32 --warmups 1 --repeats 2 \
+    --reference-width-max 16 \
+    --output "$OUT/mps_cap${cap}.csv"
+done
+python3 "$ROOT/experiments/cudaq_runtime/merge_cudaq_matrix.py" \
+  --inputs "$OUT/mps_cap2.csv" "$OUT/mps_cap4.csv" "$OUT/mps_cap8.csv" "$OUT/mps_cap16.csv" \
+  --output "$OUT/mps_matrix.csv"
+/path/to/Capstone-Project/.venv/bin/python \
+  "$ROOT/experiments/cudaq_runtime/evaluate_cudaq_mps_matrix.py" \
+  --input "$OUT/mps_matrix.csv" --output-dir "$OUT/evaluation"
+```
+
+The static evaluator excludes `observed_max_bond`, tensor storage and fidelity
+from its features. These are post-run diagnostics or labels, not information
+available to a pre-run estimator.

@@ -28,7 +28,7 @@ paper title is not sufficient reason to pool rows.
 | QPU-3 | [CDAA](https://github.com/mtkgv/cdaa) + [QCRE](https://github.com/mtkgv/qcre) | Analytical compiled-gate duration proxy | Public artifacts available; reference is not measured QPU wall-clock | Existing schedule-duration reproduction, explicitly labelled proxy |
 | SIM-1 | [VQCSim](https://arxiv.org/abs/2607.11985), [repo](https://github.com/Security-FIT/VQCSim) | Torch-native variational GPU inference | Public code; pinned revision and local GPU canary available | Existing local RQ2-style data generation; labels are VQCSim inference, not Aer |
 | SIM-2 | CUDA-Q, [repo](https://github.com/NVIDIA/cuda-quantum), [simulator docs](https://nvidia.github.io/cuda-quantum/latest/using/backends/simulators.html) | CPU/GPU statevector simulation; CUDA-Q MPS is a separate target | Public framework; CUDA-Q 0.15.1 installed in an isolated environment | **New 21-Sep matched CPU/GPU/precision pilot** in `artifacts/cudaq_runtime/` |
-| SIM-3 | CUDA-Q MPS paper, [arXiv:2501.15939](https://arxiv.org/abs/2501.15939) | MPS simulation and tensor-network behaviour | Official framework is public; paper-scale multi-GPU setup is not available here | Follow-up after the dense CUDA-Q matrix; keep bond/fidelity and wall-clock targets separate |
+| SIM-3 | CUDA-Q MPS paper, [arXiv:2501.15939](https://arxiv.org/abs/2501.15939) | MPS simulation and tensor-network behaviour | Official framework is public; paper-scale multi-GPU setup is not available here | **48-row local MPS runtime/fidelity pilot completed**; keep bond/fidelity and wall-clock targets separate |
 | SIM-4 | cuTensorNet `RUNTIME_EST` | Pre-run contraction-path cost versus local scalar contraction | NVIDIA distribution is usable locally; estimator is experimental | Existing 25-row GPU comparison, first/warm/end-to-end clocks separated |
 | SIM-5 | Azizov et al., [arXiv:2609.12980](https://arxiv.org/abs/2609.12980) | Transpilation-aware noisy Aer runtime | Paper public; author 1,402-row runtime table/code not found in the audit | Existing independent reconstruction only; never called exact reproduction |
 | SIM-6 | Zero-Setup, [repo](https://github.com/arulrhikm/mps-pps-zero-setup-benchmarks) | Pauli-propagation kernel and remote MPS comparison | Local Pauli-propagation runner public; cloud MPS portion requires service | Existing local canary/grid, not mixed with statevector labels |
@@ -70,10 +70,9 @@ warm execution cannot be evaluated against first-call latency, and vice versa.
 The next experiment is therefore selected by the map, not by adding more
 unrelated simulator names:
 
-1. add CUDA-Q `tensornet-mps` with its own fidelity/bond/memory fields;
-2. extend the same families with independent circuit seeds;
-3. evaluate an out-of-family and out-of-width estimator under fixed target
+1. extend CUDA-Q `tensornet-mps` with independent circuit seeds and depth
+   levels;
+2. evaluate an out-of-family and out-of-width estimator under fixed target
    contracts;
-4. only then test whether an online prefix/telemetry model inspired by MPORA
+3. only then test whether an online prefix/telemetry model inspired by MPORA
    is meaningful for quantum simulation.
-

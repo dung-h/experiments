@@ -25,6 +25,9 @@ are not pooled into one universal runtime column.
 7. CUDA-Q matched simulator pilot: 44 rows across CPU QPP FP64, GPU FP32 and
    GPU FP64. First-call and warm-call `cudaq.sample` timings are separate;
    this is a local simulator target, not a QPU or cloud-runtime label.
+8. CUDA-Q MPS runtime/feasibility pilot: 48 rows over four configured bond
+   caps, three widths and four circuit families. Observed tensor bonds and
+   fidelity are post-run diagnostics, excluded from static estimator inputs.
 
 The paper/repository decision map is
 `docs/PAPER_REPO_EXPERIMENT_MAP_2026-09-21.md`. It includes the public
@@ -58,6 +61,15 @@ on CPU (28.8395 s), HEA-28 on GPU FP32 (0.1346 s) and HEA-28 on GPU FP64
 (1.3828 s). These are small-corpus diagnostics, not portable estimator
 scores. The first-call GPU FP32 ratio has a 138x maximum, so first and warm
 targets must not be combined.
+
+The CUDA-Q MPS pilot is under
+`artifacts/cudaq_runtime/cudaq_mps_20260921/`. At width 16, χ=2 has minimum
+fidelity `0.6494` (HEA), while χ≥4 reaches at least `0.99999` for the four
+deterministic families. The static Ridge diagnostic reaches log-R² `0.901`
+for grouped state-construction timing and `0.956` on bond-cap-held-out
+sample timing, but family-held-out/width-held-out scores are unstable. This
+is evidence for a two-stage feasibility/fidelity-plus-runtime estimator, not
+a universal MPS runtime claim.
 
 ## Numbers to remember
 

@@ -214,6 +214,13 @@
       "runtime_semantics": "CUDA-Q local sample wall-clock with CPU/GPU and precision targets; first and warm calls separate",
       "critical_fixture": "artifacts/cudaq_runtime/cudaq_matrix_20260921/REPORT.md",
       "related_fixture": "artifacts/cudaq_runtime/cudaq_matrix_20260921/cudaq_matrix.environment.json"
+    },
+    {
+      "path": "artifacts/cudaq_runtime/cudaq_mps_20260921/mps_matrix.csv",
+      "provenance_class": "OUR_LOCAL_VALIDATION",
+      "runtime_semantics": "CUDA-Q MPS get_state/sample wall-clock with configured bond caps; post-run bond/fidelity diagnostics separate",
+      "critical_fixture": "artifacts/cudaq_runtime/cudaq_mps_20260921/REPORT.md",
+      "related_fixture": "artifacts/cudaq_runtime/cudaq_mps_20260921/mps_matrix.environment.json"
     }
   ]
 }

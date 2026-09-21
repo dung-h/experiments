@@ -174,3 +174,38 @@ The current run and interpretation are in
 [`artifacts/cudaq_runtime/cudaq_matrix_20260921/REPORT.md`](../artifacts/cudaq_runtime/cudaq_matrix_20260921/REPORT.md).
 The run is intentionally a small estimator diagnostic; it does not claim
 cross-GPU generalisation or a universal simulator runtime model.
+
+### CUDA-Q MPS runtime/feasibility pilot
+
+The MPS target has a different contract from CUDA-Q dense statevector. Run one
+process per configured bond cap so that the pre-run `CUDAQ_MPS_MAX_BOND`,
+absolute cutoff and SVD algorithm are frozen before target initialisation:
+
+```bash
+CUDAQ_PY=/path/to/.venv-cudaq313/bin/python
+for cap in 2 4 8 16; do
+  CUDA_VISIBLE_DEVICES=0 "$CUDAQ_PY" \
+    experiments/cudaq_runtime/run_cudaq_mps_matrix.py \
+    --families ghz,hea,qaoa_cycle,random_brickwork \
+    --widths 16,20,24 --max-bond "$cap" --abs-cutoff 1e-12 \
+    --precision fp64 --shots 32 --warmups 1 --repeats 2 \
+    --reference-width-max 16 \
+    --output "artifacts/cudaq_runtime/<run>/mps_cap${cap}.csv"
+done
+python experiments/cudaq_runtime/merge_cudaq_matrix.py \
+  --inputs artifacts/cudaq_runtime/<run>/mps_cap{2,4,8,16}.csv \
+  --output artifacts/cudaq_runtime/<run>/mps_matrix.csv
+```
+
+Evaluate only pre-run features with:
+
+```bash
+/path/to/.venv/bin/python experiments/cudaq_runtime/evaluate_cudaq_mps_matrix.py \
+  --input artifacts/cudaq_runtime/<run>/mps_matrix.csv \
+  --output-dir artifacts/cudaq_runtime/<run>/evaluation
+```
+
+`observed_max_bond`, tensor storage and dense-reference fidelity are retained
+as post-run diagnostics/labels and are excluded from the static feature block.
+The checked-in 48-row run is documented in
+[`artifacts/cudaq_runtime/cudaq_mps_20260921/REPORT.md`](../artifacts/cudaq_runtime/cudaq_mps_20260921/REPORT.md).

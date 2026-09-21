@@ -1,0 +1,34 @@
+{
+  "rows_used": 48,
+  "targets": [
+    "state_warm_median_s",
+    "sample_warm_median_s"
+  ],
+  "splits": [
+    "grouped_circuit",
+    "family_held_out",
+    "cap_held_out",
+    "width_held_out"
+  ],
+  "models": [
+    "median_log",
+    "ridge",
+    "hgb"
+  ],
+  "pre_run_features": [
+    "width",
+    "logical_depth",
+    "gate_count",
+    "two_qubit_gates",
+    "statevector_bytes",
+    "mps_max_bond_config",
+    "family"
+  ],
+  "excluded_post_run_fields": [
+    "observed_max_bond",
+    "mps_tensor_bytes",
+    "mps_tensor_elements",
+    "fidelity_vs_dense"
+  ],
+  "warning": "48-row controlled MPS pilot; metrics are diagnostics, not a portable estimator claim"
+}

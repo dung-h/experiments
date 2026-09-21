@@ -181,6 +181,14 @@ REQUIRED = (
     "artifacts/cudaq_runtime/cudaq_matrix_20260921/cudaq_matrix.environment.json",
     "artifacts/cudaq_runtime/cudaq_matrix_20260921/evaluation/summary_warm_sample_median_s.csv",
     "artifacts/cudaq_runtime/cudaq_matrix_20260921/evaluation/summary_first_sample_s.csv",
+    "experiments/cudaq_runtime/run_cudaq_mps_matrix.py",
+    "experiments/cudaq_runtime/evaluate_cudaq_mps_matrix.py",
+    "artifacts/cudaq_runtime/cudaq_mps_20260921/REPORT.md",
+    "artifacts/cudaq_runtime/cudaq_mps_20260921/mps_matrix.csv",
+    "artifacts/cudaq_runtime/cudaq_mps_20260921/mps_matrix.environment.json",
+    "artifacts/cudaq_runtime/cudaq_mps_20260921/evaluation/mps_runtime_summary.csv",
+    "artifacts/cudaq_runtime/cudaq_mps_20260921/evaluation/mps_runtime_metrics.csv",
+    "artifacts/cudaq_runtime/cudaq_mps_20260921/evaluation/mps_runtime_evaluation.json",
 )
 
 def require(condition: bool, message: str) -> None:
@@ -197,7 +205,7 @@ def main() -> int:
     },
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 34,
+    require(len(artifact_manifest["artifacts"]) == 35,
             "unexpected replication artifact manifest size")
 
     qonductor = json.loads((ROOT / "artifacts/qonductor/reproduction_metrics.json").read_text())
@@ -687,6 +695,29 @@ def main() -> int:
     require(cudaq_manifest["cudaq_version"].startswith("CUDA-Q Version 0.15.1"),
             "CUDA-Q environment version changed")
 
+    mps_root = ROOT / "artifacts/cudaq_runtime/cudaq_mps_20260921"
+    with (mps_root / "mps_matrix.csv").open(newline="") as handle:
+        mps_rows = list(csv.DictReader(handle))
+    require(len(mps_rows) == 48, "CUDA-Q MPS pilot row count changed")
+    require({row["status"] for row in mps_rows} == {"ok"},
+            "CUDA-Q MPS pilot contains a non-ok row")
+    require({row["mps_max_bond_config"] for row in mps_rows} == {"2", "4", "8", "16"},
+            "CUDA-Q MPS bond-cap coverage changed")
+    require({row["family"] for row in mps_rows} == {
+        "ghz", "hea", "qaoa_cycle", "random_brickwork"
+    }, "CUDA-Q MPS family coverage changed")
+    require(all(float(row["state_warm_median_s"]) > 0 for row in mps_rows),
+            "CUDA-Q MPS state timings are not positive")
+    require(all(float(row["sample_warm_median_s"]) > 0 for row in mps_rows),
+            "CUDA-Q MPS sample timings are not positive")
+    mps_evaluation = json.loads(
+        (mps_root / "evaluation/mps_runtime_evaluation.json").read_text()
+    )
+    require(mps_evaluation["rows_used"] == 48,
+            "CUDA-Q MPS evaluator row count changed")
+    require("observed_max_bond" in mps_evaluation["excluded_post_run_fields"],
+            "CUDA-Q MPS leakage guard changed")
+
     with (ROOT / "tracks/cdaa_qcre/data/instruction_durations/SNAPSHOT_MANIFEST.csv").open(
         newline=""
     ) as handle:
@@ -714,7 +745,7 @@ def main() -> int:
     require(abs(outlier["predictions_seconds"]["from_scratch_osaka_test"] - 12.8724) < 1e-4,
             "Ma-Li from-scratch fixture changed")
 
-    print("OK: replication reports, fixtures, provenance lock, Ma-Li seed-1234 diagnostic, dense-statevector matrix and CUDA-Q pilot verified")
+    print("OK: replication reports, fixtures, provenance lock, Ma-Li seed-1234 diagnostic, dense-statevector matrix, CUDA-Q dense pilot and CUDA-Q MPS pilot verified")
     print("This check does not rerun GPU timing, retrain models or contact external services.")
     return 0
 
