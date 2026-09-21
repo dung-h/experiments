@@ -291,3 +291,15 @@ The runner is append-only and resumes by `record_id`. The checked-in 96-row
 result is a local RTX 5070 Ti/16-CPU-thread measurement, not an external
 simulator or cross-GPU claim. See `experiments/simulator_runtime_v1/README.md`
 for the exact target semantics and output files.
+
+### Structural v2 extension
+
+The v2 follow-up adds seeded random topologies and a q26/q28 GPU-memory
+frontier under the same target contract. Its clean-clone commands, environment,
+split definitions and expected checks are kept in
+[`experiments/simulator_runtime_v2/README.md`](experiments/simulator_runtime_v2/README.md).
+The committed final artifact is
+`artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/`.
+Run the standard verifier after materializing a clone; it checks raw coverage,
+source provenance, OOM retention, estimator metrics and the q28 envelope
+boundary without rerunning GPU timing.

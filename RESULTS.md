@@ -5,6 +5,10 @@
 The five studies measure different target semantics. Their scores are evidence
 about their own estimator/target pairs; they are not entries in one leaderboard.
 
+The dense-statevector results below are a separately labelled local supplement.
+They use one PyTorch reference kernel and are not another QPU, Aer, CUDA-Q or
+cuTensorNet target.
+
 ## Packaging verification (2026-09-17)
 
 The capsule was tested from a fresh temporary work directory rather than from
@@ -37,6 +41,45 @@ results retain their original provenance and hardware boundaries.
 | CDAA/QCRE | 30/45 verification rows agree; maximum delta 3.50e-16 s | QCRE matches the supplied schedule-duration reference | Schedule duration is not observed QPU wall-clock |
 | cuTensorNet | warm median actual / RUNTIME_EST = 0.196; QFT-28/30 0.960/0.946 | The pre-run signal is conservative on easy contractions and closer on QFT | One GPU/software/precision setting |
 | Azizov et al. independent | 1,192/1,192 screened local rows successful; 149/1,402 circuits eligible | Current FakeWashingtonV2/FakeSherbrooke + Aer pipeline is executable on a documented local subset | Conservative q≤9/ops/depth screen; not the paper's full HPC dataset or exact artifact |
+
+## 0. Local dense-statevector runtime estimator supplement
+
+**Finding recorded: 2026-09-20.** This supplement answers a narrower engineering
+question: can a runtime estimator and feasibility guard be calibrated for one
+known simulator contract, before claiming transfer across frameworks or
+machines? The target is `prepared_execute_reset_state`: allocate a fresh dense
+statevector, apply a pre-materialized direct gate schedule and evaluate
+`<Z_0>`. Construction, materialization, compilation/transpilation, sampling,
+cloud and QPU time are outside the label.
+
+The v1 matrix contains 96 successful rows across GHZ, HEA, QAOA-cycle, random
+brickwork and QFT at widths 16/20/24, crossed with CPU/GPU and complex64/
+complex128. The v2 extension adds `random_matching` and `random_star`, seeds
+17/43/101, widths 16–28 and a GPU frontier. The canonical corpus has 208
+rows: 204 duration labels and four explicit `resource_limit` rows. No runtime
+is imputed for an OOM attempt.
+
+The primary circuit-group split holds all device/precision variants of an
+unseen logical circuit out of training. `logical_hgb` reaches log-R² `0.9794`
+on that in-range test, improving on the analytical statevector-bytes plus
+gate-work baseline (`0.9633`). The result is evidence that logical gate
+composition adds signal within this fixed kernel, not evidence of universal
+simulator prediction. Coarse interaction-graph features do not improve the
+logical ablation.
+
+Width holdout changes the conclusion: analytical Ridge reaches log-R² `0.8754`
+versus `0.7295` for logical HGB. Thus the nonlinear model is strong for
+interpolation but is not automatically safe for width extrapolation.
+
+The most operational finding is the GPU memory boundary. The q28 complex128
+statevector is 4 GiB and passes the naive `statevector_bytes <= VRAM` check,
+but all four attempts hit `resource_limit`. A peak-reserved/statevector
+envelope calibrated only through q24 predicts that boundary before execution.
+The q28 complex64 envelope predicts feasible and all four observations finish.
+This is a machine- and kernel-specific feasibility guard, not a transferable
+VRAM law. The protocol, raw rows, OOF predictions and report are in
+[`experiments/simulator_runtime_v2/README.md`](experiments/simulator_runtime_v2/README.md)
+and `artifacts/simulator_runtime_v2/`.
 
 ## 1. Ma–Li: seed 1234, fold 10
 

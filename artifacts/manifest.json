@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "scope": "Five primary runtime-estimator replication tracks plus separately labelled simulator-paper canaries; never pooled.",
+  "scope": "Five primary runtime-estimator replication tracks, separately labelled simulator-paper canaries, and a fixed-kernel dense-statevector supplement; never pooled.",
   "artifacts": [
     {
       "path": "artifacts/mali/MA_LI_REPLICATION_REPORT.md",
@@ -194,6 +194,19 @@
       "provenance_class": "OUR_POST_HOC_DIAGNOSTIC",
       "runtime_semantics": "descriptive analysis of separate dated simulator timing, feasibility, scalar-agreement and threshold artifacts; no pooled target or retraining",
       "critical_fixture": "artifacts/simulator_papers/DEEP_ANALYSIS_2026-09-20.json"
+    },
+    {
+      "path": "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/records.csv",
+      "provenance_class": "OUR_LOCAL_REPLICATION",
+      "runtime_semantics": "matched PyTorch dense-statevector prepared execution across CPU/GPU and complex64/complex128; construction and sampling excluded",
+      "critical_fixture": "artifacts/simulator_runtime_v1/torch_dense_statevector_v1/REPORT.md"
+    },
+    {
+      "path": "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/canonical_corpus.csv",
+      "provenance_class": "OUR_LOCAL_VALIDATION",
+      "runtime_semantics": "source-labelled structural dense-statevector runtime corpus with explicit duration and GPU resource-limit targets",
+      "critical_fixture": "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/REPORT.md",
+      "related_fixture": "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_final/resource_frontier_prediction.csv"
     }
   ]
 }

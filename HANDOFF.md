@@ -1,6 +1,6 @@
 # Current handoff: Quantum runtime estimator replications
 
-Last updated: 2026-09-19
+Last updated: 2026-09-21
 Repository: `https://github.com/dung-h/experiments.git`
 Local checkout: `/home/server/Documents/quantum-runtime-estimator-replications`
 Branch: `main`
@@ -19,6 +19,9 @@ are not pooled into one universal runtime column.
 5. Azizov et al. transpilation-aware Aer noisy-simulator runtime (independent
    reproduction; P0, bounded P1 and local-feasible split validation complete;
    full paper-scale P1 remains pending).
+6. Matched dense-statevector runtime supplement: v1 four-context matrix and v2
+   structural/feasibility extension. This is a fixed local PyTorch kernel, not
+   a pooled simulator or QPU target.
 
 The additional Ma–Li/QCRE proxy validation is complete for all 340 Osaka/Kyoto
 rows. It uses current Qiskit 1.4.1 `FakeOsaka`/`FakeKyoto` targets, optimization
@@ -29,6 +32,13 @@ The follow-on direct source-specific estimator evaluation is also complete. It
 uses the proxy's pre-run compiled features to predict the same observed Ma–Li
 labels; it does not pool any other source or save a post-hoc selected deployment
 model.
+
+The dense-statevector v2 validation is complete. The canonical corpus has 208
+rows (204 durations and four retained CUDA resource limits). Circuit-group
+log-R² is 0.9794 for the logical HGB estimator; width holdout favors the
+analytical Ridge (0.8754 versus 0.7295). A q24-calibrated peak-memory envelope
+correctly rejects q28 complex128 while q28 complex64 completes. These numbers
+are specific to the recorded RTX 5070 Ti/PyTorch contract.
 
 ## Numbers to remember
 
@@ -119,6 +129,8 @@ runtime. This is a reproducibility limitation, not a failed model experiment.
 7. `experiments/README.md` — commands for the validation scripts.
 8. `artifacts/azizov_independent/P0_REPORT.md` — first independent
    transpilation-aware Aer reproduction and feature-block smoke ablation.
+9. `artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/REPORT.md`
+   — fixed-kernel estimator, extrapolation and GPU-feasibility findings.
 
 For next-week reporting, read
 `artifacts/mali/MA_LI_QWALK_AND_QCRE_INTERPRETATION.md` immediately after
@@ -211,6 +223,8 @@ feasible noisy-Aer frontier. The targeted check is recorded in
 - Do not call cuTensorNet `RUNTIME_EST` a prediction of first-call or complete
   end-to-end latency; first, warm and end-to-end clocks are separate.
 - Do not pool simulator, QPU, cloud workflow and service-runtime targets.
+- Do not present the dense-statevector v1/v2 scores as a cross-framework or
+  cross-GPU simulator estimator; they are a calibrated local-kernel study.
 
 ## Next recommended work
 

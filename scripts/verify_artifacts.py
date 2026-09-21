@@ -188,7 +188,7 @@ def main() -> int:
     },
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 31,
+    require(len(artifact_manifest["artifacts"]) == 33,
             "unexpected replication artifact manifest size")
 
     qonductor = json.loads((ROOT / "artifacts/qonductor/reproduction_metrics.json").read_text())
