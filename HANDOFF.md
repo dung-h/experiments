@@ -22,6 +22,15 @@ are not pooled into one universal runtime column.
 6. Matched dense-statevector runtime supplement: v1 four-context matrix and v2
    structural/feasibility extension. This is a fixed local PyTorch kernel, not
    a pooled simulator or QPU target.
+7. CUDA-Q matched simulator pilot: 44 rows across CPU QPP FP64, GPU FP32 and
+   GPU FP64. First-call and warm-call `cudaq.sample` timings are separate;
+   this is a local simulator target, not a QPU or cloud-runtime label.
+
+The paper/repository decision map is
+`docs/PAPER_REPO_EXPERIMENT_MAP_2026-09-21.md`. It includes the public
+MPORA/PGTNet online-estimation analogues, VQCSim, CUDA-Q, MQT Predictor and
+the papers whose artifacts are not currently sufficient for an exact
+reproduction.
 
 The additional Ma–Li/QCRE proxy validation is complete for all 340 Osaka/Kyoto
 rows. It uses current Qiskit 1.4.1 `FakeOsaka`/`FakeKyoto` targets, optimization
@@ -39,6 +48,16 @@ log-R² is 0.9794 for the logical HGB estimator; width holdout favors the
 analytical Ridge (0.8754 versus 0.7295). A q24-calibrated peak-memory envelope
 correctly rejects q28 complex128 while q28 complex64 completes. These numbers
 are specific to the recorded RTX 5070 Ti/PyTorch contract.
+
+The CUDA-Q pilot is stored at
+`artifacts/cudaq_runtime/cudaq_matrix_20260921/`. It has 12 CPU rows and 32
+GPU rows, all terminal `ok`, using GHZ, HEA, QAOA-cycle and deterministic
+random-brickwork kernels. Median warm-call times are 2.3448 s (CPU QPP FP64),
+0.0026 s (GPU FP32) and 0.0182 s (GPU FP64). The maximum warm rows are HEA-22
+on CPU (28.8395 s), HEA-28 on GPU FP32 (0.1346 s) and HEA-28 on GPU FP64
+(1.3828 s). These are small-corpus diagnostics, not portable estimator
+scores. The first-call GPU FP32 ratio has a 138x maximum, so first and warm
+targets must not be combined.
 
 ## Numbers to remember
 

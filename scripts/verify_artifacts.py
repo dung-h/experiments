@@ -172,6 +172,15 @@ REQUIRED = (
     "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_final/resource_envelope.csv",
     "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_final/resource_frontier_prediction.csv",
     "artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_final/summary.json",
+    "docs/PAPER_REPO_EXPERIMENT_MAP_2026-09-21.md",
+    "experiments/cudaq_runtime/run_cudaq_matrix.py",
+    "experiments/cudaq_runtime/merge_cudaq_matrix.py",
+    "experiments/cudaq_runtime/evaluate_cudaq_matrix.py",
+    "artifacts/cudaq_runtime/cudaq_matrix_20260921/REPORT.md",
+    "artifacts/cudaq_runtime/cudaq_matrix_20260921/cudaq_matrix.csv",
+    "artifacts/cudaq_runtime/cudaq_matrix_20260921/cudaq_matrix.environment.json",
+    "artifacts/cudaq_runtime/cudaq_matrix_20260921/evaluation/summary_warm_sample_median_s.csv",
+    "artifacts/cudaq_runtime/cudaq_matrix_20260921/evaluation/summary_first_sample_s.csv",
 )
 
 def require(condition: bool, message: str) -> None:
@@ -188,7 +197,7 @@ def main() -> int:
     },
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 33,
+    require(len(artifact_manifest["artifacts"]) == 34,
             "unexpected replication artifact manifest size")
 
     qonductor = json.loads((ROOT / "artifacts/qonductor/reproduction_metrics.json").read_text())
@@ -659,6 +668,25 @@ def main() -> int:
     require(c64_q28["envelope_fits"] == "True" and int(c64_q28["observed_ok"]) == 4,
             "dense-statevector v2 q28 complex64 feasibility evidence changed")
 
+    cudaq_root = ROOT / "artifacts/cudaq_runtime/cudaq_matrix_20260921"
+    with (cudaq_root / "cudaq_matrix.csv").open(newline="") as handle:
+        cudaq_rows = list(csv.DictReader(handle))
+    require(len(cudaq_rows) == 44, "CUDA-Q pilot row count changed")
+    require({row["status"] for row in cudaq_rows} == {"ok"},
+            "CUDA-Q pilot contains a non-ok row")
+    require({row["target_name"] for row in cudaq_rows} == {"cpu_fp64", "gpu_fp32", "gpu_fp64"},
+            "CUDA-Q target coverage changed")
+    require({row["family"] for row in cudaq_rows} == {
+        "ghz", "hea", "qaoa_cycle", "random_brickwork"
+    }, "CUDA-Q family coverage changed")
+    require(all(float(row["first_sample_s"]) > 0 for row in cudaq_rows),
+            "CUDA-Q first-call timings are not positive")
+    require(all(float(row["warm_sample_median_s"]) > 0 for row in cudaq_rows),
+            "CUDA-Q warm-call timings are not positive")
+    cudaq_manifest = json.loads((cudaq_root / "cudaq_matrix.environment.json").read_text())
+    require(cudaq_manifest["cudaq_version"].startswith("CUDA-Q Version 0.15.1"),
+            "CUDA-Q environment version changed")
+
     with (ROOT / "tracks/cdaa_qcre/data/instruction_durations/SNAPSHOT_MANIFEST.csv").open(
         newline=""
     ) as handle:
@@ -686,7 +714,7 @@ def main() -> int:
     require(abs(outlier["predictions_seconds"]["from_scratch_osaka_test"] - 12.8724) < 1e-4,
             "Ma-Li from-scratch fixture changed")
 
-    print("OK: replication reports, fixtures, provenance lock, Ma-Li seed-1234 diagnostic and dense-statevector matrix verified")
+    print("OK: replication reports, fixtures, provenance lock, Ma-Li seed-1234 diagnostic, dense-statevector matrix and CUDA-Q pilot verified")
     print("This check does not rerun GPU timing, retrain models or contact external services.")
     return 0
 

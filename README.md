@@ -46,6 +46,14 @@ inventing duration labels. It finds strong in-range circuit-group prediction,
 weaker width extrapolation, and a q24-calibrated peak-memory envelope that
 correctly rejects q28 complex128 despite raw statevector bytes fitting VRAM.
 
+The literature and public-artifact audit is [`docs/PAPER_REPO_EXPERIMENT_MAP_2026-09-21.md`](docs/PAPER_REPO_EXPERIMENT_MAP_2026-09-21.md).
+It records which papers have usable code/data, what timing contract each one
+defines, and why a candidate is or is not selected for a new experiment. The
+first CUDA-Q matched simulator pilot is under
+[`artifacts/cudaq_runtime/cudaq_matrix_20260921/`](artifacts/cudaq_runtime/cudaq_matrix_20260921/).
+It keeps CPU QPP FP64, GPU FP32 and GPU FP64 `sample` wall-clock labels
+separate, with first-call and warm-call timing reported independently.
+
 ## Scope
 
 Each track has its own target semantics:

@@ -135,3 +135,42 @@ The completed 96-row baseline and its report are under
 [`artifacts/simulator_runtime_v1/torch_dense_statevector_v1/`](../artifacts/simulator_runtime_v1/torch_dense_statevector_v1/).
 Use the scoped [track README](simulator_runtime_v1/README.md) to regenerate the
 matrix, OOF baseline evaluation and report.
+
+## CUDA-Q matched simulator pilot
+
+The CUDA-Q pilot is a separate target contract from the PyTorch dense matrix,
+Aer, cuTensorNet and QPU tracks. It records CPU QPP FP64, NVIDIA GPU FP32 and
+NVIDIA GPU FP64 `cudaq.sample` timings. First-call and warm-call labels are
+separate because first use may include lazy compilation or backend
+initialisation.
+
+Use the Python 3.13 CUDA-Q environment (the CUDA-Q wheel is not installed in
+the repository's default interpreter):
+
+```bash
+CUDA_VISIBLE_DEVICES=0 /path/to/.venv-cudaq313/bin/python \
+  experiments/cudaq_runtime/run_cudaq_matrix.py \
+  --targets gpu_fp32,gpu_fp64 \
+  --families ghz,hea,qaoa_cycle,random_brickwork \
+  --widths 16,20,24,28 --shots 32 --warmups 1 --repeats 3 \
+  --output artifacts/cudaq_runtime/<run>/gpu_matrix.csv
+
+CUDA_VISIBLE_DEVICES="" /path/to/.venv-cudaq313/bin/python \
+  experiments/cudaq_runtime/run_cudaq_matrix.py \
+  --targets cpu_fp64 --widths 16,20,22 --shots 32 --warmups 1 --repeats 3 \
+  --output artifacts/cudaq_runtime/<run>/cpu_matrix.csv
+```
+
+Merge the two CSVs while preserving `target_name`, then evaluate both target
+contracts:
+
+```bash
+/path/to/.venv/bin/python experiments/cudaq_runtime/evaluate_cudaq_matrix.py \
+  --input artifacts/cudaq_runtime/<run>/cudaq_matrix.csv \
+  --output-dir artifacts/cudaq_runtime/<run>/evaluation
+```
+
+The current run and interpretation are in
+[`artifacts/cudaq_runtime/cudaq_matrix_20260921/REPORT.md`](../artifacts/cudaq_runtime/cudaq_matrix_20260921/REPORT.md).
+The run is intentionally a small estimator diagnostic; it does not claim
+cross-GPU generalisation or a universal simulator runtime model.

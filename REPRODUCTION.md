@@ -303,3 +303,44 @@ The committed final artifact is
 Run the standard verifier after materializing a clone; it checks raw coverage,
 source provenance, OOM retention, estimator metrics and the q28 envelope
 boundary without rerunning GPU timing.
+
+## CUDA-Q matched simulator pilot
+
+CUDA-Q is installed in a separate Python 3.13 environment. The pilot records
+`qpp-cpu` FP64, NVIDIA FP32 and NVIDIA FP64 `cudaq.sample` wall-clock labels.
+It does not contact a QPU or cloud service. First-call and warm-call timings
+are separate targets.
+
+```bash
+ROOT=/path/to/quantum-runtime-estimator-replications
+CUDAQ_PY=/path/to/Capstone-Project/.venv-cudaq313/bin/python
+EVAL_PY=/path/to/Capstone-Project/.venv/bin/python
+OUT="$ROOT/artifacts/cudaq_runtime/<run>"
+mkdir -p "$OUT"
+
+CUDA_VISIBLE_DEVICES=0 "$CUDAQ_PY" \
+  "$ROOT/experiments/cudaq_runtime/run_cudaq_matrix.py" \
+  --targets gpu_fp32,gpu_fp64 \
+  --families ghz,hea,qaoa_cycle,random_brickwork \
+  --widths 16,20,24,28 --shots 32 --warmups 1 --repeats 3 \
+  --output "$OUT/gpu_matrix.csv"
+
+CUDA_VISIBLE_DEVICES="" "$CUDAQ_PY" \
+  "$ROOT/experiments/cudaq_runtime/run_cudaq_matrix.py" \
+  --targets cpu_fp64 \
+  --families ghz,hea,qaoa_cycle,random_brickwork \
+  --widths 16,20,22 --shots 32 --warmups 1 --repeats 3 \
+  --output "$OUT/cpu_matrix.csv"
+
+python3 "$ROOT/experiments/cudaq_runtime/merge_cudaq_matrix.py" \
+  --inputs "$OUT/cpu_matrix.csv" "$OUT/gpu_matrix.csv" \
+  --output "$OUT/cudaq_matrix.csv"
+"$EVAL_PY" "$ROOT/experiments/cudaq_runtime/evaluate_cudaq_matrix.py" \
+  --input "$OUT/cudaq_matrix.csv" --output-dir "$OUT/evaluation"
+```
+
+The checked-in run is
+`artifacts/cudaq_runtime/cudaq_matrix_20260921/`; its report records the
+44-row coverage, target semantics, raw timing table and small-corpus split
+diagnostics. Do not append CUDA-Q rows to the PyTorch, Aer or cuTensorNet
+tables without preserving the target contract.

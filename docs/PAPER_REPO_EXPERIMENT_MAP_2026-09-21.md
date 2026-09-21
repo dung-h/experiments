@@ -1,0 +1,79 @@
+# Paper/repository map and experiment gate
+
+**Audit date:** 21 September 2026  
+**Purpose:** decide which literature and public artifacts justify a new runtime
+experiment. A paper is not labelled *reproduced* merely because its title
+contains “runtime prediction”.
+
+## Decision rule
+
+Each candidate is recorded with four separate questions:
+
+1. What is the target? (simulator execution, real-QPU execution, queue,
+   workflow, or remaining time.)
+2. What is the execution contract? (first call, warm kernel, end-to-end,
+   sampling, cloud turnaround, or an online prefix.)
+3. Is the author code/data/checkpoint public and usable on this machine?
+4. What evidence can our experiment add beyond rerunning the author script?
+
+Targets with different contracts remain separate. The word *runtime* in a
+paper title is not sufficient reason to pool rows.
+
+## Current map
+
+| ID | Paper / public source | Target and method | Artifact status | Action in this capsule |
+| --- | --- | --- | --- | --- |
+| QPU-1 | Ma--Li, [arXiv:2411.15631](https://arxiv.org/abs/2411.15631), [repo](https://github.com/mooselab/Quantum-Execution-Time-Prediction) | DAG/GNN pretraining and observed IBM execution-time adaptation | Code and extracts available; historical tensor/calibration timestamp not fully recovered | Existing replication, fake-snapshot proxy, grouped direct estimator and failure analysis |
+| QPU-2 | [Qonductor-SC25](https://github.com/manosgior/Qonductor-SC25) | Cloud job/circuit estimation used by a scheduler | Public artifact available, but circuit/job database has no stable join key to the CSV | Existing metric recomputation and mapping limitation; no guessed join |
+| QPU-3 | [CDAA](https://github.com/mtkgv/cdaa) + [QCRE](https://github.com/mtkgv/qcre) | Analytical compiled-gate duration proxy | Public artifacts available; reference is not measured QPU wall-clock | Existing schedule-duration reproduction, explicitly labelled proxy |
+| SIM-1 | [VQCSim](https://arxiv.org/abs/2607.11985), [repo](https://github.com/Security-FIT/VQCSim) | Torch-native variational GPU inference | Public code; pinned revision and local GPU canary available | Existing local RQ2-style data generation; labels are VQCSim inference, not Aer |
+| SIM-2 | CUDA-Q, [repo](https://github.com/NVIDIA/cuda-quantum), [simulator docs](https://nvidia.github.io/cuda-quantum/latest/using/backends/simulators.html) | CPU/GPU statevector simulation; CUDA-Q MPS is a separate target | Public framework; CUDA-Q 0.15.1 installed in an isolated environment | **New 21-Sep matched CPU/GPU/precision pilot** in `artifacts/cudaq_runtime/` |
+| SIM-3 | CUDA-Q MPS paper, [arXiv:2501.15939](https://arxiv.org/abs/2501.15939) | MPS simulation and tensor-network behaviour | Official framework is public; paper-scale multi-GPU setup is not available here | Follow-up after the dense CUDA-Q matrix; keep bond/fidelity and wall-clock targets separate |
+| SIM-4 | cuTensorNet `RUNTIME_EST` | Pre-run contraction-path cost versus local scalar contraction | NVIDIA distribution is usable locally; estimator is experimental | Existing 25-row GPU comparison, first/warm/end-to-end clocks separated |
+| SIM-5 | Azizov et al., [arXiv:2609.12980](https://arxiv.org/abs/2609.12980) | Transpilation-aware noisy Aer runtime | Paper public; author 1,402-row runtime table/code not found in the audit | Existing independent reconstruction only; never called exact reproduction |
+| SIM-6 | Zero-Setup, [repo](https://github.com/arulrhikm/mps-pps-zero-setup-benchmarks) | Pauli-propagation kernel and remote MPS comparison | Local Pauli-propagation runner public; cloud MPS portion requires service | Existing local canary/grid, not mixed with statevector labels |
+| ONLINE-1 | MPORA, [repo](https://github.com/phan-lab/MPORA) | XGBoost + conformal bounds for remaining time from execution windows | Code and split metadata public; profiles supplied through artifact/container | Methodological analogue for online quantum telemetry; not a quantum reproduction |
+| ONLINE-2 | PGTNet, [repo](https://github.com/keyvan-amiri/PGTNet) | Remaining process duration from observed event prefixes | Public code/data workflow; business-process domain | Methodological analogue for prefix/graph updates; not an HPC/QPU claim |
+| METHOD-1 | [MQT Predictor](https://github.com/munich-quantum-toolkit/predictor) | Compiler-option prediction/selection from circuit features | Public code | Feature/split reference only; original target is not runtime |
+| OUT-1 | TQml, [arXiv:2506.04891](https://arxiv.org/abs/2506.04891) | Simulator architecture/performance | Paper located; no author artifact was accepted as a reproducible runtime table in this audit | Literature context; no reproduction claim |
+| OUT-2 | qfusion-opt, [DOI](https://doi.org/10.1109/TCAD.2026.3680784) | Tensor-network circuit fusion/optimization | Paper located; no usable public experiment artifact found | Literature context; no new label set yet |
+
+## What was actually added on 21 September
+
+The first CUDA-Q pilot is stored under
+`artifacts/cudaq_runtime/cudaq_matrix_20260921/` and generated by
+`experiments/cudaq_runtime/run_cudaq_matrix.py`.
+
+- 44 successful rows: CPU QPP FP64 (12), NVIDIA FP32 (16), NVIDIA FP64 (16).
+- Families: GHZ, HEA, one fixed QAOA/MaxCut ring layer and deterministic
+  random-brickwork.
+- GPU widths: 16, 20, 24 and 28. CPU widths: 16, 20 and 22 because the
+  larger CPU cells became the dominant cost of the pilot.
+- 32 shots, one warm-up call and three measured warm calls per row.
+- `first_sample_s` includes lazy compilation/backend initialisation when it is
+  present. `warm_sample_median_s` measures subsequent CUDA-Q `sample` calls.
+- Excluded: QPU execution, queue time, cloud turnaround, and equivalence to
+  Aer/cuTensorNet timing.
+
+The companion evaluator reports median, Ridge and HistGradientBoosting under
+random, family-held-out and width-held-out splits. It is a diagnostic on a
+small corpus, not a portable simulator estimator.
+
+## Why this is more than a simulator benchmark
+
+The matrix tests the first estimator question that was previously ambiguous:
+whether a pre-run model can predict a declared *local simulator target* when
+the circuit family, width, precision and execution backend are recorded. The
+first/warm split also exposes a common hidden confounder: a model trained on
+warm execution cannot be evaluated against first-call latency, and vice versa.
+
+The next experiment is therefore selected by the map, not by adding more
+unrelated simulator names:
+
+1. add CUDA-Q `tensornet-mps` with its own fidelity/bond/memory fields;
+2. extend the same families with independent circuit seeds;
+3. evaluate an out-of-family and out-of-width estimator under fixed target
+   contracts;
+4. only then test whether an online prefix/telemetry model inspired by MPORA
+   is meaningful for quantum simulation.
+

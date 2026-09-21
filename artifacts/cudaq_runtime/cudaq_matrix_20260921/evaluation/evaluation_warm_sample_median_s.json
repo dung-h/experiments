@@ -1,0 +1,22 @@
+{
+  "target_column": "warm_sample_median_s",
+  "target_semantics": "CUDA-Q local simulator sample wall-clock; target-specific; first and warm calls are separate",
+  "input": "artifacts/cudaq_runtime/cudaq_matrix_20260921/cudaq_matrix.csv",
+  "rows_used": 44,
+  "targets": [
+    "cpu_fp64",
+    "gpu_fp32",
+    "gpu_fp64"
+  ],
+  "splits": [
+    "random_5fold",
+    "family_held_out",
+    "width_held_out"
+  ],
+  "models": [
+    "median_log",
+    "ridge",
+    "hgb"
+  ],
+  "warning": "small pilot; width/family held-out metrics are diagnostics, not portable cross-framework claims"
+}
