@@ -1,0 +1,66 @@
+{
+  "n_rows": 340,
+  "methods": [
+    "global",
+    "support_stratified"
+  ],
+  "intervals": {
+    "grouped_qasm_global_alpha_0.1": {
+      "n": 340,
+      "coverage": 0.8764705882352941,
+      "median_width_seconds": 2.1282813641341685,
+      "qwalk_coverage": 0.0,
+      "qwalk_median_width_seconds": 2.188792303277981
+    },
+    "grouped_qasm_support_stratified_alpha_0.1": {
+      "n": 340,
+      "coverage": 0.8764705882352941,
+      "median_width_seconds": 2.03370606356939,
+      "qwalk_coverage": 0.0,
+      "qwalk_median_width_seconds": 2.714139689713912
+    },
+    "grouped_qasm_global_alpha_0.2": {
+      "n": 340,
+      "coverage": 0.788235294117647,
+      "median_width_seconds": 1.4793714885191043,
+      "qwalk_coverage": 0.0,
+      "qwalk_median_width_seconds": 1.713606514349757
+    },
+    "grouped_qasm_support_stratified_alpha_0.2": {
+      "n": 340,
+      "coverage": 0.7764705882352941,
+      "median_width_seconds": 1.4600380537143813,
+      "qwalk_coverage": 0.0,
+      "qwalk_median_width_seconds": 1.8106151433458817
+    },
+    "strict_all_global_alpha_0.1": {
+      "n": 340,
+      "coverage": 0.8647058823529412,
+      "median_width_seconds": 2.199099198743405,
+      "qwalk_coverage": 0.0,
+      "qwalk_median_width_seconds": 2.3261450813908966
+    },
+    "strict_all_support_stratified_alpha_0.1": {
+      "n": 340,
+      "coverage": 0.8764705882352941,
+      "median_width_seconds": 2.2637160511489003,
+      "qwalk_coverage": 0.0,
+      "qwalk_median_width_seconds": 2.6023835519358536
+    },
+    "strict_all_global_alpha_0.2": {
+      "n": 340,
+      "coverage": 0.7676470588235295,
+      "median_width_seconds": 1.5359896967058617,
+      "qwalk_coverage": 0.0,
+      "qwalk_median_width_seconds": 1.8449548042946544
+    },
+    "strict_all_support_stratified_alpha_0.2": {
+      "n": 340,
+      "coverage": 0.7852941176470588,
+      "median_width_seconds": 1.585735003550591,
+      "qwalk_coverage": 0.0,
+      "qwalk_median_width_seconds": 1.9033783124519545
+    }
+  },
+  "semantics": "support distance is nearest standardized rich-feature distance to fit rows; support-stratified quantiles are sparse-calibration diagnostics, not distribution-free conditional coverage"
+}

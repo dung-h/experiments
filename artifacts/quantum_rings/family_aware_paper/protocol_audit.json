@@ -1,0 +1,897 @@
+{
+  "repo_commit": "e0f459171996f2139438a67f7a683dbdadb2b06b",
+  "audit_recorded": "2026-09-18",
+  "seed": 0,
+  "protocols": {
+    "0.75": {
+      "target": 0.75,
+      "n_rows": 144,
+      "n_circuits": 36,
+      "tree_baselines": {
+        "threshold_random_forest": {
+          "exact_accuracy": 0.7083333333333334,
+          "within_one_rung": 0.8680555555555556,
+          "mean_rung_distance": 0.4722222222222222
+        },
+        "runtime": {
+          "random_forest": {
+            "r2_log_runtime": 0.743586157338886,
+            "r2_runtime_seconds": 0.1665637025480422,
+            "mae_runtime_seconds": 37.04018098556841,
+            "median_relative_error": 0.36539719789981207
+          },
+          "extra_trees": {
+            "r2_log_runtime": 0.7223744302170927,
+            "r2_runtime_seconds": 0.13720695769856683,
+            "mae_runtime_seconds": 41.028007722703904,
+            "median_relative_error": 0.48148712436374985
+          },
+          "gradient_boosting": {
+            "r2_log_runtime": 0.7573463411144011,
+            "r2_runtime_seconds": 0.20158735549877838,
+            "mae_runtime_seconds": 36.44508809522209,
+            "median_relative_error": 0.3665815614957803
+          }
+        },
+        "per_context_random_forest": {
+          "CPU+double": {
+            "r2_log_runtime": 0.40476948987353845,
+            "r2_runtime_seconds": -0.02593295635925985,
+            "mae_runtime_seconds": 23.278689713641278,
+            "median_relative_error": 0.5324913535668715
+          },
+          "CPU+single": {
+            "r2_log_runtime": 0.45310098354407913,
+            "r2_runtime_seconds": -0.02785443683781641,
+            "mae_runtime_seconds": 25.850801871256994,
+            "median_relative_error": 0.42372634806837367
+          },
+          "GPU+double": {
+            "r2_log_runtime": 0.8411797308881414,
+            "r2_runtime_seconds": 0.19889227007680288,
+            "mae_runtime_seconds": 56.444179265826634,
+            "median_relative_error": 0.2429635979241934
+          },
+          "GPU+single": {
+            "r2_log_runtime": 0.887605638410899,
+            "r2_runtime_seconds": 0.3146328855821152,
+            "mae_runtime_seconds": 42.58705309154873,
+            "median_relative_error": 0.22776910955797708
+          }
+        }
+      },
+      "mlp_ablations": {
+        "family_classifier_accuracy": 0.3964285714285714,
+        "models": {
+          "baseline_mlp": {
+            "threshold": {
+              "exact_accuracy": 0.4791666666666667,
+              "within_one_rung": 0.6458333333333334,
+              "mean_rung_distance": 1.3958333333333333
+            },
+            "runtime": {
+              "r2_log_runtime": -0.2278692107748943,
+              "r2_runtime_seconds": -84.3051234903331,
+              "mae_runtime_seconds": 395.47059163433835,
+              "median_relative_error": 0.9851676911177603
+            }
+          },
+          "plus_graph_features": {
+            "threshold": {
+              "exact_accuracy": 0.4861111111111111,
+              "within_one_rung": 0.7569444444444444,
+              "mean_rung_distance": 1.2013888888888888
+            },
+            "runtime": {
+              "r2_log_runtime": -0.5915781518960739,
+              "r2_runtime_seconds": -122.25055152180701,
+              "mae_runtime_seconds": 527.8879415275317,
+              "median_relative_error": 0.7845195003469356
+            }
+          },
+          "plus_family_classifier": {
+            "threshold": {
+              "exact_accuracy": 0.5902777777777778,
+              "within_one_rung": 0.8333333333333334,
+              "mean_rung_distance": 0.7916666666666666
+            },
+            "runtime": {
+              "r2_log_runtime": -0.2489078795285724,
+              "r2_runtime_seconds": -87.25992422126726,
+              "mae_runtime_seconds": 411.08980652826,
+              "median_relative_error": 0.6961096756278897
+            }
+          },
+          "plus_decayed_ce": {
+            "threshold": {
+              "exact_accuracy": 0.6041666666666666,
+              "within_one_rung": 0.8125,
+              "mean_rung_distance": 0.75
+            },
+            "runtime": {
+              "r2_log_runtime": -0.20878309424519004,
+              "r2_runtime_seconds": -86.02822986373009,
+              "mae_runtime_seconds": 408.3820218727055,
+              "median_relative_error": 0.8102452418920176
+            }
+          }
+        }
+      },
+      "leave_one_family_out": {
+        "n_families": 20,
+        "aggregate": {
+          "threshold": {
+            "exact_accuracy": 0.6319444444444444,
+            "within_one_rung": 0.8680555555555556,
+            "mean_rung_distance": 0.5486111111111112
+          },
+          "runtime": {
+            "r2_log_runtime": 0.7580957024151085,
+            "r2_runtime_seconds": 0.19794680418597133,
+            "mae_runtime_seconds": 37.46661545578921,
+            "median_relative_error": 0.4650379984129043
+          }
+        },
+        "per_family": {
+          "Amplitude_Estimation": {
+            "n_circuits": 2,
+            "n_rows": 8,
+            "threshold": {
+              "exact_accuracy": 0.25,
+              "within_one_rung": 0.875,
+              "mean_rung_distance": 1.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.6379479862895276,
+              "r2_runtime_seconds": -35.2246945664811,
+              "mae_runtime_seconds": 99.7273613802561,
+              "median_relative_error": 1.0772278138701892
+            }
+          },
+          "CutBell": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": -4.234658618902484,
+              "r2_runtime_seconds": -9.132267393828483,
+              "mae_runtime_seconds": 0.3613501750483059,
+              "median_relative_error": 0.5211160622885023
+            }
+          },
+          "Deutsch_Jozsa": {
+            "n_circuits": 3,
+            "n_rows": 12,
+            "threshold": {
+              "exact_accuracy": 0.5,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.5
+            },
+            "runtime": {
+              "r2_log_runtime": 0.7827384708465241,
+              "r2_runtime_seconds": 0.2518459177917607,
+              "mae_runtime_seconds": 2.196038060954956,
+              "median_relative_error": 0.29423344502200843
+            }
+          },
+          "GHZ": {
+            "n_circuits": 4,
+            "n_rows": 16,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.5270681899155638,
+              "r2_runtime_seconds": 0.7260471191948912,
+              "mae_runtime_seconds": 0.08824667068622079,
+              "median_relative_error": 0.25659973979511375
+            }
+          },
+          "GraphState": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 0.25,
+              "mean_rung_distance": 1.75
+            },
+            "runtime": {
+              "r2_log_runtime": -0.46577181506281384,
+              "r2_runtime_seconds": -0.351957894264497,
+              "mae_runtime_seconds": 3.876186194212606,
+              "median_relative_error": 0.21812958420946277
+            }
+          },
+          "Ground_State": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.9139397367154493,
+              "r2_runtime_seconds": 0.8788256883803309,
+              "mae_runtime_seconds": 0.49921943212516684,
+              "median_relative_error": 0.24920231154609956
+            }
+          },
+          "Grover_NoAncilla": {
+            "n_circuits": 2,
+            "n_rows": 8,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.649862645089103,
+              "r2_runtime_seconds": 0.6115189989301157,
+              "mae_runtime_seconds": 64.34519844122785,
+              "median_relative_error": 1.8069135057315797
+            }
+          },
+          "Grover_V_Chain": {
+            "n_circuits": 2,
+            "n_rows": 8,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.96755024277531,
+              "r2_runtime_seconds": 0.8780798614450069,
+              "mae_runtime_seconds": 25.114429858273752,
+              "median_relative_error": 0.29989956206529095
+            }
+          },
+          "Portfolio_QAOA": {
+            "n_circuits": 2,
+            "n_rows": 8,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.670081453970899,
+              "r2_runtime_seconds": 0.5502335457913206,
+              "mae_runtime_seconds": 3.958589734364764,
+              "median_relative_error": 0.4062329460391658
+            }
+          },
+          "Portfolio_VQE": {
+            "n_circuits": 2,
+            "n_rows": 8,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.9229953676411644,
+              "r2_runtime_seconds": 0.9798563251153259,
+              "mae_runtime_seconds": 0.6104692286209332,
+              "median_relative_error": 0.24631697493923582
+            }
+          },
+          "Pricing_Call": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 0.0,
+              "mean_rung_distance": 3.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.6171559587865074,
+              "r2_runtime_seconds": -0.007659414095876338,
+              "mae_runtime_seconds": 3.5928077932429123,
+              "median_relative_error": 0.6413260433978423
+            }
+          },
+          "QAOA": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 0.25,
+              "mean_rung_distance": 1.75
+            },
+            "runtime": {
+              "r2_log_runtime": -3.834747261501402,
+              "r2_runtime_seconds": -19.631372747582876,
+              "mae_runtime_seconds": 0.4276105752392667,
+              "median_relative_error": 0.5058012814734707
+            }
+          },
+          "QFT": {
+            "n_circuits": 3,
+            "n_rows": 12,
+            "threshold": {
+              "exact_accuracy": 0.08333333333333333,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.9166666666666666
+            },
+            "runtime": {
+              "r2_log_runtime": 0.8889779674497605,
+              "r2_runtime_seconds": 0.24894066087558564,
+              "mae_runtime_seconds": 102.98816673205262,
+              "median_relative_error": 0.2954455690213061
+            }
+          },
+          "QFT_Entangled": {
+            "n_circuits": 2,
+            "n_rows": 8,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 1.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.8047879775980138,
+              "r2_runtime_seconds": 0.9745590236011947,
+              "mae_runtime_seconds": 0.6616610737779511,
+              "median_relative_error": 0.3044294932343435
+            }
+          },
+          "QNN": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": -1.7413463396889757,
+              "r2_runtime_seconds": 0.10775131287887152,
+              "mae_runtime_seconds": 9.023443816398814,
+              "median_relative_error": 0.7003453915687587
+            }
+          },
+          "QPE_Exact": {
+            "n_circuits": 2,
+            "n_rows": 8,
+            "threshold": {
+              "exact_accuracy": 0.75,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.25
+            },
+            "runtime": {
+              "r2_log_runtime": 0.735062191096805,
+              "r2_runtime_seconds": 0.9817855422325152,
+              "mae_runtime_seconds": 12.645899568862532,
+              "median_relative_error": 0.21558262860760952
+            }
+          },
+          "Shor": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 0.0,
+              "mean_rung_distance": 2.5
+            },
+            "runtime": {
+              "r2_log_runtime": 0.5927551199289263,
+              "r2_runtime_seconds": -0.8502189533776572,
+              "mae_runtime_seconds": 44.90909185560497,
+              "median_relative_error": 0.9363165318258673
+            }
+          },
+          "TwoLocalRandom": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 0.0,
+              "mean_rung_distance": 2.0
+            },
+            "runtime": {
+              "r2_log_runtime": -77.6459564446798,
+              "r2_runtime_seconds": -6.336997943638278,
+              "mae_runtime_seconds": 554.5335123387431,
+              "median_relative_error": 0.9697853098523549
+            }
+          },
+          "VQE": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.8383470963457549,
+              "r2_runtime_seconds": 0.8658582286244283,
+              "mae_runtime_seconds": 0.02038637981780632,
+              "median_relative_error": 0.07418142371508366
+            }
+          },
+          "W_State": {
+            "n_circuits": 3,
+            "n_rows": 12,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.41352094037786447,
+              "r2_runtime_seconds": -2.65673477295034,
+              "mae_runtime_seconds": 0.5072427384810697,
+              "median_relative_error": 0.4904464528055793
+            }
+          }
+        }
+      }
+    },
+    "0.99": {
+      "target": 0.99,
+      "n_rows": 144,
+      "n_circuits": 36,
+      "tree_baselines": {
+        "threshold_random_forest": {
+          "exact_accuracy": 0.6041666666666666,
+          "within_one_rung": 0.8541666666666666,
+          "mean_rung_distance": 0.6458333333333334
+        },
+        "runtime": {
+          "random_forest": {
+            "r2_log_runtime": 0.4102472952791193,
+            "r2_runtime_seconds": -0.02305824627833597,
+            "mae_runtime_seconds": 145.1438216220626,
+            "median_relative_error": 0.49231197844455676
+          },
+          "extra_trees": {
+            "r2_log_runtime": 0.7115234168134515,
+            "r2_runtime_seconds": 0.2172617599404787,
+            "mae_runtime_seconds": 117.52598912773581,
+            "median_relative_error": 0.38826291900806975
+          },
+          "gradient_boosting": {
+            "r2_log_runtime": 0.5778692888615207,
+            "r2_runtime_seconds": 0.23865291635608354,
+            "mae_runtime_seconds": 117.58488739001635,
+            "median_relative_error": 0.37860619944808194
+          }
+        },
+        "per_context_random_forest": {
+          "CPU+double": {
+            "r2_log_runtime": 0.3285146967869522,
+            "r2_runtime_seconds": -0.047343001587761835,
+            "mae_runtime_seconds": 197.60063948859954,
+            "median_relative_error": 0.5027836168993804
+          },
+          "CPU+single": {
+            "r2_log_runtime": 0.4781201877443422,
+            "r2_runtime_seconds": -0.10253486376754717,
+            "mae_runtime_seconds": 54.01186368408195,
+            "median_relative_error": 0.4291366338903214
+          },
+          "GPU+double": {
+            "r2_log_runtime": 0.2836449233520896,
+            "r2_runtime_seconds": -0.06506983143776957,
+            "mae_runtime_seconds": 250.27172654737154,
+            "median_relative_error": 0.5020690691075581
+          },
+          "GPU+single": {
+            "r2_log_runtime": 0.38940450779609237,
+            "r2_runtime_seconds": -0.05590996296111239,
+            "mae_runtime_seconds": 78.6910567681973,
+            "median_relative_error": 0.4253789453773206
+          }
+        }
+      },
+      "mlp_ablations": {
+        "family_classifier_accuracy": 0.3964285714285714,
+        "models": {
+          "baseline_mlp": {
+            "threshold": {
+              "exact_accuracy": 0.4027777777777778,
+              "within_one_rung": 0.5694444444444444,
+              "mean_rung_distance": 1.8958333333333333
+            },
+            "runtime": {
+              "r2_log_runtime": 0.10166000838669587,
+              "r2_runtime_seconds": 0.12559841760065804,
+              "mae_runtime_seconds": 127.31763188986052,
+              "median_relative_error": 0.7280550862397767
+            }
+          },
+          "plus_graph_features": {
+            "threshold": {
+              "exact_accuracy": 0.4166666666666667,
+              "within_one_rung": 0.6666666666666666,
+              "mean_rung_distance": 1.5138888888888888
+            },
+            "runtime": {
+              "r2_log_runtime": -0.7313533001679282,
+              "r2_runtime_seconds": -16.29648675345436,
+              "mae_runtime_seconds": 479.79468434078717,
+              "median_relative_error": 0.6766396421086116
+            }
+          },
+          "plus_family_classifier": {
+            "threshold": {
+              "exact_accuracy": 0.6180555555555556,
+              "within_one_rung": 0.8194444444444444,
+              "mean_rung_distance": 0.8194444444444444
+            },
+            "runtime": {
+              "r2_log_runtime": -0.8500066213965116,
+              "r2_runtime_seconds": -31.141157210312656,
+              "mae_runtime_seconds": 701.1608637188685,
+              "median_relative_error": 0.6650651261098721
+            }
+          },
+          "plus_decayed_ce": {
+            "threshold": {
+              "exact_accuracy": 0.6111111111111112,
+              "within_one_rung": 0.8263888888888888,
+              "mean_rung_distance": 0.7291666666666666
+            },
+            "runtime": {
+              "r2_log_runtime": -0.891112724079203,
+              "r2_runtime_seconds": -36.50260683086259,
+              "mae_runtime_seconds": 807.2970824258426,
+              "median_relative_error": 0.7530519710012661
+            }
+          }
+        }
+      },
+      "leave_one_family_out": {
+        "n_families": 20,
+        "aggregate": {
+          "threshold": {
+            "exact_accuracy": 0.5555555555555556,
+            "within_one_rung": 0.8541666666666666,
+            "mean_rung_distance": 0.6736111111111112
+          },
+          "runtime": {
+            "r2_log_runtime": 0.49878717205493184,
+            "r2_runtime_seconds": -0.006023472289866216,
+            "mae_runtime_seconds": 131.0918475691124,
+            "median_relative_error": 0.4612213407230067
+          }
+        },
+        "per_family": {
+          "Amplitude_Estimation": {
+            "n_circuits": 2,
+            "n_rows": 8,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 0.375,
+              "mean_rung_distance": 1.875
+            },
+            "runtime": {
+              "r2_log_runtime": -2.9104021661052695,
+              "r2_runtime_seconds": -669.271990742329,
+              "mae_runtime_seconds": 480.0203215510932,
+              "median_relative_error": 6.3381661517398165
+            }
+          },
+          "CutBell": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.055705288589610324,
+              "r2_runtime_seconds": -0.22559901479942868,
+              "mae_runtime_seconds": 6.091343429000575,
+              "median_relative_error": 0.4091386371817554
+            }
+          },
+          "Deutsch_Jozsa": {
+            "n_circuits": 3,
+            "n_rows": 12,
+            "threshold": {
+              "exact_accuracy": 0.3333333333333333,
+              "within_one_rung": 0.75,
+              "mean_rung_distance": 0.9166666666666666
+            },
+            "runtime": {
+              "r2_log_runtime": -0.1525984451823541,
+              "r2_runtime_seconds": -0.278216419674981,
+              "mae_runtime_seconds": 510.80761081676025,
+              "median_relative_error": 0.7812812891686318
+            }
+          },
+          "GHZ": {
+            "n_circuits": 4,
+            "n_rows": 16,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": -0.06559434220312577,
+              "r2_runtime_seconds": -0.4410855610633735,
+              "mae_runtime_seconds": 13.577342505811153,
+              "median_relative_error": 0.6424985147033666
+            }
+          },
+          "GraphState": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 0.25,
+              "mean_rung_distance": 1.75
+            },
+            "runtime": {
+              "r2_log_runtime": 0.44744898547794276,
+              "r2_runtime_seconds": 0.4728683591795725,
+              "mae_runtime_seconds": 3.412172444985239,
+              "median_relative_error": 0.30980193251945576
+            }
+          },
+          "Ground_State": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 1.0
+            },
+            "runtime": {
+              "r2_log_runtime": -0.04403082534145608,
+              "r2_runtime_seconds": -0.006973566933114572,
+              "mae_runtime_seconds": 7.684553327091008,
+              "median_relative_error": 0.42137726954808663
+            }
+          },
+          "Grover_NoAncilla": {
+            "n_circuits": 2,
+            "n_rows": 8,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.33363603487119975,
+              "r2_runtime_seconds": -0.0445091707382097,
+              "mae_runtime_seconds": 51.1664951508321,
+              "median_relative_error": 1.5155649029542873
+            }
+          },
+          "Grover_V_Chain": {
+            "n_circuits": 2,
+            "n_rows": 8,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.7556502098273419,
+              "r2_runtime_seconds": 0.3870682031476812,
+              "mae_runtime_seconds": 29.254336953264275,
+              "median_relative_error": 0.7702621049534891
+            }
+          },
+          "Portfolio_QAOA": {
+            "n_circuits": 2,
+            "n_rows": 8,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.8416893816953445,
+              "r2_runtime_seconds": 0.5731275267111768,
+              "mae_runtime_seconds": 7.058137850990495,
+              "median_relative_error": 0.09366198966034855
+            }
+          },
+          "Portfolio_VQE": {
+            "n_circuits": 2,
+            "n_rows": 8,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.9462404645389348,
+              "r2_runtime_seconds": 0.9505157658556329,
+              "mae_runtime_seconds": 2.7679580522653113,
+              "median_relative_error": 0.1717857945877381
+            }
+          },
+          "Pricing_Call": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 1.0
+            },
+            "runtime": {
+              "r2_log_runtime": -0.7306348354465972,
+              "r2_runtime_seconds": -2.1085392584122626,
+              "mae_runtime_seconds": 12.17067880509083,
+              "median_relative_error": 0.833912082283931
+            }
+          },
+          "QAOA": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 0.25,
+              "mean_rung_distance": 1.75
+            },
+            "runtime": {
+              "r2_log_runtime": 0.6463627653959259,
+              "r2_runtime_seconds": 0.7271354607507703,
+              "mae_runtime_seconds": 2.425315774949258,
+              "median_relative_error": 0.4402589472915039
+            }
+          },
+          "QFT": {
+            "n_circuits": 3,
+            "n_rows": 12,
+            "threshold": {
+              "exact_accuracy": 0.3333333333333333,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.6666666666666666
+            },
+            "runtime": {
+              "r2_log_runtime": 0.6299505002256154,
+              "r2_runtime_seconds": -0.1251256360474493,
+              "mae_runtime_seconds": 328.7568029614169,
+              "median_relative_error": 0.7317148515493629
+            }
+          },
+          "QFT_Entangled": {
+            "n_circuits": 2,
+            "n_rows": 8,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 1.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.8884732414750727,
+              "r2_runtime_seconds": 0.9552141465431818,
+              "mae_runtime_seconds": 4.734425779924724,
+              "median_relative_error": 0.20430992395989572
+            }
+          },
+          "QNN": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 1.0
+            },
+            "runtime": {
+              "r2_log_runtime": -1.2699725196404112,
+              "r2_runtime_seconds": -0.7479165611829932,
+              "mae_runtime_seconds": 22.217483073072223,
+              "median_relative_error": 0.4949090731921245
+            }
+          },
+          "QPE_Exact": {
+            "n_circuits": 2,
+            "n_rows": 8,
+            "threshold": {
+              "exact_accuracy": 0.5,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.5
+            },
+            "runtime": {
+              "r2_log_runtime": 0.9341925267636312,
+              "r2_runtime_seconds": 0.8149872450374328,
+              "mae_runtime_seconds": 166.7730058246256,
+              "median_relative_error": 0.2782444947956518
+            }
+          },
+          "Shor": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 0.25,
+              "mean_rung_distance": 1.75
+            },
+            "runtime": {
+              "r2_log_runtime": -0.6558874506500281,
+              "r2_runtime_seconds": -1.0702047110603887,
+              "mae_runtime_seconds": 25.813115807174853,
+              "median_relative_error": 0.42807513357420934
+            }
+          },
+          "TwoLocalRandom": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 0.0,
+              "within_one_rung": 0.0,
+              "mean_rung_distance": 4.5
+            },
+            "runtime": {
+              "r2_log_runtime": -25.97316686018785,
+              "r2_runtime_seconds": -5.444458321866978,
+              "mae_runtime_seconds": 556.7154956138644,
+              "median_relative_error": 0.918134713386048
+            }
+          },
+          "VQE": {
+            "n_circuits": 1,
+            "n_rows": 4,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.10744425850422912,
+              "r2_runtime_seconds": -0.18856634816046847,
+              "mae_runtime_seconds": 0.483803017577231,
+              "median_relative_error": 0.0938325105488067
+            }
+          },
+          "W_State": {
+            "n_circuits": 3,
+            "n_rows": 12,
+            "threshold": {
+              "exact_accuracy": 1.0,
+              "within_one_rung": 1.0,
+              "mean_rung_distance": 0.0
+            },
+            "runtime": {
+              "r2_log_runtime": 0.6798296909819153,
+              "r2_runtime_seconds": 0.4223777463002891,
+              "mae_runtime_seconds": 8.580192503824092,
+              "median_relative_error": 0.42158048730873443
+            }
+          }
+        }
+      },
+      "threshold_conditioning": {
+        "public_target": 0.99,
+        "runtime_source": "forward_at_public_0.99_selection",
+        "models": {
+          "no_threshold": {
+            "r2_log_runtime": 0.4102472952791193,
+            "r2_runtime_seconds": -0.02305824627833597,
+            "mae_runtime_seconds": 145.1438216220626,
+            "median_relative_error": 0.49231197844455676
+          },
+          "oracle_threshold": {
+            "r2_log_runtime": 0.4070469205464283,
+            "r2_runtime_seconds": -0.006050005146795101,
+            "mae_runtime_seconds": 143.73517424244108,
+            "median_relative_error": 0.46313640474512785
+          },
+          "predicted_threshold": {
+            "r2_log_runtime": 0.4079332506393949,
+            "r2_runtime_seconds": -0.008392656854731895,
+            "mae_runtime_seconds": 143.27084590181778,
+            "median_relative_error": 0.4630788096008804
+          }
+        }
+      }
+    }
+  }
+}

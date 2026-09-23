@@ -1,0 +1,312 @@
+{
+  "n_rows": 340,
+  "n_qasm_hashes": 170,
+  "feature_blocks": {
+    "qcre": [
+      "qcre_critical_path_seconds"
+    ],
+    "compiled": [
+      "qcre_critical_path_seconds",
+      "compiled_depth",
+      "active_physical_width"
+    ],
+    "graph_size": [
+      "qcre_critical_path_seconds",
+      "compiled_depth",
+      "active_physical_width",
+      "n_nodes",
+      "n_edges"
+    ],
+    "layer": [
+      "qcre_critical_path_seconds",
+      "compiled_depth",
+      "active_physical_width",
+      "n_nodes",
+      "n_edges",
+      "rich_n_layers",
+      "rich_layer_nodes_mean",
+      "rich_layer_nodes_p90",
+      "rich_layer_nodes_max"
+    ],
+    "timing": [
+      "qcre_critical_path_seconds",
+      "compiled_depth",
+      "active_physical_width",
+      "n_nodes",
+      "n_edges",
+      "rich_zero_duration_fraction",
+      "rich_duration_sum_dt",
+      "rich_duration_max_dt",
+      "rich_duration_nonzero_mean_dt",
+      "rich_duration_nonzero_p90_dt",
+      "rich_forward_max_dt",
+      "rich_forward_p90_dt",
+      "rich_reverse_p90_dt",
+      "rich_criticality_p90_dt"
+    ],
+    "edge": [
+      "qcre_critical_path_seconds",
+      "compiled_depth",
+      "active_physical_width",
+      "n_nodes",
+      "n_edges",
+      "rich_quantum_edge_fraction"
+    ],
+    "opcode": [
+      "qcre_critical_path_seconds",
+      "compiled_depth",
+      "active_physical_width",
+      "n_nodes",
+      "n_edges",
+      "rich_opcode_0_count",
+      "rich_opcode_1_count",
+      "rich_opcode_2_count",
+      "rich_opcode_3_count",
+      "rich_opcode_4_count",
+      "rich_opcode_5_count",
+      "rich_opcode_6_count",
+      "rich_opcode_7_count",
+      "rich_opcode_8_count",
+      "rich_opcode_9_count",
+      "rich_opcode_10_count",
+      "rich_opcode_11_count",
+      "rich_opcode_12_count",
+      "rich_opcode_13_count"
+    ],
+    "rich_summary": [
+      "rich_n_nodes",
+      "rich_n_edges",
+      "rich_n_layers",
+      "rich_active_width",
+      "rich_zero_duration_fraction",
+      "rich_duration_sum_dt",
+      "rich_duration_max_dt",
+      "rich_duration_nonzero_mean_dt",
+      "rich_duration_nonzero_p90_dt",
+      "rich_forward_max_dt",
+      "rich_forward_p90_dt",
+      "rich_reverse_p90_dt",
+      "rich_criticality_p90_dt",
+      "rich_layer_nodes_mean",
+      "rich_layer_nodes_p90",
+      "rich_layer_nodes_max",
+      "rich_quantum_edge_fraction",
+      "rich_opcode_0_count",
+      "rich_opcode_1_count",
+      "rich_opcode_2_count",
+      "rich_opcode_3_count",
+      "rich_opcode_4_count",
+      "rich_opcode_5_count",
+      "rich_opcode_6_count",
+      "rich_opcode_7_count",
+      "rich_opcode_8_count",
+      "rich_opcode_9_count",
+      "rich_opcode_10_count",
+      "rich_opcode_11_count",
+      "rich_opcode_12_count",
+      "rich_opcode_13_count"
+    ]
+  },
+  "target_semantics": "Ma-Li observed result.time_taken seconds; 1024 shots; queue excluded",
+  "preprocessing": "log1p non-fraction features; train-only standardization; ridge on log1p target; backend indicator",
+  "pooled_metrics": {
+    "grouped_qasm": {
+      "qcre": {
+        "mae_seconds": 0.8274360897354378,
+        "medae_seconds": 0.674699430543134,
+        "rmse_seconds": 1.0950306810501285,
+        "r2_seconds": 0.6707096697469431,
+        "mae_log1p_seconds": 0.09137302017033105,
+        "r2_log1p_seconds": 0.7320556269446802
+      },
+      "compiled": {
+        "mae_seconds": 0.6889467722595584,
+        "medae_seconds": 0.5856874149658036,
+        "rmse_seconds": 0.9230275299728669,
+        "r2_seconds": 0.7660324048280177,
+        "mae_log1p_seconds": 0.07530456138232736,
+        "r2_log1p_seconds": 0.8202238461587329
+      },
+      "graph_size": {
+        "mae_seconds": 0.5766072128637657,
+        "medae_seconds": 0.41647907576779186,
+        "rmse_seconds": 0.8693348301935976,
+        "r2_seconds": 0.7924605971936025,
+        "mae_log1p_seconds": 0.06157134408045032,
+        "r2_log1p_seconds": 0.8526621344001734
+      },
+      "layer": {
+        "mae_seconds": 0.5635253229180095,
+        "medae_seconds": 0.40411495331682357,
+        "rmse_seconds": 0.8486749510861864,
+        "r2_seconds": 0.8022077956929329,
+        "mae_log1p_seconds": 0.05976208728964723,
+        "r2_log1p_seconds": 0.8616112788495915
+      },
+      "timing": {
+        "mae_seconds": 0.5109432086124939,
+        "medae_seconds": 0.3648105695395163,
+        "rmse_seconds": 0.7523563469001512,
+        "r2_seconds": 0.8445561370028708,
+        "mae_log1p_seconds": 0.054255845561111,
+        "r2_log1p_seconds": 0.8891688396323705
+      },
+      "edge": {
+        "mae_seconds": 0.5766072128637659,
+        "medae_seconds": 0.4164790757677945,
+        "rmse_seconds": 0.8693348301935977,
+        "r2_seconds": 0.7924605971936024,
+        "mae_log1p_seconds": 0.06157134408045034,
+        "r2_log1p_seconds": 0.8526621344001734
+      },
+      "opcode": {
+        "mae_seconds": 0.5562663595529164,
+        "medae_seconds": 0.36839805504480205,
+        "rmse_seconds": 0.9238516528522205,
+        "r2_seconds": 0.7656144235208376,
+        "mae_log1p_seconds": 0.059550718629201325,
+        "r2_log1p_seconds": 0.8241449803170389
+      },
+      "rich_summary": {
+        "mae_seconds": 0.49374577807634534,
+        "medae_seconds": 0.367962961255091,
+        "rmse_seconds": 0.7556168906405745,
+        "r2_seconds": 0.8432058998083416,
+        "mae_log1p_seconds": 0.05239747505602751,
+        "r2_log1p_seconds": 0.8895291914860881
+      }
+    },
+    "strict_all": {
+      "qcre": {
+        "mae_seconds": 0.822908604275287,
+        "medae_seconds": 0.6426101662463863,
+        "rmse_seconds": 1.088952942889684,
+        "r2_seconds": 0.6743548395681491,
+        "mae_log1p_seconds": 0.09106012207507878,
+        "r2_log1p_seconds": 0.7313569683592894
+      },
+      "compiled": {
+        "mae_seconds": 0.6924322096037345,
+        "medae_seconds": 0.5602817826650561,
+        "rmse_seconds": 0.930038208670214,
+        "r2_seconds": 0.7624647954853001,
+        "mae_log1p_seconds": 0.07577130317068478,
+        "r2_log1p_seconds": 0.8156371161212932
+      },
+      "graph_size": {
+        "mae_seconds": 0.5816544856280151,
+        "medae_seconds": 0.4253587593963455,
+        "rmse_seconds": 0.8711817039029801,
+        "r2_seconds": 0.7915778390051398,
+        "mae_log1p_seconds": 0.06240288968474394,
+        "r2_log1p_seconds": 0.8500125496028959
+      },
+      "layer": {
+        "mae_seconds": 0.5759586976362128,
+        "medae_seconds": 0.421754393899342,
+        "rmse_seconds": 0.8593849903570631,
+        "r2_seconds": 0.7971841318248399,
+        "mae_log1p_seconds": 0.06156395094720756,
+        "r2_log1p_seconds": 0.8557714699950595
+      },
+      "timing": {
+        "mae_seconds": 0.5354652946853525,
+        "medae_seconds": 0.39678459717621806,
+        "rmse_seconds": 0.7800324754193232,
+        "r2_seconds": 0.8329094952589216,
+        "mae_log1p_seconds": 0.05791940349212568,
+        "r2_log1p_seconds": 0.8731644757356725
+      },
+      "edge": {
+        "mae_seconds": 0.5816544856280167,
+        "medae_seconds": 0.42535875939634993,
+        "rmse_seconds": 0.8711817039029556,
+        "r2_seconds": 0.7915778390051514,
+        "mae_log1p_seconds": 0.06240288968474392,
+        "r2_log1p_seconds": 0.8500125496029091
+      },
+      "opcode": {
+        "mae_seconds": 0.5745802192426757,
+        "medae_seconds": 0.4185493198068233,
+        "rmse_seconds": 0.9218776235825187,
+        "r2_seconds": 0.7666149947048033,
+        "mae_log1p_seconds": 0.0617156328400511,
+        "r2_log1p_seconds": 0.8230498497404274
+      },
+      "rich_summary": {
+        "mae_seconds": 0.5229527911697774,
+        "medae_seconds": 0.38193397140578167,
+        "rmse_seconds": 0.7853619801287473,
+        "r2_seconds": 0.830618432193578,
+        "mae_log1p_seconds": 0.05622451550573034,
+        "r2_log1p_seconds": 0.875548923612681
+      }
+    },
+    "family_all": {
+      "qcre": {
+        "mae_seconds": 0.9156847273796832,
+        "medae_seconds": 0.6906251855802852,
+        "rmse_seconds": 1.2121315183888743,
+        "r2_seconds": 0.596516396674581,
+        "mae_log1p_seconds": 0.10348665505255858,
+        "r2_log1p_seconds": 0.6207154518612454
+      },
+      "compiled": {
+        "mae_seconds": 0.7228274917460744,
+        "medae_seconds": 0.5981780592319872,
+        "rmse_seconds": 0.9560031629251955,
+        "r2_seconds": 0.7490165638987952,
+        "mae_log1p_seconds": 0.07905999994317754,
+        "r2_log1p_seconds": 0.8020522630167456
+      },
+      "graph_size": {
+        "mae_seconds": 0.6135693565361355,
+        "medae_seconds": 0.4469586550493685,
+        "rmse_seconds": 0.9079465503452211,
+        "r2_seconds": 0.7736153541250734,
+        "mae_log1p_seconds": 0.06584106514362542,
+        "r2_log1p_seconds": 0.8351282339913777
+      },
+      "layer": {
+        "mae_seconds": 0.6035422836080984,
+        "medae_seconds": 0.45346356488393846,
+        "rmse_seconds": 0.8850914266719772,
+        "r2_seconds": 0.7848691612140154,
+        "mae_log1p_seconds": 0.06477274119624822,
+        "r2_log1p_seconds": 0.844049421325942
+      },
+      "timing": {
+        "mae_seconds": 0.5809624933763029,
+        "medae_seconds": 0.47288985733739164,
+        "rmse_seconds": 0.7955147693091201,
+        "r2_seconds": 0.8262107549749941,
+        "mae_log1p_seconds": 0.06402525866338313,
+        "r2_log1p_seconds": 0.8615423557702298
+      },
+      "edge": {
+        "mae_seconds": 0.6135693565361356,
+        "medae_seconds": 0.44695865504937027,
+        "rmse_seconds": 0.9079465503452199,
+        "r2_seconds": 0.773615354125074,
+        "mae_log1p_seconds": 0.0658410651436254,
+        "r2_log1p_seconds": 0.8351282339913784
+      },
+      "opcode": {
+        "mae_seconds": 0.6678465670400245,
+        "medae_seconds": 0.4803144408762754,
+        "rmse_seconds": 1.0283537843726713,
+        "r2_seconds": 0.7095900422023184,
+        "mae_log1p_seconds": 0.07089952811469034,
+        "r2_log1p_seconds": 0.7896240992223723
+      },
+      "rich_summary": {
+        "mae_seconds": 0.5752797052953966,
+        "medae_seconds": 0.437477500171608,
+        "rmse_seconds": 0.8279841816058783,
+        "r2_seconds": 0.8117346127048034,
+        "mae_log1p_seconds": 0.06047683959178988,
+        "r2_log1p_seconds": 0.8700048892122074
+      }
+    }
+  }
+}

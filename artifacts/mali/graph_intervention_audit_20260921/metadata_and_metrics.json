@@ -1,0 +1,206 @@
+{
+  "experiment": "mali_saved_model_test_time_graph_intervention_audit",
+  "interpretation": "diagnostic intervention; not a retrained feature ablation",
+  "target_semantics": "Ma--Li recorded IBM Osaka/Kyoto result.time_taken at 1024 shots; queue time excluded",
+  "data": "/home/server/Documents/Quantum-Execution-Time-Prediction/data/osaka_kyoto_fake_standardization.npy",
+  "manifest": "/home/server/Documents/Quantum-Execution-Time-Prediction/data/osaka_kyoto_fake_manifest.csv",
+  "checkpoint_directories": {
+    "pretrained": "/home/server/Documents/Quantum-Execution-Time-Prediction/experiments/results/adaptation_fake_full",
+    "scratch": "/home/server/Documents/Quantum-Execution-Time-Prediction/experiments/results/adaptation_fake_full_from_scratch"
+  },
+  "rows": 340,
+  "folds": 10,
+  "seed": 1234,
+  "device": "cuda",
+  "model_parameters": 841993,
+  "variants": [
+    "full",
+    "zero_node_type",
+    "zero_qubit_index",
+    "zero_T1T2",
+    "zero_node_index",
+    "no_edges",
+    "reverse_edges",
+    "rewired_edges"
+  ],
+  "feature_zero_semantics": "zero in the stored standardized tensor equals the artifact-wide mean",
+  "elapsed_seconds": 21.89362235199951,
+  "metrics": [
+    {
+      "initialization": "pretrained",
+      "variant": "full",
+      "rows": 340,
+      "mae_seconds": 0.5482880963998682,
+      "rmse_seconds": 1.367399684163925,
+      "r2_seconds": 0.48652729850583976,
+      "log_mae": 0.055429579323699796,
+      "log_rmse": 0.08673362619368366,
+      "log_r2": 0.861334047427018
+    },
+    {
+      "initialization": "pretrained",
+      "variant": "zero_node_type",
+      "rows": 340,
+      "mae_seconds": 0.7570046480964212,
+      "rmse_seconds": 1.294943640346676,
+      "r2_seconds": 0.5395015813347821,
+      "log_mae": 0.07836128472431414,
+      "log_rmse": 0.10902173283971162,
+      "log_r2": 0.7809107882742762
+    },
+    {
+      "initialization": "pretrained",
+      "variant": "zero_qubit_index",
+      "rows": 340,
+      "mae_seconds": 3.673637165742762,
+      "rmse_seconds": 4.18689165770465,
+      "r2_seconds": -3.814041778830201,
+      "log_mae": 0.4949258021859822,
+      "log_rmse": 0.5474500624527175,
+      "log_r2": -4.524383899321319
+    },
+    {
+      "initialization": "pretrained",
+      "variant": "zero_T1T2",
+      "rows": 340,
+      "mae_seconds": 0.5486972808837891,
+      "rmse_seconds": 0.7467056826960446,
+      "r2_seconds": 0.8468823264188998,
+      "log_mae": 0.06122043339484632,
+      "log_rmse": 0.08316148296792315,
+      "log_r2": 0.8725208138982719
+    },
+    {
+      "initialization": "pretrained",
+      "variant": "zero_node_index",
+      "rows": 340,
+      "mae_seconds": 0.6151484952253454,
+      "rmse_seconds": 1.4616183510701255,
+      "r2_seconds": 0.4133293212004615,
+      "log_mae": 0.06232284189133946,
+      "log_rmse": 0.09337824176068812,
+      "log_r2": 0.8392739705673755
+    },
+    {
+      "initialization": "pretrained",
+      "variant": "no_edges",
+      "rows": 340,
+      "mae_seconds": 5.2560002951061024,
+      "rmse_seconds": 5.460274531009935,
+      "r2_seconds": -7.1875764152443455,
+      "log_mae": 0.8117255499099002,
+      "log_rmse": 0.8277887765439826,
+      "log_r2": -11.630888434154297
+    },
+    {
+      "initialization": "pretrained",
+      "variant": "reverse_edges",
+      "rows": 340,
+      "mae_seconds": 0.6601082745720358,
+      "rmse_seconds": 1.4578186642835635,
+      "r2_seconds": 0.4163756257404052,
+      "log_mae": 0.06634225637513178,
+      "log_rmse": 0.0971688665924762,
+      "log_r2": 0.8259599875897022
+    },
+    {
+      "initialization": "pretrained",
+      "variant": "rewired_edges",
+      "rows": 340,
+      "mae_seconds": 1.8010284725357504,
+      "rmse_seconds": 2.0531758354186205,
+      "r2_seconds": -0.15765378885386583,
+      "log_mae": 0.2071467434363615,
+      "log_rmse": 0.2286636407580961,
+      "log_r2": 0.036195256167478096
+    },
+    {
+      "initialization": "scratch",
+      "variant": "full",
+      "rows": 340,
+      "mae_seconds": 0.4782519817352295,
+      "rmse_seconds": 0.6115034307629545,
+      "r2_seconds": 0.8973109337431967,
+      "log_mae": 0.05218685935893961,
+      "log_rmse": 0.06848624052485301,
+      "log_r2": 0.9135427365559005
+    },
+    {
+      "initialization": "scratch",
+      "variant": "zero_node_type",
+      "rows": 340,
+      "mae_seconds": 0.8964244204408982,
+      "rmse_seconds": 1.3997411994455684,
+      "r2_seconds": 0.4619509111297524,
+      "log_mae": 0.09921963786462037,
+      "log_rmse": 0.15467899787249742,
+      "log_r2": 0.5589807655875244
+    },
+    {
+      "initialization": "scratch",
+      "variant": "zero_qubit_index",
+      "rows": 340,
+      "mae_seconds": 4.686231116336935,
+      "rmse_seconds": 5.121986928061781,
+      "r2_seconds": -6.204491619785331,
+      "log_mae": 0.7120090175014575,
+      "log_rmse": 0.7668439097102089,
+      "log_r2": -9.839488203197815
+    },
+    {
+      "initialization": "scratch",
+      "variant": "zero_T1T2",
+      "rows": 340,
+      "mae_seconds": 0.4755967981675092,
+      "rmse_seconds": 0.6198227101629445,
+      "r2_seconds": 0.8944978334320315,
+      "log_mae": 0.05191635319721494,
+      "log_rmse": 0.06933565404742204,
+      "log_r2": 0.9113848320699697
+    },
+    {
+      "initialization": "scratch",
+      "variant": "zero_node_index",
+      "rows": 340,
+      "mae_seconds": 0.5042834197773652,
+      "rmse_seconds": 0.6381887985961818,
+      "r2_seconds": 0.8881528908791421,
+      "log_mae": 0.05493115008269006,
+      "log_rmse": 0.0714603878208634,
+      "log_r2": 0.9058705395755382
+    },
+    {
+      "initialization": "scratch",
+      "variant": "no_edges",
+      "rows": 340,
+      "mae_seconds": 5.965152797278236,
+      "rmse_seconds": 6.161058343736313,
+      "r2_seconds": -9.424063587968751,
+      "log_mae": 0.9904689815595231,
+      "log_rmse": 1.004268687558103,
+      "log_r2": -17.590654310671724
+    },
+    {
+      "initialization": "scratch",
+      "variant": "reverse_edges",
+      "rows": 340,
+      "mae_seconds": 0.5984352855121389,
+      "rmse_seconds": 0.7570406160230984,
+      "r2_seconds": 0.8426144812091451,
+      "log_mae": 0.06409770365636806,
+      "log_rmse": 0.08165071462703159,
+      "log_r2": 0.8771104902025697
+    },
+    {
+      "initialization": "scratch",
+      "variant": "rewired_edges",
+      "rows": 340,
+      "mae_seconds": 0.6257657584022073,
+      "rmse_seconds": 0.7759116928330679,
+      "r2_seconds": 0.8346702525643002,
+      "log_mae": 0.06892558621834192,
+      "log_rmse": 0.08642708382174072,
+      "log_r2": 0.8623124885625627
+    }
+  ]
+}

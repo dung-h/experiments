@@ -1,0 +1,11 @@
+{
+  "n_jobs": 3020,
+  "n_ok": 3020,
+  "n_error": 0,
+  "n_priority_ok": 384,
+  "elapsed_s": 1113.1,
+  "optimization_level": 1,
+  "seed": 1234,
+  "graph_semantics": "transpiled native-operation DAG, current FakeWashingtonV2/FakeSherbrooke",
+  "csv": "artifacts/validation/mali_azizov_transpiled_dag_v1/ws_graph_records.csv"
+}

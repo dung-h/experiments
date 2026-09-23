@@ -1,0 +1,4 @@
+# Environment used to generate the public family-classifier pretraining set.
+mqt.bench==2.2.3
+qiskit==2.5.2
+numpy==2.5.3

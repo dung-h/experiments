@@ -1,0 +1,11 @@
+{
+  "n_rows": 3020,
+  "n_ok": 3020,
+  "n_error": 0,
+  "priority_ok": 384,
+  "optimization_level": 1,
+  "seed": 1234,
+  "proxy_semantics": "current FakeWashingtonV2/FakeSherbrooke transpile + target-duration weighted path; labels remain Ma-Li washington/sherbrooke time_taken",
+  "elapsed_s": 701.3,
+  "csv": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/validation/mali_azizov_compiled_transfer_v1/washington_sherbrooke_compiled_features.csv"
+}

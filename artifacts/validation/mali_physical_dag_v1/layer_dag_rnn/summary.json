@@ -1,0 +1,14 @@
+{
+  "model": "physics_guided_coarsened_layer_DAG_GRU_residual",
+  "n_rows": 340,
+  "n_unique_graphs": 300,
+  "max_bins": 256,
+  "epochs": 20,
+  "patience": 5,
+  "seed": 1234,
+  "device": "cuda",
+  "target": "log1p(Ma-Li observed result.time_taken seconds)",
+  "residual": "log1p(target) - log1p(QCRE weighted critical path seconds)",
+  "feature_semantics": "ordered native-DAG topology layers coarsened into at most max_bins bins",
+  "provenance_class": "CURRENT_FAKE_SNAPSHOT_PROXY"
+}

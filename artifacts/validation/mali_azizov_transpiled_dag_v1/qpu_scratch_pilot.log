@@ -1,0 +1,25 @@
+{
+  "device": "cuda",
+  "n_qpu": 340,
+  "qpu_missing": 0,
+  "metrics": {
+    "qpu_scratch_transpiled_dag": {
+      "n": 340,
+      "mae_seconds": 19.33417769889727,
+      "medae_seconds": 8.646306184833334,
+      "rmse_seconds": 124.95204277252112,
+      "r2_seconds": -4286.588758502643,
+      "mae_log1p_seconds": 2.2426124354050243,
+      "r2_log1p_seconds": -93.7172415994641
+    },
+    "sim_transpiled_dag": {
+      "n": 0
+    },
+    "sim_transpiled_dag_affine_qpu": {
+      "n": 0
+    },
+    "sim_transpiled_dag_finetune_qpu": {
+      "n": 0
+    }
+  }
+}

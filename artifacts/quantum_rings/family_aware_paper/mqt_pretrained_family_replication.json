@@ -1,0 +1,101 @@
+{
+  "recorded": "2026-09-18",
+  "classifier": "results/mqt_family_classifier/mqt_family_classifier.joblib",
+  "classifier_classes": [
+    "DJ",
+    "GHZ",
+    "Graph State",
+    "Grover",
+    "QFT",
+    "QFT Entangled",
+    "QNN",
+    "QPE",
+    "VQE",
+    "W-State"
+  ],
+  "family_vocab": [
+    "DJ",
+    "GHZ",
+    "Graph State",
+    "Grover",
+    "QFT",
+    "QFT Entangled",
+    "QNN",
+    "QPE",
+    "VQE",
+    "W-State",
+    "UNKNOWN"
+  ],
+  "protocols": {
+    "0.75": {
+      "n_rows": 144,
+      "n_circuits": 36,
+      "evaluation_family_accuracy_all": 0.3333333333333333,
+      "evaluation_family_accuracy_known_only": 0.46153846153846156,
+      "known_family_coverage": 0.7222222222222222,
+      "models": {
+        "mqt_predicted_family": {
+          "threshold": {
+            "exact_accuracy": 0.5694444444444444,
+            "within_one_rung": 0.8194444444444444,
+            "mean_rung_distance": 0.7847222222222222
+          },
+          "runtime": {
+            "r2_log_runtime": -0.1977388324237832,
+            "r2_runtime_seconds": -81.98420749894753,
+            "mae_runtime_seconds": 369.616166291728,
+            "median_relative_error": 0.6383347109949733
+          }
+        },
+        "mqt_oracle_family": {
+          "threshold": {
+            "exact_accuracy": 0.5833333333333334,
+            "within_one_rung": 0.7430555555555556,
+            "mean_rung_distance": 1.0416666666666667
+          },
+          "runtime": {
+            "r2_log_runtime": -0.31723777964980804,
+            "r2_runtime_seconds": -93.16256842794284,
+            "mae_runtime_seconds": 436.04666886426304,
+            "median_relative_error": 0.7932144645196446
+          }
+        }
+      }
+    },
+    "0.99": {
+      "n_rows": 144,
+      "n_circuits": 36,
+      "evaluation_family_accuracy_all": 0.3333333333333333,
+      "evaluation_family_accuracy_known_only": 0.46153846153846156,
+      "known_family_coverage": 0.7222222222222222,
+      "models": {
+        "mqt_predicted_family": {
+          "threshold": {
+            "exact_accuracy": 0.5277777777777778,
+            "within_one_rung": 0.7847222222222222,
+            "mean_rung_distance": 0.9583333333333334
+          },
+          "runtime": {
+            "r2_log_runtime": -0.010120629649791546,
+            "r2_runtime_seconds": -15.2078852480279,
+            "mae_runtime_seconds": 397.25739186749325,
+            "median_relative_error": 0.640258106734787
+          }
+        },
+        "mqt_oracle_family": {
+          "threshold": {
+            "exact_accuracy": 0.5763888888888888,
+            "within_one_rung": 0.6944444444444444,
+            "mean_rung_distance": 1.3194444444444444
+          },
+          "runtime": {
+            "r2_log_runtime": -0.8419440924232513,
+            "r2_runtime_seconds": -30.9726740240837,
+            "mae_runtime_seconds": 706.3210454355849,
+            "median_relative_error": 0.6580575597064826
+          }
+        }
+      }
+    }
+  }
+}

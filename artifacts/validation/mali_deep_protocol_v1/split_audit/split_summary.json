@@ -1,0 +1,206 @@
+{
+  "generated_utc": "2026-09-21",
+  "protocol_date": "2026-09-21",
+  "mali_root_relative": "/home/server/Documents/Quantum-Execution-Time-Prediction",
+  "seed": 1234,
+  "folds": 5,
+  "n_rows": 340,
+  "backend_rows": "osaka=192, kyoto=148",
+  "n_qasm_hashes": 170,
+  "paired_hashes": 130,
+  "qasm_backend_cells": 300,
+  "duplicate_cells": 40,
+  "n_family_components": 9,
+  "grouped_fold_counts": [
+    {
+      "fold": 1,
+      "qasm_groups": 34,
+      "rows": 65,
+      "osaka": 37,
+      "kyoto": 28
+    },
+    {
+      "fold": 2,
+      "qasm_groups": 34,
+      "rows": 68,
+      "osaka": 40,
+      "kyoto": 28
+    },
+    {
+      "fold": 3,
+      "qasm_groups": 34,
+      "rows": 74,
+      "osaka": 40,
+      "kyoto": 34
+    },
+    {
+      "fold": 4,
+      "qasm_groups": 34,
+      "rows": 67,
+      "osaka": 38,
+      "kyoto": 29
+    },
+    {
+      "fold": 5,
+      "qasm_groups": 34,
+      "rows": 66,
+      "osaka": 37,
+      "kyoto": 29
+    }
+  ],
+  "strict_splits": [
+    {
+      "held_backend": "osaka",
+      "fold": 1,
+      "test_rows": 37,
+      "train_rows": 120,
+      "test_hashes": 34,
+      "train_hashes": 105,
+      "hash_overlap": 0
+    },
+    {
+      "held_backend": "osaka",
+      "fold": 2,
+      "test_rows": 40,
+      "train_rows": 120,
+      "test_hashes": 34,
+      "train_hashes": 105,
+      "hash_overlap": 0
+    },
+    {
+      "held_backend": "osaka",
+      "fold": 3,
+      "test_rows": 40,
+      "train_rows": 114,
+      "test_hashes": 34,
+      "train_hashes": 101,
+      "hash_overlap": 0
+    },
+    {
+      "held_backend": "osaka",
+      "fold": 4,
+      "test_rows": 38,
+      "train_rows": 119,
+      "test_hashes": 34,
+      "train_hashes": 105,
+      "hash_overlap": 0
+    },
+    {
+      "held_backend": "osaka",
+      "fold": 5,
+      "test_rows": 37,
+      "train_rows": 119,
+      "test_hashes": 34,
+      "train_hashes": 104,
+      "hash_overlap": 0
+    },
+    {
+      "held_backend": "kyoto",
+      "fold": 1,
+      "test_rows": 28,
+      "train_rows": 155,
+      "test_hashes": 25,
+      "train_hashes": 136,
+      "hash_overlap": 0
+    },
+    {
+      "held_backend": "kyoto",
+      "fold": 2,
+      "test_rows": 28,
+      "train_rows": 152,
+      "test_hashes": 25,
+      "train_hashes": 136,
+      "hash_overlap": 0
+    },
+    {
+      "held_backend": "kyoto",
+      "fold": 3,
+      "test_rows": 34,
+      "train_rows": 152,
+      "test_hashes": 29,
+      "train_hashes": 136,
+      "hash_overlap": 0
+    },
+    {
+      "held_backend": "kyoto",
+      "fold": 4,
+      "test_rows": 29,
+      "train_rows": 154,
+      "test_hashes": 25,
+      "train_hashes": 136,
+      "hash_overlap": 0
+    },
+    {
+      "held_backend": "kyoto",
+      "fold": 5,
+      "test_rows": 29,
+      "train_rows": 155,
+      "test_hashes": 26,
+      "train_hashes": 136,
+      "hash_overlap": 0
+    }
+  ],
+  "family_components": [
+    {
+      "component": "qft",
+      "families": "qft",
+      "qasm_hashes": 26,
+      "rows": 46
+    },
+    {
+      "component": "qftentangled",
+      "families": "qftentangled",
+      "qasm_hashes": 26,
+      "rows": 47
+    },
+    {
+      "component": "qnn",
+      "families": "qnn",
+      "qasm_hashes": 14,
+      "rows": 26
+    },
+    {
+      "component": "qpeexact",
+      "families": "qpeexact",
+      "qasm_hashes": 22,
+      "rows": 35
+    },
+    {
+      "component": "qpeinexact",
+      "families": "qpeinexact",
+      "qasm_hashes": 22,
+      "rows": 36
+    },
+    {
+      "component": "qwalk_noancilla",
+      "families": "qwalk_noancilla",
+      "qasm_hashes": 1,
+      "rows": 2
+    },
+    {
+      "component": "random",
+      "families": "random",
+      "qasm_hashes": 16,
+      "rows": 30
+    },
+    {
+      "component": "realamprandom+twolocalrandom",
+      "families": "realamprandom+twolocalrandom",
+      "qasm_hashes": 22,
+      "rows": 80
+    },
+    {
+      "component": "su2random",
+      "families": "su2random",
+      "qasm_hashes": 21,
+      "rows": 38
+    }
+  ],
+  "strict_hash_overlap_max": 0,
+  "target_semantics": "Ma-Li upstream Osaka/Kyoto observed result.time_taken; 1024 shots; queue excluded according to upstream data contract",
+  "limitations": [
+    "raw CSVs do not contain historical job IDs or calibration timestamps",
+    "exact logical QASM identity is byte-level SHA-256",
+    "family components are derived from filename family plus exact QASM overlap"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "n_rows": 340,
+  "n_exact_cells": 300,
+  "methods": [
+    "row_weighted",
+    "cell_mean_equal",
+    "cell_mean_noise_weighted"
+  ],
+  "pooled": {
+    "grouped_qasm": {
+      "cell_mean_equal": {
+        "mae_seconds": 0.4922798421492468,
+        "medae_seconds": 0.36442801018191595,
+        "rmse_seconds": 0.7457759417894417,
+        "r2_seconds": 0.8472633922103062,
+        "mae_log1p_seconds": 0.052264715231083544,
+        "r2_log1p_seconds": 0.8917392177965534
+      },
+      "cell_mean_noise_weighted": {
+        "mae_seconds": 0.494810075375168,
+        "medae_seconds": 0.35766287081681813,
+        "rmse_seconds": 0.7502902004225519,
+        "r2_seconds": 0.8454087350772825,
+        "mae_log1p_seconds": 0.052524446290988965,
+        "r2_log1p_seconds": 0.8906094162334626
+      },
+      "row_weighted": {
+        "mae_seconds": 0.4937457780763457,
+        "medae_seconds": 0.3679629612550954,
+        "rmse_seconds": 0.7556168906405795,
+        "r2_seconds": 0.8432058998083395,
+        "mae_log1p_seconds": 0.05239747505602755,
+        "r2_log1p_seconds": 0.8895291914860868
+      }
+    },
+    "strict_all": {
+      "cell_mean_equal": {
+        "mae_seconds": 0.5199508039539255,
+        "medae_seconds": 0.3765659808870785,
+        "rmse_seconds": 0.7810572108180917,
+        "r2_seconds": 0.8324701904111445,
+        "mae_log1p_seconds": 0.05588327421749006,
+        "r2_log1p_seconds": 0.876489724097268
+      },
+      "cell_mean_noise_weighted": {
+        "mae_seconds": 0.5156020884576109,
+        "medae_seconds": 0.364858370157918,
+        "rmse_seconds": 0.7726120256175787,
+        "r2_seconds": 0.8360734383507223,
+        "mae_log1p_seconds": 0.05539451543256853,
+        "r2_log1p_seconds": 0.8798614551624111
+      },
+      "row_weighted": {
+        "mae_seconds": 0.5229527911697788,
+        "medae_seconds": 0.38193397140578167,
+        "rmse_seconds": 0.7853619801287477,
+        "r2_seconds": 0.8306184321935778,
+        "mae_log1p_seconds": 0.05622451550573049,
+        "r2_log1p_seconds": 0.8755489236126808
+      }
+    }
+  },
+  "semantics": "training-only duplicate aggregation/noise weighting; test remains every observed row"
+}

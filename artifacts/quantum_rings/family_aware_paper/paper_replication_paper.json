@@ -1,0 +1,96 @@
+{
+  "repo_commit": "d3f2a84d1dfc77f13a0b4cf9338ba8cdb9e5f687",
+  "paper": "arXiv:2606.11620",
+  "replication_recorded": "2026-09-18",
+  "protocols": {
+    "0.75": {
+      "target": 0.75,
+      "n_rows": 144,
+      "n_circuits": 36,
+      "family_classifier": {
+        "accuracy": 0.3888888888888889,
+        "n_circuits": 36
+      },
+      "models": {
+        "rf": {
+          "threshold": {
+            "exact_accuracy": 0.6805555555555556,
+            "within_one_rung": 0.8680555555555556,
+            "mean_rung_distance": 0.5
+          },
+          "runtime": {
+            "r2_log_runtime": 0.7482836995550155,
+            "r2_runtime_seconds": 0.17151778444592547,
+            "mae_runtime_seconds": 36.937293715327044,
+            "median_relative_error": 0.3480895985186424
+          }
+        },
+        "mlp_no_family": {
+          "threshold": {
+            "exact_accuracy": 0.4791666666666667,
+            "within_one_rung": 0.7569444444444444,
+            "mean_rung_distance": 1.2083333333333333
+          },
+          "runtime": {
+            "r2_log_runtime": -0.5931472980217376,
+            "r2_runtime_seconds": -122.24751693082032,
+            "mae_runtime_seconds": 527.8979154181147,
+            "median_relative_error": 0.7845176039874961
+          }
+        },
+        "family_predicted": {
+          "threshold": {
+            "exact_accuracy": 0.5902777777777778,
+            "within_one_rung": 0.8333333333333334,
+            "mean_rung_distance": 0.7916666666666666
+          },
+          "runtime": {
+            "r2_log_runtime": -0.25276169665440307,
+            "r2_runtime_seconds": -87.97664148580058,
+            "mae_runtime_seconds": 414.1145562929473,
+            "median_relative_error": 0.689961809957714
+          }
+        },
+        "family_oracle": {
+          "threshold": {
+            "exact_accuracy": 0.6111111111111112,
+            "within_one_rung": 0.8055555555555556,
+            "mean_rung_distance": 0.8680555555555556
+          },
+          "runtime": {
+            "r2_log_runtime": -0.5117344152960035,
+            "r2_runtime_seconds": -121.62376128702397,
+            "mae_runtime_seconds": 518.6862306823028,
+            "median_relative_error": 0.7728872054193049
+          }
+        }
+      },
+      "families": [
+        "Amplitude_Estimation",
+        "CutBell",
+        "Deutsch_Jozsa",
+        "GHZ",
+        "GraphState",
+        "Ground_State",
+        "Grover_NoAncilla",
+        "Grover_V_Chain",
+        "Portfolio_QAOA",
+        "Portfolio_VQE",
+        "Pricing_Call",
+        "QAOA",
+        "QFT",
+        "QFT_Entangled",
+        "QNN",
+        "QPE_Exact",
+        "Shor",
+        "TwoLocalRandom",
+        "VQE",
+        "W_State"
+      ],
+      "runtime_sources": {
+        "mirror_sweep_at_0.75_crossing_proxy": 140,
+        "forward_fallback_no_0.75_crossing": 4
+      }
+    }
+  }
+}

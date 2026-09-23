@@ -1,0 +1,67 @@
+{
+  "seeds": [
+    1234,
+    2025,
+    31415
+  ],
+  "n_rows": 340,
+  "n_qasm_hashes": 170,
+  "bootstrap_replicates": 5000,
+  "aggregate_seed_mean_predictions": {
+    "finetune_transfer": {
+      "mae_seconds": 0.6956311361462462,
+      "medae_seconds": 0.5081702868143716,
+      "rmse_seconds": 1.3007456006250824,
+      "r2_seconds": 0.535365857888507,
+      "mae_log1p_seconds": 0.08298366707309492,
+      "r2_log1p_seconds": 0.08161621232875094
+    },
+    "frozen_transfer": {
+      "mae_seconds": 1.9151558663330828,
+      "medae_seconds": 1.8702065149943037,
+      "rmse_seconds": 2.234029848336254,
+      "r2_seconds": -0.37057981201741685,
+      "mae_log1p_seconds": 0.21927456413249408,
+      "r2_log1p_seconds": -0.253324796875557
+    },
+    "scratch": {
+      "mae_seconds": 0.6831078188676459,
+      "medae_seconds": 0.46883153915405273,
+      "rmse_seconds": 1.2678092482646062,
+      "r2_seconds": 0.5585980789888227,
+      "mae_log1p_seconds": 0.07763451572830901,
+      "r2_log1p_seconds": 0.3360203646151111
+    }
+  },
+  "paired_group_bootstrap": {
+    "frozen_transfer_minus_scratch": {
+      "delta_log_r2": -0.5893451614906681,
+      "delta_mae_seconds": 1.2320480474654367,
+      "log_r2_95pct": [
+        -1.3366649212484494,
+        0.66418777175522
+      ],
+      "mae_seconds_95pct": [
+        1.0096867260973594,
+        1.4334876678799877
+      ],
+      "probability_log_r2_better": 0.1392,
+      "probability_mae_better": 0.0
+    },
+    "finetune_transfer_minus_scratch": {
+      "delta_log_r2": -0.25440415228636015,
+      "delta_mae_seconds": 0.012523317278600232,
+      "log_r2_95pct": [
+        -0.8350942110848951,
+        3.268768596370189e-05
+      ],
+      "mae_seconds_95pct": [
+        -0.03539164117326153,
+        0.057198972320136626
+      ],
+      "probability_log_r2_better": 0.0256,
+      "probability_mae_better": 0.2908
+    }
+  },
+  "interpretation": "logical-feature strict no-real-QASM screen only; mean predictions summarize seed variance and are not a selected deployment model"
+}

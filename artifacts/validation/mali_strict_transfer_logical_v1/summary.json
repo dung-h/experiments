@@ -1,0 +1,98 @@
+{
+  "experiment": "strict_no_real_qasm_logical_feature_transfer_screen",
+  "target_semantics": "Ma-Li observed Osaka/Kyoto result.time_taken; 1024 shots; queue excluded",
+  "source_semantics": "Ma-Li Washington/Sherbrooke simulator/device-labelled runtime; auxiliary pretraining only",
+  "source_rows_before_filter": 3020,
+  "source_rows_after_filter": 2636,
+  "source_qasm_hashes_after_filter": 1232,
+  "removed_real_qasm_hashes": 170,
+  "removed_source_rows_matching_real_qasm": 384,
+  "real_rows": 340,
+  "real_qasm_hashes": 170,
+  "representation": "logical QASM structural features shared exactly across source and target; not a Graph Transformer",
+  "seeds": [
+    1234,
+    2025,
+    31415
+  ],
+  "pooled_real_oof": {
+    "scratch": {
+      "1234": {
+        "mae_seconds": 0.7283314079046249,
+        "medae_seconds": 0.5120258331298828,
+        "rmse_seconds": 1.3184279359782498,
+        "r2_seconds": 0.5226475221608746,
+        "mae_log1p_seconds": 0.08360684616583217,
+        "r2_log1p_seconds": 0.20078660699742523
+      },
+      "2025": {
+        "mae_seconds": 0.6511926177669974,
+        "medae_seconds": 0.4568653106689453,
+        "rmse_seconds": 1.2544314784920647,
+        "r2_seconds": 0.5678641716644415,
+        "mae_log1p_seconds": 0.07367326580479742,
+        "r2_log1p_seconds": 0.32867552592761373
+      },
+      "31415": {
+        "mae_seconds": 0.7278391494470484,
+        "medae_seconds": 0.48753952980041504,
+        "rmse_seconds": 1.3055840919726505,
+        "r2_seconds": 0.5319027524973229,
+        "mae_log1p_seconds": 0.0836906915407425,
+        "r2_log1p_seconds": 0.3744741821853236
+      }
+    },
+    "frozen_transfer": {
+      "1234": {
+        "mae_seconds": 1.8391260785215042,
+        "medae_seconds": 1.752753496170044,
+        "rmse_seconds": 2.216661587674125,
+        "r2_seconds": -0.3493517571125264,
+        "mae_log1p_seconds": 0.20904128457982601,
+        "r2_log1p_seconds": -0.15866875211176001
+      },
+      "2025": {
+        "mae_seconds": 2.21894724298926,
+        "medae_seconds": 1.9998130798339844,
+        "rmse_seconds": 2.636630970923724,
+        "r2_seconds": -0.9090842128969365,
+        "mae_log1p_seconds": 0.2559901317229147,
+        "r2_log1p_seconds": -0.7625047766750412
+      },
+      "31415": {
+        "mae_seconds": 2.10610357242472,
+        "medae_seconds": 1.90110445022583,
+        "rmse_seconds": 2.660774578728012,
+        "r2_seconds": -0.9442072269768942,
+        "mae_log1p_seconds": 0.2394443605695912,
+        "r2_log1p_seconds": -0.8132406727178485
+      }
+    },
+    "finetune_transfer": {
+      "1234": {
+        "mae_seconds": 0.7654999564675724,
+        "medae_seconds": 0.5113515853881836,
+        "rmse_seconds": 1.366561136240991,
+        "r2_seconds": 0.4871568970953586,
+        "mae_log1p_seconds": 0.0861066374649667,
+        "r2_log1p_seconds": 0.2673858817146749
+      },
+      "2025": {
+        "mae_seconds": 0.6257857084274292,
+        "medae_seconds": 0.44687986373901367,
+        "rmse_seconds": 1.261321950312515,
+        "r2_seconds": 0.5631037719314671,
+        "mae_log1p_seconds": 0.07402473238876774,
+        "r2_log1p_seconds": 0.1169992839164461
+      },
+      "31415": {
+        "mae_seconds": 0.8056928739828222,
+        "medae_seconds": 0.5584566593170166,
+        "rmse_seconds": 1.4713498604931734,
+        "r2_seconds": 0.40549119278654766,
+        "mae_log1p_seconds": 0.09748531026642597,
+        "r2_log1p_seconds": -0.093708802902436
+      }
+    }
+  }
+}

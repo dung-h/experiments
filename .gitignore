@@ -29,3 +29,7 @@ artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluati
 *.key
 client_secret*.json
 .DS_Store
+
+# Rebuildable native-DAG coarsened tensors (~32 MB). Reports and CSV stay versioned.
+artifacts/validation/mali_azizov_transpiled_dag_v1/coarsened/
+artifacts/validation/mali_azizov_transpiled_dag_v1/qpu_scratch_pilot/coarsened/

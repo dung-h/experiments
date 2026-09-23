@@ -58,3 +58,15 @@ commits on a private checkout of that tree are not pushed upstream.
 - SoftLocked's saved models are valid on *their* `training_data.csv` and are
   a domain-shift failure on the public 0.99-forward table.
 - Bloch, Rishivarshil and Hazel are not baselines in this track.
+
+## Cluster 3: family-aware paper
+
+The same contest supplies the public 144-row table used to reconstruct
+[arXiv:2606.11620](https://arxiv.org/abs/2606.11620). That reconstruction is
+a separate cluster from Spirit Sprinters / SoftLocked.
+
+- Reports: [`../../artifacts/quantum_rings/family_aware_paper/`](../../artifacts/quantum_rings/family_aware_paper/)
+- Scripts: [`family_aware_paper/`](family_aware_paper/)
+- Reading path: [`../../docs/FINDINGS_CLUSTERS.md`](../../docs/FINDINGS_CLUSTERS.md)
+
+The 200 MQT pretraining QASM files are not stored in this capsule.

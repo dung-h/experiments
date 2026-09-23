@@ -1,8 +1,26 @@
 # Results and failure analysis
 
+Read the three finding clusters first:
+[`docs/FINDINGS_CLUSTERS.md`](docs/FINDINGS_CLUSTERS.md).
+
+This file keeps the older track-level tables. Scores are evidence about their
+own estimator/target pairs; they are not a leaderboard.
+
+| Cluster | Sections in this file | Packaged reports |
+| --- | --- | --- |
+| 1. Ma–Li × Azizov | §§1–2.13 and §5 | `artifacts/validation/mali_*`, `mali_azizov_*`, `artifacts/mali/` |
+| 2. Quantum Rings solutions | Quantum Rings / iQuHACK 2026 | `artifacts/quantum_rings/REPORT.md` |
+| 3. Family-aware paper | Family-aware paper subsection | `artifacts/quantum_rings/family_aware_paper/` |
+
+The chronological record of what was run from 17 to 22 September 2026 is
+[docs/DAILY_WORK_LOG_2026-09-17_TO_2026-09-22.md](docs/DAILY_WORK_LOG_2026-09-17_TO_2026-09-22.md).
+The compact table is [docs/experiment_tracker.csv](docs/experiment_tracker.csv).
+
 ## Comparative conclusion
 
-The five studies measure different target semantics. Their scores are evidence
+The studies measure different target semantics. The three finding clusters
+are summarised in docs/FINDINGS_CLUSTERS.md; the table below still lists
+every packaged track. Their scores are evidence
 about their own estimator/target pairs; they are not entries in one leaderboard.
 
 The dense-statevector results below are a separately labelled local supplement.
@@ -39,7 +57,7 @@ results retain their original provenance and hardware boundaries.
 | Ma–Li | direct compiled Ridge: strict backend+QASM-held-out log R² 0.8742, MAE 0.5224 s; adaptation: pretrained R² 0.5922 ± 0.8317, scratch R² 0.8855 ± 0.0461 | Compiled structure supports a source-specific proxy estimator; a simulator prior can still harm fake-snapshot transfer | Current FakeBackend proxy, not the historical paper environment |
 | Qonductor | regression MAE 502.359 ms, R² 0.9386; DAG MAE 915.609 ms, R² 0.8849 | Supplied regression predictions beat the numerical DAG baseline | Derived recompute, not live IBM/retraining |
 | CDAA/QCRE | 30/45 verification rows agree; maximum delta 3.50e-16 s | QCRE matches the supplied schedule-duration reference | Schedule duration is not observed QPU wall-clock |
-| cuTensorNet | warm median actual / RUNTIME_EST = 0.196; QFT-28/30 0.960/0.946 | The pre-run signal is conservative on easy contractions and closer on QFT | One GPU/software/precision setting |
+| cuTensorNet | 55-row frontier: warm actual/EST 0.215; first 1.242; e2e 138. Family-held-out warm median-ratio log MAE 0.131; scaling EST cannot rescue e2e | `RUNTIME_EST` is a contraction-path signal, not a first-call wall-clock | One GPU/software/precision setting; QPU labels are not used |
 | Azizov et al. independent | 1,192/1,192 screened local rows successful; 149/1,402 circuits eligible | Current FakeWashingtonV2/FakeSherbrooke + Aer pipeline is executable on a documented local subset | Conservative q≤9/ops/depth screen; not the paper's full HPC dataset or exact artifact |
 | Quantum Rings / iQuHACK | Spirit Sprinters public 144-row log-R² 0.743, MAE 107 s; SoftLocked in-domain R² 0.967 and public-table log-R² −25.5 | Winner is a structural public reference; SoftLocked cannot be compared until clocks match | Contest labels have no host CPU/GPU model; no SDK rerun |
 
@@ -77,6 +95,26 @@ the CPU/GPU tag.
 The two artifacts are not a leaderboard. They are a structural reference
 and a domain-shift warning. Bloch, Rishivarshil and Hazel are outside
 this track.
+
+
+## Family-aware paper (arXiv:2606.11620)
+
+**Finding recorded: 2026-09-18. Packaged: 2026-09-23.** This is Cluster 3,
+not Cluster 2. Cluster 2 scores Spirit Sprinters and SoftLocked checkpoints.
+This section reconstructs the family-conditioned paper protocol on the same
+144 public rows. Full write-up:
+[artifacts/quantum_rings/family_aware_paper/](artifacts/quantum_rings/family_aware_paper/).
+
+Two targets exist and must not be pooled. Paper-style 0.75 uses mirror-sweep
+wall time at the first 0.75 crossing (a proxy; the public JSON was generated
+at 0.99). Challenge 0.99 uses the 10,000-shot forward wall time.
+
+On circuit-level 5-fold CV, trees are the strongest public runtime baseline:
+Gradient Boosting log-R² 0.757 on the 0.75 proxy, ExtraTrees 0.712 on 0.99
+forward. The reconstructed family MLP is negative for runtime on both
+targets. Fold-local family accuracy is 39%. A frozen public MQT MLP reaches
+39/40 on its own MQT holdout and does not beat trees on the contest table.
+The paper's reported runtime R² 0.82 is not recovered.
 
 ## 0. Local dense-statevector runtime estimator supplement
 
@@ -341,6 +379,283 @@ these comparisons would require an explicit frozen selection rule. The script,
 OOF predictions, per-fold metrics, strict-direction metrics and provenance are
 under [artifacts/validation/mali_direct_estimator/](artifacts/validation/mali_direct_estimator/).
 
+### 2.6 Deep physical-DAG protocol and first model gate
+
+**Finding recorded:** 2026-09-21.
+
+The deeper experiment starts by separating circuit identity from filename and
+backend. Raw-QASM SHA-256 grouping yields 170 logical circuits, 130 paired
+across Osaka/Kyoto, 300 distinct `(QASM, backend)` physical graphs and 9
+family connected components. The strict backend-plus-unseen-QASM manifest has
+zero train/test hash overlap in all 10 diagnostic partitions. The split audit
+and rationale are in
+[artifacts/validation/mali_deep_protocol_v1/split_audit/](artifacts/validation/mali_deep_protocol_v1/split_audit/).
+
+Using the frozen Qiskit 1.4.1 / IBM Runtime 0.36.1 protocol, the compact
+current-FakeBackend corpus contains 67,404,145 native-operation nodes and
+79,673,830 dependency edges across 300 graphs. No operation lacked a target
+duration. The largest graph has 337,142 nodes; QWalk has only 9 active
+physical qubits but 107,143 native nodes. These are reproducible physical
+proxies, not historical IBM transpilation/calibration records.
+
+The static model gate is intentionally ordered from simple to rich:
+
+| Input | Grouped-QASM log R² / MAE | Strict backend+QASM log R² / MAE | Family-component log R² / MAE |
+|---|---:|---:|---:|
+| QCRE weighted path | 0.7321 / 0.8274 s | 0.7314 / 0.8229 s | 0.6207 / 0.9157 s |
+| Compiled depth/width | 0.8202 / 0.6889 s | 0.8156 / 0.6924 s | 0.8021 / 0.7228 s |
+| Physical node/edge summary | 0.8527 / 0.5766 s | 0.8500 / 0.5817 s | 0.8351 / 0.6136 s |
+| Rich layer/opcode/timing summary | **0.8896 / 0.4937 s** | **0.8755 / 0.5230 s** | **0.8700 / 0.5752 s** |
+
+The rich summary is still static feature engineering; it does not prove that
+message passing or attention is useful. A coarsened 256-bin ordered-DAG GRU
+residual was then tested with group-disjoint inner validation. It reached only
+pooled log R² `0.7339` (MAE `0.8571 s`) on grouped circuits and `0.6988`
+(`0.9022 s`) on strict splits. It reduced the QWalk errors to approximately
+5.45/5.24 s, but remained worse overall than the rich static summary. The
+current interpretation is therefore: compiled timing/layer/opcode descriptors
+carry strong signal, while the first DAG sequence model loses information under
+coarsening and is not yet justified as an estimator. Reports, raw manifests,
+OOF predictions and the GPU-run protocol are in
+[artifacts/validation/mali_physical_dag_v1/](artifacts/validation/mali_physical_dag_v1/).
+
+### 2.7 Feature-block ablation and QWalk tail diagnostic
+
+**Finding recorded:** 2026-09-21.
+
+The next pass keeps exactly the same grouped-QASM, strict backend-plus-QASM and
+family-component folds. It adds one interpretable block at a time to the small
+log-ridge estimator. The grouped-QASM results are:
+
+| Block | MAE (s) | log-R² | seconds-R² |
+|---|---:|---:|---:|
+| QCRE weighted path | 0.8274 | 0.7321 | 0.6707 |
+| + compiled depth/width | 0.6889 | 0.8202 | 0.7660 |
+| + native node/edge count | 0.5766 | 0.8527 | 0.7925 |
+| + layer descriptors | 0.5635 | 0.8616 | 0.8022 |
+| + duration/criticality descriptors | 0.5109 | 0.8892 | 0.8446 |
+| graph size + opcode counts | 0.5563 | 0.8241 | 0.7656 |
+| all rich descriptors | **0.4937** | **0.8895** | **0.8432** |
+
+The same ordering holds on strict backend-plus-unseen-QASM (rich log-R²
+`0.8755`) and family held-out (rich log-R² `0.8700`). The useful signal is
+therefore concentrated in compiled size/layer and especially duration/path
+descriptors; opcode counts alone are weaker under family holdout. The edge block
+is identical to the compact node/edge row here because the global quantum-edge
+fraction is constant for this reconstructed corpus. This is evidence for a
+strong static estimator, not evidence that message passing or DAG attention is
+needed.
+
+QWalk is retained as a separate forensics artifact. Both rows share one raw-QASM
+hash and are held in fold 5. Their nearest standardized training-row distance is
+about `3.02--3.12` RMS, while active width and criticality are outside or at the
+edge of the training support. The rich static model lowers grouped absolute
+error to about `5.91 s` (Osaka) and `5.35 s` (Kyoto); the coarsened DAG-GRU lowers
+it further locally to `5.45 s` and `5.24 s`, but loses badly on aggregate
+metrics. The defensible conclusion is an OOD/tail limitation: add coverage or
+uncertainty handling and test critical-subgraph features before increasing GNN
+complexity. Full ablation and feature-support tables are under
+`artifacts/validation/mali_physical_dag_v1/feature_ablation/` and
+`.../qwalk_forensics/`.
+
+### 2.8 Critical-subgraph and uncertainty pass
+
+**Finding recorded:** 2026-09-21.
+
+High-criticality bottleneck summaries were added to the rich static descriptor
+model. They improve log-R² from `0.8895` to `0.9041` on grouped QASM, and from
+`0.8755` to `0.8869` on strict backend-plus-unseen-QASM. The MAE changes only
+from `0.4937` to `0.4987 s` grouped and from `0.5230` to `0.5306 s` strict;
+family-held-out log-R² improves only from `0.8700` to `0.8732` while MAE rises
+to `0.5934 s`. This is promising for a residual/uncertainty feature, but not
+yet enough to justify a larger critical-subgraph GNN.
+
+The duplicate-label audit finds 40 exact `(raw-QASM hash, backend)` cells with
+80 rows. Their median absolute runtime difference is `0.4171 s`, P90 `1.2775 s`,
+and maximum `1.8158 s`; a pair-mean RMSE floor is about `0.3541 s`. This puts a
+real lower bound on how precise a scalar estimator can be under the recorded
+target semantics.
+
+Split-conformal intervals, calibrated on a QASM-disjoint training group, cover
+`87.6%` of grouped rows at nominal 90% and `86.5%` under strict backend holdout.
+At nominal 80%, coverage is `78.8%` and `76.8%`; median widths are `1.48--1.54 s`
+for the 80% bands. These are empirical dataset/proxy intervals, not hardware-wide
+confidence guarantees. The intended deployment behavior is therefore a point
+estimate plus uncertainty band and an OOD flag for QWalk-like inputs.
+
+Artifacts: `artifacts/validation/mali_physical_dag_v1/critical_subgraph_evaluation/`
+and `.../uncertainty_calibration/`.
+
+### 2.9 Retrained topology-control validation
+
+**Finding recorded:** 2026-09-21.
+
+The prior saved-model edge interventions showed that connectivity mattered, but
+could not establish whether retrained message passing on the correct DAG was
+better than node statistics. A controlled 256-bin experiment therefore held
+node descriptors, residual target, optimizer, folds and capacity fixed while
+changing only adjacency: node-only, true dependency DAG, reversed DAG and
+deterministically shuffled destinations. Three independent seeds were trained
+on grouped-QASM folds; 5,000 paired bootstrap replicates resampled the 170 raw
+QASM hashes, preserving paired backend rows.
+
+| Variant | Seed-mean MAE (s) | Seed-mean log-R² |
+|---|---:|---:|
+| Node-only | **0.8145** | **0.7666** |
+| True DAG | 0.8448 | 0.7382 |
+| Reversed DAG | 0.8967 | 0.6991 |
+| Shuffled DAG | 0.8530 | 0.7285 |
+
+For true DAG minus node-only, the log-R² delta is `-0.0284`, with a paired
+QASM-group bootstrap interval `[-0.0650, 0.0008]`; only `2.9%` of replicates
+favor true DAG. The MAE delta is `+0.0303s`. True DAG remains better than
+reversed/shuffled adjacency, so direction contains some information, but the
+coarsened message-passing representation does not improve runtime prediction.
+
+This is a useful negative result: do not scale up GAT/GINE/TransformerConv on
+the same 256-bin representation. It does not rule out a better native-DAG or
+critical-subgraph representation, and it has not yet been repeated under strict
+backend-plus-unseen-QASM splits. Raw per-seed OOF rows and the bootstrap are in
+`artifacts/validation/mali_physical_dag_v1/topology_controls_*`.
+
+### 2.10 Strict no-real-QASM simulator transfer screen
+
+**Finding recorded:** 2026-09-21.
+
+The earlier Ma--Li adaptation comparison could retain real-circuit identities
+in simulator pretraining. A deliberately narrower test removes all 170 raw
+QASM hashes in the observed Osaka/Kyoto set from the simulator corpus: 384 of
+3,020 simulator rows are removed, leaving 2,636 rows and 1,232 simulator QASM
+hashes. It uses a common logical-QASM feature MLP rather than the unavailable
+full Graph Transformer, so it tests circuit-inductive transfer without claiming
+an exact paper reproduction.
+
+| Three-seed mean model | MAE (s) | log-R² |
+|---|---:|---:|
+| Scratch on observed-runtime training folds | **0.6831** | **0.3360** |
+| Frozen simulator encoder | 1.9152 | -0.2533 |
+| Fine-tuned simulator encoder | 0.6956 | 0.0816 |
+
+Grouped-QASM bootstrap gives fine-tuning minus scratch Δlog-R² in
+`[-0.8351, 0.0000]` and ΔMAE in `[-0.0354, 0.0572] s`; only 2.6% of resamples
+favor fine-tuning in log-R². Frozen transfer is decisively worse in MAE. Thus,
+after removing exact circuit overlap, this representation does not support a
+reliable simulator-pretraining benefit. It neither tests nor disproves a strict
+Graph Transformer experiment with historical calibration snapshots.
+
+Artifacts: `artifacts/validation/mali_strict_transfer_logical_v1/` and its
+`evaluation/` subdirectory.
+
+### 2.11 Duplicate-aware fitting and support-aware uncertainty
+
+**Finding recorded:** 2026-09-21.
+
+Each test target remains an original observed row. Only rows inside the outer
+training partition are collapsed by exact `(raw-QASM hash, backend)` cell. On
+grouped-QASM evaluation, equal-weighted cell means improve MAE/log-R² from
+`0.4937 s`/`0.8895` to `0.4923 s`/`0.8917`; on strict backend-plus-QASM holdout,
+noise-weighted cell means improve them from `0.5230 s`/`0.8755` to
+`0.5156 s`/`0.8799`. These are modest robustness gains, not nested model
+selection results or a way to erase observed runtime noise.
+
+For the same rich static estimator, nearest standardized circuit-feature
+distance is calculated using fit rows only and a QASM-disjoint calibration fold
+sets global or two-band conformal residual quantiles. QWalk is consistently in
+the high-distance band. At nominal 90%, global intervals cover `87.6%` of
+grouped and `86.5%` of strict rows, but cover neither QWalk row. The
+support-stratified band widens QWalk intervals (grouped median `2.7141 s` versus
+global `2.1888 s`) without covering it. Therefore an estimator may expose an
+OOD flag and request abstention/additional calibration; it must not present
+these intervals as automatic tail or hardware-wide guarantees.
+
+Artifacts: `artifacts/validation/mali_physical_dag_v1/duplicate_aware_validation/`
+and `.../ood_uncertainty_validation/`.
+
+### 2.12 Family-OOD protocol: missing MQT families versus unseen hardware families
+
+**Finding recorded:** 2026-09-22.
+
+The earlier family-held-out log-R² of about `0.87` on the 340 Osaka/Kyoto rows
+is a statement about the 10 hardware-selected MQT families. It does not score
+the 12 MQT families that never entered that table. Those questions are now
+separated.
+
+Experiment A compares structure, not runtime. The local MQT extract has 1,510
+independent-Qiskit QASMs. The hardware table uses 170 hashes from 10 families;
+549 circuits from GHZ, W-state, GraphState, DJ, AE, VQE, QAOA, Grover and the
+remaining walk/portfolio variants have no `result.time_taken` here. Selected
+families are dense (median two-qubit count 4,606, interaction density 1.0).
+Missing families are sparse (81 two-qubit gates, density 0.034). Leave-one-family
+nearest-group assignment is 20/22. The exceptions are `ae`, which sits nearer
+the selected/QPE region, and `qwalk-noancilla`, which sits nearer the missing
+region. Inside the 10 selected families the hardware hashes are still a size
+bias: sampled QASMs have median width 91 versus 70 for unsampled members of
+those same families. Physical FakeOsaka/FakeKyoto proxy rows cover all 1,510 QASMs on both
+backends (3,020/3,020 ok). Compiled structure widens the split: median
+physical depth 17,040 versus 275, routing-depth ratio 62.2 versus 7.6,
+centroid distance 5.87 versus 4.46 logically. The same two families are
+mis-assigned (`ae`, `qwalk-noancilla`). Rows are under
+[artifacts/validation/mali_family_ood_v1/feature_space_audit/](artifacts/validation/mali_family_ood_v1/feature_space_audit/).
+
+Historical Experiment B remains blocked: no Osaka/Kyoto `result.time_taken`
+for the 12 missing families, and both machines are retired. The unblocked
+sibling is B2, which keeps C's QPU splits and puts the held family back into
+simulator pretraining. Scratch T0–T3 match C exactly. Logical T0 `incl` is
+worse than `excl` (log-R² `-0.377` vs `-0.282` excluding QWalk). Compiled-proxy
+T2 is the best sim arm (`0.248` / `1.363 s`) and still far behind scratch T1
+(`0.859` / `0.624 s`). The weak T2 pooled score is ansatz-driven; QFT/QPE/QNN
+remain large-negative. Seeing a family on FakeWashington/Sherbrooke does not
+replace compiled QPU-scratch features.
+
+Live-QPU collection for the 12 missing families was removed on 2026-09-22.
+It required IBM credentials that are not available here, and no jobs were
+submitted. External public extracts (QPack, Qonductor, IonQ, simulators) also
+do not supply trusted QASM-joined hardware labels for those MQT instances.
+See [docs/REMOVED_AND_OUT_OF_SCOPE.md](docs/REMOVED_AND_OUT_OF_SCOPE.md).
+The day-by-day record is
+[docs/DAILY_WORK_LOG_2026-09-17_TO_2026-09-22.md](docs/DAILY_WORK_LOG_2026-09-17_TO_2026-09-22.md).
+
+Experiment C holds out each of the 9 hardware connected components from both
+simulator pretraining and QPU training. Simulator pretraining stays on logical
+T0; Washington/Sherbrooke compilation is not transferred as Osaka/Kyoto
+structure. Excluding the two QWalk rows, QPU-scratch logical T0 has log-R²
+`-1.283` (MAE `1.259 s`). Compiled T1 jumps to `0.859` / `0.624 s`. Adding the
+duration-weighted path (T2) is `0.860` / `0.612 s`. The rich static summary
+(T3) reaches `0.893` / `0.546 s`, and the all-component T3 value `0.8700`
+matches the earlier family-component rich-summary gate. Simulator T0 plus
+affine QPU calibration is `-0.282` / `1.696 s` and does not replace compiled
+scratch. Per-family, logical T0 collapses on QNN and `random`; compiled T1
+restores them; T3 is not uniformly best (`random` prefers T1/T2).
+
+Artifacts: [artifacts/validation/mali_family_ood_v1/](artifacts/validation/mali_family_ood_v1/).
+
+
+### 2.13 Compiled transfer (Ma–Li protocol, Azizov representation)
+
+**Finding recorded: 2026-09-22.** Cluster 1 treats Ma–Li and Azizov as one
+object: keep Ma–Li's two clocks and 340 Osaka/Kyoto labels, replace the
+logical DAG with the circuit after `transpile` to the target backend.
+
+Compiled Ridge on Washington/Sherbrooke simulator `time_taken` (n=3020):
+logical T0 log-R² 0.272, compiled T1 0.313, compiled T2 0.435. The same
+Ridge trained from scratch on the 340 hardware rows: T0 0.720, T1 0.863,
+T2 0.875. Frozen simulator T2 plus an affine QPU head reaches 0.353
+(`incl`) and 0.349 (`excl`). Seeing the test QASM on the simulator does
+not matter. QPU scratch remains the ceiling.
+
+The coarsened native DAG (256 bins) is stronger on the simulator clock
+(log-R² 0.779 versus Ridge T2 0.435) and only slightly stronger on QPU
+scratch (0.905 versus 0.875). Affine DAG transfer collapses to log-R²
+−2.63 because two QWalk rows predict thousands of seconds. Fine-tune from
+the simulator DAG recovers 0.875, close to scratch. Ignore
+`qpu_scratch_pilot/` (`softplus` decode bug).
+
+Reports:
+[mali_azizov_compiled_transfer_v1](artifacts/validation/mali_azizov_compiled_transfer_v1/)
+and
+[mali_azizov_transpiled_dag_v1](artifacts/validation/mali_azizov_transpiled_dag_v1/).
+English reading path: [docs/FINDINGS_CLUSTERS.md](docs/FINDINGS_CLUSTERS.md).
+
 ## 3. CDAA/QCRE: schedule agreement versus hardware truth
 
 QCRE reproduces the supplied Qiskit schedule-duration reference in 30 of 45
@@ -373,6 +688,22 @@ allocation and Python dispatch are outside the warm CUDA-event target. First
 contraction, warm contraction and end-to-end latency are separate columns, not
 three cuTensorNet estimates. The detailed result is
 [artifacts/cutensornet/CUTENSORNET_RUNTIME_ESTIMATOR_INITIAL_RESULTS.md](artifacts/cutensornet/CUTENSORNET_RUNTIME_ESTIMATOR_INITIAL_RESULTS.md).
+
+### 4.1 Feasibility frontier and warm calibration
+
+The same runner was later expanded to a timeout-bounded 55-cell grid (GHZ,
+QFT, HEA 2/4/8, QAOA-cycle p=2/3/6, brickwork 4/8/16, widths 16/20/24/28/30).
+All 55 cells completed. On that frontier the warm median actual/EST is 0.215.
+Family-held-out calibration, using only pre-contraction planner and circuit
+features, reproduces the earlier warm-B1 decision: a train-fold median-ratio
+correction has log MAE **0.131**, ahead of Ridge 0.247 and HGB 0.253. Ridge
+is stronger on unseen widths (0.089) and should not be selected from that
+split alone. Artifact:
+[CUTENSORNET_B1_CALIBRATION_RESULTS.md](artifacts/cutensornet/feasibility_frontier_v1/CUTENSORNET_B1_CALIBRATION_RESULTS.md).
+
+### 4.2 / 4.3 local follow-ups, not packaged in this cluster round
+
+The 2026-09-22 multi-target calibration and the paired CUDA-Q / cuTensorNet IR sit in the working tree and are intentionally not part of the three-cluster commit. The packaged cuTensorNet result remains the 25-row initial measurement and the 55-row feasibility frontier in §4.1.
 
 ## 5. Azizov et al.: independent reproduction status
 

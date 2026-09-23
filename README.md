@@ -1,104 +1,78 @@
 # Quantum Runtime Estimator: replication studies
 
-This repository is a reproducibility capsule for distinct runtime-
-estimation studies. It records our code, patches, expected outputs and failure
-analysis; it does not merge their targets into one training table or claim a
-universal estimator.
+This repository is a reproducibility capsule. It records code, patches,
+expected outputs and failure analysis for distinct runtime-estimation
+studies. It does not merge their targets into one training table.
 
-| Track | Estimator under study | Evidence class | Central finding |
+Read the work as **three finding clusters**, then as older capsules.
+
+The cluster report is [`docs/FINDINGS_CLUSTERS.md`](docs/FINDINGS_CLUSTERS.md).
+Track-level tables remain in [`RESULTS.md`](RESULTS.md).
+[`REPRODUCTION.md`](REPRODUCTION.md) is the clean-clone workflow.
+[`HANDOFF.md`](HANDOFF.md) is the next-session status.
+
+## Finding clusters
+
+| Cluster | Estimator under study | Evidence | Central finding |
 | --- | --- | --- | --- |
-| Ma–Li | Graph Transformer over circuit DAG; direct compiled-feature regression | Local reproduction plus fake-snapshot, grouped QCRE proxy and direct source-specific validation | Simulator-pretrained initialization fails on one held-out QWalk fold; a separately evaluated direct compiled-feature estimator improves on physical depth under QASM-grouped tests, but remains a current-FakeBackend proxy. |
-| Qonductor | Job/circuit regression in a cloud scheduler | Metric recomputation plus local fake-backend smoke | The public regression predictions outperform the numerical DAG baseline on the supplied 100-row evaluation CSV. |
-| CDAA/QCRE | Gate-aware compiled-circuit duration estimate | Bundled-artifact reproduction plus offline compiler proxy | Gate-aware depth closely follows the artifact's schedule-duration reference, but the reference is not measured QPU wall-clock. |
-| cuTensorNet | NVIDIA pre-run contraction-path `RUNTIME_EST` | Local RTX 5070 Ti measurement | The estimate is conservative for easy warm contractions and much closer for hard QFT contractions. |
-| Azizov et al. | Transpilation-aware Aer noisy-simulation runtime | Independent P0/P1 plus screened local-feasibility matrix; paper code/data not yet public | 149/1,402 circuits pass the conservative local screen and all 1,192 tested backend/optimization rows complete. |
-| Quantum Rings / iQuHACK | Spirit Sprinters graph-Transformer duration model; SoftLocked tabular GradientBoosting | Public-artifact audit of winner and SoftLocked checkpoints on the 144-row 0.99-forward table | Winner log-R² 0.743 on public forward labels; SoftLocked is in-domain on its own table and a domain-shift failure here. The contest does not publish the simulation machine. |
+| Ma–Li × Azizov | Compiled / transpiled prediction of Ma–Li Osaka/Kyoto `result.time_taken` | Logical DAG reproduction, current-FakeBackend compiled proxy, native DAG, family-OOD, compiled Ridge and coarsened-DAG transfer | Logical depth is not enough. After transpile, compiled structure carries the signal. Simulator pretraining plus an affine head does not beat training on the 340 hardware rows. QWalk is the failure tail. Current FakeOsaka/Kyoto snapshots are not historical job-day calibration. |
+| Quantum Rings solutions | Spirit Sprinters graph-Transformer; SoftLocked tabular GradientBoosting | Public-artifact audit on the 144-row 0.99-forward table | Winner log-R² 0.743. SoftLocked is in-domain on its own table (R² 0.967) and a domain-shift failure here (log-R² −25.5). The contest does not publish the simulation machine. |
+| Family-aware paper ([arXiv:2606.11620](https://arxiv.org/abs/2606.11620)) | Family-conditioned residual/FiLM MLP reconstructed on the public contest table | Circuit-level 5-fold CV, tree baselines, frozen public MQT classifier | Trees are the strongest public runtime baseline (0.75 log-R² 0.757; 0.99 ExtraTrees 0.712). The reconstructed family MLP is not competitive for runtime. Paper R² 0.82 is not recovered. 0.75 mirror-sweep time and 0.99 forward time must not be pooled. |
 
-The canonical comparative report is [`RESULTS.md`](RESULTS.md). It gives the
-metric, provenance class, failure boundary and interpretation for every track.
-The Quantum Rings contest audit is
-[`artifacts/quantum_rings/REPORT.md`](artifacts/quantum_rings/REPORT.md).
-[`REPRODUCTION.md`](REPRODUCTION.md) documents the clean-clone workflow. The
-next-session status and handoff are kept in [`HANDOFF.md`](HANDOFF.md). The
-exact upstream revisions are pinned in
-[`upstream/upstream.lock.json`](upstream/upstream.lock.json).
+Do not pool Ma–Li `result.time_taken`, contest 0.75 mirror time, contest 0.99
+forward time, SoftLocked's 74k-second table, or local cuTensorNet GPU times.
 
-An additional, separately labelled simulator-data-generation supplement covers
-VQCSim, the independent Azizov reconstruction, and the credential-free local
-part of the Zero-Setup artifact. Start with
-[`experiments/simulator_papers/README.md`](experiments/simulator_papers/README.md)
-and its [initial report](artifacts/simulator_papers/INITIAL_LOCAL_REPRODUCTION_REPORT_2026-09-20.md).
-The completed estimator-validation pass, raw-artifact map and failure analysis
-are in [`SIMULATOR_ESTIMATOR_VALIDATION_REPORT_2026-09-20.md`](artifacts/simulator_papers/SIMULATOR_ESTIMATOR_VALIDATION_REPORT_2026-09-20.md).
-Its [`deep-analysis companion`](artifacts/simulator_papers/DEEP_ANALYSIS_2026-09-20.md)
-records the observed residual patterns and the bounded technical explanations.
-It is not a sixth pooled runtime target.
+Cluster paths:
 
-The separately generated [matched dense-statevector matrix](experiments/simulator_runtime_v1/README.md)
-adds 96 actual local execution labels across CPU/GPU and complex64/complex128
-under one PyTorch reference-kernel contract. Its [report](artifacts/simulator_runtime_v1/torch_dense_statevector_v1/REPORT.md)
-records the target boundary, raw measurements, baseline OOF scores and the
-remaining device/precision transfer failure mode. It is not pooled with Aer,
-CUDA-Q or cuTensorNet.
+- Cluster 1 reports: [`artifacts/validation/mali_azizov_compiled_transfer_v1/`](artifacts/validation/mali_azizov_compiled_transfer_v1/), [`mali_azizov_transpiled_dag_v1/`](artifacts/validation/mali_azizov_transpiled_dag_v1/), [`mali_family_ood_v1/`](artifacts/validation/mali_family_ood_v1/), [`mali_physical_dag_v1/`](artifacts/validation/mali_physical_dag_v1/)
+- Cluster 2 report: [`artifacts/quantum_rings/REPORT.md`](artifacts/quantum_rings/REPORT.md)
+- Cluster 3 report: [`artifacts/quantum_rings/family_aware_paper/`](artifacts/quantum_rings/family_aware_paper/)
 
-The [structural v2 follow-up](experiments/simulator_runtime_v2/README.md)
-extends that one kernel with seeded random topologies and a q26/q28 GPU-memory
-frontier. Its [final report](artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/REPORT.md)
-keeps 4 CUDA out-of-memory observations as `resource_limit` rather than
-inventing duration labels. It finds strong in-range circuit-group prediction,
-weaker width extrapolation, and a q24-calibrated peak-memory envelope that
-correctly rejects q28 complex128 despite raw statevector bytes fitting VRAM.
+Day-by-day record: [`docs/DAILY_WORK_LOG_2026-09-17_TO_2026-09-22.md`](docs/DAILY_WORK_LOG_2026-09-17_TO_2026-09-22.md).
+Upstream pins: [`upstream/upstream.lock.json`](upstream/upstream.lock.json).
 
-The literature and public-artifact audit is [`docs/PAPER_REPO_EXPERIMENT_MAP_2026-09-21.md`](docs/PAPER_REPO_EXPERIMENT_MAP_2026-09-21.md).
-It records which papers have usable code/data, what timing contract each one
-defines, and why a candidate is or is not selected for a new experiment. The
-first CUDA-Q matched simulator pilot is under
-[`artifacts/cudaq_runtime/cudaq_matrix_20260921/`](artifacts/cudaq_runtime/cudaq_matrix_20260921/).
-It keeps CPU QPP FP64, GPU FP32 and GPU FP64 `sample` wall-clock labels
-separate, with first-call and warm-call timing reported independently.
-The follow-up [CUDA-Q MPS pilot](artifacts/cudaq_runtime/cudaq_mps_20260921/REPORT.md)
-adds configured bond-cap, observed tensor-bond and fidelity diagnostics while
-keeping post-run bond observations out of the static estimator feature block.
+## Other capsules
+
+These remain in the repository and are not part of the three-cluster
+reorganisation:
+
+| Capsule | Target | Note |
+| --- | --- | --- |
+| Qonductor | One-job execution estimate, queue excluded | Public regression predictions beat the numerical DAG baseline on the supplied 100-row CSV. No stable join from the resource-estimator CSV to the circuit/job database. |
+| CDAA/QCRE | Compiled-circuit schedule duration | Gate-aware depth follows the artifact's schedule reference. That reference is not measured QPU wall-clock. |
+| cuTensorNet | RTX 5070 Ti contraction `RUNTIME_EST` | Conservative for warm kernels; not a first-call wall-clock. |
+| Azizov independent Aer screen | Local noisy Aer `T_exec` after transpile | 149/1,402 circuits pass the conservative local screen; 1,192 tested rows complete. Not the unpublished paper table. |
+| Dense-statevector / CUDA-Q | Fixed local simulator kernels | Separate clocks. Not pooled with QPU or Quantum Rings labels. |
 
 ## Scope
 
-Each track has its own target semantics:
+- Ma–Li × Azizov: simulator `time_taken` during pretraining; recorded Osaka/Kyoto `result.time_taken` during hardware evaluation. Compiled features are a current FakeBackend proxy.
+- Quantum Rings solutions and family-aware paper: public contest labels. CPU/GPU is a tag, not a host profile. No SDK rerun.
+- Qonductor: archived one-job execution estimate.
+- CDAA/QCRE: analytical duration from archived instruction-duration snapshots.
+- cuTensorNet: local GPU scalar contraction; warm CUDA-event time is distinct from first-call end-to-end latency.
 
-- Ma–Li: simulator labels during pretraining and recorded Osaka/Kyoto
-  `result.time_taken` labels during adaptation/direct source-specific regression;
-- Qonductor: Qonductor one-job execution estimate, excluding queue waiting and
-  workflow job-completion time;
-- CDAA/QCRE: analytical duration derived from compiled circuits and archived
-  IBM instruction-duration snapshots;
-- cuTensorNet: local GPU scalar tensor-network contraction, with warm CUDA
-  event time distinct from first-call end-to-end latency.
-- Azizov et al.: Qiskit Aer noisy-simulator execution time after transpilation,
-  with transpile time and simulator setup kept separate.
-- Quantum Rings: public 0.99-forward tensor-network simulator wall time and
-  truncation threshold; CPU/GPU is a categorical tag, not a host profile.
-
-The repository intentionally excludes QPU/cloud ETL, Aer CPU resource-aware
-P0–P7 experiments, generated visualization HTML, virtual environments,
-checkpoints and upstream source trees. Upstream sources are cloned on demand
-at pinned commits and overlaid only with the changes recorded here.
+The repository excludes live QPU jobs, cloud ETL, virtual environments,
+checkpoints, coarsened native-DAG tensors, and upstream source trees.
+Upstream sources are cloned on demand at pinned commits.
 
 ## Repository layout
 
 ```text
-tracks/                 code, overlays and track-specific instructions
-artifacts/              committed reports, metrics and expected fixtures
-experiments/            cross-track validation scripts (Qonductor/Ma–Li)
-scripts/                bootstrap and integrity verification
-upstream/               upstream revisions, licenses and data boundaries
-RESULTS.md              report of findings and failure modes
-REPRODUCTION.md         clean-clone reproduction procedure
+docs/FINDINGS_CLUSTERS.md   three-cluster reading path
+tracks/                     overlays, clone scripts, vendored family-aware code
+artifacts/                  committed reports, metrics and fixtures
+experiments/                Ma–Li / Azizov / Qonductor validation scripts
+scripts/                    bootstrap and integrity verification
+upstream/                   pinned revisions and data boundaries
+RESULTS.md                  track-level tables
+REPRODUCTION.md             clean-clone procedure
 ```
-
-The first reproducibility check requires only the Python standard library:
 
 ```bash
 python3 scripts/verify_artifacts.py
 ```
 
-It verifies the committed capsule. It does not rerun GPU work, submit a cloud
-job or claim to recreate historical QPU calibration state.
+That check uses the Python standard library. It verifies the committed
+capsule. It does not rerun GPU work, retrain models, submit a cloud job or
+recreate historical QPU calibration state.

@@ -1,0 +1,85 @@
+{
+  "n_rows": 340,
+  "features": [
+    "critical_p90_dt",
+    "critical_p95_dt",
+    "critical_p99_dt",
+    "critical_p90_node_fraction",
+    "critical_p95_node_fraction",
+    "critical_p99_node_fraction",
+    "critical_p90_duration_fraction",
+    "critical_p95_duration_fraction",
+    "critical_p99_duration_fraction",
+    "critical_p90_mean_dt",
+    "critical_p95_mean_dt",
+    "critical_p99_mean_dt",
+    "critical_p90_edge_fraction",
+    "critical_p95_edge_fraction",
+    "critical_p99_edge_fraction",
+    "critical_top001_duration_fraction",
+    "critical_top01_duration_fraction",
+    "critical_top05_duration_fraction",
+    "critical_top001_mean_dt",
+    "critical_top01_mean_dt",
+    "critical_top05_mean_dt",
+    "criticality_duration_weighted_sum_dt",
+    "criticality_mean_dt",
+    "criticality_max_dt"
+  ],
+  "pooled_metrics": {
+    "grouped_qasm": {
+      "rich_summary": {
+        "mae_seconds": 0.49374577807634534,
+        "medae_seconds": 0.367962961255091,
+        "rmse_seconds": 0.7556168906405745,
+        "r2_seconds": 0.8432058998083416,
+        "mae_log1p_seconds": 0.05239747505602751,
+        "r2_log1p_seconds": 0.8895291914860881
+      },
+      "rich_plus_critical": {
+        "mae_seconds": 0.4987485011316029,
+        "medae_seconds": 0.3651945883381078,
+        "rmse_seconds": 0.6929913627689397,
+        "r2_seconds": 0.868119056371147,
+        "mae_log1p_seconds": 0.052966096846564434,
+        "r2_log1p_seconds": 0.9040886649438724
+      }
+    },
+    "strict_all": {
+      "rich_summary": {
+        "mae_seconds": 0.5229527911697774,
+        "medae_seconds": 0.38193397140578167,
+        "rmse_seconds": 0.7853619801287473,
+        "r2_seconds": 0.830618432193578,
+        "mae_log1p_seconds": 0.05622451550573034,
+        "r2_log1p_seconds": 0.875548923612681
+      },
+      "rich_plus_critical": {
+        "mae_seconds": 0.5305870022040312,
+        "medae_seconds": 0.3928933480559036,
+        "rmse_seconds": 0.7463561855192552,
+        "r2_seconds": 0.847025629282556,
+        "mae_log1p_seconds": 0.0570920968479441,
+        "r2_log1p_seconds": 0.8869276622617873
+      }
+    },
+    "family_all": {
+      "rich_summary": {
+        "mae_seconds": 0.5752797052953966,
+        "medae_seconds": 0.437477500171608,
+        "rmse_seconds": 0.8279841816058783,
+        "r2_seconds": 0.8117346127048034,
+        "mae_log1p_seconds": 0.06047683959178988,
+        "r2_log1p_seconds": 0.8700048892122074
+      },
+      "rich_plus_critical": {
+        "mae_seconds": 0.5934382332652253,
+        "medae_seconds": 0.44156655116000865,
+        "rmse_seconds": 0.8214009821351423,
+        "r2_seconds": 0.8147164606989072,
+        "mae_log1p_seconds": 0.06192556116363068,
+        "r2_log1p_seconds": 0.8732324761390757
+      }
+    }
+  }
+}

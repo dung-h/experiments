@@ -1,0 +1,95 @@
+{
+  "repo_commit": "d3f2a84d1dfc77f13a0b4cf9338ba8cdb9e5f687",
+  "paper": "arXiv:2606.11620",
+  "replication_recorded": "2026-09-18",
+  "protocols": {
+    "0.99": {
+      "target": 0.99,
+      "n_rows": 144,
+      "n_circuits": 36,
+      "family_classifier": {
+        "accuracy": 0.3888888888888889,
+        "n_circuits": 36
+      },
+      "models": {
+        "rf": {
+          "threshold": {
+            "exact_accuracy": 0.6111111111111112,
+            "within_one_rung": 0.8402777777777778,
+            "mean_rung_distance": 0.6875
+          },
+          "runtime": {
+            "r2_log_runtime": 0.4172290527195731,
+            "r2_runtime_seconds": -0.013558582426244081,
+            "mae_runtime_seconds": 144.24059715735342,
+            "median_relative_error": 0.5019844461774461
+          }
+        },
+        "mlp_no_family": {
+          "threshold": {
+            "exact_accuracy": 0.4097222222222222,
+            "within_one_rung": 0.6736111111111112,
+            "mean_rung_distance": 1.5138888888888888
+          },
+          "runtime": {
+            "r2_log_runtime": -0.786391936281482,
+            "r2_runtime_seconds": -17.201778776052347,
+            "mae_runtime_seconds": 507.0409986531835,
+            "median_relative_error": 0.6771800858087403
+          }
+        },
+        "family_predicted": {
+          "threshold": {
+            "exact_accuracy": 0.6319444444444444,
+            "within_one_rung": 0.8194444444444444,
+            "mean_rung_distance": 0.7986111111111112
+          },
+          "runtime": {
+            "r2_log_runtime": -0.8561158663118285,
+            "r2_runtime_seconds": -31.143566627180633,
+            "mae_runtime_seconds": 701.9751374316096,
+            "median_relative_error": 0.6707251239871002
+          }
+        },
+        "family_oracle": {
+          "threshold": {
+            "exact_accuracy": 0.6111111111111112,
+            "within_one_rung": 0.7708333333333334,
+            "mean_rung_distance": 0.9097222222222222
+          },
+          "runtime": {
+            "r2_log_runtime": -1.0947365747517255,
+            "r2_runtime_seconds": -45.80516763513077,
+            "mae_runtime_seconds": 914.6990277066504,
+            "median_relative_error": 0.6886353287446378
+          }
+        }
+      },
+      "families": [
+        "Amplitude_Estimation",
+        "CutBell",
+        "Deutsch_Jozsa",
+        "GHZ",
+        "GraphState",
+        "Ground_State",
+        "Grover_NoAncilla",
+        "Grover_V_Chain",
+        "Portfolio_QAOA",
+        "Portfolio_VQE",
+        "Pricing_Call",
+        "QAOA",
+        "QFT",
+        "QFT_Entangled",
+        "QNN",
+        "QPE_Exact",
+        "Shor",
+        "TwoLocalRandom",
+        "VQE",
+        "W_State"
+      ],
+      "runtime_sources": {
+        "forward_at_public_0.99_selection": 144
+      }
+    }
+  }
+}

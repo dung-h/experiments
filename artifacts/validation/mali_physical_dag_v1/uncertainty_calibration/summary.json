@@ -1,0 +1,44 @@
+{
+  "duplicate_cells": 40,
+  "duplicate_rows": 80,
+  "duplicate_label_noise": {
+    "absolute_diff_median_seconds": 0.4171114753333338,
+    "absolute_diff_p90_seconds": 1.2774891490333335,
+    "absolute_diff_max_seconds": 1.8157865089999987,
+    "log1p_diff_median": 0.04621385238661779,
+    "pair_mean_rmse_floor_seconds": 0.35408627648470403
+  },
+  "rich_static_oof_error": {
+    "grouped_mae_seconds": 0.493719002560507,
+    "grouped_abs_error_p90_seconds": 1.0743381831515395,
+    "strict_mae_seconds": 0.523008498841756,
+    "strict_abs_error_p90_seconds": 1.0868036054429788
+  },
+  "conformal_intervals": {
+    "grouped_alpha_0.10": {
+      "n": 340,
+      "coverage": 0.8764705882352941,
+      "median_width_seconds": 2.128281364134173,
+      "p90_width_seconds": 2.660489088962271
+    },
+    "grouped_alpha_0.20": {
+      "n": 340,
+      "coverage": 0.788235294117647,
+      "median_width_seconds": 1.4793714885190998,
+      "p90_width_seconds": 1.970942617388808
+    },
+    "strict_alpha_0.10": {
+      "n": 340,
+      "coverage": 0.8647058823529412,
+      "median_width_seconds": 2.199099198743399,
+      "p90_width_seconds": 2.7911985211488908
+    },
+    "strict_alpha_0.20": {
+      "n": 340,
+      "coverage": 0.7676470588235295,
+      "median_width_seconds": 1.5359896967058662,
+      "p90_width_seconds": 2.236936779810859
+    }
+  },
+  "semantics": "observed Ma-Li result.time_taken; intervals calibrated on held-out QASM groups, not a hardware-wide confidence guarantee"
+}

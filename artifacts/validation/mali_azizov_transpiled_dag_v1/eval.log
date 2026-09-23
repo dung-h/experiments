@@ -1,0 +1,98 @@
+START 2026-09-22T22:03:08+07:00
+[attach] qpu: 0/340 attached=0 missing=0
+[attach] qpu: 100/340 attached=100 missing=0
+[attach] qpu: 200/340 attached=200 missing=0
+[attach] qpu: 300/340 attached=300 missing=0
+[qpu scratch] fold 1/5 n_train=275
+[qpu scratch] fold 2/5 n_train=272
+[qpu scratch] fold 3/5 n_train=266
+[qpu scratch] fold 4/5 n_train=273
+[qpu scratch] fold 5/5 n_train=274
+[attach] sim: 0/3020 attached=0 missing=0
+[attach] sim: 100/3020 attached=100 missing=0
+[attach] sim: 200/3020 attached=200 missing=0
+[attach] sim: 300/3020 attached=300 missing=0
+[attach] sim: 400/3020 attached=400 missing=0
+[attach] sim: 500/3020 attached=500 missing=0
+[attach] sim: 600/3020 attached=600 missing=0
+[attach] sim: 700/3020 attached=700 missing=0
+[attach] sim: 800/3020 attached=800 missing=0
+[attach] sim: 900/3020 attached=900 missing=0
+[attach] sim: 1000/3020 attached=1000 missing=0
+[attach] sim: 1100/3020 attached=1100 missing=0
+[attach] sim: 1200/3020 attached=1200 missing=0
+[attach] sim: 1300/3020 attached=1300 missing=0
+[attach] sim: 1400/3020 attached=1400 missing=0
+[attach] sim: 1500/3020 attached=1500 missing=0
+[attach] sim: 1600/3020 attached=1600 missing=0
+[attach] sim: 1700/3020 attached=1700 missing=0
+[attach] sim: 1800/3020 attached=1800 missing=0
+[attach] sim: 1900/3020 attached=1900 missing=0
+[attach] sim: 2000/3020 attached=2000 missing=0
+[attach] sim: 2100/3020 attached=2100 missing=0
+[attach] sim: 2200/3020 attached=2200 missing=0
+[attach] sim: 2300/3020 attached=2300 missing=0
+[attach] sim: 2400/3020 attached=2400 missing=0
+[attach] sim: 2500/3020 attached=2500 missing=0
+[attach] sim: 2600/3020 attached=2600 missing=0
+[attach] sim: 2700/3020 attached=2700 missing=0
+[attach] sim: 2800/3020 attached=2800 missing=0
+[attach] sim: 2900/3020 attached=2900 missing=0
+[attach] sim: 3000/3020 attached=3000 missing=0
+[sim grouped] fold 1/5 n=2402
+[sim grouped] fold 2/5 n=2420
+[sim grouped] fold 3/5 n=2420
+[sim grouped] fold 4/5 n=2412
+[sim grouped] fold 5/5 n=2426
+[transfer] train sim model n_fit=2642 n_val=378
+[transfer] QPU fold 1/5
+[transfer] QPU fold 2/5
+[transfer] QPU fold 3/5
+[transfer] QPU fold 4/5
+[transfer] QPU fold 5/5
+{
+  "device": "cuda",
+  "n_qpu": 340,
+  "qpu_missing": 0,
+  "n_sim": 3020,
+  "sim_missing_graphs": 0,
+  "metrics": {
+    "qpu_scratch_transpiled_dag": {
+      "n": 340,
+      "mae_seconds": 0.5142722213812889,
+      "medae_seconds": 0.4180851218783572,
+      "rmse_seconds": 0.6786823150117418,
+      "r2_seconds": 0.8735090461334466,
+      "mae_log1p_seconds": 0.055099800296603704,
+      "r2_log1p_seconds": 0.9046986222821181
+    },
+    "sim_transpiled_dag": {
+      "n": 3020,
+      "mae_seconds": 0.26851327955302684,
+      "medae_seconds": 0.07209476232528678,
+      "rmse_seconds": 1.8515530947420404,
+      "r2_seconds": 0.41343409987409274,
+      "mae_log1p_seconds": 0.06876220955418269,
+      "r2_log1p_seconds": 0.7787466977930845
+    },
+    "sim_transpiled_dag_affine_qpu": {
+      "n": 340,
+      "mae_seconds": 17.83004526280162,
+      "medae_seconds": 0.9671046130653003,
+      "rmse_seconds": 218.9360768544393,
+      "r2_seconds": -13162.187444981868,
+      "mae_log1p_seconds": 0.16286955766644032,
+      "r2_log1p_seconds": -2.6288523063619085
+    },
+    "sim_transpiled_dag_finetune_qpu": {
+      "n": 340,
+      "mae_seconds": 0.5570675463720867,
+      "medae_seconds": 0.39528185496667456,
+      "rmse_seconds": 0.9885819813053691,
+      "r2_seconds": 0.7316189898095595,
+      "mae_log1p_seconds": 0.057011536260510184,
+      "r2_log1p_seconds": 0.8750076986105026
+    }
+  }
+}
+EXIT:0 2026-09-22T22:17:51+07:00

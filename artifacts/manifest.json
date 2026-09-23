@@ -1,17 +1,19 @@
 {
   "schema_version": 1,
-  "scope": "Primary runtime-estimator replication tracks, including the Quantum Rings public-artifact audit, separately labelled simulator-paper canaries, and fixed-contract dense-statevector/CUDA-Q simulator supplements; never pooled.",
+  "scope": "Three finding clusters (Ma\u2013Li \u00d7 Azizov compiled QPU runtime, Quantum Rings contest solutions, family-aware paper public reconstruction) plus older separately labelled capsules; never pooled.",
   "artifacts": [
     {
       "path": "artifacts/mali/MA_LI_REPLICATION_REPORT.md",
       "provenance_class": "OUR_REPLICATION",
-      "runtime_semantics": "simulator DAG prediction and recorded real-QPU result.time_taken"
+      "runtime_semantics": "simulator DAG prediction and recorded real-QPU result.time_taken",
+      "cluster": "mali_azizov"
     },
     {
       "path": "artifacts/mali/MA_LI_TRANSFER_BASELINE_COMPARISON.md",
       "provenance_class": "OUR_PROXY",
       "runtime_semantics": "fake-snapshot adaptation of recorded Osaka/Kyoto labels",
-      "critical_fixture": "artifacts/mali/fold10_qwalk_outlier.json"
+      "critical_fixture": "artifacts/mali/fold10_qwalk_outlier.json",
+      "cluster": "mali_azizov"
     },
     {
       "path": "artifacts/qonductor/reproduction_metrics.json",
@@ -33,26 +35,30 @@
       "path": "artifacts/validation/mali_qcre_proxy/MALI_QCRE_PROXY_REPORT.md",
       "provenance_class": "OUR_PROXY",
       "runtime_semantics": "FakeOsaka/FakeKyoto target-duration proxy against Ma-Li observed labels",
-      "critical_fixture": "artifacts/validation/mali_qcre_proxy/mali_qcre_proxy_summary.json"
+      "critical_fixture": "artifacts/validation/mali_qcre_proxy/mali_qcre_proxy_summary.json",
+      "cluster": "mali_azizov"
     },
     {
       "path": "artifacts/validation/mali_qcre_final/MALI_QCRE_FINAL_VALIDATION_REPORT.md",
       "provenance_class": "OUR_VALIDATION",
       "runtime_semantics": "QASM-hash grouped out-of-sample calibration, duration audit and ablation",
-      "critical_fixture": "artifacts/validation/mali_qcre_final/mali_qcre_validation_summary.json"
+      "critical_fixture": "artifacts/validation/mali_qcre_final/mali_qcre_validation_summary.json",
+      "cluster": "mali_azizov"
     },
     {
       "path": "artifacts/validation/mali_qcre_seed_sensitivity/MALI_QCRE_SEED_SENSITIVITY_REPORT.md",
       "provenance_class": "OUR_VALIDATION",
       "runtime_semantics": "three-seed FakeOsaka/FakeKyoto transpiler sensitivity",
-      "critical_fixture": "artifacts/validation/mali_qcre_seed_sensitivity/mali_qcre_seed_sensitivity_summary.json"
+      "critical_fixture": "artifacts/validation/mali_qcre_seed_sensitivity/mali_qcre_seed_sensitivity_summary.json",
+      "cluster": "mali_azizov"
     },
     {
       "path": "artifacts/validation/mali_direct_estimator/MALI_DIRECT_COMPILED_ESTIMATOR_REPORT.md",
       "provenance_class": "OUR_PROXY_EVALUATION",
       "runtime_semantics": "source-specific prediction of Ma-Li observed Osaka/Kyoto result.time_taken from current-FakeBackend compiled features; queue excluded",
       "critical_fixture": "artifacts/validation/mali_direct_estimator/mali_direct_estimator_summary.csv",
-      "related_fixture": "artifacts/validation/mali_direct_estimator/mali_direct_estimator_provenance.json"
+      "related_fixture": "artifacts/validation/mali_direct_estimator/mali_direct_estimator_provenance.json",
+      "cluster": "mali_azizov"
     },
     {
       "path": "artifacts/cdaa_qcre/REPLICATION_REPORT.md",
@@ -69,47 +75,54 @@
       "provenance_class": "OUR_REPLICATION_P0",
       "runtime_semantics": "local Qiskit Aer noisy-simulator execution after current fake-backend transpilation; transpile time excluded",
       "critical_fixture": "artifacts/azizov_independent/p0_baselines.json",
-      "related_fixture": "artifacts/azizov_independent/p0_feature_ablation.json"
+      "related_fixture": "artifacts/azizov_independent/p0_feature_ablation.json",
+      "cluster": "mali_azizov"
     },
     {
       "path": "artifacts/azizov_independent/p1_q16_stratified3.csv",
       "provenance_class": "OUR_REPLICATION_P1_SUBSET",
       "runtime_semantics": "local Aer execution after current fake-backend transpilation; 63 circuit subset, 1,024 shots",
       "critical_fixture": "artifacts/azizov_independent/P1_Q16_STRATIFIED3_REPORT.md",
-      "related_fixture": "artifacts/azizov_independent/p1_q16_stratified3_baselines.json"
+      "related_fixture": "artifacts/azizov_independent/p1_q16_stratified3_baselines.json",
+      "cluster": "mali_azizov"
     },
     {
       "path": "artifacts/azizov_independent/feasible_q9_runtime.csv",
       "provenance_class": "OUR_REPLICATION_LOCAL_FEASIBLE_SUBSET",
       "runtime_semantics": "1,192 local Aer execution rows for the screened q<=9, logical-ops/depth<=4000 subset",
       "critical_fixture": "artifacts/azizov_independent/FEASIBLE_Q9_REPORT.md",
-      "related_fixture": "artifacts/azizov_independent/feasible_q9.csv"
+      "related_fixture": "artifacts/azizov_independent/feasible_q9.csv",
+      "cluster": "mali_azizov"
     },
     {
       "path": "artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.json",
       "provenance_class": "OUR_VALIDATION_LOCAL_FEASIBLE_SUBSET",
       "runtime_semantics": "random-row, grouped-circuit, family-held-out and fake-backend-held-out baseline evaluation on 1,192 successful local Aer rows",
-      "critical_fixture": "artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.md"
+      "critical_fixture": "artifacts/azizov_independent/FEASIBLE_Q9_SPLIT_EVALUATION.md",
+      "cluster": "mali_azizov"
     },
     {
       "path": "artifacts/azizov_independent/Q10_Q16_RESOURCE_CANARY_PARTIAL_REPORT.md",
       "provenance_class": "OUR_RESOURCE_SCREEN_PARTIAL",
       "runtime_semantics": "isolated local Aer resource/timeout screen for seven width-10--16 rows; not a complete training matrix",
       "critical_fixture": "artifacts/azizov_independent/q10_q16_resource_canary_partial.csv",
-      "related_fixture": "artifacts/azizov_independent/q10_q16_resource_canary_partial.environment.json"
+      "related_fixture": "artifacts/azizov_independent/q10_q16_resource_canary_partial.environment.json",
+      "cluster": "mali_azizov"
     },
     {
       "path": "artifacts/azizov_independent/Q10_Q16_HIGHMEM_CHECK_REPORT.md",
       "provenance_class": "OUR_RESOURCE_SENSITIVITY_CHECK",
       "runtime_semantics": "targeted 36 GiB RSS-cap sensitivity check for two width-10--12 Aer rows; both wall-time censored",
       "critical_fixture": "artifacts/azizov_independent/q10_q16_highmem_canary.csv",
-      "related_fixture": "artifacts/azizov_independent/q10_q16_highmem_canary.environment.json"
+      "related_fixture": "artifacts/azizov_independent/q10_q16_highmem_canary.environment.json",
+      "cluster": "mali_azizov"
     },
     {
       "path": "artifacts/azizov_independent/Q10_Q16_30MIN_INSIGHT_REPORT.md",
       "provenance_class": "OUR_RESOURCE_SCREEN_CENSORED",
       "runtime_semantics": "two local CPU noisy-Aer attempts after FakeWashingtonV2 transpilation, both right-censored at a 1,800-second wall timeout; not completed runtime labels",
-      "critical_fixture": "artifacts/azizov_independent/q10_q16_30min_canary.csv"
+      "critical_fixture": "artifacts/azizov_independent/q10_q16_30min_canary.csv",
+      "cluster": "mali_azizov"
     },
     {
       "path": "artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_16_24_20260920/records.csv",
@@ -226,27 +239,112 @@
       "path": "artifacts/quantum_rings/REPORT.md",
       "provenance_class": "OUR_REPLICATION",
       "runtime_semantics": "Quantum Rings public 0.99-forward simulator wall time and truncation threshold; no host machine profile",
-      "critical_fixture": "artifacts/quantum_rings/summary.json"
+      "critical_fixture": "artifacts/quantum_rings/summary.json",
+      "cluster": "quantum_rings_solutions"
     },
     {
       "path": "artifacts/quantum_rings/summary.json",
       "provenance_class": "OUR_REPLICATION",
-      "runtime_semantics": "Headline Spirit Sprinters and SoftLocked metrics on the public 144-row table plus SoftLocked in-domain control"
+      "runtime_semantics": "Headline Spirit Sprinters and SoftLocked metrics on the public 144-row table plus SoftLocked in-domain control",
+      "cluster": "quantum_rings_solutions"
     },
     {
       "path": "artifacts/quantum_rings/community_spirit_sprinters_evaluation.json",
       "provenance_class": "OUR_REPLICATION",
-      "runtime_semantics": "Row-level Spirit Sprinters artifact predictions versus public 0.99-forward labels"
+      "runtime_semantics": "Row-level Spirit Sprinters artifact predictions versus public 0.99-forward labels",
+      "cluster": "quantum_rings_solutions"
     },
     {
       "path": "artifacts/quantum_rings/community_softlocked_evaluation.json",
       "provenance_class": "OUR_REPLICATION",
-      "runtime_semantics": "Row-level SoftLocked checkpoint predictions versus public 0.99-forward labels; domain-shift audit"
+      "runtime_semantics": "Row-level SoftLocked checkpoint predictions versus public 0.99-forward labels; domain-shift audit",
+      "cluster": "quantum_rings_solutions"
     },
     {
       "path": "artifacts/quantum_rings/community_softlocked_training_table_cv.json",
       "provenance_class": "OUR_REPLICATION",
-      "runtime_semantics": "SoftLocked grouped CV on the author training_data.csv; not the public 0.99-forward clock"
+      "runtime_semantics": "SoftLocked grouped CV on the author training_data.csv; not the public 0.99-forward clock",
+      "cluster": "quantum_rings_solutions"
+    },
+    {
+      "path": "docs/FINDINGS_CLUSTERS.md",
+      "cluster": "index",
+      "provenance_class": "OUR_REPORTING_INDEX",
+      "runtime_semantics": "Index of three unpooled finding clusters"
+    },
+    {
+      "path": "artifacts/validation/mali_physical_dag_v1/REPORT.md",
+      "cluster": "mali_azizov",
+      "provenance_class": "OUR_PROXY",
+      "runtime_semantics": "Current FakeOsaka/FakeKyoto native-DAG proxy versus Ma\u2013Li result.time_taken",
+      "critical_fixture": "artifacts/validation/mali_physical_dag_v1/baseline_evaluation/summary.json"
+    },
+    {
+      "path": "artifacts/validation/mali_azizov_compiled_transfer_v1/REPORT.md",
+      "cluster": "mali_azizov",
+      "provenance_class": "OUR_PROXY",
+      "runtime_semantics": "Compiled Ridge on Washington/Sherbrooke time_taken transferred onto Osaka/Kyoto result.time_taken",
+      "critical_fixture": "artifacts/validation/mali_azizov_compiled_transfer_v1/summary.json"
+    },
+    {
+      "path": "artifacts/validation/mali_azizov_transpiled_dag_v1/REPORT.md",
+      "cluster": "mali_azizov",
+      "provenance_class": "OUR_PROXY",
+      "runtime_semantics": "Coarsened native DAG on the same two clocks; affine transfer is not a frozen estimator",
+      "critical_fixture": "artifacts/validation/mali_azizov_transpiled_dag_v1/summary.json"
+    },
+    {
+      "path": "artifacts/validation/mali_family_ood_v1/REPORT.md",
+      "cluster": "mali_azizov",
+      "provenance_class": "OUR_VALIDATION",
+      "runtime_semantics": "Family-OOD A/B2/C on Ma\u2013Li labels; 12 missing families remain unscored",
+      "critical_fixture": "artifacts/validation/mali_family_ood_v1/unseen_family_transfer/summary.json"
+    },
+    {
+      "path": "artifacts/mali/graph_intervention_audit_20260921/REPORT.md",
+      "cluster": "mali_azizov",
+      "provenance_class": "OUR_VALIDATION",
+      "runtime_semantics": "Graph-feature intervention on Ma\u2013Li compiled/physical descriptors",
+      "critical_fixture": "artifacts/mali/graph_intervention_audit_20260921/metadata_and_metrics.json"
+    },
+    {
+      "path": "artifacts/quantum_rings/family_aware_paper/REPLICATION_SUMMARY_REPORT.md",
+      "cluster": "family_aware_paper",
+      "provenance_class": "OUR_REPLICATION",
+      "runtime_semantics": "Public 0.75 mirror-sweep proxy and 0.99 forward; not pooled",
+      "critical_fixture": "artifacts/quantum_rings/family_aware_paper/paper_replication.json"
+    },
+    {
+      "path": "artifacts/quantum_rings/family_aware_paper/protocol_audit.json",
+      "cluster": "family_aware_paper",
+      "provenance_class": "OUR_REPLICATION",
+      "runtime_semantics": "Tree-baseline and context-wise public-artifact audit"
+    },
+    {
+      "path": "artifacts/quantum_rings/family_aware_paper/mqt_pretrained_family_replication.json",
+      "cluster": "family_aware_paper",
+      "provenance_class": "OUR_REPLICATION",
+      "runtime_semantics": "Frozen public MQT family classifier integrated into the 144-row evaluation"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "mali_azizov",
+      "title": "Ma\u2013Li \u00d7 Azizov compiled / transpiled QPU runtime",
+      "reading_path": "docs/FINDINGS_CLUSTERS.md",
+      "finding_dates": "2026-09-17 to 2026-09-22"
+    },
+    {
+      "id": "quantum_rings_solutions",
+      "title": "Quantum Rings Spirit Sprinters and SoftLocked audit",
+      "reading_path": "artifacts/quantum_rings/REPORT.md",
+      "finding_dates": "2026-09-18"
+    },
+    {
+      "id": "family_aware_paper",
+      "title": "arXiv:2606.11620 public-artifact reconstruction",
+      "reading_path": "artifacts/quantum_rings/family_aware_paper/README.md",
+      "finding_dates": "2026-09-18"
     }
   ]
 }

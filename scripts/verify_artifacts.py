@@ -30,8 +30,24 @@ REQUIRED = (
     "experiments/mali_qcre_validation.py",
     "experiments/mali_qcre_seed_sensitivity.py",
     "experiments/run_mali_direct_estimator.py",
+    "experiments/mali_split_audit.py",
+    "experiments/build_mali_physical_dag.py",
+    "experiments/evaluate_mali_physical_baselines.py",
+    "experiments/train_mali_layer_dag_rnn.py",
+    "experiments/build_mali_graph_summary_features.py",
+    "experiments/evaluate_mali_feature_ablation.py",
+    "experiments/mali_qwalk_forensics.py",
+    "experiments/build_mali_critical_subgraph_features.py",
+    "experiments/evaluate_mali_critical_subgraph.py",
+    "experiments/mali_uncertainty_calibration.py",
+    "experiments/train_mali_topology_controls.py",
+    "experiments/evaluate_mali_topology_controls.py",
+    "experiments/mali_strict_transfer_logical_screen.py",
+    "experiments/evaluate_mali_strict_transfer_screen.py",
+    "experiments/mali_ood_and_duplicate_validation.py",
     "experiments/requirements-mali-direct-estimator.txt",
     "experiments/README.md",
+    "docs/MA_LI_DEEP_RUNTIME_ESTIMATOR_PROTOCOL_2026-09-21.md",
     "experiments/simulator_runtime_v1/README.md",
     "experiments/simulator_runtime_v1/requirements-evaluation.txt",
     "experiments/simulator_runtime_v1/run_torch_statevector_matrix.py",
@@ -79,6 +95,84 @@ REQUIRED = (
     "artifacts/validation/mali_direct_estimator/mali_direct_estimator_summary.csv",
     "artifacts/validation/mali_direct_estimator/mali_direct_estimator_strict_backend_metrics.csv",
     "artifacts/validation/mali_direct_estimator/mali_direct_estimator_provenance.json",
+    "artifacts/validation/mali_deep_protocol_v1/split_audit/REPORT.md",
+    "artifacts/validation/mali_deep_protocol_v1/split_audit/row_manifest.csv",
+    "artifacts/validation/mali_deep_protocol_v1/split_audit/split_summary.json",
+    "artifacts/validation/mali_physical_dag_v1/REPORT.md",
+    "artifacts/validation/mali_physical_dag_v1/manifest.csv",
+    "artifacts/validation/mali_physical_dag_v1/graph_records.csv",
+    "artifacts/validation/mali_physical_dag_v1/build_summary.json",
+    "artifacts/validation/mali_physical_dag_v1/graph_summary_features.csv",
+    "artifacts/validation/mali_physical_dag_v1/graph_summary_features.json",
+    "artifacts/validation/mali_physical_dag_v1/baseline_evaluation/REPORT.md",
+    "artifacts/validation/mali_physical_dag_v1/baseline_evaluation/metrics.csv",
+    "artifacts/validation/mali_physical_dag_v1/baseline_evaluation/oof_predictions.csv",
+    "artifacts/validation/mali_physical_dag_v1/baseline_evaluation/summary.json",
+    "artifacts/validation/mali_physical_dag_v1/layer_dag_rnn/REPORT.md",
+    "artifacts/validation/mali_physical_dag_v1/layer_dag_rnn/metrics.csv",
+    "artifacts/validation/mali_physical_dag_v1/layer_dag_rnn/oof_predictions.csv",
+    "artifacts/validation/mali_physical_dag_v1/layer_dag_rnn/summary.json",
+    "artifacts/validation/mali_physical_dag_v1/feature_ablation/REPORT.md",
+    "artifacts/validation/mali_physical_dag_v1/feature_ablation/metrics.csv",
+    "artifacts/validation/mali_physical_dag_v1/feature_ablation/oof_predictions.csv",
+    "artifacts/validation/mali_physical_dag_v1/feature_ablation/summary.json",
+    "artifacts/validation/mali_physical_dag_v1/qwalk_forensics/REPORT.md",
+    "artifacts/validation/mali_physical_dag_v1/qwalk_forensics/qwalk_rows.csv",
+    "artifacts/validation/mali_physical_dag_v1/qwalk_forensics/qwalk_feature_comparison.csv",
+    "artifacts/validation/mali_physical_dag_v1/qwalk_forensics/summary.json",
+    "artifacts/validation/mali_physical_dag_v1/critical_subgraph_features.csv",
+    "artifacts/validation/mali_physical_dag_v1/critical_subgraph_features.json",
+    "artifacts/validation/mali_physical_dag_v1/critical_subgraph_evaluation/REPORT.md",
+    "artifacts/validation/mali_physical_dag_v1/critical_subgraph_evaluation/metrics.csv",
+    "artifacts/validation/mali_physical_dag_v1/critical_subgraph_evaluation/oof_predictions.csv",
+    "artifacts/validation/mali_physical_dag_v1/critical_subgraph_evaluation/summary.json",
+    "artifacts/validation/mali_physical_dag_v1/uncertainty_calibration/REPORT.md",
+    "artifacts/validation/mali_physical_dag_v1/uncertainty_calibration/duplicate_label_pairs.csv",
+    "artifacts/validation/mali_physical_dag_v1/uncertainty_calibration/conformal_intervals.csv",
+    "artifacts/validation/mali_physical_dag_v1/uncertainty_calibration/summary.json",
+    "artifacts/validation/mali_physical_dag_v1/topology_controls_grouped_cpu_screen/REPORT.md",
+    "artifacts/validation/mali_physical_dag_v1/topology_controls_grouped_cpu_screen/oof_predictions.csv",
+    "artifacts/validation/mali_physical_dag_v1/topology_controls_grouped_cpu_seeds_2025_31415/REPORT.md",
+    "artifacts/validation/mali_physical_dag_v1/topology_controls_grouped_cpu_seeds_2025_31415/oof_predictions.csv",
+    "artifacts/validation/mali_physical_dag_v1/topology_controls_validation/REPORT.md",
+    "artifacts/validation/mali_physical_dag_v1/topology_controls_validation/seed_mean_oof_predictions.csv",
+    "artifacts/validation/mali_physical_dag_v1/topology_controls_validation/summary.json",
+    "artifacts/validation/mali_physical_dag_v1/duplicate_aware_validation/REPORT.md",
+    "artifacts/validation/mali_physical_dag_v1/duplicate_aware_validation/oof_predictions.csv",
+    "artifacts/validation/mali_physical_dag_v1/duplicate_aware_validation/summary.json",
+    "artifacts/validation/mali_physical_dag_v1/ood_uncertainty_validation/REPORT.md",
+    "artifacts/validation/mali_physical_dag_v1/ood_uncertainty_validation/intervals.csv",
+    "artifacts/validation/mali_physical_dag_v1/ood_uncertainty_validation/summary.json",
+    "artifacts/validation/mali_strict_transfer_logical_v1/REPORT.md",
+    "artifacts/validation/mali_strict_transfer_logical_v1/summary.json",
+    "artifacts/validation/mali_strict_transfer_logical_v1/real_transfer_metrics.csv",
+    "artifacts/validation/mali_strict_transfer_logical_v1/real_transfer_oof_predictions.csv",
+    "artifacts/validation/mali_strict_transfer_logical_v1/evaluation/REPORT.md",
+    "artifacts/validation/mali_strict_transfer_logical_v1/evaluation/seed_mean_oof_predictions.csv",
+    "artifacts/validation/mali_strict_transfer_logical_v1/evaluation/summary.json",
+    "experiments/mali_family_feature_space_audit.py",
+    "experiments/mali_family_ood_common.py",
+    "experiments/evaluate_mali_unseen_family_transfer.py",
+    "experiments/evaluate_mali_simulator_assisted_family_transfer.py",
+    "experiments/evaluate_mali_azizov_compiled_transfer.py",
+    "experiments/evaluate_mali_azizov_transpiled_dag_transfer.py",
+    "experiments/mali_transpiled_dag_common.py",
+    "experiments/build_mali_ws_compiled_features.py",
+    "experiments/build_mali_ws_physical_dag.py",
+    "experiments/mali_graph_intervention_audit.py",
+    "docs/FINDINGS_CLUSTERS.md",
+    "docs/DAILY_WORK_LOG_2026-09-17_TO_2026-09-22.md",
+    "docs/experiment_tracker.csv",
+    "docs/REMOVED_AND_OUT_OF_SCOPE.md",
+    "artifacts/validation/mali_family_ood_v1/REPORT.md",
+    "artifacts/validation/mali_family_ood_v1/unseen_family_transfer/summary.json",
+    "artifacts/validation/mali_family_ood_v1/simulator_assisted_transfer/summary.json",
+    "artifacts/validation/mali_azizov_compiled_transfer_v1/REPORT.md",
+    "artifacts/validation/mali_azizov_compiled_transfer_v1/summary.json",
+    "artifacts/validation/mali_azizov_transpiled_dag_v1/REPORT.md",
+    "artifacts/validation/mali_azizov_transpiled_dag_v1/summary.json",
+    "artifacts/mali/graph_intervention_audit_20260921/REPORT.md",
+    "artifacts/mali/graph_intervention_audit_20260921/metadata_and_metrics.json",
     "artifacts/cdaa_qcre/independent_all_metrics.csv",
     "artifacts/cutensornet/cutensornet_runtime_benchmark.csv",
     "artifacts/azizov_independent/p0_smoke.csv",
@@ -196,6 +290,17 @@ REQUIRED = (
     "artifacts/quantum_rings/community_spirit_sprinters_evaluation.json",
     "artifacts/quantum_rings/community_softlocked_evaluation.json",
     "artifacts/quantum_rings/community_softlocked_training_table_cv.json",
+    "tracks/quantum_rings/family_aware_paper/README.md",
+    "tracks/quantum_rings/family_aware_paper/experiments/replicate_paper.py",
+    "tracks/quantum_rings/family_aware_paper/experiments/protocol_audit.py",
+    "tracks/quantum_rings/family_aware_paper/experiments/requirements-reproduction.txt",
+    "artifacts/quantum_rings/family_aware_paper/README.md",
+    "artifacts/quantum_rings/family_aware_paper/REPLICATION_SUMMARY_REPORT.md",
+    "artifacts/quantum_rings/family_aware_paper/paper_replication.json",
+    "artifacts/quantum_rings/family_aware_paper/protocol_audit.json",
+    "artifacts/quantum_rings/family_aware_paper/mqt_pretrained_family_replication.json",
+    "artifacts/quantum_rings/family_aware_paper/mqt_family_classifier/mqt_family_classifier.joblib",
+    "artifacts/quantum_rings/family_aware_paper/mqt_family_classifier/mqt_family_classifier.json",
 )
 
 def require(condition: bool, message: str) -> None:
@@ -213,8 +318,11 @@ def main() -> int:
     },
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 40,
+    require(len(artifact_manifest["artifacts"]) == 49,
             "unexpected replication artifact manifest size")
+    require({c["id"] for c in artifact_manifest["clusters"]} == {
+        "mali_azizov", "quantum_rings_solutions", "family_aware_paper"
+    }, "finding-cluster index changed")
 
     qonductor = json.loads((ROOT / "artifacts/qonductor/reproduction_metrics.json").read_text())
     execution = qonductor["execution_time"]
@@ -349,6 +457,202 @@ def main() -> int:
         "pandas": "3.0.5",
         "scikit_learn": "1.9.0",
     }, "Ma-Li direct-estimator software fixture changed")
+
+    split_audit = json.loads(
+        (ROOT / "artifacts/validation/mali_deep_protocol_v1/split_audit/split_summary.json").read_text()
+    )
+    require(split_audit["n_rows"] == 340 and split_audit["n_qasm_hashes"] == 170,
+            "Ma-Li deep split inventory changed")
+    require(split_audit["paired_hashes"] == 130 and split_audit["n_family_components"] == 9,
+            "Ma-Li deep paired/family inventory changed")
+    require(split_audit["strict_hash_overlap_max"] == 0,
+            "Ma-Li strict split has circuit-hash overlap")
+
+    physical_summary = json.loads(
+        (ROOT / "artifacts/validation/mali_physical_dag_v1/build_summary.json").read_text()
+    )
+    require(physical_summary["n_label_rows"] == 340 and physical_summary["n_unique_graphs"] == 300,
+            "Ma-Li physical-DAG corpus inventory changed")
+    require(physical_summary["totals"] == {
+        "nodes": 67404145,
+        "edges": 79673830,
+        "active_qubits_max": 127,
+        "duration_missing_nodes": 0,
+    }, "Ma-Li physical-DAG totals changed")
+
+    physical_eval = json.loads(
+        (ROOT / "artifacts/validation/mali_physical_dag_v1/baseline_evaluation/summary.json").read_text()
+    )
+    require(physical_eval["models"] == ["qcre", "compiled", "physical_graph", "rich_summary"],
+            "Ma-Li physical baseline model set changed")
+    require(abs(physical_eval["pooled_metrics"]["grouped_qasm"]["rich_summary"]["r2_log1p_seconds"] - 0.8896) < 1e-4,
+            "Ma-Li rich static baseline fixture changed")
+    layer_summary = json.loads(
+        (ROOT / "artifacts/validation/mali_physical_dag_v1/layer_dag_rnn/summary.json").read_text()
+    )
+    require(layer_summary["model"] == "physics_guided_coarsened_layer_DAG_GRU_residual"
+            and layer_summary["max_bins"] == 256,
+            "Ma-Li layer-DAG pilot provenance changed")
+    ablation = json.loads(
+        (ROOT / "artifacts/validation/mali_physical_dag_v1/feature_ablation/summary.json").read_text()
+    )
+    require(set(ablation["feature_blocks"]) == {
+        "qcre", "compiled", "graph_size", "layer", "timing", "edge", "opcode", "rich_summary"
+    }, "Ma-Li feature-ablation block set changed")
+    require(abs(ablation["pooled_metrics"]["grouped_qasm"]["rich_summary"]["r2_log1p_seconds"] - 0.8895291914860881) < 1e-12,
+            "Ma-Li feature-ablation rich-summary fixture changed")
+    qwalk = json.loads(
+        (ROOT / "artifacts/validation/mali_physical_dag_v1/qwalk_forensics/summary.json").read_text()
+    )
+    require(qwalk["n_qwalk_rows"] == 2 and qwalk["qwalk_rows"] == ["osaka:33", "kyoto:215"],
+            "Ma-Li QWalk forensics inventory changed")
+    critical_eval = json.loads(
+        (ROOT / "artifacts/validation/mali_physical_dag_v1/critical_subgraph_evaluation/summary.json").read_text()
+    )
+    require(abs(critical_eval["pooled_metrics"]["grouped_qasm"]["rich_plus_critical"]["r2_log1p_seconds"] - 0.9040886649438724) < 1e-12,
+            "Ma-Li critical-subgraph grouped fixture changed")
+    uncertainty = json.loads(
+        (ROOT / "artifacts/validation/mali_physical_dag_v1/uncertainty_calibration/summary.json").read_text()
+    )
+    require(uncertainty["duplicate_cells"] == 40 and uncertainty["duplicate_rows"] == 80,
+            "Ma-Li duplicate-label inventory changed")
+    require(abs(uncertainty["duplicate_label_noise"]["absolute_diff_median_seconds"] - 0.4171114753333338) < 1e-12,
+            "Ma-Li duplicate-label noise fixture changed")
+    topology = json.loads(
+        (ROOT / "artifacts/validation/mali_physical_dag_v1/topology_controls_validation/summary.json").read_text()
+    )
+    require(topology["seeds"] == [1234, 2025, 31415] and topology["n_qasm_hashes"] == 170,
+            "Ma-Li topology-control seed/group inventory changed")
+    topology_delta = topology["paired_group_bootstrap"]["true_dag_minus_node_only"]
+    require(abs(topology_delta["ensemble_delta_log_r2"] + 0.0283929182403706) < 1e-12,
+            "Ma-Li topology-control log-R2 fixture changed")
+    require(topology_delta["probability_log_r2_better_than_node_only"] < 0.05,
+            "Ma-Li topology control unexpectedly supports true DAG")
+    strict_transfer = json.loads(
+        (ROOT / "artifacts/validation/mali_strict_transfer_logical_v1/summary.json").read_text()
+    )
+    require(strict_transfer["source_rows_after_filter"] == 2636
+            and strict_transfer["removed_real_qasm_hashes"] == 170
+            and strict_transfer["removed_source_rows_matching_real_qasm"] == 384,
+            "Ma-Li strict transfer leakage-filter inventory changed")
+    strict_eval = json.loads(
+        (ROOT / "artifacts/validation/mali_strict_transfer_logical_v1/evaluation/summary.json").read_text()
+    )
+    require(strict_eval["seeds"] == [1234, 2025, 31415]
+            and strict_eval["n_rows"] == 340 and strict_eval["n_qasm_hashes"] == 170,
+            "Ma-Li strict transfer seed/group inventory changed")
+    require(strict_eval["aggregate_seed_mean_predictions"]["frozen_transfer"]["mae_seconds"]
+            > strict_eval["aggregate_seed_mean_predictions"]["scratch"]["mae_seconds"],
+            "Ma-Li frozen transfer unexpectedly beats scratch")
+    duplicate_aware = json.loads(
+        (ROOT / "artifacts/validation/mali_physical_dag_v1/duplicate_aware_validation/summary.json").read_text()
+    )
+    require(duplicate_aware["n_rows"] == 340 and duplicate_aware["n_exact_cells"] == 300,
+            "Ma-Li duplicate-aware inventory changed")
+    require(duplicate_aware["pooled"]["strict_all"]["cell_mean_noise_weighted"]["mae_seconds"]
+            < duplicate_aware["pooled"]["strict_all"]["row_weighted"]["mae_seconds"],
+            "Ma-Li duplicate-aware strict fixture changed")
+    ood = json.loads(
+        (ROOT / "artifacts/validation/mali_physical_dag_v1/ood_uncertainty_validation/summary.json").read_text()
+    )
+    grouped_ood = ood["intervals"]["grouped_qasm_support_stratified_alpha_0.1"]
+    require(ood["n_rows"] == 340 and grouped_ood["qwalk_coverage"] == 0.0,
+            "Ma-Li OOD interval fixture changed")
+    require(grouped_ood["qwalk_median_width_seconds"]
+            > ood["intervals"]["grouped_qasm_global_alpha_0.1"]["qwalk_median_width_seconds"],
+            "Ma-Li OOD stratification no longer widens QWalk interval")
+
+    compiled_transfer = json.loads(
+        (ROOT / "artifacts/validation/mali_azizov_compiled_transfer_v1/summary.json").read_text()
+    )
+    require(compiled_transfer["coverage"]["n_sim_ws"] == 3020
+            and compiled_transfer["coverage"]["n_qpu"] == 340,
+            "Ma-Li compiled-transfer coverage changed")
+    require(abs(compiled_transfer["sim_grouped"]["sim_ws_T2"]["r2_log1p_seconds"]
+                - 0.4348365036165025) < 1e-12,
+            "Ma-Li compiled-transfer simulator T2 fixture changed")
+    require(abs(compiled_transfer["transfer_incl"]["qpu_scratch_T2"]["r2_log1p_seconds"]
+                - 0.8744650476488727) < 1e-12,
+            "Ma-Li compiled-transfer QPU-scratch T2 fixture changed")
+    require(abs(compiled_transfer["transfer_incl"]["matched_incl_T2"]["r2_log1p_seconds"]
+                - 0.35325364810606574) < 1e-12,
+            "Ma-Li compiled-transfer affine T2 fixture changed")
+
+    dag_transfer = json.loads(
+        (ROOT / "artifacts/validation/mali_azizov_transpiled_dag_v1/summary.json").read_text()
+    )
+    require(dag_transfer["n_qpu"] == 340 and dag_transfer["n_sim"] == 3020,
+            "Ma-Li transpiled-DAG coverage changed")
+    require(abs(dag_transfer["metrics"]["qpu_scratch_transpiled_dag"]["r2_log1p_seconds"]
+                - 0.9046986222821181) < 1e-12,
+            "Ma-Li transpiled-DAG QPU-scratch fixture changed")
+    require(abs(dag_transfer["metrics"]["sim_transpiled_dag"]["r2_log1p_seconds"]
+                - 0.7787466977930845) < 1e-12,
+            "Ma-Li transpiled-DAG simulator fixture changed")
+    require(abs(dag_transfer["metrics"]["sim_transpiled_dag_affine_qpu"]["r2_log1p_seconds"]
+                + 2.6288523063619085) < 1e-12,
+            "Ma-Li transpiled-DAG affine fixture changed")
+    require(abs(dag_transfer["metrics"]["sim_transpiled_dag_finetune_qpu"]["r2_log1p_seconds"]
+                - 0.8750076986105026) < 1e-12,
+            "Ma-Li transpiled-DAG fine-tune fixture changed")
+
+    family_c = json.loads(
+        (ROOT / "artifacts/validation/mali_family_ood_v1/unseen_family_transfer/summary.json").read_text()
+    )
+    require(family_c["n_qpu_rows"] == 340 and family_c["n_components"] == 9,
+            "Ma-Li family-OOD C inventory changed")
+    require(abs(family_c["pooled_all_components"]["scratch_T3"]["r2_log1p_seconds"]
+                - 0.8700313238166076) < 1e-12,
+            "Ma-Li family-OOD C T3 fixture changed")
+    require(abs(family_c["pooled_excluding_qwalk"]["scratch_T1"]["r2_log1p_seconds"]
+                - 0.8588729692273314) < 1e-12,
+            "Ma-Li family-OOD C T1 fixture changed")
+    require(family_c["experiment_b_status"] == "blocked_no_qpu_labels_for_12_missing_families",
+            "Ma-Li historical Experiment B status changed")
+
+    family_b2 = json.loads(
+        (ROOT / "artifacts/validation/mali_family_ood_v1/simulator_assisted_transfer/summary.json").read_text()
+    )
+    require(family_b2["experiment"] == "B2_simulator_assisted_hardware_unseen_family",
+            "Ma-Li family-OOD B2 experiment id changed")
+    require(abs(family_b2["pooled_excluding_qwalk"]["sim_T2proxy_incl_affine_qpu"]["r2_log1p_seconds"]
+                - 0.24825559477681192) < 1e-12,
+            "Ma-Li family-OOD B2 T2-incl fixture changed")
+    require(family_b2["max_abs_scratch_log_r2_delta_vs_experiment_c"] == 0.0,
+            "Ma-Li family-OOD B2 scratch no longer matches C")
+
+    paper_rep = json.loads(
+        (ROOT / "artifacts/quantum_rings/family_aware_paper/paper_replication.json").read_text()
+    )
+    require(paper_rep["paper"] == "arXiv:2606.11620"
+            and paper_rep["replication_recorded"] == "2026-09-18",
+            "family-aware paper provenance changed")
+    require(abs(paper_rep["protocols"]["0.75"]["models"]["rf"]["runtime"]["r2_log_runtime"]
+                - 0.7482836995550155) < 1e-12,
+            "family-aware 0.75 RF fixture changed")
+    require(abs(paper_rep["protocols"]["0.75"]["models"]["family_predicted"]["runtime"]["r2_log_runtime"]
+                + 0.25276169665440307) < 1e-12,
+            "family-aware 0.75 family-MLP fixture changed")
+    require(abs(paper_rep["protocols"]["0.99"]["models"]["family_predicted"]["runtime"]["r2_log_runtime"]
+                + 0.8561158663118285) < 1e-12,
+            "family-aware 0.99 family-MLP fixture changed")
+
+    protocol_audit = json.loads(
+        (ROOT / "artifacts/quantum_rings/family_aware_paper/protocol_audit.json").read_text()
+    )
+    require(abs(protocol_audit["protocols"]["0.75"]["tree_baselines"]["runtime"]["gradient_boosting"]["r2_log_runtime"]
+                - 0.7573463411144011) < 1e-12,
+            "family-aware 0.75 Gradient Boosting fixture changed")
+    require(abs(protocol_audit["protocols"]["0.99"]["tree_baselines"]["runtime"]["extra_trees"]["r2_log_runtime"]
+                - 0.7115234168134515) < 1e-12,
+            "family-aware 0.99 ExtraTrees fixture changed")
+
+    mqt_family = json.loads(
+        (ROOT / "artifacts/quantum_rings/family_aware_paper/mqt_pretrained_family_replication.json").read_text()
+    )
+    require(abs(mqt_family["protocols"]["0.75"]["evaluation_family_accuracy_all"]
+                - 1 / 3) < 1e-12,
+            "family-aware frozen MQT transfer accuracy changed")
 
     with (ROOT / "artifacts/cutensornet/cutensornet_runtime_benchmark.csv").open(newline="") as handle:
         cutn_rows = list(csv.DictReader(handle))

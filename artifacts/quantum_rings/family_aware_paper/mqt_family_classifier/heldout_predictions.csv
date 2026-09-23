@@ -1,0 +1,41 @@
+file,true_family,mlp_prediction,rf_prediction
+mqt_qpeexact_n19_seed7019.qasm,QPE,QPE,QPE
+mqt_vqe_su2_n7_seed9007.qasm,VQE,VQE,VQE
+mqt_qnn_n14_seed8014.qasm,QNN,QNN,QNN
+mqt_ghz_n11_seed1011.qasm,GHZ,GHZ,QFT Entangled
+mqt_wstate_n8_seed2008.qasm,W-State,W-State,W-State
+mqt_vqe_su2_n18_seed9018.qasm,VQE,VQE,VQE
+mqt_wstate_n5_seed2005.qasm,W-State,W-State,W-State
+mqt_qftentangled_n20_seed6020.qasm,QFT Entangled,QFT Entangled,QFT Entangled
+mqt_qft_n17_seed5017.qasm,QFT,QFT,QFT
+mqt_qnn_n12_seed8012.qasm,QNN,QNN,QNN
+mqt_grover_n13_seed4013.qasm,Grover,Grover,Grover
+mqt_qpeexact_n22_seed7022.qasm,QPE,QPE,QPE
+mqt_wstate_n19_seed2019.qasm,W-State,W-State,W-State
+mqt_ghz_n19_seed1019.qasm,GHZ,GHZ,GHZ
+mqt_qpeexact_n8_seed7008.qasm,QPE,QPE,QPE
+mqt_ghz_n12_seed1012.qasm,GHZ,GHZ,QFT Entangled
+mqt_dj_n5_seed5.qasm,DJ,Grover,Grover
+mqt_grover_n11_seed4011.qasm,Grover,Grover,Grover
+mqt_qftentangled_n8_seed6008.qasm,QFT Entangled,QFT Entangled,QFT Entangled
+mqt_vqe_su2_n13_seed9013.qasm,VQE,VQE,VQE
+mqt_vqe_su2_n8_seed9008.qasm,VQE,VQE,VQE
+mqt_dj_n20_seed20.qasm,DJ,DJ,DJ
+mqt_qftentangled_n18_seed6018.qasm,QFT Entangled,QFT Entangled,QFT Entangled
+mqt_qft_n19_seed5019.qasm,QFT,QFT,QFT
+mqt_graphstate_n12_seed3012.qasm,Graph State,Graph State,Graph State
+mqt_dj_n17_seed17.qasm,DJ,DJ,DJ
+mqt_qft_n5_seed5005.qasm,QFT,QFT,QFT
+mqt_qnn_n18_seed8018.qasm,QNN,QNN,QNN
+mqt_qft_n8_seed5008.qasm,QFT,QFT,QFT
+mqt_grover_n10_seed4010.qasm,Grover,Grover,Grover
+mqt_qftentangled_n21_seed6021.qasm,QFT Entangled,QFT Entangled,QFT Entangled
+mqt_graphstate_n19_seed3019.qasm,Graph State,Graph State,Graph State
+mqt_qnn_n21_seed8021.qasm,QNN,QNN,QNN
+mqt_qpeexact_n14_seed7014.qasm,QPE,QPE,QPE
+mqt_ghz_n10_seed1010.qasm,GHZ,GHZ,QFT Entangled
+mqt_graphstate_n24_seed3024.qasm,Graph State,Graph State,Graph State
+mqt_wstate_n9_seed2009.qasm,W-State,W-State,W-State
+mqt_grover_n9_seed4009.qasm,Grover,Grover,Grover
+mqt_graphstate_n5_seed3005.qasm,Graph State,Graph State,Graph State
+mqt_dj_n8_seed8.qasm,DJ,DJ,DJ

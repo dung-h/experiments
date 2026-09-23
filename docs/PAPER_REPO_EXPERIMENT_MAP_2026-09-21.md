@@ -32,8 +32,8 @@ paper title is not sufficient reason to pool rows.
 | SIM-4 | cuTensorNet `RUNTIME_EST` | Pre-run contraction-path cost versus local scalar contraction | NVIDIA distribution is usable locally; estimator is experimental | Existing 25-row GPU comparison, first/warm/end-to-end clocks separated |
 | SIM-5 | Azizov et al., [arXiv:2609.12980](https://arxiv.org/abs/2609.12980) | Transpilation-aware noisy Aer runtime | Paper public; author 1,402-row runtime table/code not found in the audit | Existing independent reconstruction only; never called exact reproduction |
 | SIM-6 | Zero-Setup, [repo](https://github.com/arulrhikm/mps-pps-zero-setup-benchmarks) | Pauli-propagation kernel and remote MPS comparison | Local Pauli-propagation runner public; cloud MPS portion requires service | Existing local canary/grid, not mixed with statevector labels |
-| ONLINE-1 | MPORA, [repo](https://github.com/phan-lab/MPORA) | XGBoost + conformal bounds for remaining time from execution windows | Code and split metadata public; profiles supplied through artifact/container | Methodological analogue for online quantum telemetry; not a quantum reproduction |
-| ONLINE-2 | PGTNet, [repo](https://github.com/keyvan-amiri/PGTNet) | Remaining process duration from observed event prefixes | Public code/data workflow; business-process domain | Methodological analogue for prefix/graph updates; not an HPC/QPU claim |
+| ONLINE-1 | MPORA | Remaining-time analogue | Not quantum | **Out of scope. Not executed.** |
+| ONLINE-2 | PGTNet | Remaining-time analogue | Not quantum | **Out of scope. Not executed.** |
 | METHOD-1 | [MQT Predictor](https://github.com/munich-quantum-toolkit/predictor) | Compiler-option prediction/selection from circuit features | Public code | Feature/split reference only; original target is not runtime |
 | OUT-1 | TQml, [arXiv:2506.04891](https://arxiv.org/abs/2506.04891) | Simulator architecture/performance | Paper located; no author artifact was accepted as a reproducible runtime table in this audit | Literature context; no reproduction claim |
 | OUT-2 | qfusion-opt, [DOI](https://doi.org/10.1109/TCAD.2026.3680784) | Tensor-network circuit fusion/optimization | Paper located; no usable public experiment artifact found | Literature context; no new label set yet |
@@ -67,12 +67,6 @@ the circuit family, width, precision and execution backend are recorded. The
 first/warm split also exposes a common hidden confounder: a model trained on
 warm execution cannot be evaluated against first-call latency, and vice versa.
 
-The next experiment is therefore selected by the map, not by adding more
-unrelated simulator names:
-
-1. extend CUDA-Q `tensornet-mps` with independent circuit seeds and depth
-   levels;
-2. evaluate an out-of-family and out-of-width estimator under fixed target
-   contracts;
-3. only then test whether an online prefix/telemetry model inspired by MPORA
-   is meaningful for quantum simulation.
+Live IBM QPU collection and non-quantum remaining-time analogues (MPORA,
+PGTNet) are out of scope for this capsule. Simulator work stays inside a
+declared clock; those clocks are not pooled.

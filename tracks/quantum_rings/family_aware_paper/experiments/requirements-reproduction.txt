@@ -1,0 +1,8 @@
+# Public-data replication environment (Python 3.10)
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3
+scikit-learn==1.7.2
+networkx==3.4.2
+qiskit==2.5.2
+torch==2.14.0+cpu

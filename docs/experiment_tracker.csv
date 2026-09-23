@@ -1,0 +1,34 @@
+date,experiment,paper_or_tool,what_ran,status,n,headline,artifact,needs_credential
+2026-09-17,capsule-packaging,four original tracks,clean-clone verify_artifacts.py,complete,n/a,paths executable without IBM token,scripts/verify_artifacts.py,no
+2026-09-17,mali-pretrained-vs-scratch,Ma-Li arXiv:2411.15631,10-fold fake-snapshot adaptation packaged,complete,340,scratch R2 0.8855 vs pretrained 0.5922; QWalk 36s vs 13s,artifacts/mali/,no
+2026-09-17,qonductor-csv,Qonductor-SC25,recompute public 100-row metrics,complete,100,regression R2 0.9386 vs DAG 0.8849,artifacts/qonductor/,no
+2026-09-17,qonductor-mapping,Qonductor-SC25,join-key audit CSV vs SQLite,complete,100 vs 7449 jobs,no job_id/circuit_id join,artifacts/validation/qonductor_mapping/,no
+2026-09-17,cdaa-qcre,Tremba et al. arXiv:2505.16908,bundled analysis + offline compile,complete,45,30/45 exact; 63.74x vs traditional depth,artifacts/cdaa_qcre/,no
+2026-09-17,cutensornet-frontier,cuTensorNet RUNTIME_EST,GPU warm vs EST packaged,complete,55,warm actual/EST 0.215,artifacts/cutensornet/,no
+2026-09-17,mali-qcre-proxy,Ma-Li + QCRE,FakeOsaka/Kyoto transpile of 340 QASM,complete,340,physical depth R2 0.785 vs logical -0.019,artifacts/validation/mali_qcre_proxy/,no
+2026-09-17,mali-qcre-grouped-seed,Ma-Li,QASM-grouped folds + 3 transpiler seeds + ablation,complete,340,grouped physical R2 0.7879; seed range 0.776-0.790,artifacts/validation/mali_qcre_final/,no
+2026-09-18,mali-qwalk-forensics,Ma-Li,T1/T2 intervention on fold-10 QWalk,complete,1 circuit x 2 backends,pretrained uses T1/T2 to explode Osaka,artifacts/mali/MA_LI_QWALK_AND_QCRE_INTERPRETATION.md,no
+2026-09-18,osaka-kyoto-snapshot-drift,DAQEC public snapshots,42 timestamps over 14 days,complete,42 x 2 backends,Osaka T1 CV 17.3%; not historical Ma-Li tensor,artifacts/validation/mali_snapshot_variability/,no
+2026-09-18,azizov-p0-p1,Azizov et al. arXiv:2609.12980,independent noisy Aer after fake transpile,complete,168 then 504,author table/code not public,artifacts/azizov_independent/,no
+2026-09-18,azizov-feasible-q9,Azizov,screen q<=9 then split eval,complete,1192,grouped hybrid RF log-R2 0.8558; backend holdout 0.53-0.63,artifacts/azizov_independent/,no
+2026-09-18,azizov-width-canary,Azizov,process-isolated q10-16 RSS/time cap,partial,7 of 41 planned,dj_q16 ok; ae/dj q10-12 hit 16 GiB,artifacts/azizov_independent/,no
+2026-09-19,mali-direct-compiled,Ma-Li,compiled Ridge vs depth-only,complete,340,strict log-R2 0.8742 / MAE 0.522 s,artifacts/validation/mali_direct_estimator/,no
+2026-09-20,vqcsim-rq2,VQCSim arXiv:2607.11985,GPU fp32 inference 5 families x 16-24,complete,45+45,QAOA-24 1864 ms vs RealAmp 404 ms; group log-R2 0.971,artifacts/simulator_papers/vqcsim_rq2_gpu_fp32_16_24_20260920/,no
+2026-09-20,azizov-rerun,Azizov,byte-identical 1192-row eval,complete,1192,matches committed fixture,artifacts/azizov_independent/,no
+2026-09-20,zero-setup-pps,Zero-Setup arXiv:2607.09882,local Pauli-prop only,complete,25 then 36,delta 1e-2 to 1e-4 ~5785x slower,artifacts/simulator_papers/zero_setup_pps_estimator_20260920/,no
+2026-09-20,dense-statevector-v2,local PyTorch kernel,CPU/GPU x c64/c128 matrix,complete,208,group log-R2 0.9794; q28 c128 OOM,artifacts/simulator_runtime_v2/,no
+2026-09-20,emu-mps-threshold,Pasqal EMU-MPS local,fidelity-rung labels,bounded,24,not paper-scale; not BlueQubit,artifacts/pasqal_emu_mps/,no
+2026-09-20,cutensornet-plan-precision,cuTensorNet,98 paths + 52 precision pairs,complete,98+52,min-FLOP 80% exact-fastest; c128/c64 ~3.4x,artifacts/simulator_papers/,no
+2026-09-21,cudaq-sample,CUDA-Q 0.15.1,CPU/GPU FP32/FP64 sample,complete,44,warm CPU 2.34s FP32 2.6ms; first/warm max 138x,artifacts/cudaq_runtime/cudaq_matrix_20260921/,no
+2026-09-21,cudaq-mps,CUDA-Q MPS paper arXiv:2501.15939,bond-cap x family x width,complete,48,chi=2 min fid 0.6494; chi>=4 ~1 at n=16,artifacts/cudaq_runtime/cudaq_mps_20260921/,no
+2026-09-21,mali-graph-intervention,Ma-Li,saved-model T1/T2/edge probes,complete,340,neutralize T1/T2 removes QWalk tail,artifacts/mali/graph_intervention_audit_20260921/,no
+2026-09-21,mali-physical-static,Ma-Li,300 physical graphs + rich static,complete,300,grouped log-R2 0.8896 / 0.494 s,artifacts/validation/mali_physical_dag_v1/,no
+2026-09-21,mali-topology-control,Ma-Li,3-seed node-only vs DAG,complete,170 hashes,node-only 0.767 > true DAG 0.738,artifacts/validation/mali_physical_dag_v1/topology_controls_validation/,no
+2026-09-21,mali-strict-transfer,Ma-Li,drop 170 overlapping QASM from sim pretrain,complete,2636 sim rows,scratch 0.336 vs frozen -0.253,artifacts/validation/mali_strict_transfer_logical_v1/,no
+2026-09-22,family-ood-A,Ma-Li MQT families,logical+physical feature audit,complete,1510 QASM,2q median 4606 vs 81,artifacts/validation/mali_family_ood_v1/feature_space_audit/,no
+2026-09-22,family-ood-C,Ma-Li,hold family out of sim+QPU,complete,9 components,T0 -1.283 -> T1 0.859,artifacts/validation/mali_family_ood_v1/unseen_family_transfer/,no
+2026-09-22,family-ood-B2,Ma-Li,family on simulator only,complete,same 9 components,best sim T2 0.248 vs scratch T1 0.859,artifacts/validation/mali_family_ood_v1/simulator_assisted_transfer/,no
+2026-09-22,family-ood-B1-live-qpu,Ma-Li missing families,planned 130 IBM jobs,removed,0,requires IBM credential; deleted,deleted 2026-09-22,yes
+2026-09-22,cpu-dense-sv,local PyTorch kernel,CPU-only subset of v2,complete,72,group log-R2 0.9748; width seconds-R2 ~0,artifacts/simulator_runtime_v2/dense_statevector_cpu_eval_20260922/,no
+2026-09-22,cutensornet-multi-target,cuTensorNet,reuse 55 rows vs warm/first/e2e,complete,55,e2e/EST 138; Network() 80% of e2e,artifacts/cutensornet/multi_target_calibration_v1/,no
+2026-09-22,paired-cudaq-tn,CUDA-Q + cuTensorNet,shared native rzz/cp IR,complete,17 circuits,EST-TN warm 0.978; CUDA-Q-TN warm 0.635,artifacts/paired_simulator_v1/,no

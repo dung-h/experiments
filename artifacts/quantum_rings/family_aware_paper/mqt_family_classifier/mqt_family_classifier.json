@@ -1,0 +1,153 @@
+{
+  "recorded": "2026-09-18",
+  "data_manifest": "data/mqt_family_pretraining/manifest.json",
+  "manifest_sha256": "d0e28759257efd616ba1bac0ee6a7fe70283a578323824e324ae01d18cf1f3cc",
+  "n_rows": 200,
+  "n_train": 160,
+  "n_test": 40,
+  "n_families": 10,
+  "features": 28,
+  "split": "stratified circuit-level 80/20; one row per generated QASM",
+  "mlp": {
+    "accuracy": 0.975,
+    "n_iter": 63,
+    "confusion_matrix": [
+      [
+        3,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4
+      ]
+    ],
+    "classes": [
+      "DJ",
+      "GHZ",
+      "Graph State",
+      "Grover",
+      "QFT",
+      "QFT Entangled",
+      "QNN",
+      "QPE",
+      "VQE",
+      "W-State"
+    ]
+  },
+  "random_forest_reference": {
+    "accuracy": 0.9
+  },
+  "paper_boundary": "public MQT approximation; not the authors' private 200-circuit set"
+}

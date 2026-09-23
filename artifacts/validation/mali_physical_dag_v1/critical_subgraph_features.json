@@ -1,0 +1,4 @@
+{
+  "n_unique_graphs": 300,
+  "feature_semantics": "pre-run high-criticality summaries from current FakeBackend physical DAGs"
+}

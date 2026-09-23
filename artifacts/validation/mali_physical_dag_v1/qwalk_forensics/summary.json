@@ -1,0 +1,28 @@
+{
+  "n_qwalk_rows": 2,
+  "qasm_hashes": [
+    "e8037a4f622df36c65c0e756e11a6c6e3b8b40fbabaffb6cd59ff1cc79f49063"
+  ],
+  "qwalk_rows": [
+    "osaka:33",
+    "kyoto:215"
+  ],
+  "interpretation": "tail diagnostic only; two rows are not an independent test set",
+  "features_compared": [
+    "qcre_critical_path_seconds",
+    "compiled_depth",
+    "active_physical_width",
+    "n_nodes",
+    "n_edges",
+    "rich_n_layers",
+    "rich_duration_sum_dt",
+    "rich_forward_max_dt",
+    "rich_criticality_p90_dt",
+    "rich_layer_nodes_max",
+    "rich_quantum_edge_fraction"
+  ],
+  "outputs": {
+    "rows": "qwalk_rows.csv",
+    "feature_comparison": "qwalk_feature_comparison.csv"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "artifact_dir": "artifacts/validation/mali_physical_dag_v1",
+  "elapsed_seconds": 1669.336152791977,
+  "generated_utc": "2026-09-21",
+  "graph_semantics": "transpiled native-operation DAG with current FakeOsaka/FakeKyoto target durations",
+  "n_cached_or_built": 300,
+  "n_label_rows": 340,
+  "n_unique_graphs": 300,
+  "optimization_level": 1,
+  "output_dir": "work/mali_physical_dag_v1",
+  "provenance_class": "CURRENT_FAKE_SNAPSHOT_PROXY",
+  "qiskit_ibm_runtime_version": "0.36.1",
+  "qiskit_version": "1.4.1",
+  "resume_policy": "existing graph NPZ with matching graph_id is loaded and not rebuilt",
+  "seed_transpiler": 1234,
+  "target_semantics": "Ma-Li Osaka/Kyoto observed result.time_taken, 1024 shots, queue excluded; target rows remain separate from reconstructed physical graphs",
+  "totals": {
+    "active_qubits_max": 127,
+    "duration_missing_nodes": 0,
+    "edges": 79673830,
+    "nodes": 67404145
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "model": "two-layer_coarsened_message_passing_residual",
+  "variants": [
+    "node_only",
+    "true_dag",
+    "reversed_dag",
+    "shuffled_dag"
+  ],
+  "seeds": [
+    1234
+  ],
+  "max_bins": 256,
+  "epochs": 15,
+  "patience": 4,
+  "device": "cpu",
+  "target": "log1p(Ma-Li observed result.time_taken seconds)",
+  "provenance_class": "CURRENT_FAKE_SNAPSHOT_PROXY",
+  "pooled_metrics": {
+    "grouped_qasm": {
+      "node_only": {
+        "1234": {
+          "mae_seconds": 0.9039877409430326,
+          "medae_seconds": 0.7472637484234601,
+          "rmse_seconds": 1.1492105287883172,
+          "r2_seconds": 0.6373183399130089,
+          "mae_log1p_seconds": 0.09741234401380698,
+          "r2_log1p_seconds": 0.7242801480578025
+        }
+      },
+      "true_dag": {
+        "1234": {
+          "mae_seconds": 0.9179516873670107,
+          "medae_seconds": 0.7712485878641928,
+          "rmse_seconds": 1.1888823319034583,
+          "r2_seconds": 0.6118459262907812,
+          "mae_log1p_seconds": 0.09760320775326581,
+          "r2_log1p_seconds": 0.7098415499254844
+        }
+      },
+      "reversed_dag": {
+        "1234": {
+          "mae_seconds": 0.9697879475200759,
+          "medae_seconds": 0.797876786145717,
+          "rmse_seconds": 1.2733210023510129,
+          "r2_seconds": 0.5547517641652476,
+          "mae_log1p_seconds": 0.10607110788924316,
+          "r2_log1p_seconds": 0.643641059873101
+        }
+      },
+      "shuffled_dag": {
+        "1234": {
+          "mae_seconds": 0.923006561006299,
+          "medae_seconds": 0.7897174781585337,
+          "rmse_seconds": 1.198253895610991,
+          "r2_seconds": 0.6057024290429525,
+          "mae_log1p_seconds": 0.09809756054338424,
+          "r2_log1p_seconds": 0.711810631301745
+        }
+      }
+    }
+  }
+}

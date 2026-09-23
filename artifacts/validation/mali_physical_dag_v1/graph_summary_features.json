@@ -1,0 +1,4 @@
+{
+  "n_unique_graphs": 300,
+  "feature_semantics": "train-independent compact descriptors from current FakeBackend NPZ graphs"
+}

@@ -1,0 +1,197 @@
+{
+  "evaluation": "grouped-QASM coarsened topology screening only",
+  "seeds": [
+    1234,
+    2025,
+    31415
+  ],
+  "n_rows": 340,
+  "n_qasm_hashes": 170,
+  "bootstrap_replicates": 5000,
+  "bootstrap_seed": 20260921,
+  "ensemble_metrics": {
+    "node_only": {
+      "mae_seconds": 0.814544241537902,
+      "medae_seconds": 0.6917121818400722,
+      "rmse_seconds": 1.057304540418962,
+      "r2_seconds": 0.6930083260918565,
+      "mae_log1p_seconds": 0.08768859240804877,
+      "r2_log1p_seconds": 0.7666427131995559
+    },
+    "true_dag": {
+      "mae_seconds": 0.8448321019144901,
+      "medae_seconds": 0.7116706065406211,
+      "rmse_seconds": 1.1208328483032959,
+      "r2_seconds": 0.655008731768183,
+      "mae_log1p_seconds": 0.0906959298813512,
+      "r2_log1p_seconds": 0.7382497949591853
+    },
+    "reversed_dag": {
+      "mae_seconds": 0.8966995200667257,
+      "medae_seconds": 0.7291598103850152,
+      "rmse_seconds": 1.1822469496343027,
+      "r2_seconds": 0.6161665613380897,
+      "mae_log1p_seconds": 0.0969018102784578,
+      "r2_log1p_seconds": 0.699120166009529
+    },
+    "shuffled_dag": {
+      "mae_seconds": 0.8529586031452547,
+      "medae_seconds": 0.737750043392059,
+      "rmse_seconds": 1.122301300357709,
+      "r2_seconds": 0.6541041633505074,
+      "mae_log1p_seconds": 0.09198321913760495,
+      "r2_log1p_seconds": 0.7285093770379238
+    }
+  },
+  "per_seed_metrics": {
+    "node_only": {
+      "1234": {
+        "mae_seconds": 0.9039877409430326,
+        "medae_seconds": 0.7472637484234601,
+        "rmse_seconds": 1.1492105287883172,
+        "r2_seconds": 0.6373183399130089,
+        "mae_log1p_seconds": 0.09741234401380698,
+        "r2_log1p_seconds": 0.7242801480578025
+      },
+      "2025": {
+        "mae_seconds": 0.8227608992566777,
+        "medae_seconds": 0.6993352881112767,
+        "rmse_seconds": 1.0756709309016643,
+        "r2_seconds": 0.6822502136990808,
+        "mae_log1p_seconds": 0.08985372295525794,
+        "r2_log1p_seconds": 0.7517799206576325
+      },
+      "31415": {
+        "mae_seconds": 0.8602588938174319,
+        "medae_seconds": 0.6960224468888017,
+        "rmse_seconds": 1.1535170703612683,
+        "r2_seconds": 0.6345950265778022,
+        "mae_log1p_seconds": 0.09325177311583453,
+        "r2_log1p_seconds": 0.7153372000394459
+      }
+    },
+    "true_dag": {
+      "1234": {
+        "mae_seconds": 0.9179516873670105,
+        "medae_seconds": 0.7712485878641928,
+        "rmse_seconds": 1.1888823319034583,
+        "r2_seconds": 0.6118459262907812,
+        "mae_log1p_seconds": 0.09760320775326581,
+        "r2_log1p_seconds": 0.7098415499254846
+      },
+      "2025": {
+        "mae_seconds": 0.8754579635658736,
+        "medae_seconds": 0.7003105705133619,
+        "rmse_seconds": 1.198797756908765,
+        "r2_seconds": 0.6053444216874534,
+        "mae_log1p_seconds": 0.0954600741018944,
+        "r2_log1p_seconds": 0.6835916493701587
+      },
+      "31415": {
+        "mae_seconds": 0.8627457245915583,
+        "medae_seconds": 0.7051320738123508,
+        "rmse_seconds": 1.1594858072299634,
+        "r2_seconds": 0.6308037540054837,
+        "mae_log1p_seconds": 0.09350445653177109,
+        "r2_log1p_seconds": 0.7155681990155405
+      }
+    },
+    "reversed_dag": {
+      "1234": {
+        "mae_seconds": 0.9697879475200759,
+        "medae_seconds": 0.797876786145717,
+        "rmse_seconds": 1.2733210023510129,
+        "r2_seconds": 0.5547517641652476,
+        "mae_log1p_seconds": 0.10607110788924316,
+        "r2_log1p_seconds": 0.643641059873101
+      },
+      "2025": {
+        "mae_seconds": 0.9256557741423282,
+        "medae_seconds": 0.7425924114124691,
+        "rmse_seconds": 1.2164508097328495,
+        "r2_seconds": 0.5936357384670654,
+        "mae_log1p_seconds": 0.10182618748764495,
+        "r2_log1p_seconds": 0.6506208663586661
+      },
+      "31415": {
+        "mae_seconds": 0.9053838738177487,
+        "medae_seconds": 0.7623178956120578,
+        "rmse_seconds": 1.198427783235821,
+        "r2_seconds": 0.6055879817739369,
+        "mae_log1p_seconds": 0.09808084437309135,
+        "r2_log1p_seconds": 0.6962799674909903
+      }
+    },
+    "shuffled_dag": {
+      "1234": {
+        "mae_seconds": 0.923006561006299,
+        "medae_seconds": 0.7897174781585337,
+        "rmse_seconds": 1.198253895610991,
+        "r2_seconds": 0.6057024290429525,
+        "mae_log1p_seconds": 0.09809756054338424,
+        "r2_log1p_seconds": 0.7118106313017452
+      },
+      "2025": {
+        "mae_seconds": 0.8914265039298624,
+        "medae_seconds": 0.7598759943439464,
+        "rmse_seconds": 1.1635238828858818,
+        "r2_seconds": 0.62822771831775,
+        "mae_log1p_seconds": 0.09812804293019702,
+        "r2_log1p_seconds": 0.6867878856488648
+      },
+      "31415": {
+        "mae_seconds": 0.9622197867268136,
+        "medae_seconds": 0.7798498360452735,
+        "rmse_seconds": 1.2700099743146755,
+        "r2_seconds": 0.5570643195433451,
+        "mae_log1p_seconds": 0.10511043602586173,
+        "r2_log1p_seconds": 0.6240327262662204
+      }
+    }
+  },
+  "paired_group_bootstrap": {
+    "true_dag_minus_node_only": {
+      "ensemble_delta_log_r2": -0.0283929182403706,
+      "ensemble_delta_mae_seconds": 0.03028786037658815,
+      "bootstrap_log_r2_95pct": [
+        -0.06504901238084874,
+        0.000769316453484223
+      ],
+      "bootstrap_mae_seconds_95pct": [
+        -0.016481910107335865,
+        0.07615244463573934
+      ],
+      "probability_log_r2_better_than_node_only": 0.0288,
+      "probability_mae_better_than_node_only": 0.1132
+    },
+    "reversed_dag_minus_node_only": {
+      "ensemble_delta_log_r2": -0.06752254719002693,
+      "ensemble_delta_mae_seconds": 0.08215527852882376,
+      "bootstrap_log_r2_95pct": [
+        -0.1137903995110342,
+        -0.03200891366057626
+      ],
+      "bootstrap_mae_seconds_95pct": [
+        0.03566841612837786,
+        0.12859428621444877
+      ],
+      "probability_log_r2_better_than_node_only": 0.0,
+      "probability_mae_better_than_node_only": 0.0
+    },
+    "shuffled_dag_minus_node_only": {
+      "ensemble_delta_log_r2": -0.03813333616163206,
+      "ensemble_delta_mae_seconds": 0.03841436160735279,
+      "bootstrap_log_r2_95pct": [
+        -0.06838909985895632,
+        -0.012364565799668298
+      ],
+      "bootstrap_mae_seconds_95pct": [
+        0.0009413146164575566,
+        0.07553172565688226
+      ],
+      "probability_log_r2_better_than_node_only": 0.0022,
+      "probability_mae_better_than_node_only": 0.0222
+    }
+  },
+  "interpretation": "true DAG must beat node-only and shuffled controls before topology is claimed useful; seed-mean is analysis-only, not a selected deployment ensemble"
+}

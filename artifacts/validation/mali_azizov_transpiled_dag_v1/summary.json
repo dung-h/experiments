@@ -1,0 +1,45 @@
+{
+  "device": "cuda",
+  "n_qpu": 340,
+  "qpu_missing": 0,
+  "n_sim": 3020,
+  "sim_missing_graphs": 0,
+  "metrics": {
+    "qpu_scratch_transpiled_dag": {
+      "n": 340,
+      "mae_seconds": 0.5142722213812889,
+      "medae_seconds": 0.4180851218783572,
+      "rmse_seconds": 0.6786823150117418,
+      "r2_seconds": 0.8735090461334466,
+      "mae_log1p_seconds": 0.055099800296603704,
+      "r2_log1p_seconds": 0.9046986222821181
+    },
+    "sim_transpiled_dag": {
+      "n": 3020,
+      "mae_seconds": 0.26851327955302684,
+      "medae_seconds": 0.07209476232528678,
+      "rmse_seconds": 1.8515530947420404,
+      "r2_seconds": 0.41343409987409274,
+      "mae_log1p_seconds": 0.06876220955418269,
+      "r2_log1p_seconds": 0.7787466977930845
+    },
+    "sim_transpiled_dag_affine_qpu": {
+      "n": 340,
+      "mae_seconds": 17.83004526280162,
+      "medae_seconds": 0.9671046130653003,
+      "rmse_seconds": 218.9360768544393,
+      "r2_seconds": -13162.187444981868,
+      "mae_log1p_seconds": 0.16286955766644032,
+      "r2_log1p_seconds": -2.6288523063619085
+    },
+    "sim_transpiled_dag_finetune_qpu": {
+      "n": 340,
+      "mae_seconds": 0.5570675463720867,
+      "medae_seconds": 0.39528185496667456,
+      "rmse_seconds": 0.9885819813053691,
+      "r2_seconds": 0.7316189898095595,
+      "mae_log1p_seconds": 0.057011536260510184,
+      "r2_log1p_seconds": 0.8750076986105026
+    }
+  }
+}

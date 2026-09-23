@@ -2,6 +2,8 @@
 
 ## Guarantee and boundary
 
+Read [`docs/FINDINGS_CLUSTERS.md`](docs/FINDINGS_CLUSTERS.md) first. The
+capsule is three finding clusters plus older, separately labelled tracks.
 A fresh clone verifies all committed reports and machine-readable fixtures
 without credentials. It can clone fixed upstream revisions, apply our overlays
 and rerun public-artifact or local-proxy analyses. A live IBM campaign and the
@@ -207,6 +209,25 @@ python experiments/mali_qcre_seed_sensitivity.py --mali-root work/mali \
   --seeds 1234,2025,31415 --optimization-level 1
 ```
 
+Cluster 1 compiled / family-OOD follow-ups keep the same Osaka/Kyoto
+`result.time_taken` labels. They replace the logical DAG with FakeBackend
+compiled features. Current FakeOsaka/Kyoto snapshots are not historical
+job-day calibration.
+
+```bash
+python experiments/mali_family_feature_space_audit.py --workers 12
+python experiments/evaluate_mali_unseen_family_transfer.py
+python experiments/evaluate_mali_simulator_assisted_family_transfer.py
+python experiments/evaluate_mali_azizov_compiled_transfer.py
+python experiments/evaluate_mali_azizov_transpiled_dag_transfer.py
+```
+
+`--logical-only` on the feature-space audit skips FakeOsaka/FakeKyoto
+transpilation. Physical rows resume from
+`artifacts/validation/mali_family_ood_v1/feature_space_audit/physical_proxy_features.csv`.
+Ignore `mali_azizov_transpiled_dag_v1/qpu_scratch_pilot/` (`softplus` decode).
+Coarsened native-DAG tensors are rebuildable and are not committed.
+
 ## Quantum Rings / iQuHACK
 
 This track stores an independent public-artifact audit. It does not rerun
@@ -235,6 +256,23 @@ The public labels do not include a simulation-machine profile. CPU/GPU is
 a categorical tag. Compare Spirit Sprinters to the public 0.99-forward
 clock; compare SoftLocked first to its own `training_data.csv`, then treat
 the 144-row transfer as a domain-shift audit.
+
+Family-aware paper reconstruction (Cluster 3, same public 144 rows, different
+claim) lives under `artifacts/quantum_rings/family_aware_paper/`:
+
+```bash
+export QUANTUM_RINGS_ROOT="$PWD/work/quantum_rings_challenge"
+mkdir -p "$QUANTUM_RINGS_ROOT/results"
+python tracks/quantum_rings/family_aware_paper/experiments/replicate_paper.py \
+  --target both --seed 0 \
+  --output "$QUANTUM_RINGS_ROOT/results/paper_replication.json"
+python tracks/quantum_rings/family_aware_paper/experiments/protocol_audit.py \
+  --target both --seed 0 \
+  --output "$QUANTUM_RINGS_ROOT/results/protocol_audit.json"
+```
+
+Compare reruns to the JSON in that folder, not to the paper PDF. The 0.75
+mirror-sweep time and the 0.99 forward time are different clocks.
 
 ## CDAA/QCRE
 
@@ -281,6 +319,20 @@ Compare target columns separately: cutensornet_runtime_est_s,
 first_contract_gpu_s, contract_gpu_median_s and end_to_end_first_s are not
 interchangeable. A different GPU/software stack produces a new measurement,
 not a failed reproduction.
+
+The packaged 55-row frontier is
+`artifacts/cutensornet/feasibility_frontier_v1/cutensornet_feasibility_frontier.csv`.
+Warm-only B0/B1 evaluation, no new GPU timings:
+
+```bash
+python tracks/cutensornet/code/evaluate_cutensornet_b1.py \
+  --input artifacts/cutensornet/feasibility_frontier_v1/cutensornet_feasibility_frontier.csv \
+  --output-dir artifacts/cutensornet/feasibility_frontier_v1
+```
+
+Expected check: family-held-out warm median-ratio log MAE 0.131. Do not mix
+that score with first-call end-to-end time, CUDA-Q `sample` wall-clock, or
+QPU labels.
 
 ## Matched dense-statevector runtime matrix
 
