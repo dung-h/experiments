@@ -334,6 +334,35 @@ Expected check: family-held-out warm median-ratio log MAE 0.131. Do not mix
 that score with first-call end-to-end time, CUDA-Q `sample` wall-clock, or
 QPU labels.
 
+The 25-row and 55-row fixtures use a 70% workspace policy. A later QFT-only
+frontier used `memory_limit=90%` on the same GPU. It is a different table.
+Expected packaged checks: q36 unsliced actual/estimate 4.189; q44 8 slices,
+warm 29.634 s versus estimate 5.796 s (5.113×); q44 first contraction 29.614 s.
+Do not apply the 70% 25-row median actual/estimate 0.196 to these rows.
+
+```bash
+tracks/cutensornet/code/run_cutensornet_runtime_benchmark.sh \
+  --families qft --qubits 28,32,36,40 \
+  --memory-limit 90% --optimizer-samples 32 --optimizer-seeds 137 \
+  --optimizer-cost-functions TIME_TUNED \
+  --warmups 2 --repeats 5 \
+  --output-dir run-output/cutensornet/qft90_stage_a
+```
+
+Plan-only q40 repeats, no contraction:
+
+```bash
+tracks/cutensornet/code/with_cutensornet_env.sh \
+  tracks/cutensornet/code/probe_cutensornet_plan_metrics.py \
+  --family qft --qubits 40,40,40 \
+  --memory-limit 90% --optimizer-samples 32 --optimizer-seed 137 \
+  --output-dir run-output/cutensornet/q40_plan_repeat
+```
+
+A different GPU, CUDA, cuTensorNet version, thread count or workspace policy
+is a new measurement. Report:
+`artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/REPORT.md`.
+
 ## Matched dense-statevector runtime matrix
 
 This local supplementary track measures one statevector implementation rather

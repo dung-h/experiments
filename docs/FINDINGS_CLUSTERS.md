@@ -359,14 +359,15 @@ Already published in this repository, with their own reports:
 
 - Qonductor public regression versus numerical DAG, plus mapping audit
 - CDAA/QCRE schedule-duration agreement
-- cuTensorNet `RUNTIME_EST` versus RTX 5070 Ti CUDA-event clocks
+- cuTensorNet `RUNTIME_EST` versus RTX 5070 Ti CUDA-event clocks, including the 90% QFT width frontier (`artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/`)
 - Azizov independent noisy-Aer feasibility matrix (`q≤9` local screen)
 - Dense-statevector PyTorch kernel (v1/v2)
 - CUDA-Q dense and MPS pilots
 
-Uncommitted local follow-ups (CPU-only dense-statevector eval, cuTensorNet
-multi-target calibration, paired CUDA-Q/cuTensorNet IR) stay out of this
-packaging round on purpose.
+The 90% QFT frontier is part of the cuTensorNet capsule, not a fourth
+finding cluster. Uncommitted local follow-ups (CPU-only dense-statevector
+eval, cuTensorNet multi-target calibration, paired CUDA-Q/cuTensorNet IR,
+runtime-estimate trace) stay out of this packaging round on purpose.
 
 Day-by-day record: [`DAILY_WORK_LOG_2026-09-17_TO_2026-09-22.md`](DAILY_WORK_LOG_2026-09-17_TO_2026-09-22.md).
 Removed credential-gated plans: [`REMOVED_AND_OUT_OF_SCOPE.md`](REMOVED_AND_OUT_OF_SCOPE.md).

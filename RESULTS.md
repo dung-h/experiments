@@ -57,7 +57,7 @@ results retain their original provenance and hardware boundaries.
 | Ma–Li | direct compiled Ridge: strict backend+QASM-held-out log R² 0.8742, MAE 0.5224 s; adaptation: pretrained R² 0.5922 ± 0.8317, scratch R² 0.8855 ± 0.0461 | Compiled structure supports a source-specific proxy estimator; a simulator prior can still harm fake-snapshot transfer | Current FakeBackend proxy, not the historical paper environment |
 | Qonductor | regression MAE 502.359 ms, R² 0.9386; DAG MAE 915.609 ms, R² 0.8849 | Supplied regression predictions beat the numerical DAG baseline | Derived recompute, not live IBM/retraining |
 | CDAA/QCRE | 30/45 verification rows agree; maximum delta 3.50e-16 s | QCRE matches the supplied schedule-duration reference | Schedule duration is not observed QPU wall-clock |
-| cuTensorNet | 55-row frontier: warm actual/EST 0.215; first 1.242; e2e 138. Family-held-out warm median-ratio log MAE 0.131; scaling EST cannot rescue e2e | `RUNTIME_EST` is a contraction-path signal, not a first-call wall-clock | One GPU/software/precision setting; QPU labels are not used |
+| cuTensorNet | 70% 55-row: warm actual/EST 0.215; first 1.242; e2e 138; family-held-out warm median-ratio log MAE 0.131. 90% QFT q36–q44 warm actual/EST 4.19–5.11; q44 first 29.614 s vs warm 29.634 s | `RUNTIME_EST` is a contraction-path cost proxy, not a wall-clock; the 70% cheap-kernel residual and the 90% large-QFT residual have opposite sign | One GPU/software/precision setting; 70% and 90% workspace tables are not pooled; QPU labels are not used |
 | Azizov et al. independent | 1,192/1,192 screened local rows successful; 149/1,402 circuits eligible | Current FakeWashingtonV2/FakeSherbrooke + Aer pipeline is executable on a documented local subset | Conservative q≤9/ops/depth screen; not the paper's full HPC dataset or exact artifact |
 | Quantum Rings / iQuHACK | Spirit Sprinters public 144-row log-R² 0.743, MAE 107 s; SoftLocked in-domain R² 0.967 and public-table log-R² −25.5 | Winner is a structural public reference; SoftLocked cannot be compared until clocks match | Contest labels have no host CPU/GPU model; no SDK rerun |
 
@@ -701,9 +701,50 @@ is stronger on unseen widths (0.089) and should not be selected from that
 split alone. Artifact:
 [CUTENSORNET_B1_CALIBRATION_RESULTS.md](artifacts/cutensornet/feasibility_frontier_v1/CUTENSORNET_B1_CALIBRATION_RESULTS.md).
 
-### 4.2 / 4.3 local follow-ups, not packaged in this cluster round
+### 4.2 QFT width frontier at 90% workspace (23 September 2026)
 
-The 2026-09-22 multi-target calibration and the paired CUDA-Q / cuTensorNet IR sit in the working tree and are intentionally not part of the three-cluster commit. The packaged cuTensorNet result remains the 25-row initial measurement and the 55-row feasibility frontier in §4.1.
+The 25-row and 55-row tables used a 70% workspace policy. A later QFT-only
+sweep on the same GPU changed that cap to 90% and pushed width from 28 to 44
+qubits. It is a new measurement table, not a replacement of §4.1.
+
+`90%` is a feasibility cap of about 14.95 GB, not a request to occupy 90% of
+VRAM. q36 remains unsliced with a ~8 GiB largest intermediate. From q40 the
+planner switches to a ~4 GiB intermediate and 2, then 4, then 8 slices.
+
+| QFT width | slices | `RUNTIME_EST` | warm actual | actual / estimate |
+|---:|---:|---:|---:|---:|
+| 28 | 1 | 5.617 ms | 5.114 ms | 0.910 |
+| 32 | 1 | 10.612 ms | 20.418 ms | 1.924 |
+| 36 | 1 | 185.939 ms | 778.812 ms | 4.189 |
+| 40 | 2 | 0.726 s | 3.641 s | 5.015 |
+| 42 | 4 | 2.229 s | 10.402 s | 4.668 |
+| 44 | 8 | 5.796 s | 29.634 s | 5.113 |
+
+Three facts matter for the estimator:
+
+1. Graph plus VRAM cap plus architecture 12 is enough to choose a feasible
+   plan. It is not enough to predict the exact kernel/layout time of that plan.
+2. Slicing is not the only residual. q36 is still one slice and already 4.19×
+   slow. q44 first contraction (29.614 s) and warm contraction (29.634 s) are
+   almost identical, so the 5.11× gap is not cold-start.
+3. The high-level optimizer is not empirically unique. Three plan-only q40
+   repeats with the same seed, sample budget and 90% cap returned 2, 2 and 4
+   slices (`RUNTIME_EST` 0.417 s, 0.415 s, 0.687 s).
+
+`EFFECTIVE_FLOPS_EST` on this run equals `RUNTIME_EST × 2.00e13`. That is the
+NVIDIA time-objective definition, not measured throughput.
+
+The 70% 25-row QFT q16–q24 rows over-predict (actual/estimate 0.25–0.32). The
+90% large-QFT rows under-predict. Do not apply the 25-row median ratio 0.196
+to this table.
+
+Artifact: [runtime_est_workspace90_frontier_v1_20260923/REPORT.md](artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/REPORT.md).
+
+### 4.3 local follow-ups, not packaged
+
+The 2026-09-22 multi-target calibration, the paired CUDA-Q / cuTensorNet IR,
+and the 2026-09-23 runtime-estimate trace remain in the working tree. They are
+not part of this packaging round.
 
 ## 5. Azizov et al.: independent reproduction status
 

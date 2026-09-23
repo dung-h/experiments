@@ -225,11 +225,14 @@ def benchmark_one(
     memory_limit: str,
     optimizer_samples: int,
     optimizer_seed: int,
+    optimizer_cost_function: str,
+    optimizer_gpu_arch_override: int | None,
 ) -> dict[str, Any]:
     compute_capability = str(cp.cuda.Device().compute_capability)
     # CuPy returns values such as ``"120"`` for Blackwell compute capability
     # 12.0, while cuTensorNet expects the major architecture number (12).
-    gpu_arch = int(compute_capability[:-1]) if len(compute_capability) > 1 else int(compute_capability)
+    detected_gpu_arch = int(compute_capability[:-1]) if len(compute_capability) > 1 else int(compute_capability)
+    gpu_arch = optimizer_gpu_arch_override if optimizer_gpu_arch_override is not None else detected_gpu_arch
     compute_capability_display = f"{compute_capability[:-1]}.{compute_capability[-1]}" if len(compute_capability) > 1 else compute_capability
     build_started = time.perf_counter()
     operands, features = build_family(cp, family, num_qubits, seed, depth_multiplier)
@@ -240,11 +243,17 @@ def benchmark_one(
     options = tn.NetworkOptions(memory_limit=memory_limit, blocking="auto")
     network = tn.Network(*operands, options=options)
     try:
+        try:
+            cost_function = getattr(cutn.OptimizerCost, optimizer_cost_function)
+        except AttributeError as exc:
+            raise ValueError(
+                f"Unknown cuTensorNet optimizer cost function {optimizer_cost_function!r}"
+            ) from exc
         optimizer = tn.OptimizerOptions(
             samples=optimizer_samples,
             seed=optimizer_seed,
             threads=max(1, (os.cpu_count() or 2) // 2),
-            cost_function=cutn.OptimizerCost.TIME_TUNED,
+            cost_function=cost_function,
             gpu_arch=gpu_arch,
         )
         path_started = time.perf_counter()
@@ -287,9 +296,11 @@ def benchmark_one(
             "logical_single_qubit_gate_count": features.logical_single_qubit_gate_count,
             "logical_two_qubit_gate_count": features.logical_two_qubit_gate_count,
             "precision": "complex64",
-            "optimizer_cost_function": "TIME_TUNED",
+            "workspace_memory_limit": memory_limit,
+            "optimizer_cost_function": optimizer_cost_function,
             "optimizer_samples": optimizer_samples,
             "optimizer_seed": optimizer_seed,
+            "optimizer_gpu_arch": gpu_arch,
             "cutensornet_runtime_est_s": runtime_est,
             "cutensornet_effective_flops_est": effective_flops,
             "cutensornet_flop_count": flop_count,
@@ -348,6 +359,15 @@ def main() -> None:
         help=("Comma-separated hyperoptimizer RNG seeds. Multiple values create "
               "candidate plans for the same circuit and sample budget."),
     )
+    parser.add_argument(
+        "--optimizer-cost-functions", default="TIME_TUNED",
+        help=("Comma-separated cuTensorNet objective names, for example "
+              "FLOPS,TIME,TIME_TUNED. Each objective performs an independent path search."),
+    )
+    parser.add_argument(
+        "--optimizer-gpu-arch", type=int,
+        help="Override the GPU architecture supplied to cuTensorNet's optimizer (diagnostic only).",
+    )
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     args = parser.parse_args()
@@ -368,40 +388,46 @@ def main() -> None:
     depth_multipliers = [float(value) for value in args.depth_multipliers.split(",") if value.strip()]
     optimizer_samples = [int(value) for value in args.optimizer_samples.split(",") if value.strip()]
     optimizer_seeds = [int(value) for value in args.optimizer_seeds.split(",") if value.strip()]
+    optimizer_cost_functions = [value.strip().upper() for value in args.optimizer_cost_functions.split(",") if value.strip()]
     if not optimizer_samples or any(value < 1 for value in optimizer_samples):
         raise SystemExit("--optimizer-samples must contain positive integers")
     if not optimizer_seeds:
         raise SystemExit("--optimizer-seeds must contain at least one integer")
+    if not optimizer_cost_functions:
+        raise SystemExit("--optimizer-cost-functions must contain at least one objective")
     for family in families:
         for num_qubits in widths:
             multipliers = (1.0,) if family in {"ghz", "qft"} else depth_multipliers
             for depth_multiplier in multipliers:
                 for sample_budget in optimizer_samples:
                     for optimizer_seed in optimizer_seeds:
-                        print(
-                            f"Benchmarking {family}, {num_qubits} qubits, depth multiplier "
-                            f"{depth_multiplier:g}, optimizer samples {sample_budget}, "
-                            f"optimizer seed {optimizer_seed}",
-                            flush=True,
-                        )
-                        try:
-                            rows.append(benchmark_one(
-                                cp, np, tn, cutn, family, num_qubits, args.seed, depth_multiplier,
-                                args.warmups, args.repeats, args.memory_limit, sample_budget, optimizer_seed,
-                            ))
-                        except Exception as exc:  # Preserve failed configurations rather than hiding them.
-                            failures.append({
-                                "family": family,
-                                "num_qubits": num_qubits,
-                                "depth_multiplier": depth_multiplier,
-                                "optimizer_samples": sample_budget,
-                                "optimizer_seed": optimizer_seed,
-                                "error": repr(exc),
-                            })
+                        for cost_function in optimizer_cost_functions:
                             print(
-                                f"FAILED {family}/{num_qubits}/x{depth_multiplier:g}/samples{sample_budget}/seed{optimizer_seed}: {exc}",
-                                file=sys.stderr, flush=True,
+                                f"Benchmarking {family}, {num_qubits} qubits, depth multiplier "
+                                f"{depth_multiplier:g}, objective {cost_function}, optimizer samples {sample_budget}, "
+                                f"optimizer seed {optimizer_seed}",
+                                flush=True,
                             )
+                            try:
+                                rows.append(benchmark_one(
+                                    cp, np, tn, cutn, family, num_qubits, args.seed, depth_multiplier,
+                                    args.warmups, args.repeats, args.memory_limit, sample_budget, optimizer_seed,
+                                    cost_function, args.optimizer_gpu_arch,
+                                ))
+                            except Exception as exc:  # Preserve failed configurations rather than hiding them.
+                                failures.append({
+                                    "family": family,
+                                    "num_qubits": num_qubits,
+                                    "depth_multiplier": depth_multiplier,
+                                    "optimizer_samples": sample_budget,
+                                    "optimizer_seed": optimizer_seed,
+                                    "optimizer_cost_function": cost_function,
+                                    "error": repr(exc),
+                                })
+                                print(
+                                    f"FAILED {family}/{num_qubits}/x{depth_multiplier:g}/{cost_function}/samples{sample_budget}/seed{optimizer_seed}: {exc}",
+                                    file=sys.stderr, flush=True,
+                                )
     write_csv(args.output_dir / "cutensornet_runtime_benchmark.csv", rows)
     failure_path = args.output_dir / "cutensornet_runtime_benchmark_failures.json"
     if failures:

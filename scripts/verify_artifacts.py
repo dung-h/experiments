@@ -25,6 +25,12 @@ REQUIRED = (
     "tracks/cdaa_qcre/independent/sqgm/exp-in/exp_heron.json",
     "tracks/cutensornet/code/run_cutensornet_runtime_benchmark.py",
     "tracks/cutensornet/code/with_cutensornet_env.sh",
+    "tracks/cutensornet/code/probe_cutensornet_plan_metrics.py",
+    "artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/REPORT.md",
+    "artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/stage_a/cutensornet_runtime_benchmark.csv",
+    "artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/stage_b_q42/cutensornet_runtime_benchmark.csv",
+    "artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/stage_c_q44/cutensornet_runtime_benchmark.csv",
+    "artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/plan_repeat_q40/cutensornet_plan_metrics.csv",
     "experiments/qonductor_mapping_audit.py",
     "experiments/mali_qcre_proxy.py",
     "experiments/mali_qcre_validation.py",
@@ -318,7 +324,7 @@ def main() -> int:
     },
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 49,
+    require(len(artifact_manifest["artifacts"]) == 50,
             "unexpected replication artifact manifest size")
     require({c["id"] for c in artifact_manifest["clusters"]} == {
         "mali_azizov", "quantum_rings_solutions", "family_aware_paper"
@@ -659,6 +665,45 @@ def main() -> int:
     require(len(cutn_rows) == 25, "unexpected cuTensorNet baseline row count")
     require({"cutensornet_runtime_est_s", "contract_gpu_median_s", "end_to_end_first_s"}
             <= set(cutn_rows[0]), "cuTensorNet target columns changed")
+
+    frontier_root = ROOT / "artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923"
+    frontier_rows = []
+    for relative in (
+        "stage_a/cutensornet_runtime_benchmark.csv",
+        "stage_b_q42/cutensornet_runtime_benchmark.csv",
+        "stage_c_q44/cutensornet_runtime_benchmark.csv",
+    ):
+        with (frontier_root / relative).open(newline="") as handle:
+            frontier_rows.extend(csv.DictReader(handle))
+    require(len(frontier_rows) == 6, "unexpected cuTensorNet 90% QFT frontier row count")
+    require({row["num_qubits"] for row in frontier_rows} == {"28", "32", "36", "40", "42", "44"},
+            "cuTensorNet 90% QFT frontier widths changed")
+    require({row["workspace_memory_limit"] for row in frontier_rows} == {"90%"},
+            "cuTensorNet 90% QFT frontier workspace policy changed")
+    require({row["optimizer_cost_function"] for row in frontier_rows} == {"TIME_TUNED"},
+            "cuTensorNet 90% QFT frontier objective changed")
+    by_width = {int(row["num_qubits"]): row for row in frontier_rows}
+    q36 = by_width[36]
+    q44 = by_width[44]
+    q36_ratio = float(q36["contract_gpu_median_s"]) / float(q36["cutensornet_runtime_est_s"])
+    q44_ratio = float(q44["contract_gpu_median_s"]) / float(q44["cutensornet_runtime_est_s"])
+    require(int(float(q36["cutensornet_num_slices"])) == 1,
+            "cuTensorNet 90% QFT q36 slice count changed")
+    require(abs(q36_ratio - 4.189) < 0.01, "cuTensorNet 90% QFT q36 actual/estimate changed")
+    require(int(float(q44["cutensornet_num_slices"])) == 8,
+            "cuTensorNet 90% QFT q44 slice count changed")
+    require(abs(q44_ratio - 5.113) < 0.01, "cuTensorNet 90% QFT q44 actual/estimate changed")
+    require(abs(float(q44["first_contract_gpu_s"]) - 29.614421875) < 1e-6,
+            "cuTensorNet 90% QFT q44 first contraction changed")
+    require(abs(float(q44["contract_gpu_median_s"]) - 29.633732421875) < 1e-6,
+            "cuTensorNet 90% QFT q44 warm contraction changed")
+    with (frontier_root / "plan_repeat_q40/cutensornet_plan_metrics.csv").open(newline="") as handle:
+        plan_rows = list(csv.DictReader(handle))
+    require(len(plan_rows) == 3, "unexpected cuTensorNet q40 plan-repeat count")
+    require({row["num_qubits"] for row in plan_rows} == {"40"},
+            "cuTensorNet q40 plan-repeat widths changed")
+    require({int(float(row["num_slices"])) for row in plan_rows} == {2, 4},
+            "cuTensorNet q40 plan-repeat slice set changed")
 
     with (ROOT / "artifacts/cdaa_qcre/independent_all_metrics.csv").open(newline="") as handle:
         cdaa_rows = list(csv.DictReader(handle))

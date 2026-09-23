@@ -48,9 +48,13 @@ cloned with `bash tracks/quantum_rings/clone_upstreams.sh work`.
 
 ## Other capsules already in the repository
 
-Qonductor, CDAA/QCRE, cuTensorNet 25-row plus 55-row frontier, Azizov
+Qonductor, CDAA/QCRE, cuTensorNet 25-row, 55-row 70% frontier and 90% QFT width frontier, Azizov
 independent Aer screen, dense-statevector v1/v2, CUDA-Q dense and MPS
 pilots. These are not part of the three-cluster reorganisation.
+
+## Packaged in this cuTensorNet capsule update
+
+- `artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/`
 
 ## Intentionally not in this packaging round
 
