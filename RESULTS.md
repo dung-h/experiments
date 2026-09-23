@@ -41,6 +41,42 @@ results retain their original provenance and hardware boundaries.
 | CDAA/QCRE | 30/45 verification rows agree; maximum delta 3.50e-16 s | QCRE matches the supplied schedule-duration reference | Schedule duration is not observed QPU wall-clock |
 | cuTensorNet | warm median actual / RUNTIME_EST = 0.196; QFT-28/30 0.960/0.946 | The pre-run signal is conservative on easy contractions and closer on QFT | One GPU/software/precision setting |
 | Azizov et al. independent | 1,192/1,192 screened local rows successful; 149/1,402 circuits eligible | Current FakeWashingtonV2/FakeSherbrooke + Aer pipeline is executable on a documented local subset | Conservative q≤9/ops/depth screen; not the paper's full HPC dataset or exact artifact |
+| Quantum Rings / iQuHACK | Spirit Sprinters public 144-row log-R² 0.743, MAE 107 s; SoftLocked in-domain R² 0.967 and public-table log-R² −25.5 | Winner is a structural public reference; SoftLocked cannot be compared until clocks match | Contest labels have no host CPU/GPU model; no SDK rerun |
+
+## Quantum Rings / iQuHACK 2026
+
+**Finding recorded: 2026-09-18. Packaged: 2026-09-23.** Full write-up:
+[artifacts/quantum_rings/REPORT.md](artifacts/quantum_rings/REPORT.md).
+
+The contest asks for a truncation-threshold rung and a 10,000-shot forward
+simulator wall time from OpenQASM plus a CPU/GPU and single/double tag.
+The public table has 36 circuits × 4 contexts = 144 rows. Holdout QASM is
+private. The Quantum Rings SDK was not rerun.
+
+The public labels do not describe the simulation machine. They expose
+`backend`, `precision`, and per-run `peak_rss_mb`. They do not name CPU
+model, GPU model, core count, DRAM, VRAM, OS, or the SDK version that
+produced the times. CPU versus GPU is a categorical tag, not a device
+profile. These rows cannot train a hardware-conditioned estimator of the
+kind used for the RTX 5070 Ti cuTensorNet track.
+
+Spirit Sprinters (official winner, commit `14b5ea14`) is an XGBoost
+threshold classifier plus an edge-aware Transformer duration model. On the
+public 0.99-forward table its log-second R² is 0.743 and MAE is 107 s.
+Threshold exact accuracy is 99.3% against 0.75 labels and 86.1% against
+0.99 known rows. The duration model still misses large circuits: `dj` 130
+qubits, CPU double, is 2,588 s true versus 1,446 s predicted.
+
+SoftLocked (commit `da13c074`) is a ~90-feature GradientBoosting pair.
+On its own `training_data.csv` a grouped rerun gives threshold exact
+88.62% and seconds R² 0.967, matching the README. The same checkpoint on
+the public 144-row table gives log-R² −25.5 because its labels sit at a
+median of 74,048 s against a public median of 20 s. Its CLI also ignores
+the CPU/GPU tag.
+
+The two artifacts are not a leaderboard. They are a structural reference
+and a domain-shift warning. Bloch, Rishivarshil and Hazel are outside
+this track.
 
 ## 0. Local dense-statevector runtime estimator supplement
 

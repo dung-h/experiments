@@ -207,6 +207,35 @@ python experiments/mali_qcre_seed_sensitivity.py --mali-root work/mali \
   --seeds 1234,2025,31415 --optimization-level 1
 ```
 
+## Quantum Rings / iQuHACK
+
+This track stores an independent public-artifact audit. It does not rerun
+the Quantum Rings SDK and does not require a contest token.
+
+```bash
+python3 scripts/verify_artifacts.py
+bash tracks/quantum_rings/clone_upstreams.sh work
+```
+
+`verify_artifacts.py` checks the committed report, `summary.json`, and
+row-level JSON fixtures. The clone script materialises three pinned
+trees under `work/`:
+
+- official challenge `iQuHACK/2026-Quantum-Rings` at `1e2247f7`
+  (public JSON and QASM only);
+- Spirit Sprinters `woody-hulse/quantum-rings` at `14b5ea14`;
+- SoftLocked `SoftLocked/2026-Quantum-Rings` at `da13c074`.
+
+Do not copy those trees into this repository. Do not push local research
+commits to `iQuHACK/2026-Quantum-Rings`; that remote is read-only.
+
+The scientific result is
+[`artifacts/quantum_rings/REPORT.md`](artifacts/quantum_rings/REPORT.md).
+The public labels do not include a simulation-machine profile. CPU/GPU is
+a categorical tag. Compare Spirit Sprinters to the public 0.99-forward
+clock; compare SoftLocked first to its own `training_data.csv`, then treat
+the 144-row transfer as a domain-shift audit.
+
 ## CDAA/QCRE
 
 Use the environment notes in tracks/cdaa_qcre/README.md. Bundled artifact

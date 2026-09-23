@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "scope": "Five primary runtime-estimator replication tracks, separately labelled simulator-paper canaries, and fixed-contract dense-statevector/CUDA-Q simulator supplements; never pooled.",
+  "scope": "Primary runtime-estimator replication tracks, including the Quantum Rings public-artifact audit, separately labelled simulator-paper canaries, and fixed-contract dense-statevector/CUDA-Q simulator supplements; never pooled.",
   "artifacts": [
     {
       "path": "artifacts/mali/MA_LI_REPLICATION_REPORT.md",
@@ -221,6 +221,32 @@
       "runtime_semantics": "CUDA-Q MPS get_state/sample wall-clock with configured bond caps; post-run bond/fidelity diagnostics separate",
       "critical_fixture": "artifacts/cudaq_runtime/cudaq_mps_20260921/REPORT.md",
       "related_fixture": "artifacts/cudaq_runtime/cudaq_mps_20260921/mps_matrix.environment.json"
+    },
+    {
+      "path": "artifacts/quantum_rings/REPORT.md",
+      "provenance_class": "OUR_REPLICATION",
+      "runtime_semantics": "Quantum Rings public 0.99-forward simulator wall time and truncation threshold; no host machine profile",
+      "critical_fixture": "artifacts/quantum_rings/summary.json"
+    },
+    {
+      "path": "artifacts/quantum_rings/summary.json",
+      "provenance_class": "OUR_REPLICATION",
+      "runtime_semantics": "Headline Spirit Sprinters and SoftLocked metrics on the public 144-row table plus SoftLocked in-domain control"
+    },
+    {
+      "path": "artifacts/quantum_rings/community_spirit_sprinters_evaluation.json",
+      "provenance_class": "OUR_REPLICATION",
+      "runtime_semantics": "Row-level Spirit Sprinters artifact predictions versus public 0.99-forward labels"
+    },
+    {
+      "path": "artifacts/quantum_rings/community_softlocked_evaluation.json",
+      "provenance_class": "OUR_REPLICATION",
+      "runtime_semantics": "Row-level SoftLocked checkpoint predictions versus public 0.99-forward labels; domain-shift audit"
+    },
+    {
+      "path": "artifacts/quantum_rings/community_softlocked_training_table_cv.json",
+      "provenance_class": "OUR_REPLICATION",
+      "runtime_semantics": "SoftLocked grouped CV on the author training_data.csv; not the public 0.99-forward clock"
     }
   ]
 }

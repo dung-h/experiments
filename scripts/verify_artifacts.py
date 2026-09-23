@@ -189,6 +189,13 @@ REQUIRED = (
     "artifacts/cudaq_runtime/cudaq_mps_20260921/evaluation/mps_runtime_summary.csv",
     "artifacts/cudaq_runtime/cudaq_mps_20260921/evaluation/mps_runtime_metrics.csv",
     "artifacts/cudaq_runtime/cudaq_mps_20260921/evaluation/mps_runtime_evaluation.json",
+    "tracks/quantum_rings/README.md",
+    "tracks/quantum_rings/clone_upstreams.sh",
+    "artifacts/quantum_rings/REPORT.md",
+    "artifacts/quantum_rings/summary.json",
+    "artifacts/quantum_rings/community_spirit_sprinters_evaluation.json",
+    "artifacts/quantum_rings/community_softlocked_evaluation.json",
+    "artifacts/quantum_rings/community_softlocked_training_table_cv.json",
 )
 
 def require(condition: bool, message: str) -> None:
@@ -201,11 +208,12 @@ def main() -> int:
 
     lock = json.loads((ROOT / "upstream/upstream.lock.json").read_text())
     require(set(lock["tracks"]) == {
-        "mali", "qonductor", "cdaa", "qcre", "cutensornet", "vqcsim", "zero_setup"
+        "mali", "qonductor", "cdaa", "qcre", "cutensornet", "vqcsim", "zero_setup",
+        "quantum_rings"
     },
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 35,
+    require(len(artifact_manifest["artifacts"]) == 40,
             "unexpected replication artifact manifest size")
 
     qonductor = json.loads((ROOT / "artifacts/qonductor/reproduction_metrics.json").read_text())
@@ -221,6 +229,21 @@ def main() -> int:
     require(mapping["csv"]["rows"] == 100, "Qonductor mapping CSV row count changed")
     require(mapping["csv"]["has_stable_join_key"] is False,
             "Qonductor mapping unexpectedly gained a stable join key")
+
+    quantum_rings = json.loads((ROOT / "artifacts/quantum_rings/summary.json").read_text())
+    require(quantum_rings["contest"]["public_rows"] == 144,
+            "Quantum Rings public row count changed")
+    require(quantum_rings["contest"]["machine_profile_present"] is False,
+            "Quantum Rings contest unexpectedly gained a machine profile")
+    spirit_r2 = quantum_rings["spirit_sprinters"]["runtime_all"]["r2_log_runtime"]
+    require(abs(spirit_r2 - 0.742841382483534) < 1e-12,
+            "Spirit Sprinters public log-R2 fixture changed")
+    soft_r2 = quantum_rings["softlocked"]["public_144"]["all_contexts"]["runtime"]["r2_log_runtime"]
+    require(abs(soft_r2 + 25.460883474577965) < 1e-12,
+            "SoftLocked public log-R2 fixture changed")
+    in_domain = quantum_rings["softlocked"]["in_domain_training_table"]["runtime_r2_seconds"]
+    require(abs(in_domain - 0.9673809598542934) < 1e-12,
+            "SoftLocked in-domain R2 fixture changed")
 
     with (ROOT / "artifacts/validation/mali_qcre_proxy/mali_qcre_proxy_features.csv").open(
         newline=""

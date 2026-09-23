@@ -1,0 +1,1735 @@
+{
+  "recorded": "2026-09-18",
+  "source_repo": "https://github.com/woody-hulse/quantum-rings",
+  "source_revision": "14b5ea14dea8f6b55edf632030f5c022e8ad7373",
+  "predictor": "Spirit Sprinters XGBoost threshold + TransformerGNN duration artifacts",
+  "runtime_target": "public 0.99 selected-threshold forward.run_wall_s",
+  "threshold_protocols": {
+    "0.75": {
+      "threshold": {
+        "n_rows": 144,
+        "n_known_threshold_rows": 140,
+        "n_star_rows": 4,
+        "all_rows": {
+          "exact_accuracy": 0.9652777777777778,
+          "within_one_rung": 0.9652777777777778,
+          "mean_rung_distance": 0.11805555555555555
+        },
+        "known_threshold_rows": {
+          "exact_accuracy": 0.9928571428571429,
+          "within_one_rung": 0.9928571428571429,
+          "mean_rung_distance": 0.014285714285714285
+        }
+      },
+      "runtime_099_forward": {
+        "r2_log_runtime": 0.742841382483534,
+        "r2_runtime_seconds": 0.5607290743137692,
+        "mae_runtime_seconds": 106.6504532100977,
+        "median_relative_error": 0.4442573469718188
+      }
+    },
+    "0.99": {
+      "threshold": {
+        "n_rows": 144,
+        "n_known_threshold_rows": 137,
+        "n_star_rows": 7,
+        "all_rows": {
+          "exact_accuracy": 0.8194444444444444,
+          "within_one_rung": 0.9236111111111112,
+          "mean_rung_distance": 0.3819444444444444
+        },
+        "known_threshold_rows": {
+          "exact_accuracy": 0.8613138686131386,
+          "within_one_rung": 0.9708029197080292,
+          "mean_rung_distance": 0.1678832116788321
+        }
+      },
+      "runtime_099_forward": {
+        "r2_log_runtime": 0.742841382483534,
+        "r2_runtime_seconds": 0.5607290743137692,
+        "mae_runtime_seconds": 106.6504532100977,
+        "median_relative_error": 0.4442573469718188
+      }
+    }
+  },
+  "by_context_099": {
+    "CPU+single": {
+      "threshold": {
+        "n_rows": 36,
+        "n_known_threshold_rows": 33,
+        "n_star_rows": 3,
+        "all_rows": {
+          "exact_accuracy": 0.8055555555555556,
+          "within_one_rung": 0.9166666666666666,
+          "mean_rung_distance": 0.5
+        },
+        "known_threshold_rows": {
+          "exact_accuracy": 0.8787878787878788,
+          "within_one_rung": 1.0,
+          "mean_rung_distance": 0.12121212121212122
+        }
+      },
+      "runtime": {
+        "r2_log_runtime": 0.6080564027754324,
+        "r2_runtime_seconds": -3.198196047980786,
+        "mae_runtime_seconds": 104.01423604369137,
+        "median_relative_error": 0.3020658152917801
+      }
+    },
+    "CPU+double": {
+      "threshold": {
+        "n_rows": 36,
+        "n_known_threshold_rows": 34,
+        "n_star_rows": 2,
+        "all_rows": {
+          "exact_accuracy": 0.8055555555555556,
+          "within_one_rung": 0.9166666666666666,
+          "mean_rung_distance": 0.4444444444444444
+        },
+        "known_threshold_rows": {
+          "exact_accuracy": 0.8529411764705882,
+          "within_one_rung": 0.9705882352941176,
+          "mean_rung_distance": 0.17647058823529413
+        }
+      },
+      "runtime": {
+        "r2_log_runtime": 0.7326476026394053,
+        "r2_runtime_seconds": 0.7502866478478889,
+        "mae_runtime_seconds": 99.63786817493917,
+        "median_relative_error": 0.6173564794119686
+      }
+    },
+    "GPU+single": {
+      "threshold": {
+        "n_rows": 36,
+        "n_known_threshold_rows": 35,
+        "n_star_rows": 1,
+        "all_rows": {
+          "exact_accuracy": 0.8333333333333334,
+          "within_one_rung": 0.9444444444444444,
+          "mean_rung_distance": 0.2777777777777778
+        },
+        "known_threshold_rows": {
+          "exact_accuracy": 0.8571428571428571,
+          "within_one_rung": 0.9714285714285714,
+          "mean_rung_distance": 0.17142857142857143
+        }
+      },
+      "runtime": {
+        "r2_log_runtime": 0.8191978420101854,
+        "r2_runtime_seconds": -0.6742572368386734,
+        "mae_runtime_seconds": 90.08466522619682,
+        "median_relative_error": 0.26661723591199327
+      }
+    },
+    "GPU+double": {
+      "threshold": {
+        "n_rows": 36,
+        "n_known_threshold_rows": 35,
+        "n_star_rows": 1,
+        "all_rows": {
+          "exact_accuracy": 0.8333333333333334,
+          "within_one_rung": 0.9166666666666666,
+          "mean_rung_distance": 0.3055555555555556
+        },
+        "known_threshold_rows": {
+          "exact_accuracy": 0.8571428571428571,
+          "within_one_rung": 0.9428571428571428,
+          "mean_rung_distance": 0.2
+        }
+      },
+      "runtime": {
+        "r2_log_runtime": 0.7217302464446134,
+        "r2_runtime_seconds": 0.7161222633865576,
+        "mae_runtime_seconds": 132.86504339556336,
+        "median_relative_error": 0.6842710349895953
+      }
+    }
+  },
+  "predictions": [
+    {
+      "file": "ae_indep_qiskit_130.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 76.83209070000157,
+      "predicted_runtime_s": 944.8607152970678
+    },
+    {
+      "file": "ae_indep_qiskit_130.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 0,
+      "true_threshold_class_099": 0,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 50.87925440000254,
+      "predicted_runtime_s": 941.569263775089
+    },
+    {
+      "file": "ae_indep_qiskit_130.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 0,
+      "true_threshold_class_099": 0,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 65.42634140000155,
+      "predicted_runtime_s": 945.3530185144838
+    },
+    {
+      "file": "ae_indep_qiskit_130.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 0,
+      "true_threshold_class_099": 0,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 63.71262690000003,
+      "predicted_runtime_s": 942.1376972678241
+    },
+    {
+      "file": "ae_indep_qiskit_20.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 3,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 7.064479499999834,
+      "predicted_runtime_s": 34.264219163812015
+    },
+    {
+      "file": "ae_indep_qiskit_20.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 3,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 5.4808029000000715,
+      "predicted_runtime_s": 6.695505176566431
+    },
+    {
+      "file": "ae_indep_qiskit_20.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 3,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 8.741223300000001,
+      "predicted_runtime_s": 40.03854181591034
+    },
+    {
+      "file": "ae_indep_qiskit_20.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 3,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 6.923386600000413,
+      "predicted_runtime_s": 7.515583763822959
+    },
+    {
+      "file": "cutbell_n30_k6.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 19.727006099999926,
+      "predicted_runtime_s": 26.823901005240632
+    },
+    {
+      "file": "cutbell_n30_k6.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 6.355348400000139,
+      "predicted_runtime_s": 8.152811930383391
+    },
+    {
+      "file": "cutbell_n30_k6.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 20.084437799999932,
+      "predicted_runtime_s": 29.989754759102393
+    },
+    {
+      "file": "cutbell_n30_k6.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 6.362876700000015,
+      "predicted_runtime_s": 8.328136127748529
+    },
+    {
+      "file": "dj_indep_qiskit_130.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 2588.3113831,
+      "predicted_runtime_s": 1445.536972134413
+    },
+    {
+      "file": "dj_indep_qiskit_130.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 435.80848079999987,
+      "predicted_runtime_s": 1363.7680067488088
+    },
+    {
+      "file": "dj_indep_qiskit_130.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 2473.6742729999996,
+      "predicted_runtime_s": 1459.88365954648
+    },
+    {
+      "file": "dj_indep_qiskit_130.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 508.9860284000006,
+      "predicted_runtime_s": 1377.1520262284068
+    },
+    {
+      "file": "dj_indep_qiskit_15.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 27.689442199999803,
+      "predicted_runtime_s": 43.48644641089973
+    },
+    {
+      "file": "dj_indep_qiskit_15.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 5.834394200000133,
+      "predicted_runtime_s": 5.828982714637608
+    },
+    {
+      "file": "dj_indep_qiskit_15.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 27.383448000000044,
+      "predicted_runtime_s": 51.23497641142426
+    },
+    {
+      "file": "dj_indep_qiskit_15.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 6.379441999999926,
+      "predicted_runtime_s": 5.7979263389356195
+    },
+    {
+      "file": "dj_indep_qiskit_30.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 140.22691629999986,
+      "predicted_runtime_s": 240.1866096777443
+    },
+    {
+      "file": "dj_indep_qiskit_30.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 22.73204769999984,
+      "predicted_runtime_s": 49.756535053551154
+    },
+    {
+      "file": "dj_indep_qiskit_30.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 124.94764359999999,
+      "predicted_runtime_s": 267.97297788950226
+    },
+    {
+      "file": "dj_indep_qiskit_30.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 23.175904299999956,
+      "predicted_runtime_s": 50.33503527443002
+    },
+    {
+      "file": "ghz_indep_qiskit_100.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 31.991855699999633,
+      "predicted_runtime_s": 65.98230633165763
+    },
+    {
+      "file": "ghz_indep_qiskit_100.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 27.375924699999814,
+      "predicted_runtime_s": 46.89189476484288
+    },
+    {
+      "file": "ghz_indep_qiskit_100.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 34.74685490000002,
+      "predicted_runtime_s": 69.56594642476458
+    },
+    {
+      "file": "ghz_indep_qiskit_100.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 28.816308299999946,
+      "predicted_runtime_s": 48.46014274872349
+    },
+    {
+      "file": "ghz_indep_qiskit_130.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 41.90187470000001,
+      "predicted_runtime_s": 69.73337436473756
+    },
+    {
+      "file": "ghz_indep_qiskit_130.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 35.55706049999981,
+      "predicted_runtime_s": 55.63350440751522
+    },
+    {
+      "file": "ghz_indep_qiskit_130.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 42.411199099999976,
+      "predicted_runtime_s": 72.51189341308344
+    },
+    {
+      "file": "ghz_indep_qiskit_130.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 35.91593550000016,
+      "predicted_runtime_s": 57.252915931863186
+    },
+    {
+      "file": "ghz_indep_qiskit_15.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 4.587869800000135,
+      "predicted_runtime_s": 16.595580879021817
+    },
+    {
+      "file": "ghz_indep_qiskit_15.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 4.049046599999883,
+      "predicted_runtime_s": 4.326001033402766
+    },
+    {
+      "file": "ghz_indep_qiskit_15.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 4.6660391999998865,
+      "predicted_runtime_s": 19.86236440418045
+    },
+    {
+      "file": "ghz_indep_qiskit_15.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 4.037961699999869,
+      "predicted_runtime_s": 4.4145598775936685
+    },
+    {
+      "file": "ghz_indep_qiskit_30.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 9.886934099999962,
+      "predicted_runtime_s": 37.31311817567962
+    },
+    {
+      "file": "ghz_indep_qiskit_30.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 8.152040200000101,
+      "predicted_runtime_s": 10.05686928877828
+    },
+    {
+      "file": "ghz_indep_qiskit_30.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 9.580995499999972,
+      "predicted_runtime_s": 41.605948379739026
+    },
+    {
+      "file": "ghz_indep_qiskit_30.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 8.169279399999823,
+      "predicted_runtime_s": 10.357919210675393
+    },
+    {
+      "file": "graphstate_indep_qiskit_15.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 0,
+      "true_threshold_class_099": 0,
+      "predicted_threshold": 4,
+      "predicted_threshold_class": 3,
+      "true_runtime_s": 15.5678676,
+      "predicted_runtime_s": 19.918474722649478
+    },
+    {
+      "file": "graphstate_indep_qiskit_15.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 3,
+      "true_threshold_class_099": 3,
+      "predicted_threshold": 4,
+      "predicted_threshold_class": 3,
+      "true_runtime_s": 6.154954899999893,
+      "predicted_runtime_s": 4.541037725445938
+    },
+    {
+      "file": "graphstate_indep_qiskit_15.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 3,
+      "true_threshold_class_099": 3,
+      "predicted_threshold": 4,
+      "predicted_threshold_class": 3,
+      "true_runtime_s": 17.49349589999997,
+      "predicted_runtime_s": 24.63773908234346
+    },
+    {
+      "file": "graphstate_indep_qiskit_15.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 3,
+      "true_threshold_class_099": 3,
+      "predicted_threshold": 4,
+      "predicted_threshold_class": 3,
+      "true_runtime_s": 6.3882796999998845,
+      "predicted_runtime_s": 4.7301569245889645
+    },
+    {
+      "file": "groundstate_large_indep_qiskit_14.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 4,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 24.401681600000302,
+      "predicted_runtime_s": 24.412418515161523
+    },
+    {
+      "file": "groundstate_large_indep_qiskit_14.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 4,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 8.345107699999971,
+      "predicted_runtime_s": 5.366294067644557
+    },
+    {
+      "file": "groundstate_large_indep_qiskit_14.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 4,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 28.208706599999914,
+      "predicted_runtime_s": 31.844838112819968
+    },
+    {
+      "file": "groundstate_large_indep_qiskit_14.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 4,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 9.904581600000256,
+      "predicted_runtime_s": 6.169135892987314
+    },
+    {
+      "file": "grover-noancilla_indep_qiskit_11.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 13.902692500007106,
+      "predicted_runtime_s": 50.75837837871776
+    },
+    {
+      "file": "grover-noancilla_indep_qiskit_11.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 3.807836399995722,
+      "predicted_runtime_s": 50.61418759374086
+    },
+    {
+      "file": "grover-noancilla_indep_qiskit_11.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 219.18694230000256,
+      "predicted_runtime_s": 50.79676090946735
+    },
+    {
+      "file": "grover-noancilla_indep_qiskit_11.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 195.96384569999645,
+      "predicted_runtime_s": 50.65264524770281
+    },
+    {
+      "file": "grover-noancilla_indep_qiskit_7.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 3.5556185000004916,
+      "predicted_runtime_s": 4.190638699001933
+    },
+    {
+      "file": "grover-noancilla_indep_qiskit_7.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 1.138716999999815,
+      "predicted_runtime_s": 3.769268861963124
+    },
+    {
+      "file": "grover-noancilla_indep_qiskit_7.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 6.513870099999622,
+      "predicted_runtime_s": 4.324882341853296
+    },
+    {
+      "file": "grover-noancilla_indep_qiskit_7.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 3.7843482999996922,
+      "predicted_runtime_s": 3.8707262890116616
+    },
+    {
+      "file": "grover-v-chain_indep_qiskit_17.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 16.064750099991215,
+      "predicted_runtime_s": 51.78059910130521
+    },
+    {
+      "file": "grover-v-chain_indep_qiskit_17.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 4.268532999994932,
+      "predicted_runtime_s": 51.39696954419683
+    },
+    {
+      "file": "grover-v-chain_indep_qiskit_17.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 166.0510912000027,
+      "predicted_runtime_s": 51.88373058083313
+    },
+    {
+      "file": "grover-v-chain_indep_qiskit_17.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 147.7327621000004,
+      "predicted_runtime_s": 51.49993270335779
+    },
+    {
+      "file": "grover-v-chain_indep_qiskit_7.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 2.667474499999571,
+      "predicted_runtime_s": 2.810375121738032
+    },
+    {
+      "file": "grover-v-chain_indep_qiskit_7.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 0.9918242999997346,
+      "predicted_runtime_s": 2.1270262854675237
+    },
+    {
+      "file": "grover-v-chain_indep_qiskit_7.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 3.464708099999825,
+      "predicted_runtime_s": 3.1528973485086684
+    },
+    {
+      "file": "grover-v-chain_indep_qiskit_7.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 1.8052299999999377,
+      "predicted_runtime_s": 2.22725871011318
+    },
+    {
+      "file": "portfolioqaoa_indep_qiskit_10.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 12.064081700000315,
+      "predicted_runtime_s": 15.971217941004877
+    },
+    {
+      "file": "portfolioqaoa_indep_qiskit_10.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 4.905071499999849,
+      "predicted_runtime_s": 4.38950783891814
+    },
+    {
+      "file": "portfolioqaoa_indep_qiskit_10.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 15.669895600000018,
+      "predicted_runtime_s": 22.040095104843157
+    },
+    {
+      "file": "portfolioqaoa_indep_qiskit_10.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 6.2795021000001725,
+      "predicted_runtime_s": 5.05831590799778
+    },
+    {
+      "file": "portfolioqaoa_indep_qiskit_17.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 5,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 16,
+      "predicted_threshold_class": 5,
+      "true_runtime_s": 41.097558699999354,
+      "predicted_runtime_s": 56.10300499848035
+    },
+    {
+      "file": "portfolioqaoa_indep_qiskit_17.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 5,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 16,
+      "predicted_threshold_class": 5,
+      "true_runtime_s": 13.219480499999918,
+      "predicted_runtime_s": 12.246492259164343
+    },
+    {
+      "file": "portfolioqaoa_indep_qiskit_17.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 5,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 16,
+      "predicted_threshold_class": 5,
+      "true_runtime_s": 61.8806055999994,
+      "predicted_runtime_s": 70.15620193167888
+    },
+    {
+      "file": "portfolioqaoa_indep_qiskit_17.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 5,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 16,
+      "predicted_threshold_class": 5,
+      "true_runtime_s": 23.94955200000004,
+      "predicted_runtime_s": 16.077395671143574
+    },
+    {
+      "file": "portfoliovqe_indep_qiskit_10.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 11.89738000000034,
+      "predicted_runtime_s": 16.511597147160195
+    },
+    {
+      "file": "portfoliovqe_indep_qiskit_10.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 4.8081145999999535,
+      "predicted_runtime_s": 4.486102219854306
+    },
+    {
+      "file": "portfoliovqe_indep_qiskit_10.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 14.132609499999944,
+      "predicted_runtime_s": 22.809649313037436
+    },
+    {
+      "file": "portfoliovqe_indep_qiskit_10.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 5.741111700000147,
+      "predicted_runtime_s": 5.166700952843396
+    },
+    {
+      "file": "portfoliovqe_indep_qiskit_18.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 5,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 16,
+      "predicted_threshold_class": 5,
+      "true_runtime_s": 37.96107890000076,
+      "predicted_runtime_s": 72.39706501350298
+    },
+    {
+      "file": "portfoliovqe_indep_qiskit_18.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 5,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 16,
+      "predicted_threshold_class": 5,
+      "true_runtime_s": 14.044175900000482,
+      "predicted_runtime_s": 15.462418481558288
+    },
+    {
+      "file": "portfoliovqe_indep_qiskit_18.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 5,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 16,
+      "predicted_threshold_class": 5,
+      "true_runtime_s": 53.10907969999971,
+      "predicted_runtime_s": 89.27628312766919
+    },
+    {
+      "file": "portfoliovqe_indep_qiskit_18.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 5,
+      "true_threshold_class_099": 5,
+      "predicted_threshold": 16,
+      "predicted_threshold_class": 5,
+      "true_runtime_s": 21.927516199999445,
+      "predicted_runtime_s": 20.76938572326119
+    },
+    {
+      "file": "pricingcall_indep_qiskit_17.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 4,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 25.74801750000006,
+      "predicted_runtime_s": 36.89374013536538
+    },
+    {
+      "file": "pricingcall_indep_qiskit_17.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 4,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 8.654724799998803,
+      "predicted_runtime_s": 8.57452012627939
+    },
+    {
+      "file": "pricingcall_indep_qiskit_17.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 4,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 26.624589600000036,
+      "predicted_runtime_s": 45.478657056191935
+    },
+    {
+      "file": "pricingcall_indep_qiskit_17.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 4,
+      "true_threshold_class_099": 4,
+      "predicted_threshold": 8,
+      "predicted_threshold_class": 4,
+      "true_runtime_s": 12.032248100000288,
+      "predicted_runtime_s": 10.772438000447936
+    },
+    {
+      "file": "qaoa_indep_qiskit_16.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 13.572396400000116,
+      "predicted_runtime_s": 12.867846690784864
+    },
+    {
+      "file": "qaoa_indep_qiskit_16.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 3.692293900000095,
+      "predicted_runtime_s": 4.095486188344961
+    },
+    {
+      "file": "qaoa_indep_qiskit_16.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 12.86652520000007,
+      "predicted_runtime_s": 14.80117699961535
+    },
+    {
+      "file": "qaoa_indep_qiskit_16.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 3.8169324000000415,
+      "predicted_runtime_s": 4.12282499310543
+    },
+    {
+      "file": "qft_indep_qiskit_130.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 1174.0307276999956,
+      "predicted_runtime_s": 1007.0427638900053
+    },
+    {
+      "file": "qft_indep_qiskit_130.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 246.62008710000373,
+      "predicted_runtime_s": 1003.8007472036
+    },
+    {
+      "file": "qft_indep_qiskit_130.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 2060.300456499999,
+      "predicted_runtime_s": 1007.5354966141696
+    },
+    {
+      "file": "qft_indep_qiskit_130.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 883.5027354000049,
+      "predicted_runtime_s": 1004.3689059609088
+    },
+    {
+      "file": "qft_indep_qiskit_15.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 15.38530280000009,
+      "predicted_runtime_s": 23.961120700002695
+    },
+    {
+      "file": "qft_indep_qiskit_15.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 3.8983488999999736,
+      "predicted_runtime_s": 5.1509068160511005
+    },
+    {
+      "file": "qft_indep_qiskit_15.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 17.19437290000019,
+      "predicted_runtime_s": 28.56800737708802
+    },
+    {
+      "file": "qft_indep_qiskit_15.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 4.754781699999967,
+      "predicted_runtime_s": 5.347404229627165
+    },
+    {
+      "file": "qft_indep_qiskit_30.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 64.63328699999965,
+      "predicted_runtime_s": 138.7346392751871
+    },
+    {
+      "file": "qft_indep_qiskit_30.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 12.875928500000555,
+      "predicted_runtime_s": 27.08856535416471
+    },
+    {
+      "file": "qft_indep_qiskit_30.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 76.91615640000055,
+      "predicted_runtime_s": 148.386675057118
+    },
+    {
+      "file": "qft_indep_qiskit_30.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 20.728053499999078,
+      "predicted_runtime_s": 35.23496907621899
+    },
+    {
+      "file": "qftentangled_indep_qiskit_15.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 17.87179339999966,
+      "predicted_runtime_s": 26.562287815624266
+    },
+    {
+      "file": "qftentangled_indep_qiskit_15.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 7.079947400000037,
+      "predicted_runtime_s": 5.437555105453655
+    },
+    {
+      "file": "qftentangled_indep_qiskit_15.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 19.03216399999974,
+      "predicted_runtime_s": 32.30030527345729
+    },
+    {
+      "file": "qftentangled_indep_qiskit_15.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 7.8959162999999535,
+      "predicted_runtime_s": 5.800944371483513
+    },
+    {
+      "file": "qftentangled_indep_qiskit_30.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 70.14926699999887,
+      "predicted_runtime_s": 136.74990702047614
+    },
+    {
+      "file": "qftentangled_indep_qiskit_30.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 24.19005549999929,
+      "predicted_runtime_s": 27.184822437157987
+    },
+    {
+      "file": "qftentangled_indep_qiskit_30.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 78.0279576999983,
+      "predicted_runtime_s": 145.99097872055776
+    },
+    {
+      "file": "qftentangled_indep_qiskit_30.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 32.62459129999843,
+      "predicted_runtime_s": 37.19267481137589
+    },
+    {
+      "file": "qnn_indep_qiskit_20.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 5,
+      "true_threshold_class_099": 6,
+      "predicted_threshold": 16,
+      "predicted_threshold_class": 5,
+      "true_runtime_s": 49.9247598999973,
+      "predicted_runtime_s": 83.60255675213561
+    },
+    {
+      "file": "qnn_indep_qiskit_20.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 5,
+      "true_threshold_class_099": 6,
+      "predicted_threshold": 16,
+      "predicted_threshold_class": 5,
+      "true_runtime_s": 24.692358100001,
+      "predicted_runtime_s": 26.334237437922123
+    },
+    {
+      "file": "qnn_indep_qiskit_20.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 5,
+      "true_threshold_class_099": 6,
+      "predicted_threshold": 16,
+      "predicted_threshold_class": 5,
+      "true_runtime_s": 74.64191109999956,
+      "predicted_runtime_s": 96.98184221895583
+    },
+    {
+      "file": "qnn_indep_qiskit_20.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 5,
+      "true_threshold_class_099": 6,
+      "predicted_threshold": 16,
+      "predicted_threshold_class": 5,
+      "true_runtime_s": 27.040457899998728,
+      "predicted_runtime_s": 35.730975421746514
+    },
+    {
+      "file": "qpeexact_indep_qiskit_100.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 1460.3537848000014,
+      "predicted_runtime_s": 1088.2687031883447
+    },
+    {
+      "file": "qpeexact_indep_qiskit_100.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 283.0733005000002,
+      "predicted_runtime_s": 1079.3319840110069
+    },
+    {
+      "file": "qpeexact_indep_qiskit_100.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 1840.5101435999986,
+      "predicted_runtime_s": 1089.503869144004
+    },
+    {
+      "file": "qpeexact_indep_qiskit_100.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 553.8629766000013,
+      "predicted_runtime_s": 1080.989952063183
+    },
+    {
+      "file": "qpeexact_indep_qiskit_30.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 116.68948549999914,
+      "predicted_runtime_s": 181.28679492014183
+    },
+    {
+      "file": "qpeexact_indep_qiskit_30.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 22.94623000000138,
+      "predicted_runtime_s": 33.19284025445791
+    },
+    {
+      "file": "qpeexact_indep_qiskit_30.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 132.2056378999987,
+      "predicted_runtime_s": 195.69298297347365
+    },
+    {
+      "file": "qpeexact_indep_qiskit_30.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 1,
+      "true_threshold_class_099": 1,
+      "predicted_threshold": 1,
+      "predicted_threshold_class": 1,
+      "true_runtime_s": 30.695494800000233,
+      "predicted_runtime_s": 44.12262188312089
+    },
+    {
+      "file": "shor_15_4_indep_qiskit_18.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 3,
+      "true_threshold_class_099": 3,
+      "predicted_threshold": 4,
+      "predicted_threshold_class": 3,
+      "true_runtime_s": 20.17139440000028,
+      "predicted_runtime_s": 52.762875357357885
+    },
+    {
+      "file": "shor_15_4_indep_qiskit_18.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 5,
+      "true_threshold_class_099": 0,
+      "predicted_threshold": 4,
+      "predicted_threshold_class": 3,
+      "true_runtime_s": 30.935458399995696,
+      "predicted_runtime_s": 51.75005884072635
+    },
+    {
+      "file": "shor_15_4_indep_qiskit_18.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 3,
+      "true_threshold_class_099": 3,
+      "predicted_threshold": 4,
+      "predicted_threshold_class": 3,
+      "true_runtime_s": 77.75914030000422,
+      "predicted_runtime_s": 53.03497926422552
+    },
+    {
+      "file": "shor_15_4_indep_qiskit_18.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 3,
+      "true_threshold_class_099": 3,
+      "predicted_threshold": 4,
+      "predicted_threshold_class": 3,
+      "true_runtime_s": 46.13232920000155,
+      "predicted_runtime_s": 52.02395457650976
+    },
+    {
+      "file": "twolocalrandom_indep_qiskit_30.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 7,
+      "true_threshold_class_099": 0,
+      "predicted_threshold": 64,
+      "predicted_threshold_class": 7,
+      "true_runtime_s": 611.4582425000008,
+      "predicted_runtime_s": 881.7019636741419
+    },
+    {
+      "file": "twolocalrandom_indep_qiskit_30.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 7,
+      "true_threshold_class_099": 0,
+      "predicted_threshold": 64,
+      "predicted_threshold_class": 7,
+      "true_runtime_s": 681.1316759000001,
+      "predicted_runtime_s": 567.1298665125599
+    },
+    {
+      "file": "twolocalrandom_indep_qiskit_30.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 7,
+      "true_threshold_class_099": 9,
+      "predicted_threshold": 64,
+      "predicted_threshold_class": 7,
+      "true_runtime_s": 878.3766337000015,
+      "predicted_runtime_s": 906.6565552023162
+    },
+    {
+      "file": "twolocalrandom_indep_qiskit_30.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 7,
+      "true_threshold_class_099": 9,
+      "predicted_threshold": 64,
+      "predicted_threshold_class": 7,
+      "true_runtime_s": 225.9701571000005,
+      "predicted_runtime_s": 663.1839429533846
+    },
+    {
+      "file": "vqe_indep_qiskit_16.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 5.410789199999954,
+      "predicted_runtime_s": 9.156406683119474
+    },
+    {
+      "file": "vqe_indep_qiskit_16.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 4.355870100000175,
+      "predicted_runtime_s": 3.8508714026098794
+    },
+    {
+      "file": "vqe_indep_qiskit_16.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 5.280203699999902,
+      "predicted_runtime_s": 10.545218853885004
+    },
+    {
+      "file": "vqe_indep_qiskit_16.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 4.266166099999964,
+      "predicted_runtime_s": 3.951576429352867
+    },
+    {
+      "file": "wstate_indep_qiskit_130.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 40.51257550000082,
+      "predicted_runtime_s": 74.3919880638046
+    },
+    {
+      "file": "wstate_indep_qiskit_130.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 35.563419899999644,
+      "predicted_runtime_s": 59.85648713298326
+    },
+    {
+      "file": "wstate_indep_qiskit_130.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 44.636731400001736,
+      "predicted_runtime_s": 76.94108240504053
+    },
+    {
+      "file": "wstate_indep_qiskit_130.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 37.80133940000087,
+      "predicted_runtime_s": 61.84133396854597
+    },
+    {
+      "file": "wstate_indep_qiskit_15.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 4.610865800000056,
+      "predicted_runtime_s": 17.372619741618877
+    },
+    {
+      "file": "wstate_indep_qiskit_15.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 4.0718339000000014,
+      "predicted_runtime_s": 4.411368536270089
+    },
+    {
+      "file": "wstate_indep_qiskit_15.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 4.7788454999999885,
+      "predicted_runtime_s": 20.657587759592598
+    },
+    {
+      "file": "wstate_indep_qiskit_15.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 3.980514600000106,
+      "predicted_runtime_s": 4.492434273220179
+    },
+    {
+      "file": "wstate_indep_qiskit_30.qasm",
+      "backend": "CPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 9.64928860000009,
+      "predicted_runtime_s": 38.438029417797836
+    },
+    {
+      "file": "wstate_indep_qiskit_30.qasm",
+      "backend": "CPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 8.140911799999685,
+      "predicted_runtime_s": 10.797938086903017
+    },
+    {
+      "file": "wstate_indep_qiskit_30.qasm",
+      "backend": "GPU",
+      "precision": "double",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 9.73068579999972,
+      "predicted_runtime_s": 42.69090490794116
+    },
+    {
+      "file": "wstate_indep_qiskit_30.qasm",
+      "backend": "GPU",
+      "precision": "single",
+      "true_threshold_class_075": 2,
+      "true_threshold_class_099": 2,
+      "predicted_threshold": 2,
+      "predicted_threshold_class": 2,
+      "true_runtime_s": 8.433104700000058,
+      "predicted_runtime_s": 11.36293776603707
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "recorded": "2026-09-18",
+  "packaged": "2026-09-23",
+  "contest": {
+    "name": "iQuHACK 2026 Quantum Rings Circuit Fingerprint Challenge",
+    "paper": "https://arxiv.org/abs/2606.11620",
+    "official_challenge_repo": "https://github.com/iQuHACK/2026-Quantum-Rings",
+    "official_challenge_commit": "1e2247f708136b2c6da99d7f98564ea2b15474f9",
+    "public_rows": 144,
+    "public_circuits": 36,
+    "contexts": [
+      "CPU+single",
+      "CPU+double",
+      "GPU+single",
+      "GPU+double"
+    ],
+    "threshold_target": "minimum ladder rung with mirror fidelity >= 0.99",
+    "runtime_target": "10000-shot forward.run_wall_s at the public selected threshold",
+    "machine_profile_present": false,
+    "machine_fields_present": [
+      "backend_CPU_or_GPU",
+      "precision_single_or_double",
+      "per_run_peak_rss_mb"
+    ],
+    "machine_fields_absent": [
+      "cpu_model",
+      "gpu_model",
+      "core_count",
+      "host_ram",
+      "vram",
+      "os",
+      "sdk_version_used_to_generate_labels",
+      "clock",
+      "shared_vs_exclusive_gpu"
+    ]
+  },
+  "spirit_sprinters": {
+    "repo": "https://github.com/woody-hulse/quantum-rings",
+    "revision": "14b5ea14dea8f6b55edf632030f5c022e8ad7373",
+    "runtime_target": "public 0.99 selected-threshold forward.run_wall_s",
+    "threshold_0_75_known_exact": 0.9928571428571429,
+    "threshold_0_99_known_exact": 0.8613138686131386,
+    "threshold_0_99_all_exact": 0.8194444444444444,
+    "runtime_all": {
+      "r2_log_runtime": 0.742841382483534,
+      "r2_runtime_seconds": 0.5607290743137692,
+      "mae_runtime_seconds": 106.6504532100977,
+      "median_relative_error": 0.4442573469718188
+    },
+    "runtime_by_context": {
+      "CPU+single": {
+        "r2_log_runtime": 0.6080564027754324,
+        "r2_runtime_seconds": -3.198196047980786,
+        "mae_runtime_seconds": 104.01423604369137,
+        "median_relative_error": 0.3020658152917801
+      },
+      "CPU+double": {
+        "r2_log_runtime": 0.7326476026394053,
+        "r2_runtime_seconds": 0.7502866478478889,
+        "mae_runtime_seconds": 99.63786817493917,
+        "median_relative_error": 0.6173564794119686
+      },
+      "GPU+single": {
+        "r2_log_runtime": 0.8191978420101854,
+        "r2_runtime_seconds": -0.6742572368386734,
+        "mae_runtime_seconds": 90.08466522619682,
+        "median_relative_error": 0.26661723591199327
+      },
+      "GPU+double": {
+        "r2_log_runtime": 0.7217302464446134,
+        "r2_runtime_seconds": 0.7161222633865576,
+        "mae_runtime_seconds": 132.86504339556336,
+        "median_relative_error": 0.6842710349895953
+      }
+    }
+  },
+  "softlocked": {
+    "repo": "https://github.com/SoftLocked/2026-Quantum-Rings",
+    "revision": "da13c074d68c2fe3a1053c751234ee0916d73739",
+    "backend_scope": "CPU is in-domain; GPU is diagnostic because predictor has no backend input",
+    "public_144": {
+      "all_contexts": {
+        "n_rows": 144,
+        "n_circuits": 36,
+        "threshold": {
+          "exact_accuracy": 0.10416666666666667,
+          "within_one_rung": 0.8611111111111112,
+          "mean_rung_distance": 1.2291666666666667
+        },
+        "runtime": {
+          "r2_log_runtime": -25.460883474577965,
+          "r2_runtime_seconds": -1429383.938161324,
+          "mae_runtime_seconds": 259934.71645514847,
+          "median_relative_error": 6369.789997421094
+        }
+      },
+      "CPU_only": {
+        "n_rows": 72,
+        "n_circuits": 36,
+        "threshold": {
+          "exact_accuracy": 0.1111111111111111,
+          "within_one_rung": 0.8611111111111112,
+          "mean_rung_distance": 1.2638888888888888
+        },
+        "runtime": {
+          "r2_log_runtime": -27.55125682242212,
+          "r2_runtime_seconds": -1700646.7672916735,
+          "mae_runtime_seconds": 259954.73275527902,
+          "median_relative_error": 6758.172072348845
+        }
+      },
+      "GPU_diagnostic": {
+        "n_rows": 72,
+        "n_circuits": 36,
+        "threshold": {
+          "exact_accuracy": 0.09722222222222222,
+          "within_one_rung": 0.8611111111111112,
+          "mean_rung_distance": 1.1944444444444444
+        },
+        "runtime": {
+          "r2_log_runtime": -24.092568996451675,
+          "r2_runtime_seconds": -1237707.8448682583,
+          "mae_runtime_seconds": 259914.70015501796,
+          "median_relative_error": 5757.565061384752
+        }
+      }
+    },
+    "in_domain_training_table": {
+      "n_rows": 1107,
+      "n_circuits": 576,
+      "runtime_seconds": {
+        "min": 3192.506999912439,
+        "median": 74048.0230000685,
+        "max": 9158881.807000143
+      },
+      "threshold_exact_accuracy": 0.8861788617886179,
+      "threshold_competition_score": 0.9065605239385727,
+      "runtime_mape_percent": 9.552086484312037,
+      "runtime_r2_seconds": 0.9673809598542934
+    }
+  }
+}

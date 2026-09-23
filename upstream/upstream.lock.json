@@ -42,6 +42,26 @@
       "commit": "c4485f1c267410d291a717d05aa12d493559f337",
       "checkout_directory": "work/zero_setup",
       "runtime_semantics": "local Qiskit pauli-propagation kernel only; remote BlueQubit MPS/statevector execution is excluded"
+    },
+    "quantum_rings": {
+      "challenge_repository": "https://github.com/iQuHACK/2026-Quantum-Rings.git",
+      "challenge_commit": "1e2247f708136b2c6da99d7f98564ea2b15474f9",
+      "paper": "https://arxiv.org/abs/2606.11620",
+      "runtime_semantics": "Quantum Rings tensor-network simulator: minimum truncation threshold plus 10000-shot forward wall time. CPU/GPU and precision are categorical tags; the public table does not name the host CPU, GPU, RAM, VRAM, OS or SDK version that produced the labels.",
+      "community_solutions": {
+        "spirit_sprinters": {
+          "repository": "https://github.com/woody-hulse/quantum-rings.git",
+          "commit": "14b5ea14dea8f6b55edf632030f5c022e8ad7373",
+          "role": "official winner; XGBoost threshold plus Transformer duration"
+        },
+        "softlocked": {
+          "repository": "https://github.com/SoftLocked/2026-Quantum-Rings.git",
+          "commit": "da13c074d68c2fe3a1053c751234ee0916d73739",
+          "role": "tabular GradientBoosting in-domain control; domain-shift failure on public 0.99-forward labels"
+        }
+      },
+      "checkout_script": "tracks/quantum_rings/clone_upstreams.sh",
+      "report": "artifacts/quantum_rings/REPORT.md"
     }
   }
 }

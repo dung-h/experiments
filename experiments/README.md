@@ -209,3 +209,19 @@ Evaluate only pre-run features with:
 as post-run diagnostics/labels and are excluded from the static feature block.
 The checked-in 48-row run is documented in
 [`artifacts/cudaq_runtime/cudaq_mps_20260921/REPORT.md`](../artifacts/cudaq_runtime/cudaq_mps_20260921/REPORT.md).
+
+## Quantum Rings / iQuHACK public-artifact audit
+
+The committed result is the 18 September 2026 evaluation of Spirit Sprinters
+and SoftLocked on the public 144-row table. Re-read
+[`artifacts/quantum_rings/REPORT.md`](../artifacts/quantum_rings/REPORT.md)
+before comparing scores. The contest labels do not include a simulation
+machine profile.
+
+```bash
+python3 scripts/verify_artifacts.py
+bash tracks/quantum_rings/clone_upstreams.sh work
+```
+
+Do not pool these clocks with Ma–Li, cuTensorNet, or dense-statevector rows.
+
