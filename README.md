@@ -40,7 +40,7 @@ reorganisation:
 | --- | --- | --- |
 | Qonductor | One-job execution estimate, queue excluded | Public regression predictions beat the numerical DAG baseline on the supplied 100-row CSV. No stable join from the resource-estimator CSV to the circuit/job database. |
 | CDAA/QCRE | Compiled-circuit schedule duration | Gate-aware depth follows the artifact's schedule reference. That reference is not measured QPU wall-clock. |
-| cuTensorNet | RTX 5070 Ti contraction `RUNTIME_EST` | 70% 25-row over-predicts cheap kernels; 90% QFT q36–q44 under-predicts 4.19–5.11×. Plan-cost proxy, not wall-clock. |
+| cuTensorNet | RTX 5070 Ti contraction `RUNTIME_EST` | 70% 25-row and Ma–Li q≤10 QASM over-predict cheap kernels (median actual/EST 0.231 on 176 MQT files); 90% QFT q36–q44 under-predicts 4.19–5.11×. Plan-cost proxy, not wall-clock. |
 | Azizov independent Aer screen | Local noisy Aer `T_exec` after transpile | 149/1,402 circuits pass the conservative local screen; 1,192 tested rows complete. Not the unpublished paper table. |
 | Dense-statevector / CUDA-Q | Fixed local simulator kernels | Separate clocks. Not pooled with QPU or Quantum Rings labels. |
 
@@ -50,7 +50,7 @@ reorganisation:
 - Quantum Rings solutions and family-aware paper: public contest labels. CPU/GPU is a tag, not a host profile. No SDK rerun.
 - Qonductor: archived one-job execution estimate.
 - CDAA/QCRE: analytical duration from archived instruction-duration snapshots.
-- cuTensorNet: local GPU scalar contraction; warm CUDA-event time is distinct from first-call end-to-end latency. The 90% QFT frontier is a later workspace policy, not a replacement of the 70% 25-row/55-row tables.
+- cuTensorNet: local GPU scalar contraction; warm CUDA-event time is distinct from first-call end-to-end latency. The 90% QFT frontier and the Ma–Li q≤10 QASM table are later measurements, not replacements of the 70% 25-row/55-row tables, and not QPU labels.
 
 The repository excludes live QPU jobs, cloud ETL, virtual environments,
 checkpoints, coarsened native-DAG tensors, and upstream source trees.

@@ -1,0 +1,356 @@
+Pool 1510; selected 176; skipped 1334; already done 0; pending 176
+[1/176] ghz_indep_qiskit_2 gates~2 samples=16
+  ok warm=3.267e-05s est=5e-05s ratio=0.653 path=0.001s wall=0.258s
+[2/176] grover-noancilla_indep_qiskit_2 gates~2 samples=16
+  ok warm=2.81e-05s est=5e-05s ratio=0.562 path=0.001s wall=0.005s
+[3/176] grover-v-chain_indep_qiskit_2 gates~2 samples=16
+  ok warm=3.088e-05s est=5e-05s ratio=0.618 path=0.001s wall=0.005s
+[4/176] ghz_indep_qiskit_3 gates~3 samples=16
+  ok warm=3.418e-05s est=8e-05s ratio=0.427 path=0.001s wall=0.006s
+[5/176] dj_indep_qiskit_2 gates~4 samples=16
+  ok warm=3.213e-05s est=7e-05s ratio=0.459 path=0.001s wall=0.005s
+[6/176] qft_indep_qiskit_2 gates~4 samples=16
+  ok warm=3.309e-05s est=7e-05s ratio=0.473 path=0.001s wall=0.006s
+[7/176] qpeexact_indep_qiskit_2 gates~4 samples=16
+  ok warm=3.418e-05s est=7e-05s ratio=0.488 path=0.001s wall=0.005s
+[8/176] qpeinexact_indep_qiskit_2 gates~4 samples=16
+  ok warm=3.312e-05s est=7e-05s ratio=0.473 path=0.001s wall=0.006s
+[9/176] ghz_indep_qiskit_4 gates~4 samples=16
+  ok warm=4.16e-05s est=0.00011s ratio=0.378 path=0.003s wall=0.007s
+[10/176] wstate_indep_qiskit_2 gates~5 samples=16
+  ok warm=3.504e-05s est=8e-05s ratio=0.438 path=0.001s wall=0.006s
+[11/176] ghz_indep_qiskit_5 gates~5 samples=16
+  ok warm=4.675e-05s est=0.00014s ratio=0.334 path=0.003s wall=0.008s
+[12/176] qftentangled_indep_qiskit_2 gates~6 samples=16
+  ok warm=4.058e-05s est=9e-05s ratio=0.451 path=0.002s wall=0.006s
+[13/176] graphstate_indep_qiskit_3 gates~6 samples=16
+  ok warm=4.026e-05s est=0.00011s ratio=0.366 path=0.003s wall=0.007s
+[14/176] ghz_indep_qiskit_6 gates~6 samples=16
+  ok warm=5.482e-05s est=0.00017s ratio=0.322 path=0.004s wall=0.008s
+[15/176] ae_indep_qiskit_2 gates~7 samples=16
+  ok warm=3.91e-05s est=0.0001s ratio=0.391 path=0.003s wall=0.008s
+[16/176] dj_indep_qiskit_3 gates~7 samples=16
+  ok warm=4.31e-05s est=0.00012s ratio=0.359 path=0.003s wall=0.008s
+[17/176] qft_indep_qiskit_3 gates~7 samples=16
+  ok warm=4.17e-05s est=0.00012s ratio=0.347 path=0.004s wall=0.008s
+[18/176] ghz_indep_qiskit_7 gates~7 samples=16
+  ok warm=5.494e-05s est=0.0002s ratio=0.275 path=0.004s wall=0.010s
+[19/176] qpeexact_indep_qiskit_3 gates~8 samples=16
+  ok warm=4.39e-05s est=0.00013s ratio=0.338 path=0.003s wall=0.010s
+[20/176] graphstate_indep_qiskit_4 gates~8 samples=16
+  ok warm=4.701e-05s est=0.00015s ratio=0.313 path=0.004s wall=0.009s
+[21/176] ghz_indep_qiskit_8 gates~8 samples=16
+  ok warm=6.045e-05s est=0.00023s ratio=0.263 path=0.004s wall=0.009s
+[22/176] qpeinexact_indep_qiskit_3 gates~9 samples=16
+  ok warm=4.589e-05s est=0.00014s ratio=0.328 path=0.003s wall=0.008s
+[23/176] wstate_indep_qiskit_3 gates~9 samples=16
+  ok warm=4.454e-05s est=0.00014s ratio=0.318 path=0.004s wall=0.009s
+[24/176] ghz_indep_qiskit_9 gates~9 samples=16
+  ok warm=6.742e-05s est=0.00026s ratio=0.259 path=0.004s wall=0.010s
+[25/176] qftentangled_indep_qiskit_3 gates~10 samples=16
+  ok warm=4.688e-05s est=0.00015s ratio=0.313 path=0.005s wall=0.010s
+[26/176] dj_indep_qiskit_4 gates~10 samples=16
+  ok warm=4.915e-05s est=0.00017s ratio=0.289 path=0.004s wall=0.008s
+[27/176] graphstate_indep_qiskit_5 gates~10 samples=16
+  ok warm=5.35e-05s est=0.00019s ratio=0.282 path=0.005s wall=0.010s
+[28/176] ghz_indep_qiskit_10 gates~10 samples=16
+  ok warm=7.187e-05s est=0.00029s ratio=0.248 path=0.005s wall=0.010s
+[29/176] realamprandom_indep_qiskit_2 gates~11 samples=16
+  ok warm=4.694e-05s est=0.00014s ratio=0.335 path=0.003s wall=0.008s
+[30/176] su2random_indep_qiskit_2 gates~11 samples=16
+  ok warm=4.573e-05s est=0.00014s ratio=0.327 path=0.003s wall=0.008s
+[31/176] twolocalrandom_indep_qiskit_2 gates~11 samples=16
+  ok warm=4.518e-05s est=0.00014s ratio=0.323 path=0.003s wall=0.008s
+[32/176] qft_indep_qiskit_4 gates~12 samples=16
+  ok warm=5.389e-05s est=0.00019s ratio=0.284 path=0.007s wall=0.014s
+[33/176] qpeexact_indep_qiskit_4 gates~12 samples=16
+  ok warm=5.427e-05s est=0.00019s ratio=0.286 path=0.005s wall=0.010s
+[34/176] graphstate_indep_qiskit_6 gates~12 samples=16
+  ok warm=5.994e-05s est=0.00023s ratio=0.261 path=0.005s wall=0.010s
+[35/176] grover-noancilla_indep_qiskit_3 gates~13 samples=16
+  ok warm=5.274e-05s est=0.00018s ratio=0.293 path=0.006s wall=0.011s
+[36/176] grover-v-chain_indep_qiskit_3 gates~13 samples=16
+  ok warm=4.95e-05s est=0.00018s ratio=0.275 path=0.006s wall=0.015s
+[37/176] vqe_indep_qiskit_3 gates~13 samples=16
+  ok warm=4.941e-05s est=0.00018s ratio=0.274 path=0.005s wall=0.010s
+[38/176] wstate_indep_qiskit_4 gates~13 samples=16
+  ok warm=5.347e-05s est=0.0002s ratio=0.267 path=0.004s wall=0.009s
+[39/176] dj_indep_qiskit_5 gates~13 samples=16
+  ok warm=5.76e-05s est=0.00022s ratio=0.262 path=0.004s wall=0.009s
+[40/176] ae_indep_qiskit_3 gates~14 samples=16
+  ok warm=5.27e-05s est=0.00019s ratio=0.277 path=0.005s wall=0.010s
+[41/176] qpeinexact_indep_qiskit_4 gates~14 samples=16
+  ok warm=5.834e-05s est=0.00021s ratio=0.278 path=0.006s wall=0.011s
+[42/176] graphstate_indep_qiskit_7 gates~14 samples=16
+  ok warm=6.762e-05s est=0.00027s ratio=0.250 path=0.005s wall=0.010s
+[43/176] qnn_indep_qiskit_2 gates~15 samples=16
+  ok warm=5.008e-05s est=0.00018s ratio=0.278 path=0.004s wall=0.010s
+[44/176] qaoa_indep_qiskit_3 gates~15 samples=16
+  ok warm=5.443e-05s est=0.0002s ratio=0.272 path=0.006s wall=0.012s
+[45/176] random_indep_qiskit_2 gates~16 samples=16
+  ok warm=5.376e-05s est=0.00019s ratio=0.283 path=0.004s wall=0.010s
+[46/176] random_indep_qiskit_3 gates~16 samples=16
+  ok warm=8.835e-05s est=0.00037s ratio=0.239 path=0.007s wall=0.014s
+[47/176] qftentangled_indep_qiskit_4 gates~16 samples=16
+  ok warm=5.968e-05s est=0.00023s ratio=0.259 path=0.008s wall=0.013s
+[48/176] dj_indep_qiskit_6 gates~16 samples=16
+  ok warm=6.758e-05s est=0.00027s ratio=0.250 path=0.005s wall=0.010s
+[49/176] graphstate_indep_qiskit_8 gates~16 samples=16
+  ok warm=0.0001155s est=0.00031s ratio=0.373 path=0.006s wall=0.012s
+[50/176] qft_indep_qiskit_5 gates~17 samples=16
+  ok warm=6.541e-05s est=0.00026s ratio=0.252 path=0.016s wall=0.022s
+[51/176] wstate_indep_qiskit_5 gates~17 samples=16
+  ok warm=6.509e-05s est=0.00026s ratio=0.250 path=0.005s wall=0.011s
+[52/176] vqe_indep_qiskit_4 gates~18 samples=16
+  ok warm=6.282e-05s est=0.00025s ratio=0.251 path=0.005s wall=0.010s
+[53/176] graphstate_indep_qiskit_9 gates~18 samples=16
+  ok warm=8.192e-05s est=0.00035s ratio=0.234 path=0.007s wall=0.013s
+[54/176] dj_indep_qiskit_7 gates~19 samples=16
+  ok warm=7.558e-05s est=0.00032s ratio=0.236 path=0.005s wall=0.011s
+[55/176] qaoa_indep_qiskit_4 gates~20 samples=16
+  ok warm=6.63e-05s est=0.00027s ratio=0.246 path=0.008s wall=0.014s
+[56/176] portfolioqaoa_indep_qiskit_3 gates~21 samples=16
+  ok warm=6.698e-05s est=0.00026s ratio=0.258 path=0.009s wall=0.015s
+[57/176] portfoliovqe_indep_qiskit_3 gates~21 samples=16
+  ok warm=6.579e-05s est=0.00026s ratio=0.253 path=0.009s wall=0.014s
+[58/176] realamprandom_indep_qiskit_3 gates~21 samples=16
+  ok warm=6.506e-05s est=0.00026s ratio=0.250 path=0.005s wall=0.011s
+[59/176] su2random_indep_qiskit_3 gates~21 samples=16
+  ok warm=6.79e-05s est=0.00026s ratio=0.261 path=0.005s wall=0.011s
+[60/176] twolocalrandom_indep_qiskit_3 gates~21 samples=16
+  ok warm=6.605e-05s est=0.00026s ratio=0.254 path=0.005s wall=0.011s
+[61/176] qpeexact_indep_qiskit_5 gates~21 samples=16
+  ok warm=7.043e-05s est=0.0003s ratio=0.235 path=0.009s wall=0.015s
+[62/176] qpeinexact_indep_qiskit_5 gates~21 samples=16
+  ok warm=7.155e-05s est=0.0003s ratio=0.239 path=0.009s wall=0.015s
+[63/176] wstate_indep_qiskit_6 gates~21 samples=16
+  ok warm=7.626e-05s est=0.00032s ratio=0.238 path=0.006s wall=0.011s
+[64/176] ae_indep_qiskit_4 gates~22 samples=16
+  ok warm=6.982e-05s est=0.00029s ratio=0.241 path=0.007s wall=0.013s
+[65/176] qftentangled_indep_qiskit_5 gates~22 samples=16
+  ok warm=7.35e-05s est=0.00031s ratio=0.237 path=0.013s wall=0.019s
+[66/176] vqe_indep_qiskit_5 gates~23 samples=16
+  ok warm=7.53e-05s est=0.00032s ratio=0.235 path=0.006s wall=0.012s
+[67/176] qft_indep_qiskit_6 gates~24 samples=16
+  ok warm=8.282e-05s est=0.00035s ratio=0.237 path=0.016s wall=0.023s
+[68/176] qwalk-noancilla_indep_qiskit_3 gates~25 samples=16
+  ok warm=0.000227s est=0.00114s ratio=0.199 path=0.016s wall=0.027s
+[69/176] qwalk-v-chain_indep_qiskit_3 gates~25 samples=16
+  ok warm=0.0002244s est=0.00114s ratio=0.197 path=0.016s wall=0.026s
+[70/176] qaoa_indep_qiskit_5 gates~25 samples=16
+  ok warm=8.086e-05s est=0.00034s ratio=0.238 path=0.013s wall=0.020s
+[71/176] wstate_indep_qiskit_7 gates~25 samples=16
+  ok warm=8.832e-05s est=0.00038s ratio=0.232 path=0.006s wall=0.013s
+[72/176] dj_indep_qiskit_9 gates~25 samples=16
+  ok warm=9.446e-05s est=0.00042s ratio=0.225 path=0.006s wall=0.012s
+[73/176] qpeexact_indep_qiskit_6 gates~27 samples=16
+  ok warm=8.826e-05s est=0.00038s ratio=0.232 path=0.018s wall=0.025s
+[74/176] qpeinexact_indep_qiskit_6 gates~28 samples=16
+  ok warm=9.235e-05s est=0.00039s ratio=0.237 path=0.020s wall=0.027s
+[75/176] vqe_indep_qiskit_6 gates~28 samples=16
+  ok warm=9.037e-05s est=0.00039s ratio=0.232 path=0.006s wall=0.012s
+[76/176] dj_indep_qiskit_10 gates~28 samples=16
+  ok warm=0.0001086s est=0.00047s ratio=0.231 path=0.006s wall=0.013s
+[77/176] wstate_indep_qiskit_8 gates~29 samples=16
+  ok warm=9.978e-05s est=0.00044s ratio=0.227 path=0.007s wall=0.014s
+[78/176] qaoa_indep_qiskit_6 gates~30 samples=16
+  ok warm=9.459e-05s est=0.00041s ratio=0.231 path=0.012s wall=0.018s
+[79/176] qftentangled_indep_qiskit_6 gates~30 samples=16
+  ok warm=9.219e-05s est=0.00041s ratio=0.225 path=0.034s wall=0.040s
+[80/176] ae_indep_qiskit_5 gates~31 samples=16
+  ok warm=9.248e-05s est=0.0004s ratio=0.231 path=0.010s wall=0.017s
+[81/176] qft_indep_qiskit_7 gates~31 samples=16
+  ok warm=0.0001015s est=0.00044s ratio=0.231 path=0.053s wall=0.061s
+[82/176] qnn_indep_qiskit_3 gates~32 samples=16
+  ok warm=8.592e-05s est=0.00037s ratio=0.232 path=0.007s wall=0.014s
+[83/176] vqe_indep_qiskit_7 gates~33 samples=16
+  ok warm=0.0001101s est=0.00046s ratio=0.239 path=0.007s wall=0.015s
+[84/176] wstate_indep_qiskit_9 gates~33 samples=16
+  ok warm=0.0001091s est=0.0005s ratio=0.218 path=0.008s wall=0.015s
+[85/176] portfolioqaoa_indep_qiskit_4 gates~34 samples=16
+  ok warm=9.533e-05s est=0.00041s ratio=0.233 path=0.020s wall=0.027s
+[86/176] portfoliovqe_indep_qiskit_4 gates~34 samples=16
+  ok warm=9.466e-05s est=0.00041s ratio=0.231 path=0.020s wall=0.027s
+[87/176] realamprandom_indep_qiskit_4 gates~34 samples=16
+  ok warm=9.187e-05s est=0.00041s ratio=0.224 path=0.008s wall=0.015s
+[88/176] su2random_indep_qiskit_4 gates~34 samples=16
+  ok warm=9.267e-05s est=0.00041s ratio=0.226 path=0.008s wall=0.015s
+[89/176] twolocalrandom_indep_qiskit_4 gates~34 samples=16
+  ok warm=9.424e-05s est=0.00041s ratio=0.230 path=0.008s wall=0.015s
+[90/176] qaoa_indep_qiskit_7 gates~35 samples=16
+  ok warm=0.0001092s est=0.00048s ratio=0.227 path=0.017s wall=0.025s
+[91/176] qpeexact_indep_qiskit_7 gates~35 samples=16
+  ok warm=0.0001029s est=0.00048s ratio=0.214 path=0.040s wall=0.047s
+[92/176] qpeinexact_indep_qiskit_7 gates~37 samples=16
+  ok warm=0.00011s est=0.0005s ratio=0.220 path=0.027s wall=0.036s
+[93/176] wstate_indep_qiskit_10 gates~37 samples=16
+  ok warm=0.0001206s est=0.00056s ratio=0.215 path=0.008s wall=0.017s
+[94/176] qftentangled_indep_qiskit_7 gates~38 samples=16
+  ok warm=0.0001101s est=0.00051s ratio=0.216 path=0.036s wall=0.044s
+[95/176] vqe_indep_qiskit_8 gates~38 samples=16
+  ok warm=0.0001119s est=0.00053s ratio=0.211 path=0.008s wall=0.016s
+[96/176] qaoa_indep_qiskit_8 gates~40 samples=16
+  ok warm=0.0001163s est=0.00055s ratio=0.211 path=0.020s wall=0.029s
+[97/176] qft_indep_qiskit_8 gates~40 samples=16
+  ok warm=0.0001184s est=0.00055s ratio=0.215 path=0.111s wall=0.120s
+[98/176] ae_indep_qiskit_6 gates~41 samples=16
+  ok warm=0.0001119s est=0.00052s ratio=0.215 path=0.013s wall=0.022s
+[99/176] vqe_indep_qiskit_9 gates~43 samples=16
+  ok warm=0.0001271s est=0.0006s ratio=0.212 path=0.009s wall=0.017s
+[100/176] grover-noancilla_indep_qiskit_4 gates~44 samples=16
+  ok warm=0.000163s est=0.00079s ratio=0.206 path=0.028s wall=0.038s
+[101/176] grover-v-chain_indep_qiskit_4 gates~44 samples=16
+  ok warm=0.0001621s est=0.00079s ratio=0.205 path=0.028s wall=0.038s
+[102/176] qaoa_indep_qiskit_9 gates~45 samples=16
+  ok warm=0.0001272s est=0.00062s ratio=0.205 path=0.018s wall=0.026s
+[103/176] random_indep_qiskit_4 gates~46 samples=16
+  ok warm=0.0001382s est=0.00067s ratio=0.206 path=0.012s wall=0.021s
+[104/176] qpeexact_indep_qiskit_8 gates~46 samples=16
+  ok warm=0.0001291s est=0.00061s ratio=0.212 path=0.070s wall=0.079s
+[105/176] qpeinexact_indep_qiskit_8 gates~46 samples=16
+  ok warm=0.0001276s est=0.00061s ratio=0.209 path=0.070s wall=0.080s
+[106/176] qftentangled_indep_qiskit_8 gates~48 samples=16
+  ok warm=0.0001348s est=0.00063s ratio=0.214 path=0.120s wall=0.130s
+[107/176] vqe_indep_qiskit_10 gates~48 samples=16
+  ok warm=0.0001396s est=0.00067s ratio=0.208 path=0.010s wall=0.018s
+[108/176] qwalk-v-chain_indep_qiskit_5 gates~49 samples=16
+  ok warm=0.0006132s est=0.00322s ratio=0.190 path=0.095s wall=0.118s
+[109/176] qft_indep_qiskit_9 gates~49 samples=16
+  ok warm=0.000138s est=0.00066s ratio=0.209 path=0.286s wall=0.296s
+[110/176] portfolioqaoa_indep_qiskit_5 gates~50 samples=16
+  ok warm=0.0001495s est=0.00059s ratio=0.253 path=0.098s wall=0.108s
+[111/176] portfoliovqe_indep_qiskit_5 gates~50 samples=16
+  ok warm=0.0001263s est=0.00059s ratio=0.214 path=0.098s wall=0.107s
+[112/176] realamprandom_indep_qiskit_5 gates~50 samples=16
+  ok warm=0.0001274s est=0.00059s ratio=0.216 path=0.014s wall=0.022s
+[113/176] su2random_indep_qiskit_5 gates~50 samples=16
+  ok warm=0.000127s est=0.00059s ratio=0.215 path=0.014s wall=0.022s
+[114/176] twolocalrandom_indep_qiskit_5 gates~50 samples=16
+  ok warm=0.0001287s est=0.00059s ratio=0.218 path=0.014s wall=0.021s
+[115/176] qaoa_indep_qiskit_10 gates~50 samples=16
+  ok warm=0.0001435s est=0.00069s ratio=0.208 path=0.032s wall=0.051s
+[116/176] ae_indep_qiskit_7 gates~52 samples=16
+  ok warm=0.000136s est=0.00065s ratio=0.209 path=0.027s wall=0.036s
+[117/176] random_indep_qiskit_5 gates~54 samples=16
+  ok warm=0.0001579s est=0.00077s ratio=0.205 path=0.016s wall=0.026s
+[118/176] qnn_indep_qiskit_4 gates~55 samples=16
+  ok warm=0.0001326s est=0.00062s ratio=0.214 path=0.011s wall=0.019s
+[119/176] qpeexact_indep_qiskit_9 gates~56 samples=16
+  ok warm=0.0001504s est=0.00073s ratio=0.206 path=0.107s wall=0.117s
+[120/176] qpeinexact_indep_qiskit_9 gates~57 samples=16
+Pool 1510; selected 176; skipped 1334; already done 119; pending 57
+[1/57] qpeinexact_indep_qiskit_9 gates~57 samples=16
+  ok warm=0.0001686s est=0.00074s ratio=0.228 path=0.148s wall=0.412s
+[2/57] qftentangled_indep_qiskit_9 gates~58 samples=16
+  ok warm=0.0001691s est=0.00075s ratio=0.225 path=0.268s wall=0.279s
+[3/57] qft_indep_qiskit_10 gates~60 samples=16
+  ok warm=0.0005358s est=0.00079s ratio=0.678 path=0.462s wall=0.529s
+[4/57] ae_indep_qiskit_8 gates~64 samples=16
+  ok warm=0.0001665s est=0.00079s ratio=0.211 path=0.050s wall=0.064s
+[5/57] qpeexact_indep_qiskit_10 gates~66 samples=16
+  ok warm=0.0001704s est=0.00085s ratio=0.201 path=0.489s wall=0.500s
+[6/57] qpeinexact_indep_qiskit_10 gates~68 samples=16
+  ok warm=0.0001823s est=0.00087s ratio=0.210 path=0.565s wall=0.577s
+[7/57] portfolioqaoa_indep_qiskit_6 gates~69 samples=16
+  ok warm=0.0001668s est=0.0008s ratio=0.209 path=0.149s wall=0.160s
+[8/57] portfoliovqe_indep_qiskit_6 gates~69 samples=16
+  ok warm=0.0001661s est=0.0008s ratio=0.208 path=0.138s wall=0.148s
+[9/57] realamprandom_indep_qiskit_6 gates~69 samples=16
+  ok warm=0.0001658s est=0.0008s ratio=0.207 path=0.020s wall=0.029s
+[10/57] su2random_indep_qiskit_6 gates~69 samples=16
+  ok warm=0.0001632s est=0.0008s ratio=0.204 path=0.020s wall=0.030s
+[11/57] twolocalrandom_indep_qiskit_6 gates~69 samples=16
+  ok warm=0.0001681s est=0.0008s ratio=0.210 path=0.020s wall=0.029s
+[12/57] qftentangled_indep_qiskit_10 gates~70 samples=16
+  ok warm=0.0001782s est=0.00089s ratio=0.200 path=0.501s wall=0.512s
+[13/57] random_indep_qiskit_6 gates~72 samples=16
+  ok warm=0.0001964s est=0.00099s ratio=0.198 path=0.024s wall=0.036s
+[14/57] ae_indep_qiskit_9 gates~77 samples=16
+  ok warm=0.0001882s est=0.00094s ratio=0.200 path=0.175s wall=0.186s
+[15/57] qnn_indep_qiskit_5 gates~84 samples=16
+  ok warm=0.0001877s est=0.00093s ratio=0.202 path=0.021s wall=0.032s
+[16/57] qwalk-v-chain_indep_qiskit_7 gates~85 samples=16
+  ok warm=0.001226s est=0.00638s ratio=0.192 path=0.244s wall=0.358s
+[17/57] portfolioqaoa_indep_qiskit_7 gates~91 samples=16
+  ok warm=0.0002091s est=0.00104s ratio=0.201 path=0.442s wall=0.456s
+[18/57] portfoliovqe_indep_qiskit_7 gates~91 samples=16
+  ok warm=0.0002084s est=0.00104s ratio=0.200 path=0.398s wall=0.410s
+[19/57] realamprandom_indep_qiskit_7 gates~91 samples=16
+  ok warm=0.0002085s est=0.00104s ratio=0.200 path=0.031s wall=0.042s
+[20/57] su2random_indep_qiskit_7 gates~91 samples=16
+  ok warm=0.0002094s est=0.00104s ratio=0.201 path=0.031s wall=0.042s
+[21/57] twolocalrandom_indep_qiskit_7 gates~91 samples=16
+  ok warm=0.0002092s est=0.00104s ratio=0.201 path=0.031s wall=0.042s
+[22/57] ae_indep_qiskit_10 gates~91 samples=16
+  ok warm=0.0002176s est=0.0011s ratio=0.198 path=0.200s wall=0.213s
+[23/57] random_indep_qiskit_7 gates~109 samples=16
+  ok warm=0.0002949s est=0.00152s ratio=0.194 path=0.046s wall=0.062s
+[24/57] portfolioqaoa_indep_qiskit_8 gates~116 samples=16
+  ok warm=0.0002578s est=0.00131s ratio=0.197 path=0.396s wall=0.411s
+[25/57] portfoliovqe_indep_qiskit_8 gates~116 samples=16
+  ok warm=0.0002597s est=0.00131s ratio=0.198 path=0.397s wall=0.419s
+[26/57] realamprandom_indep_qiskit_8 gates~116 samples=16
+  ok warm=0.0002661s est=0.00131s ratio=0.203 path=0.065s wall=0.078s
+[27/57] su2random_indep_qiskit_8 gates~116 samples=16
+  ok warm=0.0002653s est=0.00131s ratio=0.203 path=0.065s wall=0.078s
+[28/57] twolocalrandom_indep_qiskit_8 gates~116 samples=16
+  ok warm=0.000265s est=0.00131s ratio=0.202 path=0.065s wall=0.078s
+[29/57] qnn_indep_qiskit_6 gates~119 samples=16
+  ok warm=0.0002534s est=0.0013s ratio=0.195 path=0.034s wall=0.048s
+[30/57] grover-v-chain_indep_qiskit_5 gates~125 samples=16
+  ok warm=0.00131s est=0.002242s ratio=0.584 path=1.190s wall=1.233s
+[31/57] qwalk-v-chain_indep_qiskit_9 gates~133 samples=16
+  ok warm=0.002214s est=0.01062s ratio=0.208 path=0.441s wall=0.569s
+[32/57] random_indep_qiskit_8 gates~144 samples=16
+  ok warm=0.0003386s est=0.00173s ratio=0.196 path=0.117s wall=0.137s
+[33/57] portfolioqaoa_indep_qiskit_9 gates~144 samples=16
+  ok warm=0.0003133s est=0.00161s ratio=0.195 path=1.108s wall=1.126s
+[34/57] portfoliovqe_indep_qiskit_9 gates~144 samples=16
+  ok warm=0.0003325s est=0.00161s ratio=0.207 path=1.112s wall=1.128s
+[35/57] realamprandom_indep_qiskit_9 gates~144 samples=16
+  ok warm=0.0004265s est=0.00161s ratio=0.265 path=0.097s wall=0.133s
+[36/57] su2random_indep_qiskit_9 gates~144 samples=16
+  ok warm=0.000376s est=0.00161s ratio=0.233 path=0.097s wall=0.113s
+[37/57] twolocalrandom_indep_qiskit_9 gates~144 samples=16
+  ok warm=0.0003695s est=0.00161s ratio=0.229 path=0.097s wall=0.112s
+[38/57] random_indep_qiskit_9 gates~154 samples=16
+  ok warm=0.0004388s est=0.00213s ratio=0.206 path=0.163s wall=0.183s
+[39/57] qnn_indep_qiskit_7 gates~160 samples=16
+  ok warm=0.0003349s est=0.00173s ratio=0.194 path=0.084s wall=0.100s
+[40/57] portfolioqaoa_indep_qiskit_10 gates~175 samples=16
+  ok warm=0.0003777s est=0.00194s ratio=0.195 path=1.271s wall=1.291s
+[41/57] portfoliovqe_indep_qiskit_10 gates~175 samples=16
+  ok warm=0.0003806s est=0.00194s ratio=0.196 path=1.273s wall=1.291s
+[42/57] realamprandom_indep_qiskit_10 gates~175 samples=16
+  ok warm=0.0004826s est=0.00194s ratio=0.249 path=0.146s wall=0.164s
+[43/57] su2random_indep_qiskit_10 gates~175 samples=16
+  ok warm=0.0004794s est=0.00194s ratio=0.247 path=0.145s wall=0.164s
+[44/57] twolocalrandom_indep_qiskit_10 gates~175 samples=16
+  ok warm=0.0004797s est=0.00194s ratio=0.247 path=0.146s wall=0.163s
+[45/57] qwalk-noancilla_indep_qiskit_4 gates~190 samples=16
+  ok warm=0.0005351s est=0.00281s ratio=0.190 path=0.085s wall=0.107s
+[46/57] grover-noancilla_indep_qiskit_5 gates~191 samples=16
+  ok warm=0.000388s est=0.002s ratio=0.194 path=0.320s wall=0.342s
+[47/57] random_indep_qiskit_10 gates~191 samples=16
+  ok warm=0.0005562s est=0.00254s ratio=0.219 path=0.220s wall=0.243s
+[48/57] qnn_indep_qiskit_8 gates~207 samples=16
+  ok warm=0.0004276s est=0.00222s ratio=0.193 path=0.114s wall=0.134s
+[49/57] qnn_indep_qiskit_9 gates~260 samples=16
+  ok warm=0.0005625s est=0.00277s ratio=0.203 path=0.160s wall=0.184s
+[50/57] grover-v-chain_indep_qiskit_7 gates~310 samples=16
+  ok warm=0.001015s est=0.00507s ratio=0.200 path=0.664s wall=0.705s
+[51/57] qnn_indep_qiskit_10 gates~319 samples=16
+  ok warm=0.0007085s est=0.00338s ratio=0.210 path=0.176s wall=0.205s
+[52/57] grover-noancilla_indep_qiskit_6 gates~450 samples=16
+  ok warm=0.001151s est=0.004614s ratio=0.249 path=2.844s wall=2.890s
+[53/57] qwalk-noancilla_indep_qiskit_5 gates~453 samples=16
+  ok warm=0.001059s est=0.00546s ratio=0.194 path=0.465s wall=0.510s
+[54/57] qwalk-noancilla_indep_qiskit_6 gates~831 samples=8
+  ok warm=0.1371s est=0.3127s ratio=0.438 path=2.850s wall=4.024s
+[55/57] grover-v-chain_indep_qiskit_9 gates~871 samples=8
+  ok warm=0.05232s est=0.0235s ratio=2.227 path=2.867s wall=3.365s
+[56/57] grover-noancilla_indep_qiskit_7 gates~1195 samples=8
+  ok warm=0.002746s est=0.01208s ratio=0.227 path=71.872s wall=71.983s
+[57/57] qwalk-noancilla_indep_qiskit_7 gates~1593 samples=8
+  ok warm=0.003988s est=0.0169s ratio=0.236 path=108.736s wall=108.883s
+{"pool_size": 1510, "n_selected": 176, "n_ok": 176, "n_failed": 0, "elapsed_s": 207.87696768900014, "result_csv": "/home/server/Documents/quantum-runtime-estimator-replications/run-output/cutensornet/mali_qasm_qle10/cutensornet_mali_qasm.csv"}

@@ -1,0 +1,35 @@
+{
+  "finding_date": "2026-09-23",
+  "pool_size": 1510,
+  "n_selected": 176,
+  "n_ok": 176,
+  "n_failed": 0,
+  "n_skipped": 1334,
+  "n_families": 22,
+  "workspace_memory_limit": "90%",
+  "optimizer_cost_function": "TIME_TUNED",
+  "optimizer_seed": 137,
+  "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+  "runtime_semantics": "T_sim_contract: local GPU tensor-network scalar amplitude of Ma-Li MQT QASM; not result.time_taken",
+  "median_actual_over_est": 0.23110491262412614,
+  "mean_actual_over_est": 0.2699345459058791,
+  "min_actual_over_est": 0.19041625699396514,
+  "max_actual_over_est": 2.2266004578862044,
+  "n_ratio_gt_1": 1,
+  "reversal_circuit_id": "grover-v-chain_indep_qiskit_9",
+  "reversal_actual_over_est": 2.2266004578862044,
+  "n_sliced": 1,
+  "sliced_circuit_id": "qwalk-noancilla_indep_qiskit_6",
+  "skip_reasons": {
+    "width_outside_2_10": 1331,
+    "gate_count_3144_exceeds_2500": 1,
+    "gate_count_3123_exceeds_2500": 1,
+    "gate_count_6189_exceeds_2500": 1
+  },
+  "deferred_heavies": [
+    "grover-noancilla_indep_qiskit_8",
+    "qwalk-noancilla_indep_qiskit_8",
+    "qwalk-noancilla_indep_qiskit_9"
+  ],
+  "csv_sha256": "72508b53f19d13f94e83c841de8bdcb244679b3948d3cedb8c52489aec196192"
+}

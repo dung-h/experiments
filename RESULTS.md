@@ -57,7 +57,7 @@ results retain their original provenance and hardware boundaries.
 | Ma–Li | direct compiled Ridge: strict backend+QASM-held-out log R² 0.8742, MAE 0.5224 s; adaptation: pretrained R² 0.5922 ± 0.8317, scratch R² 0.8855 ± 0.0461 | Compiled structure supports a source-specific proxy estimator; a simulator prior can still harm fake-snapshot transfer | Current FakeBackend proxy, not the historical paper environment |
 | Qonductor | regression MAE 502.359 ms, R² 0.9386; DAG MAE 915.609 ms, R² 0.8849 | Supplied regression predictions beat the numerical DAG baseline | Derived recompute, not live IBM/retraining |
 | CDAA/QCRE | 30/45 verification rows agree; maximum delta 3.50e-16 s | QCRE matches the supplied schedule-duration reference | Schedule duration is not observed QPU wall-clock |
-| cuTensorNet | 70% 55-row: warm actual/EST 0.215; first 1.242; e2e 138; family-held-out warm median-ratio log MAE 0.131. 90% QFT q36–q44 warm actual/EST 4.19–5.11; q44 first 29.614 s vs warm 29.634 s | `RUNTIME_EST` is a contraction-path cost proxy, not a wall-clock; the 70% cheap-kernel residual and the 90% large-QFT residual have opposite sign | One GPU/software/precision setting; 70% and 90% workspace tables are not pooled; QPU labels are not used |
+| cuTensorNet | 70% 55-row: warm actual/EST 0.215. 90% QFT q36–q44: 4.19–5.11. Ma–Li MQT QASM q≤10: 176/176 ok, median actual/EST 0.231; `grover-v-chain_9` 2.227 | `RUNTIME_EST` is a contraction-path cost proxy, not a wall-clock; cheap q≤10 QASM over-predicts, large QFT under-predicts | One GPU/software/precision setting; synthetic 70%, 90% QFT, and Ma–Li QASM tables are not pooled; QPU labels are not used |
 | Azizov et al. independent | 1,192/1,192 screened local rows successful; 149/1,402 circuits eligible | Current FakeWashingtonV2/FakeSherbrooke + Aer pipeline is executable on a documented local subset | Conservative q≤9/ops/depth screen; not the paper's full HPC dataset or exact artifact |
 | Quantum Rings / iQuHACK | Spirit Sprinters public 144-row log-R² 0.743, MAE 107 s; SoftLocked in-domain R² 0.967 and public-table log-R² −25.5 | Winner is a structural public reference; SoftLocked cannot be compared until clocks match | Contest labels have no host CPU/GPU model; no SDK rerun |
 
@@ -740,7 +740,36 @@ to this table.
 
 Artifact: [runtime_est_workspace90_frontier_v1_20260923/REPORT.md](artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/REPORT.md).
 
-### 4.3 local follow-ups, not packaged
+### 4.3 Ma–Li MQT Bench QASM, q≤10 (23 September 2026)
+
+The 25-row and 55-row grids used generated GHZ, HEA, QAOA-cycle, random
+brickwork and QFT tensors. They did not load the public Ma–Li MQT Bench
+OpenQASM pool. This run does: 1,510 `*_indep_qiskit_*.qasm` files, 22
+families, still on the local GPU contraction clock, not Osaka/Kyoto
+`result.time_taken`.
+
+Exact contraction of the full pool is not feasible on one 16 GB GPU. The
+executable subset is all 22 families with 2–10 qubits and at most 2,500
+gates: 176 timed, 1,331 skipped for width, three deferred heavies
+(`grover-noancilla_8`, `qwalk-noancilla_8`, `qwalk-noancilla_9`). All 176
+selected circuits finished.
+
+Median warm actual / `RUNTIME_EST` is 0.231. That matches the cheap-kernel
+70% synthetic over-prediction, not the 90% QFT q36–q44 under-prediction,
+even though this table also used a 90% workspace cap. Family medians sit
+between 0.194 and 0.322 except `grover-v-chain` (0.430), whose q9 file is
+the only reversal: warm 52.319 ms versus estimate 23.497 ms (2.227), with a
+~2 GiB intermediate. The only sliced plan is `qwalk-noancilla_6` (32
+slices, actual/estimate 0.438). `qwalk-noancilla_7` spent 108.7 s in path
+search for a 4 ms warm contraction; that end-to-end cost is not
+`RUNTIME_EST`.
+
+Do not apply 0.231 to the QFT-44 row, and do not treat 176 circuits as the
+full 1,510-file pool.
+
+Artifact: [mali_qasm_qle10_v1_20260923/REPORT.md](artifacts/cutensornet/mali_qasm_qle10_v1_20260923/REPORT.md).
+
+### 4.4 local follow-ups, not packaged
 
 The 2026-09-22 multi-target calibration, the paired CUDA-Q / cuTensorNet IR,
 and the 2026-09-23 runtime-estimate trace remain in the working tree. They are

@@ -330,6 +330,12 @@
       "path": "artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/REPORT.md",
       "provenance_class": "OUR_REPLICATION",
       "runtime_semantics": "RTX 5070 Ti QFT scalar contraction at 90% workspace; RUNTIME_EST versus warm CUDA-event time; not the 70% 25-row/55-row tables"
+    },
+    {
+      "path": "artifacts/cutensornet/mali_qasm_qle10_v1_20260923/REPORT.md",
+      "provenance_class": "OUR_REPLICATION",
+      "runtime_semantics": "RTX 5070 Ti scalar contraction of Ma-Li MQT Bench QASM q<=10; RUNTIME_EST versus warm CUDA-event time; not result.time_taken and not the 90% QFT frontier",
+      "critical_fixture": "artifacts/cutensornet/mali_qasm_qle10_v1_20260923/headline.json"
     }
   ],
   "clusters": [

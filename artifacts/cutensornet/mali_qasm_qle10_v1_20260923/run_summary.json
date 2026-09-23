@@ -1,0 +1,8 @@
+{
+  "pool_size": 1510,
+  "n_selected": 176,
+  "n_ok": 176,
+  "n_failed": 0,
+  "elapsed_s": 207.87696768900014,
+  "result_csv": "/home/server/Documents/quantum-runtime-estimator-replications/run-output/cutensornet/mali_qasm_qle10/cutensornet_mali_qasm.csv"
+}

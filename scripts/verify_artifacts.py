@@ -31,6 +31,12 @@ REQUIRED = (
     "artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/stage_b_q42/cutensornet_runtime_benchmark.csv",
     "artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/stage_c_q44/cutensornet_runtime_benchmark.csv",
     "artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/plan_repeat_q40/cutensornet_plan_metrics.csv",
+    "tracks/cutensornet/code/run_cutensornet_mali_qasm.py",
+    "artifacts/cutensornet/mali_qasm_qle10_v1_20260923/REPORT.md",
+    "artifacts/cutensornet/mali_qasm_qle10_v1_20260923/cutensornet_mali_qasm.csv",
+    "artifacts/cutensornet/mali_qasm_qle10_v1_20260923/skipped.csv",
+    "artifacts/cutensornet/mali_qasm_qle10_v1_20260923/headline.json",
+    "artifacts/cutensornet/mali_qasm_qle10_v1_20260923/selection.json",
     "experiments/qonductor_mapping_audit.py",
     "experiments/mali_qcre_proxy.py",
     "experiments/mali_qcre_validation.py",
@@ -324,7 +330,7 @@ def main() -> int:
     },
             "unexpected upstream lock tracks")
     artifact_manifest = json.loads((ROOT / "artifacts/manifest.json").read_text())
-    require(len(artifact_manifest["artifacts"]) == 50,
+    require(len(artifact_manifest["artifacts"]) == 51,
             "unexpected replication artifact manifest size")
     require({c["id"] for c in artifact_manifest["clusters"]} == {
         "mali_azizov", "quantum_rings_solutions", "family_aware_paper"
@@ -704,6 +710,48 @@ def main() -> int:
             "cuTensorNet q40 plan-repeat widths changed")
     require({int(float(row["num_slices"])) for row in plan_rows} == {2, 4},
             "cuTensorNet q40 plan-repeat slice set changed")
+
+    mali_qasm_root = ROOT / "artifacts/cutensornet/mali_qasm_qle10_v1_20260923"
+    with (mali_qasm_root / "cutensornet_mali_qasm.csv").open(newline="") as handle:
+        mali_qasm_rows = list(csv.DictReader(handle))
+    require(len(mali_qasm_rows) == 176, "unexpected cuTensorNet Ma-Li QASM row count")
+    require({row["status"] for row in mali_qasm_rows} == {"ok"},
+            "cuTensorNet Ma-Li QASM contains a non-ok row")
+    require(len({row["family"] for row in mali_qasm_rows}) == 22,
+            "cuTensorNet Ma-Li QASM family coverage changed")
+    require({row["workspace_memory_limit"] for row in mali_qasm_rows} == {"90%"},
+            "cuTensorNet Ma-Li QASM workspace policy changed")
+    require({row["optimizer_cost_function"] for row in mali_qasm_rows} == {"TIME_TUNED"},
+            "cuTensorNet Ma-Li QASM objective changed")
+    require({row["runtime_semantics"] for row in mali_qasm_rows}
+            == {"T_sim_contract: local GPU tensor-network scalar amplitude of Ma-Li MQT QASM; not result.time_taken"},
+            "cuTensorNet Ma-Li QASM runtime semantics changed")
+    mali_ratios = [
+        float(row["contract_gpu_median_s"]) / float(row["cutensornet_runtime_est_s"])
+        for row in mali_qasm_rows
+    ]
+    mali_ratios_sorted = sorted(mali_ratios)
+    mali_median = 0.5 * (mali_ratios_sorted[87] + mali_ratios_sorted[88])
+    require(abs(mali_median - 0.2311) < 0.001,
+            "cuTensorNet Ma-Li QASM median actual/estimate changed")
+    grover9 = next(row for row in mali_qasm_rows
+                   if row["circuit_id"] == "grover-v-chain_indep_qiskit_9")
+    grover9_ratio = (float(grover9["contract_gpu_median_s"])
+                     / float(grover9["cutensornet_runtime_est_s"]))
+    require(abs(grover9_ratio - 2.227) < 0.01,
+            "cuTensorNet Ma-Li grover-v-chain_9 actual/estimate changed")
+    sliced = [row for row in mali_qasm_rows
+              if int(float(row["cutensornet_num_slices"])) != 1]
+    require(len(sliced) == 1 and sliced[0]["circuit_id"] == "qwalk-noancilla_indep_qiskit_6",
+            "cuTensorNet Ma-Li QASM sliced-plan set changed")
+    with (mali_qasm_root / "skipped.csv").open(newline="") as handle:
+        skipped_rows = list(csv.DictReader(handle))
+    require(len(skipped_rows) == 1334, "unexpected cuTensorNet Ma-Li QASM skip count")
+    require(sum(1 for row in skipped_rows if row["skip_reason"].startswith("gate_count_")) == 3,
+            "cuTensorNet Ma-Li QASM deferred-heavy count changed")
+    headline = json.loads((mali_qasm_root / "headline.json").read_text())
+    require(headline["n_ok"] == 176 and headline["n_failed"] == 0,
+            "cuTensorNet Ma-Li QASM headline counts changed")
 
     with (ROOT / "artifacts/cdaa_qcre/independent_all_metrics.csv").open(newline="") as handle:
         cdaa_rows = list(csv.DictReader(handle))

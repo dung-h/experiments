@@ -363,6 +363,29 @@ A different GPU, CUDA, cuTensorNet version, thread count or workspace policy
 is a new measurement. Report:
 `artifacts/cutensornet/runtime_est_workspace90_frontier_v1_20260923/REPORT.md`.
 
+The synthetic grids do not use Ma–Li OpenQASM. A later run contracts the
+public 1,510-file MQT Bench pool after selecting all 22 families with
+2–10 qubits and at most 2,500 gates (176 timed; 1,334 documented skips).
+The clock is still local GPU scalar contraction, not `result.time_taken`.
+Expected packaged checks: 176/176 ok; median warm actual/`RUNTIME_EST`
+0.231; `grover-v-chain_indep_qiskit_9` actual/estimate 2.227; one sliced
+plan (`qwalk-noancilla_6`, 32 slices). Qiskit 2.5.2 is required in addition
+to cuQuantum. QASM is cloned, not redistributed:
+
+```bash
+tracks/cutensornet/code/with_cutensornet_env.sh \
+  tracks/cutensornet/code/run_cutensornet_mali_qasm.py \
+  --qasm-dir work/mali/data/quantum_circuits \
+  --min-qubits 2 --max-qubits 10 --max-gates 2500 \
+  --memory-limit 90% --optimizer-samples 16 --heavy-optimizer-samples 8 \
+  --heavy-gate-threshold 800 --optimizer-seed 137 \
+  --optimizer-cost-function TIME_TUNED \
+  --warmups 2 --repeats 5 \
+  --output-dir run-output/cutensornet/mali_qasm_qle10
+```
+
+Report: `artifacts/cutensornet/mali_qasm_qle10_v1_20260923/REPORT.md`.
+
 ## Matched dense-statevector runtime matrix
 
 This local supplementary track measures one statevector implementation rather
