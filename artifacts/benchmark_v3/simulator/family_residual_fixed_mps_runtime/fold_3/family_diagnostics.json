@@ -1,0 +1,54 @@
+{
+  "fold": 3,
+  "metrics_quality_used_for_continuation": false,
+  "seed_diagnostics": [
+    {
+      "assigned_test_hashes": 25,
+      "diagnostic_after_structural_only_inference": true,
+      "seed": 42,
+      "test_family_classification_accuracy": 0.52,
+      "true_test_components_absent_from_finite_outer_training": []
+    },
+    {
+      "assigned_test_hashes": 25,
+      "diagnostic_after_structural_only_inference": true,
+      "seed": 1234,
+      "test_family_classification_accuracy": 0.48,
+      "true_test_components_absent_from_finite_outer_training": []
+    },
+    {
+      "assigned_test_hashes": 25,
+      "diagnostic_after_structural_only_inference": true,
+      "seed": 31415,
+      "test_family_classification_accuracy": 0.56,
+      "true_test_components_absent_from_finite_outer_training": []
+    }
+  ],
+  "true_test_family_components": {
+    "0285fd21a0dd1ca29cd386de85a1a8af49cc7d71f5c86f6451b55a11c68864a8": "[\"qft\"]",
+    "13721ab5a328b17bf3f8c3692cda844a7e538a8c92530d0c1236f43d3ad5a884": "[\"graphstate\"]",
+    "15e80264fdff1398ab38bbd9144f853a3a2317e95163fda15a1e9ec2657beecb": "[\"qnn\"]",
+    "187d76ac82884dc3202418b0e06077eec26afed0c625b228d76b4416e6bfa480": "[\"realamprandom\",\"twolocalrandom\"]",
+    "2e57556a1b12802c7368ef21e0eb8e5c9863f768a48a9a4d0771725e60b8a616": "[\"ghz\"]",
+    "3157278e31c54e80e45de35bfb793aac89eb413e21aabe08b2e0e140de8c0d39": "[\"su2random\"]",
+    "3c0ed99f7e5a0409bdadc636b8b7a5dd911304ccbe2e87b32589b91dd44a6a5a": "[\"qnn\"]",
+    "45ca196e391297302c92dc6ea0fd119efa62b2ee88e3b85260561e5fbafa7400": "[\"qaoa\"]",
+    "4d5b55eb4b8a0aea0af4bde721618cbe79ed66e0636398ffddc79ace483672a6": "[\"random\"]",
+    "5042c6dd513b1366c0a145850de9e534b0e38aabc818b994ab8c4b6cad7ad5c8": "[\"grover-noancilla\",\"grover-v-chain\"]",
+    "50a5fc62010017f60b77f8c81e9ddf9bd95419be272d2ec5ed1445aae0c7ac92": "[\"wstate\"]",
+    "78ecec267502f433ab148452979221600becf679520b50ad454009e0ca097af5": "[\"ae\"]",
+    "79b8fdfbfe6897a226612f9b9e27a4533aac4b48258335fb7746c5f10989cedc": "[\"realamprandom\",\"twolocalrandom\"]",
+    "81a66b1daaf97d148a8a075515daf8702349d257883a1dd88e26993c1622351f": "[\"qpeinexact\"]",
+    "8d3b3ff10a3a80d0dda4e7043cce2b222aaf9e3cc19caa194b8e87da40266ac5": "[\"realamprandom\",\"twolocalrandom\"]",
+    "99e0865dc3fced630c02b5b2710b24fd9257ba31d54112cde08a769e974f53c4": "[\"portfoliovqe\"]",
+    "9fc54c185186ff8c504ebdac4e3fa109beb4cf46f86196a3376b3153a7f72962": "[\"dj\"]",
+    "b6afb1122e1baece13144a1d0da78738759129107f453e9579e99e8789e057fe": "[\"graphstate\"]",
+    "c69c35c09a4dcfe7dd09af0b73be8e5f608531bf0baadd794f6861bcf237e40c": "[\"su2random\"]",
+    "db0e077b1674f90860a270d014aa8226822880dbf36c819dad0bea17881b7eb5": "[\"dj\"]",
+    "e2fba21685e6e7d22d625d8babcc9c51a8911815153e52fc89277e0efe117045": "[\"wstate\"]",
+    "e4664972befc3ffed396f3842bf910be22c2fbe7f293d3c295b971dfe094d398": "[\"qft\"]",
+    "f0e0170b510412a7e964e82f14793115a9e53a1b250283a74abd893a45b5f20e": "[\"qftentangled\"]",
+    "fa595f88d0ab98542a799af4492f53b2a5e2e88ebc442a9b508abac209d0afcc": "[\"random\"]",
+    "fea8eb37e38bc24d3352d9446471b5cf8f6b8af6ae4c0f931d5942564936274c": "[\"qftentangled\"]"
+  }
+}

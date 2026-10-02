@@ -2,12 +2,21 @@
 
 This guide rebuilds the included benchmark tables from saved predictions
 and simulator measurements. It does not retrain models, repeat timings or
-submit QPU jobs. Some planned method evaluations are unfinished;
-the report therefore records `PARTIAL`. The current tables are in the
+submit QPU jobs. Some paper-level methods remain unavailable or are local
+adaptations, so the scientific report remains `PARTIAL`. The current QPU
+scorecard is in the
 [two-domain scorecard v3](../artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3/README.md).
 
-The procedure has been tested in a fresh local Git clone. It rebuilds
-metrics, not the full experiment from every original dataset. The complete
+The current scientific completion queue is
+[benchmark completion](benchmark_completion.md). It distinguishes existing
+table rebuilds from newly designed predictor runs. A locked protocol is not
+evidence that its feature extraction, training or accuracy evaluation finished.
+
+The current `presentation-review` candidate has been tested in a fresh local
+clone; its receipt is in [reproduction validation](reproduction_validation.md).
+The previously published GitHub-clone receipt predates the E1–E6 additions.
+The procedure rebuilds metrics, not the full experiment from every original
+dataset. The complete
 Ma–Li logical QASM corpus and Qonductor `circuits.zip`/database export are not bundled; the
 QPack source execution payload and optimized-angle circuits were not
 recovered. Frozen labels, feature/prediction rows and aggregation inputs for
@@ -82,13 +91,131 @@ immutable v3 manifest pins its bytes. It is source evidence, not a generated
 rebuild or a general-purpose `work/` payload; its exception is explicit in
 the release inventory.
 
-The verification lock is Python 3.10 aggregation/test dependencies only.
-It does not install CUDA, CUDA-Q, cuTensorNet, Qiskit Aer, PyTorch Geometric,
-or paper-specific SDKs. This workflow is not a clean-room replay of every
-paper's original training or execution environment. It checks the frozen
-benchmark outputs and supported metric rebuild only.
+The Python 3.10 verification lock includes CPU-only PyTorch, PyTorch Geometric,
+Qiskit core and XGBoost because the full unit suite imports those runner
+modules. It does not install CUDA, CUDA-Q, cuTensorNet, Qiskit Aer or
+paper-specific SDKs, and it does not run model fitting. This workflow is not
+a clean-room replay of every paper's original training or execution
+environment. It checks frozen outputs and the supported metric rebuild only.
+
+### Candidate simulator-predictor aggregate (E1–E6 additions)
+
+The new aggregate command consumes the saved E3 fixed-MPS, E4 Aer and E5
+family-residual out-of-fold predictions, then rebuilds the two separate
+predictor tables and paired hash-bootstrap intervals. It does not fit a model,
+launch CUDA, repeat simulator timing, or rewrite `CURRENT.json`. In a checkout
+that contains these candidate additions, run it from the repository root:
+
+```bash
+python3.14 -m venv .venv-qre-aggregate
+.venv-qre-aggregate/bin/python -m pip install -r benchmark_v1/requirements-predictive-aggregate.txt
+test "$(.venv-qre-aggregate/bin/python -c 'import sys; print(sys.version.split()[0])')" = 3.14.4
+.venv-qre-aggregate/bin/python -B -c 'import numpy; assert numpy.__version__ == "2.3.5"'
+.venv-qre-aggregate/bin/python -B benchmark_v1/scripts/aggregate_predictive_oof_v1.py
+```
+
+The default output path is
+`artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/`. The
+builder is fail-closed: if that path exists, it accepts it only when every
+expected file matches byte-for-byte; otherwise it exits without overwriting
+it. Input hashes, method cards, target/output clocks, bootstrap seeds and
+metrics are pinned by `aggregate_manifest.json` and `source_hashes.json`.
+The E3/E4/E5 runner outputs and scripts must be present in the same checkout.
+They are not part of the older `benchmark-review` clone receipt above. The
+current review-package candidate has a separate local clean-clone receipt;
+public-branch verification remains a follow-up to any later push.
+
+The E6 artifact records Python 3.14.4 and NumPy 2.3.5; this pin matters for
+byte-for-byte regeneration of bootstrap summaries. Running the builder under
+the general verification environment (Python 3.10 / NumPy 2.2.6) produces
+identical coverage and point metrics but can change the final floating-point
+digits of bootstrap means. Because the builder is fail-closed, it refuses to
+replace the pinned output on that numerical-only difference. The general
+Python 3.10 environment is still the one used for the full regression suite.
+The candidate regression command is:
+
+```bash
+.venv-qre-verify/bin/python -B -m pytest -p no:cacheprovider -q benchmark_v1/tests
+```
+
+The E1–E6 candidate run passed 155 tests in the matching Python 3.10.21
+verification environment. The package file now declares the CPU-only test
+dependencies used by this suite. The same suite also passed in the local
+clean-clone check; that check reused the documented verification interpreter
+rather than freshly provisioning a new environment.
 
 ## What is and is not reproduced
+
+### Restore existing Aer context before new feature extraction
+
+The original workspace contains
+`artifacts/benchmark_v1/sim_aer_q9_full_20260927/aer_q9_full.environment.json`
+with SHA-256
+`cf4c721c88aed65f6ed39345925eeb790bb58ae790332909c31eff890e47c5ec`.
+It records the historical FakeSherbrooke snapshot hash
+`509ab97f3bf4cd0c2ddbabe2cdc790e2e440726cb2b65b468c05fc54846ec9c1`,
+noise-model hash
+`64d58378f06c47a1bd3d115a5ebea38748c2a1b9702937d497f99d0691b43aa5`,
+and the package lock at `aer_q9_full.pip-freeze.txt` with hash
+`195dd1a5f87204994a84a32a64f191802d73f295949f01ac71f17385891410d6`.
+The candidate checkout omitted these context files; the previous static
+Azizov materialization recorded them as missing. This is a packaging gap,
+not proof that the original experiment lacked context evidence.
+
+E1 restored these audited files and recorded their hashes. The installed
+environment itself was not replayed; its recorded versions and the checked
+Target/noise assets were validated against the existing local environment. E2
+recreated the recorded Target, noise model and deterministic transpilation
+before compiling the common-core features. Copying the environment JSON is
+evidence restoration, not environment replay.
+If the original snapshot or resulting compiled features cannot be reproduced,
+stop that feature pipeline and report the discrepancy; do not pair a different
+current FakeBackend's compiled inputs with the old timing labels as though
+they were measured together.
+
+### Retraining paths
+
+Source retrieval is pinned in `upstream/upstream.lock.json`. For the new
+common-panel work, fetch only the Ma–Li circuit source into a previously
+unused directory; the following commands are a retrieval recipe, not a
+claim that the full retraining campaign has already been reproduced:
+
+```bash
+git clone --no-checkout https://github.com/mooselab/Quantum-Execution-Time-Prediction.git work/sources/mali
+git -C work/sources/mali checkout --detach 32c392a6ece276f1ff046d4e30052d0571ff6dc6
+git -C work/sources/mali rev-parse HEAD
+```
+
+Resolve panel filenames under this checkout and verify each file against
+`sim_common_q16_manifest.csv`. Do not change canonical hashes or depend on
+historical `/home/server/...` paths. Qonductor's pinned revision is
+`5d1ac8a90cd574a23e7544e1044681641354ff67`; its DB/ZIP association must be
+re-audited before any QPU feature reconstruction. QPack reconstruction uses
+the revision and six structures recorded in `docs/methodology.md`. These
+retrieval/reconstruction steps do not create new observed QPU labels.
+
+The fixed-MPS runtime graph runner and the fixed-MPS family-residual runner have
+completed their five-fold OOF runs on the frozen 150-hash panel. The latter is
+a runtime-only local adaptation with a family-agnostic ablation, not the
+Family-Aware paper's joint runtime-quality model. Both used the recorded MPS
+targets and CUDA-training environment; these scores do not establish
+family-OOD performance.
+
+The Azizov three-view runner completed five folds against the frozen
+150-hash/162-member panel; its E6 aggregate passed hash-level reconciliation.
+It uses explicit local source/hybrid/transpiled feature dimensions, so it is a
+common-core adaptation rather than the paper's full 1,402-circuit evaluation.
+A first launch was stopped by the runtime-lock guard before GNN fitting
+because CUDA visibility differed from the frozen lock; it produced no GNN
+predictions and is excluded. The corrected run passed fold-0 technical QA
+and continued automatically through folds 1–4.
+
+The E1–E6 runs were performed in this workspace, not in the clean clone used
+for the older published package. Exact saved-table reproduction and
+independent retraining remain separate capabilities. Another GPU or library
+context may change numerical training results and measured runtime; the
+external absolute interpreter and ignored fitting-overlay paths are not
+portable dependencies.
 
 The 8,767-row QPU report preserves source labels, common grouped outer split
 and source identities. The recorded methods distinguish exact submitted
@@ -98,8 +225,9 @@ routing. The complete original QASM/source datasets are not all distributed
 in this candidate. See [methodology](methodology.md) for exact input and
 availability disclosures.
 
-The simulator reader pack rebuilds metrics from local, frozen measurements.
-It does not repeat Aer, CUDA-Q, MPS, cuTensorNet or Maestro timing on another
+The simulator reader pack rebuilds metrics from local, frozen measurements;
+the E6 predictive aggregate rebuilds metrics from saved OOF predictions.
+Neither repeats Aer, CUDA-Q, MPS, cuTensorNet or Maestro timing on another
 machine. Runtime values can vary by hardware, driver and execution context;
 the recorded clock, precision, shots, workspace and quality gate must remain
 attached to each result. The Maestro ten-cell pilot is terminal at

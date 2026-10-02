@@ -1,0 +1,118 @@
+{
+  "artifact_id": "mps-fixed-chi16-source-dag-runtime-adaptation-v1",
+  "core_accounting": {
+    "adapter_error_unavailable": 6,
+    "exact_hash_groups": 150,
+    "finite_runtime_labels": 144,
+    "panel_members": 162,
+    "quality_failed_finite": 2,
+    "quality_pass_finite": 142
+  },
+  "created_utc": "2026-10-02T05:17:54.447402+00:00",
+  "cuda_training_environment_preflight": {
+    "cuda_available": true,
+    "device_capability": [
+      12,
+      0
+    ],
+    "device_count": 1,
+    "device_name": "NVIDIA GeForce RTX 5070 Ti",
+    "python_executable": "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+    "torch": "2.7.1+cu128",
+    "torch_cuda_runtime": "12.8",
+    "torch_geometric": "2.6.1"
+  },
+  "expected_methods_if_authorized": [
+    "training-fold median",
+    "six-feature standardized Ridge(alpha=1.0)",
+    "three-layer TransformerConv graph adaptation"
+  ],
+  "family_support_by_primary_fold_unseen": {
+    "0": [],
+    "1": [],
+    "2": [],
+    "3": [],
+    "4": []
+  },
+  "fold0_labeled_hash_count": 36,
+  "fold0_unique_hash_count": 37,
+  "graph_configuration_if_authorized": {
+    "HPO": false,
+    "batch_size": 32,
+    "early_stopping": false,
+    "epochs": 500,
+    "optimizer": "Adam(lr=0.0005,weight_decay=0.0001)",
+    "precision": "float32",
+    "seeds": [
+      42,
+      1234,
+      31415
+    ],
+    "target_transform": "log1p(seconds)"
+  },
+  "input_sha256": {
+    "c44_fold_source_csv": "a25e2e740fd3058e487f713cd0fc074dd8761120a5aface275a212693ac05437",
+    "cudaq_bridge_manifest": "7cc55f45a27e313d9d5e47ea9b79ca6f18e1b7379f1c24e1a468ccafed3f3a87",
+    "mps_attempt_records": "2c77d505950cb269041ae09b78738c74c021c6444ba7b3300205975ab7860017",
+    "mps_environment": "b0ab34b8cda4e20556875eff9269eab410ec6493e607ee12b8dc8f47901c4bd6",
+    "mps_qa_json": "89c0d917d6e00f4c9519e89c593940b7c0e80c109acc103b7a561541509c8918",
+    "mps_raw_csv": "41aaffa3977eebb7d045555baa43dec9a5ecd81dff51aa23943f8d00f6ccc495",
+    "mps_run_manifest": "02cd92b028e5e2fe31f8f963ee9eaf7de308e5d1ddc262b85ddcef7d78db5b59",
+    "panel_manifest_csv": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e",
+    "simulator_completion_gates": "ffc12756fbc7bdf9341beaba6e49b2f3ec842694b6b8b5014356bbf33fd38aba",
+    "simulator_environment_lock": "08624ffa11ba12805e15eec93be573068b02cd362b1092c19694369ec76b21a8",
+    "static_source_dag_jsonl": "bc8816576992cd14088371265dc0f766eafcf51bc4bf39631ec17ab9f4784f3a",
+    "static_source_hashes": "2f48b8e6b3b3928cfad16eb09d5fc495ffc088aa447d8c45ec9f696c190867b0"
+  },
+  "method_claim": "fixed-config CUDA-Q MPS warm-runtime prediction; source-DAG method adaptation only",
+  "not_claimed": [
+    "Family-Aware paper reproduction",
+    "Azizov method reproduction",
+    "original Ma-Li reproduction",
+    "simulator selection",
+    "runtime at other chi/precision/engine"
+  ],
+  "prediction_unit": "one exact source-QASM SHA-256 group",
+  "primary_split": "C44 five-fold exact-QASM hash assignment; family known in every fold; fold 0 checkpoint only",
+  "quality_policy": "quality status is separately reported, never a predictor; finite quality_failed timings remain runtime targets; adapter_error is unavailable and never imputed",
+  "representation": {
+    "global_features": [
+      "active_width",
+      "measurement_stripped_structural_depth",
+      "one_qubit_gate_count",
+      "two_qubit_gate_count",
+      "multi_qubit_gate_count",
+      "swap_like_gate_count"
+    ],
+    "id": "mps_fixed_chi16_measurement_stripped_source_dag_v1",
+    "input": "pre-materialized source-QASM operation topology keyed by exact QASM SHA; no circuit bytes or family labels are inputs",
+    "node_fields": [
+      "gate-name one-hot (vocabulary fit on outer train)",
+      "arity bucket",
+      "parameter-present bit only",
+      "normalized qarg positions"
+    ],
+    "normalization": "barrier/snapshot and verified-terminal measurements removed; per-wire DAG edges rebuilt from retained ordered qargs",
+    "preprocessing": "log1p globals, mean/std fit on finite outer-train hashes only; parameter values, shots, measurements, family, quality, backend, source path and hash excluded"
+  },
+  "runner_sha256": "2d3305d0fab5f67510bffd7ad0a695ae7712384eced6e6e61c8c851d31edb7e8",
+  "source_data_provenance": {
+    "runner_uses_bundled_static_DAG_pack": true,
+    "upstream_license_status": "unresolved_in_original_repository; no QASM files are bundled; public redistribution review required",
+    "upstream_repository_commit": "32c392a6ece276f1ff046d4e30052d0571ff6dc6"
+  },
+  "source_raw_target_id": "cudaq_mps_state_wall_clock_quality_constrained",
+  "status": "preflight_pass_training_not_run",
+  "target": "cudaq_mps_fp64_bond16_warm_state_execution_seconds",
+  "target_boundary": "median of existing warm get_state repetitions only; build/first/result extraction/fidelity clocks excluded",
+  "target_reduction": "median warm repetitions per member/session, then median of member/session medians per exact hash",
+  "target_table_sha256": "4c1ad9ae16a2bd3187401da95638d01ed9872a480b959adb1aab7726bd05043d",
+  "training_authorized": false,
+  "unique_hashes_by_frozen_fold": {
+    "0": 37,
+    "1": 28,
+    "2": 26,
+    "3": 25,
+    "4": 34
+  }
+}

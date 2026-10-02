@@ -12,6 +12,7 @@ measure different parts of execution.
 - [Methodology](docs/methodology.md): datasets, circuit reconstruction,
   train/test splits, and differences from the original papers.
 - [Results](docs/results.md): comparisons, findings, and unfinished evaluations.
+- [Simulator predictor aggregate](artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/aggregate_manifest.json): separate Aer and fixed-MPS OOF scores, coverage, paired intervals, and method cards.
 - [Reproduction](docs/reproduction.md): commands to rebuild the tables from
   the included predictions and measurements.
 - [Numerical tables](artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3/README.md):
@@ -20,7 +21,7 @@ measure different parts of execution.
 | Domain | Data | Evaluation so far |
 | --- | --- | --- |
 | Real QPU | 8,767 recorded observations: Ma–Li 340, Qonductor 4,482, QPack 3,945 | Unified polynomial and graph adaptations use the same grouped train/test split. Analytical estimates are also compared with recorded service time. |
-| Simulator | 204 circuit entries, 191 distinct QASM hashes, 2–16 qubits | Local Aer, CUDA-Q and cuTensorNet measurements; predictor comparisons on a 162-entry Aer subset; native cuTensorNet estimate-versus-contraction comparisons. The planned common-panel method comparison is incomplete. |
+| Simulator | 204 circuit entries, 191 distinct QASM hashes, 2–16 qubits | Local measurements cover Aer, CUDA-Q, and cuTensorNet. Predictor OOF evaluations now cover a 150-hash q≤9 Aer core and a separate fixed CUDA-Q MPS cell; broader paper-wide coverage remains incomplete. |
 
 ## Main findings and limitations
 
@@ -36,6 +37,15 @@ approximate methods, output quality. The Maestro calibration pilot failed
 its timing-stability checks and has no accepted prediction score. The V4
 control-flow representation has not been trained.
 
+On the local Aer core, an Azizov-style transpiled-view GNN adaptation reached
+0.3008 s MAE, while a transpiled-view XGBoost baseline reached 0.2970 s; their
+paired interval does not resolve a difference. On the separate fixed-MPS
+cell, a source-DAG graph adaptation reached 0.3024 s MAE over 144 finite
+targets (142 passed the quality gate). These are configuration-specific
+adaptation results, not cross-engine rankings or paper-exact reproductions.
+The [results page](docs/results.md#local-simulator-predictors) explains the
+targets, coverage and uncertainty.
+
 QPack circuit structure is reconstructed; its original optimized angles and
 submitted circuits were not recovered. Nominal backend snapshots are not
 historical job-day calibration. [Methodology](docs/methodology.md) explains
@@ -43,10 +53,13 @@ these assumptions and their consequences.
 
 ## Reproduction and publication status
 
-A fresh local clone has successfully rebuilt the documented tables from
-frozen predictions and measurements. This is **table reproduction**, not
-retraining from every original dataset or repeating hardware measurements.
-The complete original source circuit collections are not included. See the
+A clean clone of the current review-package candidate rebuilt its documented
+tables from frozen predictions and measurements. This is **table
+reproduction**, not retraining from every original dataset or repeating
+hardware measurements. It covers the E1–E6 simulator-predictor aggregate and
+the regression suite, but not a fresh dependency installation, retraining, or
+hardware measurement. The complete original source circuit collections are
+not included. See the
 [validation record](docs/reproduction_validation.md).
 
 The `benchmark-review` branch is shared for review at the author's request.

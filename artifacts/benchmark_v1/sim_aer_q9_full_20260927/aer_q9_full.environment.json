@@ -1,0 +1,56 @@
+{
+  "status": "captured",
+  "host_id": "sha256:c3b1826d9ed50512",
+  "os": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+  "cpu_model": "Intel(R) Core(TM) i7-14700F",
+  "ram_bytes": 49239855104,
+  "python_version": "3.10.21",
+  "package_lock_sha256": "195dd1a5f87204994a84a32a64f191802d73f295949f01ac71f17385891410d6",
+  "package_lock_path": "artifacts/benchmark_v1/sim_aer_q9_full_20260927/aer_q9_full.pip-freeze.txt",
+  "thread_policy": {
+    "max_parallel_threads": 2,
+    "max_parallel_shots": 1,
+    "max_parallel_experiments": 1
+  },
+  "python": "3.10.21 (main, Aug 14 2026, 15:33:52) [Clang 22.1.3 ]",
+  "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+  "qiskit": "0.25.2",
+  "qiskit_aer": "0.12.2",
+  "qiskit_ibm_runtime": "uninstalled; local fake-provider fallback",
+  "qiskit_version": "0.25.2",
+  "aer_version": "0.12.2",
+  "aer_method": {
+    "FakeSherbrooke": "automatic"
+  },
+  "fake_backend_class": [
+    "FakeSherbrooke"
+  ],
+  "fake_backend_snapshot_hash": {
+    "FakeSherbrooke": "509ab97f3bf4cd0c2ddbabe2cdc790e2e440726cb2b65b468c05fc54846ec9c1"
+  },
+  "noise_model_hash": {
+    "FakeSherbrooke": "64d58378f06c47a1bd3d115a5ebea38748c2a1b9702937d497f99d0691b43aa5"
+  },
+  "shots": 1024,
+  "transpiler_seed": 1234,
+  "simulator_seed": 1234,
+  "timeout_s": 900,
+  "sessions": 3,
+  "untimed_target_warmups_per_session": 3,
+  "timed_warm_repetitions_per_session": 5,
+  "max_qubits": 9,
+  "seed_transpiler": 1234,
+  "seed_simulator": 1234,
+  "max_parallel_threads": 2,
+  "max_parallel_shots": 1,
+  "max_parallel_experiments": 1,
+  "backends": [
+    "FakeSherbrooke"
+  ],
+  "optimization_levels": [
+    1
+  ],
+  "excluded_families": [],
+  "selection_mode": "smallest",
+  "measurement_protocol": "one new Aer simulator per session; separate transpile, first execution, untimed target warmups and timed warm execution repetitions"
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "dictionary_id": "azizov-local-explicit-51-64-51-v1",
+  "fidelity_class": "adaptation",
+  "evidence": {
+    "paper_url": "https://arxiv.org/html/2609.12980v1",
+    "upstream_repository": "https://github.com/mooselab/Quantum-Execution-Time-Prediction",
+    "upstream_commit": "32c392a6ece276f1ff046d4e30052d0571ff6dc6",
+    "pinned_files": {"data_preparation/helper.py": "c34cc98df02b016ee9c94dc9ca27efdbbb7e6c6439831f09d3c92ed3a78f74ad", "data_preparation/utils.py": "d70db4646f0b9d3deb548d6d960711a43ad818cef344113a6fa1e9f9ae64bcb7", "model/transformer_model.py": "d6d250b2cb3082efc756ae9c5c269d4fe40bbdf49c743c535cddf6a0691c5683"},
+    "extractor_note": "Read files at pinned commit, not the modified live upstream worktree. Port pure logic without provider construction or Aer execution.",
+    "paper_count_limit": "44 gate counts+num_qubits+depth+five structural metrics=51 before train-only pruning; this does not recover the paper's36-field subset."
+  },
+  "ordered_global_fields": ["count_u3", "count_u2", "count_u1", "count_cx", "count_id", "count_u0", "count_u", "count_p", "count_x", "count_y", "count_z", "count_h", "count_s", "count_sdg", "count_t", "count_tdg", "count_rx", "count_ry", "count_rz", "count_sx", "count_sxdg", "count_cz", "count_cy", "count_swap", "count_ch", "count_ccx", "count_cswap", "count_crx", "count_cry", "count_crz", "count_cu1", "count_cp", "count_cu3", "count_csx", "count_cu", "count_rxx", "count_rzz", "count_rccx", "count_rc3x", "count_c3x", "count_c3sqrtx", "count_c4x", "count_xx_plus_yy", "count_ecr", "num_qubits", "depth", "program_communication", "critical_depth", "entanglement_ratio", "parallelism", "liveness"],
+  "global_definitions": {
+    "count_GATE": {"rule": "For each44 named fields, float(qc.count_ops().get(GATE,0)), exact name, no aliases. Missing gate means count0. measure/barrier/reset/delay/unlisted operations have no slots but are explicitly audited.", "unit": "operations"},
+    "num_qubits": {"rule": "qc.num_qubits including idle wires", "unit": "qubits"},
+    "depth": {"rule": "qc.depth() with historical Qiskit default treatment of measure/barrier", "unit": "dependency layers"},
+    "structural_base": "Exclude barrier and measure. Remaining operation count=G; allocated quantum wires=n. D=maximum operation path length through consecutive-touch quantum wire dependencies. Reset/delay, if present, remain operations. Dynamic control unsupported.",
+    "program_communication": {"rule": "2*distinct_unordered_qubit_pairs_coincident_in_any_operation/(n*(n-1)); every pair of a multi-qubit operation contributes;0 if n<2", "unit": "dimensionless"},
+    "critical_depth": {"rule": "Depth of the >1-qubit-only quantum dependency DAG divided by the number of >1-qubit operations;0 if none", "unit": "dimensionless"},
+    "entanglement_ratio": {"rule": "Count of >1-qubit operations/G;0 if G=0", "unit": "dimensionless"},
+    "parallelism": {"rule": "(G/D-1)/(n-1);0 if n<2 or D=0", "unit": "dimensionless"},
+    "liveness": {"rule": "sum quantum arities/(n*D);0 if n=0 or D=0", "unit": "dimensionless"},
+    "degenerate_case_policy": "Zero denominators yield explicit0 and are logged. Reject nonfinite or metric outside[0,1] beyond1e-8; no structural bug clipping. Multi-qubit communication fixes the pinned helper's first-two-qubits limitation; disclose this adaptation."
+  },
+  "ordered_compiled_extension_fields": ["compiled_depth", "compiled_total_operation_count", "compiled_two_qubit_operation_count", "compiled_measurement_count", "compiled_count_rz", "compiled_count_sx", "compiled_count_x", "compiled_count_ecr", "compiled_program_communication", "compiled_critical_depth", "compiled_entanglement_ratio", "compiled_parallelism", "compiled_liveness"],
+  "compiled_definitions": {
+    "compiled_depth": {"rule": "compiled_qc.depth()", "unit": "dependency layers"},
+    "compiled_total_operation_count": {"rule": "len(compiled_qc.data), including measurement/barrier/reset/delay", "unit": "operations"},
+    "compiled_two_qubit_operation_count": {"rule": "Instructions with exactly2 quantum arguments, excluding barrier/measure", "unit": "operations"},
+    "compiled_measurement_count": {"rule": "count_ops().get('measure',0)", "unit": "operations"},
+    "compiled_count_rz": {"rule": "count_ops().get('rz',0)", "unit": "operations"},
+    "compiled_count_sx": {"rule": "count_ops().get('sx',0)", "unit": "operations"},
+    "compiled_count_x": {"rule": "count_ops().get('x',0)", "unit": "operations"},
+    "compiled_count_ecr": {"rule": "count_ops().get('ecr',0)", "unit": "operations"},
+    "compiled_metrics": "Five corresponding structural definitions evaluated on compiled_qc.",
+    "basis_evidence": "Historical Sherbrooke basis=rz/sx/x/ecr; no invented native id. Preflight validates basis/context and logs extra reset/measure/delay."
+  },
+  "graph_encoding": {
+    "nodes": "Every qc.data instruction in insertion order, including measure/barrier/reset/delay; no input/output wire nodes. Idle allocated wires have zero mask positions and remain width metadata.",
+    "edges": "For every quantum/classical wire touched, directed(previous_touch,node) then update previous_touch. Deduplicate ordered pairs. Measurement touches both arguments; barrier touches listed qubits. No reverse edges/self loops/edge attributes.",
+    "gate_vocabulary": "Sorted source+compiled training operation names, reserved __UNKNOWN__ index0; union from training hashes only, common encoding for controlled variants. Fit inner-train during epoch selection, outer-train at refit. Unknown held-out operations map to0 and are audited.",
+    "node_feature_order": ["gate_one_hot_K", "quantum_wire_multi_hot_127", "classical_wire_multi_hot_127", "real_parameter_values_4_divided_by_pi", "parameter_presence_masks_4", "quantum_arity_divided_by_127", "classical_arity_divided_by_127", "instruction_index_divided_by_max_1_Nminus1"],
+    "dimension": "K+265",
+    "wire_indexing": "qc.find_bit(bit).index across all registers, index<127. Preserve physical compiled indices; do not compact idle wires.",
+    "parameters": "Up to4 finite real params in operation.params order; zero-pad absent entries with mask0, present mask1; no modulo angle reduction. Symbolic/non-real/array/>4 params unavailable. Delay duration unit must match fixed context, otherwise unavailable.",
+    "normalization": "0/1 categorical/wire/presence masks; real params/pi; fixed arity/order divisions. No fitted node normalization. Globals StandardScaler fits training only.",
+    "calibration": "No node T1/T2/errors/durations. Fixed target/noise are provenance, not invented source-to-physical calibration mapping.",
+    "unsupported": "Empty graph, dynamic if_else/while/for/switch or legacy condition, invalid wire index/parameter; explicit terminal status, no flattened branch or fabricated node."
+  },
+  "validation": ["Exactly51 unique ordered globals and13 unique compiled fields", "Hybrid first51/source graph equal source variant", "Compiled globals and graph evaluated on the same replay circuit", "Finite globals, metric range and degenerate cases audited", "Edges in range and acyclic, source index<target index", "Aliases identical features/digests/folds", "No family/identity/runtime/telemetry tensors", "Historical replay/context and summary check before fit", "Capture dictionary/protocol/extractor/env byte hashes"]
+}

@@ -141,13 +141,16 @@ MAE about 7,190.6 s. It is not a three-seed median.
 The [simulator reader pack](../artifacts/benchmark_v3/simulator/simulator_reader_pack_v1/README.md)
 has separate availability, per-configuration, native-pair and blocked tables.
 Counts below are cells/observations under those configurations, not necessarily
-unique circuits; precision and first/warm clocks remain separate.
+unique circuits; precision and first/warm clocks remain separate. A separate
+[predictive aggregate](../artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/)
+now reports held-out predictor results for Aer and fixed-MPS targets. It does
+not replace or pool the measurement/configuration pack.
 
 | Evidence | Current coverage | What can be claimed |
 | --- | --- | --- |
 | Local noisy Aer warm measurement | All 204 panel members | Local runtime labels/coverage under frozen Aer configuration |
 | Azizov-related tabular predictors (historical) | 162 core members | Logical ridge warm MAE ≈0.314433 s; compiled GBR ≈0.514132 s; neither is Azizov's GNN |
-| Local Ma–Li-style Aer graph adaptation | 162 core rows / 150 QASM hashes | OOF MAE 0.387654 s; MedAE 0.036025 s; log1p MAE 0.091407; R² 0.155835; not a faithful Azizov GNN or original Ma–Li model |
+| Historical local Aer graph baseline | 162 core rows / 150 QASM hashes | OOF MAE 0.387654 s; MedAE 0.036025 s; log1p MAE 0.091407; R² 0.155835; a separate older model, not an Azizov GNN |
 | Maestro prediction preflight | 408 candidate-member cells over the 204-member panel | 56 predicted, 244 out of grid, 108 unavailable; preflight only, no simulator timing or score |
 | Historical Maestro calibration | 330/330 synthetic cells; 4,950 timed and 2,970 untimed calls | Diagnostic-only; not the terminal ten-cell pilot and not a panel predictor accuracy result |
 | CUDA-Q dense | Per precision/clock: 612 attempts, 594 successful, 18 adapter errors | Descriptive local first/warm sampling runtime; no cross-engine estimator rank |
@@ -178,19 +181,53 @@ panel prediction score was produced. See the
 [run manifest](../artifacts/benchmark_v3/simulator/maestro_candidate_runtime_v3/calibration/run_manifest.json)
 and [blocked-method table](../artifacts/benchmark_v3/simulator/simulator_reader_pack_v1/blocked_unavailable.csv).
 
-The intended six-method common-panel comparison is still incomplete. The local
-graph result is a three-TransformerConv/mean-pooling adaptation with a
-separate seven-feature global branch trained on frozen Aer warm labels; it is
-not an Azizov faithful GNN and excludes q10–16 from fit and accuracy. The
-historical Azizov Ridge/GBR rows remain tabular independent reimplementations.
-Maestro's pre-existing 220-cell component calibration / 3,300 warm
-observations is distinct from Maestro's parser/prediction preflight. Simulator
-timing was not run during that preflight and no candidate score
-was produced; 35 panel members failed parser/width checks. Its paper-exact
-Composer estimator remains unavailable. Pasqal's analog pilot completed
-18/18 cells, with four quality failures and an unpromoted fit; it remains a
-separate workload. See the
+The broader paper-wide simulator comparison remains incomplete: this local
+panel does not reproduce Azizov's two-backend/four-optimization-level scope,
+the Family-Aware paper's joint quality/runtime target, or Maestro's
+paper-exact Composer estimator. q10–16 remain outside predictor fitting and
+accuracy. The historical Azizov Ridge/GBR rows remain tabular independent
+reimplementations. Maestro's pre-existing 220-cell component calibration /
+3,300 warm observations is distinct from its parser/prediction preflight.
+Simulator timing was not run during that preflight and no candidate score was
+produced; 35 panel members failed parser/width checks. Pasqal's analog pilot
+completed 18/18 cells, with four quality failures and an unpromoted fit; it
+remains a separate workload. See the
 [blocked table](../artifacts/benchmark_v3/simulator/simulator_reader_pack_v1/blocked_unavailable.csv).
+
+## Local simulator predictors
+
+The local held-out predictor results are in the
+[E6 aggregate](../artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/).
+It contains one score table per target, exact-hash coverage, 28 paired
+comparisons (18 Aer, 10 MPS), method cards, and source hashes. Each interval is
+based on 10,000 paired exact-QASM-hash bootstrap replicates. No row-level
+predictions or errors are pooled across engines.
+
+| Target and evaluated method | Scored / assigned hashes | MAE (s) | R² | Interpretation |
+| --- | ---: | ---: | ---: | --- |
+| Aer noisy warm execution — Azizov-style transpiled-view GNN, 3-seed median | 150 / 150 | 0.3008 | 0.5206 | Best listed GNN view on this Aer cell; adaptation, not paper-exact |
+| Aer noisy warm execution — XGBoost, transpiled view | 150 / 150 | 0.2970 | 0.2889 | Similar MAE to the GNN; paired difference unresolved |
+| Aer noisy warm execution — Azizov-style hybrid-view GNN, 3-seed median | 150 / 150 | 0.4064 | 0.0914 | Local adaptation |
+| Aer noisy warm execution — Azizov-style source-view GNN, 3-seed median | 150 / 150 | 0.4497 | 0.0927 | Local adaptation |
+| CUDA-Q MPS FP64, bond-16 warm state — source-DAG graph, 3-seed median | 144 / 150 | 0.3024 | 0.9375 | Fixed MPS cell; includes two finite quality failures |
+| CUDA-Q MPS FP64, bond-16 warm state — Family-Aware-inspired residual | 144 / 150 | 1.0009 | 0.5562 | Runtime-only fixed-cell adaptation, not the joint paper method |
+| CUDA-Q MPS FP64, bond-16 warm state — family-agnostic ablation | 144 / 150 | 1.0813 | 0.4823 | Matched ablation |
+
+On Aer, the transpiled-view GNN MAE exceeded XGBoost's by `+0.0037 s`
+(95% interval `[−0.1726,+0.1324]`), so this comparison does not establish a
+winner. The source-view GNN had `+0.1489 s` higher MAE than the transpiled
+view (`[+0.0284,+0.3039]`) on this panel. That is evidence for these views on
+one FakeSherbrooke/Opt1 cell, not proof that transpilation or GNNs generally
+improve simulator prediction.
+
+For the MPS cell, the residual model's observed MAE difference versus the
+family-agnostic ablation was `−0.0804 s` (`[−0.2852,+0.0804]`); the interval
+crosses zero, so an incremental family benefit is not established. Its MAE
+was `+0.6984 s` higher than the source-DAG graph model (`[+0.1878,+1.4256]`).
+There are 150 assigned hashes, 144 finite labels, 142 quality-pass labels,
+two finite quality-failed labels and six unavailable targets. On the
+quality-pass subset, graph MAE is 0.3037 s and residual MAE is 1.0081 s.
+These are separate engine/target results, not a single simulator leaderboard.
 
 ## Conclusions and remaining work
 
@@ -200,11 +237,13 @@ explains QPack variation well. Scheduled duration also leaves a substantial
 gap to recorded service time. For simulators, runtime depends on the engine,
 timing boundary and output-quality requirement.
 
-The simulator common-panel predictor comparison is unfinished. The local
-graph evaluation covers only the 162-row core; Maestro has no accepted
-prediction score, and V4 has not been trained. These gaps remain despite
-passing implementation checks. [Reproduction](reproduction.md) explains
-which tables can be rebuilt and which experiments have not been reproduced.
+Predictor evaluation is complete for the bounded local Aer and fixed-MPS
+panels described above, but the broader paper-wide simulator comparison is
+not complete. Maestro has no accepted prediction score, the original
+Family-Aware target is unavailable, q10–16 are not in predictor accuracy, and
+V4 has not been trained. These limits remain despite passing implementation
+checks. [Reproduction](reproduction.md) explains which tables can be rebuilt
+and which experiments have not been reproduced.
 
 The unified rebuild recomputes learned-QPU metrics from frozen predictions,
 archived analytical-QPU metrics from frozen attempt shards, and local

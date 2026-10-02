@@ -1,5 +1,34 @@
 # Clean-clone validation
 
+## Current E1–E6 review-package clone — 2026-10-02
+
+The current `presentation-review` candidate was cloned with `git clone
+--no-local` into a fresh directory. The clone restored the three
+row-partitioned CSVs, validated the complete inventory, and rebuilt the E6
+Aer/MPS aggregate from the committed predictions. The aggregate output was
+byte-identical to its committed artifact.
+
+| Check | Result |
+| --- | --- |
+| Release inventory | 1,467 tracked paths; 1,469 hashes including 3 materialized CSVs; PASS |
+| E6 predictor aggregate | 150 Aer hashes, 27 Aer methods, 150 assigned MPS hashes (144 finite; 142 quality-pass; 6 unavailable); byte-identical PASS |
+| Full `benchmark_v1/tests` suite | 155 passed in 16.59 s |
+| Historical artifact check | PASS |
+| Clone worktree after restore and verification | Clean |
+
+The clone used the documented Python 3.10.21 verification interpreter from
+the local verification environment with `PYTHONPATH` and `PYTHONHOME` unset.
+The dependency lock itself had already passed in the candidate workspace; a
+fresh-install audit of that lock is a separate environment-provisioning check.
+No model fitting, CUDA workload, simulator timing, or QPU access occurred.
+
+The package intentionally omits E4 QPY/QASM replay files and graph dumps
+because the aggregate and table rebuild do not consume them. The retained
+source-DAG topology is required by static materialization and is included.
+This validates the review-package reconstruction path, not end-to-end
+retraining from all original source data or authority to make a public
+release.
+
 ## GitHub review-branch clone — 2026-10-02
 
 The author requested publication of `benchmark-review`. Commit

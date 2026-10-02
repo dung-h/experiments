@@ -1,9 +1,15 @@
-# Clean Python 3.10 verification/aggregation environment tested on 2026-10-01.
-# Neural training and simulator SDKs are separate environments.
+# Python 3.10 verification and full test-suite environment.
+# PyTorch is CPU-only here: tests import learned runners but do not fit models.
+# CUDA training, CUDA-Q, cuTensorNet, Aer, and paper-specific SDKs are separate.
+--extra-index-url https://download.pytorch.org/whl/cpu
 numpy==2.2.6
 pandas==2.3.3
 scipy==1.15.3
 scikit-learn==1.7.2
+qiskit==2.5.2
+torch==2.14.0+cpu
+torch-geometric==2.8.0.post1
+xgboost==3.2.0
 pytest==9.1.1
 cloudpickle==3.1.2
 exceptiongroup==1.3.1

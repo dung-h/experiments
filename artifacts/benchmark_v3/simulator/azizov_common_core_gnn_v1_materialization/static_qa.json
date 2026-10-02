@@ -1,0 +1,87 @@
+{
+  "artifact_id": "azizov-common-core-static-materialization-v1-20261002",
+  "assigned_panel_rows": 162,
+  "frozen_fold_counts": {
+    "0": 39,
+    "1": 30,
+    "2": 27,
+    "3": 28,
+    "4": 38
+  },
+  "hash_leakage": {
+    "cross_fold_exact_hash_groups": 0,
+    "status": "PASS"
+  },
+  "label_join": {
+    "duplicate_join_keys": 0,
+    "matched_rows": 162,
+    "status": "PASS",
+    "unmatched": 0
+  },
+  "representation_readiness": {
+    "hybrid_54_globals": "blocked_exact_13_post_transpilation_field_dictionary_unresolved",
+    "source_41_globals": "blocked_exact_36_field_dictionary_unresolved",
+    "source_dag_topology": "materialized_topology_only_not_Azizov_GNN_ready",
+    "transpiled_dag_and_41_globals": "blocked_frozen_target_noise_hash_missing_and_feature_dictionary_unresolved"
+  },
+  "run_authority": "static materialization only; model execution remains unauthorized pending S-A1 signature",
+  "same_hash_alias_groups": 12,
+  "source_dag": {
+    "edges_min_max": [
+      4,
+      12150
+    ],
+    "gate_name_counts": {
+      "barrier": 157,
+      "ccx": 118,
+      "ch": 6,
+      "cp": 2684,
+      "crx": 8,
+      "cry": 4,
+      "crz": 7,
+      "cswap": 3,
+      "cu1": 5961,
+      "cu3": 17,
+      "cx": 10513,
+      "cy": 5,
+      "cz": 439,
+      "h": 547,
+      "measure": 868,
+      "p": 740,
+      "rccx": 178,
+      "rx": 150,
+      "rxx": 3,
+      "ry": 671,
+      "rz": 5,
+      "rzz": 456,
+      "s": 9,
+      "sdg": 2,
+      "swap": 77,
+      "sx": 4,
+      "sxdg": 2,
+      "t": 13,
+      "tdg": 15,
+      "u": 46,
+      "u1": 282,
+      "u2": 1078,
+      "u3": 361,
+      "x": 200,
+      "z": 2
+    },
+    "nodes_min_max": [
+      5,
+      6199
+    ],
+    "parse_errors": [],
+    "shape_missing_constant_feature_audit": "not_run_for_41/54/41_vectors_because_evidence-backed_schema_is_incomplete",
+    "structural_qa": "PASS",
+    "unique_hashes_materialized": 150
+  },
+  "source_hash_audit": {
+    "matched_rows": 162,
+    "mismatch": 0,
+    "status": "PASS"
+  },
+  "status": "partial_static_materialization_feature_and_transpiled_inputs_blocked",
+  "unique_exact_qasm_hashes": 150
+}

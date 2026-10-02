@@ -1,23 +1,58 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "contract_id": "benchmark-result-table-schema-v1-20261002",
   "authority": "S82_UNIFIED_BENCHMARK_CONTRACT_20261002",
-  "scope": "Reader-facing derived tables only. Historical raw artifacts and method IDs remain immutable.",
+  "scope": "Reader-facing derived tables only. M1/M5 reporting clarification on 2026-10-02; no experiment, retraining or historical artifact mutation. S82 governs target/representation meaning; unified_split_contract_v2 governs the frozen split.",
   "real_qpu": {
     "dataset_construction_columns": [
-      "source_id", "retained_rows", "observation_unit", "label_field", "label_unit", "shots_policy", "backend_coverage", "circuit_evidence", "reconstruction_class", "excluded_rows_or_workloads", "error_mitigation_metadata_status"
+      "source_id", "retained_rows", "observation_unit", "label_field", "label_unit", "shots_policy", "backend_coverage", "circuit_evidence", "reconstruction_class", "excluded_rows_or_workloads", "error_mitigation_metadata_status", "timestamp_metadata_status", "label_boundary_evidence", "label_boundary_uncertainty"
     ],
     "same_clock_results_columns": [
-      "reader_label", "fidelity_class", "representation_stage", "evaluation_target_clock", "method_output_clock", "assigned_n", "predicted_n", "coverage", "shared_test_population_id", "mae_seconds", "medae_seconds", "log1p_mae", "r2_seconds", "p90_absolute_error_seconds", "p99_absolute_error_seconds", "max_absolute_error_seconds", "status", "claim_boundary"
+      "reader_label", "fidelity_class", "representation_stage", "evaluation_target_clock", "method_output_clock", "assigned_n", "predicted_n", "coverage", "shared_test_population_id", "split_assignment_hash", "mae_seconds", "medae_seconds", "log1p_mae", "r2_seconds", "p90_absolute_error_seconds", "p99_absolute_error_seconds", "max_absolute_error_seconds", "status", "claim_boundary"
     ],
     "cross_clock_diagnostic_columns": [
       "reader_label", "fidelity_class", "raw_method_output_clock", "evaluation_target_clock", "assigned_n", "predicted_n", "coverage", "raw_mae_against_service_seconds", "calibration_variant_id", "calibration_train_only", "diagnostic_status", "unavailable_reason", "claim_boundary"
     ],
     "comparison_rules": [
-      "Errors may be ranked only within identical evaluation and output clocks, identical held-out row IDs, and declared fidelity/representation class.",
+      "Compare service-time predictions only on the same evaluation target, compatible observed-service output clocks, identical frozen split and identical held-out IDs. Fidelity and representation differences must be declared; they need not be identical.",
+      "Outer-train-calibrated analytical adaptations may be compared with graph/polynomial adaptations on the same held-out service labels. Keep raw schedule/throughput/effective-cost outputs in cross-clock diagnostics.",
       "Every pairwise statement names its common successful row count and reports each method's full-envelope coverage separately.",
-      "Source-stratified and QPack workflow-balanced summaries are companion tables; they do not replace the unified trained model's identity."
-    ]
+      "A coverage-asymmetric comparison describes only the common successful rows, not excluded rows or universal full-envelope superiority.",
+      "Source-stratified and equal-source MAE summaries are primary summaries of one unified OOF run; pooled observation-weighted metrics are secondary. Report QPack equal-workflow MAE alongside its ordinary source MAE.",
+      "QPack workflow-held-out allows seen structural templates: six reconstructed structures recur across 46 workflows. It does not establish unseen-structure accuracy.",
+      "Never assign zero error to unavailable, failed, timeout, nonfinite or missing predictions. Preserve all terminal outcomes in coverage.",
+      "Different representations qualify a pipeline comparison; they do not isolate an architecture effect. Source-native results on 340/4482 are separate from the unified OOF envelope."
+    ],
+    "paired_comparison_columns": [
+      "candidate_method_id", "reference_method_id", "evaluation_target_clock", "candidate_method_output_clock", "reference_method_output_clock", "split_assignment_hash", "shared_test_population_id", "shared_test_row_set_sha256", "shared_n", "shared_group_n", "candidate_assigned_n", "candidate_predicted_n", "reference_assigned_n", "reference_predicted_n", "summary_weighting", "observed_mae_difference_seconds", "bootstrap_mean_mae_difference_seconds", "bootstrap_ci_low_seconds", "bootstrap_ci_high_seconds", "bootstrap_replicates", "bootstrap_seed", "bootstrap_group_column", "coverage_asymmetric", "claim_boundary"
+    ],
+    "statistical_summary_policy": {
+      "source_slices": "Derive from the same unified OOF predictions; do not refit source-specific models or replace outer folds.",
+      "source_balanced_mae": "Unweighted arithmetic mean of Ma-Li, Qonductor and QPack source MAEs. Pairwise source means use exactly the same successful rows per source. Require all three sources; otherwise emit unavailable plus source counts.",
+      "qpack_workflow_balanced_mae": "Mean of within-workflow MAEs over represented workflows, each workflow equally weighted. Report represented/assigned workflows and per-workflow coverage; missing workflows have no numeric error.",
+      "pooled_mae": "Observation-weighted mean on the declared successful rows; secondary mixture summary, not unseen-source transfer.",
+      "log1p_mae": "mean(abs(log1p(predicted_seconds) - log1p(target_seconds))) under the method's frozen nonnegative-output policy; no aggregation-time clipping or replacement of nonfinite values",
+      "r2": "Compute only with nonzero target variance; arithmetic mean of source R2, if emitted, is macro R2 rather than pooled R2.",
+      "seed_reduction": "Use the method's frozen registry; for unified neural adaptations preserve seeds 42,1234,31415 and reduce by rowwise median. Preserve individual-seed predictions/metrics. Never select the best test seed.",
+      "paired_point_estimate": "MAE(candidate) - MAE(reference), directly on the declared original shared rows. Negative favors candidate. Bootstrap replicate mean is separately labelled.",
+      "bootstrap": {
+        "replicates": 1000,
+        "confidence_level": 0.95,
+        "interval_rule": "numpy.quantile linear at 0.025 and 0.975",
+        "seed_registry": "benchmark_v1/registry/seed_registry.json",
+        "stream": "20260925-bootstrap",
+        "seed_derivation": "sha256(root_seed|registered_bootstrap_stream|artifact_id|comparison_label|0) first 4 bytes big-endian",
+        "mali_cluster": "Frozen unified leakage group representing logical-QASM identity",
+        "qonductor_cluster": "Frozen unified leakage group representing submitted-QASM identity",
+        "qpack_cluster": "Frozen optimizer workflow group",
+        "resampling": "Sample whole groups with replacement within source; retain all paired member rows and repeated-draw multiplicity. Share each draw between candidate and reference.",
+        "cross_source_lineage_check": "The frozen split_manifest_v2.json records zero proven cross-source edges. Verify this before source-stratified draws. A newly proven joint component requires a reviewed coupled-cluster protocol, not independent source draws or a silent split change.",
+        "source_balanced_interval": "Recompute source metrics and their equal-source mean in each paired replicate; do not reuse a pooled CI or average interval endpoints.",
+        "workflow_balanced_interval": "Resample whole QPack workflows and recompute equal-workflow means; retain represented/assigned counts.",
+        "scope": "Conditional uncertainty of frozen fitted OOF predictions, not full retraining/seed uncertainty; include cluster counts and all predeclared comparisons.",
+        "historical_results": "Preserve historical metric contracts and values. These rules describe new derived summaries, not previously computed intervals."
+      }
+    }
   },
   "simulator": {
     "panel_configuration_columns": [

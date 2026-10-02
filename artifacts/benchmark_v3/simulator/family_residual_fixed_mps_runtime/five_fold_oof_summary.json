@@ -1,0 +1,72 @@
+{
+  "artifact_id": "family-residual-fixed-mps-runtime-v1-five-fold-oof",
+  "coverage": {
+    "assigned_hashes": 150,
+    "finite_target_hashes": 144,
+    "prediction_coverage_hashes": 150,
+    "quality_failed_finite_retained": 2,
+    "quality_pass_finite": 142,
+    "unavailable_target_hashes_retained_unimputed": 6
+  },
+  "created_utc": "2026-10-02T10:26:47.072438+00:00",
+  "execution_environment_sha256": "45f62d594fbde84c53db441af948b3080f8aaad676da7a02005035c0071f59e2",
+  "fold0_checkpoint": "technical integrity only; folds 1-4 automatically continued without metric review",
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "input_sha256": {
+    "e5_protocol_sha256": "753db02950abb1a3db52f6ac39bfab91c841e0acf56dca69e4a95def0bee9e80",
+    "s85_loader_source_sha256": "7731c6ef22704089122fd704f138bd207856909437bce9e03c7f6012812b5bd6",
+    "s85_pinned_inputs": {
+      "c44_fold_source_csv": "a25e2e740fd3058e487f713cd0fc074dd8761120a5aface275a212693ac05437",
+      "cudaq_bridge_manifest": "7cc55f45a27e313d9d5e47ea9b79ca6f18e1b7379f1c24e1a468ccafed3f3a87",
+      "mps_attempt_records": "2c77d505950cb269041ae09b78738c74c021c6444ba7b3300205975ab7860017",
+      "mps_environment": "b0ab34b8cda4e20556875eff9269eab410ec6493e607ee12b8dc8f47901c4bd6",
+      "mps_execution_authorization_decision": "f5dda9ae5374281f51922d730e2effd174b86973a3f41ab5e9c143cef6890318",
+      "mps_qa_json": "89c0d917d6e00f4c9519e89c593940b7c0e80c109acc103b7a561541509c8918",
+      "mps_raw_csv": "41aaffa3977eebb7d045555baa43dec9a5ecd81dff51aa23943f8d00f6ccc495",
+      "mps_run_manifest": "02cd92b028e5e2fe31f8f963ee9eaf7de308e5d1ddc262b85ddcef7d78db5b59",
+      "panel_manifest_csv": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e",
+      "simulator_completion_gates": "74593475974b68ca003f991f1477d12ff67f0c22bdda567b46b9675011baf584",
+      "simulator_environment_lock": "08624ffa11ba12805e15eec93be573068b02cd362b1092c19694369ec76b21a8",
+      "static_source_dag_jsonl": "bc8816576992cd14088371265dc0f766eafcf51bc4bf39631ec17ab9f4784f3a",
+      "static_source_hashes": "2f48b8e6b3b3928cfad16eb09d5fc495ffc088aa447d8c45ec9f696c190867b0"
+    },
+    "seed_registry_sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864"
+  },
+  "leaderboard_promotion": false,
+  "method_claim": "Family-Aware-inspired fixed-MPS runtime-only residual adaptation",
+  "metrics_by_population": "method_metrics.json",
+  "not_claimed": [
+    "original threshold/runtime joint method",
+    "family-OOD transfer",
+    "paper reproduction",
+    "leaderboard promotion"
+  ],
+  "paired_bootstrap": {
+    "conditions_on_fitted_oof_models": true,
+    "group_column": "source_qasm_sha256",
+    "observed_point_estimate_reported_separately": true,
+    "path": "paired_bootstrap.csv",
+    "replicates": 10000,
+    "seed_registry_sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864"
+  },
+  "paired_comparisons": "paired_hash_comparisons.csv",
+  "protocol_sha256": "753db02950abb1a3db52f6ac39bfab91c841e0acf56dca69e4a95def0bee9e80",
+  "quality_status_used_as_predictor": false,
+  "runner_sha256": "906c4be4c4832d95aef7e2f27fd72b1981d9fa60a01d546351fc50061482e771",
+  "seed_dispersion": "seed_dispersion_summary.json",
+  "seeds": [
+    42,
+    1234,
+    31415
+  ],
+  "split_assignment_sha256": "6bd63805cc457207e5e6057043e0ba0956c6f960ac9881e7aae3bbba3aea204a",
+  "status": "five_fold_oof_complete_not_promoted",
+  "target_clock_id": "cudaq_mps_fp64_bond16_warm_state_execution_seconds",
+  "unavailable_target_imputation": false
+}

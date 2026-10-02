@@ -3,10 +3,14 @@
 tracks/qonductor/qonductor_local_replication.patch whitespace=-trailing-space
 tracks/mali/overlay/** whitespace=-trailing-space
 tracks/cdaa_qcre/independent/** whitespace=-trailing-space
+# These signed decision records intentionally preserve Markdown hard-break
+# whitespace because their runner protocols pin the exact file hashes.
+benchmark_v1/decisions/S84_MAESTRO_THREADPOOL_DIAGNOSTIC_20261002.md whitespace=-trailing-space
+benchmark_v1/decisions/S85_MPS_FOLD0_DIAGNOSTIC_AUTHORIZATION_20261002.md whitespace=-trailing-space
 
 # Artifacts are evidence, not platform text. Preserve exact bytes/line endings
 # because manifests and release inventories hash the files as stored.
-artifacts/**/*.csv -text -eol
+artifacts/**/*.csv -text -eol whitespace=cr-at-eol
 
 # CSV parts retain original record bytes, including CRLF and quoted newlines.
 artifacts/**/*.csv.parts/*.csv whitespace=cr-at-eol

@@ -13,8 +13,81 @@
   },
   "gates": [
     {
+      "method_family": "cudaq_mps_fixed_chi16_runtime_only_adaptation",
+      "method_id": "mps_fixed_bond16_warm_runtime_prediction",
+      "target_clock_id": "cudaq_mps_fp64_bond16_warm_state_execution_seconds",
+      "source_raw_target_id": "cudaq_mps_state_wall_clock_quality_constrained",
+      "authorization_decision": "benchmark_v1/decisions/S85_MPS_FOLD0_DIAGNOSTIC_AUTHORIZATION_20261002.md",
+      "state": "conditionally_authorized_five_fold_oof_when_timing_idle",
+      "fidelity_class": "local_method_adaptation_not_Family_Aware_reproduction",
+      "execution_authorization": {
+        "status": "conditionally_authorized",
+        "scope": "fixed_split_five_fold_oof_with_fold0_technical_checkpoint",
+        "folds": [0, 1, 2, 3, 4],
+        "seeds": [42, 1234, 31415],
+        "prediction_methods": [
+          "train_fold_median",
+          "ridge_alpha_1",
+          "graph_seed_42",
+          "graph_seed_1234",
+          "graph_seed_31415",
+          "graph_median_three_seeds"
+        ],
+        "family_ood": false,
+        "five_fold_oof": true,
+        "leaderboard_promotion": false,
+        "new_simulator_timing": false,
+        "requires_s84_complete": false,
+        "requires_exclusive_timing_lock": true,
+        "requires_host_gpu_lease": true,
+        "requires_no_live_timing_worker": true,
+        "fold0_checkpoint_rules": {
+          "technical_qa_only": true,
+          "automatically_continue_folds_1_through_4": true,
+          "metrics_quality_inspected": false,
+          "prediction_quality_inspected": false,
+          "requires_finite_predictions_for_every_assigned_hash": true,
+          "requires_exact_hash_and_fold_coverage": true,
+          "requires_zero_train_test_hash_overlap": true,
+          "requires_frozen_cuda_environment_match": true,
+          "requires_all_fixed_baselines_and_seed_outputs": true
+        },
+        "authorized_by": "benchmark coordinator based on the user's conditional request and independent strong-method review",
+        "authorized_on": "2026-10-02",
+        "basis": "The user requested scientifically justified benchmark work. Independent review supports the fixed-configuration runtime-only adaptation on the frozen C44 five-fold split. Fold 0 is only a metric-blind technical integrity checkpoint; passing it automatically continues the identical frozen run through folds 1-4.",
+        "interpretation_limit": "Five-fold OOF result for a local fixed-configuration method adaptation only; no Family-Aware reproduction, family-OOD claim, or leaderboard promotion."
+      },
+      "scientific_contract": [
+        "This is a runtime-only prediction study for the already measured local CUDA-Q MPS FP64, max_bond=16, abs_cutoff=1e-10, gesvdj configuration. It does not select approximation thresholds and is not a reproduction of the Family-Aware paper.",
+        "Primary target is warm state-execution wall time only: use the existing timed get_state warm repetitions; do not mix build, first-execution, result extraction, fidelity-reference, or end-to-end clocks. Shots are not part of this state-execution target.",
+        "The prediction/evaluation unit is one exact input-QASM SHA-256 group. First take the median of valid warm repetitions within each session/member record, then the median across records for that hash. This yields one target per hash and prevents aliases, sessions, and repetitions from becoming independent test samples.",
+        "Primary data are core_q2_q9 only. Keep every assigned hash in the denominator: finite timings with quality_failed remain valid runtime labels; report quality status separately and never feed it to the runtime predictor. adapter_error/unsupported rows remain unavailable with no imputation. Frontier q10_q16 remains coverage-only.",
+        "Primary evaluation reuses the pre-existing five folds keyed by exact QASM hash from the frozen Aer core split; verify the join and assert that no hash crosses train/test. This is a fixed-QASM generalization estimate where test families are represented in training, not family-OOD evidence.",
+        "Report family-known results by family strata. Add a separate family-OOD diagnostic only by holding out connected components of family aliases that share exact-QASM hashes; do not use family ID as an input for unseen-family predictions. Keep this diagnostic separate from the primary score.",
+        "Compare on identical hash rows and folds: train-fold median, static-QASM structural Ridge, and the existing Ma-Li-style graph architecture retrained as a local MPS-target adaptation. Family-conditioned variants, if included, are a separately named known-family diagnostic and cannot replace the structure-only family-OOD result.",
+        "Use log1p(seconds) fitting, train-only preprocessing/model selection, and report seconds MAE/MedAE, log error, p90/p99/max absolute error, coverage, and paired exact-hash bootstrap intervals. Preserve terminal statuses and all per-seed predictions.",
+        "Neural training must use CUDA with fixed seeds 42/1234/31415 and rowwise median predictions; retain seed dispersion. Reuse recorded measurements only: no new GPU timing, no concurrent GPU timing worker, no best-seed or outer-test selection.",
+        "Do not alter historical MPS quality-constrained tables, raw measurements, S82/S83, or the original family_aware_residual gate. The adaptation may claim only prediction of this fixed configuration's warm runtime on the stated panel/splits; no threshold-selection, general MPS, cross-engine, or simulator-selection claim."
+      ],
+      "pre_execution_checks": [
+        "Validate raw-file and panel hashes plus the recorded CUDA-Q/environment/run-manifest provenance before training.",
+        "Emit exact-hash target/terminal-status inventory and fold-join audit; expected core accounting is 150 unique QASM hashes: 144 with finite runtime labels (142 quality-pass and 2 quality-failed) and 6 adapter_error/unavailable hashes. Quality-failed finite-time hashes remain in the runtime target set.",
+        "Verify every primary fold has train/test disjoint hashes and that test families are represented in train. Family-OOD materialization is outside this authorization and needs a later decision.",
+        "This conditional authorization covers all five frozen C44 folds, the three fixed graph seeds 42/1234/31415, and same-fold median/Ridge baselines. Fold 0 is a technical-only checkpoint: if exact-hash/fold coverage, zero leakage, all finite predictions, frozen environment, fixed baselines/seeds, and CUDA/PyG smoke pass, the runner automatically continues folds 1-4 unchanged. MAE, R-squared, ranking, prediction quality, or seed quality must not be inspected or used to decide continuation.",
+        "Before any CUDA activity, acquire both the shared Maestro timing lock and the host-wide /tmp/qre-benchmark-gpu-lease.lock with nonblocking flock, then verify no live timing controller or possible orphan spawn worker. Hold both locks through the CUDA preflight or the entire five-fold fit. S84 may be partial/blocked or absent; its results and completion do not affect previously measured MPS labels. Regenerate preflight in a new output directory after this gate revision.",
+        "Run the CUDA/PyG smoke and five-fold OOF only after those checks. Stop only for a technical failure such as target/fold/hash mismatch, leakage, missing/non-finite predictions, changed environment, CUDA smoke failure, active timing worker/lock, or invalid authorization. Fold metrics are outputs, never continuation gates."
+      ],
+      "promotion_requirements": [
+        "A separate signed authorization is required for family-OOD, a changed representation/configuration, expanded method set, new timing, or promotion into a cross-method leaderboard.",
+        "Five-fold OOF outputs and same-hash paired metrics for all baselines, with terminal coverage and family-known/family-OOD claims kept distinct.",
+        "Independent QA confirms exact target boundary, no quality/status leakage, no alias leakage, and reproducible GPU training context."
+      ]
+    },
+    {
       "method_family": "azizov_source_hybrid_transpiled",
-      "state": "requires_strong_method_signature",
+      "state": "contract_locked_routine_execution_after_technical_preflight",
+      "protocol": "benchmark_v1/protocol/azizov_common_core_gnn_v1.json",
+      "scientific_review": "M2, 2026-10-02: explicit local feature adaptation; paper counts remain evidence, not an assertion of exact recovered inputs",
       "scientific_contract": [
         "Freeze three representations: source graph, source-plus-compiled hybrid graph, and compiled/transpiled DAG; document every feature and vocabulary.",
         "Use the identical noisy-Aer warm-execution cell, exact-QASM hash groups, outer folds, and labels for all three GNN variants and tabular baselines.",
@@ -30,6 +103,30 @@
         "CUDA smoke test and fold-0 QA pass for every neural variant.",
         "Five-fold OOF predictions, coverage and same-row pair table on the 162-core panel.",
         "Frontier q10–q16 reported as coverage/scaling unless a separate frozen extrapolation contract is signed."
+      ]
+    },
+    {
+      "method_family": "family_residual_runtime_only",
+      "method_id": "family_residual_fixed_mps_runtime_adaptation",
+      "reader_label": "Family-Aware-inspired residual MLP, fixed MPS runtime adaptation",
+      "fidelity_class": "adaptation",
+      "state": "contract_locked_routine_execution_after_technical_preflight",
+      "protocol": "benchmark_v1/protocol/family_residual_runtime_only_v1.json",
+      "scientific_contract": [
+        "Reuse existing fixed-chi16 MPS labels and C44 exact-QASM folds. No new simulator timing.",
+        "Use six structural features shared with the MPS Ridge baseline and a predicted-family residual branch with matched family-agnostic ablation.",
+        "Cross-fit predicted families on runtime-training rows; no true test-family input and no runtime target in the classifier.",
+        "Run CUDA with seeds 42/1234/31415; complete all five folds after a technical-only fold-0 checkpoint.",
+        "Hold the shared timing lock and host-wide /tmp/qre-benchmark-gpu-lease.lock throughout CUDA activity; check no live timing worker and do not require Maestro's result or completion."
+      ],
+      "routine_worker_may_do_now": [
+        "Implement the frozen runtime-only architecture and cross-fitted family classifier.",
+        "Validate target/fold/input hashes, CUDA context and family-signal leakage, then run all five folds."
+      ],
+      "promotion_requirements": [
+        "Complete per-seed and median OOF predictions on the 150-hash envelope; same-row metrics on 144 finite labels and the separate 142 quality-pass subset.",
+        "Register the adaptation's own method card and reader label; original joint Family-Aware remains unavailable under S83.",
+        "Keep threshold-selection and unseen-family claims out of this runtime-only result."
       ]
     },
     {
@@ -55,7 +152,7 @@
       "scientific_contract": [
         "Do not resume the existing ten-cell pilot.",
         "A future intervention must specify the suspected timing-instability factor, control and treatment, replication count, and acceptance rule before timing begins.",
-        "After an accepted calibration, evaluate held-out candidate-specific runtime and quality, then report candidate MAE, selector oracle-hit rate and regret separately."
+        "After an accepted calibration, evaluate held-out candidate-specific runtime and quality. Simulator selection is optional for this project's runtime-prediction objective; selector oracle-hit/regret require a separately declared selection experiment."
       ],
       "routine_worker_may_do_now": [
         "Validate terminal pilot artifacts and summarize the stability evidence.",

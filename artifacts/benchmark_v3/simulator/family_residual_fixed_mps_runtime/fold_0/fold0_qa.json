@@ -1,0 +1,68 @@
+{
+  "assigned_test_hashes": 37,
+  "cross_fitted_family_prediction_for_every_finite_outer_train_hash": true,
+  "cuda_smoke_test": {
+    "classifier_forward_backward": "PASS",
+    "cuda_device": "NVIDIA GeForce RTX 5070 Ti",
+    "family_agnostic_runtime_forward_backward": "PASS",
+    "family_runtime_forward_backward": "PASS",
+    "pyg_data_batch_cuda_forward_backward": "PASS",
+    "shared_initial_state_digest_equal": true,
+    "smoke_shared_initial_state_sha256": "90a16f44af151bd6fe9ee5e7d50b6a30228fd07b4221c72249ca9fe52ed0ade2",
+    "status": "PASS"
+  },
+  "execution_environment_sha256": "45f62d594fbde84c53db441af948b3080f8aaad676da7a02005035c0071f59e2",
+  "family_classifier_uses_only_structural_features": true,
+  "family_prediction_audit_sha256": "764b699ab90e1fe644fe6649758adcd214a3dbb4cffae96ae3e2d2fe746af708",
+  "finite_quality_status_counts_test": {
+    "quality_failed": 1,
+    "quality_pass": 35
+  },
+  "finite_quality_status_counts_train": {
+    "quality_failed": 1,
+    "quality_pass": 107
+  },
+  "fold": 0,
+  "fold0_checkpoint_rule": "technical_QA_only_no_metric_quality_gate",
+  "inner_fold_count_per_seed": 4,
+  "metrics_quality_consulted": false,
+  "no_inner_train_predicted_hash_overlap": true,
+  "prediction_sha256": "4867c0e2351a7b5f04473ffdc0c888182ae507d30771aa2bceba9e934142aa69",
+  "predictions_cover_all_assigned_test_hashes": true,
+  "runtime_models": [
+    "family_residual",
+    "family_agnostic_ablation"
+  ],
+  "seed_set": [
+    42,
+    1234,
+    31415
+  ],
+  "shared_initial_state_match_for_all_seeds": true,
+  "shared_initial_state_sha256_by_seed": {
+    "1234": {
+      "family_agnostic_initial_sha256": "810071be1dbf49e5e295095ca6a91543bb98699338743377a674a133e2d998fe",
+      "family_runtime_initial_sha256": "810071be1dbf49e5e295095ca6a91543bb98699338743377a674a133e2d998fe",
+      "shared_core_initial_sha256": "810071be1dbf49e5e295095ca6a91543bb98699338743377a674a133e2d998fe"
+    },
+    "31415": {
+      "family_agnostic_initial_sha256": "a2196f5dbd4c8922af117f5bed6ffd277fce3536bebc80de3eb2ffcc19108000",
+      "family_runtime_initial_sha256": "a2196f5dbd4c8922af117f5bed6ffd277fce3536bebc80de3eb2ffcc19108000",
+      "shared_core_initial_sha256": "a2196f5dbd4c8922af117f5bed6ffd277fce3536bebc80de3eb2ffcc19108000"
+    },
+    "42": {
+      "family_agnostic_initial_sha256": "3a8d6924ba1a8a7c83cf3c9b706b89ac8e9f3211cb725f5398c82558003fcbf2",
+      "family_runtime_initial_sha256": "3a8d6924ba1a8a7c83cf3c9b706b89ac8e9f3211cb725f5398c82558003fcbf2",
+      "shared_core_initial_sha256": "3a8d6924ba1a8a7c83cf3c9b706b89ac8e9f3211cb725f5398c82558003fcbf2"
+    }
+  },
+  "status": "PASS",
+  "target_quality_status_used_as_feature": false,
+  "target_table_sha256": "7ac486eb517358968bb56525311b2596bc3cd6cf3408d3cd7b5ae426c57660c9",
+  "test_finite_label_hashes": 36,
+  "test_hashes_unique": true,
+  "test_unavailable_hashes": 1,
+  "train_finite_hashes": 108,
+  "train_test_exact_hash_overlap": 0,
+  "true_family_used_for_runtime_training_or_test_prediction": false
+}

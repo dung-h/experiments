@@ -38,3 +38,12 @@ client_secret*.json
 # Rebuildable native-DAG coarsened tensors (~32 MB). Reports and CSV stay versioned.
 artifacts/validation/mali_azizov_transpiled_dag_v1/coarsened/
 artifacts/validation/mali_azizov_transpiled_dag_v1/qpu_scratch_pilot/coarsened/
+
+# E4 local-Aer training intermediates. The review package retains the frozen
+# feature summaries, OOF predictions, QA, manifests, and aggregate inputs;
+# these replayable QPY/QASM and graph dumps remain machine-local because they
+# are not required to rebuild the published predictor tables.
+/artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/compiled_qasm/
+/artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/compiled_qpy/
+/artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/source_graphs.jsonl
+/artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/transpiled_graphs.jsonl

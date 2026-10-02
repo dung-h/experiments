@@ -1,0 +1,92 @@
+{
+  "authorization_scope": {
+    "authorized_by": "benchmark coordinator based on the user's conditional request and independent strong-method review",
+    "authorized_on": "2026-10-02",
+    "basis": "The user requested scientifically justified benchmark work. Independent review supports the fixed-configuration runtime-only adaptation on the frozen C44 five-fold split. Fold 0 is only a metric-blind technical integrity checkpoint; passing it automatically continues the identical frozen run through folds 1-4.",
+    "family_ood": false,
+    "five_fold_oof": true,
+    "fold0_checkpoint_rules": {
+      "automatically_continue_folds_1_through_4": true,
+      "metrics_quality_inspected": false,
+      "prediction_quality_inspected": false,
+      "requires_all_fixed_baselines_and_seed_outputs": true,
+      "requires_exact_hash_and_fold_coverage": true,
+      "requires_finite_predictions_for_every_assigned_hash": true,
+      "requires_frozen_cuda_environment_match": true,
+      "requires_zero_train_test_hash_overlap": true,
+      "technical_qa_only": true
+    },
+    "folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "interpretation_limit": "Five-fold OOF result for a local fixed-configuration method adaptation only; no Family-Aware reproduction, family-OOD claim, or leaderboard promotion.",
+    "leaderboard_promotion": false,
+    "method_family": "cudaq_mps_fixed_chi16_runtime_only_adaptation",
+    "method_id": "mps_fixed_bond16_warm_runtime_prediction",
+    "new_simulator_timing": false,
+    "prediction_methods": [
+      "train_fold_median",
+      "ridge_alpha_1",
+      "graph_seed_42",
+      "graph_seed_1234",
+      "graph_seed_31415",
+      "graph_median_three_seeds"
+    ],
+    "requires_exclusive_timing_lock": true,
+    "requires_host_gpu_lease": true,
+    "requires_no_live_timing_worker": true,
+    "requires_s84_complete": false,
+    "scope": "fixed_split_five_fold_oof_with_fold0_technical_checkpoint",
+    "seeds": [
+      42,
+      1234,
+      31415
+    ],
+    "status": "conditionally_authorized"
+  },
+  "cuda_pyg_smoke": "PASS",
+  "fold": 1,
+  "fold0_checkpoint_rule": "not_applicable",
+  "metrics_quality_consulted": false,
+  "prediction_methods": [
+    "train_fold_median",
+    "ridge_alpha_1",
+    "graph_seed_42",
+    "graph_seed_1234",
+    "graph_seed_31415",
+    "graph_median_three_seeds"
+  ],
+  "prediction_sha256": "b7b97f315c79dbd105bc453c6cd8fd16db3097e0ceedd476c2184022f4c84b04",
+  "predictions_cover_all_assigned_test_hashes": true,
+  "quality_failed_targets_in_fit_and_score_when_finite": true,
+  "seed_set": [
+    42,
+    1234,
+    31415
+  ],
+  "status": "PASS",
+  "test_assigned_hashes": 28,
+  "test_finite_label_hashes": 27,
+  "test_hashes_unique": true,
+  "test_unavailable_hashes": 1,
+  "timing_exclusion_evidence": {
+    "host_gpu_lease_held": true,
+    "host_gpu_lease_path": "/tmp/qre-benchmark-gpu-lease.lock",
+    "no_live_timing_workers_at_lock_acquisition": true,
+    "s84_status_audit": {
+      "attempt_count": 3,
+      "completion_required": false,
+      "run_manifest_sha256": "9747c42e40318018a8f5a9673204f97b5d73c70f1d847dfae8cf309035ca0c3c",
+      "scheduled_attempts": 270,
+      "status": "partial"
+    },
+    "shared_lock_held": true
+  },
+  "train_finite_hashes": 117,
+  "train_test_hash_overlap": 0,
+  "unavailable_targets_not_imputed": true
+}

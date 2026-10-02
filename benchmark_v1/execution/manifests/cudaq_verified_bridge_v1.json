@@ -1,0 +1,28 @@
+{
+  "manifest_id": "cudaq-verified-runtime-qiskit-bridge-v1-20260928",
+  "purpose": "Executable environment decision for the common CUDA-Q adapter after the fresh sibling environment failed target discovery",
+  "base_runtime": {
+    "interpreter": "/home/server/Documents/Capstone-Project/.venv-cudaq313/bin/python",
+    "cudaq": "0.15.1",
+    "cupy": "13.6.0",
+    "numpy": "2.5.3",
+    "target_smokes": ["nvidia fp32", "nvidia fp64"],
+    "package_lock_source": "uv pip freeze --python",
+    "package_lock_sha256": "2ac34ec139e27ca58b0db1250269f375353cd8bc75786f18483514a72718756a",
+    "historical_environment_immutable": true
+  },
+  "parser_runtime": {
+    "site_packages": "/home/server/Documents/quantum-runtime-estimator-replications/.venv-qre-cudaq-common-v1/lib/python3.13/site-packages",
+    "qiskit": "2.5.2",
+    "import_order": ["cudaq", "qiskit", "cudaq.contrib.qiskit_convert"],
+    "package_lock_sha256": "4dd4246a84f7f1ca2a14c9e25b9cd6fed9b46d971f39a61203a021a6c4d26769"
+  },
+  "boundary": {
+    "same_qasm_ir_hash_required_for_fp32_fp64": true,
+    "parser_is_not_a_cudaq_backend": true,
+    "fresh_cudaq_target_selection_failure_remains_recorded": true,
+    "old_timing_values_reused": false,
+    "one_gpu_timing_worker": true
+  },
+  "review_status": "checkpoint_observed_full_panel_pending_strong_review"
+}

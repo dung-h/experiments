@@ -1,0 +1,35 @@
+{
+  "evidence": {
+    "helper_py_sha256": "c34cc98df02b016ee9c94dc9ca27efdbbb7e6c6439831f09d3c92ed3a78f74ad",
+    "interpretation": "The upstream code candidate exposes 44 gate-count slots, qubit count, depth and five SupermarQ metrics before data-dependent pruning; this does not establish the paper's exact 36-field subset.",
+    "paper": "https://arxiv.org/html/2609.12980v1 (feature counts and categories; no complete dictionaries recovered)",
+    "pinned_upstream_commit": "32c392a6ece276f1ff046d4e30052d0571ff6dc6",
+    "pinned_upstream_repository": "/home/server/Documents/Quantum-Execution-Time-Prediction",
+    "utils_py_sha256": "d70db4646f0b9d3deb548d6d960711a43ad818cef344113a6fa1e9f9ae64bcb7"
+  },
+  "feature_dictionary_status": "blocked_incomplete_schema_do_not_fit",
+  "five_supermarq_names_supported_by_pinned_upstream_code": [
+    "program_communication",
+    "critical_depth",
+    "entanglement_ratio",
+    "parallelism",
+    "liveness"
+  ],
+  "paper_breakdown": {
+    "hybrid": "the 41 source globals plus 13 post-transpilation globals",
+    "source": "36 Ma-Li-derived fields plus five SupermarQ metrics",
+    "transpiled": "41 globals computed from the transpiled circuit"
+  },
+  "paper_claimed_global_counts": {
+    "hybrid": 54,
+    "source": 41,
+    "transpiled": 41
+  },
+  "prohibition": "No unnamed proxy or padded vector was generated; source/transpiled/hybrid model inputs remain blocked.",
+  "unresolved_fields": [
+    "exact 36-field Ma-Li-derived name-to-definition mapping",
+    "exact 13 post-transpilation field names and definitions",
+    "complete graph node-feature encoding used by Azizov",
+    "whether pinned Ma-Li source helper's data-dependent pruning corresponds to Azizov's 36 fields"
+  ]
+}

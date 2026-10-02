@@ -1,0 +1,315 @@
+{
+  "artifact_id": "predictive-runtime-aggregate-v1",
+  "bootstrap": {
+    "percentile_rule": "numpy.quantile(method='linear', q=[0.025,0.975])",
+    "replicates": 10000,
+    "seed_derivation": "first 4 SHA256 bytes big-endian of str(root_seed)|bootstrap_stream|artifact_id|comparison_label|0",
+    "seed_registry_path": "benchmark_v1/registry/seed_registry.json",
+    "stream": "20260925-bootstrap"
+  },
+  "inputs": {
+    "artifacts/benchmark_v1/c44_aer_q16_full_panel_evaluation_20260927/aer_q16_reduced_warm.csv": {
+      "bytes": 42878,
+      "sha256": "a25e2e740fd3058e487f713cd0fc074dd8761120a5aface275a212693ac05437"
+    },
+    "artifacts/benchmark_v1/cudaq_mps_common_q16_bridge_full_v1_20260928/attempt_records.jsonl": {
+      "bytes": 3734778,
+      "sha256": "2c77d505950cb269041ae09b78738c74c021c6444ba7b3300205975ab7860017"
+    },
+    "artifacts/benchmark_v1/cudaq_mps_common_q16_bridge_full_v1_20260928/cudaq_mps_common_raw.csv": {
+      "bytes": 1705815,
+      "sha256": "41aaffa3977eebb7d045555baa43dec9a5ecd81dff51aa23943f8d00f6ccc495"
+    },
+    "artifacts/benchmark_v1/cudaq_mps_common_q16_bridge_full_v1_20260928/environment.json": {
+      "bytes": 1476,
+      "sha256": "b0ab34b8cda4e20556875eff9269eab410ec6493e607ee12b8dc8f47901c4bd6"
+    },
+    "artifacts/benchmark_v1/cudaq_mps_common_q16_bridge_full_v1_20260928/run_manifest.json": {
+      "bytes": 2185,
+      "sha256": "02cd92b028e5e2fe31f8f963ee9eaf7de308e5d1ddc262b85ddcef7d78db5b59"
+    },
+    "artifacts/benchmark_v1/sim_aer_q9_full_20260927/aer_q9_full.environment.json": {
+      "bytes": 1856,
+      "sha256": "cf4c721c88aed65f6ed39345925eeb790bb58ae790332909c31eff890e47c5ec"
+    },
+    "artifacts/benchmark_v1/sim_aer_q9_full_20260927/aer_q9_full.pip-freeze.txt": {
+      "bytes": 1612,
+      "sha256": "195dd1a5f87204994a84a32a64f191802d73f295949f01ac71f17385891410d6"
+    },
+    "artifacts/benchmark_v1/sim_common_q16_manifest_20260927/manifest.json": {
+      "bytes": 1707,
+      "sha256": "d94323c12d68f1c27e314774205a30823194ad4efbb9e54c7799fd9a6a42d5a9"
+    },
+    "artifacts/benchmark_v1/sim_common_q16_manifest_20260927/sim_common_q16_manifest.csv": {
+      "bytes": 96002,
+      "sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e"
+    },
+    "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/coverage_and_terminal_statuses.csv": {
+      "bytes": 1059513,
+      "sha256": "24fd010e7a699afa5063cf353d2163bbf98dca562bd67bc69d99fbc4b9a8a84d"
+    },
+    "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/environment_and_cuda_lock.json": {
+      "bytes": 4946,
+      "sha256": "af4be774d4ffa2c0b844052fe1bdd93699844b96fb8296893fb5b2c8c0d4ffde"
+    },
+    "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/fold_0_qa.json": {
+      "bytes": 553379,
+      "sha256": "38276e964457129f700372ded7b346f2813584a31953f57073d22ea8a22f5504"
+    },
+    "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/fold_assignments_and_hash_audit.csv": {
+      "bytes": 31871,
+      "sha256": "696679d3bfd46d2aa2acf9f7771c0fcc628da43b8c91a78e8597b68d0b7990f0"
+    },
+    "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/labels_core.csv": {
+      "bytes": 27418,
+      "sha256": "8cca8430bba1d740c77ae52561326a15dba001841f5c02e9ff48e468d439d5c1"
+    },
+    "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/method_metrics.csv": {
+      "bytes": 8936,
+      "sha256": "33c70739c961b204b20e678aed3d7f35bf6b299da7502eec02b1af6daf0f0a8c"
+    },
+    "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/representation_manifest.json": {
+      "bytes": 412614,
+      "sha256": "a227cca026f8de91bb8522c5015f4e25656fc2b5be208fa3ec7ac85aeef917f4"
+    },
+    "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/run_manifest.json": {
+      "bytes": 3610847,
+      "sha256": "7f6b0abd12318ecab947989be445c624c34333f97efe691b86bdfdae59eaa99f"
+    },
+    "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/same_hash_shared_row_pairs.csv": {
+      "bytes": 16250937,
+      "sha256": "d8d7971817b7df9db4387731eceb91188b4dbfb952f17a636cfc1a2ebd4fd48c"
+    },
+    "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/source_hashes.json": {
+      "bytes": 74961,
+      "sha256": "e8c6b9de6f15918cee8355e82d2a032d6d4a6edf5b1ba594fd08f88832abce0f"
+    },
+    "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/execution_environment.json": {
+      "bytes": 3416,
+      "sha256": "45f62d594fbde84c53db441af948b3080f8aaad676da7a02005035c0071f59e2"
+    },
+    "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/five_fold_execution_receipt.json": {
+      "bytes": 1599,
+      "sha256": "8747e8f13ce10d1974aca08ae691e84a72478fc7bbc7bcc9a01fb2524dfa6f12"
+    },
+    "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/five_fold_oof_predictions.csv": {
+      "bytes": 45340,
+      "sha256": "06effa52a1b5737f45ee4dbbe0d17112b201d753670b960a9815bdaee74998d8"
+    },
+    "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/five_fold_oof_summary.json": {
+      "bytes": 3549,
+      "sha256": "9e4e742faa58e8438b4d86624d2d8638ca737dde10b801ca9ce74c5179b7a7e5"
+    },
+    "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/hash_targets_and_static_features.csv": {
+      "bytes": 28868,
+      "sha256": "7ac486eb517358968bb56525311b2596bc3cd6cf3408d3cd7b5ae426c57660c9"
+    },
+    "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/materialization_manifest.json": {
+      "bytes": 3647,
+      "sha256": "24c15bcb598fa0ba373eda326508afbdd4ed5ebb9f3918450c3da62768096f3b"
+    },
+    "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/method_metrics.json": {
+      "bytes": 9750,
+      "sha256": "96ee542f3222df336641af4db2ad3b7a75ecfb8da7956dca96a7ac5191350038"
+    },
+    "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/paired_bootstrap.csv": {
+      "bytes": 3157,
+      "sha256": "e344874849376f2ad947922584cf192524ca0cce1ddeb5efd2e76fd7d0646204"
+    },
+    "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/paired_hash_comparisons.csv": {
+      "bytes": 395856,
+      "sha256": "9a4f93d1ce1b98adebf13d5201f93413c6cfb5174887dd5c2179d55ccc9d2972"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/five_fold_execution_receipt.json": {
+      "bytes": 5958,
+      "sha256": "a184c2d5485b9fcecb990ea72e75e07a5fd794eedf851ed811e8af1481f1761d"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/five_fold_oof_predictions.csv": {
+      "bytes": 35068,
+      "sha256": "9459502a997fc35d22e4b2b1e2e653b368c6c446c67bbcca2e3966874c95a88d"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/five_fold_oof_summary.json": {
+      "bytes": 17737,
+      "sha256": "4e5b31abe2c8e33b9ae363a4efd046796574ead5c95ddb6e31bae1e434021a24"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_0/environment.json": {
+      "bytes": 3797,
+      "sha256": "82cdc93db83f182c3bc4cdbbbbf45ee642c9a7f1793e081aa22645e031fa8902"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_0/fold0_predictions.csv": {
+      "bytes": 8843,
+      "sha256": "9beeb3c6f8879a6d60cc4534f1d350d3b1ededee69c36075ee955f8c882b22df"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_0/fold0_qa.json": {
+      "bytes": 3354,
+      "sha256": "d24439ef6248dd1304e7866137caf845c9408436fe24c89bd3525f678bdd2cc3"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_1/environment.json": {
+      "bytes": 3797,
+      "sha256": "82cdc93db83f182c3bc4cdbbbbf45ee642c9a7f1793e081aa22645e031fa8902"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_1/fold1_predictions.csv": {
+      "bytes": 6735,
+      "sha256": "b7b97f315c79dbd105bc453c6cd8fd16db3097e0ceedd476c2184022f4c84b04"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_1/fold1_qa.json": {
+      "bytes": 3328,
+      "sha256": "fe481ae0a7588a8fb931f153752383e6faf0304f1a46a861a95ce24df656bf23"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_2/environment.json": {
+      "bytes": 3797,
+      "sha256": "82cdc93db83f182c3bc4cdbbbbf45ee642c9a7f1793e081aa22645e031fa8902"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_2/fold2_predictions.csv": {
+      "bytes": 6310,
+      "sha256": "aceaecc57047cfcae1fee21de45126bda49b22c69b6925a335007de60188e535"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_2/fold2_qa.json": {
+      "bytes": 3328,
+      "sha256": "75c56a8a18a4fcda03bbc2c081d058a0a01741411117440ea9cf76fc5b01bff1"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_3/environment.json": {
+      "bytes": 3797,
+      "sha256": "82cdc93db83f182c3bc4cdbbbbf45ee642c9a7f1793e081aa22645e031fa8902"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_3/fold3_predictions.csv": {
+      "bytes": 6111,
+      "sha256": "232531d155b2b6ac8a4dc9b02179ec5e8c3195bb9ae99585525a2afa84d2a951"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_3/fold3_qa.json": {
+      "bytes": 3328,
+      "sha256": "abd88067dc64a6bb4ed8cccae7420c9c26a8ba93b5145cdd83226354b0a2ad02"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_4/environment.json": {
+      "bytes": 3797,
+      "sha256": "82cdc93db83f182c3bc4cdbbbbf45ee642c9a7f1793e081aa22645e031fa8902"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_4/fold4_predictions.csv": {
+      "bytes": 8153,
+      "sha256": "a48418484150073cf85972bace7d39163d0634ef918498885c8f50d30e6abf2f"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_4/fold4_qa.json": {
+      "bytes": 3328,
+      "sha256": "411789736ee91eff868552cb603b23c15ef946e05ed9bd9b83e2fe5de72e187a"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/hash_targets_and_static_features.csv": {
+      "bytes": 23920,
+      "sha256": "4c1ad9ae16a2bd3187401da95638d01ed9872a480b959adb1aab7726bd05043d"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/preflight_manifest.json": {
+      "bytes": 6455,
+      "sha256": "fc6ab4a67683a64b7c8ab1a32314defda4668340986120d953f3e19aec127982"
+    },
+    "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/preflight_qa.json": {
+      "bytes": 908,
+      "sha256": "71e35d9d5f23a42d67bedd319e77ff769ed917b9bb37bc2d8116df68462e50bd"
+    },
+    "benchmark_v1/decisions/S82_UNIFIED_BENCHMARK_CONTRACT_20261002.md": {
+      "bytes": 8669,
+      "sha256": "b525dc1ccf66b4f658247e4fe33c44a23e8262d3720ff86e5a348b98343680c5"
+    },
+    "benchmark_v1/decisions/S85_MPS_FOLD0_DIAGNOSTIC_AUTHORIZATION_20261002.md": {
+      "bytes": 8620,
+      "sha256": "f5dda9ae5374281f51922d730e2effd174b86973a3f41ab5e9c143cef6890318"
+    },
+    "benchmark_v1/execution/manifests/cudaq_verified_bridge_v1.json": {
+      "bytes": 1327,
+      "sha256": "7cc55f45a27e313d9d5e47ea9b79ca6f18e1b7379f1c24e1a468ccafed3f3a87"
+    },
+    "benchmark_v1/execution/manifests/simulator_environment_lock_v1.json": {
+      "bytes": 2710,
+      "sha256": "08624ffa11ba12805e15eec93be573068b02cd362b1092c19694369ec76b21a8"
+    },
+    "benchmark_v1/protocol/azizov_common_core_gnn_v1.json": {
+      "bytes": 14786,
+      "sha256": "5c800d77b5230342afce1e0f0f38c711b20e7317b3023d2ba20e1c2a2451549b"
+    },
+    "benchmark_v1/protocol/azizov_local_feature_dictionary_v1.json": {
+      "bytes": 7388,
+      "sha256": "100c994c852ca8cf33150f971ce2f5716465ab5822a9efaf6f240e3ea5a2fa94"
+    },
+    "benchmark_v1/protocol/benchmark_result_table_schema_v1.json": {
+      "bytes": 8643,
+      "sha256": "a331fc87bc7f0afa8b8fd2df610c336f504b5f62f4afbf67027909ba80e0c70f"
+    },
+    "benchmark_v1/protocol/family_residual_runtime_only_v1.json": {
+      "bytes": 8476,
+      "sha256": "753db02950abb1a3db52f6ac39bfab91c841e0acf56dca69e4a95def0bee9e80"
+    },
+    "benchmark_v1/protocol/simulator_completion_gates_v1.json": {
+      "bytes": 15378,
+      "sha256": "74593475974b68ca003f991f1477d12ff67f0c22bdda567b46b9675011baf584"
+    },
+    "benchmark_v1/protocol/unified_split_contract_v2.json": {
+      "bytes": 17494,
+      "sha256": "de4e94abb507c6723c64198bad9f8b6a1c8486b131fb2ebdcfab4704d4605c9e"
+    },
+    "benchmark_v1/registry/seed_registry.json": {
+      "bytes": 753,
+      "sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864"
+    },
+    "benchmark_v1/requirements-azizov-fit.txt": {
+      "bytes": 240,
+      "sha256": "034a8b2df69c071cb651b27d0f431904373d348cb21ed68544eb66d93e6d371c"
+    },
+    "benchmark_v1/scripts/aggregate_predictive_oof_v1.py": {
+      "bytes": 73268,
+      "sha256": "2c33311f5242e690978267b70b0113391bf27b014700b7f499df06b239a8c088"
+    },
+    "benchmark_v1/scripts/materialize_azizov_common_core_v1.py": {
+      "bytes": 48458,
+      "sha256": "a09f8caee17a5f20321d612323f2415a9a35875af73f13b18f8672692eb3e915"
+    },
+    "benchmark_v1/scripts/run_azizov_common_core_adaptation_v1.py": {
+      "bytes": 94312,
+      "sha256": "66baf8c9477059dc7abf1b156f4ba386575d2797da0bfd7914ebf94c00112ab6"
+    },
+    "benchmark_v1/scripts/run_family_residual_fixed_mps_runtime_v1.py": {
+      "bytes": 80538,
+      "sha256": "906c4be4c4832d95aef7e2f27fd72b1981d9fa60a01d546351fc50061482e771"
+    },
+    "benchmark_v1/scripts/run_mps_fixed_chi16_runtime_adaptation_v1.py": {
+      "bytes": 69986,
+      "sha256": "7731c6ef22704089122fd704f138bd207856909437bce9e03c7f6012812b5bd6"
+    }
+  },
+  "pinned_e5_input_sha256": {
+    "five_fold_oof_predictions.csv": "06effa52a1b5737f45ee4dbbe0d17112b201d753670b960a9815bdaee74998d8",
+    "method_metrics.json": "96ee542f3222df336641af4db2ad3b7a75ecfb8da7956dca96a7ac5191350038",
+    "paired_bootstrap.csv": "e344874849376f2ad947922584cf192524ca0cce1ddeb5efd2e76fd7d0646204",
+    "paired_hash_comparisons.csv": "9a4f93d1ce1b98adebf13d5201f93413c6cfb5174887dd5c2179d55ccc9d2972"
+  },
+  "source_roles": {
+    "E3_fixed_mps_chi16": [
+      "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/five_fold_oof_predictions.csv",
+      "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/five_fold_oof_summary.json",
+      "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/preflight_manifest.json",
+      "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/preflight_qa.json",
+      "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/five_fold_execution_receipt.json",
+      "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/hash_targets_and_static_features.csv"
+    ],
+    "E4_aer_azizov": [
+      "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/method_metrics.csv",
+      "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/coverage_and_terminal_statuses.csv",
+      "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/same_hash_shared_row_pairs.csv",
+      "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/labels_core.csv",
+      "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/fold_assignments_and_hash_audit.csv",
+      "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/representation_manifest.json",
+      "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/source_hashes.json",
+      "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/run_manifest.json",
+      "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/environment_and_cuda_lock.json",
+      "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/fold_0_qa.json"
+    ],
+    "E5_family_residual_fixed_mps": [
+      "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/five_fold_oof_predictions.csv",
+      "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/method_metrics.json",
+      "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/paired_bootstrap.csv",
+      "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/paired_hash_comparisons.csv",
+      "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/five_fold_oof_summary.json",
+      "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/materialization_manifest.json",
+      "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/execution_environment.json",
+      "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/five_fold_execution_receipt.json",
+      "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/hash_targets_and_static_features.csv"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "candidate_parse_environment_only": {
+    "python": "3.10.21",
+    "qiskit": "0.25.2.1",
+    "qiskit_aer": "0.12.2",
+    "role": "QASM parsing and source-DAG static materialization only; not approved as the frozen timing/transpilation context",
+    "torch": "2.7.1+cu128",
+    "torch_geometric": "2.6.1"
+  },
+  "execution": {
+    "cuda_smoke_or_training": false,
+    "model_fit": false,
+    "simulator_timing": false,
+    "transpilation": false
+  },
+  "protocol_id": "azizov-common-core-gnn-v1-20261002",
+  "required_frozen_context_path": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v1/sim_aer_q9_full_20260927/aer_q9_full.environment.json",
+  "required_frozen_context_status": "missing",
+  "transpiled_representation_status": "blocked_missing_historical_target_and_noise_hash; current FakeSherbrooke is not substituted"
+}
