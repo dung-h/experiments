@@ -39,15 +39,15 @@ paper method.
 Execution update (2026-10-02): E1–E6 are complete and validated. E7's reader
 documentation links both domains without merging their clocks; artifact-local
 method cards are present, while the reader-facing fidelity registry and
-`CURRENT.json` are unchanged. E8's local clean-clone receipt covers package
-commit `461cc6e`: it restored the three row-partitioned CSVs, verified 1,469
-inventory hashes, rebuilt E6 byte-identically, passed 155 tests, and left the
-clone clean. This check reused the documented local Python 3.10.21 verification
-interpreter; it did not freshly install dependencies, retrain models, or repeat
-simulator/QPU measurements. Later reporting edits are documented at the
-current `presentation-review` HEAD and need the final C6 clone/inventory pass
-after C1–C5 changes settle. The release inventory lists retained evidence and
-omitted local intermediates; no broad source-workspace cleanup was performed.
+`CURRENT.json` are unchanged. E8's earlier clean-clone receipt covers
+`461cc6e`. Final C6 cloned commit `860829a`, freshly installed the pinned
+Python 3.10 verification environment, restored the three row-partitioned CSVs,
+verified 1,481 hashes, rebuilt simulator and QPU tables, reproduced all 22
+non-manifest scorecard outputs, and passed 155 tests. The rebuilt scorecard
+manifest validates. Direct validation of the older stored v3 manifest reports
+its superseded source pins for `report_finalization.json` and
+`docs/presentation.md`; the historical pack was not rewritten. No model
+training, timing, QPU access, or broad source-workspace cleanup occurred.
 
 | ID | Work | Outcome |
 | --- | --- | --- |
@@ -58,7 +58,7 @@ omitted local intermediates; no broad source-workspace cleanup was performed.
 | E5 | Run fixed-MPS Family-Aware-inspired residual adaptation and family-agnostic ablation | Complete. Five folds on the same frozen MPS labels; not the original joint runtime/quality method or a family-OOD test. |
 | E6 | Aggregate hash-level metrics, paired uncertainty, coverage and method cards | Complete. Separate Aer and MPS results; 18 Aer and 10 MPS paired comparisons, each with 10,000 bootstrap replicates. No cross-clock pooling or imputation. |
 | E7 | Update reader-facing result/method disclosures | Content complete in `README.md`, `docs/results.md`, `docs/methodology.md` and `docs/reproduction.md`; E6 method cards remain pinned in its manifest. Historical packs and `CURRENT.json` were not rewritten. Registry promotion remains a review action, not silently applied. |
-| E8 | Verify rebuild/reproducibility and package boundary | Package commit `461cc6e` passed the local clone, inventory, aggregate, artifact and full-suite checks described above. Repeat C6 after the current documentation and public-staging changes settle; the existing clone does not validate a fresh dependency install, retraining, hardware rerun, or redistribution of unavailable external inputs. |
+| E8 | Verify rebuild/reproducibility and package boundary | Final C6 commit `860829a` passed fresh dependency installation, inventory/artifact checks, simulator/QPU rebuilds, a byte-identical 22-file scorecard comparison, and 155 tests. Direct validation of the historical stored manifest flags its two superseded source hashes; rebuilding creates a current manifest that validates. This is table reproduction, not source-complete retraining, hardware rerun, or rights clearance. |
 
 Implement missing runners as ordinary maintained scripts in
 `benchmark_v1/scripts/`, with meaningful tests under `benchmark_v1/tests/`.

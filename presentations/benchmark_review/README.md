@@ -51,6 +51,6 @@ env RUNTIME_NODE_MODULES=/home/server/.cache/codex-runtimes/codex-primary-runtim
   claims.
 - PDF: 14 pages at 640 × 360 pt, exported from 1280 × 720 rendered slides.
   Use the PPTX when editing is needed.
-- The internal clean-clone check covers commit `461cc6e`; this later deck and
-  reporting overlay still require the final package inventory/clone check.
-  This deck is not public-release or licensing approval.
+- The complete review package, including this deck, passed the fresh local
+  clean-clone inventory/table-rebuild checks at commit `860829a`. This remains
+  internal review material, not public-release or licensing approval.

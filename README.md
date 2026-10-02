@@ -54,13 +54,11 @@ these assumptions and their consequences.
 
 ## Reproduction and publication status
 
-The E1–E6 package at commit `461cc6e` passed a local clean-clone table rebuild;
-the validation record distinguishes that older receipt from the current
-reporting overlay. The present table/presentation additions are being checked
-in the final C6 clone pass. These checks are **table reproduction**, not
-retraining from every original dataset or repeating hardware measurements.
-They do not establish a fresh dependency installation, retraining, or hardware
-measurement. The complete original source circuit collections are not
+The complete review package at commit `860829a` passed a fresh local clean-clone
+table rebuild with a newly installed pinned verification environment. The
+validation record distinguishes that check from retraining or repeating
+hardware measurements: original-source extraction and every paper's training
+are not reproduced. The complete original source circuit collections are not
 included. See the [validation record](docs/reproduction_validation.md).
 
 The current E1–E6 package is on `presentation-review`; `benchmark-review`

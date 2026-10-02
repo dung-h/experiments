@@ -29,6 +29,41 @@ This validates the review-package reconstruction path, not end-to-end
 retraining from all original source data or authority to make a public
 release.
 
+## Final C6 review-package clone — 2026-10-02
+
+Commit `860829acbc5f27762143d48b0306a4abcd39a696` was cloned locally with
+`git clone --no-local --branch presentation-review`. A new Python 3.10.21
+virtual environment was installed from
+`benchmark_v1/requirements-verification.txt`; installation completed. This
+check covers the reader table, provenance notice, revised deck/figures, and
+reproduction documentation committed at that revision.
+
+| Check | Result |
+| --- | --- |
+| CSV restoration | All three row-partitioned CSVs restored at their recorded sizes and hashes |
+| Release inventory | PASS; 1,479 tracked paths and 1,481 hashes including the three restored CSVs |
+| Historical artifact verification | PASS; no timing, training or external-service access |
+| Simulator reader tables | Validator PASS; seven non-manifest outputs byte-identical |
+| QPU method aggregate | 24 methods / 72 source pairs; attempts and three metric CSVs byte-identical |
+| Rebuilt two-domain scorecard | Fresh output validator PASS; all 22 non-manifest files byte-identical to stored v3 |
+| Full `benchmark_v1/tests` suite | 155 passed in 16.35 s |
+| Clone after restoration and checks | Clean |
+
+Directly validating the historical stored `two_domain_scorecard_v3/manifest.json`
+against current source files reports two stale source hashes: the report
+manifest and `docs/presentation.md`. Those source pins predate the S1 reporting
+review at commit `4e42946`. The archived scorecard and its manifest were not
+rewritten. Rebuilding into a new work directory generated a current manifest
+that validates; its 22 non-manifest output files match the stored scorecard
+byte-for-byte. Thus table values reproduce, while the historical manifest
+remains an unchanged snapshot of its earlier inputs.
+
+The fresh installation and table rebuild do not retrain models or recreate
+every original dataset. The Ma–Li/Qonductor source payloads and QPack optimized
+angles remain outside the package, as documented in [methodology](methodology.md).
+This is an internal reproducibility result, not public redistribution or
+license approval.
+
 ## GitHub review-branch clone — 2026-10-02
 
 The author requested publication of `benchmark-review`. Commit

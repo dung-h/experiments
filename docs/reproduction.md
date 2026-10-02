@@ -12,11 +12,12 @@ The current scientific completion queue is
 table rebuilds from newly designed predictor runs. A locked protocol is not
 evidence that its feature extraction, training or accuracy evaluation finished.
 
-The local clean-clone receipt in [reproduction validation](reproduction_validation.md)
-covers package commit `461cc6e`. The current `presentation-review` HEAD may
-contain later documentation changes, so the final C6 handoff must refresh the
-clone receipt after those edits settle. The older GitHub-clone receipt predates
-the E1–E6 additions and is evidence only for that earlier package.
+The [reproduction validation record](reproduction_validation.md) distinguishes
+the earlier `461cc6e` check from the final C6 clone. C6 freshly installed the
+pinned verification environment and rebuilt the current tables from package
+commit `860829a`; its checks and the historical-pack caveat are recorded there.
+The older GitHub-clone receipt predates the E1–E6 additions and is evidence
+only for that earlier package.
 The procedure rebuilds metrics, not the full experiment from every original
 dataset. The complete
 Ma–Li logical QASM corpus and Qonductor `circuits.zip`/database export are not bundled; the
@@ -36,9 +37,8 @@ claim that the current local HEAD is already available on GitHub. To validate
 an unpushed local candidate, use
 `git clone --no-local --branch presentation-review /path/to/publish_candidate /tmp/qre-review-clone` instead. Then restore the
 three large CSVs from their row-aligned parts. Python's standard library is
-sufficient for restoration; Git LFS is not required. The existing local receipt
-covers `461cc6e`; it does not cover later documentation edits at the current
-HEAD.
+sufficient for restoration; Git LFS is not required. For an unpushed local
+candidate, the fresh-clone procedure is the same apart from the clone source.
 
 ```bash
 git clone --branch presentation-review https://github.com/dung-h/experiments.git
@@ -65,7 +65,6 @@ unset PYTHONPATH PYTHONHOME
 export PYTHONDONTWRITEBYTECODE=1
 .venv-qre-verify/bin/python scripts/verify_release_inventory.py
 .venv-qre-verify/bin/python scripts/verify_artifacts.py
-.venv-qre-verify/bin/python benchmark_v1/scripts/validate_two_domain_scorecard_v2.py --pack artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3
 .venv-qre-verify/bin/python benchmark_v1/scripts/build_simulator_reader_tables_v1.py --output-dir work/rebuilds/simulator_reader_tables
 .venv-qre-verify/bin/python -m benchmark_v1.scripts.validate_simulator_reader_tables_v1
 diff -qr --exclude=manifest.json artifacts/benchmark_v3/simulator/reader_tables_v1 work/rebuilds/simulator_reader_tables
@@ -79,6 +78,12 @@ cmp artifacts/benchmark_v3/real_qpu/unified_method_comparisons_v2/pairwise_compa
 diff -qr --exclude=manifest.json artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3 work/repo_finalization/rebuilds/two_domain_scorecard
 .venv-qre-verify/bin/python -m pytest -p no:cacheprovider -q benchmark_v1/tests/test_report_finalization.py benchmark_v1/tests/test_simulator_reader_tables_v1.py
 ```
+
+The immutable published scorecard v3 manifest still records the old hashes of
+`report_finalization.json` and `docs/presentation.md` from before the reporting
+review. Its stored results are left untouched. Rebuild the scorecard into a
+fresh directory and validate that rebuilt manifest; the C6 run confirms that
+all 22 non-manifest result files match the published tables byte-for-byte.
 
 Expected results: the simulator table rebuild validates and its seven
 non-manifest files match the published table pack; QPU aggregation reports 24
