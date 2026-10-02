@@ -1,5 +1,43 @@
 # Clean-clone validation
 
+## GitHub review-branch clone — 2026-10-02
+
+The author requested publication of `benchmark-review`. Commit
+`66a680bf4328524668ffa8c615025cb0b6ee45ae` was pushed to
+`https://github.com/dung-h/experiments.git` and cloned from GitHub, not from
+the source workspace. `main` was not changed. No release tag or repository
+license was created.
+
+Three frozen CSVs are distributed as nine row-aligned parts, each below
+48 MiB. `python3 scripts/materialize_csv_parts.py` restored all three at
+their original paths with matching sizes and SHA-256 hashes. Git LFS is not
+needed. The original tables contain 210,408, 184,107 and 184,107 data rows;
+partitioning does not change the benchmark's 8,767-observation population.
+
+The clone was checked using a fresh Python 3.10.21 environment and the
+committed verification requirements:
+
+| Check | Result |
+| --- | --- |
+| Inventory | 1,318 tracked paths and 3 ignored, reassembled CSVs; 1,320 file hashes verified |
+| CSV restore regression tests | Multiline cells, CRLF, missing final newline, corrupted part rejection and refusal to overwrite mismatched data covered |
+| Full included test suite | 42 passed in 12.76 s |
+| Historical artifact check | PASS |
+| Published scorecard validator | PASS; 24 QPU variants, 72 source pairs, 162 supplementary Aer rows |
+| Simulator table rebuild | All 7 non-manifest files byte-identical |
+| QPU rebuild | `attempts.csv` and the 3 metric tables byte-identical |
+| Scorecard rebuild | All 22 non-manifest files byte-identical |
+| Git status after restore, tests and rebuilds | Clean |
+
+Commands are in [reproduction.md](reproduction.md). Validation used no
+original-workspace data fallback, training, simulator timing or QPU access.
+The included data supports metric rebuilding, not complete original-dataset
+retraining. The scientific gaps and external-source limitations described
+in the methodology remain unchanged. `CURRENT.json` and the C4 receipt
+retain the hashes recorded below.
+
+## Earlier local-clone check
+
 **Status: internal reproduction package passed. Not a public-release approval.**
 
 On 2026-10-02, a fresh local Git clone was made with `git clone --no-hardlinks`
