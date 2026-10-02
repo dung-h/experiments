@@ -9,6 +9,12 @@ records how each implementation differs from its source paper;
 [`CURRENT.json`](../benchmark_v1/registry/CURRENT.json) identifies the
 versions used by the report.
 
+The reader-facing construction and comparison rules are pinned in the
+[unified benchmark contract](../benchmark_v1/decisions/S82_UNIFIED_BENCHMARK_CONTRACT_20261002.md).
+It separates the archived-QPU ledger from simulator configuration cells and
+states the table schemas and completion gates. It does not authorize new
+experiments.
+
 ## Data and reconstruction
 
 The real-QPU ledger contains 8,767 archived observations. Their labels come

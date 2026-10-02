@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "contract_id": "benchmark-result-table-schema-v1-20261002",
+  "authority": "S82_UNIFIED_BENCHMARK_CONTRACT_20261002",
+  "scope": "Reader-facing derived tables only. Historical raw artifacts and method IDs remain immutable.",
+  "real_qpu": {
+    "dataset_construction_columns": [
+      "source_id", "retained_rows", "observation_unit", "label_field", "label_unit", "shots_policy", "backend_coverage", "circuit_evidence", "reconstruction_class", "excluded_rows_or_workloads", "error_mitigation_metadata_status"
+    ],
+    "same_clock_results_columns": [
+      "reader_label", "fidelity_class", "representation_stage", "evaluation_target_clock", "method_output_clock", "assigned_n", "predicted_n", "coverage", "shared_test_population_id", "mae_seconds", "medae_seconds", "log1p_mae", "r2_seconds", "p90_absolute_error_seconds", "p99_absolute_error_seconds", "max_absolute_error_seconds", "status", "claim_boundary"
+    ],
+    "cross_clock_diagnostic_columns": [
+      "reader_label", "fidelity_class", "raw_method_output_clock", "evaluation_target_clock", "assigned_n", "predicted_n", "coverage", "raw_mae_against_service_seconds", "calibration_variant_id", "calibration_train_only", "diagnostic_status", "unavailable_reason", "claim_boundary"
+    ],
+    "comparison_rules": [
+      "Errors may be ranked only within identical evaluation and output clocks, identical held-out row IDs, and declared fidelity/representation class.",
+      "Every pairwise statement names its common successful row count and reports each method's full-envelope coverage separately.",
+      "Source-stratified and QPack workflow-balanced summaries are companion tables; they do not replace the unified trained model's identity."
+    ]
+  },
+  "simulator": {
+    "panel_configuration_columns": [
+      "panel_id", "panel_members", "unique_qasm_hashes", "family_count", "width_range", "stratum", "engine_id", "engine_version", "hardware_hash", "configuration_hash", "shots", "precision", "clock_id", "quality_policy_id", "attempted_n", "terminal_status_counts"
+    ],
+    "method_results_columns": [
+      "reader_label", "fidelity_class", "cell_id", "exact_qasm_grouping", "evaluation_target_clock", "method_output_clock", "quality_policy_id", "assigned_n", "predicted_n", "coverage", "mae_seconds", "medae_seconds", "log1p_mae", "r2_seconds", "tail_error", "status", "claim_boundary"
+    ],
+    "pair_only_columns": [
+      "reader_label", "cell_id", "same_plan_identity", "estimate_clock", "actual_clock", "successful_pairs", "median_estimate_to_actual_ratio", "status", "claim_boundary"
+    ],
+    "comparison_rules": [
+      "Do not pool errors across engines, output APIs, precision modes, hardware contexts, first/warm clocks, or quality policies.",
+      "MPS timing requires the declared quality threshold; quality_failed remains in the attempted denominator.",
+      "cuTensorNet RUNTIME_EST compares only with the matching selected-plan scalar contraction; network build and path search are telemetry, not target labels.",
+      "A local engine timing row is not automatically a runtime-prediction method row."
+    ]
+  },
+  "terminal_statuses": [
+    "evaluated", "diagnostic", "unavailable", "not_evaluated", "partial_coverage", "quality_failed", "timeout", "planner_timeout", "adapter_error", "pilot_gate_failed", "contract_only"
+  ]
+}

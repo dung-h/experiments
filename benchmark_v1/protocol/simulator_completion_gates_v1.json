@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "contract_id": "simulator-method-completion-gates-v1-20261002",
+  "authority": "S82_UNIFIED_BENCHMARK_CONTRACT_20261002",
+  "default_execution_state": "not_authorized",
+  "global_preconditions": {
+    "exact_qasm_panel": "sim_common_q16_v1; 204 members, 191 exact hashes",
+    "split": "exact-QASM hash-grouped frozen outer split; all tuning is outer-train only",
+    "neural_compute": "CUDA-enabled framework, three fixed seeds 42/1234/31415, median per test row; retain seed dispersion",
+    "gpu_exclusivity": "one GPU timing worker; never train while a timing cell is active",
+    "checkpoint": "validate fold 0 or first ten terminal cells before a full run",
+    "terminal_policy": "preserve timeout, unsupported, adapter_error, and quality_failed in coverage"
+  },
+  "gates": [
+    {
+      "method_family": "azizov_source_hybrid_transpiled",
+      "state": "requires_strong_method_signature",
+      "scientific_contract": [
+        "Freeze three representations: source graph, source-plus-compiled hybrid graph, and compiled/transpiled DAG; document every feature and vocabulary.",
+        "Use the identical noisy-Aer warm-execution cell, exact-QASM hash groups, outer folds, and labels for all three GNN variants and tabular baselines.",
+        "Train neural variants on CUDA; retain 42/1234/31415 outputs. CPU is permitted only for frozen classical baselines.",
+        "Do not use family, source path, hash, timing repetition, or post-execution data as a feature."
+      ],
+      "routine_worker_may_do_now": [
+        "Materialize and hash the three representation inputs.",
+        "Run leakage and shape tests without training.",
+        "Prepare a fold-0 command and environment check."
+      ],
+      "promotion_requirements": [
+        "CUDA smoke test and fold-0 QA pass for every neural variant.",
+        "Five-fold OOF predictions, coverage and same-row pair table on the 162-core panel.",
+        "Frontier q10–q16 reported as coverage/scaling unless a separate frozen extrapolation contract is signed."
+      ]
+    },
+    {
+      "method_family": "family_aware_residual",
+      "state": "blocked_by_missing_target_labels",
+      "scientific_contract": [
+        "Freeze an approximation ladder per engine/configuration before measurement.",
+        "For each circuit/context, measure warm runtime and compute a reference fidelity outside the timed boundary.",
+        "Define the prediction-time family signal for strict circuit OOF and separately define family-held-out evaluation."
+      ],
+      "routine_worker_may_do_now": [
+        "Inventory which existing runs have a compatible runtime-plus-quality pair.",
+        "Generate an explicit missing-label report."
+      ],
+      "promotion_requirements": [
+        "Strong-method signature of ladder, fidelity threshold and family encoding.",
+        "A completed, quality-qualified label matrix."
+      ]
+    },
+    {
+      "method_family": "maestro_componentwise",
+      "state": "blocked_by_terminal_pilot_gate",
+      "scientific_contract": [
+        "Do not resume the existing ten-cell pilot.",
+        "A future intervention must specify the suspected timing-instability factor, control and treatment, replication count, and acceptance rule before timing begins.",
+        "After an accepted calibration, evaluate held-out candidate-specific runtime and quality, then report candidate MAE, selector oracle-hit rate and regret separately."
+      ],
+      "routine_worker_may_do_now": [
+        "Validate terminal pilot artifacts and summarize the stability evidence.",
+        "Prepare a non-executing candidate/input inventory."
+      ],
+      "promotion_requirements": [
+        "New signed intervention protocol.",
+        "Stable calibration and at least two quality-eligible candidates per held-out circuit.",
+        "No Composer-equivalence claim."
+      ]
+    },
+    {
+      "method_family": "cutensornet_runtime_est",
+      "state": "evaluated_native_pair_diagnostic",
+      "scientific_contract": [
+        "Keep selected plan, workspace, precision and scalar output identical between estimate and actual contraction.",
+        "Report RUNTIME_EST / warm-contraction ratio rather than an Aer/CUDA-Q wall-clock MAE."
+      ],
+      "routine_worker_may_do_now": [
+        "Aggregate paired records and verify selected-plan identity."
+      ],
+      "promotion_requirements": [
+        "None for its native paired diagnostic claim; cross-engine promotion is forbidden."
+      ]
+    },
+    {
+      "method_family": "pasqal_emu_mps",
+      "state": "analog_companion_only",
+      "scientific_contract": [
+        "Use pulse program and atom layout as the input, with declared analog quality configuration.",
+        "Never map digital OpenQASM into the analog panel without a separately validated equivalence."
+      ],
+      "routine_worker_may_do_now": [
+        "Audit the completed pilot and retain it as an appendix artifact."
+      ],
+      "promotion_requirements": [
+        "Separate analog panel, accepted quality gate and identifiable formula fit."
+      ]
+    }
+  ]
+}
