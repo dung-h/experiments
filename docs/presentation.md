@@ -1,10 +1,10 @@
-# Nội dung khoa học đã khóa cho báo cáo benchmark
+# Nội dung khoa học cho báo cáo benchmark
 
-Phạm vi: bản báo cáo nội bộ, khoảng 10 phút, tiếng Việt. Đây là brief cho người
-dựng slide, không phải deck đã hoàn thành hoặc giấy phép public release.
-Authority: `benchmark_v1/execution/manifests/report_finalization.json`.
-Các file và hashes trong manifest quyết định nguồn số; không lấy số từ bảng
-lịch sử khi đã có nguồn mới hơn. Không training, đo thêm hoặc thử seed mới.
+Phạm vi: báo cáo nội bộ khoảng 10 phút, tiếng Việt. Đây là nguồn nội dung duy
+nhất cho deck; không tạo một outline/version song song. Số liệu phải lấy từ
+`benchmark_v1/execution/manifests/report_finalization.json` và artifact mà nó
+pin. Bản manifest này khóa bằng chứng số, không khóa cách diễn giải hay bố cục
+slide. Không training, đo thêm hoặc thử seed mới trong queue dựng báo cáo.
 
 ## Thông điệp chính
 
@@ -108,29 +108,39 @@ process. Chưa xác định nguyên nhân variation; không đổ lỗi cho thre
 hardware hay thuật toán khi chưa có intervention evidence. Không suy Maestro
 paper predictor thất bại trên common panel từ pilot này.
 
-## Outline 10 slides chính
+## Bố cục deck 10 slide — dữ liệu trước, kết quả sau
 
-1. **Bài toán và phạm vi:** runtime prediction cho scheduling; hai domain,
-   không chạy live QPU; report coverage PARTIAL.
-2. **Dữ liệu chung:** QPU 340 + 4.482 + 3.945 = 8.767; simulator 204/191;
-   identity, shots và clocks.
-3. **Cách so sánh công bằng:** frozen grouped outer/inner folds, train-only
-   preprocessing/calibration, cùng successful test IDs, failures giữ denominator.
-4. **Method coverage:** sáu approach QPU và sáu simulator approach; 24 QPU
-   variants không phải 24 paper. Hiện native/adaptation/unavailable.
-5. **Kết quả QPU trên shared rows:** figure MAE theo ba nguồn từ finding 1;
-   CI Ma–Li qua 0 và coverage-asymmetric Qonductor ghi ngay trên slide.
-6. **Không chỉ một metric:** QPack negative R², equal-workflow diagnostic;
-   giới hạn của reconstructed inputs, không unseen-template claim.
-7. **Analytical clocks:** schedule versus observed service, raw versus
-   outer-train-calibrated; không gọi calibrated proxy là paper-native.
-8. **Simulator coverage và quality:** MPS/TN failures; local engine/clock;
-   đo xong không có nghĩa predictor đã benchmark đủ.
-9. **Maestro stability pilot:** timing spread từ finding 5, terminal failure,
-   null predictor score, cause unknown.
-10. **Kết luận và phạm vi còn thiếu:** các observations đã chứng minh;
-    roadmap riêng cho incomplete GNN/joint quality/accepted Maestro, không
-    đề xuất rerun trong report-finalization queue.
+1. **Câu hỏi và phạm vi:** dự đoán runtime trước khi scheduler xếp lịch cho
+   hai domain; `PARTIAL`, không live-QPU và không có global leaderboard trộn
+   clock.
+2. **Dựng unified real-QPU ledger:** Ma–Li 340 + Qonductor 4.482 + QPack MCP
+   3.945 = 8.767 observed one-circuit/service observations. Hiện label
+   boundary, đơn vị, shots và identity nguồn.
+3. **Bằng chứng mạch và tái dựng:** Ma–Li exact logical QASM; Qonductor exact
+   submitted physical QASM; QPack sáu cấu trúc reconstruction-qualified. Góc
+   và routing QPack không được phục hồi; mạch tái dựng không thay nhãn runtime.
+4. **Simulator panel và điều kiện đo:** 204 members / 191 exact hashes / 22
+   families, q2–q16; core 162 và frontier 42. Nêu local context, first/warm,
+   quality MPS và terminal statuses; không vẽ như lưới family×width hoàn chỉnh.
+5. **Protocol so sánh và method matrix:** frozen QASM/workflow groups,
+   outer-train-only fitting và failure ở coverage denominator. Liệt kê sáu
+   họ QPU và sáu họ simulator theo fidelity, output clock, status; 24 variants
+   QPU không phải 24 paper.
+6. **Real-QPU learned:** graph V3-large so polynomial cùng shared OOF rows,
+   tách theo nguồn nhưng không phải ba model train riêng; gọi đúng là unified
+   adaptations với representation lifecycle hỗn hợp.
+7. **Real-QPU analytical:** Qiskit/QCRE scheduled proxies, Scholten nominal
+   throughput và Hyb-HANAS effective-cost ở bảng diagnostic riêng. Hiện đồng
+   thời evaluation-target clock và method-output clock.
+8. **Simulator method results:** Aer local graph/Ridge/GBR core; cuTensorNet
+   estimate/actual cùng selected plan; CUDA-Q coverage và MPS quality failures.
+   Phân biệt engine đã đo với predictor đã benchmark.
+9. **Methods chưa có score hợp lệ:** Azizov GNN chưa có signed local run,
+   Family-Aware thiếu label chung phù hợp, Maestro pilot gate failed; Pasqal là
+   analog companion, không phải digital-QASM row.
+10. **Kết luận và claims có giới hạn:** các finding được hỗ trợ, bằng chứng
+    giới hạn chúng, và execution gates bắt buộc trước khi promote method còn
+    thiếu.
 
 Appendix: method cards/fidelity; actual representation; seeds/splits;
 hardware/software contexts; clock boundaries; source-native unstable result;

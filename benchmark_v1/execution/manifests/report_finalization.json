@@ -3,7 +3,7 @@
   "manifest_id": "two-domain-report-finalization-v1",
   "status": "LOCKED_FOR_REPORT",
   "locked_date": "2026-10-02",
-  "authority": "Strong-agent report contract; G1 evidence in existing plan. Not public/human licensing approval.",
+  "authority": "Strong-agent numerical-evidence contract; narrative presentation is versioned separately by the presentation manifest. Not public/human licensing approval.",
   "scientific_coverage": "PARTIAL",
   "experiment_or_training_authorized": false,
   "public_release_approved": false,
@@ -357,7 +357,6 @@
     "benchmark_v1/scripts/run_maestro_component_calibration.py": "9f2383b0a83cbcf52b38cbde1c1700902daf443aee12411e2dcc2e95a9c80ccc",
     "benchmark_v1/scripts/validate_two_domain_scorecard_v2.py": "ba6f06cb3e6cfee7f123ae32500bc0c7a904bc486f53ee1894e96cdf04c1bdc9",
     "benchmark_v1/tests/test_report_finalization.py": "006b8391480f621e40a6f0f5e43fc64476101a7db9562abb57aa218bf037ac29",
-    "docs/presentation.md": "814fbadacd2db4eaf73d8a316ddc557ca0794e54218b6f37d73401c45931acbf",
     "artifacts/benchmark_v1/results/benchmark_summary/reader_table_pack_v4/appendix_native_sensitivity_simulator.csv": "16baac5d739ec5bd962b99e857062d910844d3de7399ca6ebb0704be848460b4",
     "artifacts/benchmark_v2/results/real_qpu/c122_qonductor_oof/evaluation_manifest.json": "ab71aef134d5e9f6f30c2c6675d4e61afbf53a0befd09e2363908c2b793d8e9b",
     "work/repo_finalization/release_candidate/benchmark_v1/scripts/build_two_domain_scorecard_v2.py": "8a91eaa9e709d10fe5a17b195cb66ec346a8ea7a95b1bd603b15f11bd6598077"
