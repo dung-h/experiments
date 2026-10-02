@@ -1,0 +1,129 @@
+{
+  "format_version": 1,
+  "base_commit": "0ad54d7937ae1e30fc220488ed80acaa24dc1424",
+  "branch": "presentation-review",
+  "files": {
+    "presentations/README.md": {
+      "sha256": "4080a20ac24e0cd4aac29dba4630696d14580c3ff63086c3629f2317c0b8e314",
+      "bytes": 3198
+    },
+    "presentations/figures/README.md": {
+      "sha256": "4a8f6904e35dff6fadb46bc839a4b16eb8844bb7f3cf5b517120322cc8ca5d82",
+      "bytes": 10227
+    },
+    "presentations/figures/fig1_qpu_paired_mae_by_source.png": {
+      "sha256": "a99c90cf8de5a0daa36b16014cdaeaf7248b675993463168898f4b131edb511d",
+      "bytes": 321703,
+      "source_path": "work/repo_finalization/report_package/figures/fig1_qpu_paired_mae_by_source.png",
+      "source_sha256": "a99c90cf8de5a0daa36b16014cdaeaf7248b675993463168898f4b131edb511d",
+      "rebuild_byte_identical": true
+    },
+    "presentations/figures/fig1_qpu_paired_mae_by_source.svg": {
+      "sha256": "1173484dc6c4ea6e305b1e964e13e94c87ffe43a3b3d19674d411aa9196ea47c",
+      "bytes": 119320,
+      "source_path": "work/repo_finalization/report_package/figures/fig1_qpu_paired_mae_by_source.svg",
+      "source_sha256": "1173484dc6c4ea6e305b1e964e13e94c87ffe43a3b3d19674d411aa9196ea47c",
+      "rebuild_byte_identical": true
+    },
+    "presentations/figures/fig2_qpu_prediction_coverage.png": {
+      "sha256": "d8dc1661d0bd415eda6c33f8bcad935eb4fed424b832504a138b89225c20f365",
+      "bytes": 825532,
+      "source_path": "work/repo_finalization/report_package/figures/fig2_qpu_prediction_coverage.png",
+      "source_sha256": "d8dc1661d0bd415eda6c33f8bcad935eb4fed424b832504a138b89225c20f365",
+      "rebuild_byte_identical": true
+    },
+    "presentations/figures/fig2_qpu_prediction_coverage.svg": {
+      "sha256": "d7131064da9e90793806dfe8e2ffac7389b90a3a1566a0decf81c5fec001cc0b",
+      "bytes": 221051,
+      "source_path": "work/repo_finalization/report_package/figures/fig2_qpu_prediction_coverage.svg",
+      "source_sha256": "d7131064da9e90793806dfe8e2ffac7389b90a3a1566a0decf81c5fec001cc0b",
+      "rebuild_byte_identical": true
+    },
+    "presentations/figures/fig3_cudaq_mps_quality_gated_clocks.png": {
+      "sha256": "30a34a68ee74b8a2f010459d78da86ae7585a97cae40aff1d6e114551f633b85",
+      "bytes": 290015,
+      "source_path": "work/repo_finalization/report_package/figures/fig3_cudaq_mps_quality_gated_clocks.png",
+      "source_sha256": "30a34a68ee74b8a2f010459d78da86ae7585a97cae40aff1d6e114551f633b85",
+      "rebuild_byte_identical": true
+    },
+    "presentations/figures/fig3_cudaq_mps_quality_gated_clocks.svg": {
+      "sha256": "d6b5f69803fabb98490a52298d8954f7463f9ca12f06ca993dc716c0c77bbfaf",
+      "bytes": 116617,
+      "source_path": "work/repo_finalization/report_package/figures/fig3_cudaq_mps_quality_gated_clocks.svg",
+      "source_sha256": "d6b5f69803fabb98490a52298d8954f7463f9ca12f06ca993dc716c0c77bbfaf",
+      "rebuild_byte_identical": true
+    },
+    "presentations/figures/fig4_maestro_pilot_timing_spread.png": {
+      "sha256": "3bba23dd81ae9bb202c432a1baa3f93f3d059b3761cf54cec8959e1765e93987",
+      "bytes": 348626,
+      "source_path": "work/repo_finalization/report_package/figures/fig4_maestro_pilot_timing_spread.png",
+      "source_sha256": "3bba23dd81ae9bb202c432a1baa3f93f3d059b3761cf54cec8959e1765e93987",
+      "rebuild_byte_identical": true
+    },
+    "presentations/figures/fig4_maestro_pilot_timing_spread.svg": {
+      "sha256": "b93794d61c76e1bdcdc07cc4edd52899ab6f38c349ae92a4e06916f33dc4ef6a",
+      "bytes": 128377,
+      "source_path": "work/repo_finalization/report_package/figures/fig4_maestro_pilot_timing_spread.svg",
+      "source_sha256": "b93794d61c76e1bdcdc07cc4edd52899ab6f38c349ae92a4e06916f33dc4ef6a",
+      "rebuild_byte_identical": true
+    },
+    "presentations/quantum_runtime_benchmark_vi.pdf": {
+      "sha256": "2e23d8aeca404ea96d24d83eee7956da600cc62d9c26e3f46d998a414ec60f4e",
+      "bytes": 1259815,
+      "source_path": "work/repo_finalization/presentation/output/quantum_runtime_benchmark_vi.pdf",
+      "source_sha256": "2e23d8aeca404ea96d24d83eee7956da600cc62d9c26e3f46d998a414ec60f4e",
+      "unchanged_export": true
+    },
+    "presentations/quantum_runtime_benchmark_vi.pptx": {
+      "sha256": "2d07af025c4790c5207940756ec1dadd754cfce8b4574b575a8a0ff3f36966d6",
+      "bytes": 885678,
+      "source_path": "work/repo_finalization/presentation/output/quantum_runtime_benchmark_vi.pptx",
+      "source_sha256": "2d07af025c4790c5207940756ec1dadd754cfce8b4574b575a8a0ff3f36966d6",
+      "unchanged_export": true
+    },
+    "presentations/requirements-figures.txt": {
+      "sha256": "b6f81d316d42c3904645e39c09bd6455199df2764c58c403899085a772c3fdcf",
+      "bytes": 268
+    },
+    "presentations/source/build_deck.mjs": {
+      "sha256": "73690e5b2efa77046607cfd2268e718379dd956075e66930269422464ee0278c",
+      "bytes": 30188,
+      "source_path": "work/repo_finalization/presentation/.build/build_deck.mjs",
+      "source_sha256": "c14133284b8070663193003419291ee9a8988f2ee99446dfb9fc4ddbccf6b783",
+      "adaptation": "repository paths and rebuild overwrite protection only",
+      "execution_retested": false
+    },
+    "presentations/source/plot_report_figures.py": {
+      "sha256": "d09b9da28f6ea4007fde12ebb944ab476b95749e18c6afa200de40f6f2e70d53",
+      "bytes": 23822,
+      "source_path": "work/repo_finalization/plot_source/plot_report_figures.py",
+      "source_sha256": "06a379812d9fac2bbad7f14f72606f62af966f0a8761ec5bc0b915835d6a1b6f",
+      "adaptation": "repository paths, fresh output directory, setup text only",
+      "execution_retested": true
+    }
+  },
+  "source_hashes": {
+    "docs/presentation.md": "814fbadacd2db4eaf73d8a316ddc557ca0794e54218b6f37d73401c45931acbf",
+    "artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3/manifest.json": "b39d2ca7c52e51b8486330d87700950c469e894d5b8dd6148efe52dea319a81c",
+    "artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3/qpu/archived_method_pairwise_comparisons.csv": "46feff9632a48b7c852a938c0e5a153209d700e0574a5d8cd685c609ab5b1313",
+    "artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3/qpu/archived_method_coverage.csv": "ee408a85b5fef378103a2ada6709c791f9e66a8db192e15445bdd6e9803aa915",
+    "artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3/qpu/archived_method_source_metrics.csv": "b2f2e992325cebb70f5340780872cd36300643d07f57a3fb3b443ae128fe9369",
+    "artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3/simulator/per_configuration_metrics.csv": "f8628e32fb0a0cecc8f06eb76a77b9e14e25b4ba8c288b2e72b8227d117d757a",
+    "artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3/simulator/availability_matrix.csv": "f3b48ecc2967d5bf8d2ce3b0368dc5e1c8523ceda5626070cde3979df1880458",
+    "artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3/simulator/maestro_pilot_summary.csv": "d6107c87721695537cee9c67f3e7c51ab916f620a665b532487d1374e7d02ad5"
+  },
+  "validation": {
+    "pptx_slides": 13,
+    "speaker_notes_parts": 13,
+    "pdf_pages": 13,
+    "pdf_pages_visually_reviewed": 13,
+    "figure_exports_rebuilt_byte_identical": 8,
+    "powerpoint_native_open_verified": false,
+    "deck_generator_reexecuted": false
+  },
+  "disclosures": [
+    "Exported deck is the original 2026-10-02 presentation snapshot, unchanged.",
+    "Slide 12 packaging status predates successful GitHub clean-clone validation; see presentations/README.md and docs/reproduction_validation.md.",
+    "Benchmark coverage remains partial; publication does not change scientific claims."
+  ]
+}

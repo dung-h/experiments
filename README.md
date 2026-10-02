@@ -7,6 +7,8 @@ measure different parts of execution.
 
 ## Start here
 
+- [Slides and figure assets](presentations/README.md): PowerPoint, PDF,
+  source-backed charts and presentation sources on this branch.
 - [Methodology](docs/methodology.md): datasets, circuit reconstruction,
   train/test splits, and differences from the original papers.
 - [Results](docs/results.md): comparisons, findings, and unfinished evaluations.

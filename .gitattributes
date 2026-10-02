@@ -10,3 +10,6 @@ artifacts/**/*.csv -text -eol
 
 # CSV parts retain original record bytes, including CRLF and quoted newlines.
 artifacts/**/*.csv.parts/*.csv whitespace=cr-at-eol
+
+# Matplotlib exports retain hashed path-data whitespace exactly as generated.
+presentations/figures/*.svg -text -eol whitespace=-trailing-space
