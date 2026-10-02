@@ -1,0 +1,135 @@
+{
+  "artifact_id": "reader-table-pack-v2",
+  "blocked_or_unavailable_count": 16,
+  "c4_receipt_modified": false,
+  "c4_receipt_sha256": "e6e30da64c71ae79c75d1382779fe4910972992986a57368b49a5c0802c5a059",
+  "c5_started": false,
+  "created_utc": "2026-09-30T14:27:49.858354+00:00",
+  "cuda_training_started": false,
+  "git_mutated": false,
+  "gpu_process_started": false,
+  "historical_scorecards_modified": false,
+  "outputs": {
+    "HOW_TO_READ.md": "04ad2bd58784c4dddab4cdcf070729166ad3d92b7c713f287e06e04968c2714b",
+    "README.md": "0e199e5ed4c0734ee49bf042fc61473255b8b4e0f3d9fd3157749e7328861cdb",
+    "REPORT.md": "af913c32a11a7a73e6f832da3948115dce4f1cb92eb3ebc33909700059af3a75",
+    "appendix_native_sensitivity_simulator.csv": "2caee3b3664a58f575026fab7b036a4877f797b30bbdd83990597a882be9b6c2",
+    "appendix_native_sensitivity_simulator.md": "3a03619b604ee37644b547285b2bb9c2c1fe5c25c3b5f47429206c92bce83286",
+    "blocked_unavailable.csv": "f8309e28061d862035750295f1e466ab7b7218e46279018cca84ffe626c29917",
+    "blocked_unavailable.md": "a6894e44e13555bdc3f19f0e59798bf82c265abc0cd16fccddb91a43908df57c",
+    "common_successful_intersection.csv": "1eeff42ada7db07cdd103f66482206975e3b53454e50ebd9acd557c69de6fb8f",
+    "common_successful_intersection.md": "8bb143b48f364dc737ec859e20aa5dcbcf91415d675b15f4759003e795b9a519",
+    "source_hashes.json": "745da0a852a93c077e4204bdee882f07609f48b74ad6a842e4338705061e50bd",
+    "source_stratified.csv": "ff18c2809bf01203ebe602a597b38ca630ae8cfda9c1e6dcfb91a5dc28217e1b",
+    "source_stratified.md": "39de4df9a94c35083fdc91de60c9ad7fa22d0d0a3116a848cfd951071937843f",
+    "unified_envelope.csv": "afa77a4df19b318c209320b5ab08fe8b311b4ed68078e33c2e9bed28052afa15",
+    "unified_envelope.md": "5f5313ddd2f9cc6a70da9d9579516190021fa82439c372840cfa309a892af18e"
+  },
+  "prediction_csvs_opened": false,
+  "raw_artifacts_modified": false,
+  "row_counts": {
+    "A_unified_envelope": 33,
+    "B_common_successful_intersection": 48,
+    "C_source_stratified": 106,
+    "D_appendix": 22
+  },
+  "s81_path": "benchmark_v1/decisions/S81_C4_TEST_COUNT_ERRATUM_20260930.md",
+  "s81_sha256": "2ab3031cc51f837f19198b3736489864111aec905ecab64f678be31a56060e31",
+  "scores_recomputed": false,
+  "sources": {
+    "analytical_intersections": {
+      "path": "artifacts/benchmark_v3/real_qpu/archived_analytical_wave_v3_20260930/common_successful_intersections.csv",
+      "sha256": "ec81109b86fb49cc2fbd71fec9ebcc7685837a3d26a3acdce1d10c0e3f5a6faf"
+    },
+    "analytical_manifest": {
+      "path": "artifacts/benchmark_v3/real_qpu/archived_analytical_wave_v3_20260930/result_manifest.json",
+      "sha256": "44fdebb5088de9091d21b2e298c2a91ec75845329eff8652232ae4fdc2924694"
+    },
+    "analytical_metrics": {
+      "path": "artifacts/benchmark_v3/real_qpu/archived_analytical_wave_v3_20260930/method_metrics.csv",
+      "sha256": "dafe35a19cdf894b40cefd23bd4c56e434a47140c11dcfd59ef6d4c42ce0d069"
+    },
+    "analytical_row4477": {
+      "path": "artifacts/benchmark_v3/real_qpu/archived_analytical_wave_v3_20260930/row4477_attempts.csv",
+      "sha256": "8b2e6800f66c2da86a34a35f4af87fe068dc653372f5b7790b04a45eb115b933"
+    },
+    "analytical_source": {
+      "path": "artifacts/benchmark_v3/real_qpu/archived_analytical_wave_v3_20260930/source_stratified_metrics.csv",
+      "sha256": "32409f680425466023f8cc454eaedfd0dfebe99b4ee0a3d346a87a989c1f6c4f"
+    },
+    "c4_receipt": {
+      "path": "artifacts/benchmark_v1/reproducibility/c4_release_receipt_20260930/receipt.json",
+      "sha256": "e6e30da64c71ae79c75d1382779fe4910972992986a57368b49a5c0802c5a059"
+    },
+    "current_json": {
+      "path": "benchmark_v1/registry/CURRENT.json",
+      "sha256": "fa840866ffa16b58d4fc0aabe2bc8b7a50023d38791a7cc20401989c5faa0680"
+    },
+    "fidelity_registry": {
+      "path": "benchmark_v1/registry/method_fidelity_registry_v1.json",
+      "sha256": "df2fb465de487ef077b519c9f044241d4c466d69ffde654ae0fd7093f90ffbbe"
+    },
+    "mali_audit": {
+      "path": "artifacts/benchmark_v1/mali_source_native_340_audit_20260930/audit.json",
+      "sha256": "fd7ff95a2cac9b458c8b5c877ddcd8622587f94d30623f9647896a23e4a4a180"
+    },
+    "mali_three_seed": {
+      "path": "artifacts/benchmark_v1/mali_source_native_340_audit_20260930/three_seed_plan_NOT_AUTHORIZED.json",
+      "sha256": "92489d441575422400a8c59c5ac3536824abf4fe6ed317a2591c7d19ff298493"
+    },
+    "mapping": {
+      "path": "benchmark_v1/protocol/fidelity_scorecard_mapping_v1.json",
+      "sha256": "15934eeaceae5a848ee4cdd296730ed043541978d3782273d1b57a27e5229154"
+    },
+    "overlay_csv": {
+      "path": "artifacts/benchmark_v1/results/benchmark_summary/fidelity_overlay_v1/enriched_scorecard.csv",
+      "sha256": "909bb3e5fab3aea9864b194aadf113fae22b140c55788a2e900d2baa410dc4b0"
+    },
+    "overlay_report": {
+      "path": "artifacts/benchmark_v1/results/benchmark_summary/fidelity_overlay_v1/mapping_report.json",
+      "sha256": "d868385c040539732d0ba3f8fa94bb4153044bce3b6034350648f6538a37d769"
+    },
+    "pack_v1_manifest": {
+      "path": "artifacts/benchmark_v1/results/benchmark_summary/reader_table_pack_v1/manifest.json",
+      "sha256": "d12314648f576e2b47193246294cc46aba6bf2fe794ebc01453631460d02f62c"
+    },
+    "s80": {
+      "path": "benchmark_v1/decisions/S80_METHOD_FIDELITY_AND_WAVE4_ADJUDICATION_20260930.md",
+      "sha256": "8dca6f883238f7c2d5e2eeffc434ead80c79876b50d3b26d729ac6e632691276"
+    },
+    "s81": {
+      "path": "benchmark_v1/decisions/S81_C4_TEST_COUNT_ERRATUM_20260930.md",
+      "sha256": "2ab3031cc51f837f19198b3736489864111aec905ecab64f678be31a56060e31"
+    },
+    "s82": {
+      "path": "benchmark_v1/decisions/S82_ARCHIVED_REAL_QPU_ANALYTICAL_WAVE_V3_20260930.md",
+      "sha256": "796412a2b5d4aaa9cb94a4d41eb1c0df47eb4ca6a0cba20eb59dd59656fea682"
+    },
+    "scorecard": {
+      "path": "artifacts/benchmark_v1/c65_final_multidomain_scorecard_v4r3_20260928/benchmark_scorecard_v4.csv",
+      "sha256": "2a93f1ab990af76dbb5cc4d26145955b1f9f5151729ed4f62b0cb3cebe5ab0e9"
+    },
+    "semantic_index": {
+      "path": "artifacts/benchmark_v1/results/SEMANTIC_INDEX_MANIFEST.json",
+      "sha256": "a7eada5b43f2132a07e12fa6583ef6b4d417e1b33e296bb1978f042613f90feb"
+    },
+    "v3_large": {
+      "path": "artifacts/benchmark_v3/real_qpu/unified_graph_v3_large_oof_20260930/report.json",
+      "sha256": "ce051494437f6c79ab8a32f16afce2a88eb814d20ab3764980242219d711d0c1"
+    },
+    "v4_contract": {
+      "path": "benchmark_v1/protocol/mali_unified_graph_v4_control_flow.json",
+      "sha256": "7801e411e790efa406fab274dd747f28542f90baa7db47ccc6c8f05d5c42d556"
+    },
+    "v4r2": {
+      "path": "artifacts/benchmark_v3/real_qpu/unified_learned_methods_oof_v4r2/report.json",
+      "sha256": "44379c070d25de588e39b5e5bd78e0ab77a9dc2ba64107aabe542b409c342c22"
+    },
+    "wave4_audit": {
+      "path": "artifacts/benchmark_v1/wave4_support_audit_20260930/support_audit.json",
+      "sha256": "372008b3652c44efaf99ceae28c7b20220648cfffacd0953b2632621d549273b"
+    }
+  },
+  "status": "PASS",
+  "wave4_five_fold_training_authorized": false
+}

@@ -1,0 +1,107 @@
+{
+  "artifact_id": "reader-table-pack-v1",
+  "blocked_or_unavailable_count": 14,
+  "c4_receipt_modified": false,
+  "c4_receipt_sha256": "e6e30da64c71ae79c75d1382779fe4910972992986a57368b49a5c0802c5a059",
+  "c5_started": false,
+  "created_utc": "2026-09-30T12:33:10.630298+00:00",
+  "cuda_training_started": false,
+  "git_mutated": false,
+  "gpu_process_started": false,
+  "historical_scorecards_modified": false,
+  "outputs": {
+    "HOW_TO_READ.md": "b25b6e9fe7009fd09eb46dc0505ff158f9417cf1ad26a6e11bf09c34e49f869a",
+    "README.md": "d18030302ee85912ae3cc8a5594faf0879db2fdbd6d777edbefa33542696261a",
+    "REPORT.md": "d788f3b78b521e56a9b943b3d94805ddda7e25145a6419f8730160305c1249f4",
+    "appendix_native_sensitivity_simulator.csv": "894b8951d2f4b592e5d2870cee0fe1d43e3c06ac9e294d3ba2b88a5c0fd7fbd2",
+    "appendix_native_sensitivity_simulator.md": "5f12b8b59b92825a3ba35676c8bf790d9835171a766721d598f032dd31a723b2",
+    "blocked_unavailable.csv": "bb066ee8848fdf362712224ff06a3d6ad2bcd20207c2809ad1d3085c1b2ec5a0",
+    "blocked_unavailable.md": "ec199d1480bcf52ebde1f4df309296a2ece25ce3773a5d1c268ea5200fa4163d",
+    "common_successful_intersection.csv": "4ac334f6d79f3c1857c3a6c70a7e58993cd96ee43fd0d2ff0e34547c91228c32",
+    "common_successful_intersection.md": "aa3e96025b2e8984b762cdaaf0b61059b194b536da4a593a2d3ca1dd4d11ce53",
+    "source_hashes.json": "e73c67134416d857019f1c60d5e8b4add26b86cf1e8e5a75b3c561f96c2d6b22",
+    "source_stratified.csv": "d974ea68004e0d2c10d52431b54a41b63a5eb60df1b50f2ed620c36df669e81a",
+    "source_stratified.md": "8ebc1d6b80b1a6481bb4a9d1e068dc644687ff81a923837711032e384433a4e5",
+    "unified_envelope.csv": "6d0296296fcad12776d6b7849418b9e9d82bc638084a6026ee45d2847a5446bb",
+    "unified_envelope.md": "a52d0f090ff225fc086c2d26548df371f8ffc1362806b53ca2faa7b04f14351e"
+  },
+  "prediction_csvs_opened": false,
+  "raw_artifacts_modified": false,
+  "row_counts": {
+    "A_unified_envelope": 11,
+    "B_common_successful_intersection": 6,
+    "C_source_stratified": 43,
+    "D_appendix": 21
+  },
+  "s81_path": "benchmark_v1/decisions/S81_C4_TEST_COUNT_ERRATUM_20260930.md",
+  "s81_sha256": "ffd8107dcb6044c3fa69b629ff9e35c7def221368d67092fe7a78873dc8b06b8",
+  "scores_recomputed": false,
+  "sources": {
+    "c4_receipt": {
+      "path": "artifacts/benchmark_v1/reproducibility/c4_release_receipt_20260930/receipt.json",
+      "sha256": "e6e30da64c71ae79c75d1382779fe4910972992986a57368b49a5c0802c5a059"
+    },
+    "current_json": {
+      "path": "benchmark_v1/registry/CURRENT.json",
+      "sha256": "f1d428eae1731656470a0b23a0ac966e012cb6e43db2e599771e8716521cec27"
+    },
+    "fidelity_registry": {
+      "path": "benchmark_v1/registry/method_fidelity_registry_v1.json",
+      "sha256": "ce1ff119506da21b874af1f199f0a0572ed6a05912f3623f6e680947881aefbf"
+    },
+    "mali_audit": {
+      "path": "artifacts/benchmark_v1/mali_source_native_340_audit_20260930/audit.json",
+      "sha256": "fd7ff95a2cac9b458c8b5c877ddcd8622587f94d30623f9647896a23e4a4a180"
+    },
+    "mali_three_seed": {
+      "path": "artifacts/benchmark_v1/mali_source_native_340_audit_20260930/three_seed_plan_NOT_AUTHORIZED.json",
+      "sha256": "92489d441575422400a8c59c5ac3536824abf4fe6ed317a2591c7d19ff298493"
+    },
+    "mapping": {
+      "path": "benchmark_v1/protocol/fidelity_scorecard_mapping_v1.json",
+      "sha256": "15934eeaceae5a848ee4cdd296730ed043541978d3782273d1b57a27e5229154"
+    },
+    "overlay_csv": {
+      "path": "artifacts/benchmark_v1/results/benchmark_summary/fidelity_overlay_v1/enriched_scorecard.csv",
+      "sha256": "909bb3e5fab3aea9864b194aadf113fae22b140c55788a2e900d2baa410dc4b0"
+    },
+    "overlay_report": {
+      "path": "artifacts/benchmark_v1/results/benchmark_summary/fidelity_overlay_v1/mapping_report.json",
+      "sha256": "d868385c040539732d0ba3f8fa94bb4153044bce3b6034350648f6538a37d769"
+    },
+    "s80": {
+      "path": "benchmark_v1/decisions/S80_METHOD_FIDELITY_AND_WAVE4_ADJUDICATION_20260930.md",
+      "sha256": "8dca6f883238f7c2d5e2eeffc434ead80c79876b50d3b26d729ac6e632691276"
+    },
+    "s81": {
+      "path": "benchmark_v1/decisions/S81_C4_TEST_COUNT_ERRATUM_20260930.md",
+      "sha256": "ffd8107dcb6044c3fa69b629ff9e35c7def221368d67092fe7a78873dc8b06b8"
+    },
+    "scorecard": {
+      "path": "artifacts/benchmark_v1/c65_final_multidomain_scorecard_v4r3_20260928/benchmark_scorecard_v4.csv",
+      "sha256": "2a93f1ab990af76dbb5cc4d26145955b1f9f5151729ed4f62b0cb3cebe5ab0e9"
+    },
+    "semantic_index": {
+      "path": "artifacts/benchmark_v1/results/SEMANTIC_INDEX_MANIFEST.json",
+      "sha256": "a7eada5b43f2132a07e12fa6583ef6b4d417e1b33e296bb1978f042613f90feb"
+    },
+    "v3_large": {
+      "path": "artifacts/benchmark_v3/real_qpu/unified_graph_v3_large_oof_20260930/report.json",
+      "sha256": "ce051494437f6c79ab8a32f16afce2a88eb814d20ab3764980242219d711d0c1"
+    },
+    "v4_contract": {
+      "path": "benchmark_v1/protocol/mali_unified_graph_v4_control_flow.json",
+      "sha256": "7801e411e790efa406fab274dd747f28542f90baa7db47ccc6c8f05d5c42d556"
+    },
+    "v4r2": {
+      "path": "artifacts/benchmark_v3/real_qpu/unified_learned_methods_oof_v4r2/report.json",
+      "sha256": "44379c070d25de588e39b5e5bd78e0ab77a9dc2ba64107aabe542b409c342c22"
+    },
+    "wave4_audit": {
+      "path": "artifacts/benchmark_v1/wave4_support_audit_20260930/support_audit.json",
+      "sha256": "372008b3652c44efaf99ceae28c7b20220648cfffacd0953b2632621d549273b"
+    }
+  },
+  "status": "PASS",
+  "wave4_five_fold_training_authorized": false
+}

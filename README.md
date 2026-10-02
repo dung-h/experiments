@@ -1,78 +1,74 @@
-# Quantum Runtime Estimator: replication studies
+# Quantum Runtime Estimation Benchmark
 
-This repository is a reproducibility capsule. It records code, patches,
-expected outputs and failure analysis for distinct runtime-estimation
-studies. It does not merge their targets into one training table.
+This project compares methods for predicting quantum circuit runtime. It
+uses recorded QPU execution times and simulator measurements collected on
+one local machine. Results are reported separately because these timings
+measure different parts of execution.
 
-Read the work as **three finding clusters**, then as older capsules.
+## Start here
 
-The cluster report is [`docs/FINDINGS_CLUSTERS.md`](docs/FINDINGS_CLUSTERS.md).
-Track-level tables remain in [`RESULTS.md`](RESULTS.md).
-[`REPRODUCTION.md`](REPRODUCTION.md) is the clean-clone workflow.
-[`HANDOFF.md`](HANDOFF.md) is the next-session status.
+- [Methodology](docs/methodology.md): datasets, circuit reconstruction,
+  train/test splits, and differences from the original papers.
+- [Results](docs/results.md): comparisons, findings, and unfinished evaluations.
+- [Reproduction](docs/reproduction.md): commands to rebuild the tables from
+  the included predictions and measurements.
+- [Numerical tables](artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3/README.md):
+  detailed results and links to their source files.
 
-## Finding clusters
-
-| Cluster | Estimator under study | Evidence | Central finding |
-| --- | --- | --- | --- |
-| Ma–Li × Azizov | Compiled / transpiled prediction of Ma–Li Osaka/Kyoto `result.time_taken` | Logical DAG reproduction, current-FakeBackend compiled proxy, native DAG, family-OOD, compiled Ridge and coarsened-DAG transfer | Logical depth is not enough. After transpile, compiled structure carries the signal. Simulator pretraining plus an affine head does not beat training on the 340 hardware rows. QWalk is the failure tail. Current FakeOsaka/Kyoto snapshots are not historical job-day calibration. |
-| Quantum Rings solutions | Spirit Sprinters graph-Transformer; SoftLocked tabular GradientBoosting | Public-artifact audit on the 144-row 0.99-forward table | Winner log-R² 0.743. SoftLocked is in-domain on its own table (R² 0.967) and a domain-shift failure here (log-R² −25.5). The contest does not publish the simulation machine. |
-| Family-aware paper ([arXiv:2606.11620](https://arxiv.org/abs/2606.11620)) | Family-conditioned residual/FiLM MLP reconstructed on the public contest table | Circuit-level 5-fold CV, tree baselines, frozen public MQT classifier | Trees are the strongest public runtime baseline (0.75 log-R² 0.757; 0.99 ExtraTrees 0.712). The reconstructed family MLP is not competitive for runtime. Paper R² 0.82 is not recovered. 0.75 mirror-sweep time and 0.99 forward time must not be pooled. |
-
-Do not pool Ma–Li `result.time_taken`, contest 0.75 mirror time, contest 0.99
-forward time, SoftLocked's 74k-second table, or local cuTensorNet GPU times.
-
-Cluster paths:
-
-- Cluster 1 reports: [`artifacts/validation/mali_azizov_compiled_transfer_v1/`](artifacts/validation/mali_azizov_compiled_transfer_v1/), [`mali_azizov_transpiled_dag_v1/`](artifacts/validation/mali_azizov_transpiled_dag_v1/), [`mali_family_ood_v1/`](artifacts/validation/mali_family_ood_v1/), [`mali_physical_dag_v1/`](artifacts/validation/mali_physical_dag_v1/)
-- Cluster 2 report: [`artifacts/quantum_rings/REPORT.md`](artifacts/quantum_rings/REPORT.md)
-- Cluster 3 report: [`artifacts/quantum_rings/family_aware_paper/`](artifacts/quantum_rings/family_aware_paper/)
-
-Day-by-day record: [`docs/DAILY_WORK_LOG_2026-09-17_TO_2026-09-22.md`](docs/DAILY_WORK_LOG_2026-09-17_TO_2026-09-22.md).
-Upstream pins: [`upstream/upstream.lock.json`](upstream/upstream.lock.json).
-
-## Other capsules
-
-These remain in the repository and are not part of the three-cluster
-reorganisation:
-
-| Capsule | Target | Note |
+| Domain | Data | Evaluation so far |
 | --- | --- | --- |
-| Qonductor | One-job execution estimate, queue excluded | Public regression predictions beat the numerical DAG baseline on the supplied 100-row CSV. No stable join from the resource-estimator CSV to the circuit/job database. |
-| CDAA/QCRE | Compiled-circuit schedule duration | Gate-aware depth follows the artifact's schedule reference. That reference is not measured QPU wall-clock. |
-| cuTensorNet | RTX 5070 Ti contraction `RUNTIME_EST` | 70% 25-row and Ma–Li q≤10 QASM over-predict cheap kernels (median actual/EST 0.231 on 176 MQT files); 90% QFT q36–q44 under-predicts 4.19–5.11×. Plan-cost proxy, not wall-clock. |
-| Azizov independent Aer screen | Local noisy Aer `T_exec` after transpile | 149/1,402 circuits pass the conservative local screen; 1,192 tested rows complete. Not the unpublished paper table. |
-| Dense-statevector / CUDA-Q | Fixed local simulator kernels | Separate clocks. Not pooled with QPU or Quantum Rings labels. |
+| Real QPU | 8,767 recorded observations: Ma–Li 340, Qonductor 4,482, QPack 3,945 | Unified polynomial and graph adaptations use the same grouped train/test split. Analytical estimates are also compared with recorded service time. |
+| Simulator | 204 circuit entries, 191 distinct QASM hashes, 2–16 qubits | Local Aer, CUDA-Q and cuTensorNet measurements; predictor comparisons on a 162-entry Aer subset; native cuTensorNet estimate-versus-contraction comparisons. The planned common-panel method comparison is incomplete. |
 
-## Scope
+## Main findings and limitations
 
-- Ma–Li × Azizov: simulator `time_taken` during pretraining; recorded Osaka/Kyoto `result.time_taken` during hardware evaluation. Compiled features are a current FakeBackend proxy.
-- Quantum Rings solutions and family-aware paper: public contest labels. CPU/GPU is a tag, not a host profile. No SDK rerun.
-- Qonductor: archived one-job execution estimate.
-- CDAA/QCRE: analytical duration from archived instruction-duration snapshots.
-- cuTensorNet: local GPU scalar contraction; warm CUDA-event time is distinct from first-call end-to-end latency. The 90% QFT frontier and the Ma–Li q≤10 QASM table are later measurements, not replacements of the 70% 25-row/55-row tables, and not QPU labels.
+The evaluated V3-large graph-and-metadata model has lower MAE than the
+polynomial model on their shared test rows in each QPU source. Both have negative R² on
+QPack. Three very large circuits still produce substantial errors, even
+after extending the graph representation's resource limit. These results
+describe our adaptations, not exact reproductions of the original models.
 
-The repository excludes live QPU jobs, cloud ETL, virtual environments,
-checkpoints, coarsened native-DAG tensors, and upstream source trees.
-Upstream sources are cloned on demand at pinned commits.
+Scheduled circuit duration does not match recorded QPU service time.
+Simulator results also depend on which stage is timed, precision and, for
+approximate methods, output quality. The Maestro calibration pilot failed
+its timing-stability checks and has no accepted prediction score. The V4
+control-flow representation has not been trained.
 
-## Repository layout
+QPack circuit structure is reconstructed; its original optimized angles and
+submitted circuits were not recovered. Nominal backend snapshots are not
+historical job-day calibration. [Methodology](docs/methodology.md) explains
+these assumptions and their consequences.
 
-```text
-docs/FINDINGS_CLUSTERS.md   three-cluster reading path
-tracks/                     overlays, clone scripts, vendored family-aware code
-artifacts/                  committed reports, metrics and fixtures
-experiments/                Ma–Li / Azizov / Qonductor validation scripts
-scripts/                    bootstrap and integrity verification
-upstream/                   pinned revisions and data boundaries
-RESULTS.md                  track-level tables
-REPRODUCTION.md             clean-clone procedure
-```
+## Reproduction and publication status
 
-```bash
-python3 scripts/verify_artifacts.py
-```
+A fresh local clone has successfully rebuilt the documented tables from
+frozen predictions and measurements. This is **table reproduction**, not
+retraining from every original dataset or repeating hardware measurements.
+The complete original source circuit collections are not included. See the
+[validation record](docs/reproduction_validation.md).
 
-That check uses the Python standard library. It verifies the committed
-capsule. It does not rerun GPU work, retrain models, submit a cloud job or
-recreate historical QPU calibration state.
+The `benchmark-review` branch is shared for review at the author's request.
+Three large CSVs are stored as row-aligned parts smaller than 48 MiB. One
+command restores the originals and checks their hashes; Git LFS is not
+required. The reproduction guide includes the clone commands. This is not a
+tagged release or a claim that every planned
+benchmark is complete. Repository licensing and citation metadata remain
+unselected; complete external source archives remain excluded. The
+[earlier release decision](benchmark_v1/S56_WAVE5_RELEASE_LICENSE_AND_PROVENANCE_DECISION_V1.md)
+records the remaining licensing and provenance questions. Publishing this
+review branch does not change `CURRENT.json` or grant new data licenses.
+
+## Earlier studies
+
+Earlier replication studies are retained for traceability. They use their
+own datasets and timing definitions; their scores are not additional entries
+in the current comparison.
+
+- [Study findings](docs/FINDINGS_CLUSTERS.md) and [track results](RESULTS.md).
+- [Historical reproduction guide](REPRODUCTION.md).
+- [Work log, 17–22 September](docs/DAILY_WORK_LOG_2026-09-17_TO_2026-09-22.md).
+- [Pinned upstream revisions](upstream/upstream.lock.json).
+
+Code is in `benchmark_v1/`, `tracks/` and `experiments/`; measurements,
+predictions and reports are in `artifacts/`. Start with the documents above
+rather than the historical task notes.

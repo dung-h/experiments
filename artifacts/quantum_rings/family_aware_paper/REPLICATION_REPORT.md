@@ -66,7 +66,7 @@ or linked,” rather than “confirmed unavailable.”
 
 ## Reconstructed method
 
-[`experiments/replicate_paper.py`](experiments/replicate_paper.py) implements:
+[`replicate_paper.py`](../../../tracks/quantum_rings/family_aware_paper/experiments/replicate_paper.py) implements:
 
 1. 32 features matching the paper's categories: basic statistics, 12 gate
    counts, execution context, complexity ratios, interaction-graph/local
@@ -95,7 +95,7 @@ PYTHONPATH=. python \
 ```
 
 The model/evaluation package subset is recorded in
-[`experiments/requirements-reproduction.txt`](experiments/requirements-reproduction.txt).
+[`requirements-reproduction.txt`](../../../tracks/quantum_rings/family_aware_paper/experiments/requirements-reproduction.txt).
 
 ## Results
 
@@ -121,7 +121,7 @@ The follow-up public-MQT experiment removes the data-leakage concern in that
 replacement: its MLP is trained on 200 independently generated MQT circuits,
 then frozen before evaluation. It reaches 97.5% on its own held-out MQT split;
 the transfer result and its limitations are reported separately in
-[`results/MQT_FAMILY_PRETRAINING_REPORT.md`](results/MQT_FAMILY_PRETRAINING_REPORT.md).
+[`MQT_FAMILY_PRETRAINING_REPORT.md`](MQT_FAMILY_PRETRAINING_REPORT.md).
 
 ### Challenge target 0.99
 
@@ -132,7 +132,7 @@ the transfer result and its limitations are reported separately in
 | Family MLP, predicted family | 63.19% | 81.94% | 0.80 | −0.856 | 67.1% |
 | Family MLP, oracle family | 61.11% | 77.08% | 0.91 | −1.095 | 68.9% |
 
-The raw JSON outputs are [`results/paper_replication_paper.json`](results/paper_replication_paper.json) and [`results/paper_replication_challenge.json`](results/paper_replication_challenge.json).
+The raw JSON outputs are [`paper_replication_paper.json`](paper_replication_paper.json) and [`paper_replication_challenge.json`](paper_replication_challenge.json).
 
 ## Interpretation
 
@@ -182,7 +182,7 @@ Our generated public MQT set reaches 97.5% on its own held-out split, but its
 transfer accuracy on the evaluation circuits is only 46.15% among mapped known
 families. These gaps make a direct comparison between our `R²` and the paper's
 `R² = 0.82` misleading even when the circuit split is correct. See
-[`results/MQT_FAMILY_PRETRAINING_REPORT.md`](results/MQT_FAMILY_PRETRAINING_REPORT.md)
+[`MQT_FAMILY_PRETRAINING_REPORT.md`](MQT_FAMILY_PRETRAINING_REPORT.md)
 for the public pretraining protocol and integration result.
 
 The implementation also does not yet reproduce the paper's incremental ablation

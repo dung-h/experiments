@@ -1,0 +1,146 @@
+{
+  "artifact_id": "unified_learned_derived_comparisons_v1",
+  "bootstrap": [
+    {
+      "builder_sha256": "6566386c778297fa5406492c636ecb9e2e94b968a761461adbe178a140065630",
+      "clusters": 2319,
+      "macro_conclusion_authorized": false,
+      "mae_delta_95pct_high_seconds": -0.2228986085134265,
+      "mae_delta_95pct_low_seconds": -0.417939148893567,
+      "mali_real_qpu_clusters": 170,
+      "note": "S49 grouped bootstrap on complete source-specific clusters; source-balanced macro MAE is diagnostic only",
+      "pair_name": "large_vs_poly",
+      "percentile_rule": "numpy.quantile_linear_0.025_0.975",
+      "qonductor_single_circuit_ibm_clusters": 2103,
+      "qpack_mcp_clusters": 46,
+      "replicates": 1000,
+      "seed": 1156247905,
+      "stream": "20260925-bootstrap",
+      "win_rate_95pct_high": 0.6427663825596297,
+      "win_rate_95pct_low": 0.5188008336706109
+    },
+    {
+      "builder_sha256": "6566386c778297fa5406492c636ecb9e2e94b968a761461adbe178a140065630",
+      "clusters": 2318,
+      "macro_conclusion_authorized": false,
+      "mae_delta_95pct_high_seconds": 0.03168625697593043,
+      "mae_delta_95pct_low_seconds": -0.008095979309979743,
+      "mali_real_qpu_clusters": 170,
+      "note": "S49 grouped bootstrap on complete source-specific clusters; source-balanced macro MAE is diagnostic only",
+      "pair_name": "large_vs_v3",
+      "percentile_rule": "numpy.quantile_linear_0.025_0.975",
+      "qonductor_single_circuit_ibm_clusters": 2102,
+      "qpack_mcp_clusters": 46,
+      "replicates": 1000,
+      "seed": 2430567631,
+      "stream": "20260925-bootstrap",
+      "win_rate_95pct_high": 0.585817715304783,
+      "win_rate_95pct_low": 0.4619708669661677
+    }
+  ],
+  "cluster_contract": {
+    "canonical_clusters": 2320,
+    "mali_real_qpu": "exact logical-QASM (circuit_group_hash)",
+    "qonductor_single_circuit_ibm": "exact submitted-QASM (qasm_bytes_sha256)",
+    "qpack_mcp": "workflow ID (workflow_group_hash)"
+  },
+  "contract": {
+    "S49": "1,000 grouped bootstrap replicates",
+    "S49_stream": "20260925-bootstrap",
+    "S77": "Spearman authorized"
+  },
+  "evaluation_target_clock": "archived_observed_service_execution_time",
+  "five_fold_training_authorized": false,
+  "git_mutated": false,
+  "identity_contract": {
+    "canonical_hash": "dff36af67d89253c933e4dbcc877d57b0fca2d29eac711c5dfdaadbfcafda322",
+    "canonical_n": 8767,
+    "large_vs_poly_hash": "e8c02117bfc0c0c4294312783678de0203aa56950b53ef5687aa38876c0dd0b4",
+    "large_vs_poly_n": 8766,
+    "large_vs_v3_hash": "a11cd7e1cbcbf07eef1ee5d88869bef4e232f2485f17635fe6f5de28ba091514",
+    "large_vs_v3_n": 8763,
+    "v3_large_predictions_sha256": "3c179ae464fc25167ae0f1aca028cf5ff1117409dce9d15f6945e4f621420d2c"
+  },
+  "inputs": {
+    "builder": {
+      "path": "benchmark_v1/scripts/build_unified_learned_derived_comparisons_v1.py",
+      "sha256": "6566386c778297fa5406492c636ecb9e2e94b968a761461adbe178a140065630"
+    },
+    "canonical": {
+      "path": "artifacts/benchmark_v1/canonical_corpus_8767_20260926/canonical_observations.csv",
+      "sha256": "920d745e03dd00e8155118d9323baea18ff865e4df2620f3a059bd5503a05ba4"
+    },
+    "learned_methods_report": {
+      "path": "artifacts/benchmark_v3/real_qpu/unified_learned_methods_oof_v4r2/report.json",
+      "sha256": "44379c070d25de588e39b5e5bd78e0ab77a9dc2ba64107aabe542b409c342c22"
+    },
+    "outer_split": {
+      "path": "artifacts/benchmark_v2/real_qpu/unified_outer_split_v2.csv",
+      "sha256": "d72b7ba6f90d5bf6ed2f3b602196a05bee11a0f441ee4e5caaca6978b6b0e25a"
+    },
+    "polynomial_fold_0": {
+      "path": "artifacts/benchmark_v3/s70_qonductor_unified_poly_fold0_20260929/predictions.csv",
+      "sha256": "7710b1582b727debab372815e0df983491dc74d48a488d647eea023a9c88132a"
+    },
+    "polynomial_fold_1": {
+      "path": "artifacts/benchmark_v3/s70_qonductor_unified_fold1_v2_20260929/predictions.csv",
+      "sha256": "ea606c4187b6878bc16bbe55baedf06964cd224e889c5abefb9129d5cce5e9d5"
+    },
+    "polynomial_fold_2": {
+      "path": "artifacts/benchmark_v3/s70_qonductor_unified_fold2_v2_20260929/predictions.csv",
+      "sha256": "902e947acfa5ddb55d5bd2d0329a4fe826d625f85914a677906c0a9bb4ccc905"
+    },
+    "polynomial_fold_3": {
+      "path": "artifacts/benchmark_v3/s70_qonductor_unified_fold3_v2_20260929/predictions.csv",
+      "sha256": "8cd65ce8ccd8bebb500c0b70bfb3b3ffa157e766a77de0502dcb2b99ec36b69f"
+    },
+    "polynomial_fold_4": {
+      "path": "artifacts/benchmark_v3/s70_qonductor_unified_fold4_v2_20260929/predictions.csv",
+      "sha256": "064c45b4a2ed3219df27f5dd8ff054f6396e347895c5c78a35d71b2ea3e77daa"
+    },
+    "seed_registry": {
+      "path": "benchmark_v1/registry/seed_registry.json",
+      "sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864"
+    },
+    "v3_fold_0": {
+      "path": "artifacts/benchmark_v3/s71_graph_fold0_full_v2_20260929/predictions.csv",
+      "sha256": "cb719f1080a335d765b004574063a6e255fe1922fc2fdf4155a3f79e76b953d0"
+    },
+    "v3_fold_1": {
+      "path": "artifacts/benchmark_v3/s71_graph_fold1_full_v3_20260930/predictions.csv",
+      "sha256": "a1d7d4393dcbce3a67eea22b889e0f7a0586b4bcbfa4704b23420cdf85083938"
+    },
+    "v3_fold_2": {
+      "path": "artifacts/benchmark_v3/s71_graph_fold2_full_v3_20260930/predictions.csv",
+      "sha256": "c33f3846ffc9962dd257f24a7a165a955d904e6a5abb8a9870b7013081793a7f"
+    },
+    "v3_fold_3": {
+      "path": "artifacts/benchmark_v3/s71_graph_fold3_full_v3_20260930/predictions.csv",
+      "sha256": "0a23bdbab7dc934fb2c25950df13f963e2a76366ce6a30805362f2f3d17b970e"
+    },
+    "v3_fold_4": {
+      "path": "artifacts/benchmark_v3/s71_graph_fold4_full_v3_20260930/predictions.csv",
+      "sha256": "1757d7b92e7d05d1bcfedd33796af1f8a0bc58965eec725bea94db49f2378311"
+    },
+    "v3_large_predictions": {
+      "path": "artifacts/benchmark_v3/real_qpu/unified_graph_v3_large_oof_20260930/predictions.csv",
+      "sha256": "3c179ae464fc25167ae0f1aca028cf5ff1117409dce9d15f6945e4f621420d2c"
+    }
+  },
+  "method_output_clock": "archived_observed_service_execution_time",
+  "no_training_or_inference": true,
+  "outputs": {
+    "REPORT.md": "ff2f92c3cf85106b18cb984f654237dec77a86fd477f9ef1c0cb3c59c2bbc67b",
+    "bootstrap.csv": "4610c76e4bc90adce98b3daebc66c6aba37c9b6508c58688a8c66a2d797df104",
+    "coverage.csv": "90751ffe807c4be9f80443d3e0bd6d71718dddcfc96e3b54f2fa0971594e91df",
+    "own_success_metrics.csv": "53afc0d7e1bb264eb413d12e17b651b7a4d1ab712e43a940d541a31aef5fc6e6",
+    "pair_metrics.csv": "21e75390b4d9598189e95f4996f0eb19c60c76812f1a1a02baa37120ca7b4624",
+    "paired_deltas.csv": "1e064eeb1b13071da509395a0b607a54d0306b5acfbc8981a237a4e1c9a94172",
+    "report.json": "61dca595209f7c916d511160bd159c045265803fc41dfffcaa06e2d0ee6c5f43",
+    "source_hashes.json": "707388183eff9b172fe3dfac6fff04e0ec3e69bc476d0515248731dc26869b05",
+    "source_stratified.csv": "1dc76f3b2ac0b670ba8116fa25304c5a115eee6b52f36ac6cc049f35b20fe0c5",
+    "tail_diagnostics.csv": "734ae9346834c6a76ffcc5ce41b33811cd47ee83e76ceed8445ccc308e6a421e",
+    "unavailable.csv": "a5478dc172de33797197e42e06df6fe99d88d078f270e9c1cc3c4c6f5c5d9090"
+  },
+  "status": "PASS"
+}

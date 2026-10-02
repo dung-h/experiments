@@ -1,0 +1,37 @@
+{
+  "artifact_id": "unified-qpu-method-comparisons-v2",
+  "assigned_n": 8767,
+  "bootstrap_percentile_rule": "numpy.quantile linear 0.025 and 0.975",
+  "bootstrap_replicates": 1000,
+  "bootstrap_seed_derivation": "sha256(root_seed|registered_bootstrap_stream|artifact_id|comparison_label|0) first 4 bytes big-endian",
+  "bootstrap_stream": "20260925-bootstrap",
+  "comparison_reference": "unified_polynomial_v3 for every candidate, plus V3-large versus V3; source-stratified only",
+  "coverage_asymmetric_pairs": 36,
+  "cross_source_pooled_error_metrics": "not_computed",
+  "hyb_repair_manifest_sha256": "b313fb2e977990963dd2c70ad8a873b0fe355ba18725934b6a2c0a493efae380",
+  "hyb_variant_status": "repaired",
+  "input_hashes": {
+    "artifacts/benchmark_v1/canonical_corpus_8767_20260926/canonical_observations.csv": "920d745e03dd00e8155118d9323baea18ff865e4df2620f3a059bd5503a05ba4",
+    "artifacts/benchmark_v2/real_qpu/unified_outer_split_v2.csv": "d72b7ba6f90d5bf6ed2f3b602196a05bee11a0f441ee4e5caaca6978b6b0e25a",
+    "artifacts/benchmark_v3/real_qpu/hyb_hanas_bounded_repair_v1_20261001/hyb_repair_manifest.json": "b313fb2e977990963dd2c70ad8a873b0fe355ba18725934b6a2c0a493efae380",
+    "artifacts/benchmark_v3/real_qpu/hyb_hanas_bounded_repair_v1_20261001/merged_analytical_attempts_for_c4.csv": "df64d21c8a4953a2a700ec9b47315848fc8fc4a30df2f1a8495495e5811fde9a",
+    "artifacts/benchmark_v3/real_qpu/unified_graph_v3_large_oof_20260930/method_attempts.csv": "7d7e7370e7b8edc1c324215b81c5c8de8e79ddaded1edf17a9a50600846e0d29",
+    "artifacts/benchmark_v3/real_qpu/unified_learned_methods_oof_v4r2/method_attempts.csv": "0e097c6b6e5998bab7ee629764afd0388566850c8e71cb59c57432a3213bb108",
+    "benchmark_v1/registry/method_fidelity_registry_v2.json": "98f3460c8d9a0cbabb424555dd695cee573409ed65facdb60557d836f1750810",
+    "benchmark_v1/registry/seed_registry.json": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864",
+    "benchmark_v1/scripts/aggregate_unified_qpu_method_comparisons_v2.py": "f40a2347c3f4c03790c59eee002b54b7848ccb9a32a3385fee4d00a40db71662"
+  },
+  "method_count": 24,
+  "output_hashes": {
+    "attempts.csv": "4c0d684ea7b1571325fe42c93d630e5897b7b4dbb34a8d3df8fb1c652a8aa5ab",
+    "method_metrics.csv": "ee408a85b5fef378103a2ada6709c791f9e66a8db192e15445bdd6e9803aa915",
+    "pairwise_comparisons.csv": "46feff9632a48b7c852a938c0e5a153209d700e0574a5d8cd685c609ab5b1313",
+    "source_metrics.csv": "b2f2e992325cebb70f5340780872cd36300643d07f57a3fb3b443ae128fe9369"
+  },
+  "pair_comparisons": 72,
+  "qpack_equal_workflow_mae_present": true,
+  "s49_rule": "unequal source-local success sets are coverage_asymmetric and paired errors descriptive only",
+  "scope": "derived join and metric aggregation only; no fitting/training/inference/experiment",
+  "source_balanced_macro": "diagnostic_not_rankable; emitted only when all three source slices have successful predictions",
+  "status": "PASS"
+}

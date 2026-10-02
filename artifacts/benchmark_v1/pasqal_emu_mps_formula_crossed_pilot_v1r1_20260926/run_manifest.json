@@ -1,0 +1,183 @@
+{
+  "code_state": {
+    "branch": "main",
+    "dirty": true,
+    "git_head": "39991eb48b82593ffc53914bb0136393af120588",
+    "status_lines": [
+      "M artifacts/cutensornet/mali_qasm_qle10_v1_20260923/REPORT.md",
+      " M experiments/simulator_runtime_v2/README.md",
+      " M experiments/simulator_runtime_v2/evaluate_runtime_v2.py",
+      " M tracks/azizov_independent/README.md",
+      " M tracks/azizov_independent/scripts/run_matrix.py",
+      " M tracks/azizov_independent/scripts/run_p0_smoke.py",
+      " M tracks/azizov_independent/scripts/summarize_p0.py",
+      " M tracks/cutensornet/code/run_cutensornet_mali_qasm.py",
+      " M tracks/cutensornet/code/run_cutensornet_runtime_benchmark.py",
+      " M tracks/pasqal_emu_mps/scripts/fit_runtime_formula.py",
+      "?? artifacts/benchmark_v1/",
+      "?? artifacts/cudaq_runtime/launch_scaling_v1_20260922/",
+      "?? artifacts/cutensornet/_canary_parallel_path/",
+      "?? artifacts/cutensornet/_canary_parallel_reuse/",
+      "?? artifacts/cutensornet/mali_qasm_full_pool_plan_v1_20260923/",
+      "?? artifacts/cutensornet/mali_qasm_full_pool_v1_20260923/",
+      "?? artifacts/cutensornet/mali_qasm_parallel_paths_v1_20260924/",
+      "?? artifacts/cutensornet/mali_qasm_workspace_probe_v1_20260923/",
+      "?? artifacts/cutensornet/multi_target_calibration_v1/",
+      "?? artifacts/cutensornet/runtime_est_trace_v1_20260923/",
+      "?? artifacts/paired_simulator_v1/",
+      "?? artifacts/pasqal_emu_mps/formula_fit_prerun_v2.csv",
+      "?? artifacts/pasqal_emu_mps/formula_fit_prerun_v2.json",
+      "?? artifacts/pasqal_emu_mps/formula_fit_prerun_v2.md",
+      "?? artifacts/simulator_runtime_v2/dense_statevector_cpu_eval_20260922/",
+      "?? benchmark_v1/",
+      "?? experiments/cudaq_runtime/analyze_cudaq_launch_scaling.py",
+      "?? experiments/cudaq_runtime/run_cudaq_launch_scaling.py",
+      "?? experiments/paired_simulator_v1/",
+      "?? tracks/cutensornet/code/evaluate_cutensornet_multi_target.py",
+      "?? tracks/cutensornet/code/probe_cutensornet_mali_qasm_plan.py",
+      "?? tracks/cutensornet/code/run_cutensornet_mali_qasm_cell.py",
+      "?? tracks/cutensornet/code/run_cutensornet_mali_qasm_full_pool.py",
+      "?? tracks/cutensornet/code/run_cutensornet_mali_qasm_parallel_paths.py",
+      "?? tracks/cutensornet/code/run_cutensornet_mali_qasm_path_cell.py",
+      "?? tracks/pasqal_emu_mps/scripts/official_source_programs.py",
+      "?? work_archived_recheck.pGPWhX/"
+    ],
+    "tracked_diff_sha256": "428cbf2c6b06f0f62b8a523daabf6adb55af4ba7fd7bbea58f3c7d57c594cd7a",
+    "untracked_files_not_in_patch": [
+      "artifacts/benchmark_v1/",
+      "artifacts/cudaq_runtime/launch_scaling_v1_20260922/",
+      "artifacts/cutensornet/_canary_parallel_path/",
+      "artifacts/cutensornet/_canary_parallel_reuse/",
+      "artifacts/cutensornet/mali_qasm_full_pool_plan_v1_20260923/",
+      "artifacts/cutensornet/mali_qasm_full_pool_v1_20260923/",
+      "artifacts/cutensornet/mali_qasm_parallel_paths_v1_20260924/",
+      "artifacts/cutensornet/mali_qasm_workspace_probe_v1_20260923/",
+      "artifacts/cutensornet/multi_target_calibration_v1/",
+      "artifacts/cutensornet/runtime_est_trace_v1_20260923/",
+      "artifacts/paired_simulator_v1/",
+      "artifacts/pasqal_emu_mps/formula_fit_prerun_v2.csv",
+      "artifacts/pasqal_emu_mps/formula_fit_prerun_v2.json",
+      "artifacts/pasqal_emu_mps/formula_fit_prerun_v2.md",
+      "artifacts/simulator_runtime_v2/dense_statevector_cpu_eval_20260922/",
+      "benchmark_v1/",
+      "experiments/cudaq_runtime/analyze_cudaq_launch_scaling.py",
+      "experiments/cudaq_runtime/run_cudaq_launch_scaling.py",
+      "experiments/paired_simulator_v1/",
+      "tracks/cutensornet/code/evaluate_cutensornet_multi_target.py",
+      "tracks/cutensornet/code/probe_cutensornet_mali_qasm_plan.py",
+      "tracks/cutensornet/code/run_cutensornet_mali_qasm_cell.py",
+      "tracks/cutensornet/code/run_cutensornet_mali_qasm_full_pool.py",
+      "tracks/cutensornet/code/run_cutensornet_mali_qasm_parallel_paths.py",
+      "tracks/cutensornet/code/run_cutensornet_mali_qasm_path_cell.py",
+      "tracks/pasqal_emu_mps/scripts/official_source_programs.py",
+      "work_archived_recheck.pGPWhX/"
+    ]
+  },
+  "command": [
+    "PYTHONPATH=/home/server/Documents/quantum-runtime-estimator-replications/.venv-emu-mps-gpu/lib/python3.10/site-packages",
+    "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+    "benchmark_v1/scripts/run_pasqal_emu_mps_quality.py",
+    "--input-manifest",
+    "benchmark_v1/execution/manifests/pasqal_emu_mps_formula_crossed_pilot_v1.json",
+    "--artifact-dir",
+    "artifacts/benchmark_v1/pasqal_emu_mps_formula_crossed_pilot_v1r1_20260926",
+    "--run-id",
+    "pasqal_emu_mps_formula_crossed_pilot_v1r1_20260926",
+    "--sessions",
+    "1",
+    "--warmups",
+    "2",
+    "--repetitions",
+    "2",
+    "--cell-timeout",
+    "1800"
+  ],
+  "created_utc": "2026-09-26T08:19:56+00:00",
+  "data_registry_sha256": "fa2f8e96b06ad6403752fceb6c802ecd59e86f808a3b140ffddbda4a5b531fb5",
+  "environment_fingerprint": {
+    "status": "pending"
+  },
+  "input_manifest_hash": "ff3762b5c66d72af0ce2f53976de6e92f299166f3be81716c1f11fe7671ce6c2",
+  "input_manifests": [
+    {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/benchmark_v1/execution/manifests/pasqal_emu_mps_formula_crossed_pilot_v1.json",
+      "sha256": "5e340dedc36a8e53ce858eeb8be78a212dd672fb3609e9df35426fd9bcf11e0d"
+    }
+  ],
+  "measurement_plan": {
+    "actual_untimed_warmups_per_session": null,
+    "note": "runner must resolve actual values before measurement; pending values fail compliance",
+    "repeated_stages": [],
+    "tier_contract": {
+      "aggregate_rows_allowed": false,
+      "minimum_raw_repetitions_per_session": 1,
+      "minimum_sessions": 1,
+      "minimum_untimed_warmups_per_session": 3,
+      "primary_scorecard_eligible": false,
+      "purpose": "feasibility, clock verification and resource frontier only"
+    }
+  },
+  "method_id": "pasqal_emu_mps",
+  "protocol_id": "qre-benchmark-v1",
+  "protocol_version": "1.0.0",
+  "resource_profile": {
+    "frontier_policy": {
+      "mps_quality_reference_width_max": 16,
+      "noisy_aer_primary_width_max": 9,
+      "resource_statuses": [
+        "ok",
+        "timeout",
+        "resource_limit",
+        "unsupported",
+        "planner_timeout",
+        "error"
+      ],
+      "statevector_frontier_widths": [
+        26,
+        28,
+        30
+      ],
+      "statevector_widths": [
+        16,
+        20,
+        24
+      ]
+    },
+    "host_contract": {
+      "gpu_concurrency": 1,
+      "gpu_model_expected": "NVIDIA GeForce RTX 5070 Ti",
+      "gpu_vram_mib_reported": 16303,
+      "leave_gpu_headroom": true,
+      "ram_gib_total_expected": 45,
+      "ram_rss_soft_cap_gib": 36
+    },
+    "tensornet": {
+      "do_not_resume_stopped_full_pool_by_default": true,
+      "record_path_search_separately": true,
+      "record_runtime_est_separately": true,
+      "workspace_fraction_of_reported_vram": 0.9
+    },
+    "timeouts_seconds": {
+      "contraction": 3600,
+      "core_cell": 900,
+      "path_search": 3600,
+      "pilot_cell": 180
+    }
+  },
+  "run_id": "pasqal_emu_mps_formula_crossed_pilot_v1r1_20260926",
+  "run_tier": "pilot",
+  "seed_registry_id": "seed-registry-v1",
+  "seed_root": 20260925,
+  "status": "initialized",
+  "target_id": "local_analog_mps",
+  "timing_contract": {
+    "core_repetitions": 5,
+    "cpu_path_search_may_parallelize": true,
+    "gpu_concurrency": 1,
+    "independent_sessions_for_core": 3,
+    "live_qpu_submission": false,
+    "pilot_repetitions": 1,
+    "timing_order_is_seeded": true,
+    "untimed_warmups": 3
+  }
+}

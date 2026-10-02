@@ -1,0 +1,342 @@
+{
+  "schema_version": "2.0",
+  "contract_id": "qre-representation-authority-v2",
+  "status": "signed_input_contract_pending_S62_integration",
+  "decision_date": "2026-09-29",
+  "owner": "S58 representation/data",
+  "purpose": "Define the only admissible pre-execution circuit representations for the 8,767-row archived-real-QPU corpus. This contract prevents a width, family label, or reconstructed circuit from being silently treated as an exact source circuit.",
+  "scope": {
+    "canonical_corpus": "artifacts/benchmark_v1/canonical_corpus_8767_20260926/canonical_observations.csv",
+    "canonical_rows": 8767,
+    "sources": {
+      "mali_real_qpu": 340,
+      "qonductor_single_circuit_ibm": 4482,
+      "qpack_mcp": 3945
+    },
+    "out_of_scope": [
+      "method-specific formula, snapshot, CLOPS, and clock decisions owned by S60",
+      "split construction and statistical estimands owned by S59",
+      "final method-by-row eligibility owned by S62"
+    ]
+  },
+  "normative_terms": {
+    "exact": "The bytes or an immutable source record identify the circuit representation actually submitted or recorded before the archived execution.",
+    "archive_resolved_recipe": "A hash join identifies an archived benchmark family and logical width, then a version-pinned generator creates a declared logical recipe. It is not inverse transpilation and not byte-exact recovery of the original pre-transpile QASM.",
+    "pinned_structural_reconstruction": "A version-pinned source and recorded configuration deterministically yield an angle-insensitive circuit structure, but not the submitted route, optimizer angles, or exact submitted QASM.",
+    "unavailable": "The required representation cannot be established before execution from immutable source evidence. It must be reported as unavailable, never replaced by an inferred width or a newly chosen circuit."
+  },
+  "source_views": {
+    "mali_exact_logical_qasm": {
+      "source_id": "mali_real_qpu",
+      "row_count": 340,
+      "representation_id": "exact_logical_qasm",
+      "lifecycle_stage": "logical_pre_transpile",
+      "identity_strength": "exact",
+      "input_pointer": "canonical qasm_path_or_member",
+      "digest_field": "qasm_bytes_sha256",
+      "eligible_uses": [
+        "Ma-Li source-native fidelity evaluation",
+        "unified adaptations whose S62 method contract accepts exact logical DAG/features",
+        "exact-QASM leakage grouping"
+      ],
+      "prohibited_claims": [
+        "job-day calibration recovery from a later FakeBackend snapshot"
+      ]
+    },
+    "qonductor_p0_submitted_physical_qasm": {
+      "source_id": "qonductor_single_circuit_ibm",
+      "row_count": 4482,
+      "representation_id": "p0_exact_submitted_physical_qasm",
+      "tier": "P0",
+      "lifecycle_stage": "submitted_physical",
+      "identity_strength": "exact",
+      "input_pointer": "Qonductor circuits.zip member named by canonical qasm_path_or_member",
+      "digest_field": "qasm_bytes_sha256",
+      "eligible_uses": [
+        "unified adaptations accepting submitted physical DAG/features",
+        "Qonductor source-native/grouped retraining",
+        "exact-submitted-QASM leakage grouping",
+        "snapshot transpilation or schedule estimation when permitted by S60/S62"
+      ],
+      "not_eligible_for": [
+        "literal Ma-Li logical-QASM source-native replication",
+        "claims that P0 reveals the original logical MQTBench instance"
+      ],
+      "required_ledger_fields": [
+        "canonical_observation_id",
+        "qasm_path_or_member",
+        "qasm_bytes_sha256",
+        "submitted_qasm_sha256_recomputed",
+        "representation_id",
+        "lifecycle_stage",
+        "leakage_group_id"
+      ]
+    },
+    "qonductor_l1_archive_resolved_logical_recipe": {
+      "source_id": "qonductor_single_circuit_ibm",
+      "row_count": 230,
+      "representation_id": "l1_archive_resolved_logical_recipe",
+      "tier": "L1",
+      "lifecycle_stage": "declared_logical_recipe_reconstructed_from_archive",
+      "identity_strength": "archive_resolved_recipe",
+      "resolution_mechanism": "Exact SHA-256 equality joins submitted physical QASM to Qonductor benchmarks.zip member family_backend_logical-width.qasm; the pinned MQTBench 1.0.3 generator then produces the declared logical recipe.",
+      "generator_pin": {
+        "package": "mqt.bench",
+        "version": "1.0.3",
+        "wheel_sha256": "42affe45f6e6c63d0bdc37093399622ce7c53232c9f486fdc43f345d3b08d30c"
+      },
+      "execution_release_gate": "blocked_until_each_generated recipe passes the frozen MQTBench-1.0.3 round-trip/structural validation and receives a generated_recipe_digest; this S58 contract does not itself materialize or execute L1 inputs.",
+      "eligible_uses": [
+        "separately labelled Qonductor L1 Ma-Li-style logical-DAG diagnostic",
+        "representation sensitivity analysis",
+        "logical-recipe leakage grouping in addition to submitted-QASM grouping"
+      ],
+      "not_eligible_for": [
+        "literal recovery or byte-exact reproduction of Qonductor original logical QASM",
+        "a replacement logical input for L2 or L4 rows",
+        "an unlabelled row in a full-Qonductor logical-DAG leaderboard"
+      ],
+      "required_ledger_fields": [
+        "canonical_observation_id",
+        "submitted_qasm_sha256",
+        "audit_row_sha256_or_key",
+        "benchmark_archive_member",
+        "family",
+        "logical_width",
+        "mqtbench_version",
+        "mqtbench_wheel_sha256",
+        "generated_recipe_digest",
+        "representation_id",
+        "provenance_flag"
+      ],
+      "provenance_flag": "archive_resolved_recipe_not_byte_exact_original_logical_qasm"
+    },
+    "qonductor_l2_graphstate_structural_only": {
+      "source_id": "qonductor_single_circuit_ibm",
+      "row_count": 14,
+      "representation_id": "l2_graphstate_structural_only",
+      "tier": "L2",
+      "lifecycle_stage": "archive_identified_family_only",
+      "identity_strength": "structural_only",
+      "eligible_uses": [
+        "separately labelled structural sensitivity, if a later method contract explicitly accepts it"
+      ],
+      "not_eligible_for": [
+        "L1 logical-recipe diagnostic primary scorecard",
+        "exact logical-QASM claim",
+        "input substitution for a method requiring graph seed or exact logical instance"
+      ],
+      "provenance_flag": "graphstate_identity_does_not_establish_exact_logical_instance"
+    },
+    "qonductor_l4_no_logical_archive_mapping": {
+      "source_id": "qonductor_single_circuit_ibm",
+      "row_count": 4238,
+      "representation_id": "l4_no_logical_archive_mapping",
+      "tier": "L4",
+      "lifecycle_stage": "logical_unknown",
+      "identity_strength": "unavailable",
+      "eligible_uses": [
+        "P0 submitted-physical methods only"
+      ],
+      "not_eligible_for": [
+        "logical recipe reconstruction",
+        "logical-DAG adaptation requiring original/reconstructed logical input"
+      ],
+      "provenance_flag": "no_archive_hash_join_no_logical_input"
+    },
+    "qpack_pinned_angle_insensitive_structural": {
+      "source_id": "qpack_mcp",
+      "row_count": 3945,
+      "representation_id": "pinned_angle_insensitive_structural_reconstruction",
+      "lifecycle_stage": "logical_structure_reconstructed_from_recorded_workflow_configuration",
+      "identity_strength": "pinned_structural_reconstruction",
+      "generator_pin": {
+        "repository": "LibKet/QPack",
+        "revision": "9beaf65e951e01181b1e324cbb1b227af10eef96"
+      },
+      "recorded_configuration": [
+        "problem=MCP",
+        "size",
+        "p",
+        "backend_name",
+        "shots",
+        "num_qubits",
+        "depth"
+      ],
+      "eligible_uses": [
+        "unified adaptations whose S62 method contract accepts a pinned structural DAG/features",
+        "angle-insensitive structural-DAG diagnostic",
+        "transpile/schedule estimates explicitly labelled reconstruction-qualified",
+        "workflow-group split and workflow-cluster resampling"
+      ],
+      "not_eligible_for": [
+        "exact-QASM or exact-submitted-physical-QASM claim",
+        "compiled-route or optimizer-angle-dependent method without a declared reconstruction step",
+        "literal source-native fidelity table for an estimator absent from QPack"
+      ],
+      "required_ledger_fields": [
+        "canonical_observation_id",
+        "workflow_group_hash",
+        "source_json_path",
+        "problem",
+        "size",
+        "p",
+        "backend_name",
+        "shots",
+        "qpack_revision",
+        "structural_recipe_digest",
+        "configuration_validation_status",
+        "representation_id",
+        "provenance_flag"
+      ],
+      "provenance_flag": "pinned_structural_reconstruction_no_exact_qasm_no_angles_no_route"
+    }
+  },
+  "qonductor_set_relation": {
+    "universe": 4482,
+    "p0_exact_submitted_physical_qasm": 4482,
+    "logical_evidence_partition": {
+      "l1_archive_resolved_logical_recipe": 230,
+      "l2_graphstate_structural_only": 14,
+      "l4_no_logical_archive_mapping": 4238
+    },
+    "invariant": "P0 overlaps every L tier. L1 + L2 + L4 must equal 4,482; these are not additive rows beyond P0.",
+    "deprecated_nonidentity_view": {
+      "name": "3,065 family-level candidates",
+      "allowed_use": "historical preflight evidence only",
+      "forbidden_use": "row-to-runtime mapping, exact logical identity, or execution manifest"
+    }
+  },
+  "unified_adaptation_boundary": {
+    "principle": "The unified 8,767-row ledger retains all observations. A method may use the strongest declared pre-execution representation available for that source only when its S62 cell records the representation_id, lifecycle_stage, and coverage. Representation differences are not erased.",
+    "allowed_source_representation_pairs": [
+      ["mali_real_qpu", "exact_logical_qasm"],
+      ["qonductor_single_circuit_ibm", "p0_exact_submitted_physical_qasm"],
+      ["qpack_mcp", "pinned_angle_insensitive_structural_reconstruction"]
+    ],
+    "native_fidelity_boundary": {
+      "mali_native": "mali_exact_logical_qasm on 340 Ma-Li observations only",
+      "qonductor_native": "qonductor_p0_submitted_physical_qasm on 4,482 Qonductor observations only",
+      "qpack": "dataset source only; no QPack runtime-estimator native fidelity cell"
+    },
+    "diagnostic_boundary": {
+      "qonductor_l1": "230-row archive-resolved logical-recipe diagnostic, separately reported",
+      "qonductor_l2": "14-row structural sensitivity only, never merged with L1",
+      "qpack": "angle-insensitive pinned structural representation; workflow grouped"
+    }
+  },
+  "forbidden_inferences": [
+    "Infer an exact logical QASM from logical width, physical width, backend capacity, family name, depth, shots, or runtime.",
+    "Use Qonductor backend_qubits or aggregate width_qubits as a circuit logical width.",
+    "Attach a new MQTBench circuit to a Qonductor row without an L1 archive-hash join.",
+    "Treat QPack workflow ID as a QASM hash, target feature, or exact circuit identity.",
+    "Invent QPack optimizer angles, transpiler routing, or submitted physical circuit bytes.",
+    "Call an adaptation a literal Ma-Li replication outside the Ma-Li exact-logical source."
+  ],
+  "materialization_schema": {
+    "required_columns": [
+      "canonical_observation_id",
+      "source_id",
+      "representation_id",
+      "lifecycle_stage",
+      "identity_strength",
+      "input_pointer_or_recipe",
+      "input_digest",
+      "generator_or_archive_pin",
+      "leakage_group_id",
+      "leakage_group_kind",
+      "provenance_flag",
+      "availability_status"
+    ],
+    "uniqueness_rule": "One row per canonical_observation_id and representation_id. Multiple representation rows are permitted only when each has distinct explicit representation_id.",
+    "no_target_leakage_rule": "No reconstructed representation, digest, generator parameter, feature, or eligibility decision may use target_seconds or any held-out observed runtime."
+  },
+  "evidence_pins": [
+    {
+      "logical_id": "qonductor_submitted_circuits_archive",
+      "path": "/home/server/Documents/Qonductor-SC25/data/database/circuits.zip",
+      "sha256": "c9f259d38b24658e303c73c020c0c35e38d26d835061b19afc67626f8b70f51b"
+    },
+    {
+      "logical_id": "qonductor_pretranspiled_benchmark_archive",
+      "path": "/home/server/Documents/Qonductor-SC25/data/benchmarks/benchmarks.zip",
+      "sha256": "b138f3dc97a921ea6df455b1852bd21bff3dae5f19a583ba6d82d7ca1b055de9"
+    },
+    {
+      "path": "artifacts/benchmark_v1/canonical_corpus_8767_20260926/canonical_observations.csv",
+      "sha256": "920d745e03dd00e8155118d9323baea18ff865e4df2620f3a059bd5503a05ba4"
+    },
+    {
+      "path": "artifacts/benchmark_v1/canonical_corpus_8767_20260926/qonductor_single_circuit_ibm.csv",
+      "sha256": "52b8fcccb88781b62e717868f86eccf19f03daf7ba6e307874ba08ecf14a1db6"
+    },
+    {
+      "path": "artifacts/benchmark_v1/canonical_corpus_8767_20260926/qpack_mcp.csv",
+      "sha256": "5f7ac1fb0849892acc338738feec15204160d9270e49e6384e78bc1a74fd6605"
+    },
+    {
+      "path": "artifacts/benchmark_v1/qonductor_benchmark_archive_logical_identity_20260928/qonductor_archive_logical_identity_audit.csv",
+      "sha256": "48de0844cc5767c5aa674a81b8d58bd5dc987dd354ef27603775b98ca5262832"
+    },
+    {
+      "path": "artifacts/benchmark_v1/qpack_mcp_structural_reconstruction_20260927/qpack_mcp_structural_rows.csv",
+      "sha256": "796bfcbdefd47daf56e516fe782c37b4a073c54f998dec73454852c158e03067"
+    },
+    {
+      "path": "artifacts/benchmark_v1/qpack_mcp_structural_reconstruction_20260927/qpack_mcp_configuration_coverage.csv",
+      "sha256": "65df24714310f5c36a12072870c9f4e2a58ebbf40b4af694cd178ff285c57bfb"
+    }
+  ],
+  "supersession": {
+    "controlling_evidence": "benchmark_v1/S39_QONDUCTOR_ARCHIVE_RECOVERY_ADDENDUM_20260928.md",
+    "effect": "For the 230 L1 rows only, this contract supersedes older blanket exclusions of Qonductor from a separately labelled logical-recipe diagnostic. It does not alter historical artifacts or promote L1 to an exact-original logical-QASM claim.",
+    "historical_documents_retained": [
+      "benchmark_v1/S39_STRUCTURAL_DAG_SCOPE_LOCK_V1_20260928.md",
+      "benchmark_v1/S45_BENCHMARK_COMPARISON_CONTRACT_V3.md",
+      "benchmark_v1/S48_CANONICAL_METHOD_AND_DOMAIN_ONTOLOGY_V1.md",
+      "benchmark_v1/S53_PHASE3_ARCHIVED_QPU_ADJUDICATION_V1.md"
+    ]
+  },
+  "acceptance_tests": [
+    {
+      "id": "R58-01-canonical-counts",
+      "requirement": "Canonical source counts are Ma-Li=340, Qonductor=4,482, QPack=3,945 and total=8,767."
+    },
+    {
+      "id": "R58-02-qonductor-p0",
+      "requirement": "Exactly 4,482 Qonductor P0 ledger records have a nonempty archive member and recomputed submitted-QASM SHA-256 equal to canonical qasm_bytes_sha256."
+    },
+    {
+      "id": "R58-03-qonductor-logical-partition",
+      "requirement": "Exactly L1=230, L2=14 and L4=4,238 Qonductor records; their union is 4,482 and each is also P0."
+    },
+    {
+      "id": "R58-04-l1-evidence",
+      "requirement": "Every L1 record resolves to one audit row with matching submitted hash, benchmark archive member, family, logical width, pinned MQTBench 1.0.3 wheel hash and reproducible generated recipe digest."
+    },
+    {
+      "id": "R58-05-l1-leakage",
+      "requirement": "Rows sharing a submitted-QASM hash or generated logical-recipe digest are assigned to one leakage group before S59 splits are materialized."
+    },
+    {
+      "id": "R58-06-l2-l4-boundary",
+      "requirement": "No L2/L4 record has a generated logical recipe path/digest or is marked eligible for the L1 logical-recipe diagnostic."
+    },
+    {
+      "id": "R58-07-qpack-config",
+      "requirement": "Every QPack record maps to one validated pinned (problem,size,p,backend,shots,num_qubits,depth) configuration and one workflow group; qasm_bytes_sha256 remains empty."
+    },
+    {
+      "id": "R58-08-no-forbidden-inference",
+      "requirement": "No ledger field called logical_qasm_path, exact_qasm_hash, or logical_width_source is populated for Qonductor L2/L4 or QPack unless its value is explicitly a non-exact reconstruction identifier with the matching provenance flag."
+    },
+    {
+      "id": "R58-09-identity-stability",
+      "requirement": "Reordering source rows leaves representation records and input digests unchanged; changing a pinned archive member, generator revision, generator version, or structural configuration changes the representation digest."
+    },
+    {
+      "id": "R58-10-label-isolation",
+      "requirement": "Static audit confirms no reconstruction/materialization function reads target_seconds, target_native, or an observed runtime field."
+    }
+  ]
+}

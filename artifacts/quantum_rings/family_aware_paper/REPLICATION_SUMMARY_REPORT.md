@@ -33,8 +33,8 @@ truth file, or the exact paper-protocol forward labels.
 
 ### Evaluation data
 
-`data/hackathon_public.json` contains 36 OpenQASM circuits and four execution
-contexts per circuit:
+The upstream [`hackathon_public.json`](https://github.com/iQuHACK/2026-Quantum-Rings/blob/1e2247f708136b2c6da99d7f98564ea2b15474f9/data/hackathon_public.json)
+contains 36 OpenQASM circuits and four execution contexts per circuit:
 
 | Dimension | Values | Rows |
 |---|---|---:|
@@ -74,15 +74,16 @@ the Quantum Rings repository. We generated a transparent public approximation:
 - deterministic per-circuit seeds and SHA-256 hashes in the manifest;
 - zero duplicate QASM hashes against the 36 evaluation circuits.
 
-Raw QASM and regeneration instructions are in
-[`data/mqt_family_pretraining/`](data/mqt_family_pretraining/README.md).
+The generated MQT pretraining QASM files are not included in this candidate;
+the report below records the approximation and its generator. Recreating them
+requires the separate environment listed with that script.
 
 ## 3. Replication pipeline
 
 ### Feature extraction
 
 Each QASM circuit is converted to the 32-feature representation implemented in
-[`experiments/replicate_paper.py`](experiments/replicate_paper.py):
+[`replicate_paper.py`](../../../tracks/quantum_rings/family_aware_paper/experiments/replicate_paper.py):
 
 - circuit size and depth statistics;
 - total, one-qubit, and two-qubit gate counts;
@@ -169,7 +170,7 @@ runtime targets should not be treated as one universal simulator-runtime label.
 The independent MQT classifier used 160 training and 40 held-out circuits.
 The MLP reached **97.5% (39/40)**; a Random Forest reference reached 90.0%.
 The exact held-out predictions are in
-[`results/mqt_family_classifier/heldout_predictions.csv`](results/mqt_family_classifier/heldout_predictions.csv).
+[`mqt_family_classifier/heldout_predictions.csv`](mqt_family_classifier/heldout_predictions.csv).
 
 When the frozen classifier was applied to the 36 Quantum Rings evaluation
 circuits, only 26/36 had labels that mapped to the ten-family vocabulary:
@@ -213,22 +214,24 @@ transfer.
 
 | Purpose | Raw/source artifact | Reproduction script | Result/report |
 |---|---|---|---|
-| Public challenge labels | [`data/hackathon_public.json`](data/hackathon_public.json) | [`replicate_paper.py`](experiments/replicate_paper.py) | [`results/paper_replication.json`](results/paper_replication.json) |
-| Public holdout schema | [`data/holdout_public.json`](data/holdout_public.json) | validation scripts only; truth/QASM are organizer-private | no local leaderboard score |
-| 32-feature / paper-style replication | `circuits/*.qasm` | [`experiments/replicate_paper.py`](experiments/replicate_paper.py) | [`REPLICATION_REPORT.md`](REPLICATION_REPORT.md) |
-| Protocol audit | same public JSON/QASM | [`experiments/protocol_audit.py`](experiments/protocol_audit.py) | [`results/PROTOCOL_AUDIT_REPORT.md`](results/PROTOCOL_AUDIT_REPORT.md), [`results/protocol_audit.json`](results/protocol_audit.json) |
-| Independent family pretraining | [`data/mqt_family_pretraining/`](data/mqt_family_pretraining/) | [`generate_mqt_family_pretraining.py`](experiments/generate_mqt_family_pretraining.py) | [`results/MQT_FAMILY_PRETRAINING_REPORT.md`](results/MQT_FAMILY_PRETRAINING_REPORT.md) |
-| Frozen MQT family classifier | generated QASM + manifest | [`train_mqt_family_classifier.py`](experiments/train_mqt_family_classifier.py) | [`results/mqt_family_classifier/`](results/mqt_family_classifier/) |
-| MQT-conditioned evaluation | public challenge JSON/QASM + frozen joblib | [`replicate_with_mqt_family.py`](experiments/replicate_with_mqt_family.py) | [`results/mqt_pretrained_family_replication.json`](results/mqt_pretrained_family_replication.json) |
+| Public challenge labels | [Pinned upstream data](https://github.com/iQuHACK/2026-Quantum-Rings/blob/1e2247f708136b2c6da99d7f98564ea2b15474f9/data/hackathon_public.json) | [`replicate_paper.py`](../../../tracks/quantum_rings/family_aware_paper/experiments/replicate_paper.py) | [`paper_replication.json`](paper_replication.json) |
+| Public holdout schema | [Pinned upstream schema](https://github.com/iQuHACK/2026-Quantum-Rings/blob/1e2247f708136b2c6da99d7f98564ea2b15474f9/data/holdout_public.json) | validation scripts only; truth/QASM are organizer-private | no local leaderboard score |
+| 32-feature / paper-style replication | upstream `circuits/*.qasm` | [`replicate_paper.py`](../../../tracks/quantum_rings/family_aware_paper/experiments/replicate_paper.py) | [`REPLICATION_REPORT.md`](REPLICATION_REPORT.md) |
+| Protocol audit | same pinned upstream JSON/QASM | [`protocol_audit.py`](../../../tracks/quantum_rings/family_aware_paper/experiments/protocol_audit.py) | [`PROTOCOL_AUDIT_REPORT.md`](PROTOCOL_AUDIT_REPORT.md), [`protocol_audit.json`](protocol_audit.json) |
+| Independent family pretraining | generated QASM not included | [`generate_mqt_family_pretraining.py`](../../../tracks/quantum_rings/family_aware_paper/experiments/generate_mqt_family_pretraining.py) | [`MQT_FAMILY_PRETRAINING_REPORT.md`](MQT_FAMILY_PRETRAINING_REPORT.md) |
+| Frozen MQT family classifier | generated QASM + manifest not bundled | [`train_mqt_family_classifier.py`](../../../tracks/quantum_rings/family_aware_paper/experiments/train_mqt_family_classifier.py) | [`mqt_family_classifier/`](mqt_family_classifier/) |
+| MQT-conditioned evaluation | pinned upstream JSON/QASM + frozen joblib | [`replicate_with_mqt_family.py`](../../../tracks/quantum_rings/family_aware_paper/experiments/replicate_with_mqt_family.py) | [`mqt_pretrained_family_replication.json`](mqt_pretrained_family_replication.json) |
 
-The raw and derived artifacts are committed in the repository. The binary
-`mqt_family_classifier.joblib` is the frozen model used for the integration
-result; it is not the paper authors' weight file.
+The result JSONs, summary reports and binary
+`mqt_family_classifier/mqt_family_classifier.joblib` are included. The raw
+challenge data are retrieved from the pinned upstream commit; the generated
+MQT pretraining QASM corpus and manifest are not included here. The frozen
+model is not the paper authors' weight file.
 
 ## 7. Reproduction commands
 
 Use the pinned environment in
-[`experiments/requirements-reproduction.txt`](experiments/requirements-reproduction.txt):
+[`requirements-reproduction.txt`](../../../tracks/quantum_rings/family_aware_paper/experiments/requirements-reproduction.txt):
 
 ```bash
 cd <repo-root>
@@ -250,7 +253,7 @@ python \
 ```
 
 The MQT generation step requires the separate environment listed in
-[`experiments/requirements-mqt-pretraining.txt`](experiments/requirements-mqt-pretraining.txt);
+[`requirements-mqt-pretraining.txt`](../../../tracks/quantum_rings/family_aware_paper/experiments/requirements-mqt-pretraining.txt);
 once the committed QASM and manifest are present, it is not needed to rerun
 the classifier.
 

@@ -1,0 +1,47 @@
+{
+  "aggregated_at_utc": "2026-10-01T07:25:04.180100+00:00",
+  "artifact_id": "aer-mali-graph-adaptation-c3a-v1-overall-qa",
+  "core_rows": 162,
+  "folds": {
+    "0": {
+      "n": 39,
+      "status": "PASS"
+    },
+    "1": {
+      "n": 30,
+      "status": "PASS"
+    },
+    "2": {
+      "n": 27,
+      "status": "PASS"
+    },
+    "3": {
+      "n": 28,
+      "status": "PASS"
+    },
+    "4": {
+      "n": 38,
+      "status": "PASS"
+    }
+  },
+  "frontier_rows_in_accuracy": 0,
+  "metrics": {
+    "mae_log1p_seconds": 0.09140659716997122,
+    "mae_seconds": 0.387654275707322,
+    "max_absolute_error_seconds": 16.88642359138248,
+    "medae_seconds": 0.03602517594117671,
+    "n": 162,
+    "p90_absolute_error_seconds": 0.3584479529261446,
+    "p99_absolute_error_seconds": 7.8800686891773815,
+    "r2_seconds": 0.15583480438531905
+  },
+  "metrics_sha256": "320cc482d6fdabfc4c214fc01c2d4c5bfcf719b19d175a09f9eaaeb6a3cab074",
+  "model_claim": "Ma-Li-style hybrid graph plus seven-feature global branch adaptation to local Aer warm labels; not original Ma-Li or paper-table replication",
+  "nonnegative_predictions": true,
+  "oof_predictions": 162,
+  "oof_sha256": "02bacf27c3a7cecde07283eda6518eadb1e1bca79eeb14508e7a69e2bca320a6",
+  "prediction_rows_all_have_exact_qasm_hash_and_fold": true,
+  "status": "PASS",
+  "unique_oof_observation_ids": 162,
+  "unique_qasm_hashes": 150
+}

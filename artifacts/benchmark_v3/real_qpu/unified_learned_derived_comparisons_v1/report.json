@@ -1,0 +1,72 @@
+{
+  "artifact_id": "unified_learned_derived_comparisons_v1",
+  "bootstrap": [
+    {
+      "builder_sha256": "6566386c778297fa5406492c636ecb9e2e94b968a761461adbe178a140065630",
+      "clusters": 2319,
+      "macro_conclusion_authorized": false,
+      "mae_delta_95pct_high_seconds": -0.2228986085134265,
+      "mae_delta_95pct_low_seconds": -0.417939148893567,
+      "mali_real_qpu_clusters": 170,
+      "note": "S49 grouped bootstrap on complete source-specific clusters; source-balanced macro MAE is diagnostic only",
+      "pair_name": "large_vs_poly",
+      "percentile_rule": "numpy.quantile_linear_0.025_0.975",
+      "qonductor_single_circuit_ibm_clusters": 2103,
+      "qpack_mcp_clusters": 46,
+      "replicates": 1000,
+      "seed": 1156247905,
+      "stream": "20260925-bootstrap",
+      "win_rate_95pct_high": 0.6427663825596297,
+      "win_rate_95pct_low": 0.5188008336706109
+    },
+    {
+      "builder_sha256": "6566386c778297fa5406492c636ecb9e2e94b968a761461adbe178a140065630",
+      "clusters": 2318,
+      "macro_conclusion_authorized": false,
+      "mae_delta_95pct_high_seconds": 0.03168625697593043,
+      "mae_delta_95pct_low_seconds": -0.008095979309979743,
+      "mali_real_qpu_clusters": 170,
+      "note": "S49 grouped bootstrap on complete source-specific clusters; source-balanced macro MAE is diagnostic only",
+      "pair_name": "large_vs_v3",
+      "percentile_rule": "numpy.quantile_linear_0.025_0.975",
+      "qonductor_single_circuit_ibm_clusters": 2102,
+      "qpack_mcp_clusters": 46,
+      "replicates": 1000,
+      "seed": 2430567631,
+      "stream": "20260925-bootstrap",
+      "win_rate_95pct_high": 0.585817715304783,
+      "win_rate_95pct_low": 0.4619708669661677
+    }
+  ],
+  "canonical": {
+    "canonical_hash": "dff36af67d89253c933e4dbcc877d57b0fca2d29eac711c5dfdaadbfcafda322",
+    "canonical_n": 8767,
+    "large_vs_poly_hash": "e8c02117bfc0c0c4294312783678de0203aa56950b53ef5687aa38876c0dd0b4",
+    "large_vs_poly_n": 8766,
+    "large_vs_v3_hash": "a11cd7e1cbcbf07eef1ee5d88869bef4e232f2485f17635fe6f5de28ba091514",
+    "large_vs_v3_n": 8763,
+    "v3_large_predictions_sha256": "3c179ae464fc25167ae0f1aca028cf5ff1117409dce9d15f6945e4f621420d2c"
+  },
+  "evaluation_target_clock": "archived_observed_service_execution_time",
+  "five_fold_training_authorized": false,
+  "git_mutated": false,
+  "method_output_clock": "archived_observed_service_execution_time",
+  "no_training_or_inference": true,
+  "pairings": [
+    {
+      "candidate": "mali_graph_architecture_v3_large",
+      "pair_name": "large_vs_poly",
+      "reference": "unified_polynomial_v3"
+    },
+    {
+      "candidate": "mali_graph_architecture_v3_large",
+      "pair_name": "large_vs_v3",
+      "reference": "mali_graph_architecture_v3"
+    }
+  ],
+  "s49": "1,000 grouped bootstrap replicates on stream 20260925-bootstrap",
+  "source_macro": "diagnostic, not a ranking claim",
+  "status": "PASS",
+  "tail_diagnostic_label": "representable but inaccurate extrapolation",
+  "unavailable_row": "qonductor_single_circuit_ibm|row4477"
+}

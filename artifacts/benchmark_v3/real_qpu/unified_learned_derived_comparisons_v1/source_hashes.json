@@ -1,0 +1,66 @@
+{
+  "builder": {
+    "path": "benchmark_v1/scripts/build_unified_learned_derived_comparisons_v1.py",
+    "sha256": "6566386c778297fa5406492c636ecb9e2e94b968a761461adbe178a140065630"
+  },
+  "canonical": {
+    "path": "artifacts/benchmark_v1/canonical_corpus_8767_20260926/canonical_observations.csv",
+    "sha256": "920d745e03dd00e8155118d9323baea18ff865e4df2620f3a059bd5503a05ba4"
+  },
+  "learned_methods_report": {
+    "path": "artifacts/benchmark_v3/real_qpu/unified_learned_methods_oof_v4r2/report.json",
+    "sha256": "44379c070d25de588e39b5e5bd78e0ab77a9dc2ba64107aabe542b409c342c22"
+  },
+  "outer_split": {
+    "path": "artifacts/benchmark_v2/real_qpu/unified_outer_split_v2.csv",
+    "sha256": "d72b7ba6f90d5bf6ed2f3b602196a05bee11a0f441ee4e5caaca6978b6b0e25a"
+  },
+  "polynomial_fold_0": {
+    "path": "artifacts/benchmark_v3/s70_qonductor_unified_poly_fold0_20260929/predictions.csv",
+    "sha256": "7710b1582b727debab372815e0df983491dc74d48a488d647eea023a9c88132a"
+  },
+  "polynomial_fold_1": {
+    "path": "artifacts/benchmark_v3/s70_qonductor_unified_fold1_v2_20260929/predictions.csv",
+    "sha256": "ea606c4187b6878bc16bbe55baedf06964cd224e889c5abefb9129d5cce5e9d5"
+  },
+  "polynomial_fold_2": {
+    "path": "artifacts/benchmark_v3/s70_qonductor_unified_fold2_v2_20260929/predictions.csv",
+    "sha256": "902e947acfa5ddb55d5bd2d0329a4fe826d625f85914a677906c0a9bb4ccc905"
+  },
+  "polynomial_fold_3": {
+    "path": "artifacts/benchmark_v3/s70_qonductor_unified_fold3_v2_20260929/predictions.csv",
+    "sha256": "8cd65ce8ccd8bebb500c0b70bfb3b3ffa157e766a77de0502dcb2b99ec36b69f"
+  },
+  "polynomial_fold_4": {
+    "path": "artifacts/benchmark_v3/s70_qonductor_unified_fold4_v2_20260929/predictions.csv",
+    "sha256": "064c45b4a2ed3219df27f5dd8ff054f6396e347895c5c78a35d71b2ea3e77daa"
+  },
+  "seed_registry": {
+    "path": "benchmark_v1/registry/seed_registry.json",
+    "sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864"
+  },
+  "v3_fold_0": {
+    "path": "artifacts/benchmark_v3/s71_graph_fold0_full_v2_20260929/predictions.csv",
+    "sha256": "cb719f1080a335d765b004574063a6e255fe1922fc2fdf4155a3f79e76b953d0"
+  },
+  "v3_fold_1": {
+    "path": "artifacts/benchmark_v3/s71_graph_fold1_full_v3_20260930/predictions.csv",
+    "sha256": "a1d7d4393dcbce3a67eea22b889e0f7a0586b4bcbfa4704b23420cdf85083938"
+  },
+  "v3_fold_2": {
+    "path": "artifacts/benchmark_v3/s71_graph_fold2_full_v3_20260930/predictions.csv",
+    "sha256": "c33f3846ffc9962dd257f24a7a165a955d904e6a5abb8a9870b7013081793a7f"
+  },
+  "v3_fold_3": {
+    "path": "artifacts/benchmark_v3/s71_graph_fold3_full_v3_20260930/predictions.csv",
+    "sha256": "0a23bdbab7dc934fb2c25950df13f963e2a76366ce6a30805362f2f3d17b970e"
+  },
+  "v3_fold_4": {
+    "path": "artifacts/benchmark_v3/s71_graph_fold4_full_v3_20260930/predictions.csv",
+    "sha256": "1757d7b92e7d05d1bcfedd33796af1f8a0bc58965eec725bea94db49f2378311"
+  },
+  "v3_large_predictions": {
+    "path": "artifacts/benchmark_v3/real_qpu/unified_graph_v3_large_oof_20260930/predictions.csv",
+    "sha256": "3c179ae464fc25167ae0f1aca028cf5ff1117409dce9d15f6945e4f621420d2c"
+  }
+}

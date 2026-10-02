@@ -1,0 +1,10 @@
+{
+  "artifact_id": "cutensornet-common-q16-full-measurement-interference-v1-20260928",
+  "status": "review_required",
+  "scope": "The parent cuTensorNet run was active while a short CPU-only C25 real-QPU aggregate command executed.",
+  "gpu_overlap": false,
+  "possible_effect": "The running planner wall-clock could have received transient CPU contention; CUDA-event contraction clocks do not include the aggregate command.",
+  "raw_data_policy": "Do not edit or delete attempt_records.jsonl. Retain the sidecar and exclude any affected numeric path-search observation from a primary claim unless the final QA can establish it was terminal/non-numeric or the cell is rerun under the lease.",
+  "aggregate_command": "qa_aggregate_c13_c18.py --c13 ... --c16 ... --c17 ... --c18 ... --c24 ... --require-v3-semantics",
+  "created_utc": "2026-09-27T19:12:00+00:00"
+}

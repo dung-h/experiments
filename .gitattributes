@@ -4,5 +4,9 @@ tracks/qonductor/qonductor_local_replication.patch whitespace=-trailing-space
 tracks/mali/overlay/** whitespace=-trailing-space
 tracks/cdaa_qcre/independent/** whitespace=-trailing-space
 
-# Baseline CSVs are repository data, not platform-specific text files.
-artifacts/**/*.csv text eol=lf
+# Artifacts are evidence, not platform text. Preserve exact bytes/line endings
+# because manifests and release inventories hash the files as stored.
+artifacts/**/*.csv -text -eol
+
+# CSV parts retain original record bytes, including CRLF and quoted newlines.
+artifacts/**/*.csv.parts/*.csv whitespace=cr-at-eol

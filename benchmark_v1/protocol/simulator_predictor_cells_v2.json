@@ -1,0 +1,159 @@
+{
+  "schema_version": "2.0",
+  "contract_id": "simulator-predictor-cells-v2-20260929",
+  "decision_id": "S61",
+  "scope": "new benchmark-v2 work only; historical raw timing artifacts are immutable",
+  "panel": {
+    "panel_id": "sim_common_q16_v1",
+    "rows": 204,
+    "families": 22,
+    "width_range": [2, 16],
+    "ordered_member_digest": "d756e36d5c8af2ab582761c2556d44ff1ce6fbd3d479c6450c1571bc6e9a3d49",
+    "strata": {
+      "core_q2_q9": {"rows": 162, "role": "predictive_accuracy_when_complete"},
+      "frontier_q10_q16": {"rows": 42, "role": "coverage_scaling_quality_frontier"}
+    }
+  },
+  "identity_key": [
+    "exact_qasm_sha256",
+    "engine_id",
+    "engine_version",
+    "configuration_hash",
+    "hardware_hash",
+    "session",
+    "repetition",
+    "clock_id",
+    "quality_policy_id"
+  ],
+  "clock_definitions": {
+    "compile_or_build": "IR conversion, transpilation, network or kernel construction only",
+    "path_search": "tensor-network contraction-path search only",
+    "first_execution": "first measured execution after untimed setup",
+    "warm_execution": "measured execution after predeclared untimed warmups",
+    "result_extraction": "result materialization after execution only",
+    "end_to_end": "the declared enclosing API boundary; never substituted for warm execution",
+    "selected_plan_runtime_estimate": "native optimizer estimate for a selected tensor-network plan"
+  },
+  "global_rules": {
+    "shared_input_panel_is_not_shared_runtime_clock": true,
+    "cross_engine_runtime_error_pooling": "forbidden",
+    "gpu_timing_exclusivity": "one timing worker; no concurrent GPU training or unrelated GPU workload",
+    "first_checkpoint": "validate one core checkpoint or the first ten terminal cells before allowing a full cell",
+    "terminal_statuses": ["ok", "timeout", "oom", "resource_limit", "planner_timeout", "unsupported", "adapter_error", "quality_failed"],
+    "terminal_denominator_policy": "all attempted frozen identities remain in coverage denominators",
+    "neural_training": {
+      "cuda_required": true,
+      "seeds": [42, 1234, 31415],
+      "prediction_reduction": "median per canonical test observation",
+      "best_seed_selection": "forbidden"
+    }
+  },
+  "cells": [
+    {
+      "cell_id": "aer_noisy_warm_predictive_v2",
+      "engine_id": "qiskit_aer_noisy",
+      "methods": ["mali_simulator_graph_adaptation", "azizov_source_hybrid_transpiled", "classical_baselines"],
+      "target_clock": "warm_execution",
+      "primary_stratum": "core_q2_q9",
+      "frontier_stratum": "frontier_q10_q16_coverage_only",
+      "representation": "exact_source_qasm -> frozen transpilation/noise context",
+      "required_context": ["qiskit_version", "aer_version", "aer_method", "fake_backend_snapshot_hash", "noise_model_hash", "optimization_level", "shots", "transpiler_seed", "simulator_seed"],
+      "quality_policy": "exact noisy-simulation configuration; no fidelity-selection target",
+      "status": "partial_historical_149_of_162_core; complete exact-hash join and missing-core timing before promotion",
+      "reuse_policy": "reuse terminal raw attempts only after identity/context/hash validation; otherwise run only missing identities",
+      "promotion_requirements": ["complete or explicitly coverage-qualified core", "same exact-QASM outer split for all compared predictors", "CUDA-enabled neural runs"]
+    },
+    {
+      "cell_id": "cudaq_dense_sample_descriptive_v2",
+      "engine_id": "cudaq_nvidia_dense",
+      "methods": ["cudaq_dense_local_execution"],
+      "target_clock": ["first_execution", "warm_execution"],
+      "precision_strata": ["fp32", "fp64"],
+      "representation": "exact_source_qasm -> same imported CUDA-Q IR",
+      "required_context": ["cudaq_version", "target", "api_mode=sample", "precision", "shots", "hardware_hash"],
+      "quality_policy": "not a statevector-quality comparison; sample API semantics recorded",
+      "status": "completed bridge evidence; descriptive timing only",
+      "reuse_policy": "reuse after terminal identity/configuration validation; no rerun merely to create a cross-engine rank",
+      "promotion_requirements": ["first/warm separate", "FP32/FP64 separate", "adapter errors retained"]
+    },
+    {
+      "cell_id": "cudaq_mps_quality_constrained_v2",
+      "engine_id": "cudaq_nvidia_mps",
+      "methods": ["cudaq_mps_quality_constrained"],
+      "target_clock": ["first_execution", "warm_execution"],
+      "representation": "exact_source_qasm -> frozen MPS IR",
+      "required_context": ["cudaq_version", "precision", "configured_max_bond", "cutoff", "svd_algorithm", "shots", "hardware_hash"],
+      "quality_policy": "configured approximation plus an untimed reference-fidelity calculation; observed bond is forbidden as predictor input",
+      "status": "completed bridge evidence at fixed bond-16 contract; descriptive/quality-qualified",
+      "reuse_policy": "reuse after identity/configuration/quality-denominator validation",
+      "promotion_requirements": ["quality failures retained", "no dense-equivalence claim", "no predictor rank without a separately frozen training cell"]
+    },
+    {
+      "cell_id": "cutensornet_runtime_est_native_pair_v2",
+      "engine_id": "cutensornet_scalar_network",
+      "methods": ["cutensornet_runtime_est"],
+      "target_clock": "warm_execution",
+      "estimate_clock": "selected_plan_runtime_estimate",
+      "representation": "exact_source_qasm -> scalar tensor network",
+      "required_context": ["cuquantum_version", "precision", "workspace_bytes", "optimizer_options", "selected_plan_hash", "hardware_hash"],
+      "quality_policy": "same scalar output and same selected plan for estimate and actual contraction",
+      "status": "204 attempted native estimate/actual pair available; planner terminal statuses retained",
+      "reuse_policy": "reuse matching selected-plan pairs; network build/path search are telemetry and never target labels",
+      "promotion_requirements": ["plan/workspace/precision equality", "estimate and warm contraction separate from build/path/end-to-end"]
+    },
+    {
+      "cell_id": "maestro_componentwise_selector_v2",
+      "engine_id": "maestro_paper_described_candidates",
+      "methods": ["maestro_paper_described_reimplementation"],
+      "target_clock": "candidate_specific_warm_execution",
+      "representation": "exact_source_qasm -> candidate-specific IR",
+      "candidates": ["statevector_cpu", "mps_cpu_fixed_config", "stabilizer_if_preexecution_clifford_check_passes"],
+      "required_context": ["candidate_id", "candidate_version", "threads", "shots", "configured_mps_bond", "hardware_hash"],
+      "quality_policy": "MPS candidate is eligible only when predeclared fidelity threshold is met; quality reference is untimed and post-run quality is never a predictor input",
+      "calibration_policy": "training-fold-only component coefficients; statevector PCHIP in n, MPS tensor-product PCHIP in n and log2(configured_chi), affine sampling; no extrapolation",
+      "status": "component grid measured; selector unavailable pending complete held-out candidate runtime/quality matrix",
+      "required_new_work": ["extend calibration below q=8 if a held-out point would interpolate out-of-grid", "normalize/fix rzz candidate adapter", "parser preflight all 204 x candidates", "measure candidate timing/quality on frozen held-out matrix", "evaluate candidate MAE, selector oracle-hit and regret"],
+      "promotion_requirements": ["at least two quality-eligible candidates per held-out circuit", "fold-local calibration", "candidate failures retained", "no Composer claim"]
+    },
+    {
+      "cell_id": "family_aware_local_adaptation_v2",
+      "engine_id": "local_approximation_ladder",
+      "methods": ["family_aware_residual"],
+      "target_clock": "warm_execution",
+      "representation": "exact_source_qasm plus declared execution context",
+      "required_context": ["simulator_engine", "approximation_threshold_or_configured_chi", "quality_policy_id", "hardware_hash", "shots"],
+      "quality_policy": "run a predeclared chi/threshold ladder and record runtime plus reference fidelity; fixed-chi-only rows cannot create a threshold-selection target",
+      "status": "unavailable on the common local panel until the ladder labels exist",
+      "required_new_work": ["freeze ladder grid", "measure each eligible common circuit/context", "compute fidelity labels outside timing", "run strict circuit OOF and separate family holdout"],
+      "promotion_requirements": ["prediction-time family signal is a learned/frozen fingerprint, not true held-out family label", "no claim of paper-exact private Quantum Rings target"]
+    },
+    {
+      "cell_id": "pasqal_analog_companion_v2",
+      "engine_id": "pasqal_emu_mps",
+      "methods": ["pasqal_emu_mps"],
+      "target_clock": "declared_clean_analog_execution",
+      "representation": "pulse_program_and_atom_layout",
+      "quality_policy": "configured bond/Krylov and analog reference quality",
+      "status": "companion analog benchmark only",
+      "reuse_policy": "retain completed pilot as diagnostic evidence",
+      "promotion_requirements": ["separate analog panel", "do not map digital OpenQASM to pulse/layout without a validated equivalence"]
+    }
+  ],
+  "non_panel_frontiers": [
+    {
+      "id": "cudaq_dense_q26_q30_precision_frontier",
+      "scope": "same structural kernel only; n=26,28,30 when resources permit",
+      "role": "dense scaling/precision diagnostic",
+      "forbidden_use": "sim_common_q16 predictor accuracy or cross-engine leaderboard"
+    }
+  ],
+  "validator_requirements": [
+    "panel digest and QASM hashes match",
+    "engine/configuration/hardware/clock identifiers are complete",
+    "first and warm values are never pooled",
+    "GPU timing has exclusive ownership evidence",
+    "quality and terminal denominators are retained",
+    "neural training manifest proves CUDA execution",
+    "cross-engine metrics are rejected"
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "registry_id": "method-fidelity-registry-v1",
+  "status": "current_reader_facing_fidelity_overlay",
+  "decision_path": "benchmark_v1/decisions/S80_METHOD_FIDELITY_AND_WAVE4_ADJUDICATION_20260930.md",
+  "scope": "Reader-facing method identity and claim boundaries. Historical method IDs, raw artifacts, scorecard rows and prior method-card hashes remain immutable.",
+  "classes": {
+    "native": "Official/public estimator is called and its native output semantics are retained.",
+    "source_native_reimplementation": "Public source code/data and source representation are used under a leakage-safe benchmark protocol.",
+    "independent_reimplementation": "Rebuilt from public paper/artifact information rather than an author runnable implementation.",
+    "adaptation": "Feature contract, representation, target context, split or execution setup is changed for a declared benchmark setting.",
+    "analytical_proxy": "A valid analytical or scheduled quantity whose clock differs from the target observation.",
+    "unavailable": "A required public artifact or input is missing; no surrogate may be silently substituted.",
+    "baseline": "Internal comparator, not a published-method replication.",
+    "local_measurement": "Native local engine measurement, not a published runtime-prediction method."
+  },
+  "methods": [
+    {
+      "method_id": "common_tabular_baseline",
+      "reader_label": "Common width + shots tabular baseline",
+      "fidelity_class": "baseline",
+      "scope": "source-stratified archived QPU observations",
+      "claim_boundary": "Internal comparator; no paper-replication claim."
+    },
+    {
+      "method_id": "mali_graph_estimator",
+      "reader_label": "Ma--Li source-native graph + metadata reimplementation (340)",
+      "fidelity_class": "source_native_reimplementation",
+      "scope": "340 Ma--Li exact-logical-QASM observations",
+      "claim_boundary": "Public code/data and source representation; grouped benchmark split and non-historical FakeBackend context prevent a paper-exact claim."
+    },
+    {
+      "method_id": "mali_graph_architecture_v3",
+      "reader_label": "Ma--Li-style hybrid graph + metadata adaptation (V3)",
+      "fidelity_class": "adaptation",
+      "scope": "unified 8,767-row archived-QPU envelope; V3 representation coverage",
+      "claim_boundary": "Seven common global features and harmonized DAGs replace the source feature/context contract."
+    },
+    {
+      "method_id": "mali_graph_architecture_v3_large",
+      "reader_label": "Ma--Li-style hybrid graph + metadata adaptation (V3-large)",
+      "fidelity_class": "adaptation",
+      "scope": "unified 8,767-row envelope; 8,766 predictions and row4477 unavailable",
+      "claim_boundary": "Resource extension of unified V3, not Ma--Li original."
+    },
+    {
+      "method_id": "mali_graph_architecture_v4_control_flow",
+      "reader_label": "Ma--Li-style hybrid graph + metadata adaptation (V4 control-flow)",
+      "fidelity_class": "adaptation",
+      "scope": "signed control-flow representation only; no V4 training or score",
+      "claim_boundary": "V4 changes the graph branch and retains V3's seven-feature global MLP; row4477 is structural OOD for fold 0."
+    },
+    {
+      "method_id": "mali_structural_dag_adaptation",
+      "reader_label": "Ma--Li-style structural-DAG adaptation",
+      "fidelity_class": "adaptation",
+      "scope": "source-specific structural candidates",
+      "claim_boundary": "Distinct from exact logical Ma--Li reproduction."
+    },
+    {
+      "method_id": "mali_compiled_feature_adaptation",
+      "reader_label": "Compiled-feature real-QPU adaptation",
+      "fidelity_class": "adaptation",
+      "scope": "source-specific compiled representations",
+      "claim_boundary": "Not the Ma--Li graph estimator."
+    },
+    {
+      "method_id": "qonductor_regression",
+      "reader_label": "Qonductor grouped regression adaptation",
+      "fidelity_class": "adaptation",
+      "scope": "4,482 Qonductor exact submitted-QASM rows",
+      "claim_boundary": "The public fitted artifact is in-sample on the archive; grouped OOF retraining changes the paper split to remove leakage."
+    },
+    {
+      "method_id": "unified_polynomial_v3",
+      "reader_label": "Qonductor-style unified polynomial adaptation",
+      "fidelity_class": "adaptation",
+      "scope": "unified 8,767-row archived-QPU envelope; grouped frozen outer split; source-agnostic log1p structural features",
+      "claim_boundary": "Not source-local qonductor_regression (4,482). Feature contract is log1p(active_width, structural_depth, two_qubit_count, swap_like_count, shots) with circuit_count=1 asserted then dropped as a zero-variance constant; grouped OOF split. Not a paper-exact Qonductor reproduction."
+    },
+    {
+      "method_id": "qcre_snapshot_critical_path",
+      "reader_label": "QCRE snapshot critical-path scheduled-duration proxy",
+      "fidelity_class": "analytical_proxy",
+      "scope": "canonical 8,767-row archived-QPU ledger; frozen FakeBackend Target durations (C133 tier_3_backend_matched_nominal)",
+      "claim_boundary": "Raw output is a scheduled critical-path duration (single-shot and shot-scaled retained separately), not archived observed service time. Distinct from qcre_gate_duration and from dimensionless gate-aware depth."
+    },
+    {
+      "method_id": "qiskit_estimate_duration_snapshot",
+      "reader_label": "Qiskit estimate_duration scheduled-duration estimator (frozen snapshot)",
+      "fidelity_class": "native",
+      "scope": "canonical 8,767-row archived-QPU ledger; pinned Qiskit Target from C133 FakeBackends",
+      "claim_boundary": "Native QuantumCircuit.estimate_duration output is scheduled duration, not an observed-QPU-time oracle. Distinct from the historical method_id qiskit_estimate_duration. API/Target incompatibility is terminal unavailable."
+    },
+    {
+      "method_id": "hyb_hanas_one_circuit_effective_cost_adaptation",
+      "reader_label": "Hyb-HANAS one-circuit effective-cost adaptation",
+      "fidelity_class": "analytical_proxy",
+      "scope": "identifiable one-circuit time/cost component on the 8,767-row ledger; no NAS, parameter-shift, N_eval, N_steps or FLOPs multipliers",
+      "claim_boundary": "Preserves the raw effective-cost clock T_eff; not the paper HQNN training-cost target and not archived observed service time. Distinct from the historical method_id hyb_hanas. Do not alias hyb_hanas_circuit_time_component onto this id."
+    },
+    {
+      "method_id": "scholten_nominal_single_circuit_adaptation",
+      "reader_label": "Scholten-style nominal single-circuit CLOPS_v-like adaptation",
+      "fidelity_class": "adaptation",
+      "scope": "declared same-backend nominal CLOPS_v-like rows only; M=K=1; T_hat = S * D_proxy / C_v_nominal",
+      "claim_boundary": "Not Scholten original-style (no historical CLOPS_v plus paper D_eff). Never convert CLOPS_h to CLOPS_v; never fabricate CLOPS_v from T1/T2 or gate durations. Distinct from nominal_clops_v_sensitivity and from v4r2 incomplete id scholten_nominal_sensitivity."
+    },
+    {
+      "method_id": "scholten_clops_original_style",
+      "reader_label": "Scholten CLOPS original-style model",
+      "fidelity_class": "unavailable",
+      "scope": "paper-compatible Runtime jobs with historical CLOPS_v and D_eff",
+      "claim_boundary": "No row-aligned historical CLOPS_v evidence exists for the canonical archive."
+    },
+    {
+      "method_id": "nominal_clops_v_sensitivity",
+      "reader_label": "Nominal-CLOPS single-circuit sensitivity",
+      "fidelity_class": "adaptation",
+      "scope": "declared nominal backend-matched sensitivity rows",
+      "claim_boundary": "Never labeled a historical Scholten reproduction or observed-runtime estimate."
+    },
+    {
+      "method_id": "qcre_gate_duration",
+      "reader_label": "QCRE gate-aware scheduled-duration proxy",
+      "fidelity_class": "analytical_proxy",
+      "scope": "compiled circuit plus frozen duration-map context",
+      "claim_boundary": "Faithful for a gate-aware/scheduled proxy; not identical to provider observed service time."
+    },
+    {
+      "method_id": "qiskit_estimate_duration",
+      "reader_label": "Qiskit scheduled-duration estimator",
+      "fidelity_class": "native",
+      "scope": "versioned Qiskit Target snapshots",
+      "claim_boundary": "Native API output is scheduled duration, not an observed-QPU-time oracle."
+    },
+    {
+      "method_id": "hyb_hanas",
+      "reader_label": "Hyb-HANAS one-circuit effective-cost proxy",
+      "fidelity_class": "analytical_proxy",
+      "scope": "identifiable component of the paper's HQNN cost model",
+      "claim_boundary": "The paper target is effective HQNN training cost, not one provider circuit-service observation."
+    },
+    {
+      "method_id": "azizov_aer_independent",
+      "reader_label": "Azizov-style local noisy-Aer reimplementation",
+      "fidelity_class": "independent_reimplementation",
+      "scope": "local q<=9 noisy-Aer clock",
+      "claim_boundary": "Author code/runtime table was unavailable; local hardware and snapshots differ."
+    },
+    {
+      "method_id": "azizov_to_qpu_transfer",
+      "reader_label": "Azizov-style simulator-to-QPU transfer adaptation",
+      "fidelity_class": "adaptation",
+      "scope": "Qonductor archived-QPU transfer diagnostics",
+      "claim_boundary": "Not an Azizov paper replication and not a QPU-time simulation."
+    },
+    {
+      "method_id": "mali_simulator_pretraining",
+      "reader_label": "Ma--Li simulator source-native reimplementation",
+      "fidelity_class": "source_native_reimplementation",
+      "scope": "Ma--Li simulator corpus and source clock",
+      "claim_boundary": "Local host runs remain a separate context from source labels."
+    },
+    {
+      "method_id": "family_aware_residual",
+      "reader_label": "Family-aware residual architecture reimplementation",
+      "fidelity_class": "independent_reimplementation",
+      "scope": "public artifact target only",
+      "claim_boundary": "Private/underspecified labels prevent a paper-exact leaderboard."
+    },
+    {
+      "method_id": "maestro_formula_reimplementation",
+      "reader_label": "Maestro paper-exact predictor",
+      "fidelity_class": "unavailable",
+      "scope": "paper predictor across simulator candidates",
+      "claim_boundary": "Public checkout lacks the Composer estimator implementation and fitted artifacts."
+    },
+    {
+      "method_id": "maestro_paper_described_reimplementation",
+      "reader_label": "Maestro paper-described component adaptation",
+      "fidelity_class": "adaptation",
+      "scope": "local candidate-specific simulator runtime",
+      "claim_boundary": "Component curves are locally calibrated; no full selector score is available."
+    },
+    {
+      "method_id": "cutensornet_runtime_est",
+      "reader_label": "cuTensorNet native RUNTIME_EST",
+      "fidelity_class": "native",
+      "scope": "matching selected-plan scalar contraction on the local GPU",
+      "claim_boundary": "Native estimator is compared only to the matching contraction clock, not generic simulator end-to-end time."
+    },
+    {
+      "method_id": "dense_statevector_local",
+      "reader_label": "Local dense-statevector measurement baseline",
+      "fidelity_class": "local_measurement",
+      "scope": "declared local engine/configuration clock",
+      "claim_boundary": "Measurement capsule, not a published predictor replication."
+    },
+    {
+      "method_id": "cudaq_launch_scaling_diagnostic",
+      "reader_label": "CUDA-Q launch/scaling diagnostic",
+      "fidelity_class": "local_measurement",
+      "scope": "local CUDA-Q first/warm timing probes",
+      "claim_boundary": "No published scaling-law claim."
+    },
+    {
+      "method_id": "cudaq_dense_local",
+      "reader_label": "CUDA-Q dense local bridge measurement",
+      "fidelity_class": "local_measurement",
+      "scope": "local CUDA-Q sample API, precision and clock",
+      "claim_boundary": "Native local measurement, not a paper runtime-predictor reproduction."
+    },
+    {
+      "method_id": "cudaq_mps_quality_constrained",
+      "reader_label": "CUDA-Q MPS quality-gated local bridge measurement",
+      "fidelity_class": "local_measurement",
+      "scope": "local MPS configuration plus declared quality gate",
+      "claim_boundary": "Runtime is meaningful only with its paired fidelity/quality condition."
+    },
+    {
+      "method_id": "pasqal_emu_mps",
+      "reader_label": "Pasqal EMU-MPS analytical runtime adaptation",
+      "fidelity_class": "adaptation",
+      "scope": "local analog-MPS panel",
+      "claim_boundary": "Documented complexity form was locally calibrated and not identified for promotion."
+    }
+  ]
+}

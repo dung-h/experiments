@@ -1,0 +1,32 @@
+{
+  "artifact_id": "c118-unified-grouped-split-v2",
+  "canonical_sha256": "920d745e03dd00e8155118d9323baea18ff865e4df2620f3a059bd5503a05ba4",
+  "contract": "benchmark_v1/protocol/unified_split_contract_v2.json",
+  "cross_source_lineage_edges": 0,
+  "group_count": 2320,
+  "group_fold_violations": {},
+  "inner_fold_count": 4,
+  "inner_row_count": 43835,
+  "inner_sha256": "aaff2b0950379ac7ad8992698bc140687a4cd1b6696b8abeff7cb96270af3cab",
+  "lineage_policy": "exact QASM evidence only; no cross-source exact digest intersections; QPack workflow remains source-qualified",
+  "outer_fold_counts": {
+    "mali_real_qpu|fold0": 68,
+    "mali_real_qpu|fold1": 66,
+    "mali_real_qpu|fold2": 57,
+    "mali_real_qpu|fold3": 76,
+    "mali_real_qpu|fold4": 73,
+    "qonductor_single_circuit_ibm|fold0": 861,
+    "qonductor_single_circuit_ibm|fold1": 1026,
+    "qonductor_single_circuit_ibm|fold2": 903,
+    "qonductor_single_circuit_ibm|fold3": 840,
+    "qonductor_single_circuit_ibm|fold4": 852,
+    "qpack_mcp|fold0": 849,
+    "qpack_mcp|fold1": 1114,
+    "qpack_mcp|fold2": 587,
+    "qpack_mcp|fold3": 551,
+    "qpack_mcp|fold4": 844
+  },
+  "outer_sha256": "d72b7ba6f90d5bf6ed2f3b602196a05bee11a0f441ee4e5caaca6978b6b0e25a",
+  "outer_split_id": "rqpu_unified_grouped_5fold_v2",
+  "row_count": 8767
+}

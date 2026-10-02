@@ -1,0 +1,45 @@
+{
+  "artifact_id": "cutensornet-common-panel-qa-v1-20260928",
+  "cell_status_counts": {
+    "ok": 603,
+    "timeout": 9
+  },
+  "cells": 612,
+  "errors": [],
+  "estimate_vs_warm_log_mae": 1.2764820296558146,
+  "estimate_warm_pairs": 603,
+  "expected_cells": 612,
+  "expected_raw_rows": 3672,
+  "measurement_interference": {
+    "gpu_overlap": false,
+    "paired_estimate_classification": "selected_plan_runtime_est_vs_warm_scalar_contraction_allowed",
+    "path": "artifacts/benchmark_v1/cutensornet_common_q16_full_v1_20260928/MEASUREMENT_INTERFERENCE.json",
+    "path_search_classification": "descriptive_interference_flagged",
+    "sha256": "1c1d23dd9106b65c7c139196717094fb863b09ed2da66b6230ba3454e583caed"
+  },
+  "notes": [
+    "RUNTIME_EST and warm contraction use the same selected plan/workspace/precision.",
+    "Clock summaries are descriptive; no cross-engine ranking is emitted.",
+    "Terminal planner/resource/adapter outcomes remain in the denominator.",
+    "When an interference sidecar is supplied, path-search is emitted only as descriptive_interference_flagged telemetry."
+  ],
+  "panel_manifest": {
+    "path": "artifacts/benchmark_v1/sim_common_q16_manifest_20260927/sim_common_q16_manifest.csv",
+    "rows": 204,
+    "sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e"
+  },
+  "raw_rows": 3672,
+  "raw_sha256": "65789abe4c48439c448aa25bb0e97a8e4d087477867163a7393f69b4001dd553",
+  "raw_status_counts": {
+    "ok": 3618,
+    "timeout": 54
+  },
+  "run_dir": "artifacts/benchmark_v1/cutensornet_common_q16_full_v1_20260928",
+  "run_manifest_sha256": "4251ce42b7e1f797e9900d00dfbdaa809f1ab29944092a8c7fa7a48323961ff3",
+  "status": "PASS",
+  "successful_cells": 603,
+  "timeout_stage_counts": {
+    "planner": 54
+  },
+  "timing_recomputed": false
+}

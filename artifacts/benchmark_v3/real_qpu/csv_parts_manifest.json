@@ -1,0 +1,90 @@
+{
+  "format_version": 1,
+  "part_limit_bytes": 50331648,
+  "files": [
+    {
+      "path": "artifacts/benchmark_v3/real_qpu/unified_method_comparisons_v2/attempts.csv",
+      "bytes": 166737757,
+      "sha256": "4c0d684ea7b1571325fe42c93d630e5897b7b4dbb34a8d3df8fb1c652a8aa5ab",
+      "rows": 210408,
+      "header_bytes": 263,
+      "header_sha256": "6c9e0b454f02f9ba66b8d915d8a3804e1539f3b8429a009bae79156b2f3246f8",
+      "parts": [
+        {
+          "path": "artifacts/benchmark_v3/real_qpu/unified_method_comparisons_v2/attempts.csv.parts/part-001.csv",
+          "rows": 68753,
+          "bytes": 50331316,
+          "sha256": "24fc13c4d7225a8bc3128028d18c91ac6388dce8c4f6f0b1d1c0592f49c1bffb"
+        },
+        {
+          "path": "artifacts/benchmark_v3/real_qpu/unified_method_comparisons_v2/attempts.csv.parts/part-002.csv",
+          "rows": 62791,
+          "bytes": 50331015,
+          "sha256": "e6423b8c82bdf0c4979fb88d20fc4c451a5d1bd802cf83ab8aaf7fe44a076c02"
+        },
+        {
+          "path": "artifacts/benchmark_v3/real_qpu/unified_method_comparisons_v2/attempts.csv.parts/part-003.csv",
+          "rows": 59147,
+          "bytes": 50330817,
+          "sha256": "9a10177e1dc5167dbce8669cefc3d2702fefb23acd21f035f2842e02afad20d8"
+        },
+        {
+          "path": "artifacts/benchmark_v3/real_qpu/unified_method_comparisons_v2/attempts.csv.parts/part-004.csv",
+          "rows": 19717,
+          "bytes": 15745398,
+          "sha256": "cdb0e96481f716ab1c877447bf53ee77bbb49b327e05140e1f32eea84767a8fb"
+        }
+      ]
+    },
+    {
+      "path": "artifacts/benchmark_v3/real_qpu/hyb_hanas_bounded_repair_v1_20261001/merged_analytical_attempts_for_c4.csv",
+      "bytes": 104070710,
+      "sha256": "df64d21c8a4953a2a700ec9b47315848fc8fc4a30df2f1a8495495e5811fde9a",
+      "rows": 184107,
+      "header_bytes": 681,
+      "header_sha256": "3d37f02b5dd32b78adf93dc41fbceaa141298a3575f52635a8aae7b10423de93",
+      "parts": [
+        {
+          "path": "artifacts/benchmark_v3/real_qpu/hyb_hanas_bounded_repair_v1_20261001/merged_analytical_attempts_for_c4.csv.parts/part-001.csv",
+          "rows": 95485,
+          "bytes": 50331427,
+          "sha256": "ca770eb367f0da6750709f4bd0529fd3c48ee4a97244c77a8828473222de4c15"
+        },
+        {
+          "path": "artifacts/benchmark_v3/real_qpu/hyb_hanas_bounded_repair_v1_20261001/merged_analytical_attempts_for_c4.csv.parts/part-002.csv",
+          "rows": 81978,
+          "bytes": 50331584,
+          "sha256": "0802905918a4082fed6572046b2569b14f9da8a667f4b64e7f3e546476d2bb82"
+        },
+        {
+          "path": "artifacts/benchmark_v3/real_qpu/hyb_hanas_bounded_repair_v1_20261001/merged_analytical_attempts_for_c4.csv.parts/part-003.csv",
+          "rows": 6644,
+          "bytes": 3409061,
+          "sha256": "795c31a73dc2d7d80bc39c31ab7d9942083733c845fb0ebdd7841d1e65f219b0"
+        }
+      ]
+    },
+    {
+      "path": "artifacts/benchmark_v3/real_qpu/archived_analytical_wave_v3_20260930/attempts.csv",
+      "bytes": 86984276,
+      "sha256": "25db03449d2068197900d3b6a7c069121c0e4d437f87b2618a2ce1b15b479f77",
+      "rows": 184107,
+      "header_bytes": 326,
+      "header_sha256": "b5cb08efa508a53b9f030c2f3ef9a22427f09cad64ca5578d63428c3145c11d3",
+      "parts": [
+        {
+          "path": "artifacts/benchmark_v3/real_qpu/archived_analytical_wave_v3_20260930/attempts.csv.parts/part-001.csv",
+          "rows": 108977,
+          "bytes": 50331232,
+          "sha256": "f9d9507f7526e431f05f09c4a48637448d1269b80513265c34178f4df8c20c00"
+        },
+        {
+          "path": "artifacts/benchmark_v3/real_qpu/archived_analytical_wave_v3_20260930/attempts.csv.parts/part-002.csv",
+          "rows": 75130,
+          "bytes": 36653370,
+          "sha256": "3a1aed7573a1724d5fbdf131eef76edb6cd2893aa23eec78b1b8a5adbe1a62ac"
+        }
+      ]
+    }
+  ]
+}

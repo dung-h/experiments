@@ -1,0 +1,43 @@
+{
+  "adapter_error_cells": 36,
+  "artifact_id": "cudaq-dense-common-panel-qa-v1-20260928",
+  "cell_status_counts": {
+    "adapter_error": 36,
+    "ok": 1188
+  },
+  "cells": 1224,
+  "clock_summary": {
+    "first": {
+      "max_s": 3.481095170995104,
+      "median_s": 0.03359675200044876,
+      "n": 1188,
+      "p90_s": 0.06463515750074293
+    },
+    "warm": {
+      "max_s": 0.10741447198961396,
+      "median_s": 0.0003465870031504892,
+      "n": 5940,
+      "p90_s": 0.001562239207851235
+    }
+  },
+  "engine": "dense",
+  "errors": [],
+  "expected_cells": 1224,
+  "expected_raw_rows": 7344,
+  "notes": [
+    "Terminal adapter/resource outcomes remain in coverage; no timing is imputed.",
+    "Quality reference clocks are not included in MPS first/warm timing."
+  ],
+  "panel_manifest_sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e",
+  "quality_observations": null,
+  "quality_pass_rate": null,
+  "raw_csv_sha256": "19da3548991404395f05ef57dca4f499426551ab4a7389392df60731dce282ba",
+  "raw_rows": 7344,
+  "raw_status_counts": {
+    "adapter_error": 216,
+    "ok": 7128
+  },
+  "run_dir": "artifacts/benchmark_v1/cudaq_dense_common_q16_bridge_full_v1_20260928",
+  "status": "PASS",
+  "timing_recomputed": false
+}

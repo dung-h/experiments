@@ -1,0 +1,2391 @@
+{
+  "amendment_identity": {
+    "manifest_id": "maestro-common-panel-completion-v3-partial-resume",
+    "path": "benchmark_v1/execution/manifests/maestro_common_panel_completion_resume.json",
+    "schema_version": "maestro_partial_completion_policy_v1",
+    "sha256": "6c16608fee8ea664be606d8605da13821be2e07bdcc7874dee44d4700d560db4"
+  },
+  "authority": "User request to resolve the defect; S9 in benchmark_v1/decisions/maestro_zero_state_width_control.md",
+  "authorized_cell_prefix": 399,
+  "base_contract_sha256": "60baef053c3583706a767a8bd82e16734aceafbc1327405d13a9913943a22e3d",
+  "code_hashes": {
+    "benchmark_v1/qre_benchmark/maestro_component_predictor.py": "f6dbad5697ca0cac7b27fe18639e1f586ad6ea056956d183bd4132422130704a",
+    "benchmark_v1/qre_benchmark/maestro_component_v2.py": "a4da15050c3d1ac563fdf5fabe5733eb336cb9f9503a84e10489ff96041a98a1",
+    "benchmark_v1/scripts/run_maestro_common_panel.py": "f244035763b87503ae0258c25bdde02ffe41bf9980a23d743781df88508688d9",
+    "benchmark_v1/scripts/run_maestro_component_calibration.py": "9f2383b0a83cbcf52b38cbde1c1700902daf443aee12411e2dcc2e95a9c80ccc"
+  },
+  "conditions": [
+    "pilot10 then pilot20 QA required before expansion",
+    "respect S6 7200-second pilot budget until 20-cell PASS and 2026-10-02T10:00:00+07:00 cutoff",
+    "stop on new context transport numerical or stability failure"
+  ],
+  "configuration_records": {
+    "mps_fixed_chi:16": {
+      "resolved": {
+        "_candidate": "mps_fixed_chi",
+        "_configured_chi": 16,
+        "_seed": 12345,
+        "_singular_value_threshold": 1e-08,
+        "disable_optimized_swapping": false,
+        "gpu_device": null,
+        "lookahead_depth": -1,
+        "max_bond_dimension": 16,
+        "mpo_hermitize_after_truncation": false,
+        "mpo_kraus_completeness_check": null,
+        "mpo_restore_trace_after_truncation": false,
+        "mpo_use_gesvd": false,
+        "mpo_use_gesvdj": false,
+        "mpo_use_gesvdp": false,
+        "mpo_use_gesvdr": false,
+        "mps_measure_no_collapse": true,
+        "mps_use_gesvd": false,
+        "mps_use_gesvdj": false,
+        "mps_use_gesvdp": false,
+        "mps_use_gesvdr": false,
+        "path_integral_threshold": null,
+        "pp_coefficient_threshold": null,
+        "pp_pauli_weight_threshold": null,
+        "pp_steps_between_deduplications": null,
+        "pp_steps_between_trims": null,
+        "precision": null,
+        "seed": 12345,
+        "simulation_type": {
+          "enum_type": "maestro.maestro.SimulationType",
+          "name": "MatrixProductState",
+          "value": 1
+        },
+        "simulator_type": {
+          "enum_type": "maestro.maestro.SimulatorType",
+          "name": "QCSim",
+          "value": 0
+        },
+        "singular_value_threshold": 1e-08,
+        "tensor_network_use_gesvd": false,
+        "tensor_network_use_gesvdj": false,
+        "tensor_network_use_gesvdp": false,
+        "tensor_network_use_gesvdr": false,
+        "truncation_mode": null,
+        "use_double_precision": false
+      },
+      "sha256": "22ad941138a8abdf68421f5b90e65ef9fbfef6c2b519f12e69e697e4a35ec98c"
+    },
+    "mps_fixed_chi:32": {
+      "resolved": {
+        "_candidate": "mps_fixed_chi",
+        "_configured_chi": 32,
+        "_seed": 12345,
+        "_singular_value_threshold": 1e-08,
+        "disable_optimized_swapping": false,
+        "gpu_device": null,
+        "lookahead_depth": -1,
+        "max_bond_dimension": 32,
+        "mpo_hermitize_after_truncation": false,
+        "mpo_kraus_completeness_check": null,
+        "mpo_restore_trace_after_truncation": false,
+        "mpo_use_gesvd": false,
+        "mpo_use_gesvdj": false,
+        "mpo_use_gesvdp": false,
+        "mpo_use_gesvdr": false,
+        "mps_measure_no_collapse": true,
+        "mps_use_gesvd": false,
+        "mps_use_gesvdj": false,
+        "mps_use_gesvdp": false,
+        "mps_use_gesvdr": false,
+        "path_integral_threshold": null,
+        "pp_coefficient_threshold": null,
+        "pp_pauli_weight_threshold": null,
+        "pp_steps_between_deduplications": null,
+        "pp_steps_between_trims": null,
+        "precision": null,
+        "seed": 12345,
+        "simulation_type": {
+          "enum_type": "maestro.maestro.SimulationType",
+          "name": "MatrixProductState",
+          "value": 1
+        },
+        "simulator_type": {
+          "enum_type": "maestro.maestro.SimulatorType",
+          "name": "QCSim",
+          "value": 0
+        },
+        "singular_value_threshold": 1e-08,
+        "tensor_network_use_gesvd": false,
+        "tensor_network_use_gesvdj": false,
+        "tensor_network_use_gesvdp": false,
+        "tensor_network_use_gesvdr": false,
+        "truncation_mode": null,
+        "use_double_precision": false
+      },
+      "sha256": "00a24b0da0682f8a90e8b938f036ddd0509e987dc1276e94427293bc1c3ba2ac"
+    },
+    "mps_fixed_chi:4": {
+      "resolved": {
+        "_candidate": "mps_fixed_chi",
+        "_configured_chi": 4,
+        "_seed": 12345,
+        "_singular_value_threshold": 1e-08,
+        "disable_optimized_swapping": false,
+        "gpu_device": null,
+        "lookahead_depth": -1,
+        "max_bond_dimension": 4,
+        "mpo_hermitize_after_truncation": false,
+        "mpo_kraus_completeness_check": null,
+        "mpo_restore_trace_after_truncation": false,
+        "mpo_use_gesvd": false,
+        "mpo_use_gesvdj": false,
+        "mpo_use_gesvdp": false,
+        "mpo_use_gesvdr": false,
+        "mps_measure_no_collapse": true,
+        "mps_use_gesvd": false,
+        "mps_use_gesvdj": false,
+        "mps_use_gesvdp": false,
+        "mps_use_gesvdr": false,
+        "path_integral_threshold": null,
+        "pp_coefficient_threshold": null,
+        "pp_pauli_weight_threshold": null,
+        "pp_steps_between_deduplications": null,
+        "pp_steps_between_trims": null,
+        "precision": null,
+        "seed": 12345,
+        "simulation_type": {
+          "enum_type": "maestro.maestro.SimulationType",
+          "name": "MatrixProductState",
+          "value": 1
+        },
+        "simulator_type": {
+          "enum_type": "maestro.maestro.SimulatorType",
+          "name": "QCSim",
+          "value": 0
+        },
+        "singular_value_threshold": 1e-08,
+        "tensor_network_use_gesvd": false,
+        "tensor_network_use_gesvdj": false,
+        "tensor_network_use_gesvdp": false,
+        "tensor_network_use_gesvdr": false,
+        "truncation_mode": null,
+        "use_double_precision": false
+      },
+      "sha256": "2e1c9ad78dd1c721ed1500b843004d0aa18cb83273c0d922eecb9f07e6214f65"
+    },
+    "mps_fixed_chi:8": {
+      "resolved": {
+        "_candidate": "mps_fixed_chi",
+        "_configured_chi": 8,
+        "_seed": 12345,
+        "_singular_value_threshold": 1e-08,
+        "disable_optimized_swapping": false,
+        "gpu_device": null,
+        "lookahead_depth": -1,
+        "max_bond_dimension": 8,
+        "mpo_hermitize_after_truncation": false,
+        "mpo_kraus_completeness_check": null,
+        "mpo_restore_trace_after_truncation": false,
+        "mpo_use_gesvd": false,
+        "mpo_use_gesvdj": false,
+        "mpo_use_gesvdp": false,
+        "mpo_use_gesvdr": false,
+        "mps_measure_no_collapse": true,
+        "mps_use_gesvd": false,
+        "mps_use_gesvdj": false,
+        "mps_use_gesvdp": false,
+        "mps_use_gesvdr": false,
+        "path_integral_threshold": null,
+        "pp_coefficient_threshold": null,
+        "pp_pauli_weight_threshold": null,
+        "pp_steps_between_deduplications": null,
+        "pp_steps_between_trims": null,
+        "precision": null,
+        "seed": 12345,
+        "simulation_type": {
+          "enum_type": "maestro.maestro.SimulationType",
+          "name": "MatrixProductState",
+          "value": 1
+        },
+        "simulator_type": {
+          "enum_type": "maestro.maestro.SimulatorType",
+          "name": "QCSim",
+          "value": 0
+        },
+        "singular_value_threshold": 1e-08,
+        "tensor_network_use_gesvd": false,
+        "tensor_network_use_gesvdj": false,
+        "tensor_network_use_gesvdp": false,
+        "tensor_network_use_gesvdr": false,
+        "truncation_mode": null,
+        "use_double_precision": false
+      },
+      "sha256": "478b8e9d48bf60469b9beb1b89c528d0e97609d273d56c7c03179eb064668238"
+    },
+    "statevector:None": {
+      "resolved": {
+        "_candidate": "statevector",
+        "_configured_chi": null,
+        "_seed": 12345,
+        "_singular_value_threshold": null,
+        "disable_optimized_swapping": false,
+        "gpu_device": null,
+        "lookahead_depth": -1,
+        "max_bond_dimension": null,
+        "mpo_hermitize_after_truncation": false,
+        "mpo_kraus_completeness_check": null,
+        "mpo_restore_trace_after_truncation": false,
+        "mpo_use_gesvd": false,
+        "mpo_use_gesvdj": false,
+        "mpo_use_gesvdp": false,
+        "mpo_use_gesvdr": false,
+        "mps_measure_no_collapse": true,
+        "mps_use_gesvd": false,
+        "mps_use_gesvdj": false,
+        "mps_use_gesvdp": false,
+        "mps_use_gesvdr": false,
+        "path_integral_threshold": null,
+        "pp_coefficient_threshold": null,
+        "pp_pauli_weight_threshold": null,
+        "pp_steps_between_deduplications": null,
+        "pp_steps_between_trims": null,
+        "precision": null,
+        "seed": 12345,
+        "simulation_type": {
+          "enum_type": "maestro.maestro.SimulationType",
+          "name": "Statevector",
+          "value": 0
+        },
+        "simulator_type": {
+          "enum_type": "maestro.maestro.SimulatorType",
+          "name": "QCSim",
+          "value": 0
+        },
+        "singular_value_threshold": null,
+        "tensor_network_use_gesvd": false,
+        "tensor_network_use_gesvdj": false,
+        "tensor_network_use_gesvdp": false,
+        "tensor_network_use_gesvdr": false,
+        "truncation_mode": null,
+        "use_double_precision": false
+      },
+      "sha256": "d2e19b2910c9c820918b2ea27721df6578f1fb1c429019e91c9186972dc8fb08"
+    }
+  },
+  "manifest_id": "maestro-common-panel-completion-v3-partial-resume",
+  "manifest_sha256": "6c16608fee8ea664be606d8605da13821be2e07bdcc7874dee44d4700d560db4",
+  "parent_contract_sha256": "82c35b81121207aa3ab7e3d5e2bea56b1b9e40e4430fc6c7c7e6f927755755e2",
+  "parent_manifest_sha256": "bc2a3bc150421698ff09e08a2055a40979f96d2965fe2dcb3e20402c1016574d",
+  "plan_sha256": "7b47e7bd484cc8194636a3003ebeec43a283ff95ee074289b6d7c1997d5399b0",
+  "planned_cells": 432,
+  "planned_enabled_cells": 399,
+  "planned_quarantined_cells": 33,
+  "planned_quarantined_slots": 792,
+  "planned_timed_calls": 5985,
+  "planned_untimed_calls": 3591,
+  "preflight_evidence_sha256": "167967de1e85af4ba43c73e6be1de1ef2930b11d5ed89673ff223ba67506036e",
+  "preflight_run_manifest_path": "artifacts/benchmark_v3/simulator/maestro_candidate_runtime_resume/calibration/preflight_manifest.json",
+  "preflight_run_manifest_sha256": "f8a797d24d4fa4ff4e05ca6089c7470ded9528f6c7f9ea773fa749c57588d243",
+  "quarantine_evidence_sha256": "bd1949e8a73f1ced9eae1e80b88ab4097a5f9ea2a00e14cf39f79a336ced0adb",
+  "resolved_contract_sha256": "8ce5803a980177deb2f6c710f6ad2dd9cd3e574e45917376515617bb91a83b42",
+  "run_identity_sha256": "90746f2b4fbd4f05e5649079fa2649b8f4526841bbb7857d3306010f3613adc0",
+  "runtime_pins": {
+    "code_hashes": {
+      "benchmark_v1/qre_benchmark/maestro_component_predictor.py": "f6dbad5697ca0cac7b27fe18639e1f586ad6ea056956d183bd4132422130704a",
+      "benchmark_v1/qre_benchmark/maestro_component_v2.py": "a4da15050c3d1ac563fdf5fabe5733eb336cb9f9503a84e10489ff96041a98a1",
+      "benchmark_v1/scripts/run_maestro_common_panel.py": "f244035763b87503ae0258c25bdde02ffe41bf9980a23d743781df88508688d9",
+      "benchmark_v1/scripts/run_maestro_component_calibration.py": "9f2383b0a83cbcf52b38cbde1c1700902daf443aee12411e2dcc2e95a9c80ccc"
+    },
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "maestro_module": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/__init__.py",
+    "maestro_package_file_count": 4,
+    "maestro_package_tree_sha256": "be6c28156448f4ee93c42f903ed6d8a304ba76f85f26c75ddd627b29cd3431a8",
+    "manifest_sha256": "6c16608fee8ea664be606d8605da13821be2e07bdcc7874dee44d4700d560db4",
+    "native_thread_environment": {
+      "MKL_NUM_THREADS": "",
+      "NUMEXPR_NUM_THREADS": "",
+      "OMP_NUM_THREADS": "",
+      "OPENBLAS_NUM_THREADS": ""
+    },
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+    "python_executable": "/home/server/.local/share/uv/python/cpython-3.10.21-linux-x86_64-gnu/bin/python3.10",
+    "python_executable_sha256": "6d68b9499af6dba04dcdcf3134954100b72be475e0a359142a8de5218f20d75a",
+    "python_version": "3.10.21 (main, Aug 14 2026, 15:33:52) [Clang 22.1.3 ]",
+    "qiskit_module": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qiskit/__init__.py",
+    "qiskit_package_file_count": 700,
+    "qiskit_package_tree_sha256": "0331cd6465c47924bc6304e450bdeac03559f8bfd68e4c2a4ace356d90527068",
+    "qiskit_version": "2.5.2",
+    "resource_profile": {
+      "cpu_affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "cpu_model": "Intel(R) Core(TM) i7-14700F",
+      "cuda_driver_version": "595.91.07",
+      "cuda_used_for_cpu_timing": false,
+      "gpu_inventory": [
+        {
+          "driver_version": "595.91.07",
+          "memory_total_mb": "16303",
+          "name": "NVIDIA GeForce RTX 5070 Ti"
+        }
+      ],
+      "logical_cpu_count": 28,
+      "memory_total_bytes": 49239871488,
+      "native_threadpool_inventory": [
+        {
+          "internal_api": "openmp",
+          "num_threads": 28,
+          "prefix": "libgomp",
+          "user_api": "openmp"
+        },
+        {
+          "architecture": "Haswell",
+          "internal_api": "openblas",
+          "num_threads": 28,
+          "prefix": "libscipy_openblas",
+          "threading_layer": "pthreads",
+          "user_api": "blas",
+          "version": "0.3.29"
+        }
+      ],
+      "physical_cpu_core_count": 20,
+      "schema": "maestro_resource_profile_v1"
+    }
+  },
+  "schedule_sha256": "9658495209b9a361113eee1bae48f18ccf8694a27993c1e28099a6ac9a9ba8a8",
+  "schema": "maestro_v3_partial_calibration_acceptance_v1",
+  "status": "pass",
+  "verification": {
+    "actual_rank_controls": "pass",
+    "actual_serialized_resume_identity": "pass",
+    "actual_zero_controls": "pass",
+    "dry_runs": "pass",
+    "focused_tests": 74,
+    "full_suite_tests": 413
+  },
+  "worker_context_sha256_by_config": {
+    "mps_fixed_chi:16": "483f12657d8e0048a2f0cf91d91746dd9cac71daaf4e6d770bafdafb3748d055",
+    "mps_fixed_chi:32": "658d82246d3691fa01aaeb25e1a572a6f763f773a6325cb87a626955bb86c350",
+    "mps_fixed_chi:4": "1a72d1221c7d0084c299d637861df69de510661124407c420bae76441bb5cb27",
+    "mps_fixed_chi:8": "c6aadcb621357289223134b5d7a3e6c162e42d7cc7f49b38ad0cbf7108e53cf7",
+    "statevector:None": "fe215232703324e2be4a7039442ae766102b9829c57fe5cbb14e4e0c402dabe3"
+  },
+  "worker_contexts": {
+    "mps_fixed_chi:16": {
+      "backend_threading_policy_sha256": "474d986f6b9b8e9051d92cfbf6e5ee8986f247adf16e82f9eee663bf653ce2c3",
+      "context_owner": "worker",
+      "identity": {
+        "backend_threading_policy": {
+          "affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "declared_policy": "retain pinned library defaults; verify worker threadpool configuration including 28-thread OpenMP/BLAS defaults; record Maestro backend/shot-dependent threading; no cap tuning",
+          "native_thread_environment": {
+            "MKL_NUM_THREADS": null,
+            "NUMEXPR_NUM_THREADS": null,
+            "OMP_NUM_THREADS": null,
+            "OPENBLAS_NUM_THREADS": null
+          },
+          "timing_worker_count": 1
+        },
+        "backend_threading_policy_sha256": "474d986f6b9b8e9051d92cfbf6e5ee8986f247adf16e82f9eee663bf653ce2c3",
+        "canonical_imports": [
+          "maestro",
+          "numpy",
+          "scipy.linalg"
+        ],
+        "cpu": {
+          "affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "logical_cpu_count": 28,
+          "machine": "x86_64",
+          "processor": ""
+        },
+        "libraries": {
+          "maestro": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/__init__.py",
+              "sha256": "7c4b555f179f83eadbb2b16712de5ffab10b397196d8ee3abfab4c113caeaf0f"
+            },
+            "package_file_count": 4,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro",
+            "package_tree_sha256": "be6c28156448f4ee93c42f903ed6d8a304ba76f85f26c75ddd627b29cd3431a8",
+            "version": "unreported"
+          },
+          "numpy": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/__init__.py",
+              "sha256": "6ae17b070c0f70a8e3cad89a510a256942e5a1f37ea5feb120cec167ed2a6236"
+            },
+            "package_file_count": 510,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy",
+            "package_tree_sha256": "011a3c0fa4ffbdfcef8a7b57179fdb7cf77b5280646b499269becf37b4e5d075",
+            "version": "2.2.6"
+          },
+          "scipy.linalg": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/__init__.py",
+              "sha256": "50e1595f8182bacad08dc68f07a34d35eae1b150deef4ec1be57c4ed707c2b35"
+            },
+            "package_file_count": 1027,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy",
+            "package_tree_sha256": "761af33fec1406214ff5814e99973fed436ada96bdb675ca885d4ed278102847",
+            "version": "1.15.3"
+          }
+        },
+        "loaded_native_files": {
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/libmaestro.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/libmaestro.so",
+            "sha256": "4e51e84ab3b08af80d16ba48de589116d8d4cae4d837a3041ed191df0035af54"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/maestro.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/maestro.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "33f9c1b7ccfecb229abc083f731fffb554f37533f46a4bb07210f590b9d91a42"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/_core/_multiarray_umath.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/_core/_multiarray_umath.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "c634eaf05367af02b815cf3d2020fbeee9b47426af1fe26cf3189e4798932dc5"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/fft/_pocketfft_umath.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/fft/_pocketfft_umath.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "bdf266bd798225e5a1fedc24f792b4b45d52bd960adc94fd3cb76108b253d42b"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/linalg/_umath_linalg.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/linalg/_umath_linalg.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "c6bc9d5c4db6cea333d46d905e15fbcd8f541ec5b23704ca3c44547ee2ee5187"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_bounded_integers.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_bounded_integers.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4b4ff98f2bb0f7db24091b7996dd4d5c6ba5ae584f3683fcfa72ad8bce926ef1"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_common.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_common.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "209653a11ba1914f706e972fd071be37c3207e182918c81fc7fab43cd66c5c28"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_generator.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_generator.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b71b3b7481e842a207aa2b06ac7547721ed56366c5bccb7943616591e6075fb9"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_mt19937.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_mt19937.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "6245585dae2024446b9cc6f86f8f5d7ffb90054f2c50be0ede4b05663392f527"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_pcg64.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_pcg64.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "839bd03aa79e83d3aa67733423ca65fd47e4af535145c0f7384d7c88642d3ef8"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_philox.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_philox.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b166c0672edb46c1c9cbf720867d95aea2e9a323bc069157c9f0c15884ea5882"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_sfc64.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_sfc64.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b335c46d7043db828b7f124957982bc5fa510a780c362ebf02d4d181cba3416c"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/bit_generator.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/bit_generator.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "fa02602384f668d5551761a14c616893a01ac02965092cdaf52b86fd2584d9c3"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/mtrand.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/mtrand.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "0ef34372d188edcd794777a72a2eb86010f17736d3d7195b4bd6bf848ea7906c"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/_lib/_ccallback_c.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/_lib/_ccallback_c.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "72f5b59eddc1e471739db67ab9fb91f2a93df5d12ce5235771371b606bfe8769"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_cythonized_array_utils.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_cythonized_array_utils.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "8e839f2c461a3ac515aeab1c91336ae012878b6b0323e88f83e8fdf52966a897"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_lu_cython.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_lu_cython.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "eb9182c7f7185adbd8d6e2c8cba225265c39841c51f5ce748dcf6caaa6b4fda9"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_update.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_update.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "6c64451a3dd61c66b620aa0e0a0700df041ecdb6409070176ea99dfd075ebee3"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_fblas.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_fblas.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "d2bc0b8127ab14cf1df3ae8fe4242829830ef54cc00ceafd720e68ef7e67f495"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_flapack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_flapack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "11742f3f308733322369de8ef867af6aaf8c3b001d61005632dff37b3a4161ee"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_linalg_pythran.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_linalg_pythran.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "5b4228e644528d0195d8d2785973637be5c41408166e1e2e9417902b346720f7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_expm.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_expm.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "9888525263eabf8c3a67386e81e95d5c0b492eda8d9b760fdcb9b7f11eef4e0f"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_sqrtm_triu.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_sqrtm_triu.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "2f626635294596acca06c371a1312462b11e6cd919678eb3e244d61d4e0a2db5"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_solve_toeplitz.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_solve_toeplitz.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "00a16df76cb2ba5d643c2536ffa3a63735da528cc101cbfd3f87ec553ae37efe"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_blas.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_blas.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "cbeee12108547548491631792503858f707181310061d6d62981847fb87de2ca"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_lapack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_lapack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "810f0dfc3bbab5e92180d1946197af5b51e956bd9ff27a24d5a2881b0cab3ed2"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_csparsetools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_csparsetools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "809bfee38f82fe6319cd5b57a8eac48e1872be242c36976f40e68d48ea02ca98"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_sparsetools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_sparsetools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "dde4efc97631ffb3b348260a62b5601e48c56257cc3b6a43841c5ca5d78f8bd7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_flow.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_flow.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4239de96773a37e2874fd38becafee81909702e58f06eb9c932a683d47a6946a"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_matching.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_matching.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "13d00d9fc36c898b8a056ea2fc5370ab10edc5f18828aeeee2a248b728ad4f4b"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "be1854d97abde2893d98c81b5d5bdce510b12436f6602fe8028128f688f426f1"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_reordering.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_reordering.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "73fb6a31adbe9e0b4d63cf0981fbfbc7ce53b030751cf47d123c34f9f936d787"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "9ed4b4373dce636ead027ad1db453ba4788d4db0e6ab7f38f189b3eabe6810bc"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_tools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_tools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b31b2fc93c9688a6b2b7a3507325c20635f82b84ccbe8c2dbf7f474ddf0f0362"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_traversal.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_traversal.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "23df762f0a6c6e0fef1e4fbff7b48e716d7da912db365ddca93c5e93aa2ee2f8"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_dsolve/_superlu.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_dsolve/_superlu.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4358374c599427b08746241c6294a33661daf0fc5c421a6cafb69d0c4b7b3354"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_eigen/arpack/_arpack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_eigen/arpack/_arpack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "268b3962f3432f29f714afba67c2c142782726012599ee7d52e2e44cf0daaa40"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_cpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_cpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "baaa21cecf3265bf358d983a006d3be2bfc75805925cccc81426a67286a7924e"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_dpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_dpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "d90e4b9d209ba4ef15bab2aa609aca692f1e186d69927de9ef2867c03b67e2d7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_spropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_spropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "3ce13f8a49cee23b85221d6202c04f2acc7f5ebf414b8aedb4b702a461da186a"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_zpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_zpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "f9c9db99b0f747156a6b849c12976ffe40f6a1420f35664f1390723cd7e9ce70"
+          }
+        },
+        "native_thread_environment": {
+          "MKL_NUM_THREADS": "",
+          "NUMEXPR_NUM_THREADS": "",
+          "OMP_NUM_THREADS": "",
+          "OPENBLAS_NUM_THREADS": ""
+        },
+        "native_threadpools": [
+          {
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qoro_maestro.libs/libgomp-e985bcbb.so.1.0.0",
+            "internal_api": "openmp",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qoro_maestro.libs/libgomp-e985bcbb.so.1.0.0",
+              "sha256": "a43904e4fa297301d4640dc1bb3c8a3480b406f99e498eba9b1914b68aab604a"
+            },
+            "num_threads": 28,
+            "prefix": "libgomp",
+            "user_api": "openmp"
+          },
+          {
+            "architecture": "Haswell",
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+            "internal_api": "openblas",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+              "sha256": "0bd815d04b6b54990e3cccc7528fbb696456d09569f533d0390c13f0cdc4dd4a"
+            },
+            "num_threads": 28,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.29"
+          },
+          {
+            "architecture": "Haswell",
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+            "internal_api": "openblas",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+              "sha256": "3e739a2435af49d2d938749f316aa338c65f41c9ae6615406e7cf83feb662f46"
+            },
+            "num_threads": 28,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.28"
+          }
+        ],
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+        "python": {
+          "executable": "/home/server/.local/share/uv/python/cpython-3.10.21-linux-x86_64-gnu/bin/python3.10",
+          "executable_sha256": "6d68b9499af6dba04dcdcf3134954100b72be475e0a359142a8de5218f20d75a",
+          "version": "3.10.21 (main, Aug 14 2026, 15:33:52) [Clang 22.1.3 ]"
+        },
+        "resolved_config": {
+          "_candidate": "mps_fixed_chi",
+          "_configured_chi": 16,
+          "_seed": 12345,
+          "_singular_value_threshold": 1e-08,
+          "disable_optimized_swapping": false,
+          "gpu_device": null,
+          "lookahead_depth": -1,
+          "max_bond_dimension": 16,
+          "mpo_hermitize_after_truncation": false,
+          "mpo_kraus_completeness_check": null,
+          "mpo_restore_trace_after_truncation": false,
+          "mpo_use_gesvd": false,
+          "mpo_use_gesvdj": false,
+          "mpo_use_gesvdp": false,
+          "mpo_use_gesvdr": false,
+          "mps_measure_no_collapse": true,
+          "mps_use_gesvd": false,
+          "mps_use_gesvdj": false,
+          "mps_use_gesvdp": false,
+          "mps_use_gesvdr": false,
+          "path_integral_threshold": null,
+          "pp_coefficient_threshold": null,
+          "pp_pauli_weight_threshold": null,
+          "pp_steps_between_deduplications": null,
+          "pp_steps_between_trims": null,
+          "precision": null,
+          "seed": 12345,
+          "simulation_type": {
+            "enum_type": "maestro.maestro.SimulationType",
+            "name": "MatrixProductState",
+            "value": 1
+          },
+          "simulator_type": {
+            "enum_type": "maestro.maestro.SimulatorType",
+            "name": "QCSim",
+            "value": 0
+          },
+          "singular_value_threshold": 1e-08,
+          "tensor_network_use_gesvd": false,
+          "tensor_network_use_gesvdj": false,
+          "tensor_network_use_gesvdp": false,
+          "tensor_network_use_gesvdr": false,
+          "truncation_mode": null,
+          "use_double_precision": false
+        },
+        "resolved_config_sha256": "22ad941138a8abdf68421f5b90e65ef9fbfef6c2b519f12e69e697e4a35ec98c",
+        "schema": "maestro_worker_execution_context_v1"
+      },
+      "identity_sha256": "483f12657d8e0048a2f0cf91d91746dd9cac71daaf4e6d770bafdafb3748d055",
+      "observation": {
+        "captured_monotonic_ns": 54956078357346,
+        "pid": 481528
+      },
+      "resolved_config_sha256": "22ad941138a8abdf68421f5b90e65ef9fbfef6c2b519f12e69e697e4a35ec98c",
+      "worker_environment_sha256": "e1a71c99c3ee3335408c89cd4539f3a8b7f87973696796edc4f863a007acdf83"
+    },
+    "mps_fixed_chi:32": {
+      "backend_threading_policy_sha256": "474d986f6b9b8e9051d92cfbf6e5ee8986f247adf16e82f9eee663bf653ce2c3",
+      "context_owner": "worker",
+      "identity": {
+        "backend_threading_policy": {
+          "affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "declared_policy": "retain pinned library defaults; verify worker threadpool configuration including 28-thread OpenMP/BLAS defaults; record Maestro backend/shot-dependent threading; no cap tuning",
+          "native_thread_environment": {
+            "MKL_NUM_THREADS": null,
+            "NUMEXPR_NUM_THREADS": null,
+            "OMP_NUM_THREADS": null,
+            "OPENBLAS_NUM_THREADS": null
+          },
+          "timing_worker_count": 1
+        },
+        "backend_threading_policy_sha256": "474d986f6b9b8e9051d92cfbf6e5ee8986f247adf16e82f9eee663bf653ce2c3",
+        "canonical_imports": [
+          "maestro",
+          "numpy",
+          "scipy.linalg"
+        ],
+        "cpu": {
+          "affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "logical_cpu_count": 28,
+          "machine": "x86_64",
+          "processor": ""
+        },
+        "libraries": {
+          "maestro": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/__init__.py",
+              "sha256": "7c4b555f179f83eadbb2b16712de5ffab10b397196d8ee3abfab4c113caeaf0f"
+            },
+            "package_file_count": 4,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro",
+            "package_tree_sha256": "be6c28156448f4ee93c42f903ed6d8a304ba76f85f26c75ddd627b29cd3431a8",
+            "version": "unreported"
+          },
+          "numpy": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/__init__.py",
+              "sha256": "6ae17b070c0f70a8e3cad89a510a256942e5a1f37ea5feb120cec167ed2a6236"
+            },
+            "package_file_count": 510,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy",
+            "package_tree_sha256": "011a3c0fa4ffbdfcef8a7b57179fdb7cf77b5280646b499269becf37b4e5d075",
+            "version": "2.2.6"
+          },
+          "scipy.linalg": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/__init__.py",
+              "sha256": "50e1595f8182bacad08dc68f07a34d35eae1b150deef4ec1be57c4ed707c2b35"
+            },
+            "package_file_count": 1027,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy",
+            "package_tree_sha256": "761af33fec1406214ff5814e99973fed436ada96bdb675ca885d4ed278102847",
+            "version": "1.15.3"
+          }
+        },
+        "loaded_native_files": {
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/libmaestro.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/libmaestro.so",
+            "sha256": "4e51e84ab3b08af80d16ba48de589116d8d4cae4d837a3041ed191df0035af54"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/maestro.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/maestro.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "33f9c1b7ccfecb229abc083f731fffb554f37533f46a4bb07210f590b9d91a42"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/_core/_multiarray_umath.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/_core/_multiarray_umath.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "c634eaf05367af02b815cf3d2020fbeee9b47426af1fe26cf3189e4798932dc5"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/fft/_pocketfft_umath.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/fft/_pocketfft_umath.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "bdf266bd798225e5a1fedc24f792b4b45d52bd960adc94fd3cb76108b253d42b"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/linalg/_umath_linalg.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/linalg/_umath_linalg.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "c6bc9d5c4db6cea333d46d905e15fbcd8f541ec5b23704ca3c44547ee2ee5187"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_bounded_integers.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_bounded_integers.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4b4ff98f2bb0f7db24091b7996dd4d5c6ba5ae584f3683fcfa72ad8bce926ef1"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_common.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_common.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "209653a11ba1914f706e972fd071be37c3207e182918c81fc7fab43cd66c5c28"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_generator.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_generator.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b71b3b7481e842a207aa2b06ac7547721ed56366c5bccb7943616591e6075fb9"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_mt19937.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_mt19937.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "6245585dae2024446b9cc6f86f8f5d7ffb90054f2c50be0ede4b05663392f527"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_pcg64.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_pcg64.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "839bd03aa79e83d3aa67733423ca65fd47e4af535145c0f7384d7c88642d3ef8"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_philox.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_philox.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b166c0672edb46c1c9cbf720867d95aea2e9a323bc069157c9f0c15884ea5882"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_sfc64.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_sfc64.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b335c46d7043db828b7f124957982bc5fa510a780c362ebf02d4d181cba3416c"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/bit_generator.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/bit_generator.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "fa02602384f668d5551761a14c616893a01ac02965092cdaf52b86fd2584d9c3"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/mtrand.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/mtrand.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "0ef34372d188edcd794777a72a2eb86010f17736d3d7195b4bd6bf848ea7906c"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/_lib/_ccallback_c.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/_lib/_ccallback_c.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "72f5b59eddc1e471739db67ab9fb91f2a93df5d12ce5235771371b606bfe8769"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_cythonized_array_utils.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_cythonized_array_utils.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "8e839f2c461a3ac515aeab1c91336ae012878b6b0323e88f83e8fdf52966a897"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_lu_cython.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_lu_cython.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "eb9182c7f7185adbd8d6e2c8cba225265c39841c51f5ce748dcf6caaa6b4fda9"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_update.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_update.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "6c64451a3dd61c66b620aa0e0a0700df041ecdb6409070176ea99dfd075ebee3"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_fblas.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_fblas.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "d2bc0b8127ab14cf1df3ae8fe4242829830ef54cc00ceafd720e68ef7e67f495"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_flapack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_flapack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "11742f3f308733322369de8ef867af6aaf8c3b001d61005632dff37b3a4161ee"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_linalg_pythran.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_linalg_pythran.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "5b4228e644528d0195d8d2785973637be5c41408166e1e2e9417902b346720f7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_expm.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_expm.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "9888525263eabf8c3a67386e81e95d5c0b492eda8d9b760fdcb9b7f11eef4e0f"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_sqrtm_triu.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_sqrtm_triu.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "2f626635294596acca06c371a1312462b11e6cd919678eb3e244d61d4e0a2db5"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_solve_toeplitz.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_solve_toeplitz.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "00a16df76cb2ba5d643c2536ffa3a63735da528cc101cbfd3f87ec553ae37efe"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_blas.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_blas.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "cbeee12108547548491631792503858f707181310061d6d62981847fb87de2ca"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_lapack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_lapack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "810f0dfc3bbab5e92180d1946197af5b51e956bd9ff27a24d5a2881b0cab3ed2"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_csparsetools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_csparsetools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "809bfee38f82fe6319cd5b57a8eac48e1872be242c36976f40e68d48ea02ca98"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_sparsetools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_sparsetools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "dde4efc97631ffb3b348260a62b5601e48c56257cc3b6a43841c5ca5d78f8bd7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_flow.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_flow.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4239de96773a37e2874fd38becafee81909702e58f06eb9c932a683d47a6946a"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_matching.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_matching.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "13d00d9fc36c898b8a056ea2fc5370ab10edc5f18828aeeee2a248b728ad4f4b"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "be1854d97abde2893d98c81b5d5bdce510b12436f6602fe8028128f688f426f1"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_reordering.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_reordering.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "73fb6a31adbe9e0b4d63cf0981fbfbc7ce53b030751cf47d123c34f9f936d787"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "9ed4b4373dce636ead027ad1db453ba4788d4db0e6ab7f38f189b3eabe6810bc"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_tools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_tools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b31b2fc93c9688a6b2b7a3507325c20635f82b84ccbe8c2dbf7f474ddf0f0362"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_traversal.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_traversal.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "23df762f0a6c6e0fef1e4fbff7b48e716d7da912db365ddca93c5e93aa2ee2f8"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_dsolve/_superlu.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_dsolve/_superlu.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4358374c599427b08746241c6294a33661daf0fc5c421a6cafb69d0c4b7b3354"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_eigen/arpack/_arpack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_eigen/arpack/_arpack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "268b3962f3432f29f714afba67c2c142782726012599ee7d52e2e44cf0daaa40"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_cpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_cpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "baaa21cecf3265bf358d983a006d3be2bfc75805925cccc81426a67286a7924e"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_dpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_dpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "d90e4b9d209ba4ef15bab2aa609aca692f1e186d69927de9ef2867c03b67e2d7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_spropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_spropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "3ce13f8a49cee23b85221d6202c04f2acc7f5ebf414b8aedb4b702a461da186a"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_zpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_zpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "f9c9db99b0f747156a6b849c12976ffe40f6a1420f35664f1390723cd7e9ce70"
+          }
+        },
+        "native_thread_environment": {
+          "MKL_NUM_THREADS": "",
+          "NUMEXPR_NUM_THREADS": "",
+          "OMP_NUM_THREADS": "",
+          "OPENBLAS_NUM_THREADS": ""
+        },
+        "native_threadpools": [
+          {
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qoro_maestro.libs/libgomp-e985bcbb.so.1.0.0",
+            "internal_api": "openmp",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qoro_maestro.libs/libgomp-e985bcbb.so.1.0.0",
+              "sha256": "a43904e4fa297301d4640dc1bb3c8a3480b406f99e498eba9b1914b68aab604a"
+            },
+            "num_threads": 28,
+            "prefix": "libgomp",
+            "user_api": "openmp"
+          },
+          {
+            "architecture": "Haswell",
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+            "internal_api": "openblas",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+              "sha256": "0bd815d04b6b54990e3cccc7528fbb696456d09569f533d0390c13f0cdc4dd4a"
+            },
+            "num_threads": 28,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.29"
+          },
+          {
+            "architecture": "Haswell",
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+            "internal_api": "openblas",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+              "sha256": "3e739a2435af49d2d938749f316aa338c65f41c9ae6615406e7cf83feb662f46"
+            },
+            "num_threads": 28,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.28"
+          }
+        ],
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+        "python": {
+          "executable": "/home/server/.local/share/uv/python/cpython-3.10.21-linux-x86_64-gnu/bin/python3.10",
+          "executable_sha256": "6d68b9499af6dba04dcdcf3134954100b72be475e0a359142a8de5218f20d75a",
+          "version": "3.10.21 (main, Aug 14 2026, 15:33:52) [Clang 22.1.3 ]"
+        },
+        "resolved_config": {
+          "_candidate": "mps_fixed_chi",
+          "_configured_chi": 32,
+          "_seed": 12345,
+          "_singular_value_threshold": 1e-08,
+          "disable_optimized_swapping": false,
+          "gpu_device": null,
+          "lookahead_depth": -1,
+          "max_bond_dimension": 32,
+          "mpo_hermitize_after_truncation": false,
+          "mpo_kraus_completeness_check": null,
+          "mpo_restore_trace_after_truncation": false,
+          "mpo_use_gesvd": false,
+          "mpo_use_gesvdj": false,
+          "mpo_use_gesvdp": false,
+          "mpo_use_gesvdr": false,
+          "mps_measure_no_collapse": true,
+          "mps_use_gesvd": false,
+          "mps_use_gesvdj": false,
+          "mps_use_gesvdp": false,
+          "mps_use_gesvdr": false,
+          "path_integral_threshold": null,
+          "pp_coefficient_threshold": null,
+          "pp_pauli_weight_threshold": null,
+          "pp_steps_between_deduplications": null,
+          "pp_steps_between_trims": null,
+          "precision": null,
+          "seed": 12345,
+          "simulation_type": {
+            "enum_type": "maestro.maestro.SimulationType",
+            "name": "MatrixProductState",
+            "value": 1
+          },
+          "simulator_type": {
+            "enum_type": "maestro.maestro.SimulatorType",
+            "name": "QCSim",
+            "value": 0
+          },
+          "singular_value_threshold": 1e-08,
+          "tensor_network_use_gesvd": false,
+          "tensor_network_use_gesvdj": false,
+          "tensor_network_use_gesvdp": false,
+          "tensor_network_use_gesvdr": false,
+          "truncation_mode": null,
+          "use_double_precision": false
+        },
+        "resolved_config_sha256": "00a24b0da0682f8a90e8b938f036ddd0509e987dc1276e94427293bc1c3ba2ac",
+        "schema": "maestro_worker_execution_context_v1"
+      },
+      "identity_sha256": "658d82246d3691fa01aaeb25e1a572a6f763f773a6325cb87a626955bb86c350",
+      "observation": {
+        "captured_monotonic_ns": 54952923499224,
+        "pid": 480986
+      },
+      "resolved_config_sha256": "00a24b0da0682f8a90e8b938f036ddd0509e987dc1276e94427293bc1c3ba2ac",
+      "worker_environment_sha256": "e1a71c99c3ee3335408c89cd4539f3a8b7f87973696796edc4f863a007acdf83"
+    },
+    "mps_fixed_chi:4": {
+      "backend_threading_policy_sha256": "474d986f6b9b8e9051d92cfbf6e5ee8986f247adf16e82f9eee663bf653ce2c3",
+      "context_owner": "worker",
+      "identity": {
+        "backend_threading_policy": {
+          "affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "declared_policy": "retain pinned library defaults; verify worker threadpool configuration including 28-thread OpenMP/BLAS defaults; record Maestro backend/shot-dependent threading; no cap tuning",
+          "native_thread_environment": {
+            "MKL_NUM_THREADS": null,
+            "NUMEXPR_NUM_THREADS": null,
+            "OMP_NUM_THREADS": null,
+            "OPENBLAS_NUM_THREADS": null
+          },
+          "timing_worker_count": 1
+        },
+        "backend_threading_policy_sha256": "474d986f6b9b8e9051d92cfbf6e5ee8986f247adf16e82f9eee663bf653ce2c3",
+        "canonical_imports": [
+          "maestro",
+          "numpy",
+          "scipy.linalg"
+        ],
+        "cpu": {
+          "affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "logical_cpu_count": 28,
+          "machine": "x86_64",
+          "processor": ""
+        },
+        "libraries": {
+          "maestro": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/__init__.py",
+              "sha256": "7c4b555f179f83eadbb2b16712de5ffab10b397196d8ee3abfab4c113caeaf0f"
+            },
+            "package_file_count": 4,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro",
+            "package_tree_sha256": "be6c28156448f4ee93c42f903ed6d8a304ba76f85f26c75ddd627b29cd3431a8",
+            "version": "unreported"
+          },
+          "numpy": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/__init__.py",
+              "sha256": "6ae17b070c0f70a8e3cad89a510a256942e5a1f37ea5feb120cec167ed2a6236"
+            },
+            "package_file_count": 510,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy",
+            "package_tree_sha256": "011a3c0fa4ffbdfcef8a7b57179fdb7cf77b5280646b499269becf37b4e5d075",
+            "version": "2.2.6"
+          },
+          "scipy.linalg": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/__init__.py",
+              "sha256": "50e1595f8182bacad08dc68f07a34d35eae1b150deef4ec1be57c4ed707c2b35"
+            },
+            "package_file_count": 1027,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy",
+            "package_tree_sha256": "761af33fec1406214ff5814e99973fed436ada96bdb675ca885d4ed278102847",
+            "version": "1.15.3"
+          }
+        },
+        "loaded_native_files": {
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/libmaestro.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/libmaestro.so",
+            "sha256": "4e51e84ab3b08af80d16ba48de589116d8d4cae4d837a3041ed191df0035af54"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/maestro.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/maestro.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "33f9c1b7ccfecb229abc083f731fffb554f37533f46a4bb07210f590b9d91a42"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/_core/_multiarray_umath.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/_core/_multiarray_umath.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "c634eaf05367af02b815cf3d2020fbeee9b47426af1fe26cf3189e4798932dc5"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/fft/_pocketfft_umath.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/fft/_pocketfft_umath.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "bdf266bd798225e5a1fedc24f792b4b45d52bd960adc94fd3cb76108b253d42b"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/linalg/_umath_linalg.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/linalg/_umath_linalg.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "c6bc9d5c4db6cea333d46d905e15fbcd8f541ec5b23704ca3c44547ee2ee5187"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_bounded_integers.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_bounded_integers.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4b4ff98f2bb0f7db24091b7996dd4d5c6ba5ae584f3683fcfa72ad8bce926ef1"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_common.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_common.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "209653a11ba1914f706e972fd071be37c3207e182918c81fc7fab43cd66c5c28"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_generator.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_generator.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b71b3b7481e842a207aa2b06ac7547721ed56366c5bccb7943616591e6075fb9"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_mt19937.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_mt19937.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "6245585dae2024446b9cc6f86f8f5d7ffb90054f2c50be0ede4b05663392f527"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_pcg64.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_pcg64.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "839bd03aa79e83d3aa67733423ca65fd47e4af535145c0f7384d7c88642d3ef8"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_philox.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_philox.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b166c0672edb46c1c9cbf720867d95aea2e9a323bc069157c9f0c15884ea5882"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_sfc64.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_sfc64.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b335c46d7043db828b7f124957982bc5fa510a780c362ebf02d4d181cba3416c"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/bit_generator.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/bit_generator.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "fa02602384f668d5551761a14c616893a01ac02965092cdaf52b86fd2584d9c3"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/mtrand.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/mtrand.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "0ef34372d188edcd794777a72a2eb86010f17736d3d7195b4bd6bf848ea7906c"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/_lib/_ccallback_c.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/_lib/_ccallback_c.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "72f5b59eddc1e471739db67ab9fb91f2a93df5d12ce5235771371b606bfe8769"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_cythonized_array_utils.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_cythonized_array_utils.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "8e839f2c461a3ac515aeab1c91336ae012878b6b0323e88f83e8fdf52966a897"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_lu_cython.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_lu_cython.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "eb9182c7f7185adbd8d6e2c8cba225265c39841c51f5ce748dcf6caaa6b4fda9"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_update.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_update.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "6c64451a3dd61c66b620aa0e0a0700df041ecdb6409070176ea99dfd075ebee3"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_fblas.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_fblas.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "d2bc0b8127ab14cf1df3ae8fe4242829830ef54cc00ceafd720e68ef7e67f495"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_flapack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_flapack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "11742f3f308733322369de8ef867af6aaf8c3b001d61005632dff37b3a4161ee"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_linalg_pythran.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_linalg_pythran.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "5b4228e644528d0195d8d2785973637be5c41408166e1e2e9417902b346720f7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_expm.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_expm.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "9888525263eabf8c3a67386e81e95d5c0b492eda8d9b760fdcb9b7f11eef4e0f"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_sqrtm_triu.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_sqrtm_triu.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "2f626635294596acca06c371a1312462b11e6cd919678eb3e244d61d4e0a2db5"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_solve_toeplitz.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_solve_toeplitz.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "00a16df76cb2ba5d643c2536ffa3a63735da528cc101cbfd3f87ec553ae37efe"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_blas.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_blas.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "cbeee12108547548491631792503858f707181310061d6d62981847fb87de2ca"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_lapack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_lapack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "810f0dfc3bbab5e92180d1946197af5b51e956bd9ff27a24d5a2881b0cab3ed2"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_csparsetools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_csparsetools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "809bfee38f82fe6319cd5b57a8eac48e1872be242c36976f40e68d48ea02ca98"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_sparsetools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_sparsetools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "dde4efc97631ffb3b348260a62b5601e48c56257cc3b6a43841c5ca5d78f8bd7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_flow.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_flow.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4239de96773a37e2874fd38becafee81909702e58f06eb9c932a683d47a6946a"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_matching.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_matching.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "13d00d9fc36c898b8a056ea2fc5370ab10edc5f18828aeeee2a248b728ad4f4b"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "be1854d97abde2893d98c81b5d5bdce510b12436f6602fe8028128f688f426f1"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_reordering.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_reordering.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "73fb6a31adbe9e0b4d63cf0981fbfbc7ce53b030751cf47d123c34f9f936d787"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "9ed4b4373dce636ead027ad1db453ba4788d4db0e6ab7f38f189b3eabe6810bc"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_tools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_tools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b31b2fc93c9688a6b2b7a3507325c20635f82b84ccbe8c2dbf7f474ddf0f0362"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_traversal.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_traversal.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "23df762f0a6c6e0fef1e4fbff7b48e716d7da912db365ddca93c5e93aa2ee2f8"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_dsolve/_superlu.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_dsolve/_superlu.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4358374c599427b08746241c6294a33661daf0fc5c421a6cafb69d0c4b7b3354"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_eigen/arpack/_arpack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_eigen/arpack/_arpack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "268b3962f3432f29f714afba67c2c142782726012599ee7d52e2e44cf0daaa40"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_cpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_cpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "baaa21cecf3265bf358d983a006d3be2bfc75805925cccc81426a67286a7924e"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_dpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_dpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "d90e4b9d209ba4ef15bab2aa609aca692f1e186d69927de9ef2867c03b67e2d7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_spropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_spropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "3ce13f8a49cee23b85221d6202c04f2acc7f5ebf414b8aedb4b702a461da186a"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_zpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_zpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "f9c9db99b0f747156a6b849c12976ffe40f6a1420f35664f1390723cd7e9ce70"
+          }
+        },
+        "native_thread_environment": {
+          "MKL_NUM_THREADS": "",
+          "NUMEXPR_NUM_THREADS": "",
+          "OMP_NUM_THREADS": "",
+          "OPENBLAS_NUM_THREADS": ""
+        },
+        "native_threadpools": [
+          {
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qoro_maestro.libs/libgomp-e985bcbb.so.1.0.0",
+            "internal_api": "openmp",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qoro_maestro.libs/libgomp-e985bcbb.so.1.0.0",
+              "sha256": "a43904e4fa297301d4640dc1bb3c8a3480b406f99e498eba9b1914b68aab604a"
+            },
+            "num_threads": 28,
+            "prefix": "libgomp",
+            "user_api": "openmp"
+          },
+          {
+            "architecture": "Haswell",
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+            "internal_api": "openblas",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+              "sha256": "0bd815d04b6b54990e3cccc7528fbb696456d09569f533d0390c13f0cdc4dd4a"
+            },
+            "num_threads": 28,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.29"
+          },
+          {
+            "architecture": "Haswell",
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+            "internal_api": "openblas",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+              "sha256": "3e739a2435af49d2d938749f316aa338c65f41c9ae6615406e7cf83feb662f46"
+            },
+            "num_threads": 28,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.28"
+          }
+        ],
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+        "python": {
+          "executable": "/home/server/.local/share/uv/python/cpython-3.10.21-linux-x86_64-gnu/bin/python3.10",
+          "executable_sha256": "6d68b9499af6dba04dcdcf3134954100b72be475e0a359142a8de5218f20d75a",
+          "version": "3.10.21 (main, Aug 14 2026, 15:33:52) [Clang 22.1.3 ]"
+        },
+        "resolved_config": {
+          "_candidate": "mps_fixed_chi",
+          "_configured_chi": 4,
+          "_seed": 12345,
+          "_singular_value_threshold": 1e-08,
+          "disable_optimized_swapping": false,
+          "gpu_device": null,
+          "lookahead_depth": -1,
+          "max_bond_dimension": 4,
+          "mpo_hermitize_after_truncation": false,
+          "mpo_kraus_completeness_check": null,
+          "mpo_restore_trace_after_truncation": false,
+          "mpo_use_gesvd": false,
+          "mpo_use_gesvdj": false,
+          "mpo_use_gesvdp": false,
+          "mpo_use_gesvdr": false,
+          "mps_measure_no_collapse": true,
+          "mps_use_gesvd": false,
+          "mps_use_gesvdj": false,
+          "mps_use_gesvdp": false,
+          "mps_use_gesvdr": false,
+          "path_integral_threshold": null,
+          "pp_coefficient_threshold": null,
+          "pp_pauli_weight_threshold": null,
+          "pp_steps_between_deduplications": null,
+          "pp_steps_between_trims": null,
+          "precision": null,
+          "seed": 12345,
+          "simulation_type": {
+            "enum_type": "maestro.maestro.SimulationType",
+            "name": "MatrixProductState",
+            "value": 1
+          },
+          "simulator_type": {
+            "enum_type": "maestro.maestro.SimulatorType",
+            "name": "QCSim",
+            "value": 0
+          },
+          "singular_value_threshold": 1e-08,
+          "tensor_network_use_gesvd": false,
+          "tensor_network_use_gesvdj": false,
+          "tensor_network_use_gesvdp": false,
+          "tensor_network_use_gesvdr": false,
+          "truncation_mode": null,
+          "use_double_precision": false
+        },
+        "resolved_config_sha256": "2e1c9ad78dd1c721ed1500b843004d0aa18cb83273c0d922eecb9f07e6214f65",
+        "schema": "maestro_worker_execution_context_v1"
+      },
+      "identity_sha256": "1a72d1221c7d0084c299d637861df69de510661124407c420bae76441bb5cb27",
+      "observation": {
+        "captured_monotonic_ns": 54951230464991,
+        "pid": 480667
+      },
+      "resolved_config_sha256": "2e1c9ad78dd1c721ed1500b843004d0aa18cb83273c0d922eecb9f07e6214f65",
+      "worker_environment_sha256": "e1a71c99c3ee3335408c89cd4539f3a8b7f87973696796edc4f863a007acdf83"
+    },
+    "mps_fixed_chi:8": {
+      "backend_threading_policy_sha256": "474d986f6b9b8e9051d92cfbf6e5ee8986f247adf16e82f9eee663bf653ce2c3",
+      "context_owner": "worker",
+      "identity": {
+        "backend_threading_policy": {
+          "affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "declared_policy": "retain pinned library defaults; verify worker threadpool configuration including 28-thread OpenMP/BLAS defaults; record Maestro backend/shot-dependent threading; no cap tuning",
+          "native_thread_environment": {
+            "MKL_NUM_THREADS": null,
+            "NUMEXPR_NUM_THREADS": null,
+            "OMP_NUM_THREADS": null,
+            "OPENBLAS_NUM_THREADS": null
+          },
+          "timing_worker_count": 1
+        },
+        "backend_threading_policy_sha256": "474d986f6b9b8e9051d92cfbf6e5ee8986f247adf16e82f9eee663bf653ce2c3",
+        "canonical_imports": [
+          "maestro",
+          "numpy",
+          "scipy.linalg"
+        ],
+        "cpu": {
+          "affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "logical_cpu_count": 28,
+          "machine": "x86_64",
+          "processor": ""
+        },
+        "libraries": {
+          "maestro": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/__init__.py",
+              "sha256": "7c4b555f179f83eadbb2b16712de5ffab10b397196d8ee3abfab4c113caeaf0f"
+            },
+            "package_file_count": 4,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro",
+            "package_tree_sha256": "be6c28156448f4ee93c42f903ed6d8a304ba76f85f26c75ddd627b29cd3431a8",
+            "version": "unreported"
+          },
+          "numpy": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/__init__.py",
+              "sha256": "6ae17b070c0f70a8e3cad89a510a256942e5a1f37ea5feb120cec167ed2a6236"
+            },
+            "package_file_count": 510,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy",
+            "package_tree_sha256": "011a3c0fa4ffbdfcef8a7b57179fdb7cf77b5280646b499269becf37b4e5d075",
+            "version": "2.2.6"
+          },
+          "scipy.linalg": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/__init__.py",
+              "sha256": "50e1595f8182bacad08dc68f07a34d35eae1b150deef4ec1be57c4ed707c2b35"
+            },
+            "package_file_count": 1027,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy",
+            "package_tree_sha256": "761af33fec1406214ff5814e99973fed436ada96bdb675ca885d4ed278102847",
+            "version": "1.15.3"
+          }
+        },
+        "loaded_native_files": {
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/libmaestro.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/libmaestro.so",
+            "sha256": "4e51e84ab3b08af80d16ba48de589116d8d4cae4d837a3041ed191df0035af54"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/maestro.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/maestro.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "33f9c1b7ccfecb229abc083f731fffb554f37533f46a4bb07210f590b9d91a42"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/_core/_multiarray_umath.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/_core/_multiarray_umath.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "c634eaf05367af02b815cf3d2020fbeee9b47426af1fe26cf3189e4798932dc5"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/fft/_pocketfft_umath.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/fft/_pocketfft_umath.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "bdf266bd798225e5a1fedc24f792b4b45d52bd960adc94fd3cb76108b253d42b"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/linalg/_umath_linalg.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/linalg/_umath_linalg.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "c6bc9d5c4db6cea333d46d905e15fbcd8f541ec5b23704ca3c44547ee2ee5187"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_bounded_integers.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_bounded_integers.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4b4ff98f2bb0f7db24091b7996dd4d5c6ba5ae584f3683fcfa72ad8bce926ef1"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_common.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_common.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "209653a11ba1914f706e972fd071be37c3207e182918c81fc7fab43cd66c5c28"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_generator.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_generator.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b71b3b7481e842a207aa2b06ac7547721ed56366c5bccb7943616591e6075fb9"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_mt19937.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_mt19937.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "6245585dae2024446b9cc6f86f8f5d7ffb90054f2c50be0ede4b05663392f527"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_pcg64.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_pcg64.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "839bd03aa79e83d3aa67733423ca65fd47e4af535145c0f7384d7c88642d3ef8"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_philox.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_philox.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b166c0672edb46c1c9cbf720867d95aea2e9a323bc069157c9f0c15884ea5882"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_sfc64.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_sfc64.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b335c46d7043db828b7f124957982bc5fa510a780c362ebf02d4d181cba3416c"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/bit_generator.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/bit_generator.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "fa02602384f668d5551761a14c616893a01ac02965092cdaf52b86fd2584d9c3"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/mtrand.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/mtrand.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "0ef34372d188edcd794777a72a2eb86010f17736d3d7195b4bd6bf848ea7906c"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/_lib/_ccallback_c.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/_lib/_ccallback_c.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "72f5b59eddc1e471739db67ab9fb91f2a93df5d12ce5235771371b606bfe8769"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_cythonized_array_utils.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_cythonized_array_utils.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "8e839f2c461a3ac515aeab1c91336ae012878b6b0323e88f83e8fdf52966a897"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_lu_cython.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_lu_cython.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "eb9182c7f7185adbd8d6e2c8cba225265c39841c51f5ce748dcf6caaa6b4fda9"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_update.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_update.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "6c64451a3dd61c66b620aa0e0a0700df041ecdb6409070176ea99dfd075ebee3"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_fblas.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_fblas.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "d2bc0b8127ab14cf1df3ae8fe4242829830ef54cc00ceafd720e68ef7e67f495"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_flapack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_flapack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "11742f3f308733322369de8ef867af6aaf8c3b001d61005632dff37b3a4161ee"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_linalg_pythran.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_linalg_pythran.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "5b4228e644528d0195d8d2785973637be5c41408166e1e2e9417902b346720f7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_expm.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_expm.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "9888525263eabf8c3a67386e81e95d5c0b492eda8d9b760fdcb9b7f11eef4e0f"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_sqrtm_triu.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_sqrtm_triu.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "2f626635294596acca06c371a1312462b11e6cd919678eb3e244d61d4e0a2db5"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_solve_toeplitz.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_solve_toeplitz.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "00a16df76cb2ba5d643c2536ffa3a63735da528cc101cbfd3f87ec553ae37efe"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_blas.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_blas.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "cbeee12108547548491631792503858f707181310061d6d62981847fb87de2ca"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_lapack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_lapack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "810f0dfc3bbab5e92180d1946197af5b51e956bd9ff27a24d5a2881b0cab3ed2"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_csparsetools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_csparsetools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "809bfee38f82fe6319cd5b57a8eac48e1872be242c36976f40e68d48ea02ca98"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_sparsetools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_sparsetools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "dde4efc97631ffb3b348260a62b5601e48c56257cc3b6a43841c5ca5d78f8bd7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_flow.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_flow.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4239de96773a37e2874fd38becafee81909702e58f06eb9c932a683d47a6946a"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_matching.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_matching.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "13d00d9fc36c898b8a056ea2fc5370ab10edc5f18828aeeee2a248b728ad4f4b"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "be1854d97abde2893d98c81b5d5bdce510b12436f6602fe8028128f688f426f1"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_reordering.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_reordering.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "73fb6a31adbe9e0b4d63cf0981fbfbc7ce53b030751cf47d123c34f9f936d787"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "9ed4b4373dce636ead027ad1db453ba4788d4db0e6ab7f38f189b3eabe6810bc"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_tools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_tools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b31b2fc93c9688a6b2b7a3507325c20635f82b84ccbe8c2dbf7f474ddf0f0362"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_traversal.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_traversal.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "23df762f0a6c6e0fef1e4fbff7b48e716d7da912db365ddca93c5e93aa2ee2f8"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_dsolve/_superlu.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_dsolve/_superlu.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4358374c599427b08746241c6294a33661daf0fc5c421a6cafb69d0c4b7b3354"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_eigen/arpack/_arpack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_eigen/arpack/_arpack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "268b3962f3432f29f714afba67c2c142782726012599ee7d52e2e44cf0daaa40"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_cpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_cpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "baaa21cecf3265bf358d983a006d3be2bfc75805925cccc81426a67286a7924e"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_dpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_dpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "d90e4b9d209ba4ef15bab2aa609aca692f1e186d69927de9ef2867c03b67e2d7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_spropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_spropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "3ce13f8a49cee23b85221d6202c04f2acc7f5ebf414b8aedb4b702a461da186a"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_zpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_zpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "f9c9db99b0f747156a6b849c12976ffe40f6a1420f35664f1390723cd7e9ce70"
+          }
+        },
+        "native_thread_environment": {
+          "MKL_NUM_THREADS": "",
+          "NUMEXPR_NUM_THREADS": "",
+          "OMP_NUM_THREADS": "",
+          "OPENBLAS_NUM_THREADS": ""
+        },
+        "native_threadpools": [
+          {
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qoro_maestro.libs/libgomp-e985bcbb.so.1.0.0",
+            "internal_api": "openmp",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qoro_maestro.libs/libgomp-e985bcbb.so.1.0.0",
+              "sha256": "a43904e4fa297301d4640dc1bb3c8a3480b406f99e498eba9b1914b68aab604a"
+            },
+            "num_threads": 28,
+            "prefix": "libgomp",
+            "user_api": "openmp"
+          },
+          {
+            "architecture": "Haswell",
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+            "internal_api": "openblas",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+              "sha256": "0bd815d04b6b54990e3cccc7528fbb696456d09569f533d0390c13f0cdc4dd4a"
+            },
+            "num_threads": 28,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.29"
+          },
+          {
+            "architecture": "Haswell",
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+            "internal_api": "openblas",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+              "sha256": "3e739a2435af49d2d938749f316aa338c65f41c9ae6615406e7cf83feb662f46"
+            },
+            "num_threads": 28,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.28"
+          }
+        ],
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+        "python": {
+          "executable": "/home/server/.local/share/uv/python/cpython-3.10.21-linux-x86_64-gnu/bin/python3.10",
+          "executable_sha256": "6d68b9499af6dba04dcdcf3134954100b72be475e0a359142a8de5218f20d75a",
+          "version": "3.10.21 (main, Aug 14 2026, 15:33:52) [Clang 22.1.3 ]"
+        },
+        "resolved_config": {
+          "_candidate": "mps_fixed_chi",
+          "_configured_chi": 8,
+          "_seed": 12345,
+          "_singular_value_threshold": 1e-08,
+          "disable_optimized_swapping": false,
+          "gpu_device": null,
+          "lookahead_depth": -1,
+          "max_bond_dimension": 8,
+          "mpo_hermitize_after_truncation": false,
+          "mpo_kraus_completeness_check": null,
+          "mpo_restore_trace_after_truncation": false,
+          "mpo_use_gesvd": false,
+          "mpo_use_gesvdj": false,
+          "mpo_use_gesvdp": false,
+          "mpo_use_gesvdr": false,
+          "mps_measure_no_collapse": true,
+          "mps_use_gesvd": false,
+          "mps_use_gesvdj": false,
+          "mps_use_gesvdp": false,
+          "mps_use_gesvdr": false,
+          "path_integral_threshold": null,
+          "pp_coefficient_threshold": null,
+          "pp_pauli_weight_threshold": null,
+          "pp_steps_between_deduplications": null,
+          "pp_steps_between_trims": null,
+          "precision": null,
+          "seed": 12345,
+          "simulation_type": {
+            "enum_type": "maestro.maestro.SimulationType",
+            "name": "MatrixProductState",
+            "value": 1
+          },
+          "simulator_type": {
+            "enum_type": "maestro.maestro.SimulatorType",
+            "name": "QCSim",
+            "value": 0
+          },
+          "singular_value_threshold": 1e-08,
+          "tensor_network_use_gesvd": false,
+          "tensor_network_use_gesvdj": false,
+          "tensor_network_use_gesvdp": false,
+          "tensor_network_use_gesvdr": false,
+          "truncation_mode": null,
+          "use_double_precision": false
+        },
+        "resolved_config_sha256": "478b8e9d48bf60469b9beb1b89c528d0e97609d273d56c7c03179eb064668238",
+        "schema": "maestro_worker_execution_context_v1"
+      },
+      "identity_sha256": "c6aadcb621357289223134b5d7a3e6c162e42d7cc7f49b38ad0cbf7108e53cf7",
+      "observation": {
+        "captured_monotonic_ns": 54951786981933,
+        "pid": 480778
+      },
+      "resolved_config_sha256": "478b8e9d48bf60469b9beb1b89c528d0e97609d273d56c7c03179eb064668238",
+      "worker_environment_sha256": "e1a71c99c3ee3335408c89cd4539f3a8b7f87973696796edc4f863a007acdf83"
+    },
+    "statevector:None": {
+      "backend_threading_policy_sha256": "474d986f6b9b8e9051d92cfbf6e5ee8986f247adf16e82f9eee663bf653ce2c3",
+      "context_owner": "worker",
+      "identity": {
+        "backend_threading_policy": {
+          "affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "declared_policy": "retain pinned library defaults; verify worker threadpool configuration including 28-thread OpenMP/BLAS defaults; record Maestro backend/shot-dependent threading; no cap tuning",
+          "native_thread_environment": {
+            "MKL_NUM_THREADS": null,
+            "NUMEXPR_NUM_THREADS": null,
+            "OMP_NUM_THREADS": null,
+            "OPENBLAS_NUM_THREADS": null
+          },
+          "timing_worker_count": 1
+        },
+        "backend_threading_policy_sha256": "474d986f6b9b8e9051d92cfbf6e5ee8986f247adf16e82f9eee663bf653ce2c3",
+        "canonical_imports": [
+          "maestro",
+          "numpy",
+          "scipy.linalg"
+        ],
+        "cpu": {
+          "affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "logical_cpu_count": 28,
+          "machine": "x86_64",
+          "processor": ""
+        },
+        "libraries": {
+          "maestro": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/__init__.py",
+              "sha256": "7c4b555f179f83eadbb2b16712de5ffab10b397196d8ee3abfab4c113caeaf0f"
+            },
+            "package_file_count": 4,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro",
+            "package_tree_sha256": "be6c28156448f4ee93c42f903ed6d8a304ba76f85f26c75ddd627b29cd3431a8",
+            "version": "unreported"
+          },
+          "numpy": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/__init__.py",
+              "sha256": "6ae17b070c0f70a8e3cad89a510a256942e5a1f37ea5feb120cec167ed2a6236"
+            },
+            "package_file_count": 510,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy",
+            "package_tree_sha256": "011a3c0fa4ffbdfcef8a7b57179fdb7cf77b5280646b499269becf37b4e5d075",
+            "version": "2.2.6"
+          },
+          "scipy.linalg": {
+            "module": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/__init__.py",
+              "sha256": "50e1595f8182bacad08dc68f07a34d35eae1b150deef4ec1be57c4ed707c2b35"
+            },
+            "package_file_count": 1027,
+            "package_root": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy",
+            "package_tree_sha256": "761af33fec1406214ff5814e99973fed436ada96bdb675ca885d4ed278102847",
+            "version": "1.15.3"
+          }
+        },
+        "loaded_native_files": {
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/libmaestro.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/libmaestro.so",
+            "sha256": "4e51e84ab3b08af80d16ba48de589116d8d4cae4d837a3041ed191df0035af54"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/maestro.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/maestro/maestro.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "33f9c1b7ccfecb229abc083f731fffb554f37533f46a4bb07210f590b9d91a42"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/_core/_multiarray_umath.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/_core/_multiarray_umath.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "c634eaf05367af02b815cf3d2020fbeee9b47426af1fe26cf3189e4798932dc5"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/fft/_pocketfft_umath.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/fft/_pocketfft_umath.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "bdf266bd798225e5a1fedc24f792b4b45d52bd960adc94fd3cb76108b253d42b"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/linalg/_umath_linalg.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/linalg/_umath_linalg.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "c6bc9d5c4db6cea333d46d905e15fbcd8f541ec5b23704ca3c44547ee2ee5187"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_bounded_integers.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_bounded_integers.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4b4ff98f2bb0f7db24091b7996dd4d5c6ba5ae584f3683fcfa72ad8bce926ef1"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_common.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_common.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "209653a11ba1914f706e972fd071be37c3207e182918c81fc7fab43cd66c5c28"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_generator.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_generator.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b71b3b7481e842a207aa2b06ac7547721ed56366c5bccb7943616591e6075fb9"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_mt19937.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_mt19937.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "6245585dae2024446b9cc6f86f8f5d7ffb90054f2c50be0ede4b05663392f527"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_pcg64.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_pcg64.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "839bd03aa79e83d3aa67733423ca65fd47e4af535145c0f7384d7c88642d3ef8"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_philox.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_philox.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b166c0672edb46c1c9cbf720867d95aea2e9a323bc069157c9f0c15884ea5882"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_sfc64.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/_sfc64.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b335c46d7043db828b7f124957982bc5fa510a780c362ebf02d4d181cba3416c"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/bit_generator.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/bit_generator.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "fa02602384f668d5551761a14c616893a01ac02965092cdaf52b86fd2584d9c3"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/mtrand.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy/random/mtrand.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "0ef34372d188edcd794777a72a2eb86010f17736d3d7195b4bd6bf848ea7906c"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/_lib/_ccallback_c.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/_lib/_ccallback_c.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "72f5b59eddc1e471739db67ab9fb91f2a93df5d12ce5235771371b606bfe8769"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_cythonized_array_utils.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_cythonized_array_utils.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "8e839f2c461a3ac515aeab1c91336ae012878b6b0323e88f83e8fdf52966a897"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_lu_cython.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_lu_cython.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "eb9182c7f7185adbd8d6e2c8cba225265c39841c51f5ce748dcf6caaa6b4fda9"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_update.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_decomp_update.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "6c64451a3dd61c66b620aa0e0a0700df041ecdb6409070176ea99dfd075ebee3"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_fblas.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_fblas.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "d2bc0b8127ab14cf1df3ae8fe4242829830ef54cc00ceafd720e68ef7e67f495"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_flapack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_flapack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "11742f3f308733322369de8ef867af6aaf8c3b001d61005632dff37b3a4161ee"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_linalg_pythran.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_linalg_pythran.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "5b4228e644528d0195d8d2785973637be5c41408166e1e2e9417902b346720f7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_expm.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_expm.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "9888525263eabf8c3a67386e81e95d5c0b492eda8d9b760fdcb9b7f11eef4e0f"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_sqrtm_triu.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_matfuncs_sqrtm_triu.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "2f626635294596acca06c371a1312462b11e6cd919678eb3e244d61d4e0a2db5"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_solve_toeplitz.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/_solve_toeplitz.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "00a16df76cb2ba5d643c2536ffa3a63735da528cc101cbfd3f87ec553ae37efe"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_blas.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_blas.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "cbeee12108547548491631792503858f707181310061d6d62981847fb87de2ca"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_lapack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/linalg/cython_lapack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "810f0dfc3bbab5e92180d1946197af5b51e956bd9ff27a24d5a2881b0cab3ed2"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_csparsetools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_csparsetools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "809bfee38f82fe6319cd5b57a8eac48e1872be242c36976f40e68d48ea02ca98"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_sparsetools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/_sparsetools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "dde4efc97631ffb3b348260a62b5601e48c56257cc3b6a43841c5ca5d78f8bd7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_flow.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_flow.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4239de96773a37e2874fd38becafee81909702e58f06eb9c932a683d47a6946a"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_matching.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_matching.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "13d00d9fc36c898b8a056ea2fc5370ab10edc5f18828aeeee2a248b728ad4f4b"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "be1854d97abde2893d98c81b5d5bdce510b12436f6602fe8028128f688f426f1"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_reordering.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_reordering.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "73fb6a31adbe9e0b4d63cf0981fbfbc7ce53b030751cf47d123c34f9f936d787"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "9ed4b4373dce636ead027ad1db453ba4788d4db0e6ab7f38f189b3eabe6810bc"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_tools.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_tools.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b31b2fc93c9688a6b2b7a3507325c20635f82b84ccbe8c2dbf7f474ddf0f0362"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_traversal.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/csgraph/_traversal.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "23df762f0a6c6e0fef1e4fbff7b48e716d7da912db365ddca93c5e93aa2ee2f8"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_dsolve/_superlu.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_dsolve/_superlu.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "4358374c599427b08746241c6294a33661daf0fc5c421a6cafb69d0c4b7b3354"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_eigen/arpack/_arpack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_eigen/arpack/_arpack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "268b3962f3432f29f714afba67c2c142782726012599ee7d52e2e44cf0daaa40"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_cpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_cpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "baaa21cecf3265bf358d983a006d3be2bfc75805925cccc81426a67286a7924e"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_dpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_dpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "d90e4b9d209ba4ef15bab2aa609aca692f1e186d69927de9ef2867c03b67e2d7"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_spropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_spropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "3ce13f8a49cee23b85221d6202c04f2acc7f5ebf414b8aedb4b702a461da186a"
+          },
+          "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_zpropack.cpython-310-x86_64-linux-gnu.so": {
+            "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy/sparse/linalg/_propack/_zpropack.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "f9c9db99b0f747156a6b849c12976ffe40f6a1420f35664f1390723cd7e9ce70"
+          }
+        },
+        "native_thread_environment": {
+          "MKL_NUM_THREADS": "",
+          "NUMEXPR_NUM_THREADS": "",
+          "OMP_NUM_THREADS": "",
+          "OPENBLAS_NUM_THREADS": ""
+        },
+        "native_threadpools": [
+          {
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qoro_maestro.libs/libgomp-e985bcbb.so.1.0.0",
+            "internal_api": "openmp",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qoro_maestro.libs/libgomp-e985bcbb.so.1.0.0",
+              "sha256": "a43904e4fa297301d4640dc1bb3c8a3480b406f99e498eba9b1914b68aab604a"
+            },
+            "num_threads": 28,
+            "prefix": "libgomp",
+            "user_api": "openmp"
+          },
+          {
+            "architecture": "Haswell",
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+            "internal_api": "openblas",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+              "sha256": "0bd815d04b6b54990e3cccc7528fbb696456d09569f533d0390c13f0cdc4dd4a"
+            },
+            "num_threads": 28,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.29"
+          },
+          {
+            "architecture": "Haswell",
+            "filepath": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+            "internal_api": "openblas",
+            "library": {
+              "path": "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+              "sha256": "3e739a2435af49d2d938749f316aa338c65f41c9ae6615406e7cf83feb662f46"
+            },
+            "num_threads": 28,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.28"
+          }
+        ],
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+        "python": {
+          "executable": "/home/server/.local/share/uv/python/cpython-3.10.21-linux-x86_64-gnu/bin/python3.10",
+          "executable_sha256": "6d68b9499af6dba04dcdcf3134954100b72be475e0a359142a8de5218f20d75a",
+          "version": "3.10.21 (main, Aug 14 2026, 15:33:52) [Clang 22.1.3 ]"
+        },
+        "resolved_config": {
+          "_candidate": "statevector",
+          "_configured_chi": null,
+          "_seed": 12345,
+          "_singular_value_threshold": null,
+          "disable_optimized_swapping": false,
+          "gpu_device": null,
+          "lookahead_depth": -1,
+          "max_bond_dimension": null,
+          "mpo_hermitize_after_truncation": false,
+          "mpo_kraus_completeness_check": null,
+          "mpo_restore_trace_after_truncation": false,
+          "mpo_use_gesvd": false,
+          "mpo_use_gesvdj": false,
+          "mpo_use_gesvdp": false,
+          "mpo_use_gesvdr": false,
+          "mps_measure_no_collapse": true,
+          "mps_use_gesvd": false,
+          "mps_use_gesvdj": false,
+          "mps_use_gesvdp": false,
+          "mps_use_gesvdr": false,
+          "path_integral_threshold": null,
+          "pp_coefficient_threshold": null,
+          "pp_pauli_weight_threshold": null,
+          "pp_steps_between_deduplications": null,
+          "pp_steps_between_trims": null,
+          "precision": null,
+          "seed": 12345,
+          "simulation_type": {
+            "enum_type": "maestro.maestro.SimulationType",
+            "name": "Statevector",
+            "value": 0
+          },
+          "simulator_type": {
+            "enum_type": "maestro.maestro.SimulatorType",
+            "name": "QCSim",
+            "value": 0
+          },
+          "singular_value_threshold": null,
+          "tensor_network_use_gesvd": false,
+          "tensor_network_use_gesvdj": false,
+          "tensor_network_use_gesvdp": false,
+          "tensor_network_use_gesvdr": false,
+          "truncation_mode": null,
+          "use_double_precision": false
+        },
+        "resolved_config_sha256": "d2e19b2910c9c820918b2ea27721df6578f1fb1c429019e91c9186972dc8fb08",
+        "schema": "maestro_worker_execution_context_v1"
+      },
+      "identity_sha256": "fe215232703324e2be4a7039442ae766102b9829c57fe5cbb14e4e0c402dabe3",
+      "observation": {
+        "captured_monotonic_ns": 54953910073819,
+        "pid": 481116
+      },
+      "resolved_config_sha256": "d2e19b2910c9c820918b2ea27721df6578f1fb1c429019e91c9186972dc8fb08",
+      "worker_environment_sha256": "e1a71c99c3ee3335408c89cd4539f3a8b7f87973696796edc4f863a007acdf83"
+    }
+  },
+  "worker_environment_sha256": "e1a71c99c3ee3335408c89cd4539f3a8b7f87973696796edc4f863a007acdf83"
+}

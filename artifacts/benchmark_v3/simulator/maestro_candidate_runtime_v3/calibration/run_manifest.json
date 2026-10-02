@@ -1,0 +1,16 @@
+{
+  "base_contract_sha256": "60baef053c3583706a767a8bd82e16734aceafbc1327405d13a9913943a22e3d",
+  "code_hashes": {
+    "benchmark_v1/qre_benchmark/maestro_component_predictor.py": "8f49618cacc7803c3dafc166b4c511f5a65ce4053425a41cb77419aad4d17915",
+    "benchmark_v1/qre_benchmark/maestro_component_v2.py": "09ae460c321a98a6b66e4ff0f621a8ad1c9f2a00e1cc4b8a49e96151bdd06be2",
+    "benchmark_v1/scripts/run_maestro_common_panel.py": "0587fc0d5ada8e0cb5a3bbe79f34fe4ad3b19102d5d7e235d8222c035a827d35",
+    "benchmark_v1/scripts/run_maestro_component_calibration.py": "0fd90fcc131d1aed13812ce2378391b18d323e75e3b30b7ae313579d0270d6bd"
+  },
+  "error": "V3Unavailable:v3_rank_amplitude_norm_out_of_tolerance:1.0103465086424468",
+  "manifest_id": "maestro-common-panel-completion-v3",
+  "manifest_sha256": "bc2a3bc150421698ff09e08a2055a40979f96d2965fe2dcb3e20402c1016574d",
+  "measurement_started": false,
+  "planned_cells": 432,
+  "resolved_contract_sha256": "82c35b81121207aa3ab7e3d5e2bea56b1b9e40e4430fc6c7c7e6f927755755e2",
+  "status": "preflight_failed"
+}

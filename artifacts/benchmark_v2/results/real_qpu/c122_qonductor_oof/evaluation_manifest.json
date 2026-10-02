@@ -1,0 +1,57 @@
+{
+  "artifact_id": "c122-qonductor-oof-qa-v2",
+  "input_hashes": [
+    {
+      "path": "artifacts/benchmark_v2/results/real_qpu/c122_qonductor_fold0/predictions.csv",
+      "sha256": "c9bf5f15ab3815288cf38ba7fa5db066d03d626787b6572220211255d1f32113"
+    },
+    {
+      "path": "artifacts/benchmark_v2/results/real_qpu/c122_qonductor_fold0/c122_wrapper_manifest.json",
+      "sha256": "0de8035054dfbfa9f602ed35c4e05016f6bfe868cc68d1a37f51d2a6fb3ce031"
+    },
+    {
+      "path": "artifacts/benchmark_v2/results/real_qpu/c122_qonductor_fold1/predictions.csv",
+      "sha256": "8f5aebc4e23715a554598b39d9cec4439e79b5e800ab03fbc9935a953642c7d3"
+    },
+    {
+      "path": "artifacts/benchmark_v2/results/real_qpu/c122_qonductor_fold1/c122_wrapper_manifest.json",
+      "sha256": "f9d7ffc18d52b9af72bd4b77673a87b1774b9ee37f7174511bbe20313cf14448"
+    },
+    {
+      "path": "artifacts/benchmark_v2/results/real_qpu/c122_qonductor_fold2/predictions.csv",
+      "sha256": "fa1261f569cd2d8de6176bf2fd34649b43f9d34c21f92de55e461e5fc7a664fe"
+    },
+    {
+      "path": "artifacts/benchmark_v2/results/real_qpu/c122_qonductor_fold2/c122_wrapper_manifest.json",
+      "sha256": "0d18eb52fbc3e1a4f64a7d0399b45aaf6d749f4361651668a8a647f0f934aec2"
+    },
+    {
+      "path": "artifacts/benchmark_v2/results/real_qpu/c122_qonductor_fold3/predictions.csv",
+      "sha256": "cec8032576f8d7ba93a8646ab925d0c41e477ca734caaa03e69fc0e3ec9aa4c9"
+    },
+    {
+      "path": "artifacts/benchmark_v2/results/real_qpu/c122_qonductor_fold3/c122_wrapper_manifest.json",
+      "sha256": "aa4b3f44f0e75e338b7c238473ab8db3285f51649549e4cf36dc9165b6e3197c"
+    },
+    {
+      "path": "artifacts/benchmark_v2/results/real_qpu/c122_qonductor_fold4/predictions.csv",
+      "sha256": "263372f90a41be7522062164a2997e5ff146175fd4e180855045637478c898b6"
+    },
+    {
+      "path": "artifacts/benchmark_v2/results/real_qpu/c122_qonductor_fold4/c122_wrapper_manifest.json",
+      "sha256": "a939e9e0166aa81068221a43b0bcbab9c2dd405c4505b5753a9fe41cfa821b83"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "artifacts/benchmark_v2/results/real_qpu/c122_qonductor_oof/oof_predictions.csv",
+      "sha256": "a3fb6f3e981c72ea6a7ed9fff0312a8caebd33e036f71c286fa445696e587d49"
+    },
+    {
+      "path": "artifacts/benchmark_v2/results/real_qpu/c122_qonductor_oof/summary.json",
+      "sha256": "a728152a672a07daa00c7b035b7f75891a023b6f3b56a510de6efd6ca272f405"
+    }
+  ],
+  "scope": "Qonductor source polynomial candidate grid, all five frozen outer folds",
+  "status": "PASS"
+}

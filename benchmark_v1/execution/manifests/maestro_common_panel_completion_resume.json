@@ -1,0 +1,271 @@
+{
+  "schema_version": "maestro_partial_completion_policy_v1",
+  "manifest_id": "maestro-common-panel-completion-v3-partial-resume",
+  "method_id": "maestro_paper_described_reimplementation",
+  "variant_id": "entanglement_controlled_partial_resume",
+  "reader_label": "Maestro paper-described component adaptation",
+  "fidelity_class": "adaptation",
+  "status": "scientific_contract_locked",
+  "controlling_decision": "benchmark_v1/decisions/maestro_zero_state_width_control.md",
+  "decision_date": "2026-10-02",
+  "base_contract": {
+    "path": "benchmark_v1/execution/manifests/maestro_common_panel_completion_v3.json",
+    "sha256": "bc2a3bc150421698ff09e08a2055a40979f96d2965fe2dcb3e20402c1016574d",
+    "resolution": "Resolve the hash-pinned v3 contract and its hash-pinned v2 inheritance; apply only the explicit policies in this amendment. Keep base cell descriptors/QASM hashes and trace base cell IDs. Run, fit, panel and resume identities must contain this amendment ID/hash, resolved contract hash and final code/environment/context pins.",
+    "legacy_unchanged_v3_dispatch_allowed": false,
+    "resume_original_failed_v3_bundle_allowed": false
+  },
+  "evidence": {
+    "failed_bootstrap": {
+      "path": "artifacts/benchmark_v3/simulator/maestro_candidate_runtime_v3/calibration/run_manifest.json",
+      "sha256": "9e60bb86d08c0db51f76d1b50cc03bde68f6b69d1a7aa0e5f34ec2089c9a30c6"
+    },
+    "configuration_diagnosis": {
+      "path": "artifacts/benchmark_v3/simulator/maestro_candidate_runtime_v3/analysis/preparation_norm_diagnosis.json",
+      "sha256": "67dab7ed6f7ebb85104b18a1166c081c1be04fd9bfec3b4233dd65c88d7d742a"
+    },
+    "prefix_localization": {
+      "path": "artifacts/benchmark_v3/simulator/maestro_candidate_runtime_v3/analysis/preparation_norm_localization.json",
+      "sha256": "52b2712a56dc8f51663995a79ee320b07208d92d0d33d8cb980df9e62297f91b"
+    },
+    "evidence_role": "Untimed preparation failure evidence only; not accepted calibration, panel quality evidence or runtime coefficients",
+    "failed_partial_bootstrap": {
+      "path": "artifacts/benchmark_v3/simulator/maestro_candidate_runtime_partial/calibration/run_manifest.json",
+      "sha256": "f6fcb2f7b097df33196d5e5988a66273baf6e7c673419061e312c59de6625a23"
+    },
+    "failed_width_bootstrap": {
+      "path": "artifacts/benchmark_v3/simulator/maestro_candidate_runtime_width_control/calibration/run_manifest.json",
+      "sha256": "264c05887646872f866facbeb911e343f5eecadc7cee5132a626d4fe52c901f7"
+    },
+    "superseded_identity_bootstrap": {
+      "path": "artifacts/benchmark_v3/simulator/maestro_candidate_runtime_zero_measurement/calibration/run_manifest.json",
+      "sha256": "19c9effdfe4b90f7b1d42b996e243c34148e46979f68ba8c1db5e68914ab0278"
+    },
+    "superseded_identity_acceptance": {
+      "path": "artifacts/benchmark_v3/simulator/maestro_candidate_runtime_zero_measurement/calibration/acceptance.json",
+      "sha256": "1aed258d506bf06e5109efc546993ed08cb7afaa3e99c8459048d6de1a8620c5"
+    }
+  },
+  "preparation_policy": {
+    "vector_norm_atol": 1e-06,
+    "quarantined_configurations": [
+      {
+        "candidate": "mps_fixed_chi",
+        "width": 16,
+        "chi": 4,
+        "squared_norm": 1.0103465086424468
+      },
+      {
+        "candidate": "mps_fixed_chi",
+        "width": 16,
+        "chi": 8,
+        "squared_norm": 1.0233840565783576
+      },
+      {
+        "candidate": "mps_fixed_chi",
+        "width": 16,
+        "chi": 32,
+        "squared_norm": 1.014534378376247
+      }
+    ],
+    "quarantined_preflight": "Record unavailable from pinned evidence; preserve raw norm/hash/context. Do not compute an accepted Schmidt rank from rescaled amplitudes or repeat this control to restore eligibility.",
+    "remaining_preflight": "Run one untimed rank/norm/context pass on each of the other 27 candidate width/configuration controls and the six exact Qiskit references. Validate actual rank records, not a mocked aggregate status. All enabled controls must pass unchanged base checks.",
+    "zero_sampling_preflight": "Use the unchanged zero-gate sampling QASM with measurement on all wires for the untimed amplitude control at n16/chi4,8,32. Verify parsed width, full amplitude count, finite normalized amplitudes and zero-basis probability. Measurements preserve the exact zero state; no identity gate is introduced.",
+    "unexpected_failure": "Stop expansion, preserve the exact candidate/width/chi/QASM/numerical/context evidence and record a partial or failed run. Do not add exclusions or relax tolerance automatically.",
+    "native_library_changes_authorized": false,
+    "amplitude_rescaling_authorized": false
+  },
+  "calibration_policy": {
+    "assigned_cells": 432,
+    "quarantine_selector": {
+      "candidate": "mps_fixed_chi",
+      "width": 16,
+      "chis": [
+        4,
+        8,
+        32
+      ],
+      "affected_kinds": [
+        "operation",
+        "entangled_sampling_transfer_diagnostic"
+      ]
+    },
+    "quarantine_selector_rule": "Match candidate/width/chi and either kind=operation or allocation=entangled_sampling_transfer_diagnostic. Zero-state sampling is not matched.",
+    "quarantined_operation_cells": 27,
+    "quarantined_diagnostic_cells": 6,
+    "quarantined_total_cells": 33,
+    "eligible_primary_cells": 393,
+    "eligible_diagnostic_cells": 6,
+    "eligible_total_cells": 399,
+    "planned_timed_calls_if_complete": 5985,
+    "planned_untimed_calls_if_complete": 3591,
+    "planned_native_calls_if_complete": 9576,
+    "assigned_schedule_slots": 10368,
+    "quarantined_schedule_slots": 792,
+    "quarantine_reason": "synthetic_preparation_norm_failure",
+    "skip_encoding": "A skipped cell and all its scheduled slots remain in the allocation/terminal-status ledger as timing_status=not_started with the quarantine reason and empty times. They are not call_started or API attempt_result events and are never fabricated zero timings.",
+    "coefficients": "The two operation knots at n16 for each quarantined chi remain explicitly unavailable. Fit zero-state sampling independently if its controls and original timing/fit gates pass. Never extrapolate, bridge an invalid n knot, or interpolate across invalid chi knots.",
+    "model_selection_uses_panel_labels": false,
+    "retries_until_favorable_authorized": false
+  },
+  "pilot_policy": {
+    "first_ten": [
+      {
+        "candidate": "statevector",
+        "width": 16,
+        "chi": null,
+        "kind": "operation",
+        "operation_classes": [
+          "one_qubit_noncommuting",
+          "two_qubit_wrapper_control",
+          "two_qubit_cx_interleaved"
+        ],
+        "repeat_counts": [
+          256,
+          512,
+          1024
+        ],
+        "cells": 9
+      },
+      {
+        "candidate": "mps_fixed_chi",
+        "width": 12,
+        "chi": 32,
+        "kind": "operation",
+        "operation_classes": [
+          "one_qubit_noncommuting"
+        ],
+        "repeat_counts": [
+          512
+        ],
+        "cells": 1
+      }
+    ],
+    "pre_expansion_twenty": [
+      {
+        "candidate": "statevector",
+        "width": 16,
+        "chi": null,
+        "kind": "operation",
+        "operation_classes": [
+          "one_qubit_noncommuting",
+          "two_qubit_wrapper_control",
+          "two_qubit_cx_interleaved"
+        ],
+        "repeat_counts": [
+          256,
+          512,
+          1024
+        ],
+        "cells": 9
+      },
+      {
+        "candidate": "mps_fixed_chi",
+        "width": 12,
+        "chi": 32,
+        "kind": "operation",
+        "operation_classes": [
+          "one_qubit_noncommuting",
+          "two_qubit_wrapper_control",
+          "two_qubit_cx_interleaved"
+        ],
+        "repeat_counts": [
+          256,
+          512,
+          1024
+        ],
+        "cells": 9
+      },
+      {
+        "candidate": "statevector",
+        "width": 16,
+        "chi": null,
+        "kind": "sampling",
+        "shots": 1000,
+        "cells": 1
+      },
+      {
+        "candidate": "mps_fixed_chi",
+        "width": 12,
+        "chi": 32,
+        "kind": "sampling",
+        "shots": 1000,
+        "cells": 1
+      }
+    ],
+    "acceptance": "Every included pilot cell must pass the original within/between-session stability gates with all observations retained. Other nonpositive/unresolved/nonlinear coefficients remain unavailable. Timing/context/transport instability stops expansion.",
+    "pilot_ten_is_reused_in_twenty": true,
+    "pilot_timing_budget_seconds": 7200,
+    "budget_role": "Administrative monotonic deadline from the start of the first timed pilot call; no precision/session/repetition/quality change and no selection by accuracy. Stop before starting a new call after this budget if the twenty-cell gate is still unfinished. A completed call is retained.",
+    "remaining_time_estimate": "After 20 cells pass, record observed API-call wall time and estimate remaining complete-run cost, including process startup, then compare with the report cutoff. Report the estimate as uncertain. Do not fit simulator runtime using these wall-time estimates."
+  },
+  "panel_policy": {
+    "assigned_members": 204,
+    "source_qasm_hashes": 191,
+    "assigned_candidate_attempts": 408,
+    "candidate_shots": 1000,
+    "mps_configured_chi": 32,
+    "seed": 12345,
+    "mps_singular_value_threshold": 1e-08,
+    "exact_reference_fidelity_minimum": 0.99,
+    "vector_norm_atol": 1e-06,
+    "calibration_quarantine_is_not_panel_exclusion": true,
+    "execution_rule": "After successful enabled calibration/quality controls and accepted available/unavailable knot ledger, measure normalized executable panel cells even when prediction is unavailable. Validate the frozen ten-panel-cell pilot before expansion.",
+    "quality_rule": "Test actual panel amplitudes independently. A nonfinite/wrong-size/non-normalized candidate vector is quality_unavailable with its exact reason. A normalized finite vector below fidelity 0.99 is quality_failed. Retain any admissible completed timing diagnostically; neither state enters quality-qualified accuracy. Context/transport mismatch remains a global stop.",
+    "prediction_rule": "A circuit needing a quarantined or otherwise invalid operation coefficient has no prediction. Zero-count operations do not require that coefficient. No interpolation over missing n16/chi32 or replacement using chi16, v2 coefficients, another simulator, mirror fidelity or sampled agreement.",
+    "unstarted_rule": "All unstarted members at cutoff remain explicit not_started; do not label them scientifically unsupported. Accuracy denominators list the exact predicted/timed/quality-qualified row IDs and full assigned coverage.",
+    "error_comparison": "Same candidate, configuration, selected C++ clock and row IDs; reduce repetitions within sessions then sessions. Bootstrap by source QASM hash with the existing seed registry. No pooled cross-engine ranking."
+  },
+  "deadline_policy": {
+    "timezone": "Asia/Ho_Chi_Minh",
+    "no_new_timed_call_after": "2026-10-02T10:00:00+07:00",
+    "report_freeze_target": "2026-10-02T12:00:00+07:00",
+    "in_flight_rule": "Complete an already started call up to its unchanged 180-second timeout, checkpoint it, then aggregate. Do not forcibly discard a valid completed call.",
+    "incomplete_calibration": "Retain its full allocation and partial evidence; do not promote a partially timed calibration or start the panel without completed enabled calibration and its original fitting/control gates. Report Maestro as partial/unavailable and continue report packaging."
+  },
+  "execution_authority": {
+    "conditional_routine_execution_authorized": true,
+    "conditions": [
+      "Explicit amendment dispatch implemented",
+      "Static identities and all immutable evidence pins verified",
+      "Real validator integration and regression tests pass",
+      "Enabled untimed controls pass",
+      "Run-specific final code/native/config/context acceptance exists",
+      "Ten- and twenty-cell calibration gates pass before expansion",
+      "Ten-panel-cell quality/timing gate passes before panel expansion"
+    ],
+    "unsupported_dispatch_action": "Fail before any native/timed call; this policy is not input for the unchanged v3 branch",
+    "training_or_live_qpu_authorized": false,
+    "current_registry_or_historical_write_authorized": false,
+    "public_release_authorized": false
+  },
+  "outputs": {
+    "root": "artifacts/benchmark_v3/simulator/maestro_candidate_runtime_resume",
+    "calibration": "artifacts/benchmark_v3/simulator/maestro_candidate_runtime_resume/calibration",
+    "normalized_panel": "artifacts/benchmark_v3/simulator/maestro_candidate_runtime_resume/normalized_panel",
+    "measurement": "artifacts/benchmark_v3/simulator/maestro_candidate_runtime_resume/measurement",
+    "analysis": "artifacts/benchmark_v3/simulator/maestro_candidate_runtime_resume/analysis",
+    "overwrite_historical_outputs": false
+  },
+  "claim_boundary": "Partial-domain local Maestro-style component adaptation; preparation quarantine was selected on disjoint untimed synthetic controls, not panel runtime labels. Full predictor matrix remains incomplete if these or other methods lack results. Width-control correction affects only a disjoint untimed API control; no calibration or panel timing from either failed run is reused.",
+  "zero_state_control_policy": {
+    "policy_id": "untimed_zero_state_all_wire_measurement_v1",
+    "operation": "measure q -> c;",
+    "scope": "Use the unchanged zero-sampling QASM for a separate untimed amplitude API control. Measuring the exact zero state is deterministic and preserves it. All declared wires participate in operations, preventing both max-index width inference and active-wire compaction. No gates are added, and no timed probe, panel QASM, cell ID or timing allocation changes.",
+    "required_checks": [
+      "parsed_width_equals_declared_width",
+      "amplitude_count_equals_2_power_width",
+      "finite_amplitudes",
+      "squared_norm_within_original_tolerance",
+      "zero_basis_probability_within_original_tolerance"
+    ],
+    "failure_evidence": "Persist control QASM/hash, declared and parsed width, observed amplitude count/hash when available, norm, zero probability, actual worker context and transport result before stopping."
+  },
+  "execution_identity_policy": {
+    "policy_id": "canonical_identity_body_v1",
+    "run_manifest_identity_field": "run_identity stores the body whose canonical SHA256 equals the sibling run_identity_sha256",
+    "bootstrap_resume_checkpoint_consistency_required": true,
+    "old_preflight_reuse_allowed": false,
+    "scientific_sections_unchanged_from": "maestro-common-panel-completion-v3-partial-zero-measurement"
+  }
+}

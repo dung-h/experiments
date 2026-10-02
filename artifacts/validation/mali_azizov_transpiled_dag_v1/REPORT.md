@@ -1,6 +1,6 @@
 # Ma–Li flow on transpiled native DAGs
 
-English reading path: [`docs/FINDINGS_CLUSTERS.md`](../../../../docs/FINDINGS_CLUSTERS.md) (Cluster 1, Ma–Li × Azizov). Ignore `qpu_scratch_pilot/`.
+English reading path: [`docs/FINDINGS_CLUSTERS.md`](../../../docs/FINDINGS_CLUSTERS.md) (Cluster 1, Ma–Li × Azizov). Ignore `qpu_scratch_pilot/`.
 
 **Finding recorded:** 2026-09-22.
 

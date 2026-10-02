@@ -1,0 +1,55 @@
+{
+  "artifact_id": "sim-common-q16-manifest-v1-20260927",
+  "created_date": "2026-09-27",
+  "distinct_qasm_hashes": 191,
+  "duplicate_hash_groups": 13,
+  "duplicate_path_members": 13,
+  "families": 22,
+  "measurement_gate": "No simulator timing is authorized by this artifact; the engine-specific attempt manifest must be reviewed first.",
+  "ordered_member_digest": "d756e36d5c8af2ab582761c2556d44ff1ce6fbd3d479c6450c1571bc6e9a3d49",
+  "outputs": {
+    "manifest_csv": {
+      "path": "sim_common_q16_manifest.csv",
+      "sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e"
+    },
+    "manifest_json": {
+      "path": "manifest.json",
+      "sha256": "afef809b38e5b0f39b28b776dab921f3dc7c64ba9a8d7a31ae5a8a42f1b90b2b"
+    }
+  },
+  "panel_contract": {
+    "contract_id": "dataset-semantics-common-panels-v2-20260927",
+    "expected_families": 22,
+    "expected_ordered_member_digest": "d756e36d5c8af2ab582761c2556d44ff1ce6fbd3d479c6450c1571bc6e9a3d49",
+    "expected_rows": 204,
+    "expected_width_max": 16,
+    "expected_width_min": 2,
+    "panel_id": "sim_common_q16_v1",
+    "path": "benchmark_v1/protocol/common_evaluation_panels_v2.json",
+    "sha256": "04d97b86cb41dc22ce0f64e1b62530a66a15ac9a9d07512326517007a9a5925e"
+  },
+  "rows": 204,
+  "source_root": "/home/server/Documents/Quantum-Execution-Time-Prediction/data/quantum_circuits",
+  "status": "metadata_only_no_timing",
+  "stratum_counts": {
+    "core_q2_q9": 162,
+    "frontier_q10_q16": 42
+  },
+  "width_counts": {
+    "10": 17,
+    "11": 5,
+    "12": 6,
+    "13": 5,
+    "14": 4,
+    "15": 3,
+    "16": 2,
+    "2": 15,
+    "3": 22,
+    "4": 21,
+    "5": 22,
+    "6": 20,
+    "7": 22,
+    "8": 19,
+    "9": 21
+  }
+}
