@@ -125,7 +125,11 @@ unstarted simulator method work.  Routine workers may materialize manifests,
 validate source/hash joins, and prepare commands. They must not start a GPU
 job until the relevant strong-method gate is signed.
 
+The detailed Azizov local-core contract is
+`benchmark_v1/protocol/azizov_common_core_gnn_v1.json`. The Family-Aware and
+Maestro disposition is
+`benchmark_v1/decisions/S83_FAMILY_AWARE_AND_MAESTRO_ADJUDICATION_20261002.md`.
+
 The existing Maestro pilot is terminal at `pilot_gate_failed`. It cannot be
 resumed or enlarged. A new intervention design and a new decision are required
 before a new Maestro timing run.
-
