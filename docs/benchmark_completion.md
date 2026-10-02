@@ -68,6 +68,10 @@ every small task. Keep progress in this document's table and the run manifest.
 
 ## Commands and scheduling
 
+The commands below document the completed E1–E6 runs. Final reporting uses
+their saved outputs. Any future authorized rerun must use a new output
+directory and its own environment/measurement authorization.
+
 Run commands from the candidate repository root. The existing local CUDA
 interpreter is
 `/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python`;
@@ -75,7 +79,7 @@ verify the frozen environment before using it. The path is a local convenience,
 not a portable dependency declaration. The verification environment is
 `/home/server/Documents/.venv-qonductor/bin/python`.
 
-E3 has an existing runner; the new output directory below must not exist:
+The E3 output directory below now exists and is part of the review package:
 
 ```bash
 /home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python benchmark_v1/scripts/run_mps_fixed_chi16_runtime_adaptation_v1.py --action preflight --output-dir artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof

@@ -1,8 +1,10 @@
 # Results
 
-The [numerical tables](../artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3/README.md)
-contain the current results: 24 QPU result variants over 8,767 observations,
-comparisons by source and QPack workflow, and separate simulator results.
+The [QPU and measurement tables](../artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3/README.md)
+contain 24 QPU result variants over 8,767 observations, comparisons by source
+and QPack workflow, and historical simulator measurements. The current
+[E6 predictor tables](../artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/aggregate_manifest.json)
+separately report the new Aer and fixed-MPS predictor evaluations.
 Variants include raw and calibrated estimates; they are not 24 distinct
 paper methods.
 
@@ -202,6 +204,10 @@ It contains one score table per target, exact-hash coverage, 28 paired
 comparisons (18 Aer, 10 MPS), method cards, and source hashes. Each interval is
 based on 10,000 paired exact-QASM-hash bootstrap replicates. No row-level
 predictions or errors are pooled across engines.
+These are pointwise exploratory intervals over saved OOF fits; the 28
+comparisons have no multiplicity adjustment and do not include retraining
+uncertainty. See the [scientific review](scientific_review.md) for the current
+method matrix and report claims.
 
 | Target and evaluated method | Scored / assigned hashes | MAE (s) | R² | Interpretation |
 | --- | ---: | ---: | ---: | --- |

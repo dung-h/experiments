@@ -62,7 +62,8 @@ hardware measurement. The complete original source circuit collections are
 not included. See the
 [validation record](docs/reproduction_validation.md).
 
-The `benchmark-review` branch is shared for review at the author's request.
+The current E1–E6 package is on `presentation-review`; `benchmark-review`
+contains the earlier review package. Branch sharing is at the author's request.
 Three large CSVs are stored as row-aligned parts smaller than 48 MiB. One
 command restores the originals and checks their hashes; Git LFS is not
 required. The reproduction guide includes the clone commands. This is not a
@@ -72,6 +73,9 @@ unselected; complete external source archives remain excluded. The
 [earlier release decision](benchmark_v1/S56_WAVE5_RELEASE_LICENSE_AND_PROVENANCE_DECISION_V1.md)
 records the remaining licensing and provenance questions. Publishing this
 review branch does not change `CURRENT.json` or grant new data licenses.
+
+The [scientific review and routine-agent handoff](docs/scientific_review.md)
+lists the current method matrix, supported findings and remaining release work.
 
 ## Earlier studies
 

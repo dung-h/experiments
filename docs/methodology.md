@@ -5,9 +5,10 @@ simulator measurements. QPU and simulator results are separate. Each
 comparison identifies its test rows, the part of execution being timed,
 circuit representation and train/test split. The
 [method registry](../benchmark_v1/registry/method_fidelity_registry_v2.json)
-records how each implementation differs from its source paper;
-[`CURRENT.json`](../benchmark_v1/registry/CURRENT.json) identifies the
-versions used by the report.
+records historical method identities and deviations;
+[`CURRENT.json`](../benchmark_v1/registry/CURRENT.json) identifies those
+registered versions. New E1–E6 local predictors have their own method cards
+in the E6 aggregate; they have not been promoted into that registry.
 
 The reader-facing construction and comparison rules are pinned in the
 [unified benchmark contract](../benchmark_v1/decisions/S82_UNIFIED_BENCHMARK_CONTRACT_20261002.md).
@@ -229,7 +230,7 @@ neural seeds, the prescribed rowwise median prediction and per-seed metrics;
 three seeds describe observed training variability, not a precise estimate
 of all initialization uncertainty.
 
-For new paired summaries use 1,000 bootstrap replicates and percentile 95%
+For QPU source/workflow paired summaries use 1,000 bootstrap replicates and percentile 95%
 intervals, recording the registered `20260925-bootstrap` stream, derived
 seed and group column in the output manifest. Sample entire frozen leakage
 groups with replacement within each source; every sampled group brings all
@@ -310,7 +311,6 @@ identifies the files; no circuit was invented to fill a rectangular grid.
 | Approach | Current evaluated scope | Implementation limit |
 | --- | --- | --- |
 | Ma–Li-style local Aer graph adaptation | Existing OOF predictions on 162 Aer core members / 150 QASM hashes | Three-layer graph plus seven-feature branch adapted to frozen local Aer warm labels; not original Ma–Li or Azizov GNN |
-| Qonductor polynomial | Unified QPU adaptation and separately scoped source-local results | Grouped evaluation/common features change source estimator protocol |
 | Azizov-style common-core adaptation | Three source/hybrid/transpiled GNN views and five classical estimators per view, all five folds on the same 150 Aer hashes | Explicit local 51/64/51 feature contract; one FakeSherbrooke/Opt1 cell, not the paper's 1,402-circuit, two-backend, four-optimization-level experiment |
 | Family-Aware-inspired residual | Completed fixed-MPS runtime-only residual model and family-agnostic ablation on 150 hashes | Not the paper's joint runtime-quality method; no approximation ladder or family-OOD claim |
 | Maestro | Existing component calibration plus parser/prediction preflight on 204 panel members | Preflight only: no candidate timing or score; paper-exact Composer unavailable |
@@ -326,6 +326,9 @@ labels and the fixed CUDA-Q MPS FP64 bond-16 warm-state labels. A prediction's
 `evaluation_target_clock` in the [E6 aggregate](../artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/aggregate_manifest.json).
 The table reports MAE in seconds and R² against each cell's own target; rows
 from the two engines are not rankable against each other.
+E6 uses 10,000 paired exact-hash bootstrap replicates. Its 28 pointwise
+intervals are exploratory and unadjusted for multiple comparisons, and
+condition on the saved fitted models rather than repeated training.
 
 | Target cell | Method | Scored hashes | MAE (s) | R² |
 | --- | --- | ---: | ---: | ---: |

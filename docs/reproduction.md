@@ -30,10 +30,13 @@ reproducible while the S56 rights/provenance gate is open.
 
 Clone the review branch, then restore the three large CSVs from their
 row-aligned parts. Python's standard library is sufficient; Git LFS is not
-required.
+required. The E1–E6 local clone validation was performed at commit `461cc6e`.
+For a remote clone, check `git rev-parse HEAD` and confirm that the E6
+aggregate is present; local verification does not establish that later edits
+have already been pushed to GitHub.
 
 ```bash
-git clone --branch benchmark-review https://github.com/dung-h/experiments.git
+git clone --branch presentation-review https://github.com/dung-h/experiments.git
 cd experiments
 python3 scripts/materialize_csv_parts.py
 python3 scripts/verify_release_inventory.py

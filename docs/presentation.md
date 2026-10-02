@@ -1,10 +1,13 @@
 # Nội dung khoa học cho báo cáo benchmark
 
 Phạm vi: báo cáo nội bộ khoảng 10 phút, tiếng Việt. Đây là nguồn nội dung duy
-nhất cho deck; không tạo một outline/version song song. Số liệu phải lấy từ
+nhất cho deck; không tạo một outline/version song song. Số liệu QPU lấy từ
 `benchmark_v1/execution/manifests/report_finalization.json` và artifact mà nó
-pin. Bản manifest này khóa bằng chứng số, không khóa cách diễn giải hay bố cục
-slide. Không training, đo thêm hoặc thử seed mới trong queue dựng báo cáo.
+pin. Kết quả predictor simulator E1–E6 lấy từ
+`artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/aggregate_manifest.json`
+và method cards tại đó; report manifest cũ chưa bao gồm các run này.
+[Scientific review](scientific_review.md) chốt bảng phương pháp và giới hạn
+claim hiện tại. Không training, đo thêm hoặc thử seed mới trong queue dựng báo cáo.
 
 ## Thông điệp chính
 
@@ -102,11 +105,46 @@ hoặc ngưỡng do Maestro paper công bố.
 
 Status `pilot_gate_failed`, không resume. 432 assigned calibration cells:
 10 completed, 389 eligible unstarted, 33 quarantined. Panel 204 members/
-408 candidate attempts chưa chạy; không có accepted predictor/MAE score.
+408 candidate cells đã có parser/prediction preflight nhưng chưa có phép đo
+runtime held-out tương ứng; không có accepted predictor/MAE score.
 Clock là reported execution trong fresh process, không gọi warm persistent
 process. Chưa xác định nguyên nhân variation; không đổ lỗi cho threading,
 hardware hay thuật toán khi chưa có intervention evidence. Không suy Maestro
 paper predictor thất bại trên common panel từ pilot này.
+
+### 6. Aer: compiled-view GNN tốt hơn source-view trên cell đã test; so với XGBoost chưa có kết luận
+
+Trên cùng 150 exact-QASM hashes, source/hybrid/transpiled GNN có MAE
+0.4497 / 0.4064 / 0.3008 s. Transpiled XGBoost có MAE 0.2970 s.
+Chênh source − transpiled GNN là +0.1489 s, khoảng 95%
+[+0.0284,+0.3039]; chênh transpiled GNN − XGBoost là +0.0037 s,
+khoảng [−0.1726,+0.1324]. Cả ba GNN dùng median predictions của seeds
+42, 1234, 31415 và năm outer folds; không chọn seed tốt nhất.
+
+Nguồn: E6 `aer_azizov_hash_metrics.csv` và
+`aer_azizov_paired_bootstrap.csv`. Đây là local Azizov-style adaptations
+trên một FakeSherbrooke/Opt1 context, không phải reproduction toàn scope paper.
+Các views có feature contract khác nhau; không quy kết riêng topology graph.
+
+### 7. MPS: graph có kết quả local tốt; lợi ích bổ sung từ family chưa được xác lập
+
+Fixed CUDA-Q MPS FP64 bond-16 có 150 assigned hashes, 144 runtime labels hữu
+hạn, 142 quality-pass và sáu unavailable. Trên 144 finite labels, graph MAE
+0.3024 s; family residual 1.0009 s; family-agnostic ablation 1.0813 s.
+Residual − ablation = −0.0804 s, khoảng [−0.2852,+0.0804] đi qua zero.
+Trên 142 quality-pass labels, graph MAE 0.3037 s nhưng max error 25.0964 s.
+
+Nguồn: E6 `mps_fixed_chi16_hash_metrics.csv`,
+`mps_fixed_chi16_paired_bootstrap.csv` và E3
+`mps_quality_pass_metrics_v1.json`. Các model được train cùng split và target;
+quality-pass là lát đánh giá của model đã fit, không phải một run train mới.
+Family residual chỉ dự đoán runtime tại cấu hình cố định; joint
+approximation/runtime target gốc vẫn chưa có score tương thích.
+
+Các CI simulator dùng 10.000 paired hash-bootstrap replicates, là khoảng
+pointwise exploratory trên các OOF predictions đã fit. Không có điều chỉnh
+28 phép so sánh hoặc bootstrap retraining; không trình bày như kiểm định
+confirmatory thắng mọi model.
 
 ## Bố cục deck 10 slide — dữ liệu trước, kết quả sau
 
@@ -132,12 +170,13 @@ paper predictor thất bại trên common panel từ pilot này.
 7. **Real-QPU analytical:** Qiskit/QCRE scheduled proxies, Scholten nominal
    throughput và Hyb-HANAS effective-cost ở bảng diagnostic riêng. Hiện đồng
    thời evaluation-target clock và method-output clock.
-8. **Simulator method results:** Aer local graph/Ridge/GBR core; cuTensorNet
-   estimate/actual cùng selected plan; CUDA-Q coverage và MPS quality failures.
-   Phân biệt engine đã đo với predictor đã benchmark.
-9. **Methods chưa có score hợp lệ:** Azizov GNN chưa có signed local run,
-   Family-Aware thiếu label chung phù hợp, Maestro pilot gate failed; Pasqal là
-   analog companion, không phải digital-QASM row.
+8. **Simulator predictor results:** Hai bảng riêng: Aer source/hybrid/transpiled
+   GNN và classical baselines trên 150 hashes; fixed-MPS graph/Ridge/residual
+   trên 144 finite và companion 142 quality-pass. Nêu paired intervals và tail.
+9. **Native diagnostics và methods chưa có score:** cuTensorNet estimate/actual
+   cùng plan; Pasqal analog companion; Maestro pilot gate failed. Azizov local
+   adaptation đã test nhưng chưa reproduce paper-wide scope; Family-Aware
+   runtime-only adaptation đã test nhưng joint target gốc chưa có score.
 10. **Kết luận và claims có giới hạn:** các finding được hỗ trợ, bằng chứng
     giới hạn chúng, và execution gates bắt buộc trước khi promote method còn
     thiếu.
@@ -161,14 +200,17 @@ quality/OOM/timeout; reproduction commands; public-release rights gates.
 - Ma–Li hybrid adaptations có DAG branch và global MLP branch, không phải
   pure graph model. Source-native 340 và Qonductor source-native 4.482 không
   được đưa thành unified 8.767 evaluations; unstable fold phải giữ nguyên.
-- Family-aware local joint task, Azizov common-panel GNN, original Maestro
+- Family-aware local joint task, Azizov paper-wide scope, original Maestro
   Composer predictor và digital-Pasqal comparison chưa có đủ evaluated evidence.
+  Azizov common-core GNN và fixed-MPS runtime-only residual adaptations đã
+  có five-fold OOF evidence và phải xuất hiện trong bảng simulator hiện tại.
 - Không gọi independent validation PASS là đầy đủ replication/public release.
 
 ## Chỉ dẫn cho agent dựng slide
 
-F-C1 phải sinh và validate final pack v3 trước khi chèn số cuối. F-C4 có thể
-dựng tối đa bốn figure hữu ích; không cần vẽ đủ mọi finding. Giữ units, row set,
-clock, caption và nguồn ngay trong notes. Dùng đúng brief này, không chọn seed
-tốt nhất, không tự thêm số hoặc lời giải thích causal. F-C5 xuất PPTX/PDF và
-render QA; F-S4 duyệt sau khi có bảng/package/deck, không ký sẵn.
+Theo [handoff hiện tại](scientific_review.md#routine-agent-work-now-unlocked),
+C1 dùng QPU pack và E6 để chuẩn bị hai bảng kết quả. C2/C4 có thể dựng figures
+và deck song song sau khi bảng được kiểm tra; tối đa bốn figure hữu ích.
+Giữ units, row set, clock, caption và nguồn ngay trong notes. Không chọn seed
+tốt nhất hoặc tự thêm lời giải thích causal. Xuất PPTX/PDF và render QA;
+final review kiểm tra deck thực tế sau khi dựng.

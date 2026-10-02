@@ -2,8 +2,8 @@
 
 ## Current E1–E6 review-package clone — 2026-10-02
 
-The current `presentation-review` candidate was cloned with `git clone
---no-local` into a fresh directory. The clone restored the three
+The E1–E6 `presentation-review` package at commit `461cc6e` was cloned with
+`git clone --no-local` into a fresh directory. The clone restored the three
 row-partitioned CSVs, validated the complete inventory, and rebuilt the E6
 Aer/MPS aggregate from the committed predictions. The aggregate output was
 byte-identical to its committed artifact.
