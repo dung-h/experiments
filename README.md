@@ -12,6 +12,7 @@ measure different parts of execution.
 - [Methodology](docs/methodology.md): datasets, circuit reconstruction,
   train/test splits, and differences from the original papers.
 - [Results](docs/results.md): comparisons, findings, and unfinished evaluations.
+- [Method-by-dataset table](artifacts/benchmark_v3/results/reader_method_dataset_table.csv): compact cross-track view with target/output clocks, coverage, and method status.
 - [Simulator predictor aggregate](artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/aggregate_manifest.json): separate Aer and fixed-MPS OOF scores, coverage, paired intervals, and method cards.
 - [Reproduction](docs/reproduction.md): commands to rebuild the tables from
   the included predictions and measurements.
@@ -53,14 +54,14 @@ these assumptions and their consequences.
 
 ## Reproduction and publication status
 
-A clean clone of the current review-package candidate rebuilt its documented
-tables from frozen predictions and measurements. This is **table
-reproduction**, not retraining from every original dataset or repeating
-hardware measurements. It covers the E1–E6 simulator-predictor aggregate and
-the regression suite, but not a fresh dependency installation, retraining, or
-hardware measurement. The complete original source circuit collections are
-not included. See the
-[validation record](docs/reproduction_validation.md).
+The E1–E6 package at commit `461cc6e` passed a local clean-clone table rebuild;
+the validation record distinguishes that older receipt from the current
+reporting overlay. The present table/presentation additions are being checked
+in the final C6 clone pass. These checks are **table reproduction**, not
+retraining from every original dataset or repeating hardware measurements.
+They do not establish a fresh dependency installation, retraining, or hardware
+measurement. The complete original source circuit collections are not
+included. See the [validation record](docs/reproduction_validation.md).
 
 The current E1–E6 package is on `presentation-review`; `benchmark-review`
 contains the earlier review package. Branch sharing is at the author's request.
@@ -72,7 +73,9 @@ benchmark is complete. Repository licensing and citation metadata remain
 unselected; complete external source archives remain excluded. The
 [earlier release decision](benchmark_v1/S56_WAVE5_RELEASE_LICENSE_AND_PROVENANCE_DECISION_V1.md)
 records the remaining licensing and provenance questions. Publishing this
-review branch does not change `CURRENT.json` or grant new data licenses.
+review branch does not change `CURRENT.json` or grant new data licenses. See
+[third-party notices and unresolved rights](docs/third_party_notices.md)
+before redistributing bundled datasets, snapshots, or derived artifacts.
 
 The [scientific review and routine-agent handoff](docs/scientific_review.md)
 lists the current method matrix, supported findings and remaining release work.

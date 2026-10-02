@@ -37,17 +37,17 @@ paper method.
 ## Routine queue
 
 Execution update (2026-10-02): E1–E6 are complete and validated. E7's reader
-documentation is updated and links both domains without merging their clocks;
-artifact-local method cards are present, while the reader-facing fidelity
-registry and `CURRENT.json` are deliberately unchanged pending review. E8's
-supported aggregate rebuild and tests pass in this workspace and in a fresh
-local clone of the review-package candidate. The clone materialized the three
-row-partitioned CSVs, verified 1,469 inventory hashes, rebuilt E6
-byte-identically, passed 155 tests, and remained clean afterwards. It is a
-table-rebuild validation only: it does not freshly install dependencies,
-retrain models, or repeat simulator/QPU measurements. The release inventory
-records the retained evidence and omitted local intermediates; no broad source
-workspace cleanup was performed.
+documentation links both domains without merging their clocks; artifact-local
+method cards are present, while the reader-facing fidelity registry and
+`CURRENT.json` are unchanged. E8's local clean-clone receipt covers package
+commit `461cc6e`: it restored the three row-partitioned CSVs, verified 1,469
+inventory hashes, rebuilt E6 byte-identically, passed 155 tests, and left the
+clone clean. This check reused the documented local Python 3.10.21 verification
+interpreter; it did not freshly install dependencies, retrain models, or repeat
+simulator/QPU measurements. Later reporting edits are documented at the
+current `presentation-review` HEAD and need the final C6 clone/inventory pass
+after C1–C5 changes settle. The release inventory lists retained evidence and
+omitted local intermediates; no broad source-workspace cleanup was performed.
 
 | ID | Work | Outcome |
 | --- | --- | --- |
@@ -58,7 +58,7 @@ workspace cleanup was performed.
 | E5 | Run fixed-MPS Family-Aware-inspired residual adaptation and family-agnostic ablation | Complete. Five folds on the same frozen MPS labels; not the original joint runtime/quality method or a family-OOD test. |
 | E6 | Aggregate hash-level metrics, paired uncertainty, coverage and method cards | Complete. Separate Aer and MPS results; 18 Aer and 10 MPS paired comparisons, each with 10,000 bootstrap replicates. No cross-clock pooling or imputation. |
 | E7 | Update reader-facing result/method disclosures | Content complete in `README.md`, `docs/results.md`, `docs/methodology.md` and `docs/reproduction.md`; E6 method cards remain pinned in its manifest. Historical packs and `CURRENT.json` were not rewritten. Registry promotion remains a review action, not silently applied. |
-| E8 | Verify rebuild/reproducibility and package boundary | In-workspace and fresh-local-clone aggregate rebuild, artifact hashes and full test suite pass. The clone validates the packaged table-rebuild path, not a fresh dependency install, retraining, hardware rerun, or redistribution of unavailable external inputs. |
+| E8 | Verify rebuild/reproducibility and package boundary | Package commit `461cc6e` passed the local clone, inventory, aggregate, artifact and full-suite checks described above. Repeat C6 after the current documentation and public-staging changes settle; the existing clone does not validate a fresh dependency install, retraining, hardware rerun, or redistribution of unavailable external inputs. |
 
 Implement missing runners as ordinary maintained scripts in
 `benchmark_v1/scripts/`, with meaningful tests under `benchmark_v1/tests/`.

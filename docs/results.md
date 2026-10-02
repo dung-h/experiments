@@ -8,6 +8,12 @@ separately report the new Aer and fixed-MPS predictor evaluations.
 Variants include raw and calibrated estimates; they are not 24 distinct
 paper methods.
 
+For a single compact method-by-dataset overview across both tracks, see the
+[reader method table](../artifacts/benchmark_v3/results/reader_method_dataset_table.csv).
+It preserves the evaluation target clock, method output clock, assigned/scored
+counts and fidelity/status label; analytical QPU rows are source-stratified
+diagnostics, not pooled runtime scores.
+
 QPU models are evaluated against recorded execution/service time. Simulator
 comparisons specify the engine and the part of execution being timed. The
 tables retain failures and missing predictions in their coverage counts.

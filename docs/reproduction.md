@@ -12,9 +12,11 @@ The current scientific completion queue is
 table rebuilds from newly designed predictor runs. A locked protocol is not
 evidence that its feature extraction, training or accuracy evaluation finished.
 
-The current `presentation-review` candidate has been tested in a fresh local
-clone; its receipt is in [reproduction validation](reproduction_validation.md).
-The previously published GitHub-clone receipt predates the E1–E6 additions.
+The local clean-clone receipt in [reproduction validation](reproduction_validation.md)
+covers package commit `461cc6e`. The current `presentation-review` HEAD may
+contain later documentation changes, so the final C6 handoff must refresh the
+clone receipt after those edits settle. The older GitHub-clone receipt predates
+the E1–E6 additions and is evidence only for that earlier package.
 The procedure rebuilds metrics, not the full experiment from every original
 dataset. The complete
 Ma–Li logical QASM corpus and Qonductor `circuits.zip`/database export are not bundled; the
@@ -28,12 +30,15 @@ reproducible while the S56 rights/provenance gate is open.
 
 ## Verify and rebuild the scorecard
 
-Clone the review branch, then restore the three large CSVs from their
-row-aligned parts. Python's standard library is sufficient; Git LFS is not
-required. The E1–E6 local clone validation was performed at commit `461cc6e`.
-For a remote clone, check `git rev-parse HEAD` and confirm that the E6
-aggregate is present; local verification does not establish that later edits
-have already been pushed to GitHub.
+After the review branch is pushed, clone it and record `git rev-parse HEAD`.
+The remote command below is therefore a future reviewer command; it does not
+claim that the current local HEAD is already available on GitHub. To validate
+an unpushed local candidate, use
+`git clone --no-local --branch presentation-review /path/to/publish_candidate /tmp/qre-review-clone` instead. Then restore the
+three large CSVs from their row-aligned parts. Python's standard library is
+sufficient for restoration; Git LFS is not required. The existing local receipt
+covers `461cc6e`; it does not cover later documentation edits at the current
+HEAD.
 
 ```bash
 git clone --branch presentation-review https://github.com/dung-h/experiments.git

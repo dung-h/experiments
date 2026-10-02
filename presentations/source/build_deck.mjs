@@ -1,19 +1,19 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { Presentation, PresentationFile } from "@oai/artifact-tool";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "../..");
-// Rebuilds stay outside the committed snapshot. Existing exports are never overwritten.
-const workspaceDir = path.join(repoRoot, "work/presentation-deck");
+// Editable review export: keep it separate from the historical deck.
+const workspaceDir = repoRoot;
 const scorecardDir = path.join(
   repoRoot,
   "artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3",
 );
 const figureDir = path.join(repoRoot, "presentations/figures");
-const buildDir = path.join(workspaceDir, ".build");
-const outputDir = path.join(workspaceDir, "output");
+const predictiveFigureDir = path.join(repoRoot, "presentations/figures_v2");
+const buildDir = path.join(repoRoot, "work/presentation-deck-review/.build-v5");
+const outputDir = path.join(repoRoot, "presentations/benchmark_review");
 const finalPptx = path.join(outputDir, "quantum_runtime_benchmark_vi.pptx");
 const skillDir = process.env.SKILL_DIR;
 try {
@@ -26,6 +26,9 @@ try {
 if (!path.isAbsolute(skillDir ?? "")) {
   throw new Error("Set SKILL_DIR to the installed Presentations skill directory.");
 }
+
+const { importRuntimeModule } = await import(pathToFileURL(path.join(skillDir, "container_tools/runtime_helpers.mjs")).href);
+const { Presentation, PresentationFile } = await importRuntimeModule("@oai/artifact-tool");
 
 const { resolvePresentationFont, applyPresentationChartFont, finalizePresentation } =
   await import(pathToFileURL(path.join(skillDir, "container_tools/artifact_tool_utils.mjs")).href);
@@ -54,13 +57,14 @@ async function requireFigures() {
   const files = {
     qpu: "fig1_qpu_paired_mae_by_source.png",
     coverage: "fig2_qpu_prediction_coverage.png",
-    mps: "fig3_cudaq_mps_quality_gated_clocks.png",
     maestro: "fig4_maestro_pilot_timing_spread.png",
+    aerAccuracy: "fig1_aer_paired_predictor_contrasts.png",
+    mpsAccuracy: "fig2_mps_paired_predictor_contrasts.png",
   };
   const missing = [];
-  for (const filename of Object.values(files)) {
+  for (const [key, filename] of Object.entries(files)) {
     try {
-      await fs.access(path.join(figureDir, filename));
+      await fs.access(path.join(key.endsWith("Accuracy") ? predictiveFigureDir : figureDir, filename));
     } catch {
       missing.push(filename);
     }
@@ -147,8 +151,8 @@ function addTable(slide, values, position, opts = {}) {
   return table;
 }
 
-async function addFigure(slide, filename, alt, position) {
-  const bytes = new Uint8Array(await fs.readFile(path.join(figureDir, filename)));
+async function addFigure(slide, filename, alt, position, sourceDir = figureDir) {
+  const bytes = new Uint8Array(await fs.readFile(path.join(sourceDir, filename)));
   slide.images.add({
     blob: bytes,
     contentType: "image/png",
@@ -171,6 +175,7 @@ function addBody(slide, text, position, style = {}) {
 
 const figures = await requireFigures();
 await fs.access(path.join(figureDir, "README.md"));
+await fs.access(path.join(predictiveFigureDir, "README.md"));
 
 // 1. Cover and scope.
 {
@@ -210,16 +215,16 @@ await fs.access(path.join(figureDir, "README.md"));
     `Panel simulator: ${path.relative(repoRoot, path.join(scorecardDir, "simulator/common_exact_qasm_panel.csv"))}\n` +
     "QPU nguồn có 340 Ma–Li, 4.482 Qonductor và 3.945 QPack observations. Simulator gồm 204 members, 191 exact hashes, 162 core và 42 frontier. QPU observed service, QPU scheduled duration và local simulator execution là các clock riêng.");
   addTable(slide, [
-    ["Miền", "Đơn vị dữ liệu", "Phạm vi"],
-    ["QPU Ma–Li", "340 observations", "Nguồn riêng"],
-    ["QPU Qonductor", "4.482 observations", "Nguồn riêng"],
-    ["QPU QPack", "3.945 observations", "46 workflows"],
-    ["Tổng QPU", "8.767 observations", "Labels archived"],
-    ["Simulator local", "204 members / 191 hashes", "162 core + 42 frontier"],
-  ], { left: 70, top: 145, width: 1140, height: 410 }, { fontSize: 22, headerFontSize: 22, columnWidths: [230, 370, 540] });
-  addBody(slide, "Đây là hai domain với target và clock riêng, không phải một leaderboard phẳng.", {
-    left: 76, top: 580, width: 1100, height: 50,
-  }, { fontSize: 23, bold: true, color: C.teal });
+    ["Nguồn / panel", "Quy mô", "Circuit hoặc label được dùng"],
+    ["Real QPU · Ma–Li", "340 observations", "Logical QASM; observed execution labels"],
+    ["Real QPU · Qonductor", "4.482 observations", "Submitted physical QASM; one-circuit jobs"],
+    ["Real QPU · QPack", "3.945 observations", "46 workflows; reconstructed inputs, labels archived"],
+    ["Unified QPU ledger", "8.767 observations", "Join giữ source ID và row identity; không đồng nhất timing boundary"],
+    ["Simulator local", "204 members / 191 hashes", "22 families; q2–q16; 162 core + 42 frontier"],
+  ], { left: 70, top: 142, width: 1140, height: 430 }, { fontSize: 19, headerFontSize: 20, columnWidths: [245, 290, 605] });
+  addBody(slide, "Local RTX 5070 Ti · ~45 GiB RAM / 16 GiB VRAM. QPU service ≠ schedule ≠ simulator wall-clock.", {
+    left: 76, top: 590, width: 1100, height: 46,
+  }, { fontSize: 22, bold: true, color: C.teal });
 }
 
 // 3. Comparison design.
@@ -248,14 +253,14 @@ await fs.access(path.join(figureDir, "README.md"));
     `Full 24-variant detail: ${path.relative(repoRoot, path.join(figureDir, figures.coverage))}; metadata in ${path.relative(repoRoot, path.join(figureDir, "README.md"))}`);
   addTable(slide, [
     ["QPU approach", "Evidence status", "Simulator approach", "Evidence status"],
-    ["Ma–Li graph", "Unified adaptation; V3 and V3-large", "Ma–Li local graph", "162 core rows; supplementary diagnostic"],
-    ["Qonductor", "Unified polynomial adaptation", "Azizov", "Classical adaptations only"],
-    ["Scholten", "Nominal proxy; 5,769 / 8,767", "Family-aware", "Local joint task not evaluated"],
+    ["Ma–Li graph", "Unified adaptation; 8,763–8,766 / 8,767", "Ma–Li-style graph", "Aer + fixed-MPS local adaptations"],
+    ["Qonductor", "Unified polynomial adaptation; 8,767 / 8,767", "Azizov-style", "Source / hybrid / transpiled GNN + baselines"],
+    ["Scholten", "Nominal proxy; 5,769 / 8,767", "Family-Aware-style", "MPS runtime-only residual; joint target unavailable"],
     ["QCRE", "Scheduled proxy; 8,766 / 8,767", "Maestro", "Pilot gate failed; no predictor score"],
-    ["Qiskit estimate_duration", "Native schedule; 8,766 / 8,767", "cuTensorNet", "Same-plan estimate; 603 / 612 ok"],
-    ["Hyb-HANAS", "One-circuit cost adaptation; 8,420 finite", "Pasqal emu-MPS", "Analog pilot not promoted"],
+    ["Qiskit estimate_duration", "Native schedule; 8,766 / 8,767", "cuTensorNet", "Native same-plan estimate / actual diagnostic"],
+    ["Hyb-HANAS", "One-circuit cost adaptation; 8,420 finite", "Pasqal emu-MPS", "Analog companion; not digital common panel"],
   ], { left: 64, top: 148, width: 1152, height: 450 }, { fontSize: 17, headerFontSize: 18, columnWidths: [205, 345, 210, 392] });
-  addBody(slide, "24 QPU variants are not 24 papers. Coverage is not accuracy; output clocks differ.", {
+  addBody(slide, "MPS runtime-only adaptation was evaluated; 24 QPU variants are not 24 papers. Coverage ≠ accuracy.", {
     left: 70, top: 615, width: 1125, height: 38,
   }, { fontSize: 21, color: C.teal, bold: true });
 }
@@ -358,29 +363,41 @@ await fs.access(path.join(figureDir, "README.md"));
   }, { fontSize: 23, bold: true, color: C.teal });
 }
 
-// 8. Simulator execution and quality.
+// 8. Aer predictor accuracy.
 {
-  const slide = newSlide("Simulator: coverage và quality gate", 8,
-    `Figure: ${path.relative(repoRoot, path.join(figureDir, figures.mps))}\n` +
-    `Figure captions/metadata: ${path.relative(repoRoot, path.join(figureDir, "README.md"))}\n` +
-    `Availability: ${path.relative(repoRoot, path.join(scorecardDir, "simulator/availability_matrix.csv"))}\n` +
-    `Per-configuration metrics: ${path.relative(repoRoot, path.join(scorecardDir, "simulator/per_configuration_metrics.csv"))}\n` +
-    `Panel identities: ${path.relative(repoRoot, path.join(scorecardDir, "simulator/common_exact_qasm_panel.csv"))}\n` +
-    "Counts are session-cells, not unique circuits. Keep engine, precision, first/warm clock, quality and failure states separate. CUDA-Q MPS quality failures remain execution attempts and are not dropped from coverage. cuTensorNet's selected-plan estimate is paired to same-plan contraction, not compared to full wall-clock of another simulator.");
-  await addFigure(slide, figures.mps, "CUDA-Q MPS clock and quality-gate comparison, keeping first and warm sessions separate", {
-    left: 70, top: 136, width: 1140, height: 426,
-  });
-  addBody(slide, "MPS: 612 session-cells per clock, 573 ok, 21 quality_failed, 18 adapter_error. TN: 612 sessions, 603 ok, 9 timeout.", {
-    left: 74, top: 574, width: 1120, height: 38,
-  }, { fontSize: 19, color: C.ink2 });
-  addBody(slide, "Panel 204 members / 191 exact hashes. Failures remain in coverage; session-cells are not distinct circuits.", {
-    left: 74, top: 615, width: 1120, height: 38,
-  }, { fontSize: 19, color: C.teal, bold: true });
+  const e6Dir = "artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1";
+  const slide = newSlide("Aer: predictor trên 150 circuit hashes", 8,
+    `Aer figure: ${path.relative(repoRoot, path.join(predictiveFigureDir, figures.aerAccuracy))}\n` +
+    `Figure evidence/captions: ${path.relative(repoRoot, path.join(predictiveFigureDir, "README.md"))}\n` +
+    `E6 aggregate and method cards: ${path.relative(repoRoot, path.join(repoRoot, e6Dir, "aggregate_manifest.json"))}\n` +
+    "Target: noisy Aer warm execution on the same 150 exact-QASM hashes. Source/hybrid/transpiled GNN MAE 0.4497/0.4064/0.3008 s; transpiled XGBoost 0.2970 s. Paired delta GNN−XGBoost +0.0037 s, 95% pointwise hash-bootstrap CI [−0.1726,+0.1324], unresolved. Three-seed median predictions, five frozen outer folds. Intervals are exploratory and conditional on fits. Local FakeSherbrooke/Opt1 adaptation, not full Azizov-paper reproduction.");
+  await addFigure(slide, figures.aerAccuracy, "Azizov-style Aer predictor contrasts on 150 hashes", {
+    left: 40, top: 108, width: 1200, height: 500,
+  }, predictiveFigureDir);
+  addBody(slide, "Noisy-Aer warm · n=150. MAE: source 0.450 s, hybrid 0.406 s, transpiled 0.301 s, XGBoost 0.297 s; GNN–XGBoost Δ unresolved.", {
+    left: 72, top: 615, width: 1110, height: 34,
+  }, { fontSize: 18, bold: true, color: C.teal });
 }
 
-// 9. Maestro pilot stability.
+// 9. Fixed-MPS predictor accuracy.
 {
-  const slide = newSlide("", 9,
+  const e6Dir = "artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1";
+  const slide = newSlide("CUDA-Q MPS: fixed-configuration runtime predictor", 9,
+    `MPS figure: ${path.relative(repoRoot, path.join(predictiveFigureDir, figures.mpsAccuracy))}\n` +
+    `Figure evidence/captions: ${path.relative(repoRoot, path.join(predictiveFigureDir, "README.md"))}\n` +
+    `E6 aggregate and method cards: ${path.relative(repoRoot, path.join(repoRoot, e6Dir, "aggregate_manifest.json"))}\n` +
+    "Target: CUDA-Q MPS FP64 bond=16 warm-state execution. Assigned n=150 exact-QASM hashes; 144 finite labels, 142 quality-pass. Graph MAE 0.3024 s on finite labels and 0.3037 s on quality-pass; max quality-pass error 25.0964 s. Family residual−matched family-agnostic ablation MAE difference −0.0804 s, 95% pointwise hash-bootstrap CI [−0.2852,+0.0804], crosses zero. Runtime-only adaptation, not original joint approximation/runtime method. Intervals are exploratory and conditional on fits.");
+  await addFigure(slide, figures.mpsAccuracy, "Fixed CUDA-Q MPS runtime predictor paired contrasts", {
+    left: 40, top: 108, width: 1200, height: 500,
+  }, predictiveFigureDir);
+  addBody(slide, "MPS FP64 · bond 16 · warm state · 144 finite / 142 quality-pass. Graph MAE 0.304 s; max error 25.10 s. Family benefit unresolved.", {
+    left: 72, top: 615, width: 1110, height: 34,
+  }, { fontSize: 18, bold: true, color: C.teal });
+}
+
+// 10. Maestro pilot stability.
+{
+  const slide = newSlide("", 10,
     `Figure: ${path.relative(repoRoot, path.join(figureDir, figures.maestro))}\n` +
     `Figure caption/metadata: ${path.relative(repoRoot, path.join(figureDir, "README.md"))}\n` +
     `Canonical pilot summary: ${path.relative(repoRoot, path.join(scorecardDir, "simulator/maestro_pilot_summary.csv"))}\n` +
@@ -391,9 +408,9 @@ await fs.access(path.join(figureDir, "README.md"));
   });
 }
 
-// 10. Takeaway and limitations.
+// 11. Takeaway and limitations.
 {
-  const slide = newSlide("Kết luận và phạm vi còn thiếu", 10,
+  const slide = newSlide("Kết luận và phạm vi còn thiếu", 11,
     `Scorecard: ${path.relative(repoRoot, path.join(scorecardDir, "REPORT.md"))}\n` +
     `Method scope: ${path.relative(repoRoot, path.join(scorecardDir, "method_scope.csv"))}\n` +
     `Presentation brief: ${path.relative(repoRoot, path.join(repoRoot, "docs/presentation.md"))}`);
@@ -401,61 +418,63 @@ await fs.access(path.join(figureDir, "README.md"));
     ["Có thể kết luận", "Chưa đủ evidence để kết luận"],
     ["Graph V3-large có MAE thấp hơn polynomial trên source-local shared rows.", "Không có pooled cross-source superiority claim."],
     ["QPack có MAE thấp hơn nhưng cả hai R² đều âm.", "Không nói model giải thích tốt biến thiên runtime."],
-    ["Simulator coverage có quality/failure gates rõ ràng.", "Run completed không đồng nghĩa accuracy benchmark hoàn tất."],
-    ["Maestro pilot ghi nhận stability failure.", "Không có accepted predictor hoặc panel accuracy score."],
-  ], { left: 70, top: 150, width: 1140, height: 390 }, { fontSize: 20, headerFontSize: 21, columnWidths: [550, 590] });
+    ["E6 có Aer GNN và fixed-MPS predictor OOF results.", "Chỉ một Aer config; MPS một bond/config; CI exploratory."],
+    ["Maestro pilot ghi nhận stability failure.", "Không có accepted Maestro predictor hoặc panel score."],
+  ], { left: 70, top: 145, width: 1140, height: 405 }, { fontSize: 19, headerFontSize: 20, columnWidths: [550, 590] });
   addBody(slide, "Scientific coverage: PARTIAL. Build validation không đồng nghĩa full replication hoặc public-release approval.", {
     left: 78, top: 576, width: 1100, height: 70,
   }, { fontSize: 23, bold: true, color: C.amber });
 }
 
-// 11. Fidelity and reconstructed inputs.
+// 12. Fidelity and reconstructed inputs.
 {
-  const slide = newSlide("Fidelity phương pháp và tái dựng đầu vào", 11,
+  const slide = newSlide("Fidelity phương pháp và tái dựng đầu vào", 12,
     `Scorecard scope disclosures: ${path.relative(repoRoot, path.join(scorecardDir, "REPORT.md"))}\n` +
     `Method cards: ${path.relative(repoRoot, path.join(scorecardDir, "method_scope.csv"))}\n` +
     `Representation protocol: ${path.relative(repoRoot, path.join(repoRoot, "benchmark_v1/decisions/circuit_representation_v3.md"))}`);
   addTable(slide, [
     ["Mảng", "Đã dùng", "Giới hạn fidelity"],
     ["QPU graph", "Ma–Li/QPack logical; Qonductor exact submitted physical QASM", "Không thực thi compiled-input promise cho Ma–Li/QPack"],
+    ["Qonductor recovery", "230 archive-resolved logical recipes", "Recipe resolution, not byte-exact original logical QASM"],
     ["QPack replay", "6 reconstructed structures; representative rz(0.3)/rx(0.2)", "Không có original optimizer angles / submitted routing"],
     ["Graph features", "7 global features; DAG + global MLP branches", "Polynomial có 5 features; không cô lập causal graph effect"],
     ["Native estimates", "Snapshot calibration theo backend", "Không phải row-day historical calibration"],
-    ["Unmeasured routes", "Family-aware, original Composer, joint quality", "Chưa có evaluated evidence phù hợp"],
-  ], { left: 66, top: 148, width: 1148, height: 440 }, { fontSize: 18, headerFontSize: 19, columnWidths: [210, 490, 448] });
+    ["Family-Aware-style", "Fixed-MPS runtime-only residual + matched ablation", "Original joint threshold/runtime target not evaluated"],
+    ["Maestro", "Component calibration / local context pilot", "No accepted held-out predictor score; pilot gate failed"],
+  ], { left: 66, top: 130, width: 1148, height: 440 }, { fontSize: 18, headerFontSize: 19, columnWidths: [210, 490, 448] });
   addBody(slide, "Archived labels vẫn là runtime quan sát; replay reconstruction không thay đổi labels.", {
     left: 73, top: 612, width: 1115, height: 38,
   }, { fontSize: 20, color: C.teal, bold: true });
 }
 
-// 12. Clock, failure, and release semantics.
+// 13. Clock, failure, and release semantics.
 {
-  const slide = newSlide("Clocks, quality, và release boundary", 12,
+  const slide = newSlide("Clocks, quality, và release boundary", 13,
     `Scorecard: ${path.relative(repoRoot, path.join(scorecardDir, "REPORT.md"))}\n` +
     `QPU clock coverage: ${path.relative(repoRoot, path.join(scorecardDir, "qpu/archived_method_coverage.csv"))}\n` +
     `Simulator availability: ${path.relative(repoRoot, path.join(scorecardDir, "simulator/availability_matrix.csv"))}\n` +
     `Simulator configuration metrics: ${path.relative(repoRoot, path.join(scorecardDir, "simulator/per_configuration_metrics.csv"))}\n` +
     `Maestro pilot: ${path.relative(repoRoot, path.join(scorecardDir, "simulator/maestro_pilot_summary.csv"))}\n` +
-    `Package README: ${path.relative(repoRoot, path.join(repoRoot, "work/repo_finalization/report_package/README.md"))}\n` +
+    `Package README: ${path.relative(repoRoot, path.join(repoRoot, "docs/reproduction.md"))}\n` +
     `Report authority: ${path.relative(repoRoot, path.join(repoRoot, "benchmark_v1/execution/manifests/report_finalization.json"))}`);
   addTable(slide, [
     ["Domain", "Clock or outcome", "Interpretation"],
     ["QPU target", "Archived observed service/execution", "Evaluation target, not schedule duration"],
     ["QPU analytical", "Scheduled single-shot / shot-scaled", "Proxy; provider overhead excluded"],
-    ["Simulator", "First / warm execution; quality gate", "Keep engine, config, and clock separate"],
-    ["cuTensorNet", "Selected-plan estimate", "Compare only with contraction under same plan"],
+    ["Simulator", "First / warm execution; quality gate", "MPS: 573/612 ok; 21 quality fail, 18 adapter error"],
+    ["cuTensorNet", "Selected-plan estimate", "603/612 ok; compare only to same-plan contraction"],
     ["Maestro", "Process-isolated reported execution", "Fresh process, terminal pilot failure"],
-    ["Package status", "Local review stage", "Validation is not full replication; clean-clone pass not claimed"],
-    ["Public release", "Rights decision open", "No public-release approval from this deck"],
+    ["Reproducibility", "Local clean clone at 461cc6e", "Tables/E6 rebuilt; current reporting edits need final C6 check"],
+    ["Rights/provenance", "Owner decision remains open", "Not a public-release approval; see third-party notices"],
   ], { left: 70, top: 145, width: 1140, height: 460 }, { fontSize: 17, headerFontSize: 18, columnWidths: [220, 380, 540] });
   addBody(slide, "Unavailable rows, timeouts, adapter errors, and quality failures stay in coverage denominators.", {
     left: 77, top: 620, width: 1110, height: 35,
   }, { fontSize: 19, bold: true, color: C.teal });
 }
 
-// 13. Full 24-variant coverage detail, represented legibly as native tables.
+// 14. Full 24-variant coverage detail, represented legibly as native tables.
 {
-  const slide = newSlide("Appendix: coverage của 24 QPU variants", 13,
+  const slide = newSlide("Appendix: coverage của 24 QPU variants", 14,
     `Full coverage figure (companion): ${path.relative(repoRoot, path.join(figureDir, figures.coverage))}\n` +
     `Figure SHA-256: d8dc1661d0bd415eda6c33f8bcad935eb4fed424b832504a138b89225c20f365\n` +
     `Readable native table source: ${path.relative(repoRoot, path.join(scorecardDir, "qpu/archived_method_coverage.csv"))}\n` +
@@ -497,8 +516,8 @@ await fs.access(path.join(figureDir, "README.md"));
   addTable(slide, rightRows, { left: 658, top: 126, width: 574, height: 550 }, { fontSize: 15, headerFontSize: 15, columnWidths: [226, 110, 82, 156] });
 }
 
-if (presentation.slides.count !== 13) {
-  throw new Error(`Expected 13 slides, found ${presentation.slides.count}`);
+if (presentation.slides.count !== 14) {
+  throw new Error(`Expected 14 slides, found ${presentation.slides.count}`);
 }
 
 await fs.mkdir(buildDir, { recursive: true });
@@ -507,8 +526,8 @@ const candidatePath = path.join(buildDir, "candidate.pptx");
 await (await PresentationFile.exportPptx(presentation)).save(candidatePath);
 
 const result = await finalizePresentation({
-  explicitTotalSlideCount: 13,
-  requiredNativeTableOwnerSlides: [2, 3, 4, 7, 10, 11, 12, 13],
+  explicitTotalSlideCount: 14,
+  requiredNativeTableOwnerSlides: [2, 3, 4, 7, 11, 12, 13, 14],
   requiredNativeChartOwnerSlides: [6],
   materializeLiteralChartWorkbooks: true,
   workspaceDir,
@@ -520,7 +539,7 @@ const result = await finalizePresentation({
   layoutArgs: [
     "--expected-slide-size-emu", "12192000,6858000",
     "--validate-heading-fit",
-    ...[2, 3, 4, 7, 10, 11, 12, 13].flatMap((n) => ["--require-native-table-slide", String(n)]),
+    ...[2, 3, 4, 7, 11, 12, 13, 14].flatMap((n) => ["--require-native-table-slide", String(n)]),
   ],
   fontPolicy: { basis: "design", families: [fontFamily] },
   verifyArtifactToolImport: true,

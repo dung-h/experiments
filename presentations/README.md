@@ -1,56 +1,16 @@
-# Slide báo cáo benchmark
+# Slide deck and figures
 
-- [PowerPoint](quantum_runtime_benchmark_vi.pptx): 13 slide, gồm 10 slide chính
-  và 3 slide phụ lục. Có speaker notes dẫn tới nguồn số liệu.
-- [PDF](quantum_runtime_benchmark_vi.pdf): bản xuất để xem nhanh.
-- [Biểu đồ và nguồn](figures/README.md): bốn biểu đồ, mỗi biểu đồ có PNG và SVG.
-- [Nội dung khoa học](../docs/presentation.md): phạm vi, kết quả và giả định.
-- [Bảng số liệu](../artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3/README.md).
+## Current review deck
 
-Bộ slide này là bản đã dựng ngày 02/10/2026. Các file PowerPoint, PDF và
-biểu đồ giữ nguyên bytes của bản đó. `manifest.json` ghi hash file và nguồn
-để kiểm tra; không có ảnh render từng trang hoặc log build trong bộ commit.
+The current editable deck is the [14-slide PowerPoint](benchmark_review/quantum_runtime_benchmark_vi.pptx), with a matching [14-page PDF](benchmark_review/quantum_runtime_benchmark_vi.pdf). Its [README](benchmark_review/README.md) records scope, build recipe, and QA. The deck separates archived QPU service-time prediction from local simulator runtime; its Aer and CUDA-Q MPS results are on separate slides and clocks.
 
-Slide 12 ghi trạng thái đóng gói tại thời điểm dựng slide: chưa xác nhận
-clean-clone. Sau đó, nhánh `benchmark-review` đã được clone từ GitHub và tái
-dựng bảng thành công. Trạng thái mới ở
-[báo cáo tái lập](../docs/reproduction_validation.md). Ghi chú cũ này không
-thay đổi số liệu hay giới hạn khoa học của benchmark. Đây vẫn là benchmark
-chưa đủ toàn bộ phép so sánh simulator đã dự kiến.
+The earlier 13-slide export at the top of this directory is retained as a historical snapshot; use `benchmark_review/` for the updated presentation. The [scientific brief](../docs/presentation.md) and [method-by-dataset table](../artifacts/benchmark_v3/results/reader_method_dataset_table.csv) are the reader-facing content and data references.
 
-## Tái dựng biểu đồ
+## Figures
 
-Script chỉ đọc các bảng scorecard đã commit, không đo simulator hoặc train.
-Chạy từ root repository, với Python 3.10:
+- [Predictor contrasts: Aer and fixed-χ16 MPS](figures_v2/README.md): two new paired-error figures with grouped-bootstrap intervals, denominators, source pins, and reproduction command.
+- [Earlier QPU and simulator diagnostics](figures/README.md): four historical charts from the previous slide export.
 
-```bash
-python3.10 -m venv .venv-presentation
-.venv-presentation/bin/python -m pip install -r presentations/requirements-figures.txt
-.venv-presentation/bin/python presentations/source/plot_report_figures.py
-```
+## Reproducibility boundary
 
-Kết quả nằm ở `work/presentation-figures/`. Script yêu cầu thư mục mới để
-không ghi đè file có sẵn. Hash PNG/SVG có thể phụ thuộc phiên bản render/font;
-nguồn bảng, số liệu, đơn vị và phạm vi so sánh phải giữ nguyên.
-
-## Source của PowerPoint
-
-`source/build_deck.mjs` là bản source đã điều chỉnh đường dẫn của generator
-gốc. Nó cần runtime `@oai/artifact-tool`, font Noto Sans và helper trong kỹ
-năng Presentations đã dùng khi dựng slide. Đặt `SKILL_DIR` tới thư mục kỹ năng
-và `RUNTIME_PYTHON` tới Python của runtime đó, rồi chạy:
-
-```bash
-node presentations/source/build_deck.mjs
-```
-
-Generator ghi vào `work/presentation-deck/`, không ghi đè PowerPoint đã commit.
-Bản xuất gốc đã được kiểm tra cấu trúc và render PDF, nhưng chưa kiểm tra mở
-bằng Microsoft PowerPoint. Không hứa tái dựng PPTX byte-identical hoặc cài
-runtime proprietary chỉ bằng `pip install`. Người không có runtime có thể
-sửa trực tiếp file PowerPoint và dùng các biểu đồ đã cung cấp.
-
-Các đường dẫn `work/repo_finalization/report_package/figures/` trong notes
-của bản xuất cũ tương ứng với `presentations/figures/` trong nhánh này.
-`work/repo_finalization/report_package/README.md` tương ứng với README này và
-hướng dẫn tái lập ở `docs/`. Source tables nằm nguyên đường dẫn `artifacts/`.
+The benchmark figures are rebuilt from checked-in aggregate tables; their script does not train models or run simulators. The editable deck was generated with the Codex Presentations runtime, which is not a normal project dependency and is not installed by the Python requirements file. Rebuild instructions are in [`benchmark_review/README.md`](benchmark_review/README.md). The committed PPTX/PDF are the review deliverables; they are not byte-identical rebuild targets or public-release approval.
