@@ -1,0 +1,60 @@
+{
+  "artifact_id": "family-joint-c44-fold-0",
+  "checkpoints": {
+    "family_agnostic_ablation_seed_1234.pt": "5ec93832d99f41436535c86ae08d87c015a157d983176570b44734132559f6a4",
+    "family_agnostic_ablation_seed_31415.pt": "3149ffcf2b3e370e4281546886015c334108cce6bb38245481153b95f0b053ab",
+    "family_agnostic_ablation_seed_42.pt": "9948ce3b78b196e75741316fe03914dfe587dc5b012d40d119a6fe2c6cb20b98",
+    "family_conditioned_seed_1234.pt": "1ba4c80f112e6a90d755516ed323dee8e9193e07c8cdb2adf7107c5831e25588",
+    "family_conditioned_seed_31415.pt": "1668827ffd39e25fa11917a7eaf41a7fb7a4d8b1dcab8bea1ae4001dc97b1030",
+    "family_conditioned_seed_42.pt": "3e61c824f8c3695ac8074426a250e3b0783a66d62aae0a31f349a9099d6d4f50"
+  },
+  "compute_lock_held": true,
+  "created_utc": "2026-10-03T03:53:14.284802+00:00",
+  "cuda_version": "12.8",
+  "device": "cuda",
+  "family_classifier_checkpoints": {
+    "seed_1234.pt": "bd76c2b099208b85996ede83c42b09baef6e1f885501295ac7c8143bcb3b172e",
+    "seed_31415.pt": "e7ed2273497cf60491fcd1ccbf8dc2c3edc5b7da255ae3732b5ecdafbc3fb582",
+    "seed_42.pt": "b4f6b4f716e92da5ac0b75baceff159c1ec6cb7ccb36f40b7c942a230f7d6099"
+  },
+  "fit_started": true,
+  "fold": 0,
+  "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+  "hardware": {
+    "cpu_threads": 2,
+    "device": "NVIDIA GeForce RTX 5070 Ti",
+    "python_executable": "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+    "python_version": "3.10.21 (main, Aug 14 2026, 15:33:52) [Clang 22.1.3 ]",
+    "torch_geometric_version": "2.6.1",
+    "total_memory_bytes": 16608788480
+  },
+  "measurement_attempts_sha256": "5eb01546d966d704041003f340a96ca5e21c4c3b71e415b30ff71d04c07a3413",
+  "measurement_summary_sha256": "bab05d8941048d5aaf334d89651da134feb14a3ead5cfb333ed76a2a441ae09d",
+  "plan_sha256": "84e43e97457951b60d87c3316274de67332c67db63256ef81cb961b7b9fe6800",
+  "prediction_rows": 444,
+  "prediction_sha256": "6e78d7d030b3af7d856990c196f7c9e3d1756e7e43c4fa545246681c3a2294a9",
+  "protocol_sha256": "0019e8b39b3952561a8753f5ea4055a3b98c8471a6f11617ea339df1487f9563",
+  "quality_labels_used_as_inputs": false,
+  "runner_sha256": "29aa726d77b04485ba0ffc8add40207efda233269928cc565e641e5f8a067a2b",
+  "seeds": [
+    42,
+    1234,
+    31415
+  ],
+  "split_id": "c44",
+  "status": "completed_fold_technical_qa_pass",
+  "test_hashes": 37,
+  "test_runtime_or_fidelity_used_for_fit": false,
+  "torch_version": "2.7.1+cu128",
+  "training_hashes": 113,
+  "training_logs": {
+    "family_agnostic_ablation_seed_1234.json": "496a95ce93549437eb5d79d6880fcc948d97da9613f18b5ba1270f65250ed6f6",
+    "family_agnostic_ablation_seed_31415.json": "0b6cd7bf6b14857909aeb8613925e94312c97c4d97eebe5ebd299fcd43614cc6",
+    "family_agnostic_ablation_seed_42.json": "16d5259c8352df0dc99e0d5947eada652ab1b86cda62347bb4ac452b98e3b0de",
+    "family_conditioned_seed_1234.json": "0fe77ba8fb9b52b21645bec0cc3188a321978ccb4af9d53e556695c2ee4c9844",
+    "family_conditioned_seed_31415.json": "27cad46afa22b3405ab186da148f20af483471a0614a20a4b451a088393d23de",
+    "family_conditioned_seed_42.json": "c9f22de17482a09337d46410c9a6ee385175acc7146a16771a01a9dc76f62492"
+  },
+  "training_rung_rows": 636,
+  "transform_sha256": "2c4704f3022c01ba5678fe83e3b1218500d85e14513972daf3c61d43a5a8eef0"
+}

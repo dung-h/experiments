@@ -1,0 +1,14 @@
+[
+  {
+    "seed": 42,
+    "prediction_seconds": 4.624112129211426
+  },
+  {
+    "seed": 1234,
+    "prediction_seconds": 6.249101638793945
+  },
+  {
+    "seed": 31415,
+    "prediction_seconds": 8.245172500610352
+  }
+]

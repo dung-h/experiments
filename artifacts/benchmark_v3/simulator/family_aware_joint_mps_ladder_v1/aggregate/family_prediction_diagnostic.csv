@@ -1,0 +1,7 @@
+split_id,diagnostic,seed,hashes,accuracy,family_component_is_prediction_input
+c44,family_component_classifier_accuracy,42,150,0.47333333333333333,False
+c44,family_component_classifier_accuracy,1234,150,0.49333333333333335,False
+c44,family_component_classifier_accuracy,31415,150,0.52,False
+family_holdout,family_component_classifier_accuracy,42,150,0,False
+family_holdout,family_component_classifier_accuracy,1234,150,0,False
+family_holdout,family_component_classifier_accuracy,31415,150,0,False

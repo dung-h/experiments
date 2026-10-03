@@ -1,0 +1,30 @@
+{
+  "artifact_id": "maestro-cuda-training-environment-receipt-v1",
+  "evaluator_result_manifest_sha256": "47d2fe8f7eb68d8634a9060ee8c40acdba9d2fe86734f7a72efdec007a25e090",
+  "evaluator_sha256": "c80a953e7ac8a79641aa99de1d30ee2b1cd1563158e19d2d078bab6916bef6a9",
+  "training_method_id": "source_dag_graph_adaptation_cuda",
+  "training_protocol": "5 outer folds x 3 seeds [42,1234,31415], 500 epochs, evaluator hard-requires CUDA and uses torch.device(cuda:0); no CPU fallback",
+  "graph_helper": "benchmark_v1/scripts/run_mps_fixed_chi16_runtime_adaptation_v1.py",
+  "graph_helper_sha256": "7731c6ef22704089122fd704f138bd207856909437bce9e03c7f6012812b5bd6",
+  "evaluator_exit_status": 0,
+  "training_process_pid_observed": 2729450,
+  "nvidia_smi_samples_while_training_process_alive": [
+    {"gpu_utilization_percent": 28, "gpu_memory_used_mib": 1343},
+    {"gpu_utilization_percent": 26, "gpu_memory_used_mib": 1384},
+    {"gpu_utilization_percent": 32, "gpu_memory_used_mib": 1384},
+    {"gpu_utilization_percent": 29, "gpu_memory_used_mib": 1388},
+    {"gpu_utilization_percent": 31, "gpu_memory_used_mib": 1386}
+  ],
+  "python": "3.10.21",
+  "python_executable": "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+  "torch": "2.7.1+cu128",
+  "torch_cuda_runtime": "12.8",
+  "torch_geometric": "2.6.1",
+  "cuda_available": true,
+  "device_index": 0,
+  "device_name": "NVIDIA GeForce RTX 5070 Ti",
+  "device_compute_capability": "12.0",
+  "driver": "595.91.07",
+  "total_vram_mib": 16303,
+  "environment_probe": "re-run in the same pinned venv after evaluation; during evaluation, process PID and GPU utilization/memory were sampled together"
+}

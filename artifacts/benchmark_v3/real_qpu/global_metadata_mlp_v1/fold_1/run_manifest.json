@@ -1,0 +1,102 @@
+{
+  "artifact_id": "qpu_global_metadata_mlp_baseline_v1-fold-1",
+  "checkpoint_policy": {
+    "automatic_resume_supported": false,
+    "interval_epochs": 50
+  },
+  "command": [
+    "benchmark_v1/scripts/run_qpu_global_metadata_mlp_baseline_v1.py",
+    "--stage",
+    "fit",
+    "--fold",
+    "1",
+    "--features",
+    "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/benchmark_v3/recovery_real_qpu_20260929_v3/c134_feature_sidecar_v3.csv",
+    "--output-dir",
+    "artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_1"
+  ],
+  "compute_lock": {
+    "shared_timing_and_host_gpu_lease_held_for_cuda_operations": true
+  },
+  "contract": "benchmark_v1/protocol/qpu_global_metadata_mlp_baseline_v1.json",
+  "created_utc": "2026-10-02T18:29:47.934658+00:00",
+  "cuda": "12.8",
+  "cuda_smoke": "PASS",
+  "device": "NVIDIA GeForce RTX 5070 Ti",
+  "fit_completed": true,
+  "gpu_driver_version": "595.91.07",
+  "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+  "gpu_total_memory_mib": 16303,
+  "inputs": {
+    "canonical": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v1/canonical_corpus_8767_20260926/canonical_observations.csv",
+      "sha256": "920d745e03dd00e8155118d9323baea18ff865e4df2620f3a059bd5503a05ba4"
+    },
+    "features": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/benchmark_v3/recovery_real_qpu_20260929_v3/c134_feature_sidecar_v3.csv",
+      "sha256": "cb233f00258cd8189da1a3b17363386ff19618e84778956ed8de9f352eb6117a"
+    },
+    "graph_oof": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/unified_graph_v3_large_oof_20260930/predictions.csv",
+      "sha256": "3c179ae464fc25167ae0f1aca028cf5ff1117409dce9d15f6945e4f621420d2c"
+    },
+    "inner": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v2/real_qpu/unified_inner_split_v2.csv",
+      "sha256": "aaff2b0950379ac7ad8992698bc140687a4cd1b6696b8abeff7cb96270af3cab"
+    },
+    "outer": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v2/real_qpu/unified_outer_split_v2.csv",
+      "sha256": "d72b7ba6f90d5bf6ed2f3b602196a05bee11a0f441ee4e5caaca6978b6b0e25a"
+    },
+    "seed_registry": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/benchmark_v1/registry/seed_registry.json",
+      "sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864"
+    }
+  },
+  "method_id": "qpu_global_metadata_mlp_baseline_v1",
+  "outer_fold": 1,
+  "outputs": {
+    "attempts.csv": "a3466734a369cb15eada4e68838284a6f77f9233672baf6a76778d86033c3fb6",
+    "checkpoints/seed_1234_epoch_0050.pt": "af89a722b26b7b520d1d57eab6144c5730354a8d5b7378abcecb6aefa4fe76f3",
+    "checkpoints/seed_1234_epoch_0100.pt": "438c0f088da58f62de359ea673d11f84f0f39f76c779e174bee52be979e21966",
+    "checkpoints/seed_1234_epoch_0150.pt": "8a7d776b5d8c82a2c7039ddee83c8f8058a9c06034cf18f3bd64eaf4af492df7",
+    "checkpoints/seed_1234_epoch_0200.pt": "ca5d3d1d86ee66a371ebb7a282355f8e59760a8beb9ae7c5d140a799fe81e476",
+    "checkpoints/seed_1234_epoch_0250.pt": "b43654baedfd0cb50d9dfbdf7a2a97b993f3765d57312c04873adc6fd8401e6b",
+    "checkpoints/seed_1234_epoch_0300.pt": "bf9424976f639a0dfd1d33c8e91f78c035ae7ca2eea749bf3daf0caa7a2d12e4",
+    "checkpoints/seed_1234_epoch_0350.pt": "33e78ed098a536337b5fa6c1939c160b7bdf293c555fbbd8b2f5886e6f291396",
+    "checkpoints/seed_1234_epoch_0400.pt": "89f44191e6a90697806040d3f4fc5cb742541a381797a6b67b24dc078968ba6f",
+    "checkpoints/seed_1234_epoch_0450.pt": "f18e43e5beb2f549f44f7bb78aa6dd16b02800b47a1ecdd496c7d2dae380919d",
+    "checkpoints/seed_1234_epoch_0500.pt": "49a552a83edc68f18d9f2e456499bc918d9e956969ddf7edce1e2c0471453d37",
+    "checkpoints/seed_31415_epoch_0050.pt": "6229f3f5d9a9f72af7de1e502ab4215f6de73eea9c2bca2a7cb65038a1eb35ec",
+    "checkpoints/seed_31415_epoch_0100.pt": "6080023e0504850e76737694bde2881115532c3ff982150e528417e96abc4012",
+    "checkpoints/seed_31415_epoch_0150.pt": "702da8460ddff2be977cb731b9f7cf8ef7b828efcc1464f1a803255498c39e81",
+    "checkpoints/seed_31415_epoch_0200.pt": "5313f51560533168a1944b6bc881d2ecbc309c4b6edaf01ddaf5c5f811a52c96",
+    "checkpoints/seed_31415_epoch_0250.pt": "44cdc36e7e0f678cd792bf03a8802c35f6adfa75d2eeb98079ed7de37735fab4",
+    "checkpoints/seed_31415_epoch_0300.pt": "4a649fe70d8affffb8681d941d18076275d4ab3e923f5480886b875fed030ff1",
+    "checkpoints/seed_31415_epoch_0350.pt": "992ed049519fa2f917f0eaf07a7887728969fdd66db55eb1f876c00ebcbd2cc7",
+    "checkpoints/seed_31415_epoch_0400.pt": "e3a06e3591addfee1684a2230907dcae7009ad81f029f01dd6d5758c313e3cac",
+    "checkpoints/seed_31415_epoch_0450.pt": "14a54fa3a6c6250a9c02ec820ebb85a0170e8396d57ef5ab0a1073f743c16962",
+    "checkpoints/seed_31415_epoch_0500.pt": "84de889a1f6e86c3a56d238381bf02c7c44421a35a436dd7876ccd1bead57756",
+    "checkpoints/seed_42_epoch_0050.pt": "39843e2179e52b96844a0304819bc25f9185771924c02b91520087c903973ccc",
+    "checkpoints/seed_42_epoch_0100.pt": "6374b6b3dbfd31792216ed7f46031c0263598c583d9a7bd35349545eb98cbb3d",
+    "checkpoints/seed_42_epoch_0150.pt": "414b6f91d011be819ca337154b9e86485882e09b5e3950db15a2f0adf4394ae0",
+    "checkpoints/seed_42_epoch_0200.pt": "3f1ba0f7c1b802b42ddf00fdd9a8ab4c6ccb7b1186f9e4173e90b2127f1b2bbf",
+    "checkpoints/seed_42_epoch_0250.pt": "1f7f3a159c937d179a38704c902f773bb348b1f0977a134d9e2ae13d854f4fd2",
+    "checkpoints/seed_42_epoch_0300.pt": "b8cb0e48dcd2760115097a2f0a6d54e0e47bba4f67a747a870e18f6703cde0da",
+    "checkpoints/seed_42_epoch_0350.pt": "cb0a9d70bd78ee6e5ac67f5423a4163f5008f3ef3ebe92d3d68feafd3ee966b1",
+    "checkpoints/seed_42_epoch_0400.pt": "b405c145fc1110911ab3a44c2918fab103fe6c3fc003def01b2484696cf060b6",
+    "checkpoints/seed_42_epoch_0450.pt": "f1d0092982bb41bcd56531dabe721c011d18e93e1985db7e80427ac991fba09f",
+    "checkpoints/seed_42_epoch_0500.pt": "6d9c7c84855b0469a54103762a0b3a58f35b7fc54a6424fd2fc23d7a091bb2a0",
+    "predictions.csv": "a5b045ab8ec050db503e33a48e0bb50e5789346d3998bef42060559104141e31",
+    "summary.json": "b444d79f98842e62fa38d6fecf8ffd785beeba89073e69c86d87a68c79ab9fac"
+  },
+  "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+  "python": "3.10.21 (main, Aug 14 2026, 15:33:52) [Clang 22.1.3 ]",
+  "source_hashes": {
+    "protocol": "f755b884234f20ca3da71f6628ed6863a8c3dafee5a2f7cab88dfa8f4afd5ad3",
+    "runner": "4d5daa34ef3418984aeea9d9c525dccf4a0c1ed23b0124c4231b60293a46cfd3"
+  },
+  "stage": "completed",
+  "status": "PASS",
+  "torch": "2.7.1+cu128"
+}

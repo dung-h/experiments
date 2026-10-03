@@ -1,0 +1,157 @@
+{
+  "protocol_id": "family-aware-joint-runtime-quality-mps-v1",
+  "decision_date": "2026-10-02",
+  "status": "design_frozen_preflight_implemented_measurement_not_run",
+  "method_id": "family_aware_joint_runtime_quality_cudaq_mps_local_adaptation",
+  "reader_label": "Family-Aware-inspired joint runtime/quality predictor, local CUDA-Q MPS adaptation",
+  "fidelity_class": "adaptation",
+  "source": {
+    "paper": "https://arxiv.org/html/2606.11620v1",
+    "retained_idea": "jointly predict simulator runtime and approximation-quality/threshold outcome from circuit features",
+    "not_reproduced": [
+      "Quantum Rings simulator and its native runtime boundary",
+      "the paper's original runtime labels or threshold-generation procedure",
+      "paper-scale data collection or reported paper metrics"
+    ],
+    "claim_boundary": "This is a new local adaptation on CUDA-Q tensornet-mps state-producing warm get_state time and a separately measured dense-FP64 state-fidelity gate. It is not a reproduction of the original QuantumRings method."
+  },
+  "data": {
+    "panel_path": "artifacts/benchmark_v1/sim_common_q16_manifest_20260927/sim_common_q16_manifest.csv",
+    "panel_id": "sim_common_q16_v1",
+    "population": "150 unique exact-QASM SHA-256 hashes in core_q2_q9; widths 2 through 9 inclusive",
+    "grouping": "The exact-QASM hash is the unit of observation and group; aliases are deduplicated before assignment.",
+    "primary_split": "Reuse the existing C44 five-fold exact-QASM assignments unchanged; expected unique-hash counts by fold are 37/28/26/25/34.",
+    "secondary_split": "A separate deterministic five-fold family-component holdout diagnostic, formed from connected family aliases sharing an exact hash. It does not replace or alter the primary C44 folds.",
+    "model_inputs": [
+      "active_width",
+      "measurement_stripped_structural_depth",
+      "one_qubit_gate_count",
+      "two_qubit_gate_count",
+      "multi_qubit_gate_count",
+      "swap_like_gate_count",
+      "log2(configured_max_bond_chi), supplied as the pre-execution simulator-configuration input for each rung prediction",
+      "fold-local predicted family component from a classifier trained only on outer-training hashes"
+    ],
+    "family_label_use": "True family component is a training label for the fold-local classifier and a post-inference diagnostic only. A test hash's true family, measured runtime, fidelity, selected bond, status, hash, path, fold, source ID, and post-execution telemetry are never predictor inputs.",
+    "existing_splits_or_raw_evidence_modified": false
+  },
+  "simulation_configuration": {
+    "engine": "CUDA-Q tensornet-mps",
+    "precision": "fp64",
+    "max_bond_ladder": [2, 4, 8, 16, 32, 64],
+    "absolute_cutoff": 1e-10,
+    "svd_algorithm": "gesvdj",
+    "measurement_adapter": "Remove terminal measurements only; reject any remaining nonterminal measurement; convert the resulting unitary circuit with cudaq.contrib.qiskit_convert.from_qiskit.",
+    "same_ir_across_ladder": true,
+    "physical_saturation_note": "For n<=9, the maximum possible Schmidt rank across any bipartition is at most 2^floor(n/2)<=16. Configured chi=32/64 therefore test saturated settings for this population and are not evidence about asymptotic high-bond scaling; retain them to identify quality saturation and fixed-engine overhead only.",
+    "shots": "not applicable to get_state; no sample() or shot-based execution is measured",
+    "bond_policy": "Measure every configured rung. Do not assume fidelity is monotonic. The minimum passing rung is the smallest configured chi whose three session fidelity values all meet threshold, provided all six rungs and sessions completed technically."
+  },
+  "targets_and_clocks": {
+    "evaluation_target_clock": "cudaq_mps_fp64_warm_get_state_at_minimum_bond_chi_for_fidelity_ge_0_99_seconds",
+    "method_output_clock": "predicted quality-constrained warm state-producing get_state wall-clock seconds",
+    "runtime_reduction": "For each session and rung, median of five warm get_state calls; reduce the three session medians by their median. At each hash, select the lowest configured passing chi, then use that rung's reduced warm runtime.",
+    "quality_target": "State fidelity |<psi_dense_fp64|psi_mps>|^2 >= 0.99 for the same measurement-stripped converted circuit.",
+    "reference_clock": "Dense CUDA-Q nvidia FP64 get_state; measured after MPS timing and recorded separately.",
+    "fidelity_extraction_clock": "State overlap extraction after both simulator states are available; recorded separately and excluded from runtime.",
+    "build_clock": "QASM parse, terminal-measurement stripping, and Qiskit-to-CUDA-Q conversion; separate and excluded from runtime.",
+    "first_clock": "First MPS get_state call in a fresh child process for each hash x chi x session; separate and excluded from warm target. Each session is a separate OS process, reparses/rebuilds the same IR, and reselects the fixed MPS target.",
+    "sampling_clock": "Not measured. This state-producing get_state target is not sampling or shot execution time.",
+    "no_passing_rung": "quality_unattainable_on_declared_ladder; no runtime target is emitted.",
+    "incomplete_or_failed_ladder": "No minimum-rung/runtime target is derived; retain the assigned hash and explicit terminal reason. No imputation."
+  },
+  "measurement": {
+    "sessions_per_hash_rung": 3,
+    "warmups_per_session": 3,
+    "warm_repetitions_per_session": 5,
+    "concurrency": "One sequential GPU timing worker under both shared benchmark locks; one fresh OS child process per hash x chi x session (2,700 worker processes for the full panel); no overlapping GPU timing or training.",
+    "pilot": "First 10 exact hashes in sorted SHA-256 order, all six rungs and three fresh-process sessions (180 child-process attempts). Pilot is a technical gate, not a model-quality selection step.",
+    "pre_timing_controls": {
+      "positive_control": "Known identical normalized two-qubit states must return fidelity 1 within 1e-12.",
+      "negative_control": "Known orthogonal two-qubit states must return fidelity 0 within 1e-12.",
+      "basis_order_control": "Before timing, CPU unit tests verify the declared amplitude lookup order. After all timed calls in each fresh worker session, run actual CUDA-Q/Qiskit-converted X(q0)=|01> and X(q1)=|10> canaries on tensornet-mps and dense nvidia targets; require both known basis indices and positive fidelity 1, plus orthogonal cross-state fidelity 0. This post-timing canary is required before a pilot is eligible to promote.",
+      "invalid_state_controls": "Zero-norm and non-finite amplitudes must raise a technical error; they are never converted to quality failures.",
+      "run_location": "Pure host-side controls run before timing; actual backend canary runs after the timed samples in every fresh worker, is recorded separately, and is excluded from all timing targets. The current code implements it, but it has not been exercised on CUDA; the pilot is the first validation."
+    },
+    "pilot_continue_only_if": [
+      "All 180 planned attempts have terminal records and every hash has a technically complete six-rung ladder.",
+      "Every one of the 180 sessions passes the actual CUDA-Q MPS/dense basis-order canary; main circuit IR digest is invariant across chi and sessions for each exact hash.",
+      "Zero adapter errors, unsupported operations, OOM/resource-limit events, worker crashes, or timeouts.",
+      "All successful timing values and fidelity values are finite and nonnegative; observed GPU use remains below the declared 12-GiB used-memory ceiling.",
+      "Projected full-panel wall time, using pilot wall seconds per hash times 15, is at most 24 hours."
+    ],
+    "quality_below_threshold": "A finite normalized state fidelity below 0.99 is a scientific result, not a technical pilot failure. Invalid norm, non-finite amplitudes/overlap, wrong vector length, or failed basis-order controls are technical failures.",
+    "cell_timeout_seconds": 180,
+    "pilot_wall_cap_seconds": 3600,
+    "full_campaign_wall_cap_seconds": 86400,
+    "minimum_free_vram_mib": 4096,
+    "maximum_observed_gpu_memory_used_mib": 12288,
+    "theoretical_state_payload_at_q9_chi64": "Dense complex128 reference <= 8192 bytes; one complex128 MPS site-bond payload upper bound approximately 576 KiB, excluding CUDA/runtime allocator overhead. Therefore the 4-GiB free-VRAM precondition is an environment-safety gate, not a predicted state-memory requirement."
+  },
+  "modeling": {
+    "status": "protocol_only_training_not_run",
+    "architecture": {
+      "adaptation_boundary": "Local Family-Aware-inspired implementation; not the QuantumRings paper implementation or an original-paper reproduction.",
+      "numeric_input": "Seven values: six structural features after train-only log1p/standardization, plus deterministic log2(chi).",
+      "shared_backbone": ["Linear(7,128)", "SiLU", "Dropout(0.2)", "Linear(128,64)", "SiLU", "Dropout(0.2)"],
+      "family_classifier": ["Linear(6,64)", "SiLU", "Linear(64,64)", "SiLU", "Linear(64,K)"],
+      "family_embedding_width": 64,
+      "family_branch": ["Embedding(K+1,64)", "Linear(64,64)+SiLU", "Linear(64,64)+SiLU"],
+      "film": "Separate Linear(64,64) gamma and beta projections; h=backbone(x)*(1+gamma(f))+beta(f).",
+      "runtime_head": "Linear(64,1) on h plus Linear(7,1) numeric shortcut plus zero-initialized Linear(64,1) family residual; output is standardized log1p seconds.",
+      "quality_head": "Linear(64,1) on h plus Linear(7,1) numeric shortcut; output is a rung-level quality-pass logit.",
+      "unknown_component": "Reserve index K. If a classifier output cannot be mapped into the outer-training vocabulary, use K; this bypasses family FiLM and residual (identity FiLM, zero family residual). Never assign K by inspecting true test family.",
+      "matched_ablation": "Same numeric backbone and two heads/shortcuts with no family embedding, FiLM, or family residual. For each fold/seed initialize shared layers once and copy identical initial weights into both variants."
+    },
+    "runtime_target": "For each hash and configured rung, log1p of that rung's warm get_state seconds. Fit on all technically complete outer-training rung labels, including rungs whose measured fidelity is below 0.99.",
+    "quality_target": "For each hash and rung, pass iff all three session fidelity values are >=0.99. Also derive each circuit's minimum passing chi or NO_PASS as an evaluation label. Neither quality labels, runtime, nor selected chi is an input.",
+    "selection_policy": "For each seed and test hash, obtain sigmoid pass probability at every rung. Average probabilities arithmetically across the three seeds; select the lowest chi with mean probability >=0.5, otherwise abstain. Convert each seed runtime output from standardized log1p to nonnegative seconds, then use the median of the three seconds predictions at each rung. Return the selected rung's median runtime prediction.",
+    "multi_task_loss": "Equal fixed weight (1.0 each) on outer-training-standardized log-runtime MSE and rung-level binary quality-pass BCE; no tuning or test-guided weight changes.",
+    "preprocessing": "log1p then standardize the six nonnegative structural inputs with outer-training hashes only; zero standard deviation uses scale 1. Use deterministic log2(chi) for the rung configuration, without fitting a transform from test data.",
+    "family_classifier_training": {
+      "optimizer": "Adam",
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "epochs": 200,
+      "batch": "full hash-level fold",
+      "loss": "cross entropy",
+      "seed": "use the corresponding registered outer model seed",
+      "crossfit": "Within each C44 outer-training set, create predicted family inputs by exact-hash GroupKFold with n_splits=min(4, number of distinct training hashes); each training hash is predicted by a classifier that excluded that hash. For each split, classifier class vocabulary is only the family components present in its inner-training hashes. Single-class inner training predicts that class deterministically. If fewer than two distinct hashes exist, skip family conditioning for that outer fold and use the family-agnostic path for train and test."
+    },
+    "runtime_quality_training": {
+      "optimizer": "AdamW",
+      "learning_rate": 0.0003,
+      "weight_decay": 0.001,
+      "epochs": 160,
+      "batch": "full technically complete outer-training hash x rung table",
+      "scheduler": "CosineAnnealingLR(T_max=160)",
+      "gradient_clip_norm": 1.0,
+      "runtime_loss": "MSE over train-standardized log1p warm seconds, all rungs including finite quality failures",
+      "quality_loss": "binary cross entropy over rung quality-pass labels",
+      "early_stopping_or_hpo": false
+    },
+    "training_policy": "Use the frozen C44 outer folds; every rung for one hash stays in its fold. Cross-fit the predicted family labels within outer-training hashes using the classifier contract above; predict outer-test family only from six structural features. Registered seeds are 42, 1234, 31415. Fit all model weights and transforms on outer-training hashes only. Neural fitting/inference must use CUDA; CPU fallback is forbidden. Fold-0 is technical QA only; on technical pass, continue folds 1–4 unchanged without inspecting metrics.",
+    "evaluation": {
+      "assigned_envelope": "Always retain all 150 circuit hashes and explicit technical/quality statuses.",
+      "quality": "Rung-level balanced accuracy and accuracy; selection coverage/abstention; quality-violation rate among selected rungs; minimum-passing-rung exact accuracy and absolute log2-chi error on actually quality-achievable hashes.",
+      "runtime_target_a_same_actual_rung": "Compare runtime predictions with observed runtime at the identical hash x chi cell over the common technically complete rung-cell intersection across methods. No cross-rung substitution.",
+      "runtime_target_b_predicted_selection_same_rung": "For hashes where the model selects chi_hat and the hash x chi_hat observation is technically complete, compare that prediction only with observed runtime at the same chi_hat. Report quality-pass rate separately; never compare to another rung's runtime.",
+      "runtime_target_c_oracle_minimum_passing_rung": "Separate decision-objective diagnostic: for hashes with an observed minimum passing chi_star, compare the model's runtime prediction at chi_star with observed runtime at that same chi_star. This is an oracle-quality-configuration conditional runtime score, not the deployed predicted-selection score.",
+      "forbidden_runtime_comparison": "Do not compare a prediction at predicted chi_hat to observed runtime at a different actual chi_star and describe it as runtime error. The selected-configuration quality violation is reported separately.",
+      "metrics_and_uncertainty": "Report seconds MAE/MedAE, log1p MAE, R2, p90/p99/max, coverage and exact per-cell denominators for each of the three objectives; paired exact-hash grouped bootstrap intervals. Keep the family-agnostic ablation on identical rows/folds/seeds."
+    },
+    "family_holdout": "Run as a separately labeled secondary diagnostic using the frozen deterministic component-grouped folds. Report family classifier support/unknown behavior; never replace the primary C44 result."
+  },
+  "adaptation_and_authority": {
+    "local_target_adaptation": true,
+    "paper_exact_reproduction": false,
+    "timing_performed": false,
+    "training_performed": false,
+    "preflight_runner_implemented": true,
+    "measurement_runner_implemented": true,
+    "measurement_runner_cuda_validated": false,
+    "technical_pilot_required_before_full_execution": true,
+    "folded_model_runner_implemented": false,
+    "no_current_json_or_historical_artifact_rewritten": true
+  }
+}

@@ -27,16 +27,22 @@ measure different parts of execution.
 ## Main findings and limitations
 
 The evaluated V3-large graph-and-metadata model has lower MAE than the
-polynomial model on their shared test rows in each QPU source. Both have negative R² on
-QPack. Three very large circuits still produce substantial errors, even
-after extending the graph representation's resource limit. These results
-describe our adaptations, not exact reproductions of the original models.
+polynomial model on their shared test rows in each QPU source. Both have
+negative R² on QPack. Three very large circuits still produce substantial
+errors, even after extending the graph representation's resource limit. A
+later graph-matched seven-feature metadata-only MLP had similar pooled MAE on
+the same 8,766 observations; its paired interval includes zero, so the
+follow-up does not establish a graph-branch gain. A separate retrospective
+dynamic-control prediction covers only `row4477`, not a V4 population test.
+These are adaptations, not exact reproductions of the original models.
 
 Scheduled circuit duration does not match recorded QPU service time.
 Simulator results also depend on which stage is timed, precision and, for
-approximate methods, output quality. The Maestro calibration pilot failed
-its timing-stability checks and has no accepted prediction score. The V4
-control-flow representation has not been trained.
+approximate methods, output quality. The historical optimizer-on Maestro
+calibration pilot failed its stability gate; a separate optimizer-off CPU
+QCSim component adaptation later scored 143/150 panel circuits, but is not a
+physical launch-overhead estimate or a cross-engine ranking. The dynamic
+control-flow follow-up is one retrospective case, not a five-fold V4 score.
 
 On the local Aer core, an Azizov-style transpiled-view GNN adaptation reached
 0.3008 s MAE, while a transpiled-view XGBoost baseline reached 0.2970 s; their
@@ -54,12 +60,14 @@ these assumptions and their consequences.
 
 ## Reproduction and publication status
 
-The complete review package at commit `860829a` passed a fresh local clean-clone
-table rebuild with a newly installed pinned verification environment. The
-validation record distinguishes that check from retraining or repeating
-hardware measurements: original-source extraction and every paper's training
-are not reproduced. The complete original source circuit collections are not
-included. See the [validation record](docs/reproduction_validation.md).
+The earlier C6 review package at commit `860829a` passed a fresh local
+clean-clone table rebuild. The staged 2026-10-03 follow-up candidate was
+separately tested from a temporary local commit in a fresh clone with a newly
+installed pinned verification environment: inventory, artifact checks, all
+supported table rebuilds and the full test suite passed. The temporary commit
+was not added to this branch or pushed. These checks rebuild frozen metrics;
+they do not reproduce original-source extraction, every paper's training or
+hardware measurements. See the [validation record](docs/reproduction_validation.md).
 
 The current E1–E6 package is on `presentation-review`; `benchmark-review`
 contains the earlier review package. Branch sharing is at the author's request.

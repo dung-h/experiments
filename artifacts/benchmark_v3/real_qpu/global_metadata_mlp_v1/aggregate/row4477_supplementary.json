@@ -1,0 +1,7 @@
+{
+  "absolute_error_seconds": 4.564549446105957,
+  "actual_seconds": 11.968528270721436,
+  "canonical_observation_id": "qonductor_single_circuit_ibm|row4477",
+  "predicted_seconds": 7.4039788246154785,
+  "scope": "one supplementary retrospective metadata-only case; excluded from all primary MLP-versus-graph metrics"
+}

@@ -1,0 +1,62 @@
+{
+  "artifact_id": "maestro-optimizer-off-native-build-provenance-v1",
+  "scope": "Host-specific provenance for the optimizer-off QCSim measurement and its CUDA comparator.",
+  "scientific_status": "Local adaptation only; not a clean-clone or portable-build receipt.",
+  "source": {
+    "upstream_repository": "https://github.com/qoro-quantum/maestro",
+    "upstream_revision": "2ef7000395fc2a173ab1b4221ec9a235da0392c6",
+    "worktree": "/home/server/Documents/quantum-runtime-estimator-replications/work/maestro_optimizer_off_detached_20261003",
+    "modified_source_file": "python/bindings.cpp",
+    "optimizer_off_patch": "benchmark_v1/patches/maestro_cx_optimizer_probe.patch",
+    "optimizer_off_patch_sha256": "386a945dde3a503488d9abd68b1235e2785327175963f888c1296c20fb014c13",
+    "applied_worktree_diff_sha256": "9494aa2e363fcf1ea67702af2ee1422ed20e4783b8d682336c63511761b1a79a"
+  },
+  "build": {
+    "configuration": "Release; NO_QISKIT_AER; FAST_TESTS; Aer and test targets disabled",
+    "build_command": "cmake --build /home/server/Documents/quantum-runtime-estimator-replications/work/maestro_optimizer_off_detached_20261003/build --target maestro_py -j2",
+    "configure_command": "Original configure argv was not retained; CMakeCache and generated target flags/link command are pinned below.",
+    "cmake": {
+      "path": "/usr/bin/cmake",
+      "version": "4.2.3",
+      "sha256": "6e1dccda39845415d68eabb934c598998949c99ec4668625d571aee1827b05c7"
+    },
+    "compiler": {
+      "path": "/usr/bin/x86_64-linux-gnu-g++-15",
+      "version": "GNU 15.2.0-1ubuntu1~24.04",
+      "sha256": "e6718f7e0c7d057c3ff77b550c603da9bc4030e3ede3c053705acce1293dbe4d"
+    },
+    "cmake_cache_sha256": "69fe7c6cee899e65a5b704b56d63c76c8ad9850ccf24c426861ff1896be8cc53",
+    "target_flags_make_sha256": "63252a233a22c439b591170cfbcca8e8a482fd6b162abf627367bcee65ce7a14",
+    "target_link_command_sha256": "cdff543f5b9563bec2ef9dea2fab0fcdcb9248b620be4904f71f9ce4a86e9cb3",
+    "nanobind": {
+      "repository": "https://github.com/wjakob/nanobind.git",
+      "revision": "8d7f1ee0621c17fa370b704b2100ffa0243d5bfb"
+    },
+    "python": {
+      "executable": "/home/server/Documents/.venv-qonductor/bin/python",
+      "version": "3.10.21"
+    }
+  },
+  "runtime_binaries": {
+    "native_module": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/work/maestro_optimizer_off_detached_20261003/build/maestro.cpython-310-x86_64-linux-gnu.so",
+      "sha256": "9e4f3d1cc69fe2db1c6276e3252c30543194662cea368a058c9a7e3cda5452d0"
+    },
+    "libmaestro": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/work/maestro_optimizer_off_detached_20261003/build/libmaestro.so",
+      "sha256": "b445b3b5e07d2d506f32b000e65acf207b60c3a39c28e34dea73c25af5d52f12",
+      "mtime_local": "2026-10-03 11:09:00 +0700",
+      "capture_note": "Hash was captured after the run; its filesystem modification time predates pilot and full execution. The runner's per-attempt environment hash did not directly include this library hash."
+    },
+    "boost_json": {
+      "path": "/home/server/Documents/maestro/build/boost_1_89_0/lib/libboost_json.so.1.89.0",
+      "sha256": "679b2401d19b891fc2659cddeab4db2a4aaca494b379c9531c66c858057e8c12"
+    },
+    "openmp": {
+      "path": "/usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0",
+      "sha256": "645478cbe100d1465b9d45f7047bca3965358f4d399937e544f55ac7a924d5a3"
+    }
+  },
+  "measurement_boundary": "The labeled simulator is CPU QCSim Statevector, FP64, with optimize_circuit=false; GPU was reserved for the separate CUDA graph predictor fit, not QCSim timing.",
+  "portability_limit": "QCSim source/build dependencies and the 150 source QASM files are outside this candidate repository. These hashes support audit of this host's recorded run; they do not make the measurement clean-clone reproducible."
+}

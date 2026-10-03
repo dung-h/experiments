@@ -1,0 +1,65 @@
+{
+  "artifact_id": "qpu_global_metadata_mlp_baseline_v1-fold-0",
+  "checkpoint_policy": {
+    "automatic_resume_supported": false,
+    "interval_epochs": 50,
+    "state": [
+      "model",
+      "optimizer",
+      "python_rng",
+      "numpy_rng",
+      "torch_rng",
+      "cuda_rng",
+      "completed_epoch"
+    ]
+  },
+  "command": [
+    "benchmark_v1/scripts/run_qpu_global_metadata_mlp_baseline_v1.py",
+    "--stage",
+    "fit",
+    "--fold",
+    "0",
+    "--features",
+    "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/benchmark_v3/recovery_real_qpu_20260929_v3/c134_feature_sidecar_v3.csv",
+    "--output-dir",
+    "artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_0"
+  ],
+  "compute_lock": {
+    "shared_timing_and_host_gpu_lease_held": false
+  },
+  "created_utc": "2026-10-02T18:06:37.546791+00:00",
+  "error": "fit requires the S85 shared timing + host-GPU compute lock",
+  "error_type": "RuntimeError",
+  "fit_completed": false,
+  "fit_started": false,
+  "inputs": {
+    "canonical": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v1/canonical_corpus_8767_20260926/canonical_observations.csv",
+      "sha256": "920d745e03dd00e8155118d9323baea18ff865e4df2620f3a059bd5503a05ba4"
+    },
+    "features": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/benchmark_v3/recovery_real_qpu_20260929_v3/c134_feature_sidecar_v3.csv",
+      "sha256": "cb233f00258cd8189da1a3b17363386ff19618e84778956ed8de9f352eb6117a"
+    },
+    "graph_oof": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/unified_graph_v3_large_oof_20260930/predictions.csv",
+      "sha256": "3c179ae464fc25167ae0f1aca028cf5ff1117409dce9d15f6945e4f621420d2c"
+    },
+    "inner": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v2/real_qpu/unified_inner_split_v2.csv",
+      "sha256": "aaff2b0950379ac7ad8992698bc140687a4cd1b6696b8abeff7cb96270af3cab"
+    },
+    "outer": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v2/real_qpu/unified_outer_split_v2.csv",
+      "sha256": "d72b7ba6f90d5bf6ed2f3b602196a05bee11a0f441ee4e5caaca6978b6b0e25a"
+    },
+    "seed_registry": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/benchmark_v1/registry/seed_registry.json",
+      "sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864"
+    }
+  },
+  "method_id": "qpu_global_metadata_mlp_baseline_v1",
+  "outer_fold": 0,
+  "stage": "exception",
+  "status": "failed"
+}

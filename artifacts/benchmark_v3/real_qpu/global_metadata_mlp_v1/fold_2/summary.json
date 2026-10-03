@@ -1,0 +1,75 @@
+{
+  "all_finite_sidecar_rows_used_for_train_or_test": true,
+  "artifact_id": "qpu_global_metadata_mlp_baseline_v1-fold-2",
+  "automatic_resume_supported": false,
+  "checkpoint_interval_epochs": 50,
+  "cpu_threads": 2,
+  "cuda_forward_backward_smoke": "PASS",
+  "cuda_version": "12.8",
+  "device": "NVIDIA GeForce RTX 5070 Ti",
+  "features": [
+    "active_width",
+    "structural_depth",
+    "one_qubit_count",
+    "two_qubit_count",
+    "swap_like_count",
+    "measurement_count",
+    "shots"
+  ],
+  "fit_ran": true,
+  "gpu_driver_version": "595.91.07",
+  "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+  "gpu_total_memory_mib": 16303,
+  "group_overlap_count": 0,
+  "inner_folds_audited_not_used_for_selection": true,
+  "method_id": "qpu_global_metadata_mlp_baseline_v1",
+  "n_test_assigned": 1547,
+  "n_test_primary_paired": 1547,
+  "n_test_supplementary": 0,
+  "n_train": 7219,
+  "normalization_mean_log_features": [
+    1.8472806215286255,
+    4.271708011627197,
+    4.118638515472412,
+    3.904151678085327,
+    0.09183868765830994,
+    1.850834846496582,
+    8.085288047790527
+  ],
+  "normalization_std_log_features": [
+    0.6202864050865173,
+    1.2062493562698364,
+    1.3169015645980835,
+    1.637269139289856,
+    0.6181015968322754,
+    0.6295447945594788,
+    0.7868597507476807
+  ],
+  "outer_fold": 2,
+  "precision": "float32",
+  "row4477_role": "excluded from train in every fold; fold-0 output is supplementary, not part of primary paired score",
+  "seed_reduction": "rowwise_median_of_all_three",
+  "seeds": [
+    {
+      "cuda_peak_allocated_bytes": 34538496,
+      "cuda_peak_reserved_bytes": 52428800,
+      "seed": 42
+    },
+    {
+      "cuda_peak_allocated_bytes": 39339008,
+      "cuda_peak_reserved_bytes": 56623104,
+      "seed": 1234
+    },
+    {
+      "cuda_peak_allocated_bytes": 44132864,
+      "cuda_peak_reserved_bytes": 62914560,
+      "seed": 31415
+    }
+  ],
+  "selected_seed": null,
+  "status": "PASS",
+  "target_transform": "log1p_seconds_fit_and_expm1_clip_nonnegative_for_report",
+  "test_group_count": 468,
+  "torch_version": "2.7.1+cu128",
+  "train_group_count": 1851
+}

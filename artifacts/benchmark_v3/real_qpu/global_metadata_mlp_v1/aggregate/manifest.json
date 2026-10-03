@@ -1,0 +1,50 @@
+{
+  "artifact_id": "qpu-global-metadata-mlp-oof-v1",
+  "assigned_n": 8767,
+  "fold_directories": {
+    "0": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_0_attempt_002",
+    "1": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_1",
+    "2": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_2",
+    "3": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_3",
+    "4": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_4"
+  },
+  "input_hashes": {
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v1/canonical_corpus_8767_20260926/canonical_observations.csv": "920d745e03dd00e8155118d9323baea18ff865e4df2620f3a059bd5503a05ba4",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v2/real_qpu/unified_outer_split_v2.csv": "d72b7ba6f90d5bf6ed2f3b602196a05bee11a0f441ee4e5caaca6978b6b0e25a",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_0_attempt_002/attempts.csv": "398be9cbfe867f90adf32208d1215154de3d99c1b28fa30545c7a1331fd5c25e",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_0_attempt_002/predictions.csv": "c644ab70cc83f3a6430c3ac63d86c2fafa4a3f9f8bb427f4adec6b6b5bc0801c",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_0_attempt_002/run_manifest.json": "0b9478b4ae81c5fb1ed47feca206d679b8a72c13a89de9e57a242e01e3535785",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_1/attempts.csv": "a3466734a369cb15eada4e68838284a6f77f9233672baf6a76778d86033c3fb6",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_1/predictions.csv": "a5b045ab8ec050db503e33a48e0bb50e5789346d3998bef42060559104141e31",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_1/run_manifest.json": "d11643d1053e272769e999ae1e71f80df35c9aa93d98a250248be18197c75631",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_2/attempts.csv": "af36e3c9353e7336c894de116fdf8d01764ef04b5531dbe6ed2dcc1fa8f4162b",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_2/predictions.csv": "01cfca505018079615864ac761e599ecaa888fd946a683dccc09e01dd1bc3521",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_2/run_manifest.json": "6f175838c9dec55b4fa57fc2c6c015a398ef28c12fd94a90824728f06510847c",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_3/attempts.csv": "32ae41d640bca5ef82bd9b9cbd570c8e36cbe4cd1f792251224b2dc4c057359f",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_3/predictions.csv": "276054c9066dc902f772c2936c1f4ee60b57eb1c9b986da2964717f9f715909f",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_3/run_manifest.json": "8e70fa86103092d6e421d50d86e8e1ef7b6488b43ee52aa4d57b1edf829bd141",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_4/attempts.csv": "1ab2c26f7e6d131af85ec6a769fbcfe768ee421912dd3db72014e7131b5317a1",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_4/predictions.csv": "8102fe92f5cab7b11339021697c99e9bf8827a14950ccc7509ed8a0c7edb73b1",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_4/run_manifest.json": "899e7e406b01a82d534f1a3c030e83d83d3fb76017939851082f78c275bb4939",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/artifacts/benchmark_v3/real_qpu/unified_graph_v3_large_oof_20260930/predictions.csv": "3c179ae464fc25167ae0f1aca028cf5ff1117409dce9d15f6945e4f621420d2c",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/benchmark_v1/protocol/qpu_global_metadata_mlp_baseline_v1.json": "f755b884234f20ca3da71f6628ed6863a8c3dafee5a2f7cab88dfa8f4afd5ad3",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/benchmark_v1/registry/seed_registry.json": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864",
+    "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/benchmark_v1/scripts/aggregate_qpu_global_metadata_mlp_v1.py": "7a59135bcf34f4e18cd1953dec8ae43e764b70963c3fa3f31d9b7bcc1ad011f5"
+  },
+  "output_hashes": {
+    "method_metrics.csv": "743edd73106a2e4bf6a8121a33ad27f1b4ba5074c436f378bf1d6ffa09cc7260",
+    "oof_predictions.csv": "e754db37fbc762d4042648405241a7bb7e8da16565b63a9048e894e8b267df6c",
+    "paired_comparison.csv": "3db97174ea38ca1eb37db8a2baea88c5e24fb308bd738d23e31ae3e0d464252a",
+    "row4477_supplementary.json": "f9717c38235e9056bd009bc6410afd9b35205aa6181cd24254e4d45ea9480acc",
+    "source_metrics.csv": "9c4d4806af8b0d758ec67cfd2404e2427e9eb6436951aa95995faa69546a5cc8"
+  },
+  "primary_claim": "V3-large-matched global-metadata-only MLP versus Graph V3-large on identical 8,766 IDs; source-stratified metrics and paired grouped bootstrap; pooled row-weighted result is diagnostic only",
+  "primary_paired_n": 8766,
+  "source_counts": {
+    "mali_real_qpu": 340,
+    "qonductor_single_circuit_ibm": 4482,
+    "qpack_mcp": 3945
+  },
+  "status": "PASS",
+  "supplementary_row4477_n": 1
+}

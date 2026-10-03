@@ -47,3 +47,11 @@ artifacts/validation/mali_azizov_transpiled_dag_v1/qpu_scratch_pilot/coarsened/
 /artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/compiled_qpy/
 /artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/source_graphs.jsonl
 /artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/transpiled_graphs.jsonl
+
+# Training checkpoints are retained locally for forensic/resume use. The
+# release evidence is the frozen predictions, attempts, protocol and manifests;
+# do not accidentally publish hundreds of intermediate weight snapshots.
+/artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/fold_*/checkpoints/*.pt
+/artifacts/benchmark_v3/real_qpu/mali_style_v4_fold0_control_flow_case_v1/checkpoint_seed_*.pt
+/artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/**/checkpoints/*.pt
+/artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/**/family_classifier_checkpoints/*.pt

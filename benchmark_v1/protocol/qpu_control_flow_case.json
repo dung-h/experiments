@@ -1,0 +1,73 @@
+{
+  "protocol_id": "qpu-control-flow-single-case-v1",
+  "method_id": "mali_style_v4_fold0_control_flow_case",
+  "fidelity_class": "adaptation",
+  "status": "design_locked_execution_not_performed",
+  "evaluation": {
+    "canonical_rows": 8767,
+    "outer_fold": 0,
+    "case_id": "qonductor_single_circuit_ibm|row4477",
+    "clock": "archived_observed_service_execution_time",
+    "train_selection": "all eligible canonical observations with frozen outer_fold != 0",
+    "reported_population": "one structural-OOD case, not a unified five-fold score",
+    "case_target_used_after_prediction_only": true,
+    "dynamic_training_examples_expected": 0,
+    "retrospective_case_study": true,
+    "uncertainty": "report all three seeds and their dispersion; no population confidence interval from n=1"
+  },
+  "representation": {
+    "parent": "S79 / s71-control-flow-dag-v4",
+    "conversion_authority": "this single-case contract explicitly lifts the immutable v1r2 prototype into the signed S79 feature layout; the prototype itself remains marked unauthorized",
+    "static_nodes": "V3 operations and wire edges with V4 kind/condition channels",
+    "dynamic_nodes": "v1r2 control, true, false and per-wire merge; explicit empty false branch",
+    "condition_channels": ["predicate_present", "comparison_value", "bit_index/max(1,num_clbits)", "log1p(register_size)"],
+    "kind_channels": ["operation", "control", "true_branch", "false_branch", "merge"],
+    "typed_edges_consumed": false,
+    "train_gate_vocabulary_only": true,
+    "global_features": ["active_width", "structural_depth", "one_qubit_count", "two_qubit_count", "swap_like_count", "measurement_count", "shots"],
+    "global_transform": "log1p(max(0,x)); outer-train mean/std only",
+    "unsupported": ["while_loop", "for_loop", "switch_case"],
+    "critical_limit": "dynamic-only feature channels receive no informative dynamic training signal; case prediction is unvalidated structural extrapolation"
+  },
+  "training": {
+    "seeds": [42, 1234, 31415],
+    "epochs": 500,
+    "effective_batch": 32,
+    "node_microbatch_budget": 131072,
+    "precision": "float32",
+    "device": "cuda",
+    "cpu_threads": 2,
+    "optimizer": "Adam",
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0001,
+    "target_transform": "log1p(seconds)",
+    "prediction_transform": "max(0,expm1(output))",
+    "architecture": "three TransformerConv(64), mean pool; global 7->64->64; concatenated head 128->512->512->128->1",
+    "hyperparameter_tuning": false,
+    "outer_test_early_stopping": false,
+    "checkpoint_gate": "GPU canary runs ten outer-train graphs with forward/backward but no optimizer steps, plus target-free case forward; weights reset before fit; finite outputs/gradients and correct CUDA/input/split only"
+  },
+  "execution": {
+    "fold0_case_allowed_after_technical_preflight": true,
+    "stages": ["pinned panel/split/prototype and signed-layout parity preflight", "CUDA no-optimizer canary", "fresh-weight fold0 fit for three seeds", "single-case scoring"],
+    "canary_automatically_required_by_fit": true,
+    "five_fold_training_authorized": false,
+    "reuse_v3_checkpoints": false,
+    "splice_into_v3_large": false,
+    "live_qpu": false,
+    "overwrite_existing_output": false,
+    "compute_lock": "shared timing lock plus host-wide GPU lease"
+  },
+  "input_pins": {
+    "artifacts/benchmark_v1/canonical_corpus_8767_20260926/canonical_observations.csv": "920d745e03dd00e8155118d9323baea18ff865e4df2620f3a059bd5503a05ba4",
+    "artifacts/benchmark_v2/real_qpu/unified_outer_split_v2.csv": "d72b7ba6f90d5bf6ed2f3b602196a05bee11a0f441ee4e5caaca6978b6b0e25a",
+    "artifacts/benchmark_v3/recovery_real_qpu_20260929_v3/c134_feature_sidecar_v3.csv": "cb233f00258cd8189da1a3b17363386ff19618e84778956ed8de9f352eb6117a",
+    "artifacts/benchmark_v3/s71_graph_panel_v3_large_20260930/graph_row_manifest.csv": "c85d0e380713212e0d0ec87b512013c990fec9714c21e902bc7b25608d4d8558",
+    "artifacts/benchmark_v3/real_qpu/dynamic_control_representation_probe_v1r2/prototype.json": "1a08f3f760e550c7145862012a43f19a56dfb4b8ec315032c80a77caa2df0fb2",
+    "benchmark_v1/decisions/S79_GRAPH_V4_CONTROL_FLOW_SCIENTIFIC_CONTRACT_20260930.md": "62638e5016d4c8573cf6b8e608a246d171240541f16643b906f727ad4e5c4bfd",
+    "benchmark_v1/scripts/s71_graph_v4_control_flow.py": "524f6d39f4fe8b840251fae61bb16e03797f22513251fa350be6f179f8327268",
+    "benchmark_v1/protocol/mali_unified_graph_v4_control_flow.json": "7801e411e790efa406fab274dd747f28542f90baa7db47ccc6c8f05d5c42d556",
+    "artifacts/benchmark_v3/real_qpu/dynamic_control_representation_probe_v1r2/report.json": "6196a1ba7a80cbeb1d4106fe4a9b449eb4f0ea9972149a49d3fdbee7a7bad8d6"
+  },
+  "claim": "error on one archived dynamic-control circuit with no dynamic examples in outer-train; this cannot establish general dynamic-circuit accuracy or recover branch latency"
+}

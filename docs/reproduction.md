@@ -3,7 +3,8 @@
 This guide rebuilds the included benchmark tables from saved predictions
 and simulator measurements. It does not retrain models, repeat timings or
 submit QPU jobs. Some paper-level methods remain unavailable or are local
-adaptations, so the scientific report remains `PARTIAL`. The current QPU
+adaptations, so the scientific report remains bounded/partial rather than a
+complete reproduction of every source paper. The current QPU
 scorecard is in the
 [two-domain scorecard v3](../artifacts/benchmark_v1/results/benchmark_summary/two_domain_scorecard_v3/README.md).
 
@@ -243,9 +244,10 @@ the E6 predictive aggregate rebuilds metrics from saved OOF predictions.
 Neither repeats Aer, CUDA-Q, MPS, cuTensorNet or Maestro timing on another
 machine. Runtime values can vary by hardware, driver and execution context;
 the recorded clock, precision, shots, workspace and quality gate must remain
-attached to each result. The Maestro ten-cell pilot is terminal at
-`pilot_gate_failed` and has no predictor score. V4 control flow is contract-only
-and has no trained score.
+attached to each result. The historical **optimizer-on** Maestro ten-cell
+pilot is terminal at `pilot_gate_failed` and has no score; the separate
+optimizer-off CPU QCSim follow-up is documented below. V4 still has no
+five-fold score; `row4477` has only one supplementary retrospective case.
 
 Method-specific original-paper retraining is a separate task. Method cards,
 run manifests and the [fidelity registry](../benchmark_v1/registry/method_fidelity_registry_v2.json)
@@ -261,3 +263,41 @@ has been chosen on the author's behalf. The
 continues to document unresolved licensing and source-provenance questions.
 The publication request does not change scientific status, `CURRENT.json`
 or third-party licenses.
+
+### Bounded 2026-10-03 follow-ups
+
+The metadata-only QPU MLP, the single `row4477` control-flow case, the joint
+MPS rung model, and the optimizer-off QCSim comparison have saved predictions,
+attempts, protocols and run manifests under their linked `artifacts/` paths in
+[`docs/results.md`](results.md#additional-frozen-follow-ups-2026-10-03).
+These are separate supplementary results; the historical scorecard v3,
+`CURRENT.json`, C4 receipt and previous clean-clone receipt were not rewritten.
+
+The supported reproduction levels differ:
+
+| Stream | Rebuild/verify from saved files | Retrain or retime from a fresh clone |
+| --- | --- | --- |
+| QPU metadata MLP | Fold outputs and aggregate can be hash-checked; primary 8,766-row pairing is recorded. | Requires the C134 feature sidecar and CUDA model environment, which are not fully bundled in the previous review-branch clone receipt. |
+| Dynamic `row4477` case | Result and three seed predictions are retained and hash-checkable. | Requires reconstructed graph inputs and CUDA; this is one known retrospective case, not a general test split. |
+| Joint MPS runtime/quality | Full 2,700-attempt ledger, OOF outputs, aggregate metrics and status counts are retained. | Replaying measurements requires the CUDA-Q bridge, parser/input panel and compatible GPU; the source panel and complete bridge are not a portable clean-clone timing setup. |
+| Maestro optimizer-off | Attempts, calibration, OOF predictions, metrics, protocol and native-build provenance are retained for audit. | A clean-clone retime is not demonstrated: QCSim source/build and exact panel QASM are external, and optimizer-off requires the GPL-derived patch held outside this candidate. The native `libmaestro.so` hash was captured after the run, so its pre-run identity is not independently attested. |
+
+The optimizer-off protocol resolver fails closed when that withheld patch is
+absent. Its unit tests use a synthetic patch fixture to exercise pin and
+resolution logic without copying Maestro source or the GPL-derived patch into
+the candidate; this test fixture is not a substitute for the runtime patch.
+
+For the Maestro follow-up, the graph comparator's five-fold model fitting ran
+on the recorded RTX 5070 Ti CUDA environment with no CPU fallback. CPU QCSim
+timing is a different phase and engine. Its empirical intercept is not
+launch overhead. The result is not directly comparable to Aer, CUDA-Q MPS,
+or the historical optimizer-on pilot.
+
+The 2026-10-03 follow-up artifacts were generated in the current local
+candidate after the earlier clean-clone receipt. Until these additions are
+staged, committed and independently checked on the review branch, the earlier
+receipt does not cover them. No commit or push is implied by this guide.
+Intermediate `.pt` checkpoints remain on this host but are excluded by the
+scoped `.gitignore` rules; frozen OOF predictions, raw attempt ledgers and
+manifests are the packaged evidence. The checkpoint exclusion does not delete
+local files and does not claim that those model weights are in the release.

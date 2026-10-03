@@ -1,0 +1,117 @@
+{
+  "protocol_id": "qpu-global-metadata-mlp-baseline-v1",
+  "method_id": "qpu_global_metadata_mlp_baseline_v1",
+  "reader_label": "V3-large-matched global-metadata-only MLP baseline",
+  "fidelity_class": "baseline",
+  "status": "proposed_preflight_pass_fit_not_run",
+  "purpose": "Measure the predictive value of the exact seven global metadata inputs supplied to the unified Ma--Li-style Graph V3-large adaptation, with the graph branch removed. This is an internal comparator, not a paper reproduction.",
+  "authorities": [
+    "benchmark_v1/decisions/learned_method_contract_v3.md",
+    "benchmark_v1/protocol/unified_split_contract_v2.json",
+    "benchmark_v1/registry/seed_registry.json",
+    "benchmark_v1/registry/method_fidelity_registry_v2.json",
+    "benchmark_v1/protocol/mali_unified_graph_v3_large.json (read-only source-workspace authority; pinned below)"
+  ],
+  "input_features": {
+    "ordered_columns": [
+      "active_width",
+      "structural_depth",
+      "one_qubit_count",
+      "two_qubit_count",
+      "swap_like_count",
+      "measurement_count",
+      "shots"
+    ],
+    "transform": "log1p(max(0, value))",
+    "normalization": "per-outer-fold mean/std fit on outer-train only; std < 1e-6 replaced by 1.0",
+    "forbidden_features": [
+      "source_id", "backend", "representation_tier", "representation_id",
+      "circuit_hash", "workflow_id", "source_row_index", "outer_fold",
+      "target_seconds", "target_seconds_present", "target_native",
+      "queue_or_service_metadata", "post_execution_metadata", "missingness_or_availability_flags"
+    ],
+    "feature_source": "S67/C134 V3 common feature sidecar; the runner reads only the seven named columns. circuit_count must equal 1 but is asserted, not passed to the model."
+  },
+  "population_and_comparison": {
+    "canonical_assigned_rows": 8767,
+    "source_counts": {
+      "mali_real_qpu": 340,
+      "qonductor_single_circuit_ibm": 4482,
+      "qpack_mcp": 3945
+    },
+    "feature_eligible_rows": 8767,
+    "graph_v3_large_scored_rows": 8766,
+    "graph_unavailable_row": "qonductor_single_circuit_ibm|row4477",
+    "metadata_baseline_policy": "All seven sidecar features are present and finite for all 8,767 rows, including row4477. The baseline attempt envelope retains 8,767 assigned IDs. To match Graph V3-large training support exactly, exclude row4477 from every outer-train fit. Predict it once as a fold-0 held-out supplementary metadata-only case, but exclude that row from primary paired error. Primary paired graph-vs-baseline accuracy uses the exact 8,766 shared IDs.",
+    "training_population_note": "For each outer fold, train IDs are exactly V3-large eligible IDs (all canonical IDs except row4477, then excluding that fold's test IDs). Fold-0 row4477 remains a supplementary test prediction only. This matches graph training support and avoids a training-population advantage."
+  },
+  "target_and_split": {
+    "canonical_path": "artifacts/benchmark_v1/canonical_corpus_8767_20260926/canonical_observations.csv",
+    "canonical_sha256": "920d745e03dd00e8155118d9323baea18ff865e4df2620f3a059bd5503a05ba4",
+    "target_column": "target_seconds",
+    "evaluation_target_clock": "archived_observed_service_execution_time",
+    "method_output_clock": "predicted_archived_observed_service_execution_time_seconds",
+    "target_transform": "log1p(target_seconds); report max(0, expm1(prediction))",
+    "outer_split_path": "artifacts/benchmark_v2/real_qpu/unified_outer_split_v2.csv",
+    "outer_split_sha256": "d72b7ba6f90d5bf6ed2f3b602196a05bee11a0f441ee4e5caaca6978b6b0e25a",
+    "inner_split_path": "artifacts/benchmark_v2/real_qpu/unified_inner_split_v2.csv",
+    "inner_split_sha256": "aaff2b0950379ac7ad8992698bc140687a4cd1b6696b8abeff7cb96270af3cab",
+    "assignment": "Use the frozen unified outer fold and grouped inner-fold assignments without editing or reseeding. Each outer fold is trained on outer_fold != k and predicts exactly outer_fold == k. Assert group disjointness.",
+    "outer_test_rows_assigned": {"0": 1778, "1": 2206, "2": 1547, "3": 1467, "4": 1769},
+    "outer_test_rows_primary_paired": {"0": 1777, "1": 2206, "2": 1547, "3": 1467, "4": 1769},
+    "outer_train_rows_matched_to_graph": {"0": 6989, "1": 6560, "2": 7219, "3": 7299, "4": 6997},
+    "inner_split_use": "QA only. Architecture, optimizer, epochs, and seeds are fixed from the graph contract; no tuning, early stopping, or seed selection is performed."
+  },
+  "model": {
+    "family": "global-metadata-only multilayer perceptron; graph-free comparator",
+    "architecture": "Seven normalized global features -> Linear(7,64)+ReLU -> Linear(64,64)+ReLU. Concatenate a fixed zero-valued 64-wide graph slot to retain the V3-large 128-wide downstream head input; then Linear(128,512)+ReLU -> Linear(512,512)+ReLU -> Linear(512,128)+ReLU -> Linear(128,1). No graph nodes, edges, vocabulary or qubit-position features are read.",
+    "precision": "float32",
+    "optimizer": "Adam(lr=0.0005, weight_decay=0.0001)",
+    "loss": "row-weighted mean squared error on log1p(target_seconds), matching S71 graph training loss",
+    "batch_size": 32,
+    "epochs": 500,
+    "early_stopping": "disabled",
+    "seeds": [42, 1234, 31415],
+    "seed_authority": "Fixed graph protocol seed list; each value must appear in benchmark_v1/registry/seed_registry.json historical_seeds_preserved.",
+    "seed_reduction": "rowwise median of the three per-seed held-out predictions"
+  },
+  "compute": {
+    "training_device": "CUDA required; fail closed if unavailable; no CPU fallback",
+    "gpu_workers": 1,
+    "cpu_threads": 2,
+    "preflight_device": "CPU metadata/identity validation only; does not train",
+    "torch_geometric_required": false,
+    "dependencies": ["numpy", "torch with CUDA support"]
+  },
+  "expected_source_authority_hashes": {
+    "canonical_observations.csv": "920d745e03dd00e8155118d9323baea18ff865e4df2620f3a059bd5503a05ba4",
+    "unified_outer_split_v2.csv": "d72b7ba6f90d5bf6ed2f3b602196a05bee11a0f441ee4e5caaca6978b6b0e25a",
+    "unified_inner_split_v2.csv": "aaff2b0950379ac7ad8992698bc140687a4cd1b6696b8abeff7cb96270af3cab",
+    "seed_registry.json": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864",
+    "graph_v3_large_protocol_source": "e119cd3ec1d79a1221f91fb389933ce292920bc8ebf22061ca2c492cea77236e",
+    "graph_v3_global_runner_source": "c2fb586ae64fe6d13331d52cab210ef6c8a4b436f9e7af068ff3d730c0c56ed3",
+    "C134_feature_sidecar_read_only_source": "cb233f00258cd8189da1a3b17363386ff19618e84778956ed8de9f352eb6117a",
+    "graph_v3_large_oof_predictions": "3c179ae464fc25167ae0f1aca028cf5ff1117409dce9d15f6945e4f621420d2c"
+  },
+  "commands": {
+    "preflight_current_workspace": "python3 benchmark_v1/scripts/run_qpu_global_metadata_mlp_baseline_v1.py --stage preflight --features /home/server/Documents/quantum-runtime-estimator-replications/artifacts/benchmark_v3/recovery_real_qpu_20260929_v3/c134_feature_sidecar_v3.csv",
+    "preflight_clean_clone_after_c134_restore": "python benchmark_v1/scripts/run_qpu_global_metadata_mlp_baseline_v1.py --stage preflight --features artifacts/benchmark_v3/recovery_real_qpu_20260929_v3/c134_feature_sidecar_v3.csv",
+    "complete_technical_gated_fit_shell": "set -euo pipefail; FEATURES=artifacts/benchmark_v3/recovery_real_qpu_20260929_v3/c134_feature_sidecar_v3.csv; OUT=artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1; export CUDA_VISIBLE_DEVICES=0 OMP_NUM_THREADS=2 MKL_NUM_THREADS=2; python benchmark_v1/scripts/run_qpu_global_metadata_mlp_baseline_v1.py --stage preflight --features $FEATURES; for FOLD in 0 1 2 3 4; do python benchmark_v1/scripts/run_qpu_global_metadata_mlp_baseline_v1.py --stage fit --fold $FOLD --features $FEATURES --output-dir $OUT/fold_$FOLD; python benchmark_v1/scripts/run_qpu_global_metadata_mlp_baseline_v1.py --stage validate_fold --fold $FOLD --features $FEATURES --output-dir $OUT/fold_$FOLD; done"
+  },
+  "fit_status": "not_run",
+  "checkpointing": {
+    "interval_epochs": 50,
+    "state_saved": ["model", "optimizer", "python_rng", "numpy_rng", "torch_rng", "cuda_rng", "completed_epoch"],
+    "automatic_resume_supported": false,
+    "interruption_policy": "run manifest remains status=running with last checkpoint; do not reuse the directory or imply automatic resume; preserve as failed/incomplete and start a new attempt directory if rerunning"
+  },
+  "technical_fit_gates": [
+    "C134 sidecar restored/pinned; canonical, split, seed, graph OOF and feature hashes pass before fitting",
+    "CUDA required; S85 shared timing + host-GPU lock acquired before availability/inventory/smoke/training/inference CUDA calls",
+    "fresh CUDA forward/backward smoke finite; GPU model, driver, total memory, CUDA and PyTorch versions recorded",
+    "fit creates status=running manifest before acquiring compute lock; existing output path is rejected before imports/training",
+    "each fold emits assigned-ID-complete attempts/predictions; all values finite; source/group IDs match frozen split; primary/supplementary labels exact",
+    "each fold emits all three seeds at epochs 50,100,...,500 with model/optimizer/RNG checkpoint state and hashes",
+    "validate_fold command must PASS for a fold before shell loop advances; row4477 is supplementary in fold 0 only and primary paired comparison remains exactly 8,766 rows"
+  ]
+}

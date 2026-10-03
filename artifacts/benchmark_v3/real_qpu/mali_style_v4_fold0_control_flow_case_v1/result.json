@@ -1,0 +1,27 @@
+{
+  "case_id": "qonductor_single_circuit_ibm|row4477",
+  "observed_seconds": 11.968528270721436,
+  "median_prediction_seconds": 6.249101638793945,
+  "absolute_error_seconds": 5.71942663192749,
+  "seed_predictions": [
+    {
+      "seed": 42,
+      "prediction_seconds": 4.624112129211426,
+      "absolute_error_seconds": 7.34441614151001
+    },
+    {
+      "seed": 1234,
+      "prediction_seconds": 6.249101638793945,
+      "absolute_error_seconds": 5.71942663192749
+    },
+    {
+      "seed": 31415,
+      "prediction_seconds": 8.245172500610352,
+      "absolute_error_seconds": 3.723355770111084
+    }
+  ],
+  "seed_prediction_range_seconds": 3.621060371398926,
+  "dynamic_train_rows": 0,
+  "claim": "error on one archived dynamic-control circuit with no dynamic examples in outer-train; this cannot establish general dynamic-circuit accuracy or recover branch latency",
+  "status": "completed_single_case_only"
+}

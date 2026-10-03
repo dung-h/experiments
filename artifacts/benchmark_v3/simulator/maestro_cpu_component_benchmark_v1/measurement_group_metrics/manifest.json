@@ -1,0 +1,15 @@
+{
+  "artifact_id": "maestro-terminal-measurement-group-metrics-v1",
+  "error_scope": "only runtime_observed targets with an available OOF prediction",
+  "groups": [
+    "full_register",
+    "partial_measurement",
+    "wider_classical_register",
+    "repeated_measurement"
+  ],
+  "measurement_group_metrics_sha256": "383322d6437018c21bbd7aa57f2e43bba25231d8096eec9af2039eaeb2b3ba6a",
+  "oof_predictions_sha256": "b678392dea310a397d8c4529e59f0cc26bfb355dc3aa6b107e49d9eedb775abb",
+  "panel_targets_sha256": "2076a66a552159a2b01a35194e94f7915cb40f3136b6a38bb279424ae97ef0f4",
+  "status": "complete",
+  "summarizer_sha256": "0455855c2c138246e4d51f1fe43a22507f56b92965f1d00c130c93f30955d5b9"
+}

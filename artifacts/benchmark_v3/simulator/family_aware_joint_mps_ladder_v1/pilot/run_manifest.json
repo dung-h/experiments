@@ -1,0 +1,24 @@
+{
+  "accumulated_wall_seconds": 83.27201143701677,
+  "attempt_count": 180,
+  "execution_environment": {
+    "cudaq_expected_version": "0.15.1",
+    "cudaq_package_lock_sha256": "2ac34ec139e27ca58b0db1250269f375353cd8bc75786f18483514a72718756a",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti, 595.91.07, 16303 MiB",
+    "interpreter": "/home/server/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/bin/python3.13",
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+    "python": "3.13.15 (main, Aug 14 2026, 15:34:59) [Clang 22.1.3 ]",
+    "qiskit_expected_version": "2.5.2",
+    "qiskit_package_lock_sha256": "4dd4246a84f7f1ca2a14c9e25b9cd6fed9b46d971f39a61203a021a6c4d26769",
+    "qiskit_site_packages": "/home/server/Documents/quantum-runtime-estimator-replications/.venv-qre-cudaq-common-v1/lib/python3.13/site-packages"
+  },
+  "max_gpu_memory_used_mib_observed": 507,
+  "preflight_manifest_sha256": "db66926f20cc1863993f944ad7700c1bc93b36fbb67ba7ae41f6c350aed9316d",
+  "protocol_sha256": "0019e8b39b3952561a8753f5ea4055a3b98c8471a6f11617ea339df1487f9563",
+  "runner_id": "family-aware-joint-mps-runtime-quality-ladder-v1",
+  "runner_sha256": "e0a7815a02b600bf65c21869d63c8f1d396a47bb21e6884d052ad218338adac2",
+  "scope": "pilot10",
+  "status": "fail",
+  "technical_error_count": 180,
+  "timing_started": true
+}

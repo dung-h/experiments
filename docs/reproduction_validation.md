@@ -162,3 +162,55 @@ the path recorded by the manifest, and the reproduction command must write
 under the builder's supported `work/repo_finalization/rebuilds/` directory.
 Both are now explicit in the payload inventory and reproduction guide; no
 scientific data, prediction or authority manifest was changed.
+
+## Staged 2026-10-03 follow-up candidate — fresh local clone
+
+The candidate was assembled from `presentation-review` HEAD `f3a3584` plus its
+explicit 218-path staged change set in a temporary local Git repository. That
+temporary commit was then cloned with `git clone --no-local`; it was not
+committed on the source branch or pushed to GitHub. This checks the staged
+candidate payload, not a remote clone. The candidate contains 1,687 tracked
+paths; the three large row-partitioned CSVs are restored from included parts.
+
+A fresh Python 3.10.21 virtual environment was created inside the clean clone
+and installed from `benchmark_v1/requirements-verification.txt`. The pinned
+environment includes NumPy 2.2.6, pandas 2.3.3, SciPy 1.15.3, scikit-learn
+1.7.2, Qiskit 2.5.2, CPU-only PyTorch 2.14.0, PyG 2.8.0.post1, XGBoost 3.2.0
+and pytest 9.1.1. `PYTHONPATH` and `PYTHONHOME` were empty; commands ran from
+the clone with no original-workspace data fallback.
+
+| Check | Result |
+| --- | --- |
+| CSV restoration | Three row-partitioned source CSVs restored and byte/hash verified |
+| Release inventory | PASS; 1,687 tracked paths, 1,689 hashes including 3 materialized paths, 928,102,735 verified bytes |
+| Historical artifact verification | PASS; no timing, training or external service used |
+| Simulator reader tables | Build and validator PASS; all 7 non-manifest outputs byte-identical |
+| QPU method aggregate | 24 methods / 72 source pairs / 36 coverage-asymmetric pairs; attempts and all 3 metric tables byte-identical |
+| Two-domain scorecard | Build status `BUILT_FROM_PINNED_INPUTS_MAESTRO_PILOT_FAILED`; validator PASS; 24 QPU variants, 72 source pairs, 162 supplementary Aer rows; all 22 non-manifest outputs byte-identical |
+| Full `benchmark_v1/tests` suite | 237 passed, 4 subtests passed in 21.43 s |
+| Clone after restore, rebuilds and tests | Clean Git worktree |
+
+The tested commands are the fresh-clone commands in
+[`reproduction.md`](reproduction.md): `scripts/materialize_csv_parts.py`,
+both `scripts/verify_*.py` checks, simulator-table build/validate, CPU-only QPU
+aggregation, two-domain scorecard build/validate, output comparisons and the
+full pytest command. Rebuild output is under ignored `work/`; it is not added
+to the candidate.
+
+The first clean-clone test pass exposed one packaging defect: a protocol test
+implicitly required the optimizer-off patch that S56 holds outside this
+candidate. The resolver now fails closed with an explicit rights-hold reason;
+its unit test uses a synthetic fixture to test hash resolution without
+redistributing that patch, and a separate test verifies the missing-patch
+failure. The measurement bundle still depends on the external patched GPL-3.0
+binary; its saved rows support audit and table rebuilding, not a clean-clone
+retime. One initial scorecard build directed to an unsupported output path was
+rejected by its guard; the documented `work/repo_finalization/rebuilds/`
+destination then built and validated successfully.
+
+This pass proves local payload integrity and numerical table regeneration
+from included frozen rows. It does not test retrieval of complete Ma–Li,
+Qonductor or QPack source collections, retrain models, retime native
+simulators, or clear redistribution rights. The staged files remain
+review-only under S56; no source-branch commit, push, tag or `CURRENT.json`
+change was made.

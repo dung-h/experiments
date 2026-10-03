@@ -1,0 +1,104 @@
+{
+  "accuracy_gated_continuation": false,
+  "artifact_id": "maestro-cpu-component-oof-evaluation-v1",
+  "assigned_hashes": 150,
+  "c44_fold_source_sha256": "a25e2e740fd3058e487f713cd0fc074dd8761120a5aface275a212693ac05437",
+  "calibration_model_imported": true,
+  "calibration_model_sha256": "d2f9c3b35c67c76cf1bc3428888a3b304737ddc3e49eacca84b87cb64d5ab721",
+  "evaluator_sha256": "c80a953e7ac8a79641aa99de1d30ee2b1cd1563158e19d2d078bab6916bef6a9",
+  "graph_device": "CUDA required; no CPU fallback",
+  "historical_Aer_CUDAQ_QPU_labels_read": false,
+  "methods": [
+    "maestro_style_cpu_sv_component_adaptation",
+    "outer_train_median",
+    "nested_grouped_ridge",
+    "source_dag_graph_adaptation_cuda"
+  ],
+  "outer_fold_counts": {
+    "0": 37,
+    "1": 28,
+    "2": 26,
+    "3": 25,
+    "4": 34
+  },
+  "outer_train_alpha_selection": {
+    "0": {
+      "inner_seconds_mae_by_alpha": {
+        "0.01": 0.00010014171273127958,
+        "0.1": 0.00010081328567463293,
+        "1": 0.00010999519800713065,
+        "10": 0.00011503649573772832,
+        "100": 0.0001895318380428678
+      },
+      "selected_alpha": 0.01
+    },
+    "1": {
+      "inner_seconds_mae_by_alpha": {
+        "0.01": 0.00016040710461777316,
+        "0.1": 0.00016672951080179315,
+        "1": 0.00016889132174649707,
+        "10": 0.00018131685009706812,
+        "100": 0.00027374114983342305
+      },
+      "selected_alpha": 0.01
+    },
+    "2": {
+      "inner_seconds_mae_by_alpha": {
+        "0.01": 0.00016866511124522793,
+        "0.1": 0.00017275018656040555,
+        "1": 0.00017639392981361578,
+        "10": 0.00018365829562228605,
+        "100": 0.00023622210080863958
+      },
+      "selected_alpha": 0.01
+    },
+    "3": {
+      "inner_seconds_mae_by_alpha": {
+        "0.01": 0.00017099812101678663,
+        "0.1": 0.00017871274794666858,
+        "1": 0.00018495565021470182,
+        "10": 0.0001926629783974139,
+        "100": 0.0002558663574924751
+      },
+      "selected_alpha": 0.01
+    },
+    "4": {
+      "inner_seconds_mae_by_alpha": {
+        "0.01": 0.0001671640034744229,
+        "0.1": 0.00018165041256224947,
+        "1": 0.00019653203570895928,
+        "10": 0.00020118756928669444,
+        "100": 0.00024817214628197303
+      },
+      "selected_alpha": 0.01
+    }
+  },
+  "outputs": {
+    "component_predictions.csv": "34985641c19a23f3d1538a04b07cf243dd8ccadaf0b37f05c5fc8ebd9be01d00",
+    "method_metrics.csv": "3d72dbb41f2d60e5f359f88dfd5483c5b4a632debea56456751ac645d032a8c4",
+    "oof_predictions.csv": "b678392dea310a397d8c4529e59f0cc26bfb355dc3aa6b107e49d9eedb775abb"
+  },
+  "paired_bootstrap_implementation": {
+    "confidence_interval_quantile_method": "linear",
+    "confidence_interval_quantiles": [
+      0.025,
+      0.975
+    ],
+    "group_column": "source_qasm_sha256",
+    "numpy_version": "1.26.4",
+    "replicates": 10000,
+    "rng_bit_generator": "PCG64"
+  },
+  "panel_targets_sha256": "2076a66a552159a2b01a35194e94f7915cb40f3136b6a38bb279424ae97ef0f4",
+  "protocol_sha256": "48eb56f29a54c1f5249f153fd91a4588bc87b7e464c9a2c998358f0478a17354",
+  "seed_registry_sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864",
+  "seeds": [
+    42,
+    1234,
+    31415
+  ],
+  "source_topology_sha256": "bc8816576992cd14088371265dc0f766eafcf51bc4bf39631ec17ab9f4784f3a",
+  "status": "evaluation_complete",
+  "target_observed_hashes": 143,
+  "target_runtime_source": "panel_targets.csv (new QCSim CPU-FP64 label only)"
+}

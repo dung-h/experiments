@@ -1,0 +1,114 @@
+{
+  "artifact_id": "maestro-cpu-component-v1",
+  "attempt_ledger": "attempts.jsonl",
+  "attempts_sha256": "3c710aaf83569683a29a987ddb4468c2c614c684fd9db62690b6d3981083df62",
+  "completed_at_utc": "2026-10-02T16:43:57.649019+00:00",
+  "method_id": "Statevector",
+  "phase": "full",
+  "plan_sha256": "924b732d13a44a9f75607f11e8196fa60da46d20697fb3dbf272b9e050c3d1ae",
+  "precision": "FP64/std::complex<double>",
+  "protocol_sha256": "48eb56f29a54c1f5249f153fd91a4588bc87b7e464c9a2c998358f0478a17354",
+  "runner_sha256": "65d757729e709a9b269f8bcb797d3fc5606e9a68c6213574e95a8eca855fe3b0",
+  "seed_registry_sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864",
+  "simulator_id": "QCSim",
+  "started_at_utc": "2026-10-02T16:39:20.945977+00:00",
+  "status": "completed",
+  "terminal_failure_retry": false,
+  "training_performed": false,
+  "worker_context": {
+    "cpu_use_double_precision_flag": false,
+    "environment": {
+      "cpu": {
+        "affinity_cpu_count": 28,
+        "affinity_cpu_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27
+        ],
+        "logical_cpu_count": 28,
+        "model": "Intel(R) Core(TM) i7-14700F",
+        "total_os_threads_are_not_native_library_thread_limit": true
+      },
+      "executable": "/home/server/Documents/.venv-qonductor/bin/python",
+      "machine": "x86_64",
+      "native": {
+        "boost_library": "/home/server/Documents/maestro/build/boost_1_89_0/lib/libboost_json.so.1.89.0",
+        "boost_library_sha256": "679b2401d19b891fc2659cddeab4db2a4aaca494b379c9531c66c858057e8c12",
+        "native_module": "/home/server/Documents/maestro/build/maestro.cpython-310-x86_64-linux-gnu.so",
+        "native_module_sha256": "c32ddee8d9ee2758b35d486f574dc1307b622f736642767bde1c5bb30518c21d",
+        "openmp_library": "/usr/lib/x86_64-linux-gnu/libgomp.so.1",
+        "openmp_library_sha256": "645478cbe100d1465b9d45f7047bca3965358f4d399937e544f55ac7a924d5a3"
+      },
+      "native_library_thread_policy": {
+        "os_logical_cpu_count": 28,
+        "requested_threads_per_native_library": 1,
+        "thread_arm": "primary_native_threads_1"
+      },
+      "packages": {
+        "numpy": "2.2.6",
+        "qiskit": "2.5.2",
+        "qoro-maestro": "0.3.1",
+        "scipy": "1.15.3"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+      "python": "3.10.21",
+      "runner_sha256": "65d757729e709a9b269f8bcb797d3fc5606e9a68c6213574e95a8eca855fe3b0",
+      "seed_registry_sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864",
+      "thread_arm": "primary_native_threads_1",
+      "thread_environment": {
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OMP_THREAD_LIMIT": "1",
+        "OPENBLAS_NUM_THREADS": "1"
+      },
+      "threadpool_fingerprint": {
+        "libraries": [
+          {
+            "architecture": "Haswell",
+            "internal_api": "openblas",
+            "num_threads": 28,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.29"
+          }
+        ],
+        "status": "available",
+        "threadpoolctl_version": "3.6.0"
+      }
+    },
+    "environment_sha256": "1a125b70f3345437e8320fab1cb5e35e03c11ee60379c6e3a743da966e78e97d",
+    "method_id": "Statevector",
+    "plan_sha256": "924b732d13a44a9f75607f11e8196fa60da46d20697fb3dbf272b9e050c3d1ae",
+    "precision": "FP64/std::complex<double>",
+    "protocol_sha256": "48eb56f29a54c1f5249f153fd91a4588bc87b7e464c9a2c998358f0478a17354",
+    "simulator_id": "QCSim",
+    "worker_sha256": "65d757729e709a9b269f8bcb797d3fc5606e9a68c6213574e95a8eca855fe3b0"
+  }
+}

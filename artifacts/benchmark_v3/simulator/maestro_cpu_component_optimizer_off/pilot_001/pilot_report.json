@@ -1,0 +1,137 @@
+{
+  "artifact_id": "maestro-cpu-component-pilot-v1",
+  "gate": {
+    "accuracy_gate_applied": false,
+    "median_outer_wall_per_call_seconds_diagnostic": 0.058970186015358195,
+    "primary_arm_acceptance": true,
+    "primary_failures": [],
+    "primary_stability": [
+      {
+        "cell_id": "3199466f7a0b90d9cbd6bd5a03996c0bc21cfb3574f2298cabe1d42e76760071",
+        "session_medians_seconds": [
+          0.000632355,
+          0.000633657,
+          0.000635328
+        ],
+        "sessions_complete": true,
+        "stable": true
+      },
+      {
+        "cell_id": "dea3b967c3bf31875d09e04d5a4c6540de03625e7e20651e4d6c3978c03ca69b",
+        "session_medians_seconds": [
+          0.001166952,
+          0.001172455,
+          0.001169984
+        ],
+        "sessions_complete": true,
+        "stable": true
+      },
+      {
+        "cell_id": "3e7adaaa22515a98403f9e4f6db33fde152a74aa0b266e92e2d801e062277f0a",
+        "session_medians_seconds": [
+          0.002227032,
+          0.002222519,
+          0.00221781
+        ],
+        "sessions_complete": true,
+        "stable": true
+      },
+      {
+        "cell_id": "d4af6e6f193a2d6ab2298c7cab64a04cfe86474fc092fa6df90fb40ba112edb5",
+        "session_medians_seconds": [
+          0.000629548,
+          0.00063394,
+          0.000632184
+        ],
+        "sessions_complete": true,
+        "stable": true
+      },
+      {
+        "cell_id": "75a57f05aa18698fa891e5863bc531ba989b4423a3d1a454e031ced8f9866923",
+        "session_medians_seconds": [
+          0.001166239,
+          0.001169923,
+          0.001171951
+        ],
+        "sessions_complete": true,
+        "stable": true
+      },
+      {
+        "cell_id": "55dc2f8258448652275b00bee064a7b43e845f74fc2dd0353bc7f011d7b3c0c8",
+        "session_medians_seconds": [
+          0.002220967,
+          0.002237124,
+          0.00223783
+        ],
+        "sessions_complete": true,
+        "stable": true
+      },
+      {
+        "cell_id": "216144dc3bd5637c74e7c33c8bc402ea41e0724ace8bbe5615259c46f9cff517",
+        "session_medians_seconds": [
+          0.000826098,
+          0.000827267,
+          0.000831957
+        ],
+        "sessions_complete": true,
+        "stable": true
+      },
+      {
+        "cell_id": "f2785c1964ac51b3a666911817c9c5e2f60ae25638a520d321a014ae791af334",
+        "session_medians_seconds": [
+          0.001548264,
+          0.001562542,
+          0.001542671
+        ],
+        "sessions_complete": true,
+        "stable": true
+      },
+      {
+        "cell_id": "406b4ab1522b43682bf912fb18085b834331cf6b8fada0510fa64a3de9904679",
+        "session_medians_seconds": [
+          0.002971953,
+          0.002970753,
+          0.002929656
+        ],
+        "sessions_complete": true,
+        "stable": true
+      },
+      {
+        "cell_id": "df4063bf6022fb11568c4f579f8b00ce80f12d2ca64127bf1170002bd711bb4f",
+        "session_medians_seconds": [
+          0.000144136,
+          0.000138894,
+          0.000144324
+        ],
+        "sessions_complete": true,
+        "stable": true
+      }
+    ],
+    "primary_terminal_rows": 150,
+    "projected_3780_new_calls_after_150_pilot_primary_reuse_seconds": 222.90730313805398,
+    "projected_3930_assigned_calls_from_scratch_seconds": 231.7528310403577,
+    "projected_time_assumptions": "linear extrapolation from median primary-arm outer wall per call; informational only, no protocol cutoff",
+    "sampling_fit_gate": "not_evaluable_from_pilot_design; only the 1000-shot n=9 sampling cell is selected",
+    "status": "pass",
+    "technical_complete_300_terminal_rows": true,
+    "terminal_rows": 300
+  },
+  "pilot_cell_ids": [
+    "3199466f7a0b90d9cbd6bd5a03996c0bc21cfb3574f2298cabe1d42e76760071",
+    "dea3b967c3bf31875d09e04d5a4c6540de03625e7e20651e4d6c3978c03ca69b",
+    "3e7adaaa22515a98403f9e4f6db33fde152a74aa0b266e92e2d801e062277f0a",
+    "d4af6e6f193a2d6ab2298c7cab64a04cfe86474fc092fa6df90fb40ba112edb5",
+    "75a57f05aa18698fa891e5863bc531ba989b4423a3d1a454e031ced8f9866923",
+    "55dc2f8258448652275b00bee064a7b43e845f74fc2dd0353bc7f011d7b3c0c8",
+    "216144dc3bd5637c74e7c33c8bc402ea41e0724ace8bbe5615259c46f9cff517",
+    "f2785c1964ac51b3a666911817c9c5e2f60ae25638a520d321a014ae791af334",
+    "406b4ab1522b43682bf912fb18085b834331cf6b8fada0510fa64a3de9904679",
+    "df4063bf6022fb11568c4f579f8b00ce80f12d2ca64127bf1170002bd711bb4f"
+  ],
+  "plan_sha256": "88c766e29860be277afbaec75c04f324bf27231e072c76d8ea8ce613a81734aa",
+  "primary_environment_sha256": "64098a6279716cd1aa945ca2b58e6404d045ce123869e9d754d9e4462bf1b148",
+  "protocol_sha256": "365b46f59275643406c80c96703bb0734527cb6a1cd32f5364685ba42547c736",
+  "runner_sha256": "73e29e5695242eec4c406f0d74d2fbc98c235d1bd3ae2b5d065808ceb30a67f2",
+  "status": "pass",
+  "terminal_attempts_sha256": "d289d0a45a53d89a4b15c35219bf0924802131e9ead4ec307e39f69b8bf5b41b"
+}

@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "train_graphs": 10,
+  "optimizer_steps": 0,
+  "case_target_read": false,
+  "protocol_sha256": "7ed8d3e51318197b2ebf40fdd4b1b4b7f4a0ba79fa1c094f8eaa6d1b3e1b5ae5",
+  "cuda_device": "NVIDIA GeForce RTX 5070 Ti"
+}

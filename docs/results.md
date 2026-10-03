@@ -249,13 +249,15 @@ explains QPack variation well. Scheduled duration also leaves a substantial
 gap to recorded service time. For simulators, runtime depends on the engine,
 timing boundary and output-quality requirement.
 
-Predictor evaluation is complete for the bounded local Aer and fixed-MPS
-panels described above, but the broader paper-wide simulator comparison is
-not complete. Maestro has no accepted prediction score, the original
-Family-Aware target is unavailable, q10–16 are not in predictor accuracy, and
-V4 has not been trained. These limits remain despite passing implementation
-checks. [Reproduction](reproduction.md) explains which tables can be rebuilt
-and which experiments have not been reproduced.
+Predictor evaluation is complete for the bounded local Aer, fixed-MPS,
+family-rung and optimizer-off QCSim panels described here, but the broader
+paper-wide simulator comparison is not complete. The historical optimizer-on
+Maestro pilot still has no accepted score; the new optimizer-off QCSim result
+below is a distinct local adaptation, not a replacement for Maestro's full
+estimator. The original Family-Aware target remains unavailable, q10–16 are
+not in predictor accuracy, and V4 has no five-fold score.
+[Reproduction](reproduction.md) explains which tables can be rebuilt and
+which experiments remain host-dependent.
 
 The unified rebuild recomputes learned-QPU metrics from frozen predictions,
 archived analytical-QPU metrics from frozen attempt shards, and local
@@ -264,3 +266,71 @@ builder separately recomputes the local graph summary from its raw OOF predictio
 simulator timing is repeated by either path. Held-out common-panel evaluation
 for the remaining blocked simulator predictors is pending, so the unified
 rebuild still reports `PARTIAL`.
+
+## Additional frozen follow-ups (2026-10-03)
+
+These runs add bounded tests to the existing two-domain benchmark. They do not
+change the canonical 8,767-row QPU corpus, frozen splits, historical scorecard,
+or `CURRENT.json`.
+
+### Real QPU: seven-feature control and one dynamic case
+
+The metadata-only MLP uses the same seven global inputs as Graph V3-large but
+removes its graph branch. On the identical primary set of 8,766 archived
+observations, it scored MAE `0.96926 s` and R² `0.66310`; Graph V3-large scored
+MAE `0.97307 s` and R² `0.61642`. The paired MAE difference (MLP minus graph)
+was `−0.00381 s`, with a 95% grouped-bootstrap interval
+`[−0.02166,+0.01371] s`. The interval includes zero: this run does not show a
+reliable graph-branch improvement over those metadata features. The pooled
+row-weighted score is diagnostic across three different sources, not a
+universal QPU ranking. The only `row4477` output is supplementary; it is not
+in the primary 8,766-row comparison.
+
+The separate control-flow experiment is one retrospective prediction, not a
+new test fold. The model trained on 6,989 general QPU observations, none of
+which contained dynamic control, and produced three fresh seed predictions
+for `row4477`. Their median was `6.249 s` versus an archived observed value of
+`11.969 s` (absolute error `5.719 s`; seed range `4.624–8.245 s`). This is a
+single-case feasibility result, not evidence of dynamic-circuit accuracy or
+branch-latency prediction. It was not spliced into the V3/V3-large OOF table.
+See the [metadata MLP aggregate](../artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/aggregate/manifest.json)
+and [control-flow case record](../artifacts/benchmark_v3/real_qpu/mali_style_v4_fold0_control_flow_case_v1/result.json).
+
+### Simulator: joint MPS rung model and optimizer-off QCSim
+
+The Family-Aware-inspired joint model was tested as a local runtime/quality
+adaptation on 150 hashes at six configured bond-dimension rungs. Its campaign
+has 2,520 successful measurements, 72 timeouts and 108 adapter errors; all
+2,700 planned identities are accounted for. The ledger is marked `PARTIAL`,
+not all-successful. Ten hashes therefore lack a complete ladder, leaving 140
+hashes (840 hash–rung rows) for the principal C44 metrics; 138 hashes had an
+achievable quality-passing rung and two did not on this rung grid.
+
+On C44, the family-conditioned model's all-rung runtime MAE was `0.31163 s`
+versus `0.30752 s` for the matched family-agnostic ablation. The paired
+difference was `+0.00411 s` (`95% CI [−0.02660,+0.03923]`), so a runtime gain
+was not established. Rung-level quality Brier score was `0.08159` versus
+`0.08631` (paired difference `−0.00473`, `95% CI [−0.00850,−0.00082]`), a
+small improvement on this split. Yet the predicted-rung quality-violation
+rate was `45.7%`; the quality head is not a dependable selector here. On the
+separate family-component holdout, the runtime difference was `+0.00222 s`
+(`95% CI [−0.03404,+0.03874]`), again unresolved. These results are not a
+reproduction of the original Family-Aware paper. Raw outputs and the
+integrity-PASS/campaign-PARTIAL manifest are in the
+[joint MPS artifact](../artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/aggregate/manifest.json).
+
+The new Maestro-style optimizer-off follow-up measured CPU QCSim Statevector
+(FP64, 1,000 shots, circuit optimization disabled) on the same 150-hash
+simulator panel. All eight synthetic calibration width knots (q=2–9) passed;
+143 circuits have observed labels and seven remain `unsupported`. On those
+same 143 rows, the component adaptation scored MAE `0.000104 s`, R² `0.9490`;
+nested Ridge scored `0.000134 s`, R² `0.8824`; the source-DAG graph scored
+`0.000424 s`, R² `−0.0092`; and the outer-train median scored `0.000306 s`,
+R² `−0.0426`. The component-minus-Ridge paired difference was
+`−0.0000299 s` (`95% CI [−0.0000625,−0.0000016]`). These sub-millisecond
+values describe this CPU engine and narrow q2–q9 panel only. They cannot be
+ranked against noisy Aer or CUDA-Q MPS scores, and do not reproduce Maestro's
+paper-exact estimator. The empirical sampling intercept is not a physical
+launch-overhead measurement. The [method artifact](../artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/README.md)
+links attempts, calibration, predictions, GPU environment and build
+provenance.

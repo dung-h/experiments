@@ -1,0 +1,118 @@
+{
+  "artifact_id": "maestro-cpu-component-v1",
+  "attempt_ledger": "attempts.jsonl",
+  "attempts_sha256": "94455263d9a5d78ccc1f9feda6e0d42f7b8ddbed9c12d10d84890965160f5eb8",
+  "completed_at_utc": "2026-10-03T04:24:34.469964+00:00",
+  "execution_context_id": "maestro_qcsim_cpu_sv_fp64_optimizer_off_threads1_shots1000",
+  "method_id": "Statevector",
+  "phase": "full",
+  "plan_sha256": "88c766e29860be277afbaec75c04f324bf27231e072c76d8ea8ce613a81734aa",
+  "precision": "FP64/std::complex<double>",
+  "predictor_method_id": "maestro_style_cpu_sv_component_optimizer_off_adaptation",
+  "protocol_id": "maestro-cpu-component-optimizer-off-v1",
+  "protocol_sha256": "365b46f59275643406c80c96703bb0734527cb6a1cd32f5364685ba42547c736",
+  "runner_sha256": "73e29e5695242eec4c406f0d74d2fbc98c235d1bd3ae2b5d065808ceb30a67f2",
+  "seed_registry_sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864",
+  "simulator_id": "QCSim",
+  "started_at_utc": "2026-10-03T04:19:46.895962+00:00",
+  "status": "completed",
+  "terminal_failure_retry": false,
+  "training_performed": false,
+  "worker_context": {
+    "cpu_use_double_precision_flag": false,
+    "environment": {
+      "cpu": {
+        "affinity_cpu_count": 28,
+        "affinity_cpu_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27
+        ],
+        "logical_cpu_count": 28,
+        "model": "Intel(R) Core(TM) i7-14700F",
+        "total_os_threads_are_not_native_library_thread_limit": true
+      },
+      "executable": "/home/server/Documents/.venv-qonductor/bin/python",
+      "machine": "x86_64",
+      "native": {
+        "boost_library": "/home/server/Documents/maestro/build/boost_1_89_0/lib/libboost_json.so.1.89.0",
+        "boost_library_sha256": "679b2401d19b891fc2659cddeab4db2a4aaca494b379c9531c66c858057e8c12",
+        "native_module": "/home/server/Documents/quantum-runtime-estimator-replications/work/maestro_optimizer_off_detached_20261003/build/maestro.cpython-310-x86_64-linux-gnu.so",
+        "native_module_sha256": "9e4f3d1cc69fe2db1c6276e3252c30543194662cea368a058c9a7e3cda5452d0",
+        "openmp_library": "/usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0",
+        "openmp_library_sha256": "645478cbe100d1465b9d45f7047bca3965358f4d399937e544f55ac7a924d5a3"
+      },
+      "native_library_thread_policy": {
+        "os_logical_cpu_count": 28,
+        "requested_threads_per_native_library": 1,
+        "thread_arm": "primary_native_threads_1"
+      },
+      "packages": {
+        "numpy": "2.2.6",
+        "qiskit": "2.5.2",
+        "qoro-maestro": "0.3.1",
+        "scipy": "1.15.3"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+      "python": "3.10.21",
+      "runner_sha256": "73e29e5695242eec4c406f0d74d2fbc98c235d1bd3ae2b5d065808ceb30a67f2",
+      "seed_registry_sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864",
+      "thread_arm": "primary_native_threads_1",
+      "thread_environment": {
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OMP_THREAD_LIMIT": "1",
+        "OPENBLAS_NUM_THREADS": "1"
+      },
+      "threadpool_fingerprint": {
+        "libraries": [
+          {
+            "architecture": "Haswell",
+            "internal_api": "openblas",
+            "num_threads": 28,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.29"
+          }
+        ],
+        "status": "available",
+        "threadpoolctl_version": "3.6.0"
+      }
+    },
+    "environment_sha256": "64098a6279716cd1aa945ca2b58e6404d045ce123869e9d754d9e4462bf1b148",
+    "method_id": "Statevector",
+    "optimizer_enabled_requested": false,
+    "plan_sha256": "88c766e29860be277afbaec75c04f324bf27231e072c76d8ea8ce613a81734aa",
+    "precision": "FP64/std::complex<double>",
+    "protocol_sha256": "365b46f59275643406c80c96703bb0734527cb6a1cd32f5364685ba42547c736",
+    "simulator_id": "QCSim",
+    "worker_sha256": "73e29e5695242eec4c406f0d74d2fbc98c235d1bd3ae2b5d065808ceb30a67f2"
+  }
+}

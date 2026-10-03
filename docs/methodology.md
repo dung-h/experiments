@@ -7,8 +7,9 @@ circuit representation and train/test split. The
 [method registry](../benchmark_v1/registry/method_fidelity_registry_v2.json)
 records historical method identities and deviations;
 [`CURRENT.json`](../benchmark_v1/registry/CURRENT.json) identifies those
-registered versions. New E1–E6 local predictors have their own method cards
-in the E6 aggregate; they have not been promoted into that registry.
+registered versions. E1–E6 predictors and the 2026-10-03 bounded follow-ups
+have their own protocols and run manifests; they have not been promoted into
+that registry or used to rewrite `CURRENT.json`.
 
 The reader-facing construction and comparison rules are pinned in the
 [unified benchmark contract](../benchmark_v1/decisions/S82_UNIFIED_BENCHMARK_CONTRACT_20261002.md).
@@ -292,15 +293,17 @@ and source-stratified [metrics](../artifacts/benchmark_v3/real_qpu/hyb_hanas_bou
 
 The 204-member common simulator inventory (191 exact-QASM hashes) is the
 coverage and local-measurement panel; it is not a single predictor denominator.
-The predictive results below use the common 150-hash q≤9 Aer core and the
-same 150-hash fixed-MPS cell. The 42 q10–16 members remain frontier/coverage
-evidence, not predictor test rows. See the
+The earlier E4/E5 predictive results below use the common 150-hash q≤9 Aer
+core and the same 150-hash fixed-MPS cell. The 42 q10–16 members remain
+frontier/coverage evidence, not predictor test rows. Separate bounded
+follow-ups are reported below; they do not replace those test panels. See the
 [completion handoff](benchmark_completion.md) for runner and environment
 details. E4 and E5 are complete five-fold local adaptations, not paper-exact
-reproductions. The joint Family-Aware threshold/runtime method still lacks the
-required approximation-ladder labels. Maestro remains a separate terminal
-calibration pilot; its status is not a prerequisite for these completed
-predictors.
+reproductions. The original Family-Aware paper method remains unavailable
+because its source-compatible target is not available; a separate local joint
+MPS rung adaptation has now been measured and evaluated below. The historical
+optimizer-on Maestro pilot remains terminal, while a distinct optimizer-off
+CPU QCSim follow-up is reported below.
 
 The common panel has 204 source members, 191 distinct QASM hashes, 22
 families and widths 2–16. Declared duplicate aliases remain visible. The core
@@ -312,8 +315,8 @@ identifies the files; no circuit was invented to fill a rectangular grid.
 | --- | --- | --- |
 | Ma–Li-style local Aer graph adaptation | Existing OOF predictions on 162 Aer core members / 150 QASM hashes | Three-layer graph plus seven-feature branch adapted to frozen local Aer warm labels; not original Ma–Li or Azizov GNN |
 | Azizov-style common-core adaptation | Three source/hybrid/transpiled GNN views and five classical estimators per view, all five folds on the same 150 Aer hashes | Explicit local 51/64/51 feature contract; one FakeSherbrooke/Opt1 cell, not the paper's 1,402-circuit, two-backend, four-optimization-level experiment |
-| Family-Aware-inspired residual | Completed fixed-MPS runtime-only residual model and family-agnostic ablation on 150 hashes | Not the paper's joint runtime-quality method; no approximation ladder or family-OOD claim |
-| Maestro | Existing component calibration plus parser/prediction preflight on 204 panel members | Preflight only: no candidate timing or score; paper-exact Composer unavailable |
+| Family-Aware-inspired models | E5 fixed-MPS runtime-only residual/ablation, plus a separate joint runtime/quality MPS rung adaptation | Neither is paper-exact; the joint campaign is partial, selector violations are high, and family holdout is diagnostic only |
+| Maestro | Historical optimizer-on pilot/preflight plus separate optimizer-off CPU QCSim component follow-up | The optimizer-off adaptation has a same-context score on 143/150 q≤9 hashes; not paper-exact Composer or a cross-engine result |
 | Pasqal EMU-MPS | Completed 18-cell analog pilot | Four quality failures, unpromoted coefficients; separate pulse/layout workload rather than digital QASM panel |
 | cuTensorNet | Native estimate paired to matching selected-plan warm scalar contraction | This estimates contraction, not whole simulator end-to-end runtime |
 | Aer / CUDA-Q dense / CUDA-Q MPS | Local timing and failure/quality evidence | Simulator measurements are not runtime-estimator methods; MPS always carries its quality gate |
@@ -376,23 +379,70 @@ error `0.036025` s, log1p MAE `0.091407`, and R² `0.155835`. It is a different
 model/input contract from E4's Azizov-style views and should not be merged or
 renamed as an Azizov result.
 
-Maestro's existing component model was used only for parser/prediction
-preflight: 56 of 408 candidate-member cells are predicted, 244 are out of
-grid, and 108 are unavailable; 35 panel members fail parser/width checks.
-Simulator timing was not run and there is no candidate score. Its
-component calibration remains separate from the missing matched held-out
-runtime evaluation. The grid begins at q=8; q2–q7 cannot silently use
-extrapolated coefficients. Maestro auto-selection is not required for
-candidate runtime prediction.
+The historical Maestro component model was used for parser/prediction
+preflight: 56 of 408 candidate-member cells were predicted, 244 were out of
+grid, and 108 were unavailable; 35 panel members failed parser/width checks.
+That optimizer-on preflight had no candidate timing or score. It is distinct
+from the later optimizer-off CPU QCSim follow-up below. The historical grid
+began at q=8; its coefficients were not silently extrapolated to q2–q7.
+Maestro auto-selection is not required for candidate runtime prediction.
 
-Maestro is not a scored common-panel predictor. Its ten-cell calibration
-pilot made 240 API calls (150 timed); nine statevector cells failed the frozen
-stability gate and one MPS cell passed. The run stopped at that gate: there is
-no accepted calibration/predictor score and no 408-cell panel timing result.
-This is an implementation/calibration limitation, not a runtime-accuracy
-claim. The terminal state is retained in the
+The original optimizer-on Maestro calibration pilot is not a scored
+common-panel predictor. It made 240 API calls (150 timed); nine statevector
+cells failed the frozen stability gate and one MPS cell passed. That run
+stopped at the gate: it has no accepted optimizer-on calibration/predictor
+score and no 408-cell panel timing result. This is an
+implementation/calibration limitation, not a runtime-accuracy claim. The
+terminal state is retained in the
 [pilot run manifest](../artifacts/benchmark_v3/simulator/maestro_candidate_runtime_v3/calibration/run_manifest.json)
 and the [report contract](../benchmark_v1/execution/manifests/report_finalization.json).
+
+### Bounded 2026-10-03 follow-ups
+
+The QPU seven-feature MLP is a graph-matched metadata-only baseline, not a
+separate paper reproduction. It uses the same seven global features, outer
+fold assignments, three seeds and training support as Graph V3-large; the
+primary comparison is paired on the exact 8,766 shared observations.
+`row4477` is excluded from every training fold and retained only as a
+supplementary held-out prediction. The paired MLP-minus-graph MAE interval
+includes zero, so this ablation does not establish that the graph branch is
+unhelpful in general. See its
+[protocol](../benchmark_v1/protocol/qpu_global_metadata_mlp_baseline_v1.json)
+and [aggregate manifest](../artifacts/benchmark_v3/real_qpu/global_metadata_mlp_v1/aggregate/manifest.json).
+
+The dynamic-control result is one retrospective `row4477` case. The model was
+trained on 6,989 general observations and saw no dynamic-control training
+examples. Its three predictions were persisted before comparison with the
+archived label. This is not a V4 five-fold result, a blind population test, or
+a measurement of branch latency; the row was not spliced into V3-large. See
+the [case protocol](../benchmark_v1/protocol/qpu_control_flow_case.json) and
+[result](../artifacts/benchmark_v3/real_qpu/mali_style_v4_fold0_control_flow_case_v1/result.json).
+
+The joint MPS experiment is a local adaptation on a 150-hash CUDA-Q MPS panel
+at six bond rungs. Its 2,700-attempt ledger is explicitly `PARTIAL` (2,520
+successful, 72 timed out, 108 adapter errors); the all-rung C44 metrics use
+840 of 900 assigned hash-rung targets. The family-conditioned runtime MAE
+was 0.31163 s versus 0.30752 s for its matched family-agnostic ablation; the
+paired interval includes zero. The quality Brier score improved modestly,
+but the predicted-rung quality-violation rate was 45.7%, so this model is not
+a dependable simulator selector. This remains an adaptation, not the
+paper-exact joint method. See the
+[protocol](../benchmark_v1/protocol/family_aware_joint_runtime_quality_mps_v1.json)
+and [aggregate manifest](../artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/aggregate/manifest.json).
+
+The later Maestro-style run is an optimizer-off **CPU QCSim Statevector**
+study (FP64, 1,000 shots, q2–q9 synthetic calibration; 150 panel hashes).
+Its component model, nested Ridge, outer-train median, and CUDA-trained
+source-DAG comparator were scored on the same 143 observed hashes. All eight
+calibration width knots were valid; seven panel hashes remained explicitly
+unsupported. The component adaptation's MAE was 0.000104 s versus 0.000134 s
+for Ridge on this sub-millisecond local target. This narrow result is not
+rankable against Aer or CUDA-Q MPS, does not reproduce Maestro's full
+Composer/auto-selection system, and its empirical intercept is not a measured
+physical launch overhead. The historical optimizer-on pilot remains failed
+and unchanged. See the
+[optimizer-off artifact](../artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/README.md)
+and its [resolved protocol](../artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/resolved_protocol.json).
 
 The [Azizov paper](https://arxiv.org/html/2609.12980#S4.SS2) describes the
 two-branch architecture (three TransformerConv layers, mean pooling and an

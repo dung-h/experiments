@@ -22,9 +22,9 @@ FIELDS = [
 ]
 DEFAULT = {
     "action": "include",
-    "reason": "E1--E6 review-package evidence or maintained code",
+    "reason": "Benchmark review-package evidence, recovery instructions or maintained code",
     "required_by": "Current reader tables, reproducibility commands, or regression suite",
-    "rights_status": "review-branch publication requested by author 2026-10-02; no new license grant; complete external source archives excluded",
+    "rights_status": "review-branch publication requested by author 2026-10-03; no new license grant; complete external source archives excluded",
     "delivery": "Git on presentation-review; no Git LFS; not a tagged public release",
 }
 
