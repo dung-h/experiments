@@ -91,5 +91,6 @@ does not by itself contradict a paper, and a higher local score does not
 replicate or exceed its claim. The present evidence is retrospective and
 exploratory: grouped intervals condition on saved fits, omit refitting
 uncertainty and are pointwise rather than multiplicity-adjusted. The
-[reproduction guide](reproduction.md) verifies saved-evidence/table replay;
-it does not claim fresh paper-level fitting or simulator retiming.
+[reproduction guide](reproduction.md) describes public file verification and
+saved simulator-score checks. It does not claim QPU score recomputation from
+excluded inputs, fresh paper-level fitting or simulator retiming.

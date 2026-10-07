@@ -4,7 +4,7 @@ This table presents all 49 current prediction rows from the [simulator result CS
 
 The digital circuit manifest contains 204 members, 191 exact-QASM hashes and 22 families across widths 2–16. The predictor core uses 162 members / 150 distinct hashes at widths 2–9. The 42 members at widths 10–16 are a frontier panel, not added to these predictor scores. All core methods use the frozen exact-hash folds for their context; repeated aliases are not independent circuits. See the [member manifest](../../data/simulator/circuits/sim_common_q16_manifest.csv), [preprocessing guide](../../docs/data_preprocessing.md), and [measurement and training protocol](../../docs/training_and_measurement.md).
 
-For the tables, “assigned / attempted / predicted / scored / unavailable” distinguishes what was scheduled for evaluation, what the method attempted and emitted, what had an observed target for scoring, and what could not be scored. Coverage is scored rows divided by assigned rows. Context target-label counts and both clocks are stated in each section. MAE, p99 and maximum absolute error are in seconds; R² is dimensionless.
+The [counting rules](../../docs/methodology.md#counting-evaluation-outcomes) define “assigned / attempted / predicted / scored / unavailable.” Coverage is scored rows divided by assigned rows. A prediction can exist without a measured target, so predicted and unavailable counts are not necessarily disjoint. Context target-label counts and both clocks are stated in each section. MAE, p99 and maximum absolute error are in seconds; R² is dimensionless.
 
 ## CUDA-Q dense statevector, FP32
 
@@ -109,15 +109,15 @@ The measurement campaign attempted 2,700 rung sessions: 2,520 completed, 72 time
 
 ## QCSim CPU statevector FP64, 1,000 shots
 
-Target clock: maestro_qcsim_process_isolated_reported_execution. Method output clock: predicted_maestro_qcsim_reported_execution_seconds. Each call used a fresh spawned process; this is not persistent warm-process wall time. Each target was reduced from 15 finite engine-reported samples. There are 150 assigned hashes, 143 observed targets and seven unavailable targets; every method predicts and scores 143.
+Target clock: maestro_qcsim_process_isolated_reported_execution. Method output clock: predicted_maestro_qcsim_reported_execution_seconds. Each call used a fresh spawned process; this is not persistent warm-process wall time. Each target was reduced from 15 finite engine-reported samples. There are 150 assigned hashes, 143 observed targets and seven unavailable targets. The component model predicts 143 hashes; the three controls emit predictions for all 150. All four methods score the same 143 observed targets.
 
 <!-- generated: sim_qcsim:start -->
 | Method and ID | Fidelity / role | Assigned / attempted / predicted / scored / unavailable | Coverage | MAE (s) | R² | p99 / max error (s) |
 | --- | --- | --- | --- | --- | --- | --- |
 | Maestro-style Statevector CPU component-cost adaptation (maestro_style_cpu_sv_component_optimizer_off_adaptation) | adaptation / primary | 150 / 143 / 143 / 143 / 7 | 95.3% | 0.0001 | 0.9490 | 0.0008 / — |
-| Outer-training median control (outer_train_median) | common baseline / control | 150 / 143 / 143 / 143 / 7 | 95.3% | 0.0003 | −0.0426 | 0.0045 / — |
-| Nested grouped Ridge control (nested_grouped_ridge) | common baseline / control | 150 / 143 / 143 / 143 / 7 | 95.3% | 0.0001 | 0.8824 | 0.0017 / — |
-| Source-DAG graph control (source_dag_graph_adaptation_cuda) | common baseline / control | 150 / 143 / 143 / 143 / 7 | 95.3% | 0.0004 | −0.0092 | 0.0042 / — |
+| Outer-training median control (outer_train_median) | common baseline / control | 150 / 150 / 150 / 143 / 7 | 95.3% | 0.0003 | −0.0426 | 0.0045 / — |
+| Nested grouped Ridge control (nested_grouped_ridge) | common baseline / control | 150 / 150 / 150 / 143 / 7 | 95.3% | 0.0001 | 0.8824 | 0.0017 / — |
+| Source-DAG graph control (source_dag_graph_adaptation_cuda) | common baseline / control | 150 / 150 / 150 / 143 / 7 | 95.3% | 0.0004 | −0.0092 | 0.0042 / — |
 <!-- generated: sim_qcsim:end -->
 
 The QCSim reader ledger does not provide maximum absolute error for these rows. In the saved paired comparison, the component-minus-Ridge observed MAE difference is −0.0000299 s, with a 95% interval from −0.0000625 to −0.0000016 s. This is a narrow CPU component-cost result; it does not evaluate Maestro's automatic simulator selector.

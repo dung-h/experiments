@@ -36,6 +36,17 @@ class PublicationTests(unittest.TestCase):
     def test_current_checkout(self):
         self.assertGreater(VERIFY.verify(ROOT), 100)
 
+    def test_pasqal_missing_dispatcher_not_advertised_ready(self):
+        protocol = json.loads((ROOT / "protocol/reproduction.json").read_text())
+        capability = next(row for family in protocol["families"]
+                          for row in family["capabilities"]
+                          if row["capability_id"] == "analog_program_preprocessing")
+        self.assertEqual(capability["status"], "not_ready")
+        self.assertIsNone(capability["entrypoint"])
+        self.assertFalse((ROOT / "scripts/benchmark.py").exists())
+        source_path = capability["python_function"].split(":", 1)[0]
+        self.assertTrue((ROOT / source_path).is_file())
+
     def test_changed_file_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

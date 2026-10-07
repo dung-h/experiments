@@ -138,10 +138,11 @@ tail errors remain results; no rows were removed to make a model look better.
 
 ## Reproduction boundary
 
-The reporting command replays saved predictions and simulator evidence. It
-does not retrain models, re-run QPU jobs or repeat simulator timings. The
-included replay workflow is documented in [reproduction](reproduction.md).
-The public provenance receipt identifies its independently tested package. Complete upstream
-Ma–Li and Qonductor source archives and QPack optimized-angle submissions are
-not bundled. The package remains local while code license, citation and
-redistribution decisions are open; see [distribution](distribution.md).
+This public checkout retains QPU aggregate tables and implementation sources,
+but excludes the row-level labels, predictions and partition ledgers needed to
+recompute these QPU scores. Earlier local replay receipts describe a larger
+private evidence package. They do not attest fresh-clone QPU reproduction of
+this reduced public selection. [Reproduction scope](reproduction.md) lists the
+checks available here, including saved simulator scores. Complete upstream
+archives and QPack optimized-angle submissions remain external; see
+[data availability](distribution.md).

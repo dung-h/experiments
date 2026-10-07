@@ -23,8 +23,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3183,
-      "sha256": "391d8caac8568ebd60aec1014321f443fafd870cac76db945695fd13963fd0b3"
+      "bytes": 3249,
+      "sha256": "f9a57dd64b0267fa27d140cda90455e75cda95eac5ffde13e88515d1781935d9"
     },
     {
       "path": "data/simulator/README.md",
@@ -1348,23 +1348,23 @@
     },
     {
       "path": "docs/methodology.md",
-      "bytes": 324,
-      "sha256": "eedebe2d15891c7cd9884d2a362f80ddffed098c6eb24a926d944596acb0ed4f"
+      "bytes": 4429,
+      "sha256": "2ff0996783b31a743c54f452acfd12f88945205a32d77e08b6e944311c7c0af2"
     },
     {
       "path": "docs/paper_comparison.md",
-      "bytes": 18296,
-      "sha256": "b5096b40e169ea2b349afaa165d6df3a14cb4b84311e504488050119cd25f4b3"
+      "bytes": 18373,
+      "sha256": "43e52bdfd070c18d09108338b9fa4566fef25e8f960f800cd34aa5decf49e758"
     },
     {
       "path": "docs/real_qpu_benchmark.md",
-      "bytes": 9220,
-      "sha256": "f7c5831d544c0bf649b4fb0f5b99dfcb6a71e0bf4bf32ef0995bf26e3396f5ad"
+      "bytes": 9249,
+      "sha256": "8174e8375577931f539cdc236df29238832515ead796866a840a4a3e0c1b3b8f"
     },
     {
       "path": "docs/reproduction.md",
-      "bytes": 3437,
-      "sha256": "90c763f5c668e5bfd3bfab7246ce7838768f7bf50a8065049126279ded46d1fa"
+      "bytes": 6419,
+      "sha256": "c9b89563e9b2a62d527cbd846a18c6e4c7fb9c79bbfc271e8856f913bffd4758"
     },
     {
       "path": "docs/results.md",
@@ -1373,13 +1373,13 @@
     },
     {
       "path": "docs/scientific_review.md",
-      "bytes": 12465,
-      "sha256": "dfd781feef1dd628b2bc55faffd429e5a2e59294384c6b06162d3d37b569fb28"
+      "bytes": 12879,
+      "sha256": "59fbd032b030f85c15f9769aa37340821f62ffaf85db275f873d49ca0595431d"
     },
     {
       "path": "docs/training_and_measurement.md",
-      "bytes": 37996,
-      "sha256": "9409c4333fd2dd78c94721f28b0410555c5da82fa5bc599209b5ee07d98650d3"
+      "bytes": 38111,
+      "sha256": "7e7bb1e262e9348de14f90abfc610be96a70a5378784ef2ef54e04b9bdcd41f6"
     },
     {
       "path": "methods/real_qpu/aggregate_predictions.py",
@@ -1813,8 +1813,8 @@
     },
     {
       "path": "protocol/reproduction.json",
-      "bytes": 8738,
-      "sha256": "1d33121861ed02b5f447303fcbe36e6f963fefa720af300e9eb9e9ed4afda5cc"
+      "bytes": 8967,
+      "sha256": "862c8c7d348f26551a05f41603c2fe9262e42cc9ea72272fbedf536034734576"
     },
     {
       "path": "protocol/scholten_unified_nominal.json",
@@ -1928,8 +1928,8 @@
     },
     {
       "path": "results/real_qpu/method_comparison.md",
-      "bytes": 10770,
-      "sha256": "0f57fd51cf629eda550dc5ff9241763b5e80e970dc9c050a2ad5978e72d350ae"
+      "bytes": 11222,
+      "sha256": "b90a0cb531b8f303b26376beb34b13f13c078d2a4eca19403184a175c1216792"
     },
     {
       "path": "results/real_qpu/summary/coverage.csv",
@@ -1959,12 +1959,17 @@
     {
       "path": "results/simulator/method_comparison.csv",
       "bytes": 105614,
-      "sha256": "8dac2290caa6c28eebcd2862b4bd0f5c3d95fa9025ca7c47c8e2a13bfc62b147"
+      "sha256": "fa8e168a1d172454aa7cda4eb38143edecfecb514189a0dbf592718aca0ef17f"
     },
     {
       "path": "results/simulator/method_comparison.md",
-      "bytes": 19786,
-      "sha256": "4e72bb5d9fb39d4a4d1429f507682fbe53274b4b7131e445fe526ac18ef6feae"
+      "bytes": 19918,
+      "sha256": "8ee3e41734565dd58981d52286c42f043c380813f906f0ca71f05ba706d8f900"
+    },
+    {
+      "path": "scripts/check_simulator_results.py",
+      "bytes": 18581,
+      "sha256": "d7e1eff52bc11ab00c553845005dcd7cbc7ff416ed9561745c4b26377e258166"
     },
     {
       "path": "scripts/verify.py",
@@ -1973,8 +1978,13 @@
     },
     {
       "path": "tests/test_publication.py",
-      "bytes": 2914,
-      "sha256": "892a83d134ed14932ce2c243165375c9e8909914c772e226ffce1fe9b772a5d7"
+      "bytes": 3577,
+      "sha256": "71ae13b8f2d50e4a6d0121211b54fdcab3d0a2ff548254c4070c57da60b7c3c2"
+    },
+    {
+      "path": "tests/test_simulator_results.py",
+      "bytes": 2427,
+      "sha256": "4e3986c539320bbdcecbaa27198b12fd3ed8ac06250ee92c8748a8977b2cc6ae"
     }
   ]
 }

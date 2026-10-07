@@ -48,10 +48,11 @@ documented; aggregate results are retained. See [data availability](docs/distrib
 
 ```bash
 python3 scripts/verify.py
+python3 -B scripts/check_simulator_results.py
 python3 -B -m unittest discover -s tests
 ```
 
-These checks verify the published files and reporting scope. They do not
+These checks verify published files, reporting scope and saved simulator scores. They do not
 retrain models, regenerate QPU scores or run simulators. Some retained runners
 still use the original experiment paths and need external inputs and a matching
 environment. See [reproduction scope](docs/reproduction.md) before running them.

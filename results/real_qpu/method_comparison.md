@@ -8,6 +8,8 @@ Ma–Li contributes source logical inputs (340). Qonductor contributes 230 archi
 
 All methods below target archived_observed_service_execution_time. Output-clock names identify what each route actually predicts. A scheduled duration, nominal throughput proxy and calibrated service-time prediction are different outputs, even when each is scored against the same observed label.
 
+The [counting rules](../../docs/methodology.md#counting-evaluation-outcomes) apply to these observation counts. All 7,350 assigned labels are observed; each route's predicted count also equals its scored count here. Coverage is scored/assigned, not a claim that every route predicts the full panel. Routes with missing inputs retain their unavailable counts and require a shared successful-row comparison before ranking against full-coverage methods.
+
 <!-- generated: qpu_methods:start -->
 | Order | Method and fidelity | Main input | Assigned / observed / predicted / unavailable | Coverage | MAE (s) | R² | p99 / maximum absolute error (s) | Source-balanced MAE (s) | Evaluation target clock | Method output clock |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

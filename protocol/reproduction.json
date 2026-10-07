@@ -71,9 +71,11 @@
         {
           "capability_id": "analog_program_preprocessing",
           "action": "preprocess",
-          "status": "ready",
+          "status": "not_ready",
           "environment_id": "pasqal_source_program_preprocessing",
-          "entrypoint": "scripts/benchmark.py preprocess --family pasqal_emu_mps_analog --capability analog_program_preprocessing --output-dir <new-empty-path>",
+          "entrypoint": null,
+          "python_function": "methods/simulator/preprocess_pasqal_analog.py:materialize(package_root, output_dir)",
+          "historical_entrypoint_not_bundled": "scripts/benchmark.py preprocess --family pasqal_emu_mps_analog --capability analog_program_preprocessing --output-dir <new-empty-path>",
           "prerequisites": [
             {
               "path": "protocol/measurement/pasqal_emu_mps_formula_crossed_pilot.json",
@@ -109,7 +111,7 @@
               "consumer": "write six source-program identities and eighteen measurement-cell identities to a new output directory"
             }
           ],
-          "reason": "The optional source-construction environment is pinned and the adapter checks those versions before creating six program descriptors and eighteen crossed-cell identities. This capability constructs inputs only; it does not run EMU-MPS or measure time."
+          "reason": "The Python adapter and direct environment pins are included, but the historical command-line dispatcher is not bundled. Do not advertise a ready public CLI. The function constructs six program descriptors and eighteen crossed-cell identities after checking versions; it does not run EMU-MPS or measure time."
         },
         {
           "capability_id": "new_analog_measurements",

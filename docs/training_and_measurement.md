@@ -1,9 +1,11 @@
 # Training and measurement
 
 This guide describes how the saved benchmark observations and predictions were
-produced. The supported reader workflow is [metric replay](reproduction.md): it
-uses frozen labels, splits and out-of-fold predictions, requires no GPU or QPU
-account, and performs no training or simulator measurement. The procedures below
+produced. The supported reader workflow is [saved-evidence verification](reproduction.md):
+it checks file integrity and simulator metrics using retained labels and
+out-of-fold predictions, requires no GPU or QPU account, and performs no training
+or simulator measurement. It cannot recompute QPU scores from this public selection.
+The procedures below
 are execution specifications for separately authorized refits or new measurements.
 They do not turn source-local scores, analytical clocks and different simulator
 engines into one leaderboard.
@@ -556,13 +558,12 @@ links calibration, attempts and evaluation provenance.
 
 ## What a reader can repeat
 
-Use [the reproduction commands](reproduction.md) to restore partitioned evidence,
-verify hashes and replay metrics. The CPU reporting script is
-the common-panel analyzer (not bundled); the
-package replay entry point (not bundled)
-restores the necessary frozen source records. Neither invokes training, measurement
-or a QPU. Do not interpret a byte-identical table build as source extraction, checkpoint
-reconstruction or native timing reproduction.
+Use [the public verification commands](reproduction.md) to check the inventory
+and saved simulator scores. They do not restore omitted QPU records or regenerate
+the full private report. The historical common-panel analyzer and package replay
+dispatcher are not bundled. Earlier byte-identical table builds describe that
+larger evidence selection, not fresh source extraction, checkpoint reconstruction
+or native timing reproduction from this checkout.
 
 A source refit needs complete hash-matching source circuits, exact feature/model
 helpers, snapshot assets, declared representation, fitting environment and

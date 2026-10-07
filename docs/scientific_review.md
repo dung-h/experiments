@@ -126,6 +126,12 @@ All 7,350 labels are observed even when a method cannot predict some of them.
 All 401 populated metric fields in the 49 current scored reader rows match
 their evidence. Engines are label sources, not additional predictor methods.
 
+The public standard-library checker now recomputes the 49 predictor rows from
+retained simulator labels and OOF predictions without importing report-builder
+metrics. This check corrected the QCSim controls' emitted-prediction and attempt
+counts to 150; their scored counts remain 143 and no error score changed.
+It does not repeat the private QPU audit or reproduce bootstrap intervals.
+
 - Dense FP32 and FP64 each compare nine predictors on 150 hashes. Random
   Forest has the lowest MAE, 0.000821/0.000813 s; work-scaled Ridge has the
   highest R², 0.8728/0.8649. The empirical feature model does not identify a
@@ -182,7 +188,7 @@ fresh clone, Python 3.10.21 requirements installation, 315 tests and four subtes
 restored partitions/evidence, inventory and two byte-identical table builds.
 Those test counts describe the historical source export, not this publication's
 test selection. The current [reproduction guide](reproduction.md) describes
-the smaller public checkout and its file-level verification.
+the smaller public checkout, file-level verification and saved simulator-score checks.
 
 Earlier local saved-prediction replay was verified; this public subset cannot
 recompute QPU results without the excluded row-level inputs. Fresh source
