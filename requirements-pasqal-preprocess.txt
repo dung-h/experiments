@@ -1,0 +1,4 @@
+# Optional environment for reconstructing the source-pinned Pulser sequences.
+# Python version is pinned separately in protocol/reproduction.json.
+numpy==2.2.6
+pulser-core==1.9.1

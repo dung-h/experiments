@@ -1,0 +1,21 @@
+{
+  "contract_id": "mali-full-features-batch-optimization",
+  "authorization": "User requested stopping the batch-2 worker and optimizing batch size on 2026-10-06.",
+  "parent_contract": "benchmark_v1/protocol/mali_full_features.json",
+  "claim_boundary": "Ma-Li full-feature architecture adaptation with a throughput-selected larger effective batch; original batch-2 hyperparameters are not reproduced. Scores require fresh training under this contract.",
+  "unchanged": ["canonical targets", "outer and inner grouped splits", "51 global and 178 node features", "pinned upstream architecture", "FP32", "500 epochs", "Adam learning_rate=0.0005 weight_decay=0.0001", "inner-validation checkpoint selection", "seeds 42,1234,31415", "whole-graph resource-failure policy"],
+  "graph_batch_candidates": [2, 8, 32, 128, 512],
+  "node_budget_candidates": [250000, 500000],
+  "mlp_batch_candidates": [2, 32, 128, 512, 2048, 4096],
+  "selection": "Use fold-0 fitting inputs only, synthetic zero targets and no observed validation/test labels. Select smallest effective graph batch within 5% of best measured graph throughput, then smallest node budget within that band. Freeze graph and matched MLP to the same effective batch. Large MLP probes demonstrate hardware feasibility, not permission to change only its optimizer batch.",
+  "probe_sample_count": 512,
+  "probe_seed": 20261006,
+  "host_cache_gib": 8,
+  "gpu_used_budget_gib": 12,
+  "gpu_free_reserve_gib": 4,
+  "gpu_workers": 1,
+  "numerical_gate": {"loss_gradient_rtol": 0.00001, "loss_gradient_atol": 0.000001, "Adam_step_atol": 0.00001, "resume_atol": 0.000001, "reason": "FP32 full-batch versus microbatch reductions on the real minimal-input fixture differed by about 9.5e-9 in gradients, amplified to about 1.7e-6 by Adam near-zero denominators. Record maximum optimizer difference and use the explicitly declared 1e-5 optimizer tolerance for this new contract; parent C4 tolerances remain unchanged."},
+  "implementation": "Lazy whole-graph physical microbatches bounded by total nodes; loss sums divided by actual effective observation count; one Adam step per effective batch. CPU LRU caches transformed examples. CUDA allocator cache retained between steps. Oversized graphs stay intact and alone.",
+  "restart": "Preserve original checkpoint and restart new larger-batch cells from their seed; never resume batch-2 optimizer state into a larger-batch cell.",
+  "gate": "CUDA batch/microbatch gradient and one-step parity, measured finite synthetic losses and memory bounds; fold 0 completes before remaining folds. Original technical receipt is inherited for unchanged feature/source/parity components and is not rewritten. New code/profile identities are pinned in each checkpoint."
+}

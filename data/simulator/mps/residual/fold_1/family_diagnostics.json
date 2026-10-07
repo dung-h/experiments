@@ -1,0 +1,57 @@
+{
+  "fold": 1,
+  "metrics_quality_used_for_continuation": false,
+  "seed_diagnostics": [
+    {
+      "assigned_test_hashes": 28,
+      "diagnostic_after_structural_only_inference": true,
+      "seed": 42,
+      "test_family_classification_accuracy": 0.5714285714285714,
+      "true_test_components_absent_from_finite_outer_training": []
+    },
+    {
+      "assigned_test_hashes": 28,
+      "diagnostic_after_structural_only_inference": true,
+      "seed": 1234,
+      "test_family_classification_accuracy": 0.5714285714285714,
+      "true_test_components_absent_from_finite_outer_training": []
+    },
+    {
+      "assigned_test_hashes": 28,
+      "diagnostic_after_structural_only_inference": true,
+      "seed": 31415,
+      "test_family_classification_accuracy": 0.5714285714285714,
+      "true_test_components_absent_from_finite_outer_training": []
+    }
+  ],
+  "true_test_family_components": {
+    "01de4bb89da48a3fc09c31d41d509c1446c6a4a3b329612c5baf0d39c56a922e": "[\"qft\"]",
+    "1dab21c93a580f711efff03a0f4a1d82985cf201219e886ab246e03a9011735c": "[\"wstate\"]",
+    "2372d3228c3e3e38e3351feb553380bce5a543c936f73a400de0e54ab470599a": "[\"portfolioqaoa\"]",
+    "31f7b2533d8a3c05d59b44a9b2d93f44bc48da630d1884cf9df0012199e10a74": "[\"qpeexact\"]",
+    "3d37464cf8c53831d2867c0c111a83e03a820e90fa26f77d01a4a85f4f9d6875": "[\"grover-noancilla\",\"grover-v-chain\"]",
+    "3e4560adf43b5c5102bf22f235abcb9dd2ed5e34930cdb929a128226f96e4ea5": "[\"dj\"]",
+    "433844fca892218b1218ca028aafb0eddf1929d5ca52fdea53b3cb324e4055bd": "[\"random\"]",
+    "451bd8177acaca0301a8bb4d61cb192f26dce1f81d8ab04ca0aded562d525c58": "[\"qnn\"]",
+    "47e6743e95c380a13dc5947d9e9b3db26e541efabd4a27134ff26aa14c00ba7d": "[\"portfolioqaoa\"]",
+    "4df5b36e58378649053c461bf5ee1478fa114ac65c0c14551536b820ce8eafc7": "[\"qnn\"]",
+    "551dfe6ad672d4157a761610fc4c1061ea844868f2106407374764552251d63a": "[\"graphstate\"]",
+    "55746e6a2fd8d9c4b8c813443f2db46b072f75db1632dd252298c735fbc72bf0": "[\"grover-noancilla\",\"grover-v-chain\"]",
+    "6a475a20ac3d09839e2b43104ca187037db5ff813b811e0d7356adac93d25244": "[\"qaoa\"]",
+    "6cf91acdbcfc0321d1ffcee7c2197fec29f2b9dd83e7c3b56dbe8d583332ccdb": "[\"qnn\"]",
+    "720a3cec5f9b39a53aa0d59f0ecc24f42f2948fbe56164a033262c628e2ba875": "[\"qnn\"]",
+    "75b1db396e34d1f1b234ea8dcdc253203a770cecce7f48bb8a126860723c43df": "[\"wstate\"]",
+    "7b944ad7e38d98fae66177b6c014ae2878d62bcd1765103c19941653817e7996": "[\"graphstate\"]",
+    "806f1844d225682cd7d5d0b276b5567caa23697f73064d8a20347024bb03fe40": "[\"realamprandom\",\"twolocalrandom\"]",
+    "8e4821df72704634cb81ea4d738477a8d596a49cba641e6198fdc9970e1d5d2f": "[\"ae\"]",
+    "8f11cd416ae9672f06a39e5ee3a27a70bcbf31d7177cb47270c0cd8512c95381": "[\"random\"]",
+    "93eff191c23e0c3d13a127f38595909e7092290f5119c9be24a1ccc61fff5767": "[\"random\"]",
+    "9649572da691c86252b1620cba73350902b9ba3cf4dbdb3fb2e3531588da98c4": "[\"qaoa\"]",
+    "a4a7b8b8d556570de9ea2db286aaa4245fa50f4619f25f0f7414b16d503458d8": "[\"qaoa\"]",
+    "acacd76111e7f23e4224342ca0ab5340b1bdaad3b6eba8893e4036ba14896362": "[\"qpeinexact\"]",
+    "bc8cb33a3a242fb3ab35191a36313674faaca8fe1839cfa05d79788052424d1d": "[\"dj\"]",
+    "cbe1ca5505b485bd87b2e68f2b38ecae377e29f823c30e4c44d3f5f87d4266f7": "[\"qft\"]",
+    "dc97062e3adcbcaf813cae5e970c8a0357a239b8d4a09e77a4e3e4625532d209": "[\"wstate\"]",
+    "f37f599f25c5024b4069e866a31563a6daf0b1495d17d25343f7b3cfac1169ee": "[\"qpeinexact\"]"
+  }
+}

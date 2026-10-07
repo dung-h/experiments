@@ -1,0 +1,75 @@
+{
+  "alias_rule": "one lexicographically first fully valid exact-QASM member supplies one hash target; coverage table retains every panel member",
+  "artifact_id": "cudaq-dense-hash-targets-v1",
+  "builder": {
+    "path": "benchmark_v1/scripts/materialize_cudaq_dense_targets_v1.py",
+    "sha256": "0883240fa459986df0b9d4e14cb683c0bf400017478f9b50f427b85926a25554"
+  },
+  "core_fold_hash_counts": {
+    "fp32": {
+      "0": 37,
+      "1": 28,
+      "2": 26,
+      "3": 25,
+      "4": 34
+    },
+    "fp64": {
+      "0": 37,
+      "1": 28,
+      "2": 26,
+      "3": 25,
+      "4": 34
+    }
+  },
+  "core_unique_hashes": 150,
+  "inputs": {
+    "ir_artifact_manifest": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/work/benchmark_recovery/r3_dense/ir_features_v1/manifest.json",
+      "sha256": "d9a35d022df246c381c098a11ff405d74b5cbbd416ac9b62c126f48616e3bad2"
+    },
+    "ir_manifest": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/work/benchmark_recovery/r3_dense/ir_features_v1/dense_ir_by_hash.csv",
+      "sha256": "68c7cd713d854814e258701b973c43e8802c24a09b7cf6908ec3c324e6e5609c"
+    },
+    "panel_manifest": {
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/benchmark_v1/sim_common_q16_manifest_20260927/sim_common_q16_manifest.csv",
+      "sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e"
+    },
+    "runs": [
+      {
+        "context_sha256": "daac3bf1dadfac952291c02ad50d0d3fb96520a242f6d80ebe260f09e68cba71",
+        "environment_sha256": "cd0d393a6a4d2fc73bc16b63ebbe28858808a1c31a90d6a275b6d544c40ec4bf",
+        "raw_sha256": "19da3548991404395f05ef57dca4f499426551ab4a7389392df60731dce282ba",
+        "run_id": "cudaq_dense_common_q16_bridge_full_v1_20260928",
+        "run_manifest_sha256": "c6dbbf55d80b7167a378c1e2d5efc670fa6d8eb6aa2cfdf147727f2d84508c76"
+      },
+      {
+        "context_sha256": "daac3bf1dadfac952291c02ad50d0d3fb96520a242f6d80ebe260f09e68cba71",
+        "environment_sha256": "cd0d393a6a4d2fc73bc16b63ebbe28858808a1c31a90d6a275b6d544c40ec4bf",
+        "raw_sha256": "d4ee655c888e839ad47a37bc2b45b0e97c12514793ea347d385ec46521b48ae9",
+        "run_id": "r5_attempt_004",
+        "run_manifest_sha256": "ff9d6d738bd10f52f280b454a053556837b11e75544660551d6d9e38beeac4a2"
+      }
+    ]
+  },
+  "measurement_context_sha256": "daac3bf1dadfac952291c02ad50d0d3fb96520a242f6d80ebe260f09e68cba71",
+  "member_coverage_rows": 408,
+  "model_fitting_performed": false,
+  "outputs": {
+    "dense_hash_targets.csv": "1b88fef5015d5403f89956d8f6d6f92baced9aaecc149728e641cee10588c170",
+    "dense_member_coverage.csv": "93bef4133cc8043b7aa59ca540861d61370b2fa49501e5b40e4be94fb757c901"
+  },
+  "panel_members": 204,
+  "reuse_rule": "run contexts must match in target, software/device/environment and frozen sampling settings; each reused raw IR digest must equal repaired adapter's legacy dense digest for that hash",
+  "status": "PASS",
+  "target_definition": "median across three session medians; each session median is five successful t_warm_execution_s repetitions",
+  "target_rows": 382,
+  "target_status_counts": {
+    "fp32|ok|core_q2_q9": 150,
+    "fp32|ok|frontier_q10_q16": 41,
+    "fp64|ok|core_q2_q9": 150,
+    "fp64|ok|frontier_q10_q16": 41
+  },
+  "timing_performed": false,
+  "unique_hashes": 191
+}

@@ -1,0 +1,37 @@
+{
+  "manifest_id": "pasqal-emu-mps-formula-crossed-pilot-v1",
+  "purpose": "Identifiable local crossed-grid pilot for the documented EMU-MPS per-step model Δt(N,χ) = α N²χ³ + β N³χ². This is a local RTX 5070 Ti adaptation, not Pasqal's A100 timing table.",
+  "source_programs": {
+    "repository": "https://github.com/pasqal-io/emulators",
+    "commit": "a2349c37f837d74fc07a6f3a9982250023427b22",
+    "document": "docs/emu_mps/benchmarks/index.md",
+    "document_sha256": "abc0caed4b11f3b14b9a2767df76a1a1d0f28644e88f2282a483e9197100b334",
+    "families": ["adiabatic_afm", "quench"],
+    "layouts": [[3, 3], [3, 4], [4, 4]],
+    "source_semantics": "Exact reconstructed official pulse formulas; layout and configured bond are independent crossed factors."
+  },
+  "simulator": {
+    "implementation": "Pasqal EMU-MPS TDVP GPU", "dt_ns": 10.0, "precision": 1e-6,
+    "max_krylov_dim": 40, "max_bond_dimensions": [16, 32, 64], "interaction_cutoff": 0.0,
+    "optimize_qubit_ordering": false, "gpu_concurrency": 1
+  },
+  "quality": {
+    "reference_rungs": [256, 512],
+    "reference_validation": "For each (family, layout, session), fixed chi=256 must have Fidelity >=0.9999 against fixed chi=512 before candidate cells are accepted.",
+    "candidate_metric": "Fidelity against the session's accepted fixed reference final state",
+    "candidate_threshold": 0.99,
+    "quality_clock": "Reference state generation, capture and overlap are outside network-build/first/warm timing clocks."
+  },
+  "measurement": {
+    "sessions": 1, "untimed_warmups_per_session": 2, "timed_warm_repetitions_per_session": 2,
+    "cell_timeout_seconds": 1800,
+    "pilot_promotion": "A later three-session core may only use cells whose resource and quality rows are retained here. Timings from this pilot are not silently promoted."
+  },
+  "analysis": {
+    "response": "median warm_execute_seconds / sequence_num_steps",
+    "regressors": ["N_squared_chi_cubed", "N_cubed_chi_squared"],
+    "rank_requirement": 2,
+    "condition_number_warning": 1000.0,
+    "fit_constraint": "nonnegative least squares with residuals and unconstrained sign diagnostic reported"
+  }
+}

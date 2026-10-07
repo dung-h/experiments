@@ -1,0 +1,63 @@
+{
+  "fold": 4,
+  "metrics_quality_used_for_continuation": false,
+  "seed_diagnostics": [
+    {
+      "assigned_test_hashes": 34,
+      "diagnostic_after_structural_only_inference": true,
+      "seed": 42,
+      "test_family_classification_accuracy": 0.38235294117647056,
+      "true_test_components_absent_from_finite_outer_training": []
+    },
+    {
+      "assigned_test_hashes": 34,
+      "diagnostic_after_structural_only_inference": true,
+      "seed": 1234,
+      "test_family_classification_accuracy": 0.4411764705882353,
+      "true_test_components_absent_from_finite_outer_training": []
+    },
+    {
+      "assigned_test_hashes": 34,
+      "diagnostic_after_structural_only_inference": true,
+      "seed": 31415,
+      "test_family_classification_accuracy": 0.47058823529411764,
+      "true_test_components_absent_from_finite_outer_training": []
+    }
+  ],
+  "true_test_family_components": {
+    "093af0605e834bf0a4f2aef0b46600d12c6b1c913e791fb13e2513048a6b1c70": "[\"qpeinexact\"]",
+    "1d76cd981622e5ca02125654d00534f3aec623bbb2b95b7ea894049f76916577": "[\"qpeinexact\"]",
+    "242786b0f7d73c715a317cbdc0725596836f08d98ecd6eb06b3b4ac4f3f563fb": "[\"dj\"]",
+    "2df018ddcd5f44fd33cd5d80af349db5f84e36d6a5f905ef4611e5e5cc0d03f4": "[\"qwalk-noancilla\",\"qwalk-v-chain\"]",
+    "2f497b92b87e3e9f44c1ae23dfbffc7309c1550756e6829eb694d42dd4f2ed03": "[\"su2random\"]",
+    "387f2f6f12a10e034ae5b68c11336a9874e87f20871579eec585bfd7311f38c8": "[\"wstate\"]",
+    "4dd5e72918722dff3c88e277e20e3ecc1e06dfd0601343e784eeb454470800b7": "[\"portfolioqaoa\"]",
+    "4ee5846eef239e2b0e0d3f950f78b5b4b8af213f0063eb50be6bf50bdbb4385d": "[\"qftentangled\"]",
+    "51e3c5bc60da502bf92a6ed65a7c728a8b957b427652ac8fdaa002b9afc50d40": "[\"graphstate\"]",
+    "56289d5fdefe63c89244b0849f2e22753ce30832776d74b79de4603006db32f4": "[\"qpeexact\"]",
+    "5d3cc38ff0e2b9054c927b6309c6a8dfaba491733eab08b06cc06f2d333da23d": "[\"qpeexact\"]",
+    "6e066adb38de82d96650b3f806e398374e88912fd4688ab9c98f3c94dcd33e16": "[\"vqe\"]",
+    "78d3420407751ab52a65abe926510d585ebd3a5d1934ac31c13b28eca5c5ee8a": "[\"ae\"]",
+    "7e02b8d5bbea94c5e0eabb2edd6a74e15949ae6b737fabb55e66a61d47181912": "[\"qwalk-noancilla\",\"qwalk-v-chain\"]",
+    "7f613ccae98ac8124d086ee9a39d94b1ed019520da8c3277395b109fd22d7d4d": "[\"qft\"]",
+    "7fabc879bc998db5c05d7cc5b83db2d1704d7587139b714da9cf82639f4f093e": "[\"su2random\"]",
+    "84056291d9ff227b3c615cc378349fa1154f5a122bcd0eb6bc04045bbf3affa0": "[\"grover-noancilla\",\"grover-v-chain\"]",
+    "8650fb4f2d0816cd59c97df1ed4051936ecb3b5c31d39ba97cdc5cd2af374a8a": "[\"qwalk-noancilla\",\"qwalk-v-chain\"]",
+    "8711737782301f568af1980707e62c989655488357aa858d6c63bb8e206ae4fc": "[\"qftentangled\"]",
+    "8e1c1014680274215f87d97c833f99474ed19b3393b2b8eea20a36bde517708b": "[\"qaoa\"]",
+    "8ea085ea0c0185c560746ab5988221e203c457e2afbb475976fb99f718e2dad1": "[\"realamprandom\",\"twolocalrandom\"]",
+    "9110b8773ad1c544b5ec91feaaa99c96975f7577fe6966b0f0df52dab84bef92": "[\"qwalk-noancilla\",\"qwalk-v-chain\"]",
+    "92c02520f591e3d46218c6839b62acb2a1d5fbcc2ceba197b9265653f1737b24": "[\"vqe\"]",
+    "a3b7d67bad6cd47cb522addfaf763294b1ea99017f443c03052055a2f0074009": "[\"grover-noancilla\",\"grover-v-chain\"]",
+    "a70c5b796698f145c5992d324b3a0b5e28eb7301e6f306652a316a55c68f1ae8": "[\"ae\"]",
+    "b23a0318d268fcffc78b4f6ce920c98f33487ec34a71cf7b6225b9b6eb93f1bb": "[\"qwalk-noancilla\",\"qwalk-v-chain\"]",
+    "bbafe35368c1a915635c383f6aaa4ec709a7c6e055550875d4de11ca0983dbb5": "[\"vqe\"]",
+    "bc77f4afad8bbb19a6b320c11bc8f8110a330e395e5c509895e0b6c566cab5e9": "[\"grover-noancilla\",\"grover-v-chain\"]",
+    "c6ee0cb7c958cecf010796ce2ad0bb148b9fd660dd52393972c541d9ae422eca": "[\"su2random\"]",
+    "d7ecd343052e510bdf5fa0f67f2fdbc3ee5ddccd19f39548c2853114a94dece2": "[\"random\"]",
+    "de4639e0b84f220ce7281521fbce5104129cc70befb85198bf93def8d4ba7a65": "[\"ghz\"]",
+    "edc62038c489069da135981ccefd5c5a2f3cc0a991fa6da4defa393abdb0d2a4": "[\"grover-noancilla\",\"grover-v-chain\"]",
+    "f76953672a13f3e92397fe3586ff6557882560261e995147a67b931d701c7fcf": "[\"qnn\"]",
+    "fcd9497c7764bb185a96cc8b6d1c7878851e9b87e64de7ebf47aa1d16eb3ee0a": "[\"ghz\"]"
+  }
+}

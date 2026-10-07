@@ -1,0 +1,39 @@
+{
+  "adapter": {
+    "path": "benchmark_v1/scripts/cudaq_qiskit_adapter.py",
+    "sha256": "18f85cb270394872cd11448fdc1cef2d4369e11b8c7f9ce23ad61131675cf2e6"
+  },
+  "artifact_id": "cudaq-dense-normalized-ir-features-v1",
+  "builder": {
+    "path": "benchmark_v1/scripts/materialize_cudaq_dense_ir_features_v1.py",
+    "sha256": "bdf6b252862ea4dcfc52c81632621dada3b724b1c3f4ff2f8cb51bd6b9a67e86"
+  },
+  "core_members": 162,
+  "core_unique_hashes": 150,
+  "dag_contract": "S71 s71-operation-dag-v1 from normalized circuit including terminal measurements; no Aer transpilation and no MPS measurement stripping",
+  "feature_contract": [
+    "active_width",
+    "structural_depth",
+    "one_qubit_count",
+    "two_qubit_count",
+    "swap_like_count",
+    "measurement_count",
+    "shots"
+  ],
+  "frontier_members": 42,
+  "outputs": {
+    "dense_feature_members.csv": "92756a674809cb6a0085b5cd1e6aa0118ff25d0140c248eaa79efdf94a130056",
+    "dense_features_by_hash.jsonl": "cb8d92a255c218fd804a4a960dda78979699ac94ff1653b39c24fd6dc6f66def",
+    "dense_ir_by_hash.csv": "68c7cd713d854814e258701b973c43e8802c24a09b7cf6908ec3c324e6e5609c"
+  },
+  "panel_manifest": {
+    "path": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/benchmark_v1/sim_common_q16_manifest_20260927/sim_common_q16_manifest.csv",
+    "sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e"
+  },
+  "panel_members": 204,
+  "shots_constant": 32,
+  "status": "PASS",
+  "target_read": false,
+  "timing_performed": false,
+  "unique_qasm_hashes": 191
+}

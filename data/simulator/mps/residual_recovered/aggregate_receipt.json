@@ -1,0 +1,30 @@
+{
+  "artifact_id": "r9-family-residual-recovered-aggregate-v1",
+  "files_sha256": {
+    "execution_environment.json": "12c4c0e4f81b4b36844a46e8e56cddbaf9b674936b2c695d9fa17ae50d4b7e16",
+    "five_fold_execution_receipt.json": "d9feb6a83bc7372e4b82c5159e92647160bf016c251de0e5ab94d5c01c056ab2",
+    "five_fold_oof_predictions.csv": "31a8c5eddaf0acde8e88d24fd9f48b233a50a9dbc03e1afc418757f06c7bd748",
+    "five_fold_oof_summary.json": "39a80702ea4b6c2bee9e4bd5186b722635cfb16feb7260030295139fc4b2ac0e",
+    "hash_targets_and_static_features.csv": "84c9c81617a1fc0bd774795b530a9c27c9589240721b69351deda26d7436f3d0",
+    "materialization_manifest.json": "e84e3bfe4516855308cbdff9341532b489c65c1e7d281009a84be5650a921836",
+    "method_metrics.json": "1d9a7ab34f176b16a47aed7af83667a813cfdbc47545b0b7608b0108771c841a",
+    "paired_bootstrap.csv": "70911933874cce0c86b19a0b5c56566f4761696dc852d6ca04a994e73643076e",
+    "paired_hash_comparisons.csv": "2f0470786ece7e98f095711e08ac17990fb1cbf739cd22c3e8bb3c9bb1931089",
+    "preflight_qa.json": "8898bc9e0961cdc3f9184e3a5dd2f97eaacf6646fb4b13f34fcfa42842045bc1",
+    "r9_fit_receipt.json": "13e5507078586a3d04cace25675af7a4608d11a4ae0eae5ce38beec68fcd3bc9",
+    "r9_target_input_receipt.json": "4deac7237c85e7735a747a8020e0f2cb92b0a19c8a6c2097f1b5ceac882ba827",
+    "seed_dispersion_by_hash.csv": "07d86683d2fb342fb9ffda6c48c418fdb14c7abf5ecb72ba457b6ddb758a89d4",
+    "seed_dispersion_summary.json": "d86593f1e6a31a27b360ae4df97f4d4c004ed29b78347f8faa27a72a488f5ad0"
+  },
+  "fixed_comparator_oof_manifest_sha256": "eca8a63262fcc0d61250484fe98dc2ae5ced04a3c58cc00d34dd02871951f606",
+  "metric_population_labels": {
+    "finite_runtime_hashes": 150,
+    "finite_runtime_population": "all_finite_runtime_targets",
+    "quality_pass_hashes": 147,
+    "quality_pass_population": "quality_pass_runtime_targets"
+  },
+  "metrics_quality_used_for_fit_or_selection": false,
+  "status": "PASS",
+  "target_manifest_sha256": "c7a66fe6195daaf1af74c2da5582a06a260469d227682d2634276fdd0a4fdbeb",
+  "target_revision_id": "mps-r9-recovered-v1"
+}

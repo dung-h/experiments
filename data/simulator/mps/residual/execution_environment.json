@@ -1,0 +1,63 @@
+{
+  "cpu_threads": 2,
+  "cuda_smoke_test": {
+    "classifier_forward_backward": "PASS",
+    "cuda_device": "NVIDIA GeForce RTX 5070 Ti",
+    "family_agnostic_runtime_forward_backward": "PASS",
+    "family_runtime_forward_backward": "PASS",
+    "pyg_data_batch_cuda_forward_backward": "PASS",
+    "shared_initial_state_digest_equal": true,
+    "smoke_shared_initial_state_sha256": "90a16f44af151bd6fe9ee5e7d50b6a30228fd07b4221c72249ca9fe52ed0ade2",
+    "status": "PASS"
+  },
+  "cuda_training_environment": {
+    "cuda_available": true,
+    "cuda_visible_devices": "<unset>",
+    "device_capability": [
+      12,
+      0
+    ],
+    "device_count": 1,
+    "device_name": "NVIDIA GeForce RTX 5070 Ti",
+    "pip_freeze_sha256": "766781c785791a57899c4ed98c2be6cdb48b840ce4c47c552f4fe46cdf7bf013",
+    "pip_freeze_tool": "uv-pip-freeze",
+    "python_executable": "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+    "torch": "2.7.1+cu128",
+    "torch_cuda_runtime": "12.8",
+    "torch_geometric": "2.6.1"
+  },
+  "environment_sha256": "1a091697fc9847b1590d31f397b1fb52258b37a6f602513813d6daca5fac0fba",
+  "input_sha256": {
+    "e5_protocol_sha256": "753db02950abb1a3db52f6ac39bfab91c841e0acf56dca69e4a95def0bee9e80",
+    "s85_loader_source_sha256": "7731c6ef22704089122fd704f138bd207856909437bce9e03c7f6012812b5bd6",
+    "s85_pinned_inputs": {
+      "c44_fold_source_csv": "a25e2e740fd3058e487f713cd0fc074dd8761120a5aface275a212693ac05437",
+      "cudaq_bridge_manifest": "7cc55f45a27e313d9d5e47ea9b79ca6f18e1b7379f1c24e1a468ccafed3f3a87",
+      "mps_attempt_records": "2c77d505950cb269041ae09b78738c74c021c6444ba7b3300205975ab7860017",
+      "mps_environment": "b0ab34b8cda4e20556875eff9269eab410ec6493e607ee12b8dc8f47901c4bd6",
+      "mps_execution_authorization_decision": "f5dda9ae5374281f51922d730e2effd174b86973a3f41ab5e9c143cef6890318",
+      "mps_qa_json": "89c0d917d6e00f4c9519e89c593940b7c0e80c109acc103b7a561541509c8918",
+      "mps_raw_csv": "41aaffa3977eebb7d045555baa43dec9a5ecd81dff51aa23943f8d00f6ccc495",
+      "mps_run_manifest": "02cd92b028e5e2fe31f8f963ee9eaf7de308e5d1ddc262b85ddcef7d78db5b59",
+      "panel_manifest_csv": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e",
+      "simulator_completion_gates": "74593475974b68ca003f991f1477d12ff67f0c22bdda567b46b9675011baf584",
+      "simulator_environment_lock": "08624ffa11ba12805e15eec93be573068b02cd362b1092c19694369ec76b21a8",
+      "static_source_dag_jsonl": "bc8816576992cd14088371265dc0f766eafcf51bc4bf39631ec17ab9f4784f3a",
+      "static_source_hashes": "2f48b8e6b3b3928cfad16eb09d5fc495ffc088aa447d8c45ec9f696c190867b0"
+    },
+    "seed_registry_sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864"
+  },
+  "live_environment_match": true,
+  "protocol_sha256": "753db02950abb1a3db52f6ac39bfab91c841e0acf56dca69e4a95def0bee9e80",
+  "pyg_version_recorded": "2.6.1",
+  "recorded_utc": "2026-10-02T10:26:23.969592+00:00",
+  "runner_id": "family-residual-fixed-mps-runtime-v1",
+  "timing_exclusion_evidence": {
+    "both_locks_acquired_nonblocking": true,
+    "both_locks_held_for_entire_cuda_interval": true,
+    "host_gpu_lease_path": "/tmp/qre-benchmark-gpu-lease.lock",
+    "live_timing_processes_at_lock_acquisition": [],
+    "no_live_timing_worker_at_lock_acquisition": true,
+    "shared_maestro_timing_lock_path": "work/locks/maestro_qcsim_v2_cpu_timing.lock"
+  }
+}

@@ -1,40 +1,6 @@
-# Python environments and transient files
-.venv*/
 __pycache__/
 *.py[cod]
 .pytest_cache/
-
-# External source checkouts materialized by scripts/bootstrap_upstreams.sh
-work/
-work-*/
-/profiles/
-
-# GPU/compiler outputs from a new local run. Baseline fixtures under artifacts/
-# are versioned; reruns must use an explicit directory under work/.
-run-output/
-
-# Scratch MPS canaries are superseded by the committed cap/width matrix.
-artifacts/cudaq_runtime/cudaq_mps_20260921/canary_*
-
-# Local-only intermediate evaluations and an aborted v2 preliminary run. The
-# final, regenerated v2 corpus/report is explicitly versioned below artifacts/.
-artifacts/simulator_runtime_v2/dense_statevector_structural_v2/
-artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_phase1/
-artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_phase1_ablation/
-artifacts/simulator_runtime_v2/dense_statevector_structural_v2_20260920/evaluation_seed_extension/
-
-# Credentials and machine-local runtime state
-.env
-*.pem
-*.key
-client_secret*.json
-.DS_Store
-
-# Reassembled frozen CSVs. Row-aligned *.csv.parts/ files are tracked instead.
-/artifacts/benchmark_v3/real_qpu/unified_method_comparisons_v2/attempts.csv
-/artifacts/benchmark_v3/real_qpu/hyb_hanas_bounded_repair_v1_20261001/merged_analytical_attempts_for_c4.csv
-/artifacts/benchmark_v3/real_qpu/archived_analytical_wave_v3_20260930/attempts.csv
-
-# Rebuildable native-DAG coarsened tensors (~32 MB). Reports and CSV stay versioned.
-artifacts/validation/mali_azizov_transpiled_dag_v1/coarsened/
-artifacts/validation/mali_azizov_transpiled_dag_v1/qpu_scratch_pilot/coarsened/
+.venv*/
+.replay/
+scratch/

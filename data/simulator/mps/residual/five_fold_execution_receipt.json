@@ -1,0 +1,55 @@
+{
+  "created_utc": "2026-10-02T10:26:39.715580+00:00",
+  "fold0_continuation_used_metrics": false,
+  "folds": [
+    {
+      "assigned_test_hashes": 37,
+      "finite_train_hashes": 108,
+      "fold": 0,
+      "metrics_quality_consulted": false,
+      "prediction_rows": 37,
+      "technical_qa": "PASS"
+    },
+    {
+      "assigned_test_hashes": 28,
+      "finite_train_hashes": 117,
+      "fold": 1,
+      "metrics_quality_consulted": false,
+      "prediction_rows": 28,
+      "technical_qa": "PASS"
+    },
+    {
+      "assigned_test_hashes": 26,
+      "finite_train_hashes": 119,
+      "fold": 2,
+      "metrics_quality_consulted": false,
+      "prediction_rows": 26,
+      "technical_qa": "PASS"
+    },
+    {
+      "assigned_test_hashes": 25,
+      "finite_train_hashes": 120,
+      "fold": 3,
+      "metrics_quality_consulted": false,
+      "prediction_rows": 25,
+      "technical_qa": "PASS"
+    },
+    {
+      "assigned_test_hashes": 34,
+      "finite_train_hashes": 112,
+      "fold": 4,
+      "metrics_quality_consulted": false,
+      "prediction_rows": 34,
+      "technical_qa": "PASS"
+    }
+  ],
+  "method_claim": "Family-Aware-inspired fixed-MPS runtime-only adaptation; not original joint method",
+  "status": "five_fold_fit_technical_qa_complete_aggregation_pending",
+  "timing_exclusion_evidence": {
+    "both_locks_held_for_entire_five_fold_cuda_interval": true,
+    "host_gpu_lease_path": "/tmp/qre-benchmark-gpu-lease.lock",
+    "no_live_timing_worker_at_acquisition": true,
+    "nonblocking_flock": true,
+    "shared_lock_path": "work/locks/maestro_qcsim_v2_cpu_timing.lock"
+  }
+}

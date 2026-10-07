@@ -1,0 +1,36 @@
+{
+  "artifact": "artifacts/benchmark_v1/pasqal_emu_mps_formula_crossed_pilot_v1r1_20260926",
+  "complete_cells": 18,
+  "duplicate_identity_count": 0,
+  "expected_cells": 18,
+  "formula_fit": {
+    "alpha": 0.0,
+    "beta": 1.7689199371721886e-08,
+    "condition_number": 22.672610449445354,
+    "n_cells": 17,
+    "rank": 2,
+    "regressors": [
+      "N^2*chi^3",
+      "N^3*chi^2"
+    ],
+    "target": "median warm execute seconds / source-pinned sequence steps",
+    "unconstrained_alpha": -6.109137649873803e-09,
+    "unconstrained_beta": 4.301342092980322e-08
+  },
+  "observed_cells": 18,
+  "quality_failed_rows": 4,
+  "raw_rows": 72,
+  "raw_sha256": "67c7541096cc47d6e2c0a981ff8d4e283c03719028cfdafe290c7db42a941b1b",
+  "resource_or_error_rows": 0,
+  "stage_status_counts": {
+    "first_execute|ok": 17,
+    "first_execute|quality_failed": 1,
+    "network_build|ok": 17,
+    "network_build|quality_failed": 1,
+    "warm_execute|ok": 34,
+    "warm_execute|quality_failed": 2
+  },
+  "status": "complete",
+  "warm_success_rows": 34,
+  "worker_active": false
+}

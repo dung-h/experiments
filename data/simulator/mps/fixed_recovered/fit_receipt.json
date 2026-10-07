@@ -1,0 +1,187 @@
+{
+  "artifact_id": "r9-fixed-mps-recovered-fit-v1",
+  "folds": [
+    {
+      "assigned_hashes": 37,
+      "cuda_environment": {
+        "cuda_available": true,
+        "cuda_visible_devices": "0",
+        "device_capability": [
+          12,
+          0
+        ],
+        "device_count": 1,
+        "device_name": "NVIDIA GeForce RTX 5070 Ti",
+        "pip_freeze_sha256": "766781c785791a57899c4ed98c2be6cdb48b840ce4c47c552f4fe46cdf7bf013",
+        "pip_freeze_tool": "uv-pip-freeze",
+        "python_executable": "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+        "torch": "2.7.1+cu128",
+        "torch_cuda_runtime": "12.8",
+        "torch_geometric": "2.6.1"
+      },
+      "finite_label_hashes": 37,
+      "fold": 0,
+      "methods": [
+        "train_fold_median",
+        "ridge_alpha_1",
+        "graph_seed_42",
+        "graph_seed_1234",
+        "graph_seed_31415",
+        "graph_median_three_seeds"
+      ],
+      "metrics_quality_consulted": false,
+      "prediction_rows": 37,
+      "technical_qa": "PASS",
+      "unavailable_hashes": 0
+    },
+    {
+      "assigned_hashes": 28,
+      "cuda_environment": {
+        "cuda_available": true,
+        "cuda_visible_devices": "0",
+        "device_capability": [
+          12,
+          0
+        ],
+        "device_count": 1,
+        "device_name": "NVIDIA GeForce RTX 5070 Ti",
+        "pip_freeze_sha256": "766781c785791a57899c4ed98c2be6cdb48b840ce4c47c552f4fe46cdf7bf013",
+        "pip_freeze_tool": "uv-pip-freeze",
+        "python_executable": "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+        "torch": "2.7.1+cu128",
+        "torch_cuda_runtime": "12.8",
+        "torch_geometric": "2.6.1"
+      },
+      "finite_label_hashes": 28,
+      "fold": 1,
+      "methods": [
+        "train_fold_median",
+        "ridge_alpha_1",
+        "graph_seed_42",
+        "graph_seed_1234",
+        "graph_seed_31415",
+        "graph_median_three_seeds"
+      ],
+      "metrics_quality_consulted": false,
+      "prediction_rows": 28,
+      "technical_qa": "PASS",
+      "unavailable_hashes": 0
+    },
+    {
+      "assigned_hashes": 26,
+      "cuda_environment": {
+        "cuda_available": true,
+        "cuda_visible_devices": "0",
+        "device_capability": [
+          12,
+          0
+        ],
+        "device_count": 1,
+        "device_name": "NVIDIA GeForce RTX 5070 Ti",
+        "pip_freeze_sha256": "766781c785791a57899c4ed98c2be6cdb48b840ce4c47c552f4fe46cdf7bf013",
+        "pip_freeze_tool": "uv-pip-freeze",
+        "python_executable": "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+        "torch": "2.7.1+cu128",
+        "torch_cuda_runtime": "12.8",
+        "torch_geometric": "2.6.1"
+      },
+      "finite_label_hashes": 26,
+      "fold": 2,
+      "methods": [
+        "train_fold_median",
+        "ridge_alpha_1",
+        "graph_seed_42",
+        "graph_seed_1234",
+        "graph_seed_31415",
+        "graph_median_three_seeds"
+      ],
+      "metrics_quality_consulted": false,
+      "prediction_rows": 26,
+      "technical_qa": "PASS",
+      "unavailable_hashes": 0
+    },
+    {
+      "assigned_hashes": 25,
+      "cuda_environment": {
+        "cuda_available": true,
+        "cuda_visible_devices": "0",
+        "device_capability": [
+          12,
+          0
+        ],
+        "device_count": 1,
+        "device_name": "NVIDIA GeForce RTX 5070 Ti",
+        "pip_freeze_sha256": "766781c785791a57899c4ed98c2be6cdb48b840ce4c47c552f4fe46cdf7bf013",
+        "pip_freeze_tool": "uv-pip-freeze",
+        "python_executable": "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+        "torch": "2.7.1+cu128",
+        "torch_cuda_runtime": "12.8",
+        "torch_geometric": "2.6.1"
+      },
+      "finite_label_hashes": 25,
+      "fold": 3,
+      "methods": [
+        "train_fold_median",
+        "ridge_alpha_1",
+        "graph_seed_42",
+        "graph_seed_1234",
+        "graph_seed_31415",
+        "graph_median_three_seeds"
+      ],
+      "metrics_quality_consulted": false,
+      "prediction_rows": 25,
+      "technical_qa": "PASS",
+      "unavailable_hashes": 0
+    },
+    {
+      "assigned_hashes": 34,
+      "cuda_environment": {
+        "cuda_available": true,
+        "cuda_visible_devices": "0",
+        "device_capability": [
+          12,
+          0
+        ],
+        "device_count": 1,
+        "device_name": "NVIDIA GeForce RTX 5070 Ti",
+        "pip_freeze_sha256": "766781c785791a57899c4ed98c2be6cdb48b840ce4c47c552f4fe46cdf7bf013",
+        "pip_freeze_tool": "uv-pip-freeze",
+        "python_executable": "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+        "torch": "2.7.1+cu128",
+        "torch_cuda_runtime": "12.8",
+        "torch_geometric": "2.6.1"
+      },
+      "finite_label_hashes": 34,
+      "fold": 4,
+      "methods": [
+        "train_fold_median",
+        "ridge_alpha_1",
+        "graph_seed_42",
+        "graph_seed_1234",
+        "graph_seed_31415",
+        "graph_median_three_seeds"
+      ],
+      "metrics_quality_consulted": false,
+      "prediction_rows": 34,
+      "technical_qa": "PASS",
+      "unavailable_hashes": 0
+    }
+  ],
+  "metrics_quality_used_for_continuation": false,
+  "source_runner_lineage": {
+    "joint_training_runner_sha256": "29aa726d77b04485ba0ffc8add40207efda233269928cc565e641e5f8a067a2b",
+    "old_joint_measurement_runner_sha256": "6b5f3570faa6582a5647dc9352f7c1092c271d5261fe3e4a6baad62d6ce684d9",
+    "r4_recovery_runner_sha256": "ea913c2f724acda94b7d97462ab4699f11841b54b983789cc356b28dccf3a1c6"
+  },
+  "status": "five_fold_fit_technical_qa_pass_aggregation_pending",
+  "target_manifest_sha256": "c7a66fe6195daaf1af74c2da5582a06a260469d227682d2634276fdd0a4fdbeb",
+  "target_revision_id": "mps-r9-recovered-v1",
+  "training_methods": [
+    "train_fold_median",
+    "ridge_alpha_1",
+    "graph_seed_42",
+    "graph_seed_1234",
+    "graph_seed_31415",
+    "graph_median_three_seeds"
+  ]
+}

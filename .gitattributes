@@ -1,12 +1,7 @@
-# Preserve exact whitespace in imported overlays and in a patch whose context
-# must apply byte-for-byte to the pinned upstream source.
-tracks/qonductor/qonductor_local_replication.patch whitespace=-trailing-space
-tracks/mali/overlay/** whitespace=-trailing-space
-tracks/cdaa_qcre/independent/** whitespace=-trailing-space
-
-# Artifacts are evidence, not platform text. Preserve exact bytes/line endings
-# because manifests and release inventories hash the files as stored.
-artifacts/**/*.csv -text -eol
-
-# CSV parts retain original record bytes, including CRLF and quoted newlines.
-artifacts/**/*.csv.parts/*.csv whitespace=cr-at-eol
+# Preserve byte hashes across Git configurations and platforms.
+* -text
+# Measurement CSVs retain their recorded CRLF bytes and hashes.
+*.csv whitespace=cr-at-eol
+# Generated SVGs and retained source bytes are not reformatted for publication.
+results/figures/*.svg -whitespace
+methods/simulator/recovered_target_common.py whitespace=-blank-at-eof

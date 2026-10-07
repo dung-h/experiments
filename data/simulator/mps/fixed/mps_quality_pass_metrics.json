@@ -1,0 +1,153 @@
+{
+  "artifact_id": "mps-fixed-chi16-source-dag-runtime-adaptation-v1-quality-pass",
+  "bootstrap_specification": {
+    "interval": "95% percentile",
+    "observed_delta_separate_from_bootstrap_mean": true,
+    "quantile_method": "linear interpolation at position (n-1)*p",
+    "replicates": 10000,
+    "resampling_unit": "paired exact-QASM hash"
+  },
+  "coverage": {
+    "assigned_hashes": 150,
+    "finite_runtime_labels": 144,
+    "quality_failed_finite_retained_in_primary": 2,
+    "quality_pass_finite": 142,
+    "unavailable_unimputed": 6
+  },
+  "input_files_sha256": {
+    "five_fold_oof_predictions.csv": "9459502a997fc35d22e4b2b1e2e653b368c6c446c67bbcca2e3966874c95a88d",
+    "hash_targets_and_static_features.csv": "4c1ad9ae16a2bd3187401da95638d01ed9872a480b959adb1aab7726bd05043d",
+    "seed_registry.json": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864"
+  },
+  "interpretation": "This subset answers performance among quality-pass labels only. Primary runtime-only metrics retain all 144 finite labels, including two quality-failed labels; unavailable targets remain unscored and unimputed.",
+  "method_claim": "fixed-configuration local MPS runtime-only adaptation; not Family-Aware reproduction",
+  "paired_mae_difference_vs_ridge": {
+    "quality-pass:graph_median_three_seeds_minus_ridge_alpha_1": {
+      "bootstrap_mean_difference_seconds": -0.9368356454033628,
+      "observed_mae_difference_seconds_left_minus_right": -0.9316581817188884,
+      "percentile_95_ci_seconds": [
+        -1.8403726216035785,
+        -0.29155293057334414
+      ],
+      "quantile_method": "linear interpolation at position (n-1)*p",
+      "replicates": 10000,
+      "seed_uint32": 1089562967
+    },
+    "quality-pass:graph_seed_1234_minus_ridge_alpha_1": {
+      "bootstrap_mean_difference_seconds": -0.9192895741296508,
+      "observed_mae_difference_seconds_left_minus_right": -0.9179051620865234,
+      "percentile_95_ci_seconds": [
+        -1.807450895438652,
+        -0.290107155609045
+      ],
+      "quantile_method": "linear interpolation at position (n-1)*p",
+      "replicates": 10000,
+      "seed_uint32": 2906130197
+    },
+    "quality-pass:graph_seed_31415_minus_ridge_alpha_1": {
+      "bootstrap_mean_difference_seconds": -0.9656388093061586,
+      "observed_mae_difference_seconds_left_minus_right": -0.9669704001188248,
+      "percentile_95_ci_seconds": [
+        -1.9293232387812962,
+        -0.29564254262448914
+      ],
+      "quantile_method": "linear interpolation at position (n-1)*p",
+      "replicates": 10000,
+      "seed_uint32": 2640153416
+    },
+    "quality-pass:graph_seed_42_minus_ridge_alpha_1": {
+      "bootstrap_mean_difference_seconds": -0.9300095612068442,
+      "observed_mae_difference_seconds_left_minus_right": -0.9276995871322227,
+      "percentile_95_ci_seconds": [
+        -1.8344166863360187,
+        -0.2858886039915452
+      ],
+      "quantile_method": "linear interpolation at position (n-1)*p",
+      "replicates": 10000,
+      "seed_uint32": 1880637856
+    },
+    "quality-pass:train_fold_median_minus_ridge_alpha_1": {
+      "bootstrap_mean_difference_seconds": 0.5409317004484857,
+      "observed_mae_difference_seconds_left_minus_right": 0.5392576600062685,
+      "percentile_95_ci_seconds": [
+        0.15970680333071155,
+        1.0055219818823324
+      ],
+      "quantile_method": "linear interpolation at position (n-1)*p",
+      "replicates": 10000,
+      "seed_uint32": 763437574
+    }
+  },
+  "prediction_unit": "exact-QASM SHA-256 hash",
+  "quality_pass_metrics_only": {
+    "graph_median_three_seeds": {
+      "mae_log1p_seconds": 0.028921883592928646,
+      "mae_seconds": 0.3037029575951775,
+      "max_abs_error_seconds": 25.096393225656357,
+      "medae_seconds": 0.009611718145606574,
+      "n": 142,
+      "p90_abs_error_seconds": 0.18632902131939774,
+      "p99_abs_error_seconds": 5.10542742566715,
+      "r2_seconds": 0.9374809926096883,
+      "rmse_seconds": 2.196350034577755
+    },
+    "graph_seed_1234": {
+      "mae_log1p_seconds": 0.030371157078700292,
+      "mae_seconds": 0.31745597722754254,
+      "max_abs_error_seconds": 25.56330072687706,
+      "medae_seconds": 0.012356465282209683,
+      "n": 142,
+      "p90_abs_error_seconds": 0.21405919804383317,
+      "p99_abs_error_seconds": 5.262415779396401,
+      "r2_seconds": 0.9348293280499878,
+      "rmse_seconds": 2.2424440583158116
+    },
+    "graph_seed_31415": {
+      "mae_log1p_seconds": 0.029272508051632326,
+      "mae_seconds": 0.26839073919524103,
+      "max_abs_error_seconds": 19.846725104318466,
+      "medae_seconds": 0.00915930244809715,
+      "n": 142,
+      "p90_abs_error_seconds": 0.18349062351189804,
+      "p99_abs_error_seconds": 5.575029847216948,
+      "r2_seconds": 0.9582488555326782,
+      "rmse_seconds": 1.7948564106301665
+    },
+    "graph_seed_42": {
+      "mae_log1p_seconds": 0.03205376067199948,
+      "mae_seconds": 0.3076615521818433,
+      "max_abs_error_seconds": 25.096393225656357,
+      "medae_seconds": 0.01340148643066641,
+      "n": 142,
+      "p90_abs_error_seconds": 0.189463489605987,
+      "p99_abs_error_seconds": 5.10542742566715,
+      "r2_seconds": 0.9374351574809582,
+      "rmse_seconds": 2.1971550021088904
+    },
+    "ridge_alpha_1": {
+      "mae_log1p_seconds": 0.18929639438827256,
+      "mae_seconds": 1.235361139314066,
+      "max_abs_error_seconds": 68.57113611506065,
+      "medae_seconds": 0.1194960516950232,
+      "n": 142,
+      "p90_abs_error_seconds": 0.7210602837978514,
+      "p99_abs_error_seconds": 30.015983319857586,
+      "r2_seconds": 0.37874674530332975,
+      "rmse_seconds": 6.923566320985981
+    },
+    "train_fold_median": {
+      "mae_log1p_seconds": 0.3439321231085362,
+      "mae_seconds": 1.7746187993203344,
+      "max_abs_error_seconds": 79.83594360648567,
+      "medae_seconds": 0.07616809949831804,
+      "n": 142,
+      "p90_abs_error_seconds": 1.6831161311973135,
+      "p99_abs_error_seconds": 46.193227442835756,
+      "r2_seconds": -0.038237549322167386,
+      "rmse_seconds": 8.950429663539657
+    }
+  },
+  "quality_status_used_as_model_input": false,
+  "status": "quality_pass_subset_derived_from_frozen_oof",
+  "target_clock_id": "cudaq_mps_fp64_bond16_warm_state_execution_seconds"
+}

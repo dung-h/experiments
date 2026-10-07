@@ -1,0 +1,348 @@
+{
+  "artifact_id": "predictive-runtime-aggregate-v1",
+  "bootstrap_policy": {
+    "cross_domain_comparisons": "forbidden",
+    "group_column": "source_sha256",
+    "interval": "95% percentile interval using numpy.quantile(method='linear')",
+    "paired": true,
+    "point_estimate": "observed MAE(candidate)-MAE(reference) on original shared hashes; separately recorded from bootstrap mean",
+    "replicates": 10000,
+    "seed_registry": "benchmark_v1/registry/seed_registry.json"
+  },
+  "files": {
+    "aer_azizov_hash_coverage.csv": {
+      "bytes": 1677623,
+      "sha256": "87a4e8545444d1d90cc8d395eef1dddd01539a087f7aa1e6acff6b32e0882e44"
+    },
+    "aer_azizov_hash_metrics.csv": {
+      "bytes": 11566,
+      "sha256": "16a6652056a4cc989b9d263a42bd9d97d4615460a13b32a63644c34ee3302b6a"
+    },
+    "aer_azizov_paired_bootstrap.csv": {
+      "bytes": 10673,
+      "sha256": "771cb644ecf2fabe8986164c0379ada85fab4f08be9a363eeac8ee5b8a85a336"
+    },
+    "mps_fixed_chi16_hash_coverage.csv": {
+      "bytes": 319600,
+      "sha256": "15f86c885fccadc4919d9591893fe19795cfcb9df2f6f4fff9c91d16807c4ce0"
+    },
+    "mps_fixed_chi16_hash_metrics.csv": {
+      "bytes": 7819,
+      "sha256": "710718e5b80deb42b1b993bc9b8327f0a8e0f1bcf0441f3bdc0467e10639c09e"
+    },
+    "mps_fixed_chi16_paired_bootstrap.csv": {
+      "bytes": 6530,
+      "sha256": "c6db61e92d09054485684ca768ef12eb47e9eab0a098f9f55c49f23d1b3f1cae"
+    },
+    "source_hashes.json": {
+      "bytes": 16745,
+      "sha256": "2e81047fda9c2fe37967763e440a5d330b45f5ba60a07c5a973bbb3d3f2085c2"
+    }
+  },
+  "method_cards": {
+    "azizov_gnn_hybrid_median_three_seeds": {
+      "claim_boundary": "Local Azizov-style graph/global adaptation on frozen Aer warm labels; not paper-exact or published-accuracy reproduction.",
+      "fidelity_class": "adaptation",
+      "method_id": "azizov_gnn_hybrid_median_three_seeds",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Azizov-style hybrid graph/global adaptation (median of seeds 42, 1234, and 31415)",
+      "representation_stage": "hybrid"
+    },
+    "azizov_gnn_hybrid_seed_1234": {
+      "claim_boundary": "Local Azizov-style graph/global adaptation on frozen Aer warm labels; not paper-exact or published-accuracy reproduction.",
+      "fidelity_class": "adaptation",
+      "method_id": "azizov_gnn_hybrid_seed_1234",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Azizov-style hybrid graph/global adaptation (seed 1234 individual output; individual-seed diagnostic, not a selected seed)",
+      "representation_stage": "hybrid"
+    },
+    "azizov_gnn_hybrid_seed_31415": {
+      "claim_boundary": "Local Azizov-style graph/global adaptation on frozen Aer warm labels; not paper-exact or published-accuracy reproduction.",
+      "fidelity_class": "adaptation",
+      "method_id": "azizov_gnn_hybrid_seed_31415",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Azizov-style hybrid graph/global adaptation (seed 31415 individual output; individual-seed diagnostic, not a selected seed)",
+      "representation_stage": "hybrid"
+    },
+    "azizov_gnn_hybrid_seed_42": {
+      "claim_boundary": "Local Azizov-style graph/global adaptation on frozen Aer warm labels; not paper-exact or published-accuracy reproduction.",
+      "fidelity_class": "adaptation",
+      "method_id": "azizov_gnn_hybrid_seed_42",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Azizov-style hybrid graph/global adaptation (seed 42 individual output; individual-seed diagnostic, not a selected seed)",
+      "representation_stage": "hybrid"
+    },
+    "azizov_gnn_source_median_three_seeds": {
+      "claim_boundary": "Local Azizov-style graph/global adaptation on frozen Aer warm labels; not paper-exact or published-accuracy reproduction.",
+      "fidelity_class": "adaptation",
+      "method_id": "azizov_gnn_source_median_three_seeds",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Azizov-style source circuit graph/global adaptation (median of seeds 42, 1234, and 31415)",
+      "representation_stage": "source"
+    },
+    "azizov_gnn_source_seed_1234": {
+      "claim_boundary": "Local Azizov-style graph/global adaptation on frozen Aer warm labels; not paper-exact or published-accuracy reproduction.",
+      "fidelity_class": "adaptation",
+      "method_id": "azizov_gnn_source_seed_1234",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Azizov-style source circuit graph/global adaptation (seed 1234 individual output; individual-seed diagnostic, not a selected seed)",
+      "representation_stage": "source"
+    },
+    "azizov_gnn_source_seed_31415": {
+      "claim_boundary": "Local Azizov-style graph/global adaptation on frozen Aer warm labels; not paper-exact or published-accuracy reproduction.",
+      "fidelity_class": "adaptation",
+      "method_id": "azizov_gnn_source_seed_31415",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Azizov-style source circuit graph/global adaptation (seed 31415 individual output; individual-seed diagnostic, not a selected seed)",
+      "representation_stage": "source"
+    },
+    "azizov_gnn_source_seed_42": {
+      "claim_boundary": "Local Azizov-style graph/global adaptation on frozen Aer warm labels; not paper-exact or published-accuracy reproduction.",
+      "fidelity_class": "adaptation",
+      "method_id": "azizov_gnn_source_seed_42",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Azizov-style source circuit graph/global adaptation (seed 42 individual output; individual-seed diagnostic, not a selected seed)",
+      "representation_stage": "source"
+    },
+    "azizov_gnn_transpiled_median_three_seeds": {
+      "claim_boundary": "Local Azizov-style graph/global adaptation on frozen Aer warm labels; not paper-exact or published-accuracy reproduction.",
+      "fidelity_class": "adaptation",
+      "method_id": "azizov_gnn_transpiled_median_three_seeds",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Azizov-style transpiled circuit graph/global adaptation (median of seeds 42, 1234, and 31415)",
+      "representation_stage": "transpiled"
+    },
+    "azizov_gnn_transpiled_seed_1234": {
+      "claim_boundary": "Local Azizov-style graph/global adaptation on frozen Aer warm labels; not paper-exact or published-accuracy reproduction.",
+      "fidelity_class": "adaptation",
+      "method_id": "azizov_gnn_transpiled_seed_1234",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Azizov-style transpiled circuit graph/global adaptation (seed 1234 individual output; individual-seed diagnostic, not a selected seed)",
+      "representation_stage": "transpiled"
+    },
+    "azizov_gnn_transpiled_seed_31415": {
+      "claim_boundary": "Local Azizov-style graph/global adaptation on frozen Aer warm labels; not paper-exact or published-accuracy reproduction.",
+      "fidelity_class": "adaptation",
+      "method_id": "azizov_gnn_transpiled_seed_31415",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Azizov-style transpiled circuit graph/global adaptation (seed 31415 individual output; individual-seed diagnostic, not a selected seed)",
+      "representation_stage": "transpiled"
+    },
+    "azizov_gnn_transpiled_seed_42": {
+      "claim_boundary": "Local Azizov-style graph/global adaptation on frozen Aer warm labels; not paper-exact or published-accuracy reproduction.",
+      "fidelity_class": "adaptation",
+      "method_id": "azizov_gnn_transpiled_seed_42",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Azizov-style transpiled circuit graph/global adaptation (seed 42 individual output; individual-seed diagnostic, not a selected seed)",
+      "representation_stage": "transpiled"
+    },
+    "classical_linear_regression_hybrid": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_linear_regression_hybrid",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local linear regression global-feature baseline (hybrid view)",
+      "representation_stage": "hybrid_global_features"
+    },
+    "classical_linear_regression_source": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_linear_regression_source",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local linear regression global-feature baseline (source view)",
+      "representation_stage": "source_global_features"
+    },
+    "classical_linear_regression_transpiled": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_linear_regression_transpiled",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local linear regression global-feature baseline (transpiled view)",
+      "representation_stage": "transpiled_global_features"
+    },
+    "classical_random_forest_hybrid": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_random_forest_hybrid",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local random forest global-feature baseline (hybrid view)",
+      "representation_stage": "hybrid_global_features"
+    },
+    "classical_random_forest_source": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_random_forest_source",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local random forest global-feature baseline (source view)",
+      "representation_stage": "source_global_features"
+    },
+    "classical_random_forest_transpiled": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_random_forest_transpiled",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local random forest global-feature baseline (transpiled view)",
+      "representation_stage": "transpiled_global_features"
+    },
+    "classical_ridge_hybrid": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_ridge_hybrid",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local ridge global-feature baseline (hybrid view)",
+      "representation_stage": "hybrid_global_features"
+    },
+    "classical_ridge_source": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_ridge_source",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local ridge global-feature baseline (source view)",
+      "representation_stage": "source_global_features"
+    },
+    "classical_ridge_transpiled": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_ridge_transpiled",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local ridge global-feature baseline (transpiled view)",
+      "representation_stage": "transpiled_global_features"
+    },
+    "classical_svr_rbf_hybrid": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_svr_rbf_hybrid",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local svr rbf global-feature baseline (hybrid view)",
+      "representation_stage": "hybrid_global_features"
+    },
+    "classical_svr_rbf_source": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_svr_rbf_source",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local svr rbf global-feature baseline (source view)",
+      "representation_stage": "source_global_features"
+    },
+    "classical_svr_rbf_transpiled": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_svr_rbf_transpiled",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local svr rbf global-feature baseline (transpiled view)",
+      "representation_stage": "transpiled_global_features"
+    },
+    "classical_xgboost_hybrid": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_xgboost_hybrid",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local xgboost global-feature baseline (hybrid view)",
+      "representation_stage": "hybrid_global_features"
+    },
+    "classical_xgboost_source": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_xgboost_source",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local xgboost global-feature baseline (source view)",
+      "representation_stage": "source_global_features"
+    },
+    "classical_xgboost_transpiled": {
+      "claim_boundary": "Local classical baseline on the frozen Aer warm target; not an Azizov-paper method reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "classical_xgboost_transpiled",
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds",
+      "reader_label": "Local xgboost global-feature baseline (transpiled view)",
+      "representation_stage": "transpiled_global_features"
+    },
+    "e3_fixed_mps_graph_median_three_seeds": {
+      "claim_boundary": "Local source-DAG graph runtime adaptation on fixed-MPS labels; not a simulator timing result or paper-exact reproduction.",
+      "fidelity_class": "adaptation",
+      "method_id": "e3_fixed_mps_graph_median_three_seeds",
+      "method_output_clock": "predicted_cudaq_mps_fp64_bond16_warm_state_execution_seconds",
+      "reader_label": "S85 source-DAG graph median-of-seeds adaptation, fixed MPS chi16",
+      "representation_stage": "source_dag_graph_runtime_only_adaptation"
+    },
+    "e3_fixed_mps_ridge_alpha_1": {
+      "claim_boundary": "S85 fixed-configuration MPS runtime-only baseline; not a quantum simulator timing or paper-exact reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "e3_fixed_mps_ridge_alpha_1",
+      "method_output_clock": "predicted_cudaq_mps_fp64_bond16_warm_state_execution_seconds",
+      "reader_label": "S85 six-feature Ridge baseline, fixed MPS chi16",
+      "representation_stage": "exact_hash_runtime_only_baseline"
+    },
+    "e3_fixed_mps_train_fold_median": {
+      "claim_boundary": "S85 fixed-configuration MPS runtime-only baseline; not a quantum simulator timing or paper-exact reproduction.",
+      "fidelity_class": "baseline",
+      "method_id": "e3_fixed_mps_train_fold_median",
+      "method_output_clock": "predicted_cudaq_mps_fp64_bond16_warm_state_execution_seconds",
+      "reader_label": "S85 training-fold median baseline, fixed MPS chi16",
+      "representation_stage": "exact_hash_runtime_only_baseline"
+    },
+    "e5_family_agnostic_median_three_seeds": {
+      "claim_boundary": "Family-Aware-inspired runtime-only adaptation on fixed-MPS labels; no threshold output, family-held-out transfer, or paper-exact reproduction claim.",
+      "fidelity_class": "adaptation",
+      "method_id": "e5_family_agnostic_median_three_seeds",
+      "method_output_clock": "predicted_cudaq_mps_fp64_bond16_warm_state_execution_seconds",
+      "reader_label": "Family-Aware-inspired fixed-MPS family agnostic median three seeds",
+      "representation_stage": "family_agnostic_runtime_only_ablation"
+    },
+    "e5_family_residual_median_three_seeds": {
+      "claim_boundary": "Family-Aware-inspired runtime-only adaptation on fixed-MPS labels; no threshold output, family-held-out transfer, or paper-exact reproduction claim.",
+      "fidelity_class": "adaptation",
+      "method_id": "e5_family_residual_median_three_seeds",
+      "method_output_clock": "predicted_cudaq_mps_fp64_bond16_warm_state_execution_seconds",
+      "reader_label": "Family-Aware-inspired fixed-MPS family residual median three seeds",
+      "representation_stage": "family_residual_runtime_only_adaptation"
+    }
+  },
+  "metric_names": [
+    "mae_seconds",
+    "medae_seconds",
+    "rmse_seconds",
+    "log1p_mae_seconds",
+    "r2_seconds",
+    "p90_absolute_error_seconds",
+    "p99_absolute_error_seconds",
+    "max_absolute_error_seconds"
+  ],
+  "no_refitting_or_imputation": true,
+  "panels": {
+    "aer_azizov_core_q9": {
+      "assigned_hashes": 150,
+      "comparison_count": 18,
+      "comparison_policy": "Three Azizov view contrasts plus each view against the five same-panel classical baselines; all on shared exact hashes.",
+      "evaluation_target_clock": "warm_execution",
+      "method_count": 27,
+      "method_output_clock": "predicted_noisy_aer_warm_execution_seconds"
+    },
+    "mps_fixed_chi16": {
+      "assigned_hashes": 150,
+      "comparison_count": 10,
+      "comparison_policy": "Family residual vs no-family, each against matched S85/E3 graph and ridge; separate method outputs retained, no label imputation.",
+      "evaluation_target_clock": "cudaq_mps_fp64_bond16_warm_state_execution_seconds",
+      "finite_runtime_labels": 144,
+      "method_count": 5,
+      "method_output_clock": "predicted_cudaq_mps_fp64_bond16_warm_state_execution_seconds",
+      "method_output_clock_mapping": "Prediction fields are evaluated against the frozen fixed-MPS target; the method_output_clock label distinguishes predicted output from measured target clock.",
+      "quality_failed_finite_retained": 2,
+      "quality_pass_finite": 142,
+      "target_unavailable_unimputed": 6
+    }
+  },
+  "population_policy": {
+    "aer": "One hash target is the median of existing alias-level warm_execution labels; metric population is finite hash targets.",
+    "mps": "Primary finite target population retains 2 quality failures; 142 quality-pass metrics and the quality-failed subset are separately emitted; six unavailable targets remain unscored."
+  },
+  "runtime_environment": {
+    "numpy": "2.3.5",
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+    "python": "3.14.4"
+  },
+  "schema_version": "1.0",
+  "scope": "Separate exact-hash OOF summaries for Aer Azizov adaptation and fixed-MPS chi16; no cross-engine, cross-clock or cross-target pooling.",
+  "source_hashes_path": "source_hashes.json",
+  "source_hashes_sha256": "2e81047fda9c2fe37967763e440a5d330b45f5ba60a07c5a973bbb3d3f2085c2",
+  "status": "complete_aggregate"
+}

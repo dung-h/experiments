@@ -1,0 +1,520 @@
+{
+  "allowed_ambient_gpu_processes": {
+    "ptyxis": {
+      "maximum_vram_mib": 128,
+      "reason": "desktop terminal graphics context; not a benchmark worker"
+    }
+  },
+  "artifact_id": "cudaq-dense-recovery-preflight-v1",
+  "campaign_budget_seconds": 43200,
+  "canonical_panel": {
+    "path": "artifacts/benchmark_v1/sim_common_q16_manifest_20260927/sim_common_q16_manifest.csv",
+    "rows": 204,
+    "sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e"
+  },
+  "cell_timeout_seconds": 900,
+  "control_hashes": [
+    {
+      "basename": "ghz_indep_qiskit_4.qasm",
+      "panel_member_id": "sim_common_q16_v1::ghz_indep_qiskit_4",
+      "qasm_sha256": "01bfdd8291d6badf1219dd3bf6d7e12559976b8ccb3e67d2548e729dc0c0dc82"
+    },
+    {
+      "basename": "qft_indep_qiskit_7.qasm",
+      "panel_member_id": "sim_common_q16_v1::qft_indep_qiskit_7",
+      "qasm_sha256": "01de4bb89da48a3fc09c31d41d509c1446c6a4a3b329612c5baf0d39c56a922e"
+    },
+    {
+      "basename": "qft_indep_qiskit_5.qasm",
+      "panel_member_id": "sim_common_q16_v1::qft_indep_qiskit_5",
+      "qasm_sha256": "0285fd21a0dd1ca29cd386de85a1a8af49cc7d71f5c86f6451b55a11c68864a8"
+    },
+    {
+      "basename": "qftentangled_indep_qiskit_2.qasm",
+      "panel_member_id": "sim_common_q16_v1::qftentangled_indep_qiskit_2",
+      "qasm_sha256": "02d66e8b66849fdd0f0581b84924adbd1bd2d7603e25e5e9faa447ac2a6708d0"
+    },
+    {
+      "basename": "graphstate_indep_qiskit_9.qasm",
+      "panel_member_id": "sim_common_q16_v1::graphstate_indep_qiskit_9",
+      "qasm_sha256": "040a287609a78a55ab6148ad1a3cc6aa2fcee8b0871b077a9c1a37bee49f69fe"
+    }
+  ],
+  "execution_environment": {
+    "cuda_path": "",
+    "cudaq_version": "CUDA-Q Version 0.15.1 (https://github.com/NVIDIA/cuda-quantum aca5853a76d499ecc3d5f97c2e06163ae99d9c75)",
+    "cupy": {
+      "compute_capability": "12.0",
+      "device_count": 1,
+      "device_name": "NVIDIA GeForce RTX 5070 Ti",
+      "driver_api": 13020,
+      "runtime_api": 13000,
+      "vram_bytes": 16608788480
+    },
+    "interpreter": "/home/server/Documents/Capstone-Project/.venv-cudaq313/bin/python",
+    "ld_library_path": "",
+    "nvidia_smi": "NVIDIA GeForce RTX 5070 Ti, 595.91.07, 16303 MiB",
+    "package_lock": "astpretty==3.0.0\ncertifi==2026.7.22\ncharset-normalizer==3.5.1\ncuda-quantum-cu13==0.15.1\ncudensitymat-cu13==0.5.2\ncupy-cuda13x==13.6.0\ncustatevec-cu13==1.13.1\ncutensor-cu13==2.7.0\ncutensornet-cu13==2.12.2\nfastrlock==0.8.3\nidna==3.19\nnumpy==2.5.3\nnvidia-cublas==13.7.0.27\nnvidia-cuda-nvrtc==13.4.59\nnvidia-cuda-runtime==13.4.49\nnvidia-curand==10.4.4.49\nnvidia-cusolver==12.3.2.15\nnvidia-cusparse==12.8.6.49\nnvidia-nvjitlink==13.4.52\nrequests==2.34.2\nscipy==1.18.1\nurllib3==2.7.0",
+    "package_lock_sha256": "2ac34ec139e27ca58b0db1250269f375353cd8bc75786f18483514a72718756a",
+    "package_lock_source": "uv pip freeze --python",
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+    "python": "3.13.15 (main, Aug 14 2026, 15:34:59) [Clang 22.1.3 ]",
+    "qiskit_file": "/home/server/Documents/quantum-runtime-estimator-replications/.venv-qre-cudaq-common-v1/lib/python3.13/site-packages/qiskit/__init__.py",
+    "qiskit_site_packages": "/home/server/Documents/quantum-runtime-estimator-replications/.venv-qre-cudaq-common-v1/lib/python3.13/site-packages",
+    "qiskit_version": "2.5.2"
+  },
+  "execution_inputs": {
+    "adapter_sha256": "18f85cb270394872cd11448fdc1cef2d4369e11b8c7f9ce23ad61131675cf2e6",
+    "bridge_manifest_sha256": "7cc55f45a27e313d9d5e47ea9b79ca6f18e1b7379f1c24e1a468ccafed3f3a87",
+    "dense_runner_sha256": "7b58892dd0c9049dfdf860e6cdccb3bbe3c1422a60ec54a855ebc9be93e3c71c",
+    "environment_lock_sha256": "08624ffa11ba12805e15eec93be573068b02cd362b1092c19694369ec76b21a8"
+  },
+  "failed_hashes": [
+    {
+      "basename": "grover-v-chain_indep_qiskit_9.qasm",
+      "family": "grover-v-chain",
+      "old_adapter_error_cells": 6,
+      "panel_member_id": "sim_common_q16_v1::grover-v-chain_indep_qiskit_9",
+      "qasm_sha256": "3d37464cf8c53831d2867c0c111a83e03a820e90fa26f77d01a4a85f4f9d6875",
+      "width_qubits": 9
+    },
+    {
+      "basename": "qwalk-v-chain_indep_qiskit_7.qasm",
+      "family": "qwalk-v-chain",
+      "old_adapter_error_cells": 6,
+      "panel_member_id": "sim_common_q16_v1::qwalk-v-chain_indep_qiskit_7",
+      "qasm_sha256": "3d8107599f669ba102c734a8796433a6a348197dd98a74c63f172d7790b5c9a2",
+      "width_qubits": 7
+    },
+    {
+      "basename": "grover-v-chain_indep_qiskit_5.qasm",
+      "family": "grover-v-chain",
+      "old_adapter_error_cells": 6,
+      "panel_member_id": "sim_common_q16_v1::grover-v-chain_indep_qiskit_5",
+      "qasm_sha256": "5042c6dd513b1366c0a145850de9e534b0e38aabc818b994ab8c4b6cad7ad5c8",
+      "width_qubits": 5
+    },
+    {
+      "basename": "qwalk-v-chain_indep_qiskit_5.qasm",
+      "family": "qwalk-v-chain",
+      "old_adapter_error_cells": 6,
+      "panel_member_id": "sim_common_q16_v1::qwalk-v-chain_indep_qiskit_5",
+      "qasm_sha256": "72fb5f837aaa2bec862c3a477efd166f351b72903612c32d444704a431457f4d",
+      "width_qubits": 5
+    },
+    {
+      "basename": "grover-v-chain_indep_qiskit_7.qasm",
+      "family": "grover-v-chain",
+      "old_adapter_error_cells": 6,
+      "panel_member_id": "sim_common_q16_v1::grover-v-chain_indep_qiskit_7",
+      "qasm_sha256": "84056291d9ff227b3c615cc378349fa1154f5a122bcd0eb6bc04045bbf3affa0",
+      "width_qubits": 7
+    },
+    {
+      "basename": "qwalk-v-chain_indep_qiskit_9.qasm",
+      "family": "qwalk-v-chain",
+      "old_adapter_error_cells": 6,
+      "panel_member_id": "sim_common_q16_v1::qwalk-v-chain_indep_qiskit_9",
+      "qasm_sha256": "8650fb4f2d0816cd59c97df1ed4051936ecb3b5c31d39ba97cdc5cd2af374a8a",
+      "width_qubits": 9
+    }
+  ],
+  "gpu_timing_workers": 1,
+  "historical_reuse_policy": "Only R3-validated old successful cells with exact repaired-adapter legacy IR match may be reused; controls are diagnostic; R5 recovery attempts remain append-only.",
+  "host_gpu_lease_required": "/tmp/qre-benchmark-gpu-lease.lock",
+  "input_hashes": {
+    "bridge_manifest": {
+      "path": "benchmark_v1/execution/manifests/cudaq_verified_bridge_v1.json",
+      "sha256": "7cc55f45a27e313d9d5e47ea9b79ca6f18e1b7379f1c24e1a468ccafed3f3a87"
+    },
+    "canonical_panel": {
+      "path": "artifacts/benchmark_v1/sim_common_q16_manifest_20260927/sim_common_q16_manifest.csv",
+      "sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e"
+    },
+    "dense_runner": {
+      "path": "benchmark_v1/scripts/run_common_cudaq_dense.py",
+      "sha256": "7b58892dd0c9049dfdf860e6cdccb3bbe3c1422a60ec54a855ebc9be93e3c71c"
+    },
+    "environment_lock": {
+      "path": "benchmark_v1/execution/manifests/simulator_environment_lock_v1.json",
+      "sha256": "08624ffa11ba12805e15eec93be573068b02cd362b1092c19694369ec76b21a8"
+    },
+    "preflight_builder": {
+      "path": "benchmark_v1/scripts/prepare_cudaq_dense_recovery_v1.py",
+      "sha256": "7ad0e0a73ee5d502e115f1e7f4965679ad84c05b4f56c09d8403879697c0dcf8"
+    },
+    "r3_ir_csv": {
+      "path": "work/benchmark_recovery/r3_dense/ir_features_v1/dense_ir_by_hash.csv",
+      "sha256": "68c7cd713d854814e258701b973c43e8802c24a09b7cf6908ec3c324e6e5609c"
+    },
+    "r3_ir_manifest": {
+      "path": "work/benchmark_recovery/r3_dense/ir_features_v1/manifest.json",
+      "sha256": "d9a35d022df246c381c098a11ff405d74b5cbbd416ac9b62c126f48616e3bad2"
+    },
+    "r3_target_csv": {
+      "path": "work/benchmark_recovery/r3_dense/targets_legacy_audit/dense_hash_targets.csv",
+      "sha256": "f57153917c7aa94d12a6ee7901a1f968ecdb26654b862f53e4a94732558ab115"
+    },
+    "r3_target_manifest": {
+      "path": "work/benchmark_recovery/r3_dense/targets_legacy_audit/manifest.json",
+      "sha256": "12cc9f2776f2297149b834024c6b957449c38239ed7d730f00f75f4fed19b01b"
+    },
+    "rccx_adapter": {
+      "path": "benchmark_v1/scripts/cudaq_qiskit_adapter.py",
+      "sha256": "18f85cb270394872cd11448fdc1cef2d4369e11b8c7f9ce23ad61131675cf2e6"
+    },
+    "recovery_runner": {
+      "path": "benchmark_v1/scripts/run_cudaq_dense_recovery_v1.py",
+      "sha256": "f2380679ae172b13917dd610a89c00621b401772b58a8a1a9d4c3e17974d510b"
+    },
+    "source_attempt_records": {
+      "path": "artifacts/benchmark_v1/cudaq_dense_common_q16_bridge_full_v1_20260928/attempt_records.jsonl",
+      "sha256": "838748e0f6f610dc1b26d81d0c5493092a8e26f260ee64cdbee39910b0ac2a48"
+    },
+    "source_environment": {
+      "path": "artifacts/benchmark_v1/cudaq_dense_common_q16_bridge_full_v1_20260928/environment.json",
+      "sha256": "cd0d393a6a4d2fc73bc16b63ebbe28858808a1c31a90d6a275b6d544c40ec4bf"
+    },
+    "source_qa": {
+      "path": "artifacts/benchmark_v1/cudaq_dense_common_q16_bridge_qa_v1_20260928/qa.json",
+      "sha256": "c426ddc4ef7037022017138fa01b3e908cd321688ce407e3bccff9e3f0ec0f93"
+    },
+    "source_raw_csv": {
+      "path": "artifacts/benchmark_v1/cudaq_dense_common_q16_bridge_full_v1_20260928/cudaq_dense_common_raw.csv",
+      "sha256": "19da3548991404395f05ef57dca4f499426551ab4a7389392df60731dce282ba"
+    },
+    "source_run_manifest": {
+      "path": "artifacts/benchmark_v1/cudaq_dense_common_q16_bridge_full_v1_20260928/run_manifest.json",
+      "sha256": "c6dbbf55d80b7167a378c1e2d5efc670fa6d8eb6aa2cfdf147727f2d84508c76"
+    }
+  },
+  "measurement_performed": false,
+  "minimum_free_vram_mib": 2048,
+  "model_fitting_performed": false,
+  "plan_sha256": "bbba4d4f0bf096a1e0e808a1c09e04ded7d911904f1a917344fa3cee3502827a",
+  "precisions": [
+    "fp32",
+    "fp64"
+  ],
+  "r3_ir": {
+    "csv_sha256": "68c7cd713d854814e258701b973c43e8802c24a09b7cf6908ec3c324e6e5609c",
+    "manifest_sha256": "d9a35d022df246c381c098a11ff405d74b5cbbd416ac9b62c126f48616e3bad2"
+  },
+  "r3_targets": {
+    "csv_sha256": "f57153917c7aa94d12a6ee7901a1f968ecdb26654b862f53e4a94732558ab115",
+    "manifest_sha256": "12cc9f2776f2297149b834024c6b957449c38239ed7d730f00f75f4fed19b01b",
+    "measurement_context_sha256": "daac3bf1dadfac952291c02ad50d0d3fb96520a242f6d80ebe260f09e68cba71"
+  },
+  "require_no_other_gpu_compute_processes": true,
+  "selection": [
+    {
+      "basename": "ghz_indep_qiskit_4.qasm",
+      "family": "ghz",
+      "panel_member_id": "sim_common_q16_v1::ghz_indep_qiskit_4",
+      "qasm_sha256": "01bfdd8291d6badf1219dd3bf6d7e12559976b8ccb3e67d2548e729dc0c0dc82",
+      "role": "gross_drift_control",
+      "width_qubits": 4
+    },
+    {
+      "basename": "graphstate_indep_qiskit_9.qasm",
+      "family": "graphstate",
+      "panel_member_id": "sim_common_q16_v1::graphstate_indep_qiskit_9",
+      "qasm_sha256": "040a287609a78a55ab6148ad1a3cc6aa2fcee8b0871b077a9c1a37bee49f69fe",
+      "role": "gross_drift_control",
+      "width_qubits": 9
+    },
+    {
+      "basename": "grover-v-chain_indep_qiskit_5.qasm",
+      "cells": [
+        {
+          "precision": "fp32",
+          "session_id": "session-1",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp32",
+          "session_id": "session-2",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp32",
+          "session_id": "session-3",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-1",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-2",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-3",
+          "status": "adapter_error"
+        }
+      ],
+      "family": "grover-v-chain",
+      "panel_member_id": "sim_common_q16_v1::grover-v-chain_indep_qiskit_5",
+      "qasm_sha256": "5042c6dd513b1366c0a145850de9e534b0e38aabc818b994ab8c4b6cad7ad5c8",
+      "role": "recover_adapter_error",
+      "width_qubits": 5
+    },
+    {
+      "basename": "grover-v-chain_indep_qiskit_7.qasm",
+      "cells": [
+        {
+          "precision": "fp32",
+          "session_id": "session-1",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp32",
+          "session_id": "session-2",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp32",
+          "session_id": "session-3",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-1",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-2",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-3",
+          "status": "adapter_error"
+        }
+      ],
+      "family": "grover-v-chain",
+      "panel_member_id": "sim_common_q16_v1::grover-v-chain_indep_qiskit_7",
+      "qasm_sha256": "84056291d9ff227b3c615cc378349fa1154f5a122bcd0eb6bc04045bbf3affa0",
+      "role": "recover_adapter_error",
+      "width_qubits": 7
+    },
+    {
+      "basename": "grover-v-chain_indep_qiskit_9.qasm",
+      "cells": [
+        {
+          "precision": "fp32",
+          "session_id": "session-1",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp32",
+          "session_id": "session-2",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp32",
+          "session_id": "session-3",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-1",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-2",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-3",
+          "status": "adapter_error"
+        }
+      ],
+      "family": "grover-v-chain",
+      "panel_member_id": "sim_common_q16_v1::grover-v-chain_indep_qiskit_9",
+      "qasm_sha256": "3d37464cf8c53831d2867c0c111a83e03a820e90fa26f77d01a4a85f4f9d6875",
+      "role": "recover_adapter_error",
+      "width_qubits": 9
+    },
+    {
+      "basename": "qft_indep_qiskit_5.qasm",
+      "family": "qft",
+      "panel_member_id": "sim_common_q16_v1::qft_indep_qiskit_5",
+      "qasm_sha256": "0285fd21a0dd1ca29cd386de85a1a8af49cc7d71f5c86f6451b55a11c68864a8",
+      "role": "gross_drift_control",
+      "width_qubits": 5
+    },
+    {
+      "basename": "qft_indep_qiskit_7.qasm",
+      "family": "qft",
+      "panel_member_id": "sim_common_q16_v1::qft_indep_qiskit_7",
+      "qasm_sha256": "01de4bb89da48a3fc09c31d41d509c1446c6a4a3b329612c5baf0d39c56a922e",
+      "role": "gross_drift_control",
+      "width_qubits": 7
+    },
+    {
+      "basename": "qftentangled_indep_qiskit_2.qasm",
+      "family": "qftentangled",
+      "panel_member_id": "sim_common_q16_v1::qftentangled_indep_qiskit_2",
+      "qasm_sha256": "02d66e8b66849fdd0f0581b84924adbd1bd2d7603e25e5e9faa447ac2a6708d0",
+      "role": "gross_drift_control",
+      "width_qubits": 2
+    },
+    {
+      "basename": "qwalk-v-chain_indep_qiskit_5.qasm",
+      "cells": [
+        {
+          "precision": "fp32",
+          "session_id": "session-1",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp32",
+          "session_id": "session-2",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp32",
+          "session_id": "session-3",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-1",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-2",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-3",
+          "status": "adapter_error"
+        }
+      ],
+      "family": "qwalk-v-chain",
+      "panel_member_id": "sim_common_q16_v1::qwalk-v-chain_indep_qiskit_5",
+      "qasm_sha256": "72fb5f837aaa2bec862c3a477efd166f351b72903612c32d444704a431457f4d",
+      "role": "recover_adapter_error",
+      "width_qubits": 5
+    },
+    {
+      "basename": "qwalk-v-chain_indep_qiskit_7.qasm",
+      "cells": [
+        {
+          "precision": "fp32",
+          "session_id": "session-1",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp32",
+          "session_id": "session-2",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp32",
+          "session_id": "session-3",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-1",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-2",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-3",
+          "status": "adapter_error"
+        }
+      ],
+      "family": "qwalk-v-chain",
+      "panel_member_id": "sim_common_q16_v1::qwalk-v-chain_indep_qiskit_7",
+      "qasm_sha256": "3d8107599f669ba102c734a8796433a6a348197dd98a74c63f172d7790b5c9a2",
+      "role": "recover_adapter_error",
+      "width_qubits": 7
+    },
+    {
+      "basename": "qwalk-v-chain_indep_qiskit_9.qasm",
+      "cells": [
+        {
+          "precision": "fp32",
+          "session_id": "session-1",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp32",
+          "session_id": "session-2",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp32",
+          "session_id": "session-3",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-1",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-2",
+          "status": "adapter_error"
+        },
+        {
+          "precision": "fp64",
+          "session_id": "session-3",
+          "status": "adapter_error"
+        }
+      ],
+      "family": "qwalk-v-chain",
+      "panel_member_id": "sim_common_q16_v1::qwalk-v-chain_indep_qiskit_9",
+      "qasm_sha256": "8650fb4f2d0816cd59c97df1ed4051936ecb3b5c31d39ba97cdc5cd2af374a8a",
+      "role": "recover_adapter_error",
+      "width_qubits": 9
+    }
+  ],
+  "selection_counts": {
+    "control_hashes": 5,
+    "expected_cells": 66,
+    "failed_hashes": 6,
+    "selected_panel_members": 11
+  },
+  "sessions": [
+    "session-1",
+    "session-2",
+    "session-3"
+  ],
+  "shared_timing_lock_required": "work/locks/maestro_qcsim_v2_cpu_timing.lock",
+  "shots": 32,
+  "source_environment_equivalence": {
+    "execution_environment_matches_source": true,
+    "required": "byte-identical environment.json to the historical dense run",
+    "source_environment_sha256": "cd0d393a6a4d2fc73bc16b63ebbe28858808a1c31a90d6a275b6d544c40ec4bf"
+  },
+  "source_qa_sha256": "c426ddc4ef7037022017138fa01b3e908cd321688ce407e3bccff9e3f0ec0f93",
+  "source_run": {
+    "attempt_records_sha256": "838748e0f6f610dc1b26d81d0c5493092a8e26f260ee64cdbee39910b0ac2a48",
+    "environment_sha256": "cd0d393a6a4d2fc73bc16b63ebbe28858808a1c31a90d6a275b6d544c40ec4bf",
+    "path": "artifacts/benchmark_v1/cudaq_dense_common_q16_bridge_full_v1_20260928",
+    "raw_sha256": "19da3548991404395f05ef57dca4f499426551ab4a7389392df60731dce282ba",
+    "run_manifest_sha256": "c6dbbf55d80b7167a378c1e2d5efc670fa6d8eb6aa2cfdf147727f2d84508c76"
+  },
+  "status": "PASS",
+  "warm_repetitions": 5,
+  "warmups": 3
+}

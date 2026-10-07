@@ -1,0 +1,183 @@
+{
+  "execution_scope": "fixed_split_five_fold_oof",
+  "final_predictions_sha256": "9459502a997fc35d22e4b2b1e2e653b368c6c446c67bbcca2e3966874c95a88d",
+  "final_summary_sha256": "4e5b31abe2c8e33b9ae363a4efd046796574ead5c95ddb6e31bae1e434021a24",
+  "folds": [
+    {
+      "assigned_hashes": 37,
+      "cuda_environment": {
+        "cuda_available": true,
+        "cuda_visible_devices": "<unset>",
+        "device_capability": [
+          12,
+          0
+        ],
+        "device_count": 1,
+        "device_name": "NVIDIA GeForce RTX 5070 Ti",
+        "pip_freeze_sha256": "766781c785791a57899c4ed98c2be6cdb48b840ce4c47c552f4fe46cdf7bf013",
+        "pip_freeze_tool": "uv-pip-freeze",
+        "python_executable": "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+        "torch": "2.7.1+cu128",
+        "torch_cuda_runtime": "12.8",
+        "torch_geometric": "2.6.1"
+      },
+      "finite_label_hashes": 36,
+      "fold": 0,
+      "methods": [
+        "train_fold_median",
+        "ridge_alpha_1",
+        "graph_seed_42",
+        "graph_seed_1234",
+        "graph_seed_31415",
+        "graph_median_three_seeds"
+      ],
+      "metrics_quality_consulted": false,
+      "prediction_rows": 37,
+      "technical_qa": "PASS",
+      "unavailable_hashes": 1
+    },
+    {
+      "assigned_hashes": 28,
+      "cuda_environment": {
+        "cuda_available": true,
+        "cuda_visible_devices": "<unset>",
+        "device_capability": [
+          12,
+          0
+        ],
+        "device_count": 1,
+        "device_name": "NVIDIA GeForce RTX 5070 Ti",
+        "pip_freeze_sha256": "766781c785791a57899c4ed98c2be6cdb48b840ce4c47c552f4fe46cdf7bf013",
+        "pip_freeze_tool": "uv-pip-freeze",
+        "python_executable": "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+        "torch": "2.7.1+cu128",
+        "torch_cuda_runtime": "12.8",
+        "torch_geometric": "2.6.1"
+      },
+      "finite_label_hashes": 27,
+      "fold": 1,
+      "methods": [
+        "train_fold_median",
+        "ridge_alpha_1",
+        "graph_seed_42",
+        "graph_seed_1234",
+        "graph_seed_31415",
+        "graph_median_three_seeds"
+      ],
+      "metrics_quality_consulted": false,
+      "prediction_rows": 28,
+      "technical_qa": "PASS",
+      "unavailable_hashes": 1
+    },
+    {
+      "assigned_hashes": 26,
+      "cuda_environment": {
+        "cuda_available": true,
+        "cuda_visible_devices": "<unset>",
+        "device_capability": [
+          12,
+          0
+        ],
+        "device_count": 1,
+        "device_name": "NVIDIA GeForce RTX 5070 Ti",
+        "pip_freeze_sha256": "766781c785791a57899c4ed98c2be6cdb48b840ce4c47c552f4fe46cdf7bf013",
+        "pip_freeze_tool": "uv-pip-freeze",
+        "python_executable": "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+        "torch": "2.7.1+cu128",
+        "torch_cuda_runtime": "12.8",
+        "torch_geometric": "2.6.1"
+      },
+      "finite_label_hashes": 25,
+      "fold": 2,
+      "methods": [
+        "train_fold_median",
+        "ridge_alpha_1",
+        "graph_seed_42",
+        "graph_seed_1234",
+        "graph_seed_31415",
+        "graph_median_three_seeds"
+      ],
+      "metrics_quality_consulted": false,
+      "prediction_rows": 26,
+      "technical_qa": "PASS",
+      "unavailable_hashes": 1
+    },
+    {
+      "assigned_hashes": 25,
+      "cuda_environment": {
+        "cuda_available": true,
+        "cuda_visible_devices": "<unset>",
+        "device_capability": [
+          12,
+          0
+        ],
+        "device_count": 1,
+        "device_name": "NVIDIA GeForce RTX 5070 Ti",
+        "pip_freeze_sha256": "766781c785791a57899c4ed98c2be6cdb48b840ce4c47c552f4fe46cdf7bf013",
+        "pip_freeze_tool": "uv-pip-freeze",
+        "python_executable": "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+        "torch": "2.7.1+cu128",
+        "torch_cuda_runtime": "12.8",
+        "torch_geometric": "2.6.1"
+      },
+      "finite_label_hashes": 24,
+      "fold": 3,
+      "methods": [
+        "train_fold_median",
+        "ridge_alpha_1",
+        "graph_seed_42",
+        "graph_seed_1234",
+        "graph_seed_31415",
+        "graph_median_three_seeds"
+      ],
+      "metrics_quality_consulted": false,
+      "prediction_rows": 25,
+      "technical_qa": "PASS",
+      "unavailable_hashes": 1
+    },
+    {
+      "assigned_hashes": 34,
+      "cuda_environment": {
+        "cuda_available": true,
+        "cuda_visible_devices": "<unset>",
+        "device_capability": [
+          12,
+          0
+        ],
+        "device_count": 1,
+        "device_name": "NVIDIA GeForce RTX 5070 Ti",
+        "pip_freeze_sha256": "766781c785791a57899c4ed98c2be6cdb48b840ce4c47c552f4fe46cdf7bf013",
+        "pip_freeze_tool": "uv-pip-freeze",
+        "python_executable": "/home/server/Documents/Quantum-Execution-Time-Prediction/.venv-mali-gpu/bin/python",
+        "torch": "2.7.1+cu128",
+        "torch_cuda_runtime": "12.8",
+        "torch_geometric": "2.6.1"
+      },
+      "finite_label_hashes": 32,
+      "fold": 4,
+      "methods": [
+        "train_fold_median",
+        "ridge_alpha_1",
+        "graph_seed_42",
+        "graph_seed_1234",
+        "graph_seed_31415",
+        "graph_median_three_seeds"
+      ],
+      "metrics_quality_consulted": false,
+      "prediction_rows": 34,
+      "technical_qa": "PASS",
+      "unavailable_hashes": 2
+    }
+  ],
+  "leaderboard_promotion": false,
+  "metrics_quality_used_as_continuation_gate": false,
+  "status": "complete",
+  "timing_exclusion_evidence": {
+    "host_gpu_lease_held_for_entire_five_fold_fit": true,
+    "host_gpu_lease_path": "/tmp/qre-benchmark-gpu-lease.lock",
+    "no_live_timing_workers_at_lock_acquisition": true,
+    "s84_completion_required": false,
+    "shared_lock_held_for_entire_five_fold_fit": true,
+    "shared_lock_path": "work/locks/maestro_qcsim_v2_cpu_timing.lock"
+  }
+}

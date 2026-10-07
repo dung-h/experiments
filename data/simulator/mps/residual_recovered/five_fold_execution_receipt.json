@@ -1,0 +1,113 @@
+{
+  "artifact_id": "r9-family-residual-derived-execution-compatibility-v1",
+  "evidence_files_sha256": {
+    "execution_environment.json": "12c4c0e4f81b4b36844a46e8e56cddbaf9b674936b2c695d9fa17ae50d4b7e16",
+    "fold_0/family_diagnostics.json": "020be43716a64435cc09dda1efea13569233155d00e896c07f9f2ffe6b2e2c44",
+    "fold_0/family_prediction_audit.json": "bc41cedec3917a2a525b59cc488d7b3ab2840c9b56c125c2d8cde56bb32f894a",
+    "fold_0/fold0_predictions.csv": "d06f0a6673b8618f47ea21e3e4ae3effb9b8b10b599a5d98600c42dc9052296b",
+    "fold_0/fold0_qa.json": "1ae70d8efe6b26dc7de0f4f4b765d6768d3b2d69573b82f58ecc8d3f1235bd1e",
+    "fold_0/r9_target_input_receipt.json": "8c3f76db54f06bb5efa14e394a9fdc41c5c2fc37f0ad978d261007e47d61be7c",
+    "fold_1/family_diagnostics.json": "2629e0023ea1c61d9825c29818806b16610f0f63974289a5026560ff8c3551c9",
+    "fold_1/family_prediction_audit.json": "dd3ad1cebd1520c368d6f92ec10a6428f2401931c7db0c1715865349ce46dda8",
+    "fold_1/fold1_predictions.csv": "16dece35d74cb8de31495f098fd45ab8e06605653bd133de0b7e29ae95b869a5",
+    "fold_1/fold1_qa.json": "89a728aef6c0312d3c45158b8b6cfc0d4406a894267934093470b63e5af1cdf1",
+    "fold_1/r9_target_input_receipt.json": "dc48525ba49f50a7e82a887bb5f3b3198cf4bd1fb7c91f9c83a830dd88cad066",
+    "fold_2/family_diagnostics.json": "1a480e7a34deea6eeaa4f70344029c371b5b9deec0cea4de679702bc4e562895",
+    "fold_2/family_prediction_audit.json": "65282e17c4ef451e7ef6c646282cbb3e1295f43edef6f3b1117ddfed755cef1f",
+    "fold_2/fold2_predictions.csv": "8eced53361d6d63652216ee1a4f9b9b0fc4e65434f8eb42430fe7c026a8c14dc",
+    "fold_2/fold2_qa.json": "b6b741d104db08e24fb0550e23f62b7dddd7321e41dafdc11a00411048cdff93",
+    "fold_2/r9_target_input_receipt.json": "f61f7864494f8cfa8286830dfbef09fa519c72655b58db5e3920bbd5aec3e810",
+    "fold_3/family_diagnostics.json": "e41f5f2069dfba3f78b33b9038fbf58db286784553557a9451391396e63f0eb6",
+    "fold_3/family_prediction_audit.json": "295facb89e2442151afd09899a9ef950c8901877c6acb0da70bc1ec1d0a59530",
+    "fold_3/fold3_predictions.csv": "aef472bd7c78cd78f7a6fe4b417d9a5b468c4570a827dd67f63ef78ad87a6425",
+    "fold_3/fold3_qa.json": "91164f6154ffd3918477b1ec12e57a7690d106a1e0bdd317a4abe422e633bdcd",
+    "fold_3/r9_target_input_receipt.json": "ec56609f085814afab000fcc20e0a3d4c99abd88b731873a2cccf8e7212b5b61",
+    "fold_4/family_diagnostics.json": "aa2e1911cf7fd571c4d0a505ecf84f7e2ff3f917242c9d95bbfb142f99ee6543",
+    "fold_4/family_prediction_audit.json": "10af38ee2a49be80f3c61127525147a118399050cda9835655e4c3729a0255fb",
+    "fold_4/fold4_predictions.csv": "f8c4f18b00977ed4fb7d5b2e8abd8f83aa609c915e676f412c4598eff38102c7",
+    "fold_4/fold4_qa.json": "8e8b013522b9fcf1e5208f819053831a781eec14ce923ab269ab8ecd79f128e6",
+    "fold_4/r9_target_input_receipt.json": "6d41f7408468d1bce3ee3b52ff3e0cbeff9646ba98bda13779f7d0f754314848",
+    "hash_targets_and_static_features.csv": "84c9c81617a1fc0bd774795b530a9c27c9589240721b69351deda26d7436f3d0",
+    "materialization_manifest.json": "e84e3bfe4516855308cbdff9341532b489c65c1e7d281009a84be5650a921836",
+    "preflight_qa.json": "8898bc9e0961cdc3f9184e3a5dd2f97eaacf6646fb4b13f34fcfa42842045bc1",
+    "r9_fit_receipt.json": "13e5507078586a3d04cace25675af7a4608d11a4ae0eae5ce38beec68fcd3bc9",
+    "r9_target_input_receipt.json": "4deac7237c85e7735a747a8020e0f2cb92b0a19c8a6c2097f1b5ceac882ba827"
+  },
+  "execution_environment_file_sha256": "12c4c0e4f81b4b36844a46e8e56cddbaf9b674936b2c695d9fa17ae50d4b7e16",
+  "family_holdout_split_assignment_sha256": "34f33ef6202b3a1c8a4a8b0ff5efbecaa25c1cd7f8e4dd998698376f114df070",
+  "fit_receipt_artifact_id": "r9-family-residual-recovered-fit-v1",
+  "fit_receipt_sha256": "13e5507078586a3d04cace25675af7a4608d11a4ae0eae5ce38beec68fcd3bc9",
+  "fixed_target_table_sha256": "2534ac3e13e9ca8829427c11b102964a7b6f7de25729c8ec0fc14f4a1cf35741",
+  "fold_reports": [
+    {
+      "assigned_test_hashes": 37,
+      "finite_train_hashes": 113,
+      "fold": 0,
+      "metrics_quality_consulted": false,
+      "prediction_rows": 37,
+      "technical_qa": "PASS"
+    },
+    {
+      "assigned_test_hashes": 28,
+      "finite_train_hashes": 122,
+      "fold": 1,
+      "metrics_quality_consulted": false,
+      "prediction_rows": 28,
+      "technical_qa": "PASS"
+    },
+    {
+      "assigned_test_hashes": 26,
+      "finite_train_hashes": 124,
+      "fold": 2,
+      "metrics_quality_consulted": false,
+      "prediction_rows": 26,
+      "technical_qa": "PASS"
+    },
+    {
+      "assigned_test_hashes": 25,
+      "finite_train_hashes": 125,
+      "fold": 3,
+      "metrics_quality_consulted": false,
+      "prediction_rows": 25,
+      "technical_qa": "PASS"
+    },
+    {
+      "assigned_test_hashes": 34,
+      "finite_train_hashes": 116,
+      "fold": 4,
+      "metrics_quality_consulted": false,
+      "prediction_rows": 34,
+      "technical_qa": "PASS"
+    }
+  ],
+  "methods": [
+    "family_residual",
+    "family_agnostic"
+  ],
+  "metrics_quality_used_for_continuation": false,
+  "not_claimed": [
+    "this is the original candidate runner's five_fold_execution_receipt",
+    "new model fitting or simulator timing occurred during aggregation",
+    "family-held-out transfer was evaluated",
+    "scientific results were regenerated by the compatibility marker"
+  ],
+  "purpose": "Satisfy the unmodified candidate aggregator's receipt-file guard after R9 evidence validation.",
+  "receipt_kind": "derived_compatibility_marker_not_original_runner_receipt",
+  "seeds": [
+    42,
+    1234,
+    31415
+  ],
+  "split_assignment_sha256": "6bd63805cc457207e5e6057043e0ba0956c6f960ac9881e7aae3bbba3aea204a",
+  "status": "PASS_DERIVED_COMPATIBILITY",
+  "target_manifest_sha256": "c7a66fe6195daaf1af74c2da5582a06a260469d227682d2634276fdd0a4fdbeb",
+  "target_revision_id": "mps-r9-recovered-v1",
+  "timing_exclusion_evidence": {
+    "both_locks_acquired_nonblocking": true,
+    "both_locks_held_for_entire_cuda_interval": true,
+    "host_gpu_lease_path": "/tmp/qre-benchmark-gpu-lease.lock",
+    "live_timing_processes_at_lock_acquisition": [],
+    "no_live_timing_worker_at_lock_acquisition": true,
+    "shared_maestro_timing_lock_path": "work/locks/maestro_qcsim_v2_cpu_timing.lock"
+  }
+}

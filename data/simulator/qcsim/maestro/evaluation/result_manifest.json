@@ -1,0 +1,145 @@
+{
+  "accuracy_gated_continuation": false,
+  "artifact_id": "maestro-cpu-component-optimizer-off-v1-oof-evaluation",
+  "assigned_hashes": 150,
+  "c44_fold_source_sha256": "a25e2e740fd3058e487f713cd0fc074dd8761120a5aface275a212693ac05437",
+  "calibration_model_imported": true,
+  "calibration_model_sha256": "fc88f7c7597cff3d2a3c6f62d212c5735e96752ee73b56e98f54db63a2fffd53",
+  "compute_exclusivity": {
+    "held_during_cuda_initialization_and_all_five_folds": true,
+    "host_gpu_lease": "/tmp/qre-benchmark-gpu-lease.lock",
+    "shared_timing_lock": "/home/server/Documents/quantum-runtime-estimator-replications/work/repo_finalization/publish_candidate/work/locks/maestro_qcsim_v2_cpu_timing.lock"
+  },
+  "cuda_execution": {
+    "compute_capability": [
+      12,
+      0
+    ],
+    "cuda_initialized_after_compute_lease": true,
+    "cuda_runtime_version": "12.8",
+    "device": "cuda:0",
+    "driver_version": "595.91.07",
+    "fp32_training": true,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+    "python_version": "3.10.21",
+    "thread_environment": {
+      "MKL_NUM_THREADS": "2",
+      "NUMEXPR_NUM_THREADS": "2",
+      "OMP_NUM_THREADS": "2",
+      "OMP_THREAD_LIMIT": "2",
+      "OPENBLAS_NUM_THREADS": "2"
+    },
+    "torch_geometric_version": "2.6.1",
+    "torch_interop_threads": 20,
+    "torch_intraop_threads": 2,
+    "torch_version": "2.7.1+cu128",
+    "total_memory_bytes": 16608788480
+  },
+  "evaluation_target_clock": "maestro_qcsim_process_isolated_reported_execution",
+  "evaluator_sha256": "78ed2341b14416dac3d2b49b93054a9c02d38e391c9b249e28f1b1e209bf5bf9",
+  "execution_context_id": "maestro_qcsim_cpu_sv_fp64_optimizer_off_threads1_shots1000",
+  "graph_device": "CUDA required; no CPU fallback",
+  "historical_Aer_CUDAQ_QPU_labels_read": false,
+  "methods": [
+    "maestro_style_cpu_sv_component_optimizer_off_adaptation",
+    "outer_train_median",
+    "nested_grouped_ridge",
+    "source_dag_graph_adaptation_cuda"
+  ],
+  "optimizer_enabled_requested": false,
+  "outer_fold_counts": {
+    "0": 37,
+    "1": 28,
+    "2": 26,
+    "3": 25,
+    "4": 34
+  },
+  "outer_train_alpha_selection": {
+    "0": {
+      "inner_seconds_mae_by_alpha": {
+        "0.01": 8.279377524556545e-05,
+        "0.1": 8.403387653612907e-05,
+        "1": 9.81649728085954e-05,
+        "10": 0.00010455805689269926,
+        "100": 0.0001404516358024302
+      },
+      "selected_alpha": 0.01
+    },
+    "1": {
+      "inner_seconds_mae_by_alpha": {
+        "0.01": 0.0001356008698597455,
+        "0.1": 0.0001447607819756353,
+        "1": 0.00015045416899322806,
+        "10": 0.00015368366656435363,
+        "100": 0.00020556437162716764
+      },
+      "selected_alpha": 0.01
+    },
+    "2": {
+      "inner_seconds_mae_by_alpha": {
+        "0.01": 0.00014365215041479892,
+        "0.1": 0.0001500818023848501,
+        "1": 0.00015492083724847556,
+        "10": 0.00015712463639458888,
+        "100": 0.00017965536859339037
+      },
+      "selected_alpha": 0.01
+    },
+    "3": {
+      "inner_seconds_mae_by_alpha": {
+        "0.01": 0.00014851557353963332,
+        "0.1": 0.00015745681484310707,
+        "1": 0.0001641193467291594,
+        "10": 0.0001654993441369295,
+        "100": 0.00019290870213928992
+      },
+      "selected_alpha": 0.01
+    },
+    "4": {
+      "inner_seconds_mae_by_alpha": {
+        "0.01": 0.00014814862357182587,
+        "0.1": 0.00016280331640632886,
+        "1": 0.00017769847314560633,
+        "10": 0.00017887187204886432,
+        "100": 0.00019969800061730005
+      },
+      "selected_alpha": 0.01
+    }
+  },
+  "outputs": {
+    "component_predictions.csv": "6ff2ecb71a8eb92c6d6290a96b2e82987858de54cadd4985b7f9b53bf300a135",
+    "method_metrics.csv": "97a888124ddd67ed978431e871cb23e50e22aed23cb4e6e719de07c45893ce20",
+    "oof_predictions.csv": "b01de507d79e942ba272ca1bc7beb3807acd7ec1d194663588de079fe0b60753"
+  },
+  "paired_bootstrap_implementation": {
+    "confidence_interval_quantile_method": "linear",
+    "confidence_interval_quantiles": [
+      0.025,
+      0.975
+    ],
+    "group_column": "source_qasm_sha256",
+    "numpy_version": "1.26.4",
+    "replicates": 10000,
+    "rng_bit_generator": "PCG64"
+  },
+  "panel_targets_sha256": "260f3ef71055f00d5733f7ccd9d78018561290b612ae891e50a75c805a3d9fbd",
+  "protocol_id": "maestro-cpu-component-optimizer-off-v1",
+  "protocol_sha256": "365b46f59275643406c80c96703bb0734527cb6a1cd32f5364685ba42547c736",
+  "resolved_from": {
+    "overlay_protocol_path": "benchmark_v1/protocol/maestro_cpu_component_optimizer_off.json",
+    "overlay_protocol_sha256": "2b1cbb5606603046fb6e2c4b778aff2d6235e32a4fb8156026a791087df2b610",
+    "parent_protocol_path": "benchmark_v1/protocol/maestro_cpu_component_benchmark.json",
+    "parent_protocol_sha256": "48eb56f29a54c1f5249f153fd91a4588bc87b7e464c9a2c998358f0478a17354",
+    "resolver_script_sha256": "d6fc66df325cce1417e32728dd8893dca609893be6146242f0f1a72049c06aaa"
+  },
+  "seed_registry_sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864",
+  "seeds": [
+    42,
+    1234,
+    31415
+  ],
+  "source_topology_sha256": "bc8816576992cd14088371265dc0f766eafcf51bc4bf39631ec17ab9f4784f3a",
+  "status": "evaluation_complete",
+  "target_observed_hashes": 143,
+  "target_runtime_source": "panel_targets.csv (new QCSim CPU-FP64 label only)"
+}

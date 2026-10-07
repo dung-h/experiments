@@ -1,0 +1,67 @@
+{
+  "manifest_id": "simulator-environment-lock-v1-20260928",
+  "status": "frozen_for_fresh_environment_materialization",
+  "scope": "Local common-panel simulator runs only. A new run receives a new environment fingerprint and is never merged under a historical package-lock hash.",
+  "host_preflight": {
+    "gpu": "NVIDIA GeForce RTX 5070 Ti",
+    "compute_capability": "12.0",
+    "driver_version": "595.91.07",
+    "cuda_driver_api": "13.2",
+    "vram_bytes_from_cupy": 16608788480,
+    "cutensornet_workspace_fraction": 0.9,
+    "cutensornet_workspace_bytes": 14947909632,
+    "minimum_free_disk_bytes_before_setup": 12884901888,
+    "gpu_timing_workers": 1
+  },
+  "cudaq": {
+    "interpreter": "Python 3.13",
+    "packages": {
+      "cuda-quantum-cu13": "0.15.1",
+      "cupy-cuda13x": "13.6.0",
+      "numpy": "2.5.3",
+      "qiskit": "2.5.2"
+    },
+    "runtime_library_policy": "Set CUDA_PATH and prepend the selected environment's site-packages/nvidia/cu13/lib to LD_LIBRARY_PATH in the execution wrapper.",
+    "smokes": [
+      "CuPy device query and allocation",
+      "CUDA-Q nvidia fp32 Bell sample",
+      "CUDA-Q nvidia fp64 Bell sample",
+      "CUDA-Q tensornet-mps tiny state and dense-reference overlap"
+    ]
+  },
+  "cutensornet": {
+    "interpreter": "Python 3.14",
+    "packages": {
+      "cuquantum-python-cu13": "26.6.0",
+      "cupy-cuda13x": "14.2.0",
+      "numpy": "2.5.3",
+      "qiskit": "2.5.2"
+    },
+    "runtime_library_policy": "Use tracks/cutensornet/code/with_cutensornet_env.sh with CUTENSORNET_PYTHON set to the fresh environment.",
+    "smokes": [
+      "CuPy device query and allocation",
+      "cuTensorNet tiny Network contract_path plus contract",
+      "CircuitToEinsum conversion of a panel QASM"
+    ]
+  },
+  "immutability": {
+    "historical_cudaq_environment": "/home/server/Documents/Capstone-Project/.venv-cudaq313",
+    "historical_cutensornet_environment": "/home/server/Documents/Capstone-Project/.venv-simulator",
+    "rule": "Do not mutate or delete historical environments. They are smoke-tested evidence and rollback references only."
+  },
+  "record_per_new_run": [
+    "interpreter path and version",
+    "pip freeze --all and SHA-256",
+    "CUDA_PATH and effective LD_LIBRARY_PATH",
+    "nvidia-smi plus CuPy runtime/driver/device query",
+    "host CPU/RAM/GPU/VRAM",
+    "runner and manifest SHA-256",
+    "all smoke results"
+  ],
+  "prohibitions": [
+    "Do not modify the system NVIDIA driver or toolkit.",
+    "Do not install unpinned latest CUDA-Q, CuPy or cuQuantum packages.",
+    "Do not reuse old timing values under a new environment fingerprint.",
+    "Do not start common-panel timing before adapter preflight and checkpoint pass."
+  ]
+}

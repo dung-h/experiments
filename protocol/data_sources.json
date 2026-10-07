@@ -1,0 +1,83 @@
+{
+  "registry_id": "data-registry-v1",
+  "sources": [
+    {
+      "id": "mali_real_qpu",
+      "kind": "archived_observation",
+      "path": "/home/server/Documents/Capstone-Project/eda/phase2_dataset_audit/extracts/05_mali_real_qpu_t_exec.parquet",
+      "expected_rows": 340,
+      "exact_qasm": true,
+      "timestamp_available": false,
+      "target": "mean_of_three_recorded_time_taken_runs",
+      "label_reuse_policy": "archived_only"
+    },
+    {
+      "id": "qonductor_single_circuit_ibm",
+      "kind": "archived_observation",
+      "path": "/home/server/Documents/Capstone-Project/eda/phase2_dataset_audit/extracts/01_qonductor_single_circuit_ibm_job_time.parquet",
+      "expected_rows": 4482,
+      "exact_qasm": true,
+      "qasm_container": "/home/server/Documents/Qonductor-SC25/data/database/circuits.zip",
+      "qasm_member_column": "archived_qasm_filename",
+      "timestamp_available": true,
+      "target": "Result.time_taken",
+      "label_reuse_policy": "archived_only",
+      "submitted_qasm_status": "exact physical submitted circuit available for every row",
+      "logical_reconstruction_audit": "artifacts/benchmark_v1/qonductor_logical_reconstruction_20260926/audit.json",
+      "logical_reconstruction_boundary": "candidate generated from MQT Bench 1.0.3 recipe is not byte-exact original pre-transpile QASM"
+      ,"materialized_candidate_artifact": "artifacts/benchmark_v1/qonductor_submitted_dag_candidates_20260926/manifest.json"
+    },
+    {
+      "id": "qpack_mcp",
+      "kind": "archived_observation",
+      "path": "/home/server/Documents/Capstone-Project/eda/phase2_dataset_audit/extracts/03_qpack_physical_candidate_circuit_events_benchmark_new_4020010_4020013_4020017_402001B_4020020_402002E_MCP.parquet",
+      "expected_rows": 3945,
+      "exact_qasm": false,
+      "timestamp_available": false,
+      "target": "direct_one_circuit_ibm_result_time_taken_seconds",
+      "target_source_field": "Circuit execution durations [ms]",
+      "target_unit_conversion": "milliseconds / 1000",
+      "label_reuse_policy": "archived_only",
+      "identity_policy": "optimizer_workflow_is_split_group_only_no_exact_qasm",
+      "qasm_dependent_methods_eligible": false,
+      "exact_qasm_dependent_methods_eligible": false,
+      "structural_reconstruction_eligible": true,
+      "structural_reconstruction_conditions": [
+        "pin LibKet/QPack stable revision 9beaf65e951e01181b1e324cbb1b227af10eef96",
+        "reconstructed problem/size/P qubits and depth match the recorded JSON",
+        "method does not require per-iteration angle values or submitted physical routing",
+        "keep every optimizer workflow in one split group"
+      ]
+    },
+    {
+      "id": "mali_qasm_corpus",
+      "kind": "circuit_source",
+      "path": "/home/server/Documents/Quantum-Execution-Time-Prediction/data/quantum_circuits",
+      "expected_circuit_count": 1510,
+      "exact_qasm": true,
+      "timestamp_available": false,
+      "target": "local_rerun_required"
+    },
+    {
+      "id": "azizov_local_runtime",
+      "kind": "local_rerun_artifact",
+      "path": "/home/server/Documents/quantum-runtime-estimator-replications/artifacts/azizov_independent/feasible_q9_runtime.csv",
+      "expected_rows": 1192,
+      "exact_qasm": true,
+      "timestamp_available": true,
+      "target": "warm_aer_run_result"
+    }
+  ],
+  "clops_policy": {
+    "tier_a_requires": [
+      "backend",
+      "backend_version",
+      "metric_variant",
+      "measured_at",
+      "source_url_or_artifact_hash"
+    ],
+    "allowed_original_variant": "CLOPS_v",
+    "clops_h_is_not_convertible_to_clops_v": true,
+    "missingness": "forbid_imputation"
+  }
+}

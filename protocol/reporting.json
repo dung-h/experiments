@@ -1,0 +1,418 @@
+{
+  "contract_id": "common-panel-reporting",
+  "decision_date": "2026-10-07",
+  "status": "S1_S5_locked_routine_implementation_pending",
+  "scope": "Post-fit analysis, reader tables and local export preparation from completed evidence. This is not experiment or public-release authority.",
+  "precedence": {
+    "applies_to": "Current 7350-observation common panel and integration of already selected simulator evidence.",
+    "preserves": [
+      "canonical labels and shots",
+      "7350 panel IDs",
+      "outer and inner splits",
+      "raw features and nominal calibration",
+      "all predictions and fitted transforms",
+      "cell manifests and historical receipts",
+      "completed training/profiling contracts",
+      "CURRENT and C4"
+    ],
+    "replaces": "Stale maintained instructions that the current common-panel runner is unimplemented, the neural run is pending, or the old export already contains the 7350 results. Frozen design-time status fields remain unchanged.",
+    "retrospective": "Scores were already inspected. These additional analyses are exploratory; the 4515 sensitivity population was defined in the earlier common-panel contract. Do not call this new reporting lock prospective preregistration."
+  },
+  "authorization": {
+    "strong_pass": "The user requested S1-S5 implementation after the progress audit.",
+    "routine_scope_locked": true,
+    "new_training": false,
+    "new_inference": false,
+    "new_simulator_timing": false,
+    "live_qpu": false,
+    "source_branch_commit_push": false,
+    "CURRENT_mutation": false,
+    "raw_deletion": false,
+    "public_release": false,
+    "execution_boundary": "C1-C6 run on the subsequent routine-execution instruction. No additional scientific approval is needed between compliant reporting steps. License/citation/redistribution and actual publication remain owner decisions."
+  },
+  "input_hashes": {
+    "benchmark_v1/protocol/real_qpu_common_panel.json": "061d44d5c624da56064226f660f086275b389a7f9769bab7aab9dbf4e6980747",
+    "benchmark_v1/protocol/common_panel_completion.json": "ee1625355e4aa7636f8a647abc545477e31c6c3aa11c3bf48184de510b2c766c",
+    "artifacts/real_qpu/common_panel/manifest.json": "fa6717aa4353151cc23d45bc23fddd393eae6fe10b3c0e5b1d116d4c9973aada",
+    "artifacts/real_qpu/common_panel/panel.csv": "9ace84d3ec33ea050594ae57afdb76a4370f9717f361d78707f9d4ad4cd6238f",
+    "artifacts/real_qpu/common_panel/targets.csv": "ed274962448b0d269dafd84db3eee121b5f42228b767b27153dd1ecf64ffcbfc",
+    "artifacts/real_qpu/common_panel/outer_splits.csv": "62d6158411375795a89d6ce386f8c0f96f3124798ac2466b7fadb09b25698211",
+    "artifacts/real_qpu/common_panel/inner_splits.csv": "67f3a77b1a76a046e8152060f3a2db544a6df78d7bd81b92baf5a78f1e67972e",
+    "artifacts/real_qpu/common_panel/mali_feature_ledger.csv": "322e7941434ed4a93fd98ce75fc2bbf0a0d93d8bab842261456bfd1b7d6bedb2",
+    "artifacts/real_qpu/common_panel/mali/input_index_manifest.json": "8df89f852c4fce0bfa3291665f12a11669371d67669be07104fede18eac72e4a",
+    "artifacts/real_qpu/common_panel/mali/final_validation.json": "057a248b85d23d1a0b89aa74c4be50f143f7070864abdbc419e04c34fb0debab",
+    "artifacts/real_qpu/common_panel/summary/run_manifest.json": "77ea5986dd1e8285a6b7e5aef7879d3c841f0c8ce5bfa8cfb4cac7aa0385220b",
+    "benchmark_v1/scripts/run_mali_full_features.py": "02fd605cb28da81908e10e31e012cc51440541991b2b9cba92f9675fe7678d7e",
+    "benchmark_v1/scripts/run_common_panel_mali.py": "9dcef745162109bacb2b349016f9e3fb8ca5cf3a12df82bcd3179a9e19aca11e",
+    "benchmark_v1/scripts/aggregate_common_panel.py": "fac10241ab9d5dcac10f7171f86c4c32e19818c0c6c8042e970cbb3f8576566d",
+    "artifacts/real_qpu/common_panel/mali/fold_0/transform.json": "74f7be035b4aecef22ddf5b91a5568a936fb9cf386cdf14cf654a81e544d7fa2",
+    "artifacts/real_qpu/common_panel/mali/fold_1/transform.json": "f186a0c0405574ffdeef3bf19a290fff64fde22dbd195f0083820e23a1851c95",
+    "artifacts/real_qpu/common_panel/mali/fold_2/transform.json": "128985c374baf50b04b3c0197577c8981d9d2d0509857d84ef11ca1ef55d7de5",
+    "artifacts/real_qpu/common_panel/mali/fold_3/transform.json": "3876cadd26e6eb87ff8efa899d8928df18ef66aa07bd82b8a5ee39c54f0bb127",
+    "artifacts/real_qpu/common_panel/mali/fold_4/transform.json": "ccb70d0864cfc41bd181c17a3318ca3e084d1c7a46487b254b85f7952ca865b2",
+    "work/repo_finalization/selected_export/artifacts/benchmark_v3/results/reader_method_dataset_table.csv": "9a5b99a4461c908ed549e756ddfb44821191cb0630bf3433d38d8dc29f70a178",
+    "work/repo_finalization/selected_export/artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/aggregate_manifest.json": "701007ea8d38899fcc3bcd5c51a11e236b71b0423faad67e7ca75130bd6d9a96",
+    "work/repo_finalization/selected_export/artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/evaluation_001/method_metrics.csv": "97a888124ddd67ed978431e871cb23e50e22aed23cb4e6e719de07c45893ce20",
+    "work/repo_finalization/selected_export/artifacts/benchmark_v3/results/two_domain_recovery_reader_v1/simulator/method_comparison.csv": "b6b7fdc0fa839c6f8bcbad7b711767bcfe1a86cc53707541c64a84b338655d2c"
+  },
+  "source_verification": {
+    "rule": "Verify these snapshot pins first, then follow every nested input/output pin and every graph/seed/transform identity consumed by the declared analysis. Development execution validation and public OOF replay are distinct scopes; omitted checkpoint/raw-source verification must be declared, never reported PASS. Same canonical ID is not enough. Do not repair a mismatch by replacing the expected hash.",
+    "paths": "All paths are development-root relative. selected_export is a read-only source during analysis; audit pinned source bytes before maintained export documents are updated.",
+    "graph_root": "artifacts/real_qpu/logical_inputs",
+    "predictions": "Join all 30 cell manifests and their output-hashed predictions/test_failures; five disjoint folds must cover the method/seed corpus with exactly one held-out outcome per ID within each seed.",
+    "clarify_predictions": "Five folds partition the 7350 IDs: each method/seed must cover 7350 IDs once, not predict every ID in all five folds.",
+    "summary_authority": "The existing complete summary is the metric baseline; it contains 31 method variants plus six seed diagnostics, not 37 different paper methods."
+  },
+  "S1_input_support": {
+    "population_rows": 7350,
+    "reference_sets": {
+      "fit": "For outer fold f, inner_fold in {1,2,3} within outer-train f. Reconstruct sorted identities from frozen CSVs and verify the saved transform/cell fit identity hashes.",
+      "validation": "inner_fold=0 within outer-train f; no gradient fitting, but validation labels select the model epoch.",
+      "fit_plus_validation": "Union of fit and validation; a separate selection-exposed diagnostic, never silently called gradient-training.",
+      "test": "outer_fold=f. Never include its ID or labels in reference membership or refit transforms."
+    },
+    "signatures": {
+      "global_tensor": "The actual float32 global vector after saved retained_indices, train-only mean/std and variable_mask; zeros for train-constant retained columns. No shots/backend/source/ID are appended.",
+      "graph_tensor": "Actual float32 normalized x of shape (N,178), plus int64 edge_index of shape (2,E), exactly as the pinned _make_example encoder supplies. Retain node order, edge order, direction, duplicate edges and calibration-valued node fields.",
+      "graph_plus_global_tensor": "Length-delimited concatenation of graph_tensor and global_tensor identities under the same fold transform.",
+      "encoding": "SHA-256 over an explicit schema tag, array names, dtype, dimensions and little-endian C-order numeric payload. Canonicalize signed zero to positive zero; reject nonfinite values. No rounding, graph-isomorphism relabeling, runtime, model outputs, row IDs, filenames or ZIP metadata in the fingerprint.",
+      "scope": "Equal signatures mean equal declared model input tensors, not exact original circuit identity, quantum equivalence or guaranteed equal runtime. Unseen signatures do not establish family/backend/topology OOD.",
+      "calculation": "Use saved transforms unchanged, with independently checked NumPy reconstruction against pinned transform_global/_node_chunk conventions. Hash graph x in row chunks of at most 65536; cache by graph SHA plus fold-transform SHA. No CUDA/model forward call is needed."
+    },
+    "per_row_fields": [
+      "canonical_observation_id",
+      "outer_fold",
+      "source_id",
+      "logical_input_tier",
+      "group_id",
+      "transform_sha256",
+      "global_tensor_signature",
+      "graph_tensor_signature",
+      "graph_plus_global_tensor_signature",
+      "matching_fit_rows_for_each_signature",
+      "matching_fit_plus_validation_rows_for_each_signature"
+    ],
+    "strata": "For each of the three signature kinds, seen_in_fit/unseen_in_fit and seen_in_fit_plus_validation/unseen_in_fit_plus_validation, by source and pooled. Compare graph and matched MLP on exactly the same stratum IDs. Include polynomial as an additional comparator, not a matched-graph ablation.",
+    "feature_masks": "Report each fold's 51 raw global positions, retained flag, variable flag and saved transform hash; node mask is 178 positions. All five audited folds retain 40 global columns and 167 variable node columns. Retain the full 51-field raw schema; this is upstream train-only masking, not arbitrary feature selection.",
+    "no_split_change": true
+  },
+  "S2_analysis": {
+    "populations": {
+      "common_panel": {
+        "assigned_rows": 7350,
+        "rule": "All frozen panel IDs."
+      },
+      "qualified_input_sensitivity": {
+        "assigned_rows": 4515,
+        "rule": "Exclude only candidate_recipe_sensitivity_only; reuse the same OOF predictions, not newly fitted models."
+      }
+    },
+    "focus_methods": [
+      "mali_logical_graph",
+      "mali_global_mlp",
+      "qonductor_feature_polynomial_common_panel",
+      "qcre_shot_scaled_schedule_seconds__outer_train_affine",
+      "hyb_nominal_r2_log_cost_ridge_v1",
+      "hyb_kyoto_composite_r2_log_cost_ridge_v1",
+      "hyb_kyoto_composite_r2_gate_time_ridge_v1",
+      "scholten_unified_nominal_throughput__outer_train_affine"
+    ],
+    "metrics": [
+      "assigned_rows",
+      "scored_rows",
+      "coverage",
+      "groups_assigned",
+      "groups_scored",
+      "scored_id_set_sha256",
+      "MAE_seconds",
+      "MedAE_seconds",
+      "R2_seconds",
+      "log1p_MAE",
+      "p90_absolute_error_seconds",
+      "p99_absolute_error_seconds",
+      "max_absolute_error_seconds",
+      "negative_prediction_count",
+      "source_balanced_MAE_seconds"
+    ],
+    "slices": [
+      "source",
+      "logical_input_tier",
+      "source_x_logical_input_tier",
+      "backend",
+      "exact_integer_shots",
+      "outer_fold"
+    ],
+    "joint_context": "Also describe source_x_backend and source_x_shots counts; sparse context slices are descriptive, not new trained models or causal backend comparisons.",
+    "dataset_profile": "Use existing inputs to show observation/group counts, logical width/depth, target and shot distributions by source/tier; distinguish logical width from backend allocation. Report 206 full-panel groups: Ma-Li 148, Qonductor 52, QPack 6. Six QPack groups are transitive split components, not six independent execution rows or a claim that there are only six jobs.",
+    "seed_reduction": "Median of exactly seeds 42/1234/31415 per row for graph and MLP; retain all seed scores and per-row range/MAD summaries. No best-seed or best-fold selection.",
+    "focused_pairs": [
+      [
+        "mali_logical_graph",
+        "mali_global_mlp"
+      ],
+      [
+        "mali_logical_graph",
+        "qonductor_feature_polynomial_common_panel"
+      ],
+      [
+        "mali_global_mlp",
+        "qonductor_feature_polynomial_common_panel"
+      ],
+      [
+        "hyb_kyoto_composite_r2_log_cost_ridge_v1",
+        "hyb_kyoto_composite_r2_gate_time_ridge_v1"
+      ],
+      [
+        "hyb_nominal_r2_log_cost_ridge_v1",
+        "hyb_kyoto_composite_r2_log_cost_ridge_v1"
+      ],
+      [
+        "qcre_shot_scaled_schedule_seconds__outer_train_affine",
+        "mali_logical_graph"
+      ],
+      [
+        "scholten_unified_nominal_throughput__outer_train_affine",
+        "mali_logical_graph"
+      ]
+    ],
+    "pair_scope": "Compute all seven focused pairs on each declared population, using exact pair-successful IDs and independently scoring both methods on that intersection. Always show method population coverage and pair intersection coverage; never compare a subset MAE with the other method's full-panel MAE.",
+    "bootstrap": {
+      "resamples": 10000,
+      "seed": 42,
+      "unit": "Frozen common-panel group_id, restricted to the pair-successful population; draw that many groups with replacement and keep all their observations.",
+      "estimator": "Pooled observation-weighted MAE difference and three-source-balanced MAE difference. Keep observed_delta, bootstrap_mean and percentile interval separate; a-minus-b sign is explicit.",
+      "empty_source": "A source-balanced replicate lacking any of the three sources is invalid, not zero. Emit counts; use existing 9500-valid-replicate requirement for its interval.",
+      "small_support": "Point metrics remain reported. Do not present a new inferential interval for a slice/pair with fewer than 20 distinct groups; mark insufficient_groups_for_interval. Twenty is a conservative internal display guard chosen for this exploratory report, not a theorem that bootstrap inference becomes valid at 20. No changing the threshold to obtain significance. Full-panel and 4515 focused pairs may use grouped intervals if support passes, with dependence and uncertainty limitations retained.",
+      "qualification": "Intervals condition on these fitted OOF predictions, not fresh refits or new measurements. They are exploratory, pointwise and not multiplicity-adjusted; overlapping training folds and only six QPack components remain limitations."
+    },
+    "tails": "List the top 20 absolute-error IDs per primary learned method per population, deterministic tie by canonical ID. Keep source/backend/shots/fold/tier/actual/prediction/group and seed spread. Mark post-fit diagnostic; no exclusion, winsorization or hypothesis of implementation failure from error size alone.",
+    "hypothesis_boundary": "This is descriptive input/error analysis, not a new feature ablation or causal proof. Runtime-depth correlations, if included, must be separately labeled descriptive Spearman association; no treating them as R2.",
+    "undefined": "R2 is undefined for fewer than two targets or zero target variance. Keep blank with an explicit reason. Preserve negative R2 and valid finite extreme predictions; never silently cap raw costs."
+  },
+  "S3_reader_tables": {
+    "real_qpu": "One current method-family table on 7350 assigned rows: Ma-Li graph, matched MLP, Qonductor polynomial, QCRE, Qiskit reference, Hyb-HANAS, Scholten. Raw scheduled/cost values and fold-calibrated observed-service predictions are separate labeled variants. Show coverage beside every score and paired evidence beside any ranking claim.",
+    "historical": "8767 compiled/mixed-stage results and source-native 340/4482 results remain a separate appendix; no transplanting their predictions or CI into the new panel.",
+    "equivalence": "QCRE and Qiskit matching schedule values under these inputs are two documented mechanisms/reference routes, not independent victories or independent experiment replications.",
+    "simulator": "One simulator method catalogue with engine/context-specific score blocks, not a shared wall-clock leaderboard across incompatible engines or tasks.",
+    "retained_contexts": [
+      "Azizov source/hybrid/transpiled GNNs and 15 classical variants on local noisy Aer",
+      "Ma-Li-style dense FP32 and FP64 graph/classical comparisons",
+      "recovered fixed-MPS runtime and quality-gated panel",
+      "Family-aware fixed-rung and joint runtime/quality adaptations with matched ablations",
+      "Maestro-style QCSim optimizer-off component model and three controls",
+      "cuTensorNet same-selected-plan native estimate/contraction companion",
+      "Pasqal 18-cell analog companion with quality failures and unpromoted formula"
+    ],
+    "catalogue_rule": "Do not copy stale unavailable rows from an old compact table when a supported local adaptation now exists. Preserve separately unavailable original-paper routes, failed optimizer-on pilot, historical E6 target and missing exact wrapper with their exact scope.",
+    "population": "Digital predictor core has 162 members / 150 exact-QASM hashes at q2-q9. Full source panel has 204 members / 191 hashes through q16. Frontier attempts are coverage evidence, not extra successful predictor labels.",
+    "required_columns": [
+      "domain",
+      "method_family",
+      "reader_label",
+      "fidelity_class",
+      "context",
+      "input_representation",
+      "evaluation_target_clock",
+      "method_output_clock",
+      "population",
+      "split",
+      "assigned",
+      "observed",
+      "predicted",
+      "quality_pass",
+      "quality_fail",
+      "failed",
+      "unavailable",
+      "MAE_seconds",
+      "R2_seconds",
+      "tail_error",
+      "evidence_source"
+    ],
+    "quality": "Show both all-finite and quality-qualified metrics where measured; quality filtering never removes failures from attempt denominator. Revisions and threshold remain explicit.",
+    "fidelity": "Use pinned method-card/source contract authority and completion/common-panel overrides. No changes to CURRENT or historical registries, no aliasing a local adaptation into an original-paper reproduction."
+  },
+  "S4_claims": {
+    "currently_supported": [
+      "Graph has lower MAE than matched 51-raw-global MLP on this 7350 panel: the existing grouped interval excludes zero.",
+      "Graph-versus-polynomial MAE interval includes zero; neither a universal winner nor a robust superiority claim is established.",
+      "Polynomial has lower source-slice MAE than graph on Ma-Li and Qonductor; graph is lower on QPack. These are slices of the same unified fit.",
+      "Local Aer transpiled GNN improves over source GNN in the tested context, but does not clearly beat transpiled XGBoost on paired evidence.",
+      "Dense MAE and R2 select different favorable baselines; both metrics and tail errors are necessary."
+    ],
+    "prohibited": [
+      "7350 independent original circuits or exact recovery of all logical instances",
+      "4515 sensitivity rows are all exact historical QASM",
+      "nominal snapshot is job-day calibration",
+      "compiled schedules equal provider-observed service time",
+      "all studied paper methods are faithful reproductions",
+      "same hashes/groups alone prove unseen-graph generalization",
+      "Ridge intercept establishes isolated physical launch overhead",
+      "low score or large tail proves an implementation bug"
+    ],
+    "limitations": [
+      "1417 excluded Qonductor observations and availability-based cohort bias",
+      "2835 unverified Qonductor recipe candidates",
+      "230 archive-supported recipes validated only in the stated ideal zero-input distribution scope",
+      "QPack representative angles and unknown original routing",
+      "different archived source timing boundaries and mitigation unknowns",
+      "Ma-Li raw 51-global schema has no shots feature; T1/T2 node context is nominal-index rather than recovered placement",
+      "only 206 groups, including six QPack components",
+      "retrospective method/report inspection and recorded fold-1 target-summary access",
+      "three seeds and conditional, pointwise OOF bootstrap intervals",
+      "small q2-q9 simulator accuracy panel",
+      "missing exact historical dense QA / residual-MPS wrapper limits where recorded"
+    ],
+    "new_findings": "C1-C3 may report computed support/tail/sensitivity findings under these boundaries. They may not edit the method, split or input population in response."
+  },
+  "S5_delivery": {
+    "baseline_export": "work/repo_finalization/selected_export",
+    "baseline_commit": "46821a9507a31bcaabbf05b0a450ab247c275ea2",
+    "source_of_simulator_selection": "Pinned selected-export tables and scientific_review above, not stale development README or compact unavailable catalogue alone.",
+    "baseline_boundary": "The older clean-clone test does not cover the new common-panel payload. Keep its historical tested-commit evidence and add the newly tested snapshot to the same maintained reproduction_validation document.",
+    "maintained_docs": [
+      "README.md",
+      "docs/real_qpu_benchmark.md",
+      "docs/data_and_feature_dictionary.md",
+      "docs/results.md",
+      "docs/reproduction.md",
+      "docs/scientific_review.md",
+      "docs/reproduction_validation.md"
+    ],
+    "required_payload": [
+      "common-panel panel/targets/outer/inner manifests and logical feature ledger",
+      "all scored OOF seed predictions and terminal failures with cell manifests",
+      "five saved feature transforms and declared input-support evidence",
+      "analytical/Hyb/polynomial outputs and their formula/calibration input dependencies",
+      "current summary and additional analysis tables/manifests",
+      "exact transitive aggregation/analysis code, tests and environment lock",
+      "reconstruction/nominal calibration provenance required for interpreting the inputs",
+      "retained simulator prediction/target/quality evidence and existing companion panels"
+    ],
+    "reproduction_levels": {
+      "metric_replay": "Mandatory fresh-clone restore and numerical replay of old simulator and new common-panel results without original workspace fallbacks.",
+      "support_replay": "Mandatory saved-feature/transform signature replay requires the consumed NPZ graph payloads; streaming/chunking and restoration must work without CUDA.",
+      "source_to_features": "Document exact prerequisites and tested/not-tested status, including original archives and retrieval rights. Do not silently treat provided NPZ as independently reconstructed original data.",
+      "refit_or_remeasurement": "Not authorized in this queue and not claimed verified by table replay. Training and GPU timing are hardware/environment-dependent."
+    },
+    "no_checkpoint_requirement": "Model checkpoints are mathematically unnecessary for metric/support replay and excluded from that delivery by default. The existing aggregate_common_panel.load_mali does require every checkpoint in cell output_hashes: do not claim that unchanged loader works in a checkpoint-free clone. Keep checkpoints locally; preserve their historical hash entries and independent GPU replay receipt.",
+    "portable_replay_adapter": "Implement an explicitly labeled OOF-replay reader in the maintained analyzer/delivery layer. Verify final receipt and its 30 cell-manifest hashes, each consumed predictions/test_failures CSV hash, method/fold/seed/fit/validation/test identity, saved transforms, targets and partitions. Recompute seed medians and metrics from these CSVs. Do not deserialize a checkpoint, invent a new checkpoint-validation PASS or modify pinned development load_mali to bypass its gate. Record checkpoint_verification=not_in_replay_scope and distinguish the prior GPU replay receipt from fresh numerical replay. Apply the same consumed-input versus historical-prerequisite distinction to simulator evidence.",
+    "excluded_scratch": "Progress, caches, lease/PID files, polling logs, duplicate reports and temporary probes remain outside the delivery selection; no raw deletion. Any genuinely consumed dependency is retained or disclosed as an external prerequisite.",
+    "minimal_tools": "One new maintained analyzer, analyze_common_panel.py, with --build and --validate and one focused test module. Reuse existing aggregation/restore helpers. No separate one-off validator, dated receipt tree or experiment runner per task.",
+    "new_analysis_root": "artifacts/real_qpu/common_panel/analysis",
+    "new_analysis_files": [
+      "input_support.csv",
+      "analysis_metrics.csv",
+      "analysis_pairs.csv",
+      "dataset_profile.csv",
+      "tail_cases.csv",
+      "fold_feature_masks.csv",
+      "run_manifest.json"
+    ],
+    "public_layout": {
+      "code": "benchmark/{scripts,protocol,tests,registry}",
+      "common_panel": "artifacts/real_qpu/common_panel/{summary,analysis,inputs,predictions}",
+      "simulator": "artifacts/simulator/<engine_or_method>/<scientific_context>",
+      "reader_tables": "artifacts/results/{real_qpu,simulator}",
+      "operational_plans": "Local only; exclude coordination documents, old task/wave checklists and agent-generated polling reports from the maintained public surface."
+    },
+    "path_mapping": "Extend the existing release inventory with exact original_path/public_path/original_sha256/delivered_sha256/consumer/rights_status. Maintained public filenames must be semantic and version/date/task-free; frozen identifiers and original paths remain provenance metadata, not published filesystem layout. Preserve immutable evidence-member bytes; remapped containers and maintained references have separately computed hashes. Never claim the old hash covers rewritten bytes.",
+    "relocation_boundary": "Do not rename or edit frozen development files. Map only delivery paths; repair maintained imports/restore destinations and verify metrics. Do not regex-rename scientific IDs. Reject collisions, unresolved dependencies or missing rights rather than guessing.",
+    "local_stage": "Analysis and source inventory may proceed before owner rights choices. For a payload whose redistribution is pending, keep the staging local/internal and record its hold; no public push, license selection or silent claim of approval.",
+    "status_repair": "After checking all terminal cell manifests, final receipt and summary hashes, atomically repair only derived run_status.json to completed with links to the authority receipts. Preserve cell/progress history; do not change pinned trainer/helpers or historical contracts merely to fix display state.",
+    "clone_checks": [
+      "restore all included CSV parts/evidence/feature graphs",
+      "install the declared CPU replay environment",
+      "run selected tests and analysis --validate",
+      "independently recompute metrics and sample signature reconstruction",
+      "audit ID sets, failure and quality counts, links, dependency closure, file/archive naming, secret/cache exclusions",
+      "rebuild twice with unchanged inputs and require idempotence",
+      "verify no path falls back to development or publish_candidate and no GPU experiment is launched",
+      "check the clone remains clean apart from explicitly ignored derived work"
+    ],
+    "numeric_tolerance": "Exact IDs/status/masks/signatures/hashes; metric arithmetic compared at rtol=1e-10, atol=1e-10 (seconds for dimensional errors) to saved OOF recomputation. Bootstrap outputs require the declared RNG/draw rule and exact input identity; compare with the newly pinned deterministic builder, not a different resampling algorithm.",
+    "required_regression_checks": [
+      "Different NPZ serialization/filenames with equal consumed tensors produce equal signatures; runtime/ID changes alone cannot change them.",
+      "A change removed by the saved variable mask does not change the consumed-tensor signature; a retained variable feature change does.",
+      "Reversing an asymmetric edge or changing edge multiplicity changes graph signatures; graph-only equality with different globals is not combined-input equality.",
+      "A signature appearing only in validation is unseen_in_fit but seen_in_fit_plus_validation; test IDs cannot be reference matches.",
+      "Chunked and unchunked hashing agree; signed zero canonicalization is deterministic; nonfinite tensors fail.",
+      "Per-seed coverage is one OOF outcome per ID, three fixed seeds produce a median, and a missing seed cannot be silently reduced to two.",
+      "Pairwise scores are recomputed on shared successful IDs, and filtering candidate tier yields exactly 4515 assigned rows without refitting.",
+      "Group-bootstrap draws retain whole unequal-sized groups; source-balanced empty-source replicates and fewer-than-20-group intervals are explicit.",
+      "Tampered consumed CSV/transform/cell/receipt pins fail; a declared checkpoint-free OOF replay neither loads checkpoints nor reports them newly verified.",
+      "Portable replay has no development-workspace fallback or GPU forward/training call and is idempotent on unchanged restored inputs."
+    ],
+    "completion": "S1-S5 lock is complete; C1-C6 implementation, new clone verification and owner publication gates are not complete until their actual evidence exists."
+  },
+  "routine_tasks": [
+    {
+      "id": "C1",
+      "work": "Implement CPU input-support replay and the 4515 sensitivity analysis.",
+      "owns": "Analyzer signature/population functions and input_support.csv; no export edits.",
+      "acceptance": "Exact joins, fold-specific transform parity, no test self-match, reference fit versus selection-exposed distinction."
+    },
+    {
+      "id": "C2",
+      "work": "Implement context/fold/seed/tail profile and focused comparisons.",
+      "owns": "Analyzer metric/bootstrap/profile functions and tables; coordinate shared script edits with C1.",
+      "acceptance": "Frozen group weighting, coverage and exact pair IDs; no error-based row exclusion."
+    },
+    {
+      "id": "C3",
+      "work": "Build current real-QPU table and simulator context catalogue.",
+      "owns": "Existing reader builder/configuration and derived reader tables.",
+      "acceptance": "Uses completed local adaptations, retains original-route unavailability and historical scope."
+    },
+    {
+      "id": "C4",
+      "work": "Update maintained prose and repair derived status.",
+      "owns": "Documentation and run_status.json after receipt verification.",
+      "acceptance": "No stale unimplemented/running/no-Azizov/no-Maestro claims; disclose reconstructions, feature masks, clocks and replay limits."
+    },
+    {
+      "id": "C5",
+      "work": "Integrate selected payload/dependencies and semantic public path mapping.",
+      "owns": "Existing export inventory and delivery tree after C1-C4; no development/raw deletion.",
+      "acceptance": "Every retained file has a consumer and disposition; no scratch or duplicated active reports."
+    },
+    {
+      "id": "C6",
+      "work": "Fresh-clone and independent numerical/support verification.",
+      "owns": "Existing reproduction_validation document and final inventory integration.",
+      "acceptance": "Actual restored/rebuilt snapshot tested; no original-workspace dependency or inflated full-refit claim."
+    }
+  ],
+  "scheduling": {
+    "maximum_workers": 3,
+    "resources": "CPU-only; at most four auxiliary numerical threads in total, 8 GiB RSS per worker and 24 GiB aggregate, minimum 8 GiB RAM available. One file owner at a time.",
+    "parallel": "C1 signature implementation/read-only hash work and C2 metric implementation may run concurrently with disjoint functions/modules coordinated by one owner of analyze_common_panel.py. Prefer coordinator merges rather than simultaneous script writes. C4 drafts may start from locked wording. C3 follows C1/C2 numerical artifacts; C5 final integration follows C3/C4; C6 runs on a stable payload with no concurrent writes.",
+    "manifest_owner": "The coordinator alone writes the analysis manifest, reader selection, export mapping/inventory and final validation record.",
+    "checkpoints": "Validate a small real subset across all three sources and two folds plus synthetic collision/mask fixtures before full 7350 support generation. This is a reporting check, not new simulator timing.",
+    "stop_on": [
+      "input/source hash mismatch",
+      "duplicate or missing OOF ID",
+      "group leakage contradiction",
+      "tensor reconstruction mismatch",
+      "formula/unit/calibration provenance failure",
+      "metric disagreement beyond declared tolerance",
+      "public path collision or rights boundary"
+    ],
+    "continue_on": [
+      "poor method scores",
+      "undefined small-slice R2 reported honestly",
+      "fewer than 20 groups with interval explicitly suppressed",
+      "expected unavailable analytical inputs",
+      "routine packaging defects with an identified scientific-scope-preserving repair"
+    ]
+  },
+  "review_reference_snapshot": {
+    "commit": "46821a9507a31bcaabbf05b0a450ab247c275ea2",
+    "documents": {
+      "work/repo_finalization/selected_export/docs/scientific_review.md": "7a6df1966c159e6bc14b3941f13fd04e4babf0121084fca723833e61b96025bc",
+      "work/repo_finalization/selected_export/docs/results.md": "3c4ae9c397997ca818fb11e952b2d533d31156379dcf6865c697a3f13529b4f1",
+      "work/repo_finalization/selected_export/docs/reproduction_validation.md": "a07d8adafc2bd78729fc4ae42f96d0e1d090bbf2c59df75fa1be0628a16fdb1a"
+    },
+    "meaning": "Reviewed baseline text, not analyzer runtime input. Maintained documents may be edited during C4-C5; their old bytes remain recoverable from this Git snapshot. Do not require mutable prose to retain an old hash after an authorized update."
+  }
+}

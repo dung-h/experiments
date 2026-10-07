@@ -1,0 +1,63 @@
+{
+  "protocol_id": "maestro-cpu-component-optimizer-off-v1",
+  "decision_date": "2026-10-03",
+  "status": "design_locked_implementation_and_execution_pending",
+  "method_id": "maestro_style_cpu_sv_component_optimizer_off_adaptation",
+  "reader_label": "Maestro-style CPU component predictor, circuit optimizer disabled",
+  "fidelity_class": "adaptation",
+  "parent_protocol": {
+    "path": "benchmark_v1/protocol/maestro_cpu_component_benchmark.json",
+    "sha256": "48eb56f29a54c1f5249f153fd91a4588bc87b7e464c9a2c998358f0478a17354",
+    "inheritance": "Inherit the frozen panel, normalization, calibration words/grid, shots, precision, timing boundary, thread policy, seeds, pilot criteria, coefficient validity criteria, interpolation, folds, learned comparators and uncertainty unchanged, except for the explicit overrides in this contract. Materialize the resolved runtime protocol before timing and pin both parent and overlay. Do not modify the parent."
+  },
+  "evidence": {
+    "adjudication": "benchmark_v1/decisions/MAESTRO_CX_CALIBRATION_REVIEW.md",
+    "probe_results": "artifacts/benchmark_v3/simulator/maestro_cx_optimizer_probe_v1/results.json",
+    "probe_results_sha256": "274723163875020b2e10efad5068e042436b502c7bbe3bfff7d79b7a86647c5f",
+    "finding": "Optimizer-off CX-minus-wrapper endpoint slopes are positive at widths 2,4,9; positivity and additive identification at all panel widths remain to be tested. This motivates a separate execution context and does not validate a general CX cost law."
+  },
+  "context_overrides": {
+    "simulator": "QCSim CPU Statevector",
+    "precision": "FP64 / std::complex<double>",
+    "optimize_circuit": false,
+    "thread_environment": "Use the parent's primary single-thread arm, including OMP_THREAD_LIMIT=1. Retain the parent's unset-thread pilot arm as diagnostic only.",
+    "seed_context_id": "maestro-qcsim-cpu-statevector-fp64|optimize_circuit=0|native_threads=1|shots={cell_shots}",
+    "shots": "Parent operation calibration uses 1; sampling uses 1,10,100,1000,10000; every panel measurement uses 1000.",
+    "resolved_flag_required": "Set SimulatorConfig.optimize_circuit=False through the patched binding before the existing execute_core timer. Record requested and resolved flag on every attempt; fail before execution if the property is absent.",
+    "native_build": "Build the existing diagnostic patch in an isolated checkout of upstream 2ef7000395fc2a173ab1b4221ec9a235da0392c6. Pin actual source/module/library/compiler hashes before measurement. Preserve the original upstream worktree and default native module.",
+    "patch_path": "benchmark_v1/patches/maestro_cx_optimizer_probe.patch",
+    "patch_sha256": "386a945dde3a503488d9abd68b1235e2785327175963f888c1296c20fb014c13"
+  },
+  "population": {
+    "assigned_hashes": 150,
+    "width_range": [2, 9],
+    "calibration_cells": 112,
+    "sessions": 3,
+    "repetitions_per_session": 5,
+    "full_attempt_identities": 3930,
+    "pilot_attempts": 300,
+    "unsupported_policy": "Apply the parent's terminal injective measurement-map policy. Retain all assigned hashes and explicit unsupported/failure states. Do not flatten repeated measurements or expand the frontier."
+  },
+  "evaluation": {
+    "evaluation_target_clock": "maestro_qcsim_process_isolated_reported_execution",
+    "method_output_clock": "predicted_maestro_qcsim_reported_execution_seconds",
+    "execution_context_id": "maestro_qcsim_cpu_sv_fp64_optimizer_off_threads1_shots1000",
+    "new_labels_required": true,
+    "reuse_optimizer_on_labels": false,
+    "reuse_probe_coefficients_or_timings": false,
+    "calibration_scope": "All 112 synthetic cells at optimizer-off, independently of panel labels. Invalid width coefficients remain unavailable under the unchanged positivity/resolution/stability/linearity gates. No clamping, gate relaxation, invalid-knot bridging or test-label calibration.",
+    "comparators": "Evaluate parent median, nested Ridge and fresh CUDA graph comparisons on the new optimizer-off panel labels, with the same C44 folds and three seeds. Report component-predictor coverage separately and paired error only on identical successful test hashes.",
+    "claim_boundary": "This evaluates a local component adaptation on an explicitly modified engine configuration. It neither repairs the optimizer-on predictor score nor reproduces Maestro's full published estimator. Sampling-fit limitations from the parent remain applicable."
+  },
+  "execution": {
+    "artifact_root": "artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off",
+    "implementation": "Parameterize the existing preparer, timing runner and evaluator with a --protocol option that retains their original defaults. Resolve this overlay into a runtime protocol in the new run bundle. Keep protocol, method and context identities consistent through every worker and output.",
+    "stages": ["adapter and protocol-parameterization checks", "pinned preparation/preflight", "parent pilot", "full calibration and panel after technical pilot pass", "coefficient reduction", "CUDA comparators after timing finishes", "same-context aggregation and coverage report"],
+    "automatic_continuation": "Advance after technical gates without a new human signature. Scientific unavailable knots or poor accuracy remain reported outcomes. A pilot that fails the frozen scientific gate ends this stream with its evidence; continue other streams.",
+    "additional_human_signature_required": false,
+    "training_device": "CUDA for neural comparators; CPU for measured QCSim and classical baselines",
+    "timing_exclusivity": "Acquire both existing benchmark timing lock and host GPU lease throughout timing; no simultaneous training or heavy CPU work.",
+    "overwrite_existing_outputs": false,
+    "resume_policy": "Inherit parent identity-pinned fresh/resume policy; do not retry terminal measurement failures or borrow any optimizer-on/probe measurements."
+  }
+}

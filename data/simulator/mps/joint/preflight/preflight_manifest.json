@@ -1,0 +1,86 @@
+{
+  "artifact_id": "family-aware-joint-mps-ladder-preflight-v1",
+  "assigned_unique_exact_qasm_hashes": 150,
+  "c44_unique_hash_fold_counts": {
+    "0": 37,
+    "1": 28,
+    "2": 26,
+    "3": 25,
+    "4": 34
+  },
+  "created_utc": "2026-10-02T19:50:17.020746+00:00",
+  "cudaq_imported": false,
+  "family_component_count": 19,
+  "family_holdout_hash_fold_counts_diagnostic_only": {
+    "0": 32,
+    "1": 25,
+    "2": 31,
+    "3": 31,
+    "4": 31
+  },
+  "files": {
+    "attempt_manifest.csv": "2d17940ae2fc04a5b370dec80934c18f061b0a91fabf07c4513b0df203f71b2f",
+    "hash_feature_manifest.csv": "afa2a52b7147eb0f2a0b8e0c9f44cde8fd43fd3b1df7bc05e259d0498c494d64"
+  },
+  "input_hashes": {
+    "c44_fold_source_sha256": "a25e2e740fd3058e487f713cd0fc074dd8761120a5aface275a212693ac05437",
+    "cudaq_verified_bridge_manifest_sha256": "7cc55f45a27e313d9d5e47ea9b79ca6f18e1b7379f1c24e1a468ccafed3f3a87",
+    "measurement_runner_sha256": "6b5f3570faa6582a5647dc9352f7c1092c271d5261fe3e4a6baad62d6ce684d9",
+    "panel_manifest_sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e",
+    "protocol_sha256": "0019e8b39b3952561a8753f5ea4055a3b98c8471a6f11617ea339df1487f9563",
+    "s85_static_feature_loader_sha256": "7731c6ef22704089122fd704f138bd207856909437bce9e03c7f6012812b5bd6",
+    "shared_cudaq_measurement_bridge_sha256": "18c8e974fb221d2adabc00da4ac6408f9ecba6d4337fe8aa32091d75811eb528",
+    "source_dag_topology_sha256": "bc8816576992cd14088371265dc0f766eafcf51bc4bf39631ec17ab9f4784f3a",
+    "source_hashes_sha256": "2f48b8e6b3b3928cfad16eb09d5fc495ffc088aa447d8c45ec9f696c190867b0"
+  },
+  "model_feature_policy": "Only six static structural columns and fold-local classifier-predicted family may enter prediction. True family component column is training-label-only and diagnostic; it is not a prediction input.",
+  "overlap_controls": {
+    "invalid_state_rejected": {
+      "nonfinite": true,
+      "zero_norm": true
+    },
+    "little_endian_basis_order": [
+      "00",
+      "10",
+      "01",
+      "11"
+    ],
+    "negative_fidelity": 0.0,
+    "positive_fidelity": 1.0,
+    "status": "PASS"
+  },
+  "pilot_hashes": [
+    "01bfdd8291d6badf1219dd3bf6d7e12559976b8ccb3e67d2548e729dc0c0dc82",
+    "01de4bb89da48a3fc09c31d41d509c1446c6a4a3b329612c5baf0d39c56a922e",
+    "0285fd21a0dd1ca29cd386de85a1a8af49cc7d71f5c86f6451b55a11c68864a8",
+    "02d66e8b66849fdd0f0581b84924adbd1bd2d7603e25e5e9faa447ac2a6708d0",
+    "040a287609a78a55ab6148ad1a3cc6aa2fcee8b0871b077a9c1a37bee49f69fe",
+    "093af0605e834bf0a4f2aef0b46600d12c6b1c913e791fb13e2513048a6b1c70",
+    "0a43a3dbe4a4294a007fa7ec167a24ea300d3762489b98245c2f80ad29727075",
+    "0a43c652a1c92c83389d952438c22aa0d890a611333da29499d6ff1733925b21",
+    "0f7836c0a3a429dd9b4f2b55a4fab5d6d112458814cb34efb22309ec614c801f",
+    "13721ab5a328b17bf3f8c3692cda844a7e538a8c92530d0c1236f43d3ad5a884"
+  ],
+  "pilot_session_attempts": 180,
+  "planned_rung_configurations": 900,
+  "planned_session_attempts": 2700,
+  "planned_worker_processes": 2700,
+  "protocol_id": "family-aware-joint-runtime-quality-mps-v1",
+  "protocol_sha256": "0019e8b39b3952561a8753f5ea4055a3b98c8471a6f11617ea339df1487f9563",
+  "rungs": [
+    2,
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "runner_id": "family-aware-joint-mps-runtime-quality-ladder-v1",
+  "session_count_per_rung": 3,
+  "timing_performed": false,
+  "training_performed": false,
+  "width_range_inclusive": [
+    2,
+    9
+  ]
+}

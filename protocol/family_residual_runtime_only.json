@@ -1,0 +1,79 @@
+{
+  "protocol_id": "family-residual-fixed-mps-runtime-v1",
+  "decision_date": "2026-10-02",
+  "status": "contract_locked_routine_implementation_and_execution_after_technical_preflight",
+  "method_id": "family_residual_fixed_mps_runtime_adaptation",
+  "reader_label": "Family-Aware-inspired residual MLP, fixed MPS runtime adaptation",
+  "fidelity_class": "adaptation",
+  "source": {
+    "paper": "https://arxiv.org/html/2606.11620v1",
+    "architecture_reference": "tracks/quantum_rings/family_aware_paper/experiments/replicate_paper.py",
+    "architecture_reference_sha256": "fe5b7c350200acc5f96e3ff4e3df88d4e0a7ef4cce59c95ca9ed3842947b0579",
+    "retained_components": ["SiLU shared MLP", "predicted-family embedding", "FiLM", "zero-initialized family runtime residual", "linear structural-feature runtime shortcut"],
+    "changes": ["runtime head only; no threshold labels, head or loss", "six structural features shared with the fixed-MPS Ridge comparator", "local CUDA-Q MPS target instead of Quantum Rings", "fold-local family classifier instead of unavailable external pretrained weights", "log1p seconds; no normalized-output clipping"]
+  },
+  "claim_boundary": "Predict warm get_state runtime at one fixed MPS configuration on the existing common core. This does not evaluate the original joint threshold/runtime method, approximation selection, or unseen-family transfer. The original joint Family-Aware method retains S83's unavailable status.",
+  "data": {
+    "input_loader": "benchmark_v1/scripts/run_mps_fixed_chi16_runtime_adaptation_v1.py:load_inputs",
+    "target_clock": "cudaq_mps_fp64_bond16_warm_state_execution_seconds",
+    "configuration": {"precision": "fp64", "max_bond": 16, "abs_cutoff": 1e-10, "svd_algorithm": "gesvdj"},
+    "assigned_hashes": 150,
+    "finite_labels": 144,
+    "quality_pass_finite": 142,
+    "quality_failed_finite": 2,
+    "unavailable_labels": 6,
+    "reduction": "Reuse the hash-level median of session/member warm medians from the S85 loader, without remeasurement or new label reduction.",
+    "quality_policy": "Include both finite quality-failed labels in runtime-only scoring, report quality-qualified 142-row metrics separately, and never use quality/status as a feature.",
+    "outer_folds": "Unchanged C44 exact-QASM folds, counts 37/28/26/25/34. All aliases share a fold.",
+    "new_simulator_timing": false
+  },
+  "features": {
+    "names": ["active_width", "measurement_stripped_structural_depth", "one_qubit_gate_count", "two_qubit_gate_count", "multi_qubit_gate_count", "swap_like_gate_count"],
+    "preprocessing": "log1p then standardize using finite outer-training hashes only; zero standard deviation uses scale 1. Inner family-classifier fits use their own inner-training preprocessing.",
+    "forbidden": ["observed runtime as classifier input", "true held-out family as predictor input", "quality/fidelity/status", "hash/path/fold/source identifiers", "post-execution telemetry"]
+  },
+  "family_signal": {
+    "alias_policy": "Build connected components of family names that co-occur for the same exact-QASM hash in the static panel; the sorted component names define one class. This uses identity metadata only and avoids choosing a favorable alias.",
+    "class_vocabulary": "Outer-training family components plus UNKNOWN. Never expand the classifier vocabulary from outer-test families.",
+    "classifier": {"inputs": "the same six structural features", "hidden_widths": [64, 64], "activation": "SiLU", "epochs": 200, "optimizer": "Adam", "learning_rate": 0.001, "weight_decay": 0.0001, "batch": "full training fold", "loss": "cross_entropy", "compute": "CUDA"},
+    "training_signal": "Sort finite outer-training rows by exact hash and apply GroupKFold(n_splits=4, shuffle=False), with exact hash as group, to obtain cross-fitted predicted families for runtime-training rows. The inner classifier must not train on the hash it predicts. Emit its train/predicted hash lists and library version.",
+    "test_signal": "Refit the classifier on all finite outer-training hashes and predict every outer-test hash from structural features alone. The runtime predictor receives this prediction, never the test family metadata.",
+    "inner_missing_classes": "Classes absent from an inner-training fold cannot be predicted there; map its predicted class into the fixed outer-training vocabulary. Single-class inner fits emit that training class deterministically. UNKNOWN is reserved for unmapped classifier outputs and has a zero family correction; never assign UNKNOWN by consulting true held-out family metadata.",
+    "report": "Record outer-test family-classification accuracy and true family components absent from finite outer-training rows as separate diagnostics after inference. The primary split is exact-hash OOF, not a deliberate family holdout; do not assume finite training support solely from full-panel family support."
+  },
+  "runtime_model": {
+    "backbone": "Linear(6,128), SiLU, Dropout(0.2), Linear(128,64), SiLU, Dropout(0.2)",
+    "family_branch": "Embedding(number_of_outer_train_classes+1,64); two Linear(64,64)+SiLU layers; FiLM gamma/beta Linear(64,64). UNKNOWN bypasses this branch with zero family correction and identity FiLM.",
+    "output": "Linear(64,1) + Linear(6,1) structural shortcut + zero-initialized Linear(64,1) family residual",
+    "equation": "b=backbone(x); f=family_mlp(embedding(predicted_family)); h=b*(1+gamma(f))+beta(f); z=runtime_head(h)+shortcut(x)+family_residual(f). UNKNOWN uses h=b and zero family residual. z predicts log1p(seconds).",
+    "ablation": "An identical family-agnostic backbone/shortcut disables the family branch; train both variants with the same folds, seeds, features and optimizer. For each fold/seed initialize the shared backbone, runtime head and shortcut once, copy those exact initial weights to both variants, then initialize the family-only branch; record a shared-initial-state digest.",
+    "target": "log1p(seconds)",
+    "loss": "MSE on log1p runtime only",
+    "epochs": 160,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.001,
+    "scheduler": "CosineAnnealingLR(T_max=160)",
+    "gradient_clip_norm": 1.0,
+    "batch": "full finite outer-training fold",
+    "precision": "float32",
+    "seeds": [42, 1234, 31415],
+    "seed_policy": "Use each registered seed for all fits in its outer/inner fold; record seed/fold indices. Median three runtime predictions per hash, retain every seed output.",
+    "prediction": "maximum(0,expm1(predicted_log1p_seconds)); overflow/non-finite output is a technical failure, never replaced by a chosen fallback",
+    "early_stopping_or_hpo": false
+  },
+  "evaluation": {
+    "comparators": ["S85 training-fold median", "S85 six-feature Ridge", "S85 source-DAG graph", "family-agnostic residual-backbone ablation"],
+    "row_set": "The identical 144 finite-label hashes and unchanged C44 folds; separately report the 142 quality-pass intersection and the full 150-hash envelope.",
+    "metrics": ["MAE seconds", "MedAE seconds", "log1p MAE", "R2 seconds", "p90/p99/max absolute error", "target availability", "prediction coverage", "per-seed dispersion"],
+    "bootstrap": "Paired exact-QASM cluster bootstrap; use the common comparison/seed contract in docs/benchmark_completion.md.",
+    "checkpoint": "Fold 0 technical QA only: exact hash/fold accounting, finite predictions, no train/test or classifier cross-fit overlap, CUDA evidence, fixed settings and both ablations/seeds. Continue folds 1-4 unchanged without inspecting metrics."
+  },
+  "execution": {
+    "authorization_basis": "User requested the strong agent to complete M1-M6 so routine workers can execute scientifically justified benchmark adaptations.",
+    "implementation_required": true,
+    "requirements": ["Reuse the audited S85 input loader and frozen measurements", "Acquire the shared Maestro timing lock and host-wide /tmp/qre-benchmark-gpu-lease.lock using nonblocking flock throughout CUDA preflight, fitting and inference; check no live timing worker and reuse S85 exclusive_compute_lock. No concurrent timing or second GPU training worker", "Record CUDA/PyG environment and smoke-test evidence", "Pin code/protocol/input hashes before fold 0; write new outputs only", "Run all five folds after technical checkpoint passes"],
+    "output_directory": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/",
+    "automatic_original_paper_promotion": false
+  }
+}

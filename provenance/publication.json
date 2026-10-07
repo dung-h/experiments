@@ -1,0 +1,2576 @@
+{
+  "scope": "Public methodology, aggregate QPU results and locally measured simulator evidence",
+  "third_party_qpu_observations_included": false,
+  "third_party_qpu_row_level_derivatives_included": false,
+  "source_circuit_bytes_included": false,
+  "training_or_measurement_rerun": false,
+  "source_package_index_sha256": "21d5cc034a0b15b8866977b259849e7d7203747f87a24912cf9dfc137784bfd8",
+  "copied_files": [
+    {
+      "path": ".gitattributes",
+      "source_sha256": "2284970e2a5ee086d940b92eae3b9e7c9b938601ca82047338821489cebc48e6",
+      "source_path": ".gitattributes"
+    },
+    {
+      "path": "data/simulator/aer/azizov/classical_oof_predictions.csv",
+      "source_sha256": "9b16545c0fac3df506c49cc95963e588baf3fffdf9aabec468039fc79ab75eb0",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/classical_oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/aer/azizov/compiled_replay_audit.csv",
+      "source_sha256": "03f6484a6cfd4fd63de1ee32699ffeb6ded3568813c815d947971e637bf20278",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/compiled_replay_audit.csv"
+    },
+    {
+      "path": "data/simulator/aer/azizov/coverage_and_terminal_statuses.csv",
+      "source_sha256": "24fd010e7a699afa5063cf353d2163bbf98dca562bd67bc69d99fbc4b9a8a84d",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/coverage_and_terminal_statuses.csv"
+    },
+    {
+      "path": "data/simulator/aer/azizov/environment_and_context_lock.json",
+      "source_sha256": "0fcd7133c5c927dce9db8e7a2500f60bbe5ea28f173f6f6aa2061d220436b11d",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/environment_and_context_lock.json"
+    },
+    {
+      "path": "data/simulator/aer/azizov/environment_and_cuda_lock.json",
+      "source_sha256": "af4be774d4ffa2c0b844052fe1bdd93699844b96fb8296893fb5b2c8c0d4ffde",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/environment_and_cuda_lock.json"
+    },
+    {
+      "path": "data/simulator/aer/azizov/environment_pip_freeze.txt",
+      "source_sha256": "766781c785791a57899c4ed98c2be6cdb48b840ce4c47c552f4fe46cdf7bf013",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/environment_pip_freeze.txt"
+    },
+    {
+      "path": "data/simulator/aer/azizov/feature_dictionary.json",
+      "source_sha256": "100c994c852ca8cf33150f971ce2f5716465ab5822a9efaf6f240e3ea5a2fa94",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/feature_dictionary.json"
+    },
+    {
+      "path": "data/simulator/aer/azizov/fold_0_qa.json",
+      "source_sha256": "38276e964457129f700372ded7b346f2813584a31953f57073d22ea8a22f5504",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/fold_0_qa.json"
+    },
+    {
+      "path": "data/simulator/aer/azizov/fold_assignments_and_hash_audit.csv",
+      "source_sha256": "696679d3bfd46d2aa2acf9f7771c0fcc628da43b8c91a78e8597b68d0b7990f0",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/fold_assignments_and_hash_audit.csv"
+    },
+    {
+      "path": "data/simulator/aer/azizov/global_features.csv",
+      "source_sha256": "348c4411ea0cb89f69b57462e0b9227e09fa669d44b91e68bc0a35aa40a98c07",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/global_features.csv"
+    },
+    {
+      "path": "data/simulator/aer/azizov/labels_core.csv",
+      "source_sha256": "8cca8430bba1d740c77ae52561326a15dba001841f5c02e9ff48e468d439d5c1",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/labels_core.csv"
+    },
+    {
+      "path": "data/simulator/aer/azizov/method_metrics.csv",
+      "source_sha256": "33c70739c961b204b20e678aed3d7f35bf6b299da7502eec02b1af6daf0f0a8c",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/method_metrics.csv"
+    },
+    {
+      "path": "data/simulator/aer/azizov/oof_predictions_by_seed.csv",
+      "source_sha256": "b6521970840a799e49bbaef2d3ed0d79b22c88385fad9fe99e9552c289441afe",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/oof_predictions_by_seed.csv"
+    },
+    {
+      "path": "data/simulator/aer/azizov/oof_predictions_median.csv",
+      "source_sha256": "e0aecdd4679c0a6995e3ee76ff26d2e18f377ea039067ad804c08845f5ba0349",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/oof_predictions_median.csv"
+    },
+    {
+      "path": "data/simulator/aer/azizov/overlay_pip_freeze.txt",
+      "source_sha256": "24d973956142f2d7045ebebe8b42f95c9c62be3c8f7c6245f84bacfe8e928859",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/overlay_pip_freeze.txt"
+    },
+    {
+      "path": "data/simulator/aer/azizov/representation_coverage_and_terminal_statuses.csv",
+      "source_sha256": "99bbb1bd0a3237ae4bfee875ae05073f04e7aa53af271d48bb1a3f3635bb8a88",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/representation_coverage_and_terminal_statuses.csv"
+    },
+    {
+      "path": "data/simulator/aer/azizov/representation_manifest.json",
+      "source_sha256": "3604fd808c0b9b4e93ea3e9f51cb080dea64609963c97a18f353f5fcbfa5290f",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/representation_manifest.json"
+    },
+    {
+      "path": "data/simulator/aer/azizov/run_manifest.json",
+      "source_sha256": "7f6b0abd12318ecab947989be445c624c34333f97efe691b86bdfdae59eaa99f",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/aer/azizov/same_hash_shared_row_pairs.csv",
+      "source_sha256": "d8d7971817b7df9db4387731eceb91188b4dbfb952f17a636cfc1a2ebd4fd48c",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/same_hash_shared_row_pairs.csv"
+    },
+    {
+      "path": "data/simulator/aer/azizov/source_hashes.json",
+      "source_sha256": "e8c6b9de6f15918cee8355e82d2a032d6d4a6edf5b1ba594fd08f88832abce0f",
+      "source_path": "artifacts/benchmark_v3/simulator/azizov_common_core_adaptation/source_hashes.json"
+    },
+    {
+      "path": "data/simulator/aer/measurement/attempts.csv",
+      "source_sha256": "d6583521f74c286528c22d492d15c9ab5bbd9c97bb6753e197853ec0eea9f900",
+      "source_path": "artifacts/benchmark_v1/sim_aer_q9_full_20260927/aer_q9_full.csv"
+    },
+    {
+      "path": "data/simulator/aer/measurement/environment.json",
+      "source_sha256": "cf4c721c88aed65f6ed39345925eeb790bb58ae790332909c31eff890e47c5ec",
+      "source_path": "artifacts/benchmark_v1/sim_aer_q9_full_20260927/aer_q9_full.environment.json"
+    },
+    {
+      "path": "data/simulator/aer/measurement/packages.txt",
+      "source_sha256": "195dd1a5f87204994a84a32a64f191802d73f295949f01ac71f17385891410d6",
+      "source_path": "artifacts/benchmark_v1/sim_aer_q9_full_20260927/aer_q9_full.pip-freeze.txt"
+    },
+    {
+      "path": "data/simulator/aer_and_mps_analysis/aer_azizov_hash_coverage.csv",
+      "source_sha256": "87a4e8545444d1d90cc8d395eef1dddd01539a087f7aa1e6acff6b32e0882e44",
+      "source_path": "artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/aer_azizov_hash_coverage.csv"
+    },
+    {
+      "path": "data/simulator/aer_and_mps_analysis/aer_azizov_hash_metrics.csv",
+      "source_sha256": "16a6652056a4cc989b9d263a42bd9d97d4615460a13b32a63644c34ee3302b6a",
+      "source_path": "artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/aer_azizov_hash_metrics.csv"
+    },
+    {
+      "path": "data/simulator/aer_and_mps_analysis/aer_azizov_paired_bootstrap.csv",
+      "source_sha256": "771cb644ecf2fabe8986164c0379ada85fab4f08be9a363eeac8ee5b8a85a336",
+      "source_path": "artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/aer_azizov_paired_bootstrap.csv"
+    },
+    {
+      "path": "data/simulator/aer_and_mps_analysis/aggregate_manifest.json",
+      "source_sha256": "701007ea8d38899fcc3bcd5c51a11e236b71b0423faad67e7ca75130bd6d9a96",
+      "source_path": "artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/aggregate_manifest.json"
+    },
+    {
+      "path": "data/simulator/aer_and_mps_analysis/mps_fixed_chi16_hash_coverage.csv",
+      "source_sha256": "15f86c885fccadc4919d9591893fe19795cfcb9df2f6f4fff9c91d16807c4ce0",
+      "source_path": "artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/mps_fixed_chi16_hash_coverage.csv"
+    },
+    {
+      "path": "data/simulator/aer_and_mps_analysis/mps_fixed_chi16_hash_metrics.csv",
+      "source_sha256": "710718e5b80deb42b1b993bc9b8327f0a8e0f1bcf0441f3bdc0467e10639c09e",
+      "source_path": "artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/mps_fixed_chi16_hash_metrics.csv"
+    },
+    {
+      "path": "data/simulator/aer_and_mps_analysis/mps_fixed_chi16_paired_bootstrap.csv",
+      "source_sha256": "c6db61e92d09054485684ca768ef12eb47e9eab0a098f9f55c49f23d1b3f1cae",
+      "source_path": "artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/mps_fixed_chi16_paired_bootstrap.csv"
+    },
+    {
+      "path": "data/simulator/aer_and_mps_analysis/source_hashes.json",
+      "source_sha256": "2e81047fda9c2fe37967763e440a5d330b45f5ba60a07c5a973bbb3d3f2085c2",
+      "source_path": "artifacts/benchmark_v3/simulator/predictive_runtime_aggregate_v1/source_hashes.json"
+    },
+    {
+      "path": "data/simulator/analog/qa_final/qa.json",
+      "source_sha256": "5884d49b374e6139306c48dc67989684ef0c0c0a7a5953d562f7768ac4302027",
+      "source_path": "artifacts/benchmark_v1/pasqal_emu_mps_formula_crossed_pilot_v1r1_20260926/qa_final/qa.json"
+    },
+    {
+      "path": "data/simulator/analog/raw_records.jsonl",
+      "source_sha256": "67c7541096cc47d6e2c0a981ff8d4e283c03719028cfdafe290c7db42a941b1b",
+      "source_path": "artifacts/benchmark_v1/pasqal_emu_mps_formula_crossed_pilot_v1r1_20260926/raw_records.jsonl"
+    },
+    {
+      "path": "data/simulator/analog/run_manifest.json",
+      "source_sha256": "329f2e42fca14cae9fe8d17da6860724f0517cff1903b514e33dee8fb02fdf9c",
+      "source_path": "artifacts/benchmark_v1/pasqal_emu_mps_formula_crossed_pilot_v1r1_20260926/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/circuits/manifest.json",
+      "source_sha256": "d94323c12d68f1c27e314774205a30823194ad4efbb9e54c7799fd9a6a42d5a9",
+      "source_path": "artifacts/benchmark_v1/sim_common_q16_manifest_20260927/manifest.json"
+    },
+    {
+      "path": "data/simulator/circuits/sim_common_q16_manifest.csv",
+      "source_sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e",
+      "source_path": "artifacts/benchmark_v1/sim_common_q16_manifest_20260927/sim_common_q16_manifest.csv"
+    },
+    {
+      "path": "data/simulator/mps/bridge_measurement/attempt_records.jsonl",
+      "source_sha256": "2c77d505950cb269041ae09b78738c74c021c6444ba7b3300205975ab7860017",
+      "source_path": "artifacts/benchmark_v1/cudaq_mps_common_q16_bridge_full_v1_20260928/attempt_records.jsonl"
+    },
+    {
+      "path": "data/simulator/mps/bridge_measurement/cudaq_mps_common_raw.csv",
+      "source_sha256": "41aaffa3977eebb7d045555baa43dec9a5ecd81dff51aa23943f8d00f6ccc495",
+      "source_path": "artifacts/benchmark_v1/cudaq_mps_common_q16_bridge_full_v1_20260928/cudaq_mps_common_raw.csv"
+    },
+    {
+      "path": "data/simulator/mps/bridge_measurement/environment.json",
+      "source_sha256": "b0ab34b8cda4e20556875eff9269eab410ec6493e607ee12b8dc8f47901c4bd6",
+      "source_path": "artifacts/benchmark_v1/cudaq_mps_common_q16_bridge_full_v1_20260928/environment.json"
+    },
+    {
+      "path": "data/simulator/mps/bridge_measurement/run_manifest.json",
+      "source_sha256": "02cd92b028e5e2fe31f8f963ee9eaf7de308e5d1ddc262b85ddcef7d78db5b59",
+      "source_path": "artifacts/benchmark_v1/cudaq_mps_common_q16_bridge_full_v1_20260928/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/five_fold_execution_receipt.json",
+      "source_sha256": "a184c2d5485b9fcecb990ea72e75e07a5fd794eedf851ed811e8af1481f1761d",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/five_fold_execution_receipt.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/five_fold_oof_predictions.csv",
+      "source_sha256": "9459502a997fc35d22e4b2b1e2e653b368c6c446c67bbcca2e3966874c95a88d",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/five_fold_oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/fixed/five_fold_oof_summary.json",
+      "source_sha256": "4e5b31abe2c8e33b9ae363a4efd046796574ead5c95ddb6e31bae1e434021a24",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/five_fold_oof_summary.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_0/environment.json",
+      "source_sha256": "82cdc93db83f182c3bc4cdbbbbf45ee642c9a7f1793e081aa22645e031fa8902",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_0/environment.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_0/fold0_predictions.csv",
+      "source_sha256": "9beeb3c6f8879a6d60cc4534f1d350d3b1ededee69c36075ee955f8c882b22df",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_0/fold0_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_0/fold0_qa.json",
+      "source_sha256": "d24439ef6248dd1304e7866137caf845c9408436fe24c89bd3525f678bdd2cc3",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_0/fold0_qa.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_1/environment.json",
+      "source_sha256": "82cdc93db83f182c3bc4cdbbbbf45ee642c9a7f1793e081aa22645e031fa8902",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_1/environment.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_1/fold1_predictions.csv",
+      "source_sha256": "b7b97f315c79dbd105bc453c6cd8fd16db3097e0ceedd476c2184022f4c84b04",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_1/fold1_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_1/fold1_qa.json",
+      "source_sha256": "fe481ae0a7588a8fb931f153752383e6faf0304f1a46a861a95ce24df656bf23",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_1/fold1_qa.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_2/environment.json",
+      "source_sha256": "82cdc93db83f182c3bc4cdbbbbf45ee642c9a7f1793e081aa22645e031fa8902",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_2/environment.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_2/fold2_predictions.csv",
+      "source_sha256": "aceaecc57047cfcae1fee21de45126bda49b22c69b6925a335007de60188e535",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_2/fold2_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_2/fold2_qa.json",
+      "source_sha256": "75c56a8a18a4fcda03bbc2c081d058a0a01741411117440ea9cf76fc5b01bff1",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_2/fold2_qa.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_3/environment.json",
+      "source_sha256": "82cdc93db83f182c3bc4cdbbbbf45ee642c9a7f1793e081aa22645e031fa8902",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_3/environment.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_3/fold3_predictions.csv",
+      "source_sha256": "232531d155b2b6ac8a4dc9b02179ec5e8c3195bb9ae99585525a2afa84d2a951",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_3/fold3_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_3/fold3_qa.json",
+      "source_sha256": "abd88067dc64a6bb4ed8cccae7420c9c26a8ba93b5145cdd83226354b0a2ad02",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_3/fold3_qa.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_4/environment.json",
+      "source_sha256": "82cdc93db83f182c3bc4cdbbbbf45ee642c9a7f1793e081aa22645e031fa8902",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_4/environment.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_4/fold4_predictions.csv",
+      "source_sha256": "a48418484150073cf85972bace7d39163d0634ef918498885c8f50d30e6abf2f",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_4/fold4_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/fixed/fold_4/fold4_qa.json",
+      "source_sha256": "411789736ee91eff868552cb603b23c15ef946e05ed9bd9b83e2fe5de72e187a",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/fold_4/fold4_qa.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/hash_targets_and_static_features.csv",
+      "source_sha256": "4c1ad9ae16a2bd3187401da95638d01ed9872a480b959adb1aab7726bd05043d",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/hash_targets_and_static_features.csv"
+    },
+    {
+      "path": "data/simulator/mps/fixed/mps_quality_pass_metrics.json",
+      "source_sha256": "c51ec1e0df3155a23e0e366961041daf8d721793b734e332da1bc01a65f6a008",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/mps_quality_pass_metrics_v1.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/preflight_manifest.json",
+      "source_sha256": "fc6ab4a67683a64b7c8ab1a32314defda4668340986120d953f3e19aec127982",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/preflight_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed/preflight_qa.json",
+      "source_sha256": "71e35d9d5f23a42d67bedd319e77ff769ed917b9bb37bc2d8116df68462e50bd",
+      "source_path": "artifacts/benchmark_v3/simulator/mps_fixed_chi16_runtime_oof/preflight_qa.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed_recovered/aggregate/five_fold_oof_predictions.csv",
+      "source_sha256": "cd89ff20d613a5a4ab5173411db11ab85fde99f7c049a6e3fe9f0c2c313b3db0",
+      "source_path": "work/benchmark_recovery/r9_mps/fixed_chi16_recovered_v1/r9_aggregate/five_fold_oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/fixed_recovered/aggregate/manifest.json",
+      "source_sha256": "eca8a63262fcc0d61250484fe98dc2ae5ced04a3c58cc00d34dd02871951f606",
+      "source_path": "work/benchmark_recovery/r9_mps/fixed_chi16_recovered_v1/r9_aggregate/manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/fixed_recovered/fit_receipt.json",
+      "source_sha256": "f820b07a464c53c460ce91b38f320280a4da036f4c63018fb91e2f32b5702a6d",
+      "source_path": "work/benchmark_recovery/r9_mps/fixed_chi16_recovered_v1/r9_fit_receipt.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/analysis/family_holdout_diagnostic_oof_predictions.csv",
+      "source_sha256": "9b2369480ecc07c4fe5a2d77379dd341070147ddf85d09eed50e22944976fc2a",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/aggregate/family_holdout_diagnostic_oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/analysis/family_holdout_selection_diagnostic.csv",
+      "source_sha256": "4558c166ef2e74a29854bbd0f66c3637c5a5de5c8a6d2b1992315821a93870b5",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/aggregate/family_holdout_selection_diagnostic.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/analysis/family_prediction_diagnostic.csv",
+      "source_sha256": "df571048db7c7e4e6f1e242d1bd52933f7f2687774e65a81d1c1dc4453db9cc5",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/aggregate/family_prediction_diagnostic.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/analysis/manifest.json",
+      "source_sha256": "b75a3f965dd8cf245819fc11d6e0538cab27cbd90ed9d9debdcef0331aab55bc",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/aggregate/manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/analysis/method_metrics.csv",
+      "source_sha256": "edf6b4a99c07260da98be4c25d6d58fab59a8043b2aa88c1b8f9926ba46cfee9",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/aggregate/method_metrics.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/analysis/oof_predictions.csv",
+      "source_sha256": "2667d43d93f4517ddd81a12fbd085c48d1c7f5d4b5617ab3d737c19c10abaf6e",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/aggregate/c44_oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/analysis/paired_comparisons.csv",
+      "source_sha256": "5bff79822b8a6d370a14a1e93ae109cd28161fb06d96fbd026ccdb1190fc4ff8",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/aggregate/paired_comparisons.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/analysis/selection_decisions.csv",
+      "source_sha256": "ac023a59af2c4e6dd9eabec8f4f8b61109c2b3a05a30a6508dc0564e64ab9bdd",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/aggregate/c44_selection_decisions.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/analysis/selection_metrics.csv",
+      "source_sha256": "03f725221c91f7c63e07ab47b7f71351ff2ccdb50b8be75308c88c5a5f361ca2",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/aggregate/selection_metrics.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/measurement/attempt_records.jsonl",
+      "source_sha256": "5eb01546d966d704041003f340a96ca5e21c4c3b71e415b30ff71d04c07a3413",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/full_attempt_002/attempt_records.jsonl"
+    },
+    {
+      "path": "data/simulator/mps/joint/measurement/quality_constrained_targets.csv",
+      "source_sha256": "5f4b854166c1fde08592079656d0779bac6cb621f9f284654e60100226dedb04",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/full_attempt_002/quality_constrained_targets.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/measurement/run_manifest.json",
+      "source_sha256": "4b1a215181549dd928d0987259846c4914d574c0d5486546489d4b4e1ce22f19",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/full_attempt_002/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/measurement/run_summary.json",
+      "source_sha256": "bab05d8941048d5aaf334d89651da134feb14a3ead5cfb333ed76a2a441ae09d",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/full_attempt_002/run_summary.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/preflight/attempt_manifest.csv",
+      "source_sha256": "2d17940ae2fc04a5b370dec80934c18f061b0a91fabf07c4513b0df203f71b2f",
+      "source_path": "work/family_aware_joint_mps_ladder_v1/preflight/attempt_manifest.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/preflight/hash_feature_manifest.csv",
+      "source_sha256": "afa2a52b7147eb0f2a0b8e0c9f44cde8fd43fd3b1df7bc05e259d0498c494d64",
+      "source_path": "work/family_aware_joint_mps_ladder_v1/preflight/hash_feature_manifest.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/preflight/preflight_manifest.json",
+      "source_sha256": "84e43e97457951b60d87c3316274de67332c67db63256ef81cb961b7b9fe6800",
+      "source_path": "work/family_aware_joint_mps_ladder_v1/preflight/preflight_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_0/fit_audits/family_agnostic_ablation_seed_1234.json",
+      "source_sha256": "496a95ce93549437eb5d79d6880fcc948d97da9613f18b5ba1270f65250ed6f6",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_0/training_log/family_agnostic_ablation_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_0/fit_audits/family_agnostic_ablation_seed_31415.json",
+      "source_sha256": "0b6cd7bf6b14857909aeb8613925e94312c97c4d97eebe5ebd299fcd43614cc6",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_0/training_log/family_agnostic_ablation_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_0/fit_audits/family_agnostic_ablation_seed_42.json",
+      "source_sha256": "16d5259c8352df0dc99e0d5947eada652ab1b86cda62347bb4ac452b98e3b0de",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_0/training_log/family_agnostic_ablation_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_0/fit_audits/family_conditioned_seed_1234.json",
+      "source_sha256": "0fe77ba8fb9b52b21645bec0cc3188a321978ccb4af9d53e556695c2ee4c9844",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_0/training_log/family_conditioned_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_0/fit_audits/family_conditioned_seed_31415.json",
+      "source_sha256": "27cad46afa22b3405ab186da148f20af483471a0614a20a4b451a088393d23de",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_0/training_log/family_conditioned_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_0/fit_audits/family_conditioned_seed_42.json",
+      "source_sha256": "c9f22de17482a09337d46410c9a6ee385175acc7146a16771a01a9dc76f62492",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_0/training_log/family_conditioned_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_0/fold_transform_and_support.json",
+      "source_sha256": "2c4704f3022c01ba5678fe83e3b1218500d85e14513972daf3c61d43a5a8eef0",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_0/fold_transform_and_support.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_0/oof_predictions.csv",
+      "source_sha256": "6e78d7d030b3af7d856990c196f7c9e3d1756e7e43c4fa545246681c3a2294a9",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_0/oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_0/run_manifest.json",
+      "source_sha256": "bca1ca1a0f2f3afb72dbb3dff1e2ef8a45cddccbee6a8ddac187eb9cbda405fa",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_0/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_1/fit_audits/family_agnostic_ablation_seed_1234.json",
+      "source_sha256": "e7fde867c06c1e8a1e0c5aab55f612a0e126eb5a2a29499a9e179814e565d432",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_1/training_log/family_agnostic_ablation_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_1/fit_audits/family_agnostic_ablation_seed_31415.json",
+      "source_sha256": "c46a1fd1a5ccdaa171c4b5b4071379e8da1625dd52f301166bb144e6381c424b",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_1/training_log/family_agnostic_ablation_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_1/fit_audits/family_agnostic_ablation_seed_42.json",
+      "source_sha256": "be462b58c6507740237eb426f69a402aecbeb6e40b9674c6f3cec110c9f947e5",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_1/training_log/family_agnostic_ablation_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_1/fit_audits/family_conditioned_seed_1234.json",
+      "source_sha256": "6718f35245a7689d867c96b55559463eaeeb90e79fb9139770d977249edf930a",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_1/training_log/family_conditioned_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_1/fit_audits/family_conditioned_seed_31415.json",
+      "source_sha256": "0b8fb4b17ef6ab24e0ac5f11906ccf318bb657f43098a277cbbffbf9552ceef0",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_1/training_log/family_conditioned_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_1/fit_audits/family_conditioned_seed_42.json",
+      "source_sha256": "eeebaef7de2ec354882cf0b75c72701d37de31d0b0720929e224c12b60a8e129",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_1/training_log/family_conditioned_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_1/fold_transform_and_support.json",
+      "source_sha256": "a9f99857da6e8d68cb5861507b105b5e9557856917736f354d731df3c5f224b9",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_1/fold_transform_and_support.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_1/oof_predictions.csv",
+      "source_sha256": "024f90ce2a892b659caa70752db953fdb28ab25b01b7a8fcf2bd3b7517ffa417",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_1/oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_1/run_manifest.json",
+      "source_sha256": "cce6957a6ad67d5f47f024de6b3498aae6ea684290271685a07d15aa91805aa4",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_1/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_2/fit_audits/family_agnostic_ablation_seed_1234.json",
+      "source_sha256": "a84de4e3104cff01b7f8d705fcd6685f1a1b3101bcec20e8f4d14b9e539faa67",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_2/training_log/family_agnostic_ablation_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_2/fit_audits/family_agnostic_ablation_seed_31415.json",
+      "source_sha256": "82bfff762b538482a6eac54720a6d7452b7920bcc043128e45ee674960cc8333",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_2/training_log/family_agnostic_ablation_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_2/fit_audits/family_agnostic_ablation_seed_42.json",
+      "source_sha256": "165710c7bcc33b014ef63549dd36d9e8a296bb83876244584b5eaa8b181c2ae4",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_2/training_log/family_agnostic_ablation_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_2/fit_audits/family_conditioned_seed_1234.json",
+      "source_sha256": "6d24688aa7aace885ca20a140399a04ae0ffe47d68dd655bc1547596a1b565f0",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_2/training_log/family_conditioned_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_2/fit_audits/family_conditioned_seed_31415.json",
+      "source_sha256": "be024b913beb66421c5287f87489b99f09f666e7553b1c169c24181fa9a1101a",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_2/training_log/family_conditioned_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_2/fit_audits/family_conditioned_seed_42.json",
+      "source_sha256": "fd8eb5d2beda25d3e4c6f7e267f8cd174e3f8a4a89bb75e57df6d1446b6a22d5",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_2/training_log/family_conditioned_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_2/fold_transform_and_support.json",
+      "source_sha256": "24b483176c05b7530491658b4b931b52d260fdd603b3289f76f5a4e7c46d436d",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_2/fold_transform_and_support.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_2/oof_predictions.csv",
+      "source_sha256": "eef5a2731cde67cbe63066d95191acd3980cdf93d9d25deb133da3c65beddddc",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_2/oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_2/run_manifest.json",
+      "source_sha256": "5c172a60fb8f2e81bb4a4b2bbb35c9600d2065a97a6289800a516af7617a06f9",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_2/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_3/fit_audits/family_agnostic_ablation_seed_1234.json",
+      "source_sha256": "34715a3acddbf2c254bb7141d9971e5e0cf4f5916983cae79f8a414f6fd161a0",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_3/training_log/family_agnostic_ablation_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_3/fit_audits/family_agnostic_ablation_seed_31415.json",
+      "source_sha256": "cb9d6042ceb54c483e32f13dac0cde099b82bf4bf84e987653b7e58d8e3f427e",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_3/training_log/family_agnostic_ablation_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_3/fit_audits/family_agnostic_ablation_seed_42.json",
+      "source_sha256": "cc3d528d8aea2a95852b3715594e80d1922c4e635ea5effb9d9ea4e041c82f31",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_3/training_log/family_agnostic_ablation_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_3/fit_audits/family_conditioned_seed_1234.json",
+      "source_sha256": "1aff81561fe186e31cf4ebf4eb44910af33a3055b2e9e495963b6f72109e2130",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_3/training_log/family_conditioned_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_3/fit_audits/family_conditioned_seed_31415.json",
+      "source_sha256": "1ae84e7f639d77820c02f45704f35167c0a9914356ae67af311cbb13fcb39f5f",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_3/training_log/family_conditioned_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_3/fit_audits/family_conditioned_seed_42.json",
+      "source_sha256": "04d85c3c8289b2ce7301c268b32f1a134a560332b44565842a0ed4703467e291",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_3/training_log/family_conditioned_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_3/fold_transform_and_support.json",
+      "source_sha256": "bd48eb794c35ba0b970bf1b36e7120dc9784e06930737131a2f41be74ed6f963",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_3/fold_transform_and_support.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_3/oof_predictions.csv",
+      "source_sha256": "fa87f0815eb2445692023887f3a6d9a0496785f16859c49aae6efb9ea9bf824d",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_3/oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_3/run_manifest.json",
+      "source_sha256": "2719988072f0390fe2c1c2489420d41a15212e899dbb5b13c5ce54e3bb030c15",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_3/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_4/fit_audits/family_agnostic_ablation_seed_1234.json",
+      "source_sha256": "f5043c293259a5ef07a77d8cffe178dc782586c2d17d20f3c6548ae811dcb8b4",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_4/training_log/family_agnostic_ablation_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_4/fit_audits/family_agnostic_ablation_seed_31415.json",
+      "source_sha256": "c7c73a47f1300b60cf253279bca100cad93af720657f8c0d17444326ab1a4735",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_4/training_log/family_agnostic_ablation_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_4/fit_audits/family_agnostic_ablation_seed_42.json",
+      "source_sha256": "43f35a51e844d723e2cf7f42fe044906c3b99aca0f3d1f863c5b0aa510377c99",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_4/training_log/family_agnostic_ablation_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_4/fit_audits/family_conditioned_seed_1234.json",
+      "source_sha256": "453b123d6d55f26c7a7a94ef6f556ec121c9ec74719cce1b8f89b8a3fc7fed5a",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_4/training_log/family_conditioned_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_4/fit_audits/family_conditioned_seed_31415.json",
+      "source_sha256": "3a80f1bde6b8c6cdc54108cbd7e00721debc2b0c39214115f98fc42930ff1069",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_4/training_log/family_conditioned_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_4/fit_audits/family_conditioned_seed_42.json",
+      "source_sha256": "f1284b7716f68b362d0ce22ff5c34cbc32c97274338ddf80944b4cef26123241",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_4/training_log/family_conditioned_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_4/fold_transform_and_support.json",
+      "source_sha256": "f96eb26255bcd981d29d944cd95aea5ed59cd6c2372848c98af00de893da5b7b",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_4/fold_transform_and_support.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_4/oof_predictions.csv",
+      "source_sha256": "bbed1552e823519db12dbbc344b376737ff93ceaca0f9960792f6713d690f23a",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_4/oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/exact_hash/fold_4/run_manifest.json",
+      "source_sha256": "452b0ff236e85580610bec93b298314a7a6a9e7b0af6b51c7594ddaa8b87eb40",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/c44/fold_4/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_0/fit_audits/family_agnostic_ablation_seed_1234.json",
+      "source_sha256": "7036583e3bb87c2ca05126254a1e381e2b2292521f8b7edcb5745362e34e84a3",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_0/training_log/family_agnostic_ablation_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_0/fit_audits/family_agnostic_ablation_seed_31415.json",
+      "source_sha256": "212837d4694eb027319d9268cc0c71bba72e914e4008c44c08a79019f0b2e932",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_0/training_log/family_agnostic_ablation_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_0/fit_audits/family_agnostic_ablation_seed_42.json",
+      "source_sha256": "66708fc1463a0b5eac47ec96bef413b012b9a9d65d076b368825365aae7633c4",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_0/training_log/family_agnostic_ablation_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_0/fit_audits/family_conditioned_seed_1234.json",
+      "source_sha256": "b88e17588e2af8406d9e61f9f162c10e065904a3a0e758a44d3a90e5641fe2d7",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_0/training_log/family_conditioned_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_0/fit_audits/family_conditioned_seed_31415.json",
+      "source_sha256": "f1062fba4df07d6003003090a020f1dfafd7d2c90dc13f62673420b5a00720d9",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_0/training_log/family_conditioned_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_0/fit_audits/family_conditioned_seed_42.json",
+      "source_sha256": "ea42e3f67a990585fd66b77fd5c179a5e9920cabc5f2d68e98d097b717fb3859",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_0/training_log/family_conditioned_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_0/fold_transform_and_support.json",
+      "source_sha256": "f804091e061beef88f4e1b1b7f3cec1c7ebd8440fea2a6385092eb0e12fbc9f6",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_0/fold_transform_and_support.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_0/oof_predictions.csv",
+      "source_sha256": "e6ea33cd49f2abbab6b8330e439f340d193b4ad99e1cac92023a86228981aa76",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_0/oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_0/run_manifest.json",
+      "source_sha256": "4c75ae2b9b2bf6db4c7ec7557d197513748c3b45ed30f900d36c5f2ea8c6aecb",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_0/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_1/fit_audits/family_agnostic_ablation_seed_1234.json",
+      "source_sha256": "416023e53ee1dc9aba98900e6b45573149feac29f67439dcf1ed46067eb7b5fd",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_1/training_log/family_agnostic_ablation_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_1/fit_audits/family_agnostic_ablation_seed_31415.json",
+      "source_sha256": "7e099007ce538031d1568e88ab741af73b1d33cf54bec282fb83e00b816a3dbf",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_1/training_log/family_agnostic_ablation_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_1/fit_audits/family_agnostic_ablation_seed_42.json",
+      "source_sha256": "ed7fb5ec986d1d03865b9aaaf0c9dedfbeab52012a9fd29101c0bd13f7a1e78b",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_1/training_log/family_agnostic_ablation_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_1/fit_audits/family_conditioned_seed_1234.json",
+      "source_sha256": "7683aee0024c88817fe4302dd4ea7c8b43806d1819e6b3673cff6eceed50b4ee",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_1/training_log/family_conditioned_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_1/fit_audits/family_conditioned_seed_31415.json",
+      "source_sha256": "d5b64727db42b68da1d76ad57ff203ff674fc1bf0fb490ef3aa7fb56c0035115",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_1/training_log/family_conditioned_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_1/fit_audits/family_conditioned_seed_42.json",
+      "source_sha256": "1dc790a89cfb78ca74cf882d988af229ee31b3464f3419ba2d55f2269caa4510",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_1/training_log/family_conditioned_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_1/fold_transform_and_support.json",
+      "source_sha256": "00d70a2bc659cf7f9e465b85a558572bc04c1b6c28b30d84f849b95bd52ea915",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_1/fold_transform_and_support.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_1/oof_predictions.csv",
+      "source_sha256": "7a16a6ba8e37c349acacf3a59bb6d125708e18eed2f01147958c2dc090c26bd2",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_1/oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_1/run_manifest.json",
+      "source_sha256": "bfd40569cf94f19c5b4a0e180434f26f78aae27b20e8a6f876a8025ae4903b73",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_1/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_2/fit_audits/family_agnostic_ablation_seed_1234.json",
+      "source_sha256": "69360183a540b33013ec009254d3185d5db0d7e2e2ed0d4624e5947db9ef095b",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_2/training_log/family_agnostic_ablation_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_2/fit_audits/family_agnostic_ablation_seed_31415.json",
+      "source_sha256": "3eecb299547280d7d0f671c6ed592e1ece0739bae17c357cb9df859458e3dbc0",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_2/training_log/family_agnostic_ablation_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_2/fit_audits/family_agnostic_ablation_seed_42.json",
+      "source_sha256": "b397a3fa53e5d9ed99cd5111b4a113be43c6954d4fce39dfcc0015b01c27fee5",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_2/training_log/family_agnostic_ablation_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_2/fit_audits/family_conditioned_seed_1234.json",
+      "source_sha256": "92705d1a784de7d6f1a181170595cfab3f0e755ff728489c0ea23facecbc5da8",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_2/training_log/family_conditioned_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_2/fit_audits/family_conditioned_seed_31415.json",
+      "source_sha256": "c920f7b6eac71832e804adc3dc920f5a813acfc9229d1351ef224feb84df7889",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_2/training_log/family_conditioned_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_2/fit_audits/family_conditioned_seed_42.json",
+      "source_sha256": "b9008aad39aa97a1df913cc15253779eb68ff26a78a396dabe433259baf117ec",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_2/training_log/family_conditioned_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_2/fold_transform_and_support.json",
+      "source_sha256": "2188fb9705c313ad7672a3e68c022d7d58c59f38cdec2324580b1b547278999b",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_2/fold_transform_and_support.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_2/oof_predictions.csv",
+      "source_sha256": "a61bace5c4d562a3a5950bef838be105078d72b9da4322339104b55b43c35dc7",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_2/oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_2/run_manifest.json",
+      "source_sha256": "10218fa0e90da959386ccbe61fde020e6862867656b20b9a1614c77fa70c426b",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_2/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_3/fit_audits/family_agnostic_ablation_seed_1234.json",
+      "source_sha256": "1211c6fd9408f6a2352280fe0a12c9cc687e84fb30d4d9df12ba43e9821e0e86",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_3/training_log/family_agnostic_ablation_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_3/fit_audits/family_agnostic_ablation_seed_31415.json",
+      "source_sha256": "7e7a2ca539a96a2358c988107ab6244ba7a1544c4ef4f5425ea3bd820cc92a92",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_3/training_log/family_agnostic_ablation_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_3/fit_audits/family_agnostic_ablation_seed_42.json",
+      "source_sha256": "fb88146112fd50246b637d3dd33853d11c0bfb7931434bad33d89d571749c0c2",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_3/training_log/family_agnostic_ablation_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_3/fit_audits/family_conditioned_seed_1234.json",
+      "source_sha256": "877e0488b974a09d634a505ac88c1e1436e9858d27f33dc254fbaa3997377b49",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_3/training_log/family_conditioned_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_3/fit_audits/family_conditioned_seed_31415.json",
+      "source_sha256": "191e9b23a6894e6507d110fff2536850747dc7e2a6873b3b055ce6501372acb6",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_3/training_log/family_conditioned_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_3/fit_audits/family_conditioned_seed_42.json",
+      "source_sha256": "3f30f7a3f47c16f30d613e05bdbcc9fdef87803b128b1a3d4b3d83d94b6c002a",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_3/training_log/family_conditioned_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_3/fold_transform_and_support.json",
+      "source_sha256": "00039c9fb5d5e4ea5cca48eaac673a8fe3b224db442f9fffbdd998680653656c",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_3/fold_transform_and_support.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_3/oof_predictions.csv",
+      "source_sha256": "c722ab6293ecda3803cd8bab1ef971820ff00499aa4f7c79706457f9c7f889ff",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_3/oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_3/run_manifest.json",
+      "source_sha256": "65d8387689369587adf356cea4fbf636f3b526545095c16b070b6b42564281fe",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_3/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_4/fit_audits/family_agnostic_ablation_seed_1234.json",
+      "source_sha256": "09d0bde473fbd63f427abd26d547cc473174f1e279e6ddd0fce92e3de854fe52",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_4/training_log/family_agnostic_ablation_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_4/fit_audits/family_agnostic_ablation_seed_31415.json",
+      "source_sha256": "b8017b0cf5e178ce2452025c0b2bd39531360a1e3a6486dc216f3238290bd793",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_4/training_log/family_agnostic_ablation_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_4/fit_audits/family_agnostic_ablation_seed_42.json",
+      "source_sha256": "82b4e24b89011708c91d325c889d89fb22e3bf6275c4db44c58dcc9bf6c81918",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_4/training_log/family_agnostic_ablation_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_4/fit_audits/family_conditioned_seed_1234.json",
+      "source_sha256": "6eec0f240e919b63a184fa04aded3113cdb7640674184336e64c2174fb95f8e7",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_4/training_log/family_conditioned_seed_1234.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_4/fit_audits/family_conditioned_seed_31415.json",
+      "source_sha256": "3d0f284c08b97bb6fe9a128a80ad9943fc357d332bf84d1d35828ad9857e44c7",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_4/training_log/family_conditioned_seed_31415.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_4/fit_audits/family_conditioned_seed_42.json",
+      "source_sha256": "d8e4bd0b9b896d73c26f44e4958e49eba221c2dc4975cfc73d84c603816112e8",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_4/training_log/family_conditioned_seed_42.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_4/fold_transform_and_support.json",
+      "source_sha256": "8b16ae68c5ca9d38e1aad6364b76e7a32558ffca7e6c880f508109aa5e45a595",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_4/fold_transform_and_support.json"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_4/oof_predictions.csv",
+      "source_sha256": "4c9be6a0fa89a77c6e6dbb984a93d623a352abbc29db0e6545860235ccb37aec",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_4/oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/joint/training/family_holdout/fold_4/run_manifest.json",
+      "source_sha256": "6ed8c6db871b0059431cc77617a9e551f631dd5a6542e541957545e97f6abe4f",
+      "source_path": "artifacts/benchmark_v3/simulator/family_aware_joint_mps_ladder_v1/training/family_holdout/fold_4/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/recovered_targets/fixed_chi16_targets.csv",
+      "source_sha256": "2534ac3e13e9ca8829427c11b102964a7b6f7de25729c8ec0fc14f4a1cf35741",
+      "source_path": "work/benchmark_recovery/r9_mps/targets_recovered_v1/fixed_chi16_targets.csv"
+    },
+    {
+      "path": "data/simulator/mps/residual/execution_environment.json",
+      "source_sha256": "45f62d594fbde84c53db441af948b3080f8aaad676da7a02005035c0071f59e2",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/execution_environment.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/five_fold_execution_receipt.json",
+      "source_sha256": "8747e8f13ce10d1974aca08ae691e84a72478fc7bbc7bcc9a01fb2524dfa6f12",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/five_fold_execution_receipt.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/five_fold_oof_predictions.csv",
+      "source_sha256": "06effa52a1b5737f45ee4dbbe0d17112b201d753670b960a9815bdaee74998d8",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/five_fold_oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/residual/five_fold_oof_summary.json",
+      "source_sha256": "9e4e742faa58e8438b4d86624d2d8638ca737dde10b801ca9ce74c5179b7a7e5",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/five_fold_oof_summary.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_0/family_diagnostics.json",
+      "source_sha256": "29b9046496fd8eff53005de1fc0d47b8b1ddbdbc0a088015b5932a6e4ee054c9",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_0/family_diagnostics.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_0/family_prediction_audit.json",
+      "source_sha256": "764b699ab90e1fe644fe6649758adcd214a3dbb4cffae96ae3e2d2fe746af708",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_0/family_prediction_audit.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_0/fold0_predictions.csv",
+      "source_sha256": "4867c0e2351a7b5f04473ffdc0c888182ae507d30771aa2bceba9e934142aa69",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_0/fold0_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_0/fold0_qa.json",
+      "source_sha256": "51d6cf6a9c32f26f4c8f4e89c8fd97d49faaaf1afb40868b74da7f884727c4a4",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_0/fold0_qa.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_1/family_diagnostics.json",
+      "source_sha256": "2aadd6695445544f32b67cb8e43b483c76eef40a7b86ef532f1147bf46f80339",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_1/family_diagnostics.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_1/family_prediction_audit.json",
+      "source_sha256": "ac1e6ca6383f8cd9e5ca9263bc4659a9d7be784758eb350e1cb67e55926c3cef",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_1/family_prediction_audit.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_1/fold1_predictions.csv",
+      "source_sha256": "f5b1af2556c4c12e11170de6ea3e04ce902b2f6ff4dd571c3c29ead722e8d8cb",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_1/fold1_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_1/fold1_qa.json",
+      "source_sha256": "ae1076bb7b61e2a669fafdb935e8063b9a229ecd0b93d4ea47f20e5e6f928b36",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_1/fold1_qa.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_2/family_diagnostics.json",
+      "source_sha256": "114f077637f5ae34f2982872c3eb7a86ec1f6db4df98c1271a21a531eb22cddc",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_2/family_diagnostics.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_2/family_prediction_audit.json",
+      "source_sha256": "f423c117d2987e88f619e8292113fcedd5bbe151dd4f903533f137f591892ff6",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_2/family_prediction_audit.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_2/fold2_predictions.csv",
+      "source_sha256": "0003b6ef0cd118b229e4cf1c7daaf13e292cc27ea6c0cda30d23556147b58232",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_2/fold2_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_2/fold2_qa.json",
+      "source_sha256": "83b3727e547d3241ffdba201613ad56f01e103ea94f0aab2a43a7805fd0c8aa4",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_2/fold2_qa.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_3/family_diagnostics.json",
+      "source_sha256": "4b9ce80c90c4cd2bb922b90597da578f87b4f7a291709aa791506bdffa12c55d",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_3/family_diagnostics.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_3/family_prediction_audit.json",
+      "source_sha256": "082ebb0ee1b281217973dd53197a9383c240fa05c9023edbbd885380116aed46",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_3/family_prediction_audit.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_3/fold3_predictions.csv",
+      "source_sha256": "882bddf15ea6621d5e09aa1c79007f616cc7f39440f480060b1b99cf35059117",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_3/fold3_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_3/fold3_qa.json",
+      "source_sha256": "e0e82f236493980a64243c21d2680c61e613b531a0dd87af62133c47d7a433ae",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_3/fold3_qa.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_4/family_diagnostics.json",
+      "source_sha256": "c3993094783a6a12726911f4481703bce93e31f7ec1899632dc82487cc768c2b",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_4/family_diagnostics.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_4/family_prediction_audit.json",
+      "source_sha256": "035507a45af40f9588738a961cf11ed46df0ef714452b85e70f9c1d7cf8baa30",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_4/family_prediction_audit.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_4/fold4_predictions.csv",
+      "source_sha256": "438a51c9180b012c06ad470b40748a05121d0ee032dd360045825e6864bbef65",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_4/fold4_predictions.csv"
+    },
+    {
+      "path": "data/simulator/mps/residual/fold_4/fold4_qa.json",
+      "source_sha256": "12ddfc42fb8d1f789625540c88fe6454fc897004c8d3dc556c4016a9bee69b5b",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/fold_4/fold4_qa.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/hash_targets_and_static_features.csv",
+      "source_sha256": "7ac486eb517358968bb56525311b2596bc3cd6cf3408d3cd7b5ae426c57660c9",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/hash_targets_and_static_features.csv"
+    },
+    {
+      "path": "data/simulator/mps/residual/materialization_manifest.json",
+      "source_sha256": "24c15bcb598fa0ba373eda326508afbdd4ed5ebb9f3918450c3da62768096f3b",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/materialization_manifest.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/method_metrics.json",
+      "source_sha256": "96ee542f3222df336641af4db2ad3b7a75ecfb8da7956dca96a7ac5191350038",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/method_metrics.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/paired_bootstrap.csv",
+      "source_sha256": "e344874849376f2ad947922584cf192524ca0cce1ddeb5efd2e76fd7d0646204",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/paired_bootstrap.csv"
+    },
+    {
+      "path": "data/simulator/mps/residual/paired_hash_comparisons.csv",
+      "source_sha256": "9a4f93d1ce1b98adebf13d5201f93413c6cfb5174887dd5c2179d55ccc9d2972",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/paired_hash_comparisons.csv"
+    },
+    {
+      "path": "data/simulator/mps/residual/preflight_qa.json",
+      "source_sha256": "15158c5f8a458153f939b867a882e39b1c9bcc44752e2838e5cd82194c6aaedd",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/preflight_qa.json"
+    },
+    {
+      "path": "data/simulator/mps/residual/seed_dispersion_by_hash.csv",
+      "source_sha256": "bbfef98abd7dd1e282cd2891dee1eb7c6bf9e53c04e5dd8ed541299de9a634b3",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/seed_dispersion_by_hash.csv"
+    },
+    {
+      "path": "data/simulator/mps/residual/seed_dispersion_summary.json",
+      "source_sha256": "2412e5b8bd43376528f96b4a365e5b58cb39fd5b05d5cfee77a5d9f01d2eb7a5",
+      "source_path": "artifacts/benchmark_v3/simulator/family_residual_fixed_mps_runtime/seed_dispersion_summary.json"
+    },
+    {
+      "path": "data/simulator/mps/residual_recovered/aggregate_receipt.json",
+      "source_sha256": "e7ba641779e266121d0f5d107b7bd10846773b6a5ca8aa4f05046168a7af3d9e",
+      "source_path": "work/benchmark_recovery/r9_mps/family_residual_recovered_v1/r9_aggregate_receipt.json"
+    },
+    {
+      "path": "data/simulator/mps/residual_recovered/five_fold_execution_receipt.json",
+      "source_sha256": "d9feb6a83bc7372e4b82c5159e92647160bf016c251de0e5ab94d5c01c056ab2",
+      "source_path": "work/benchmark_recovery/r9_mps/family_residual_recovered_v1/five_fold_execution_receipt.json"
+    },
+    {
+      "path": "data/simulator/mps/residual_recovered/five_fold_oof_predictions.csv",
+      "source_sha256": "31a8c5eddaf0acde8e88d24fd9f48b233a50a9dbc03e1afc418757f06c7bd748",
+      "source_path": "work/benchmark_recovery/r9_mps/family_residual_recovered_v1/five_fold_oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/native_method_summary.csv",
+      "source_sha256": "91f6c7801411dd5208135093f1ecf9bf083cf27434d75c7eb4196ea3312e312a",
+      "source_path": "artifacts/benchmark_v3/results/two_domain_recovery_reader_v1/simulator/native_method_appendix.csv"
+    },
+    {
+      "path": "data/simulator/qcsim/maestro/evaluation/component_predictions.csv",
+      "source_sha256": "6ff2ecb71a8eb92c6d6290a96b2e82987858de54cadd4985b7f9b53bf300a135",
+      "source_path": "artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/evaluation_001/component_predictions.csv"
+    },
+    {
+      "path": "data/simulator/qcsim/maestro/evaluation/method_metrics.csv",
+      "source_sha256": "97a888124ddd67ed978431e871cb23e50e22aed23cb4e6e719de07c45893ce20",
+      "source_path": "artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/evaluation_001/method_metrics.csv"
+    },
+    {
+      "path": "data/simulator/qcsim/maestro/evaluation/oof_predictions.csv",
+      "source_sha256": "b01de507d79e942ba272ca1bc7beb3807acd7ec1d194663588de079fe0b60753",
+      "source_path": "artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/evaluation_001/oof_predictions.csv"
+    },
+    {
+      "path": "data/simulator/qcsim/maestro/evaluation/result_manifest.json",
+      "source_sha256": "4c3f995cc44cfcd2d019699495bba8f3d78ed241803188f34e8aff5eddb40f2d",
+      "source_path": "artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/evaluation_001/result_manifest.json"
+    },
+    {
+      "path": "data/simulator/qcsim/maestro/measurement/attempts.jsonl",
+      "source_sha256": "94455263d9a5d78ccc1f9feda6e0d42f7b8ddbed9c12d10d84890965160f5eb8",
+      "source_path": "artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/full_001/attempts.jsonl"
+    },
+    {
+      "path": "data/simulator/qcsim/maestro/measurement/calibration_model.json",
+      "source_sha256": "fc88f7c7597cff3d2a3c6f62d212c5735e96752ee73b56e98f54db63a2fffd53",
+      "source_path": "artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/full_001/calibration_model.json"
+    },
+    {
+      "path": "data/simulator/qcsim/maestro/measurement/panel_targets.csv",
+      "source_sha256": "260f3ef71055f00d5733f7ccd9d78018561290b612ae891e50a75c805a3d9fbd",
+      "source_path": "artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/full_001/panel_targets.csv"
+    },
+    {
+      "path": "data/simulator/qcsim/maestro/measurement/run_manifest.json",
+      "source_sha256": "1c139e61fffb4c5d96b278cf8bac492b944bf337abbef9874270ec0e8e242918",
+      "source_path": "artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/full_001/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/qcsim/maestro/native_build_provenance.json",
+      "source_sha256": "bb12fb9e5d0200b2c5bdeee7f922b180a372caeceb9d649e3346f01c3b6fbb02",
+      "source_path": "artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/native_build_provenance.json"
+    },
+    {
+      "path": "data/simulator/qcsim/maestro/plan.json",
+      "source_sha256": "88c766e29860be277afbaec75c04f324bf27231e072c76d8ea8ce613a81734aa",
+      "source_path": "artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/plan_001.json"
+    },
+    {
+      "path": "data/simulator/qcsim/maestro/preflight.json",
+      "source_sha256": "1ebeb632de1b407e976e302c656c9d6a17c184859eab687bf0fd8ca66af44193",
+      "source_path": "artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/preflight_001.json"
+    },
+    {
+      "path": "data/simulator/qcsim/maestro/resolved_protocol.json",
+      "source_sha256": "365b46f59275643406c80c96703bb0734527cb6a1cd32f5364685ba42547c736",
+      "source_path": "artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off/resolved_protocol.json"
+    },
+    {
+      "path": "data/simulator/recorded_method_summary.csv",
+      "source_sha256": "b6b7fdc0fa839c6f8bcbad7b711767bcfe1a86cc53707541c64a84b338655d2c",
+      "source_path": "artifacts/benchmark_v3/results/two_domain_recovery_reader_v1/simulator/method_comparison.csv"
+    },
+    {
+      "path": "data/simulator/statevector/context/preflight_manifest.json",
+      "source_sha256": "9cf78551b9e3456034fc000c950b847bb2a6918e7a956dfe3e7a4df3ee537898",
+      "source_path": "work/family_dense_recovery_v1/preflight_exact_environment/preflight_manifest.json"
+    },
+    {
+      "path": "data/simulator/statevector/inputs/dense_ir_by_hash.csv",
+      "source_sha256": "68c7cd713d854814e258701b973c43e8802c24a09b7cf6908ec3c324e6e5609c",
+      "source_path": "work/benchmark_recovery/r3_dense/ir_features_v1/dense_ir_by_hash.csv"
+    },
+    {
+      "path": "data/simulator/statevector/inputs/dense_ir_manifest.json",
+      "source_sha256": "d9a35d022df246c381c098a11ff405d74b5cbbd416ac9b62c126f48616e3bad2",
+      "source_path": "work/benchmark_recovery/r3_dense/ir_features_v1/manifest.json"
+    },
+    {
+      "path": "data/simulator/statevector/inputs/dense_member_coverage.csv",
+      "source_sha256": "93bef4133cc8043b7aa59ca540861d61370b2fa49501e5b40e4be94fb757c901",
+      "source_path": "work/benchmark_recovery/r5_dense/targets_recovered_v2/dense_member_coverage.csv"
+    },
+    {
+      "path": "data/simulator/statevector/measurement/cudaq_dense_common_raw.csv",
+      "source_sha256": "19da3548991404395f05ef57dca4f499426551ab4a7389392df60731dce282ba",
+      "source_path": "artifacts/benchmark_v1/cudaq_dense_common_q16_bridge_full_v1_20260928/cudaq_dense_common_raw.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/aggregate_qa/fp32_method_metrics.csv",
+      "source_sha256": "c58fde529276bec576707bfef43399141410b574eaff335e9eb070b020de9c34",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/aggregate_qa_v1/fp32_method_metrics.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/aggregate_qa/fp64_method_metrics.csv",
+      "source_sha256": "f9c6a281340ed564c2d304ab0d9a9a04ce2d9f73e211e4fce5aa5bb96417042a",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/aggregate_qa_v1/fp64_method_metrics.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/aggregate_qa/qa_report.json",
+      "source_sha256": "fede0e3affae415efa86c18e45567502518fc4f40dea91f2a787672c570f041b",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/aggregate_qa_v1/qa_report.json"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp32/classical/fold_0/predictions.csv",
+      "source_sha256": "c759172ff22e3cb6c3d5a4aceddc3ffb823c9dbe5125e1990495415cbbafd710",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp32/classical/fold_0/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp32/classical/fold_1/predictions.csv",
+      "source_sha256": "756e3e91a2556d333942439c72d5cc9206be0625f09252e9c8c48194f5b29719",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp32/classical/fold_1/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp32/classical/fold_2/predictions.csv",
+      "source_sha256": "842ac96bd09da8f3fdb9c3bdf46e21c0ac346ec857955b2bab010d32581348c3",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp32/classical/fold_2/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp32/classical/fold_3/predictions.csv",
+      "source_sha256": "433c13933367b1e65d8685a228dcb4ca55f2275f842e35690a8fc830ef9eef4b",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp32/classical/fold_3/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp32/classical/fold_4/predictions.csv",
+      "source_sha256": "23ada8fdbab6b5ef02eeac09a58320701825c5347c0cc76e2353132b28d17fe1",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp32/classical/fold_4/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp32/neural/fold_0/predictions.csv",
+      "source_sha256": "f54e8fe3eaf405a2b4b2d062d306c4f1bc63e2e9fc271e9be707e4f2ee040a69",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp32/neural/fold_0/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp32/neural/fold_1/predictions.csv",
+      "source_sha256": "6bde9f441e564ac4bcb8615927ce3e4e33ec38f72ef80c65816087c9606ccdf0",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp32/neural/fold_1/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp32/neural/fold_2/predictions.csv",
+      "source_sha256": "8b940e477cec7c60f13bb0d1f17db4389837e23e4e438cd7c077353470cfab3d",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp32/neural/fold_2/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp32/neural/fold_3/predictions.csv",
+      "source_sha256": "d4cf4c9a4b46ac6571e5a2589b39d1012d95100b0f108feae1c5a611e38b8e51",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp32/neural/fold_3/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp32/neural/fold_4/predictions.csv",
+      "source_sha256": "c9a02fdd55c161134458ed2f26ddabb13e04d59d9a2944daf5fe97f0ba709326",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp32/neural/fold_4/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp64/classical/fold_0/predictions.csv",
+      "source_sha256": "3550ea1fa5474d80f4fbb045c62902de582bf95ba9d0b4230a0c79b2bfb49a9e",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp64/classical/fold_0/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp64/classical/fold_1/predictions.csv",
+      "source_sha256": "fed525c2423a5ee65cb9f48fb59ffc8d63e6c1a532f3e9c51fc2038c77f505a6",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp64/classical/fold_1/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp64/classical/fold_2/predictions.csv",
+      "source_sha256": "e54089f9175bcb12602b691d20e84bc0dd38a78e9c09561c9e0443d3a00971b0",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp64/classical/fold_2/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp64/classical/fold_3/predictions.csv",
+      "source_sha256": "84167b9a98a8e6355ba6c00c6ca9fefae4647e3a630f8fa7ddaf5462e1f05644",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp64/classical/fold_3/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp64/classical/fold_4/predictions.csv",
+      "source_sha256": "a1a2d587b1edeac67ca24758c37d80e0644d1ab4bc042890ee216e5d18b157cf",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp64/classical/fold_4/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp64/neural/fold_0/predictions.csv",
+      "source_sha256": "d689ed4daab6e8b515aa4b9c8948484a867afd55d732ea6e0585853cda7d45de",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp64/neural/fold_0/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp64/neural/fold_1/predictions.csv",
+      "source_sha256": "f5353def011a870bf796dc039cbe6935e896424d260e82ad4bc748dc3bb6556e",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp64/neural/fold_1/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp64/neural/fold_2/predictions.csv",
+      "source_sha256": "55adc879ee35a7d5e084f1ff9e19bc1bd1da7428017d059c979ca9c472f721d3",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp64/neural/fold_2/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp64/neural/fold_3/predictions.csv",
+      "source_sha256": "1d56359aca8a973219311a40ec801fa337d23fcad153f0071ef7caaa506bafa2",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp64/neural/fold_3/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/predictions/fp64/neural/fold_4/predictions.csv",
+      "source_sha256": "84247ed2c23fae7078d4b778ea7b4b86acc53ddc106e0c3a65eae23c24ebdbbb",
+      "source_path": "work/benchmark_recovery/r8_dense_predictors/attempt_002/fp64/neural/fold_4/predictions.csv"
+    },
+    {
+      "path": "data/simulator/statevector/recovered_measurement/attempt_records.jsonl",
+      "source_sha256": "6642e1a88011e1d60f7cbb9101f874d6c48574c71e7a2edab6f981f5be1ca37a",
+      "source_path": "work/family_dense_recovery_v1/r5_attempt_004/attempt_records.jsonl"
+    },
+    {
+      "path": "data/simulator/statevector/recovered_measurement/run_manifest.json",
+      "source_sha256": "ff9d6d738bd10f52f280b454a053556837b11e75544660551d6d9e38beeac4a2",
+      "source_path": "work/family_dense_recovery_v1/r5_attempt_004/run_manifest.json"
+    },
+    {
+      "path": "data/simulator/statevector/targets/dense_hash_targets.csv",
+      "source_sha256": "1b88fef5015d5403f89956d8f6d6f92baced9aaecc149728e641cee10588c170",
+      "source_path": "work/benchmark_recovery/r5_dense/targets_recovered_v2/dense_hash_targets.csv"
+    },
+    {
+      "path": "data/simulator/statevector/targets/manifest.json",
+      "source_sha256": "bfc22149ecc05a85a23598f20fb46cff0e0eb17479a4a5b7f8d35ab8707ca200",
+      "source_path": "work/benchmark_recovery/r5_dense/targets_recovered_v2/manifest.json"
+    },
+    {
+      "path": "data/simulator/tensor_network/analysis/paired_ratio_rows.csv",
+      "source_sha256": "1b8b78138da0e5df263dc2701a9e50752141559e425fcc6186fd0d2372a196ae",
+      "source_path": "artifacts/benchmark_v1/c86_cutensornet_ratio_diagnostic_v2_20260929/paired_ratio_rows.csv"
+    },
+    {
+      "path": "data/simulator/tensor_network/analysis/qa.json",
+      "source_sha256": "19097e1f9c604af356457ecd6dbc2dc289830d8490207375bc41a430808d3eb7",
+      "source_path": "artifacts/benchmark_v1/cutensornet_common_q16_qa_v3_20260928/qa.json"
+    },
+    {
+      "path": "data/simulator/tensor_network/measurement/MEASUREMENT_INTERFERENCE.json",
+      "source_sha256": "1c1d23dd9106b65c7c139196717094fb863b09ed2da66b6230ba3454e583caed",
+      "source_path": "artifacts/benchmark_v1/cutensornet_common_q16_full_v1_20260928/MEASUREMENT_INTERFERENCE.json"
+    },
+    {
+      "path": "data/simulator/tensor_network/measurement/cutensornet_scalar_common_raw.csv",
+      "source_sha256": "843a28edae4afc90eec83a491fea21519d67d5f4454093d436200ca65d23535d",
+      "source_path": "artifacts/benchmark_v1/cutensornet_common_q16_full_v1_20260928/cutensornet_scalar_common_raw.csv"
+    },
+    {
+      "path": "data/simulator/tensor_network/measurement/environment.json",
+      "source_sha256": "478bd141f4224ea2d35d99cac9ab4774fa250240b30b1b99409f2aa6c3c24e2a",
+      "source_path": "artifacts/benchmark_v1/cutensornet_common_q16_full_v1_20260928/environment.json"
+    },
+    {
+      "path": "data/simulator/tensor_network/measurement/run_manifest.json",
+      "source_sha256": "4251ce42b7e1f797e9900d00dfbdaa809f1ab29944092a8c7fa7a48323961ff3",
+      "source_path": "artifacts/benchmark_v1/cutensornet_common_q16_full_v1_20260928/run_manifest.json"
+    },
+    {
+      "path": "docs/analysis.md",
+      "source_sha256": "78e76ef1fc73d86f794ab143134438961321427a475d5a07c18beee456703a84",
+      "source_path": "docs/analysis.md"
+    },
+    {
+      "path": "docs/data_and_feature_dictionary.md",
+      "source_sha256": "ac1dd39702cf11756a2fe58a838cb8f5b4cbb7b221341efe9e8e435c8d574ce6",
+      "source_path": "docs/data_and_feature_dictionary.md"
+    },
+    {
+      "path": "docs/data_preprocessing.md",
+      "source_sha256": "338d5fd5205fbe45da36442aa9d59f9ef9a4bce8a8b6c0a34b00220be0458afd",
+      "source_path": "docs/data_preprocessing.md"
+    },
+    {
+      "path": "docs/distribution.md",
+      "source_sha256": "ab5cde9f0d5b9cbc959448c0723d4f6a1beff07168284561df541d7af96219b5",
+      "source_path": "docs/distribution.md"
+    },
+    {
+      "path": "docs/methodology.md",
+      "source_sha256": "eedebe2d15891c7cd9884d2a362f80ddffed098c6eb24a926d944596acb0ed4f",
+      "source_path": "docs/methodology.md"
+    },
+    {
+      "path": "docs/paper_comparison.md",
+      "source_sha256": "b5096b40e169ea2b349afaa165d6df3a14cb4b84311e504488050119cd25f4b3",
+      "source_path": "docs/paper_comparison.md"
+    },
+    {
+      "path": "docs/real_qpu_benchmark.md",
+      "source_sha256": "cf7f587cfd26ea7cd1b7bf0f7d84cf4e571a97f34ceb4aeaca0144b0632e9ad9",
+      "source_path": "docs/real_qpu_benchmark.md"
+    },
+    {
+      "path": "docs/reproduction.md",
+      "source_sha256": "c9d534894194bb3be2cc522f1a4668a7d2b39c75388e1092c8e3237c67c1697b",
+      "source_path": "docs/reproduction.md"
+    },
+    {
+      "path": "docs/results.md",
+      "source_sha256": "6b564c3d45db5a6790e16ba3b22fe5c4a7377f2d1cb50082cf809fafa111ab6e",
+      "source_path": "docs/results.md"
+    },
+    {
+      "path": "docs/scientific_review.md",
+      "source_sha256": "1b0e082057c1e11b820e0e1879563fcc2460ad5a5d3d11d3fa00d365538db587",
+      "source_path": "docs/scientific_review.md"
+    },
+    {
+      "path": "docs/training_and_measurement.md",
+      "source_sha256": "1afca5acddde20c19fa4fc0be19b922278e71619769b1d0aa9fd883986f72dd3",
+      "source_path": "docs/training_and_measurement.md"
+    },
+    {
+      "path": "methods/real_qpu/aggregate_predictions.py",
+      "source_sha256": "fac10241ab9d5dcac10f7171f86c4c32e19818c0c6c8042e970cbb3f8576566d",
+      "source_path": "benchmark_v1/scripts/aggregate_common_panel.py"
+    },
+    {
+      "path": "methods/real_qpu/bounded_feature_pool.py",
+      "source_sha256": "6a9303bb7e5559fc3cd01520c77184cbe374972746dd8cd19657c01b8c8562c5",
+      "source_path": "benchmark_v1/scripts/bounded_feature_pool.py"
+    },
+    {
+      "path": "methods/real_qpu/build_analytical_review_outputs.py",
+      "source_sha256": "58aabae35b8756de91ffed497c6129cb3c0a72367278ab253af85542142229bc",
+      "source_path": "benchmark_v1/scripts/build_analytical_review_outputs.py"
+    },
+    {
+      "path": "methods/real_qpu/build_qonductor_logical_recovery.py",
+      "source_sha256": "257be2acc6a4662b0cfeb069c42c3b5851da97142c2b03ec12f248525a8e85e7",
+      "source_path": "benchmark_v1/scripts/build_qonductor_logical_recovery.py"
+    },
+    {
+      "path": "methods/real_qpu/cached_refit.py",
+      "source_sha256": "1a245e7b9881605034b3374acda4db4a6cb8adf2f8d71d1261ee30591820db9e",
+      "source_path": "methods/real_qpu/cached_refit.py"
+    },
+    {
+      "path": "methods/real_qpu/mali_full_features.py",
+      "source_sha256": "7aacb91d57b4efed1cc0c7d5314633bf81fd475a5e4c1b0c904065dde33735d1",
+      "source_path": "benchmark_v1/scripts/mali_full_features.py"
+    },
+    {
+      "path": "methods/real_qpu/mali_model.py",
+      "source_sha256": "02fd605cb28da81908e10e31e012cc51440541991b2b9cba92f9675fe7678d7e",
+      "source_path": "benchmark_v1/scripts/run_mali_full_features.py"
+    },
+    {
+      "path": "methods/real_qpu/materialize_canonical_corpus.py",
+      "source_sha256": "41693deaa5d67cc91a9a1c5cc2cfd3537bf8eea31e538adaa233851f2dfdfee5",
+      "source_path": "benchmark_v1/scripts/materialize_canonical_corpus.py"
+    },
+    {
+      "path": "methods/real_qpu/materialize_compiled_unified_qpu.py",
+      "source_sha256": "72f221c39b9be4388867bcce628deb403d897227d8a7fe06273c8ee294164f91",
+      "source_path": "benchmark_v1/scripts/materialize_compiled_unified_qpu_v1.py"
+    },
+    {
+      "path": "methods/real_qpu/materialize_qonductor_native_features.py",
+      "source_sha256": "6f9498fb0f3751debc9956edbf8597d7ef329bf453423f372d691962933b9222",
+      "source_path": "benchmark_v1/scripts/materialize_qonductor_native_features.py"
+    },
+    {
+      "path": "methods/real_qpu/materialize_qonductor_recipe_candidates.py",
+      "source_sha256": "fe9c3a6401b43608a1fb29177dd3a5c981d4954ff68bec87c3b21507c5d354b5",
+      "source_path": "benchmark_v1/scripts/materialize_qonductor_recipe_candidates.py"
+    },
+    {
+      "path": "methods/real_qpu/prepare_logical_benchmark.py",
+      "source_sha256": "8124d799a813b59c286c769db1ee7ef974c295a46db6be0540212ef06ad3eb96",
+      "source_path": "benchmark_v1/scripts/prepare_logical_benchmark.py"
+    },
+    {
+      "path": "methods/real_qpu/prepare_panel.py",
+      "source_sha256": "8175a456e7cd146a56ae227d2d0f954ebc095a6d97076f54e400515435b27580",
+      "source_path": "benchmark_v1/scripts/freeze_real_qpu_panel.py"
+    },
+    {
+      "path": "methods/real_qpu/prepare_snapshot_features.py",
+      "source_sha256": "642a56c6e03ac4349dc5c1773de18dc7683a63c267a591126bb78c37432a29d7",
+      "source_path": "benchmark_v1/scripts/run_recovery_c133_c135_v3.py"
+    },
+    {
+      "path": "methods/real_qpu/qasm3_hardware_wire_adapter.py",
+      "source_sha256": "9241c8f4a19ce595bf0b2b168e70c1e302fd64de73bce4c42ad8f5d1caa747d1",
+      "source_path": "benchmark_v1/scripts/qasm3_hardware_wire_adapter.py"
+    },
+    {
+      "path": "methods/real_qpu/qonductor_feature_tasks.py",
+      "source_sha256": "fc2c09db9f7441d76db921a2e4c357c888ba7f3b1afe73e294a37b322abc2b16",
+      "source_path": "benchmark_v1/scripts/qonductor_feature_tasks.py"
+    },
+    {
+      "path": "methods/real_qpu/qonductor_native_adapter.py",
+      "source_sha256": "c33742ca4e5ce735d41c5e57ea45ff7548fcca22f72562f1ef139ad2e292d2f4",
+      "source_path": "benchmark_v1/scripts/qonductor_native_adapter.py"
+    },
+    {
+      "path": "methods/real_qpu/qonductor_recovery_rules.py",
+      "source_sha256": "c821d87f271f190d6d583c9d7c595ebd2e0aa287508f3741cb3621e29ea64530",
+      "source_path": "benchmark_v1/scripts/qonductor_recovery_rules.py"
+    },
+    {
+      "path": "methods/real_qpu/run_analytical_extension.py",
+      "source_sha256": "760223ca3e888b6e4dd910652b2d5a586e176e43f197373727def6cc0c7f2819",
+      "source_path": "benchmark_v1/scripts/run_analytical_extension.py"
+    },
+    {
+      "path": "methods/real_qpu/run_archived_analytical_wave.py",
+      "source_sha256": "e217e4105807e45f96f83a7dc0ba57dbe11333c693a019ccca2b60bd88baad27",
+      "source_path": "benchmark_v1/scripts/run_archived_analytical_wave_v3.py"
+    },
+    {
+      "path": "methods/real_qpu/run_common_panel_analytical.py",
+      "source_sha256": "0935aa1ace12fdb89ec9e0484a979d3d9c9a6758e44757440d3b4508de74d260",
+      "source_path": "benchmark_v1/scripts/run_common_panel_analytical.py"
+    },
+    {
+      "path": "methods/real_qpu/run_common_panel_hyb.py",
+      "source_sha256": "ecb732b6672bdda6a495cbf1623ab31feffdadb775aa2c75aec37630495acc67",
+      "source_path": "benchmark_v1/scripts/run_common_panel_hyb.py"
+    },
+    {
+      "path": "methods/real_qpu/run_common_panel_qonductor.py",
+      "source_sha256": "3d5738256c995b7c9eb46a3f98023fe8f877be7ba852dcc8cacc1a6b1c5d5267",
+      "source_path": "benchmark_v1/scripts/run_common_panel_qonductor.py"
+    },
+    {
+      "path": "methods/real_qpu/run_mali_batched.py",
+      "source_sha256": "31ecca0d1794fa654281b04a04a70245bf7672be4ecc92ad4593a43df4bbd13a",
+      "source_path": "benchmark_v1/scripts/run_mali_batched.py"
+    },
+    {
+      "path": "methods/real_qpu/run_qonductor_native_unified.py",
+      "source_sha256": "ae612bb3da5aeacb632b3a6e19b49218b14c77edc529d92ed9098bc515d17b67",
+      "source_path": "benchmark_v1/scripts/run_qonductor_native_unified.py"
+    },
+    {
+      "path": "methods/real_qpu/run_scholten_unified.py",
+      "source_sha256": "bd52979ba4e7e0e2000d03dbeffbe5e20747c251a2d38f71023d07cd8f832152",
+      "source_path": "benchmark_v1/scripts/run_scholten_unified.py"
+    },
+    {
+      "path": "methods/real_qpu/train_mali.py",
+      "source_sha256": "9dcef745162109bacb2b349016f9e3fb8ca5cf3a12df82bcd3179a9e19aca11e",
+      "source_path": "benchmark_v1/scripts/run_common_panel_mali.py"
+    },
+    {
+      "path": "methods/real_qpu/validate_analytical_extension.py",
+      "source_sha256": "3e461113dd85d0f6026ec54d6ef848e5ff9fe14a80d3449be6f1a7d6e1cc76f9",
+      "source_path": "benchmark_v1/scripts/validate_analytical_extension.py"
+    },
+    {
+      "path": "methods/real_qpu/validate_common_panel_execution.py",
+      "source_sha256": "7d2481f7c596965e71924212d2fb36f857a5dcafce0fff3cd9155e780fcbcc52",
+      "source_path": "benchmark_v1/scripts/validate_common_panel_execution.py"
+    },
+    {
+      "path": "methods/real_qpu/validate_qonductor_archive_recipes.py",
+      "source_sha256": "b034c522169f961fac87662ed2575d2a72370e004b20cd13aa9630b6b14f3625",
+      "source_path": "benchmark_v1/scripts/validate_qonductor_archive_recipes.py"
+    },
+    {
+      "path": "methods/simulator/aggregate_family_aware_joint_mps.py",
+      "source_sha256": "fd945a0db6c53aaa0ca77c112ca11a548f5894cd3e8311367aafca184156bf0d",
+      "source_path": "benchmark_v1/scripts/aggregate_family_aware_joint_mps_v1.py"
+    },
+    {
+      "path": "methods/simulator/aggregate_predictive_oof.py",
+      "source_sha256": "2c33311f5242e690978267b70b0113391bf27b014700b7f499df06b239a8c088",
+      "source_path": "benchmark_v1/scripts/aggregate_predictive_oof_v1.py"
+    },
+    {
+      "path": "methods/simulator/analog_programs.py",
+      "source_sha256": "e37dbe09b53155f77673d2bc6b5b02612e24e8fa161094bf70a3484d2d4c2435",
+      "source_path": "tracks/pasqal_emu_mps/scripts/official_source_programs.py"
+    },
+    {
+      "path": "methods/simulator/cached_refit_inputs.py",
+      "source_sha256": "03d452d5825fff50c89051162208d97105829ec1a1eaf311a171e2fd98a7fe9e",
+      "source_path": "methods/simulator/cached_refit_inputs.py"
+    },
+    {
+      "path": "methods/simulator/evaluate_maestro_cpu_component.py",
+      "source_sha256": "78ed2341b14416dac3d2b49b93054a9c02d38e391c9b249e28f1b1e209bf5bf9",
+      "source_path": "benchmark_v1/scripts/evaluate_maestro_cpu_component_v1.py"
+    },
+    {
+      "path": "methods/simulator/fixed_target_reader.py",
+      "source_sha256": "aaffd16c0defaf8f64213eb724a30249ed288f5b43b765b2595129840996d5d0",
+      "source_path": "methods/simulator/fixed_target_reader.py"
+    },
+    {
+      "path": "methods/simulator/gpu_lease.py",
+      "source_sha256": "06915539e483e06ed8cb76e783eb649103fb06fecd9a69c8d1698b7e59b85421",
+      "source_path": "benchmark_v1/scripts/gpu_lease.py"
+    },
+    {
+      "path": "methods/simulator/graph_fold_model.py",
+      "source_sha256": "c2fb586ae64fe6d13331d52cab210ef6c8a4b436f9e7af068ff3d730c0c56ed3",
+      "source_path": "benchmark_v1/scripts/graph_fold_model.py"
+    },
+    {
+      "path": "methods/simulator/graph_microbatch.py",
+      "source_sha256": "3fba780b6eacfd5efcb1fab56f5242f59926b1ab3c147ec71dac7d215404299f",
+      "source_path": "benchmark_v1/scripts/graph_microbatch.py"
+    },
+    {
+      "path": "methods/simulator/materialize_azizov_common_core.py",
+      "source_sha256": "a09f8caee17a5f20321d612323f2415a9a35875af73f13b18f8672692eb3e915",
+      "source_path": "benchmark_v1/scripts/materialize_azizov_common_core_v1.py"
+    },
+    {
+      "path": "methods/simulator/measure_aer.py",
+      "source_sha256": "98fc09520087194124dad4a6d9b0fab84a364066404095e0c076d25d4e672d71",
+      "source_path": "tracks/azizov_independent/scripts/run_matrix.py"
+    },
+    {
+      "path": "methods/simulator/prepare_maestro_cpu_component.py",
+      "source_sha256": "8e473cfc34604ed69e9b127d686c9b29dfd34a466074fcd14dbc50e8e6e475d5",
+      "source_path": "benchmark_v1/scripts/prepare_maestro_cpu_component.py"
+    },
+    {
+      "path": "methods/simulator/preprocess_pasqal_analog.py",
+      "source_sha256": "7242c1b1cd0e5241262d0dcea52b6f90590c006992486aef61f0436b42eb6f8b",
+      "source_path": "methods/simulator/preprocess_pasqal_analog.py"
+    },
+    {
+      "path": "methods/simulator/recovered_target_common.py",
+      "source_sha256": "aea3724b2c82fb56e4f7640349ba87e097cb4aa7f2251a937e446b76c4756bd4",
+      "source_path": "benchmark_v1/scripts/r9_recovered_target_common_v1.py"
+    },
+    {
+      "path": "methods/simulator/recovered_target_inputs.py",
+      "source_sha256": "8e31f736f7db1b71fa72ed1db8311af11e09c23725116de8c06107496163b6e2",
+      "source_path": "benchmark_v1/scripts/recovered_target_inputs.py"
+    },
+    {
+      "path": "methods/simulator/resolve_maestro_optimizer_off_protocol.py",
+      "source_sha256": "2111f94da734c8fcde28a1ddc5616ff739224c7fb33c2019d59793ef6f722db8",
+      "source_path": "benchmark_v1/scripts/resolve_maestro_optimizer_off_protocol.py"
+    },
+    {
+      "path": "methods/simulator/run_azizov_common_core_adaptation.py",
+      "source_sha256": "66baf8c9477059dc7abf1b156f4ba386575d2797da0bfd7914ebf94c00112ab6",
+      "source_path": "benchmark_v1/scripts/run_azizov_common_core_adaptation_v1.py"
+    },
+    {
+      "path": "methods/simulator/run_common_cudaq_dense.py",
+      "source_sha256": "7b58892dd0c9049dfdf860e6cdccb3bbe3c1422a60ec54a855ebc9be93e3c71c",
+      "source_path": "benchmark_v1/scripts/run_common_cudaq_dense.py"
+    },
+    {
+      "path": "methods/simulator/run_common_cudaq_mps.py",
+      "source_sha256": "18c8e974fb221d2adabc00da4ac6408f9ecba6d4337fe8aa32091d75811eb528",
+      "source_path": "benchmark_v1/scripts/run_common_cudaq_mps.py"
+    },
+    {
+      "path": "methods/simulator/run_common_cutensornet_scalar.py",
+      "source_sha256": "209b3d1f6b85eb15fe8afb6f2fd2e9a0a294883dd5e6931b9d36181a4ed1f39d",
+      "source_path": "benchmark_v1/scripts/run_common_cutensornet_scalar.py"
+    },
+    {
+      "path": "methods/simulator/run_cudaq_dense_classical_predictors.py",
+      "source_sha256": "1db3e3daca7ad2ba527d2a0005fb955c732b8a140e5fd6a6c0d42bb9e5b48c7a",
+      "source_path": "benchmark_v1/scripts/run_cudaq_dense_classical_predictors_v1.py"
+    },
+    {
+      "path": "methods/simulator/run_cudaq_dense_neural_predictors.py",
+      "source_sha256": "aa816e0450ebee49ee35b433275ba4380be2089566b86bca1005cec9f3af44af",
+      "source_path": "benchmark_v1/scripts/run_cudaq_dense_neural_predictors_v1.py"
+    },
+    {
+      "path": "methods/simulator/run_family_aware_joint_mps_ladder.py",
+      "source_sha256": "6b5f3570faa6582a5647dc9352f7c1092c271d5261fe3e4a6baad62d6ce684d9",
+      "source_path": "benchmark_v1/scripts/run_family_aware_joint_mps_ladder_v1.py"
+    },
+    {
+      "path": "methods/simulator/run_family_residual_fixed_mps_runtime.py",
+      "source_sha256": "906c4be4c4832d95aef7e2f27fd72b1981d9fa60a01d546351fc50061482e771",
+      "source_path": "benchmark_v1/scripts/run_family_residual_fixed_mps_runtime_v1.py"
+    },
+    {
+      "path": "methods/simulator/run_fixed_mps_predictors.py",
+      "source_sha256": "ae80786adcb62fe2043a315710656693610e3b1a342f5b7e07ebb8d3a3ac0807",
+      "source_path": "benchmark_v1/scripts/run_fixed_mps_predictors.py"
+    },
+    {
+      "path": "methods/simulator/run_joint_mps_predictors.py",
+      "source_sha256": "652c8d07443aabdce6f8a91d9f60102ccefb3270d867f8d520adbfb4fb7ae2e6",
+      "source_path": "benchmark_v1/scripts/run_joint_mps_predictors.py"
+    },
+    {
+      "path": "methods/simulator/run_maestro_cpu_component.py",
+      "source_sha256": "73e29e5695242eec4c406f0d74d2fbc98c235d1bd3ae2b5d065808ceb30a67f2",
+      "source_path": "benchmark_v1/scripts/run_maestro_cpu_component_v1.py"
+    },
+    {
+      "path": "methods/simulator/run_mps_fixed_chi16_runtime_adaptation.py",
+      "source_sha256": "7731c6ef22704089122fd704f138bd207856909437bce9e03c7f6012812b5bd6",
+      "source_path": "benchmark_v1/scripts/run_mps_fixed_chi16_runtime_adaptation_v1.py"
+    },
+    {
+      "path": "methods/simulator/run_pasqal_analog_measurement.py",
+      "source_sha256": "74ca170a0a78eda2d83dcda4d850230f981ea03915463488b6d1ac85cf78adcd",
+      "source_path": "methods/simulator/run_pasqal_analog_measurement.py"
+    },
+    {
+      "path": "methods/simulator/run_pasqal_emu_mps_quality.py",
+      "source_sha256": "6d54dafb10c314815d6b6c2f67b2c5ec8694f0e3cd5cf8119a3fe26ab6a63c05",
+      "source_path": "benchmark_v1/scripts/run_pasqal_emu_mps_quality.py"
+    },
+    {
+      "path": "methods/simulator/train_family_aware_joint_mps.py",
+      "source_sha256": "29aa726d77b04485ba0ffc8add40207efda233269928cc565e641e5f8a067a2b",
+      "source_path": "benchmark_v1/scripts/train_family_aware_joint_mps_v1.py"
+    },
+    {
+      "path": "presentation/benchmark.pdf",
+      "source_sha256": "25a61751172911a66c36197e71f1ee1fe44104db4801d38f69ebb91d246c971e",
+      "source_path": "presentation/benchmark.pdf"
+    },
+    {
+      "path": "presentation/benchmark.pptx",
+      "source_sha256": "98116fc0400c29f8b21197796511408942696c75c67e952d52f181fb0c4f6bc3",
+      "source_path": "presentation/benchmark.pptx"
+    },
+    {
+      "path": "protocol/analytical_extension.json",
+      "source_sha256": "0c3a0d972b819cbca2546a5b62d2376afe894c1363360635866a2eb430506545",
+      "source_path": "benchmark_v1/protocol/analytical_extension.json"
+    },
+    {
+      "path": "protocol/azizov_common_core_gnn.json",
+      "source_sha256": "5c800d77b5230342afce1e0f0f38c711b20e7317b3023d2ba20e1c2a2451549b",
+      "source_path": "benchmark_v1/protocol/azizov_common_core_gnn_v1.json"
+    },
+    {
+      "path": "protocol/azizov_local_feature_dictionary.json",
+      "source_sha256": "100c994c852ca8cf33150f971ce2f5716465ab5822a9efaf6f240e3ea5a2fa94",
+      "source_path": "benchmark_v1/protocol/azizov_local_feature_dictionary_v1.json"
+    },
+    {
+      "path": "protocol/circuit_representation.json",
+      "source_sha256": "56c016e8073d489baa2e6bf82e91940c3be4e052964764763d84ffb8ae645d8f",
+      "source_path": "benchmark_v1/protocol/circuit_representation_v3.json"
+    },
+    {
+      "path": "protocol/common_panel_completion.json",
+      "source_sha256": "ee1625355e4aa7636f8a647abc545477e31c6c3aa11c3bf48184de510b2c766c",
+      "source_path": "benchmark_v1/protocol/common_panel_completion.json"
+    },
+    {
+      "path": "protocol/cudaq_dense_statevector_predictor_comparison.json",
+      "source_sha256": "7598f38996c9e872245be503ac21f237d4aae0c95182127fa3ef3f3b03520258",
+      "source_path": "benchmark_v1/protocol/cudaq_dense_statevector_predictor_comparison_v1.json"
+    },
+    {
+      "path": "protocol/data_sources.json",
+      "source_sha256": "2c993c21e10cfe3d6668e5d278dff0da693f29820ab3c5d5e832252783ecdd65",
+      "source_path": "benchmark_v1/registry/data_registry.json"
+    },
+    {
+      "path": "protocol/estimator_execution.json",
+      "source_sha256": "31eb25fdf11f8b9c0676f12dd3217ba44ab17f20fed32014005985a925da6c21",
+      "source_path": "benchmark_v1/protocol/estimator_execution.json"
+    },
+    {
+      "path": "protocol/family_aware_joint_runtime_quality_mps.json",
+      "source_sha256": "0019e8b39b3952561a8753f5ea4055a3b98c8471a6f11617ea339df1487f9563",
+      "source_path": "benchmark_v1/protocol/family_aware_joint_runtime_quality_mps_v1.json"
+    },
+    {
+      "path": "protocol/family_residual_runtime_only.json",
+      "source_sha256": "753db02950abb1a3db52f6ac39bfab91c841e0acf56dca69e4a95def0bee9e80",
+      "source_path": "benchmark_v1/protocol/family_residual_runtime_only_v1.json"
+    },
+    {
+      "path": "protocol/logical_input_review.json",
+      "source_sha256": "35b06125fc953d79e64ee41841a209d1371e84a2672d72cc4be774263438df96",
+      "source_path": "benchmark_v1/protocol/logical_input_review.json"
+    },
+    {
+      "path": "protocol/maestro_cpu_component_benchmark.json",
+      "source_sha256": "48eb56f29a54c1f5249f153fd91a4588bc87b7e464c9a2c998358f0478a17354",
+      "source_path": "benchmark_v1/protocol/maestro_cpu_component_benchmark.json"
+    },
+    {
+      "path": "protocol/maestro_cpu_component_optimizer_off.json",
+      "source_sha256": "2b1cbb5606603046fb6e2c4b778aff2d6235e32a4fb8156026a791087df2b610",
+      "source_path": "benchmark_v1/protocol/maestro_cpu_component_optimizer_off.json"
+    },
+    {
+      "path": "protocol/mali_batch_optimization.json",
+      "source_sha256": "c3a1ef59e174ab77cbdf894a03f40a56c102c5b7ca77d805239e2fa1971b06a1",
+      "source_path": "benchmark_v1/protocol/mali_batch_optimization.json"
+    },
+    {
+      "path": "protocol/mali_full_features.json",
+      "source_sha256": "2ae0d35eb83124e5ca592dc00f9e0b44f46dbd296011e536c3ad5a54a0252c6f",
+      "source_path": "benchmark_v1/protocol/mali_full_features.json"
+    },
+    {
+      "path": "protocol/measurement/cudaq_verified_bridge.json",
+      "source_sha256": "7cc55f45a27e313d9d5e47ea9b79ca6f18e1b7379f1c24e1a468ccafed3f3a87",
+      "source_path": "benchmark_v1/execution/manifests/cudaq_verified_bridge_v1.json"
+    },
+    {
+      "path": "protocol/measurement/pasqal_emu_mps_formula_crossed_pilot.json",
+      "source_sha256": "5e340dedc36a8e53ce858eeb8be78a212dd672fb3609e9df35426fd9bcf11e0d",
+      "source_path": "benchmark_v1/execution/manifests/pasqal_emu_mps_formula_crossed_pilot_v1.json"
+    },
+    {
+      "path": "protocol/measurement/simulator_environment_lock.json",
+      "source_sha256": "08624ffa11ba12805e15eec93be573068b02cd362b1092c19694369ec76b21a8",
+      "source_path": "benchmark_v1/execution/manifests/simulator_environment_lock_v1.json"
+    },
+    {
+      "path": "protocol/qonductor_logical_recovery.json",
+      "source_sha256": "10f20a32a37bbba0f9d0dcdd5089cffc2e7ee45a9177dc9e99ac2dced96a52ef",
+      "source_path": "benchmark_v1/protocol/qonductor_logical_recovery.json"
+    },
+    {
+      "path": "protocol/qonductor_native_features.json",
+      "source_sha256": "f7d62c2a10eef7e347b8e691c1e0463777abd86d6328ef9c3051e194997b0484",
+      "source_path": "benchmark_v1/protocol/qonductor_native_features.json"
+    },
+    {
+      "path": "protocol/real_qpu_common_panel.json",
+      "source_sha256": "061d44d5c624da56064226f660f086275b389a7f9769bab7aab9dbf4e6980747",
+      "source_path": "benchmark_v1/protocol/real_qpu_common_panel.json"
+    },
+    {
+      "path": "protocol/reporting.json",
+      "source_sha256": "03853edab47eab046d98843ce0099bc60719d7aba8d0181d7c9a8a38d94ae537",
+      "source_path": "benchmark/protocol/common_panel_reporting.json"
+    },
+    {
+      "path": "protocol/scholten_unified_nominal.json",
+      "source_sha256": "4bc35e8576df8c943818800fb521298d93e6b793df02de56d564c6960fce5e40",
+      "source_path": "benchmark_v1/protocol/scholten_unified_nominal.json"
+    },
+    {
+      "path": "protocol/seeds.json",
+      "source_sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864",
+      "source_path": "benchmark_v1/registry/seed_registry.json"
+    },
+    {
+      "path": "protocol/simulator_completion_gates.json",
+      "source_sha256": "74593475974b68ca003f991f1477d12ff67f0c22bdda567b46b9675011baf584",
+      "source_path": "benchmark_v1/protocol/simulator_completion_gates_v1.json"
+    },
+    {
+      "path": "protocol/snapshot_policy.json",
+      "source_sha256": "becf6da59b17fbf406f5c48f68fc71eb0a89acd47e9763e17a84c6fc4ee5f538",
+      "source_path": "benchmark_v1/protocol/snapshot_policy_v3.json"
+    },
+    {
+      "path": "provenance/upstream.json",
+      "source_sha256": "1ee1722b0109283874c2c20c431b6536c292873da2ceaf59c4fbde70b68ce976",
+      "source_path": "upstream/upstream.lock.json"
+    },
+    {
+      "path": "requirements-pasqal-measurement.txt",
+      "source_sha256": "385595bca4c47dc6bb1a9719152ebd106ef8e4dedf2ae25e8e0068404ae3b274",
+      "source_path": "requirements-pasqal-measurement.txt"
+    },
+    {
+      "path": "requirements-pasqal-preprocess.txt",
+      "source_sha256": "5aaac6844f854c5d5d33464c1d23317cdc821f3a36e629653c84a454e0e5421e",
+      "source_path": "requirements-pasqal-preprocess.txt"
+    },
+    {
+      "path": "results/figures/coverage_and_quality.png",
+      "source_sha256": "5a5e6a34d4b7d494f873e3d30b6f61b1594a11d8a71927502d56c9893c445972",
+      "source_path": "results/figures/coverage_and_quality.png"
+    },
+    {
+      "path": "results/figures/coverage_and_quality.svg",
+      "source_sha256": "87b903a347fbb98e91b32cc822c269126468df579efd965232489c080a3d096c",
+      "source_path": "results/figures/coverage_and_quality.svg"
+    },
+    {
+      "path": "results/figures/dataset_composition.png",
+      "source_sha256": "11997b36464661ee4c9cc1b76b15c87af60d6f073840a6479648fed6e541b238",
+      "source_path": "results/figures/dataset_composition.png"
+    },
+    {
+      "path": "results/figures/dataset_composition.svg",
+      "source_sha256": "a48473f48dbe76782cccc092188dc5eb53603fe53b348e13900c4acfde893975",
+      "source_path": "results/figures/dataset_composition.svg"
+    },
+    {
+      "path": "results/figures/manifest.json",
+      "source_sha256": "00f0a4e3878ec78bd766b3eef9a091ccd735e280e0898aa8234ccd953c30c21f",
+      "source_path": "results/figures/manifest.json"
+    },
+    {
+      "path": "results/figures/paired_method_differences.png",
+      "source_sha256": "44c2b2d02b79b23e7f98413223676949e2883a3ce039343106f4bc8f283ee003",
+      "source_path": "results/figures/paired_method_differences.png"
+    },
+    {
+      "path": "results/figures/paired_method_differences.svg",
+      "source_sha256": "7cf4a29c3ccb8b12d068c572de1033567d7dbd85f6adb05d77667862a925f551",
+      "source_path": "results/figures/paired_method_differences.svg"
+    },
+    {
+      "path": "results/figures/simulator_method_errors.png",
+      "source_sha256": "50ad9640f04963d46713881f0970c5dcf247f633af06f3da9acc80fb87204a4e",
+      "source_path": "results/figures/simulator_method_errors.png"
+    },
+    {
+      "path": "results/figures/simulator_method_errors.svg",
+      "source_sha256": "dcda2d27a6fae18ead8b6b5c2fbb0bb4322400adbd48f479542fe11838dac892",
+      "source_path": "results/figures/simulator_method_errors.svg"
+    },
+    {
+      "path": "results/real_qpu/analysis/analysis_metrics.csv",
+      "source_sha256": "f784cd177c852f9bc866052427d0a48ddd5bc99d0ed0d4628f733bb389dbda47",
+      "source_path": "artifacts/real_qpu/common_panel/analysis/analysis_metrics.csv"
+    },
+    {
+      "path": "results/real_qpu/analysis/analysis_pairs.csv",
+      "source_sha256": "ab901c77f9f3fe3a067136518d7af40d65149f6985c046f7106d72f0d3d21e5e",
+      "source_path": "artifacts/real_qpu/common_panel/analysis/analysis_pairs.csv"
+    },
+    {
+      "path": "results/real_qpu/analysis/dataset_profile.csv",
+      "source_sha256": "0dbafd3fed00820636049b638d85aeb4676e460574f5a4d3aa69a8243820ebb9",
+      "source_path": "artifacts/real_qpu/common_panel/analysis/dataset_profile.csv"
+    },
+    {
+      "path": "results/real_qpu/analysis/fold_feature_masks.csv",
+      "source_sha256": "4653970e68311d83818bd1a6909609e424184844cbef6be85d811aa770cc6718",
+      "source_path": "artifacts/real_qpu/common_panel/analysis/fold_feature_masks.csv"
+    },
+    {
+      "path": "results/real_qpu/method_comparison.csv",
+      "source_sha256": "36622338d1b5c91e5d1530c71691b007ac8c3758493d7810d5db82ea7588a3ef",
+      "source_path": "results/real_qpu/method_comparison.csv"
+    },
+    {
+      "path": "results/real_qpu/method_comparison.md",
+      "source_sha256": "0f57fd51cf629eda550dc5ff9241763b5e80e970dc9c050a2ad5978e72d350ae",
+      "source_path": "results/real_qpu/method_comparison.md"
+    },
+    {
+      "path": "results/real_qpu/summary/coverage.csv",
+      "source_sha256": "2a23907c47a1b86ce6eaaaf6bce2fd0d62f85560e959ac89f3e00e2d40fc56d1",
+      "source_path": "artifacts/real_qpu/common_panel/summary/coverage.csv"
+    },
+    {
+      "path": "results/real_qpu/summary/method_metrics.csv",
+      "source_sha256": "128bb71f75acfada81f7cebd0924a380f4a523961d36fb52b0a57cbb413801ee",
+      "source_path": "artifacts/real_qpu/common_panel/summary/method_metrics.csv"
+    },
+    {
+      "path": "results/real_qpu/summary/paired_metrics.csv",
+      "source_sha256": "c392bd5ccb01a0aa43dcc4dd4ab3996e1a82036694cf6b235713b4d834de997d",
+      "source_path": "artifacts/real_qpu/common_panel/summary/paired_metrics.csv"
+    },
+    {
+      "path": "results/real_qpu/summary/source_and_reconstruction_metrics.csv",
+      "source_sha256": "355f484fa582f9bb43b1535c73d23ba5bc69c1a950221b00a30d73c6ca3621c9",
+      "source_path": "artifacts/real_qpu/common_panel/summary/source_and_reconstruction_metrics.csv"
+    },
+    {
+      "path": "results/real_qpu/summary/unavailable_reasons.csv",
+      "source_sha256": "ac2c936a7e494e1cbd685f107f752752799d096a40215dbcf18876eb9ece1011",
+      "source_path": "artifacts/real_qpu/common_panel/summary/unavailable_reasons.csv"
+    },
+    {
+      "path": "results/simulator/method_comparison.csv",
+      "source_sha256": "8dac2290caa6c28eebcd2862b4bd0f5c3d95fa9025ca7c47c8e2a13bfc62b147",
+      "source_path": "results/simulator/method_comparison.csv"
+    },
+    {
+      "path": "results/simulator/method_comparison.md",
+      "source_sha256": "4e72bb5d9fb39d4a4d1429f507682fbe53274b4b7131e445fe526ac18ef6feae",
+      "source_path": "results/simulator/method_comparison.md"
+    },
+    {
+      "path": "methods/reporting/analyze_results.py",
+      "source_sha256": "83b188247b6aad9e1e95d0b0ed6b5f5370533fb6716f6d42f5e13e6091a29352",
+      "source_path": "scripts/analyze_results.py"
+    }
+  ],
+  "omitted_paths": [
+    ".github/workflows/reproduce.yml",
+    ".gitignore",
+    "AGENTS.md",
+    "README.md",
+    "data/real_qpu/analytical_components/components.csv",
+    "data/real_qpu/analytical_components/run_manifest.json",
+    "data/real_qpu/archive/canonical_observations.csv",
+    "data/real_qpu/archive/manifest.json",
+    "data/real_qpu/execution_record.json",
+    "data/real_qpu/inputs/compiled_graph_file_hashes.json",
+    "data/real_qpu/inputs/compiled_representation_rows.csv",
+    "data/real_qpu/inputs/feature_attempts.csv",
+    "data/real_qpu/inputs/feature_manifest.json",
+    "data/real_qpu/inputs/graphs/01089a8245c53644d2ba93932ae1d9e8c969184a.npz",
+    "data/real_qpu/inputs/graphs/012a2b80b6b4c1493a00babef076192176b13f0f.npz",
+    "data/real_qpu/inputs/graphs/015b6bd055532b92b8bc2cba9a376df0d02a2538.npz",
+    "data/real_qpu/inputs/graphs/02246c30de7b35100a6cde96cce1909b1c6ee4c6.npz",
+    "data/real_qpu/inputs/graphs/02eefbeaa31aa8562f3893b6228a8c49c174b4bd.npz",
+    "data/real_qpu/inputs/graphs/0303c28b1918658cc2bb99f5bc6fe0b8f4928f39.npz",
+    "data/real_qpu/inputs/graphs/0345ef01fb1b8d57779625453d2009c0e7086058.npz",
+    "data/real_qpu/inputs/graphs/03f357b040f48a14a8a3e5873284fd9a218d22d7.npz",
+    "data/real_qpu/inputs/graphs/0427b67cbb87af763cebb495f415cfe5f6775e31.npz",
+    "data/real_qpu/inputs/graphs/047403c80ea38914ff43f592d9d5cf87a96b41aa.npz",
+    "data/real_qpu/inputs/graphs/04c1747fed2ca8b5a49a73958a0db11962d8ba8b.npz",
+    "data/real_qpu/inputs/graphs/058cfc5d3885075bd4df857241d6b4b7b7633fb9.npz",
+    "data/real_qpu/inputs/graphs/05f8740229b8c36a974980546e2fb97723e76007.npz",
+    "data/real_qpu/inputs/graphs/062cf7f8c055c5c03c78cd25ce7dc14b23ad6001.npz",
+    "data/real_qpu/inputs/graphs/0720bd00b982a3c37681a3e81e2527a520c8cbb1.npz",
+    "data/real_qpu/inputs/graphs/078aa86dd2664a40c10e7b30a9fb59692b417d16.npz",
+    "data/real_qpu/inputs/graphs/09d1b9a96fdafc32a40e1096b0e65118177dbff1.npz",
+    "data/real_qpu/inputs/graphs/0b8303635d95e141366c5564f7bd873dd0a2a52a.npz",
+    "data/real_qpu/inputs/graphs/0bdf75a502b7b6101be00e33999b31ac7d6faea8.npz",
+    "data/real_qpu/inputs/graphs/0c34cb00cda1cbf790fdd2d52d851669643c7993.npz",
+    "data/real_qpu/inputs/graphs/0c6be5918d1a871cfe2b714b3ef8b755ad19b80d.npz",
+    "data/real_qpu/inputs/graphs/0cc36a463ea2551eb7fa8b3a04b2e1bb88b622ee.npz",
+    "data/real_qpu/inputs/graphs/0cdf3feee0d70f12671b5898bcdc96933cb76ec5.npz",
+    "data/real_qpu/inputs/graphs/0cfb06cf9cfb1ed4f814054ffa21efa588058f2b.npz",
+    "data/real_qpu/inputs/graphs/0d387c47a7a99610bdc0dbd000f2d1f547d972c6.npz",
+    "data/real_qpu/inputs/graphs/0ec53cc5b74cc66df058d076ff6927b3ac648508.npz",
+    "data/real_qpu/inputs/graphs/0f87b2e65a727d9d656da89ad447f54817b79705.npz",
+    "data/real_qpu/inputs/graphs/0fd6f3958728b294ead71455076af19d85f39fd8.npz",
+    "data/real_qpu/inputs/graphs/1013a6391a98116ae9dd6cd7e1720569a9100979.npz",
+    "data/real_qpu/inputs/graphs/1024ea2cf2f05ec2728f5d13880e429552f4c06c.npz",
+    "data/real_qpu/inputs/graphs/1066f314ddc7ce568e7b1bbf95249cb89a63f0c6.npz",
+    "data/real_qpu/inputs/graphs/10709b68012303d244248827fa61a80d71faa238.npz",
+    "data/real_qpu/inputs/graphs/1085f3b2f2c31feca474461ce31c0bb57fe3602c.npz",
+    "data/real_qpu/inputs/graphs/11688e67328c40aa022dab0b371a616e8a4130da.npz",
+    "data/real_qpu/inputs/graphs/116ba2efffb1ccd569dd9f05e08d5c11b44750c8.npz",
+    "data/real_qpu/inputs/graphs/1183f5ec13da039daa4bca4f3eb7d322af1f9618.npz",
+    "data/real_qpu/inputs/graphs/11fcf7d9c9e9660579e0075f2a67353599ad0189.npz",
+    "data/real_qpu/inputs/graphs/1309529e135553f9b5cccd0913f20e0a434c6ba3.npz",
+    "data/real_qpu/inputs/graphs/13294150302d0b3f2b67ca63d71acc62a3c5859c.npz",
+    "data/real_qpu/inputs/graphs/1377cd730b90b73ced681b73dc1a2d8735e2779f.npz",
+    "data/real_qpu/inputs/graphs/137c25827a1086420317f7450953484c92bed0a2.npz",
+    "data/real_qpu/inputs/graphs/142e809e5e771853c02e5b0c10dbcc96a0ff2cdb.npz",
+    "data/real_qpu/inputs/graphs/1430885e040896327510db9ad45d2af3cf7f7638.npz",
+    "data/real_qpu/inputs/graphs/14d541ac4b065857cb35177c8c3d9b35cb41bbf8.npz",
+    "data/real_qpu/inputs/graphs/152a86a29d9b99bcf8a8d18142ae7535778ed964.npz",
+    "data/real_qpu/inputs/graphs/15f97b4dceb44f8518e8c9cf253b7d1387ca7214.npz",
+    "data/real_qpu/inputs/graphs/16743b6d8fda33f68cffd2cb147619386494b0e3.npz",
+    "data/real_qpu/inputs/graphs/173e7b6c5964970de108baa3d81f408d169ea8ab.npz",
+    "data/real_qpu/inputs/graphs/18d89c2651ed97e129a226b10fc4ebac6a237913.npz",
+    "data/real_qpu/inputs/graphs/195bfcf5d6f808d8542c294196b933705e13d8f1.npz",
+    "data/real_qpu/inputs/graphs/196e19b39d17320fbf445a8cd76b4bd3fe7aa71f.npz",
+    "data/real_qpu/inputs/graphs/1a341f7b0935dbdc11183cf24833f0384f6093b6.npz",
+    "data/real_qpu/inputs/graphs/1b7dc76c8eaf520eef27ea633bc2e8cdf6eee855.npz",
+    "data/real_qpu/inputs/graphs/1b944b6d8266c7896d6a6fa3f4a4db69fe582cb0.npz",
+    "data/real_qpu/inputs/graphs/1bedda27a472fc637893fc67d4aced8898066c9f.npz",
+    "data/real_qpu/inputs/graphs/1c50938f50df0aa47fc39d4e179bdc917082bd81.npz",
+    "data/real_qpu/inputs/graphs/1c6ac17d15400508214d5b3c3019b10d440f4588.npz",
+    "data/real_qpu/inputs/graphs/1e009b69ff2a4597857d25c07a18fba7b78e9c03.npz",
+    "data/real_qpu/inputs/graphs/1e292aed29fb8c29319db737e10a87e23893c7a9.npz",
+    "data/real_qpu/inputs/graphs/1f00537c808c1c7934f6cba5cd39521513ec6b63.npz",
+    "data/real_qpu/inputs/graphs/1f062d38b90f9274d0fbdbad2eb049844f587694.npz",
+    "data/real_qpu/inputs/graphs/1f166fe9a9ecfe1be109c6c3113322a0f243626c.npz",
+    "data/real_qpu/inputs/graphs/1f4b4c3b7593d2976ce0cf66ad31f8658a46c19f.npz",
+    "data/real_qpu/inputs/graphs/1f576bbce71043f02e8ddefd135df740dd4ab36b.npz",
+    "data/real_qpu/inputs/graphs/1fac6f118f617e95f322434cb12dde7b39751e4e.npz",
+    "data/real_qpu/inputs/graphs/20db1e9c377d07225d73ed7e69aaf3bdb86d9c5e.npz",
+    "data/real_qpu/inputs/graphs/2134309a70c2125ef81022601bf0d9132eb64667.npz",
+    "data/real_qpu/inputs/graphs/21eb5b8ff055334314d3d6bdfbe14df860cb1684.npz",
+    "data/real_qpu/inputs/graphs/22b2d62107b15e6de8e678451557b182ab379949.npz",
+    "data/real_qpu/inputs/graphs/248170173c39a1657d7f171f08f524f2a6518ebe.npz",
+    "data/real_qpu/inputs/graphs/2499c395fd5eeeaefc362b23bf2240999a9c10fe.npz",
+    "data/real_qpu/inputs/graphs/254dcff25f1932750fb1a74a04af5ee6a0a527f0.npz",
+    "data/real_qpu/inputs/graphs/254e061da3d5e6164a9addbe48304610e0ca6239.npz",
+    "data/real_qpu/inputs/graphs/25681ed7387c249c1d36f8b17cb94169e4e1654f.npz",
+    "data/real_qpu/inputs/graphs/2615a4401c518a69803dc7528708ce2bc9ee7000.npz",
+    "data/real_qpu/inputs/graphs/265dc54bfb09122f9b7ef27225cea6532f0a1fe1.npz",
+    "data/real_qpu/inputs/graphs/278c312b166dc66d478e19e1a7d72068f051d3a9.npz",
+    "data/real_qpu/inputs/graphs/282151ae8affbda9ace12f5b93bd19231fe89b52.npz",
+    "data/real_qpu/inputs/graphs/28615a8e0c21b1470d1725b4ccc20ffd18296936.npz",
+    "data/real_qpu/inputs/graphs/286cb61f442c57258dc6311e3919ee5e831c4b92.npz",
+    "data/real_qpu/inputs/graphs/28cef8f7e270c1482b6c9f50975c142d077cec14.npz",
+    "data/real_qpu/inputs/graphs/29093af55e699dadb1f1136069727f77283ee616.npz",
+    "data/real_qpu/inputs/graphs/2996c52dafec49d7c4fd2ddb7270923158d822aa.npz",
+    "data/real_qpu/inputs/graphs/299c76cc835033273aaee44cb60044eb44a3d7bc.npz",
+    "data/real_qpu/inputs/graphs/2a47f49ba647c52f6a020199ef3f753a029f1701.npz",
+    "data/real_qpu/inputs/graphs/2a99a0eea91b01ee5e1000a9a141f998b81f0b7b.npz",
+    "data/real_qpu/inputs/graphs/2adfbfc2b07dbbbb7c692f62c008f71a45d37709.npz",
+    "data/real_qpu/inputs/graphs/2afe17704d801c84577f12b9b8849054d3f87505.npz",
+    "data/real_qpu/inputs/graphs/2b558f19067f1d581a9ae8082bb4ab7439cb2517.npz",
+    "data/real_qpu/inputs/graphs/2b6e30ce0f43ba739fc8c1a75d018a05f05c95cc.npz",
+    "data/real_qpu/inputs/graphs/2bdcfb48fab24214af75fbc7da2bccc4060d65a2.npz",
+    "data/real_qpu/inputs/graphs/2bfd64d77d200373c0d2b24ce02999500222cb0d.npz",
+    "data/real_qpu/inputs/graphs/2c85ec7e047a9bc76c7a37f9abffd0590cacecbe.npz",
+    "data/real_qpu/inputs/graphs/2d3b23e3e65ea57840b8074b9252ecfd3a8c9e5b.npz",
+    "data/real_qpu/inputs/graphs/2d718014330d3c66248a341b85f73bfe2281bb04.npz",
+    "data/real_qpu/inputs/graphs/2e26d0624c2202ae6bc912b61244ad590175f35e.npz",
+    "data/real_qpu/inputs/graphs/2ea3f409ae0f1dc8d5cbb7cd07ae093d52437020.npz",
+    "data/real_qpu/inputs/graphs/2fe2c592033b5fef05bc292b3ee97dce95b80c3c.npz",
+    "data/real_qpu/inputs/graphs/30acd084562183dea1d44aedd93e069e333a84ce.npz",
+    "data/real_qpu/inputs/graphs/311c2e08d4e4ba236ba677ae54d9bed003c46c77.npz",
+    "data/real_qpu/inputs/graphs/31cec0fbec1ed229a5467a1191abd11b654bcf46.npz",
+    "data/real_qpu/inputs/graphs/32d720e5514d361f258fad8fafc8470a511469d4.npz",
+    "data/real_qpu/inputs/graphs/3308019b59cc8382b17bae2f55b868cca8016881.npz",
+    "data/real_qpu/inputs/graphs/331f208fb68f21daeab52238778699bd84be4215.npz",
+    "data/real_qpu/inputs/graphs/3459de4e471050c21c9b09c089462ac7293f3038.npz",
+    "data/real_qpu/inputs/graphs/34d7898089c6ce658b669ad959798ed9735fc241.npz",
+    "data/real_qpu/inputs/graphs/354ba2d343a73bf164d13cdb3d171cb59011e844.npz",
+    "data/real_qpu/inputs/graphs/3671e95335c78cb398bf7ae9681546c23a78bdc2.npz",
+    "data/real_qpu/inputs/graphs/369c1b9e2dc7e71d82943bcd946ef6804eb13af2.npz",
+    "data/real_qpu/inputs/graphs/36df5c86a83352d8487aabb6a7d92b9740c8ece5.npz",
+    "data/real_qpu/inputs/graphs/36f957d2d879514cea323a6afb24445795e44236.npz",
+    "data/real_qpu/inputs/graphs/3752f1542fa0f212be2062ae7a05c962fa008b32.npz",
+    "data/real_qpu/inputs/graphs/377f06a67d56da6993958cfd6ef2691a792092e3.npz",
+    "data/real_qpu/inputs/graphs/37a20de9bf331b53ca6c88a10e30943cb6a0da54.npz",
+    "data/real_qpu/inputs/graphs/37e3e4ef929ae8803e79a3df5aca8215f4306b66.npz",
+    "data/real_qpu/inputs/graphs/38fef4e5849555c536a78c72b1b21633af3b7a9d.npz",
+    "data/real_qpu/inputs/graphs/3a30ea0ccd5f33d0704ce2ab2cc9afb736842270.npz",
+    "data/real_qpu/inputs/graphs/3b30f060a2e19d86bfc961523067da0a784d2272.npz",
+    "data/real_qpu/inputs/graphs/3c178fd7d2aae214e8a412a15c0f80e2157e9560.npz",
+    "data/real_qpu/inputs/graphs/3c4936c02ae8154527c097ec7b296ec9b5f30091.npz",
+    "data/real_qpu/inputs/graphs/3d39617cf3e4c38b8dee49cee9a073298fdb6062.npz",
+    "data/real_qpu/inputs/graphs/3dc6f1585ded40a87fefe3c7c7aa6dd4769947dc.npz",
+    "data/real_qpu/inputs/graphs/3f2fa4dc381647cc182744eefa5198fbd6c4baf2.npz",
+    "data/real_qpu/inputs/graphs/3f59a8c95e4aad408214a69ca41e456eea43b4af.npz",
+    "data/real_qpu/inputs/graphs/406cdb1544e1b603afc1ff2738f53ccfde8d63ae.npz",
+    "data/real_qpu/inputs/graphs/40cb001a5463f487f833862a1912379f4487bcc2.npz",
+    "data/real_qpu/inputs/graphs/412c277f538ef475df78aca3e87cb1e703a39f6b.npz",
+    "data/real_qpu/inputs/graphs/41743d5d71d6f5e9cfb2a1c4333f485520c6f668.npz",
+    "data/real_qpu/inputs/graphs/4279c0133432fda11db64f230a0866a38f4d5c4e.npz",
+    "data/real_qpu/inputs/graphs/42f0e6b6539afe081ea633671b28e97a3bbd0d3b.npz",
+    "data/real_qpu/inputs/graphs/433d85c7022dddc049bd696f7cb66c0a1d0eb019.npz",
+    "data/real_qpu/inputs/graphs/43983f179393e04da102e85962cf3a359a55f901.npz",
+    "data/real_qpu/inputs/graphs/44ce744019dcee4042e35058469674c1ee243fe5.npz",
+    "data/real_qpu/inputs/graphs/44fd0c0601b05ac9cd24e56741cbaf43de953b0a.npz",
+    "data/real_qpu/inputs/graphs/4512062f931c532f1b6e4a935bd6626db3521a04.npz",
+    "data/real_qpu/inputs/graphs/45746d3e6e2db9573e663b9c0b80f422fec99eae.npz",
+    "data/real_qpu/inputs/graphs/459366fdcb537ad732fa6aef6381124242331084.npz",
+    "data/real_qpu/inputs/graphs/46667ea330fd516129702b54f295a07430169ca1.npz",
+    "data/real_qpu/inputs/graphs/48b10e6d008ce4244bc35150bf835aeb37950216.npz",
+    "data/real_qpu/inputs/graphs/4acfad1e0e5ffbbe73fd0f82924f70d895f48d78.npz",
+    "data/real_qpu/inputs/graphs/4cdbd14031118d39bb88d62797e3e90e7b234fda.npz",
+    "data/real_qpu/inputs/graphs/4d27598894295e6e9f42b2c768764b93592f9e48.npz",
+    "data/real_qpu/inputs/graphs/4d97d9f85a18aa071b6100c5a6a40dcf671e1ab2.npz",
+    "data/real_qpu/inputs/graphs/4de77e83ab482f63ce3d7f7c983366006439e390.npz",
+    "data/real_qpu/inputs/graphs/4ef701bee3a545c8ce69aae296b45c0813a76336.npz",
+    "data/real_qpu/inputs/graphs/4f3705205e1e6fbf9c6e4c4debe7db8b4c1ae9da.npz",
+    "data/real_qpu/inputs/graphs/4fe7fd40eb90e26330aef13e848ddd6b6a6be5dd.npz",
+    "data/real_qpu/inputs/graphs/5103a0c96e8cd23ccdf21d050b27804944978c66.npz",
+    "data/real_qpu/inputs/graphs/5220ac6c3d44ef7bc7e3f6a53a010fa0855733c8.npz",
+    "data/real_qpu/inputs/graphs/53955fb8a2fd5297efddbc2df147d8a0a4945016.npz",
+    "data/real_qpu/inputs/graphs/547411e4d101d8f99a15d2678bb193ab218a4c13.npz",
+    "data/real_qpu/inputs/graphs/549d0c4d875d35c350f03a6b2568caed6eaa82a5.npz",
+    "data/real_qpu/inputs/graphs/54ef54a000319067007ed16af7eabcac96d321d7.npz",
+    "data/real_qpu/inputs/graphs/54fcc46089c3151d445513018a6c299ffc6aedad.npz",
+    "data/real_qpu/inputs/graphs/550af0cbbc7c9c8930a79bff316be33c286490a7.npz",
+    "data/real_qpu/inputs/graphs/554f0a49853614fdd087632a44c1e356b8f555e2.npz",
+    "data/real_qpu/inputs/graphs/55e0e562dcd74a9f8101ab1f8d7a758d996bb381.npz",
+    "data/real_qpu/inputs/graphs/55f6c6fc7c6f8cc5e0a2419b4387e4a591e5cdef.npz",
+    "data/real_qpu/inputs/graphs/569bf05b2635172894c4bbbfaf1d7d6f69fbc42d.npz",
+    "data/real_qpu/inputs/graphs/56f7879e5510896b070982c74d8c4ccde78d7ff9.npz",
+    "data/real_qpu/inputs/graphs/57fa47bedffe657272c59f5782ca22dcea47a44a.npz",
+    "data/real_qpu/inputs/graphs/58772f0df48d83447a121694d2fe2230fdf50845.npz",
+    "data/real_qpu/inputs/graphs/58cd8334d4168c5b2723c25b57593a5ca823b68c.npz",
+    "data/real_qpu/inputs/graphs/59b1aec56de365482fd0ee2b920061f6c95041fd.npz",
+    "data/real_qpu/inputs/graphs/5ae46a2d78ae0a8cd258ebc8478590561b676e42.npz",
+    "data/real_qpu/inputs/graphs/5b426d3f112c185d7fc359eede952081698ce907.npz",
+    "data/real_qpu/inputs/graphs/5b586f04fb1580266b6b0b98d7f86c115b704d16.npz",
+    "data/real_qpu/inputs/graphs/5c20d27d3e169a5a50cbb05252803b278eb66fe6.npz",
+    "data/real_qpu/inputs/graphs/5c67c6c229113a116454c54ca5d06141a862476f.npz",
+    "data/real_qpu/inputs/graphs/5cc2d1addf83e4c692b592f025b8aa5861e43635.npz",
+    "data/real_qpu/inputs/graphs/5d1fabe04f2969a885055b19cca4c64268f16b2b.npz",
+    "data/real_qpu/inputs/graphs/5d6d5b185e71be9a84e997e4dae49ec5810f10f3.npz",
+    "data/real_qpu/inputs/graphs/5da33a2b27bfe0edab2bc91920233c48fdea3ebb.npz",
+    "data/real_qpu/inputs/graphs/5db6eaf84f2d9efe07d888aaf923b666ba817d9a.npz",
+    "data/real_qpu/inputs/graphs/5fc47f07ce7ebf2bbf91dae770074711eba60ac8.npz",
+    "data/real_qpu/inputs/graphs/5ffb8a5e2535b28ea43bc0182ce7230eb05b8c16.npz",
+    "data/real_qpu/inputs/graphs/6010fab2bd87d4b689bfe9d8c3b3bda230bdb84a.npz",
+    "data/real_qpu/inputs/graphs/603db5946eec6c363822e384991ba97869a6fb44.npz",
+    "data/real_qpu/inputs/graphs/614c80f3fc0c365ba79a5d9227f79d1d419e2109.npz",
+    "data/real_qpu/inputs/graphs/615b37d9f9ffc7d48b7de8269315906bf1b3a686.npz",
+    "data/real_qpu/inputs/graphs/6184d0e6c708d7559a8b98d55ec418cb43c42216.npz",
+    "data/real_qpu/inputs/graphs/619890028f67546a6f7f214ce7d61a386a3917a8.npz",
+    "data/real_qpu/inputs/graphs/6202db46501d7eb9447d61cad4c552b2248932a8.npz",
+    "data/real_qpu/inputs/graphs/62ac5e699b841d2129eaf90a642c6f141fec81a9.npz",
+    "data/real_qpu/inputs/graphs/62aeab0d166ca7273e6da6f235be858c25930dfa.npz",
+    "data/real_qpu/inputs/graphs/63a7a32dda3e78211c80f1f5f6a54bc1cae0bc5c.npz",
+    "data/real_qpu/inputs/graphs/63e7d98f86f73ac1f128d9f41375f14820487e35.npz",
+    "data/real_qpu/inputs/graphs/646c1985b7bbe73f68b9cf3b2873be6996824929.npz",
+    "data/real_qpu/inputs/graphs/64e929fe22018dec8e90ddf994854f4c15321351.npz",
+    "data/real_qpu/inputs/graphs/65924549fead846e5be92af594982694858ba00d.npz",
+    "data/real_qpu/inputs/graphs/65c11ebb94c8b22fa27fe091788611bd1033ccc2.npz",
+    "data/real_qpu/inputs/graphs/6625fcf706ec8867594f597d4f63ac201b8b9d35.npz",
+    "data/real_qpu/inputs/graphs/6648c0f68275d880909d98c276d1559ed9737e6f.npz",
+    "data/real_qpu/inputs/graphs/668e1aad92b10dad434ae9789c97845e07cf5cef.npz",
+    "data/real_qpu/inputs/graphs/6736fa056cacb48767ed4c63ba25c54bcc473789.npz",
+    "data/real_qpu/inputs/graphs/67623795c8c95c823c87181ca3b7fc5b49eed217.npz",
+    "data/real_qpu/inputs/graphs/6774399f353d42634fe16e78c57ca402dc8ddf56.npz",
+    "data/real_qpu/inputs/graphs/67b6090031f4d1634368d9ca90e56a843ade7f72.npz",
+    "data/real_qpu/inputs/graphs/67fe4dc247c7eee6141925962784258f5e931986.npz",
+    "data/real_qpu/inputs/graphs/681c0a5bfc7454fb9614ce1fb08769199c1311a5.npz",
+    "data/real_qpu/inputs/graphs/689357acc4c8dfc45f627fe079c9123ebb13aae3.npz",
+    "data/real_qpu/inputs/graphs/68ccde110f06b51718e9f450aceed24aba110944.npz",
+    "data/real_qpu/inputs/graphs/69dc98901c81caca998f65d78fcf5aaccc8a1682.npz",
+    "data/real_qpu/inputs/graphs/6a39c39f9a3a3e4a9413e72f2f67853aaf67eb12.npz",
+    "data/real_qpu/inputs/graphs/6aefc24f6159550e41b5223bdcadcc591b7fe544.npz",
+    "data/real_qpu/inputs/graphs/6b4c8f95e9c1ef8439527dc45d847f35bb7a44ab.npz",
+    "data/real_qpu/inputs/graphs/6c09f3b17f701cb828e49943d5f3b6bb9fa58eea.npz",
+    "data/real_qpu/inputs/graphs/6c5caed1f9be89e403bc1817a5fc3a2ccbc0cbae.npz",
+    "data/real_qpu/inputs/graphs/6c773ca448add6d8462004e75d587106f4bf6fc9.npz",
+    "data/real_qpu/inputs/graphs/6cd21141f2166b37f80a1a2eb3fae2e469c241cd.npz",
+    "data/real_qpu/inputs/graphs/6d728c153774c256782920cb3089fb37a0c01e78.npz",
+    "data/real_qpu/inputs/graphs/6da1c9e894e968d9786a47944741205210172ec0.npz",
+    "data/real_qpu/inputs/graphs/6ddb3bbdba4b8baf168384338a4628513584e4c3.npz",
+    "data/real_qpu/inputs/graphs/6ec4f81e58a78d86df5b779c639228ec7ac1caad.npz",
+    "data/real_qpu/inputs/graphs/6f3a83e9e9f7bd760cacc9bf5070bf3fcc99a6a6.npz",
+    "data/real_qpu/inputs/graphs/6fbcd5f4df00e04262e8c7a2c5afa3b53ec95418.npz",
+    "data/real_qpu/inputs/graphs/6feb2a8da4778378d95bb80a98b057866aece975.npz",
+    "data/real_qpu/inputs/graphs/700a9c3494955b6b1aaf50873679dd9e6050d736.npz",
+    "data/real_qpu/inputs/graphs/702eb49bdc03bfb3d69fa06e1ad2b2914c852335.npz",
+    "data/real_qpu/inputs/graphs/712c1749f99e293e7397f0eb739fce9796cd3000.npz",
+    "data/real_qpu/inputs/graphs/714565879eb20b0439916c97362f5b45a9a80924.npz",
+    "data/real_qpu/inputs/graphs/717d8844986b4ccc7aa8ee5a2fcf8e491fbf1ba9.npz",
+    "data/real_qpu/inputs/graphs/725b7f08a17a404317f3fd5832eda81b293a91ca.npz",
+    "data/real_qpu/inputs/graphs/74442453b4a167b1516ed068311e92c661a54421.npz",
+    "data/real_qpu/inputs/graphs/74e2a284bcfb47db9614fc3793760cae6232de77.npz",
+    "data/real_qpu/inputs/graphs/7534b8b4a1cf041d5e2490e81a35b9176b07a037.npz",
+    "data/real_qpu/inputs/graphs/7645e72d19ab6b0efe3db9d99cad95eac91f07bb.npz",
+    "data/real_qpu/inputs/graphs/7718077bfe33f1ade55d1da5c6192af9dbe1988f.npz",
+    "data/real_qpu/inputs/graphs/781c394f8682353341b6c4f19c8431d41cc5d372.npz",
+    "data/real_qpu/inputs/graphs/793e5ff52ce57c80d52c247cc434b16e911a0d11.npz",
+    "data/real_qpu/inputs/graphs/7a02c503b2effd17b6b801077ceb5bdcdba61873.npz",
+    "data/real_qpu/inputs/graphs/7a2d16932ad42f47ba601dd7b645088c7c8c2441.npz",
+    "data/real_qpu/inputs/graphs/7a36e8cc183f9b7482905d0a0d81ff15265ba645.npz",
+    "data/real_qpu/inputs/graphs/7a51f97bd897aa0e1f7f01b25130fdebf95eabf1.npz",
+    "data/real_qpu/inputs/graphs/7ad9470adaa3a9f29001e311307fe2195865466c.npz",
+    "data/real_qpu/inputs/graphs/7b45ef779fcc611ccbcb52fef291f7b42edfd84e.npz",
+    "data/real_qpu/inputs/graphs/7be05a5c52c8ecd10a8cdddda11b498fcb5d417b.npz",
+    "data/real_qpu/inputs/graphs/7c2dd067ff227238241af19a3811fa6d13f8dfb1.npz",
+    "data/real_qpu/inputs/graphs/7c35f78d911d922384cdfd23c75f7f86bf580b96.npz",
+    "data/real_qpu/inputs/graphs/7c8898d037cfa6e8f630f71949ee7c040ab0a8c5.npz",
+    "data/real_qpu/inputs/graphs/7c9893357c427cd5642050be3455120cada62377.npz",
+    "data/real_qpu/inputs/graphs/7dc8249d5db74dc931766e8c9557f4e70f12a3e3.npz",
+    "data/real_qpu/inputs/graphs/7e0219e65deb14b11e06a8eb5cad8cf4eb30b250.npz",
+    "data/real_qpu/inputs/graphs/7e6d997bccfc31a9b00de798cce8163a6ff94b74.npz",
+    "data/real_qpu/inputs/graphs/7e80ccfb8dd43ecfe0ccad22b0c61b9ab7953bac.npz",
+    "data/real_qpu/inputs/graphs/7ed07924104ea4befa5ee63668f588fd52205681.npz",
+    "data/real_qpu/inputs/graphs/7f017b54a30d6a966dcf5c65d4ccd86cf4449935.npz",
+    "data/real_qpu/inputs/graphs/7f04ad57d24685a1b966b7c9163e9fd2746f3f66.npz",
+    "data/real_qpu/inputs/graphs/8085b5168e80f6492e456196a4b307878e02c9c8.npz",
+    "data/real_qpu/inputs/graphs/827df15f4b093daa61c4320a28756bd77bf4f774.npz",
+    "data/real_qpu/inputs/graphs/82b91096c9fc5466983ad7a3c0bbc58527046907.npz",
+    "data/real_qpu/inputs/graphs/83e6d247a9e42c317513e0e76be2ee62d3b36e8f.npz",
+    "data/real_qpu/inputs/graphs/84e22c7ba58152509780c9d9777c3272f2df054a.npz",
+    "data/real_qpu/inputs/graphs/8539fc5d4bf00f5586928ab18dca84ee8df2b60e.npz",
+    "data/real_qpu/inputs/graphs/855ef99525277dcc71c0349a3fc6275587cad29d.npz",
+    "data/real_qpu/inputs/graphs/8658f6da6d28f3d7ed0ba23a4dd5226d0981a0cf.npz",
+    "data/real_qpu/inputs/graphs/873b3bfdbb14a55e206c54c96196adc65ffd42d9.npz",
+    "data/real_qpu/inputs/graphs/8779c45811a36a190abf6f0df12981e98506b30a.npz",
+    "data/real_qpu/inputs/graphs/87b2150ff603c2fbfabdd291e5a00042f62758b1.npz",
+    "data/real_qpu/inputs/graphs/8801755996db26f25f5ec069b2b2f351ad591785.npz",
+    "data/real_qpu/inputs/graphs/88b4d7680168f41d66fe9438bc2d4ce509e5a820.npz",
+    "data/real_qpu/inputs/graphs/88c51370f40b7ece0f8652cdb89437cb8bef7f37.npz",
+    "data/real_qpu/inputs/graphs/894f18034ea8bfc7b71289b0a709e7fb8f11302e.npz",
+    "data/real_qpu/inputs/graphs/89a390af8e73a13d56e50f683fb57cb78f575322.npz",
+    "data/real_qpu/inputs/graphs/89c6edb70a6ea1b7e29d81c898d025e660b86cf8.npz",
+    "data/real_qpu/inputs/graphs/8b19b21206a53996ca0987872b44a55aebb92df6.npz",
+    "data/real_qpu/inputs/graphs/8b9b3d699b8ba4bd9afda68517c33588ad804b8a.npz",
+    "data/real_qpu/inputs/graphs/8c33b6f10e5bbc666553ad0a26e0eaef008cfbcd.npz",
+    "data/real_qpu/inputs/graphs/8c4b045a2b36469bc0d727b171a045318b2b73a9.npz",
+    "data/real_qpu/inputs/graphs/8d16684c803b7e63a3c07dcad447a5286a0dae3a.npz",
+    "data/real_qpu/inputs/graphs/8da5348c4ec958c9c58fb3b1a3dcc4fe44e25ab1.npz",
+    "data/real_qpu/inputs/graphs/8e09db1723fc8ea3243b60df651c3613dfce9578.npz",
+    "data/real_qpu/inputs/graphs/8e7ffef3969f9706016c524cb397970701905a13.npz",
+    "data/real_qpu/inputs/graphs/90251f9d7ecde7f5746d12fb0d80b55010477262.npz",
+    "data/real_qpu/inputs/graphs/90939b0dae275ba513c49207ebbcac092e4b8f29.npz",
+    "data/real_qpu/inputs/graphs/90bbdf4660f5c16ce49fb9ea6636b3023f9b319f.npz",
+    "data/real_qpu/inputs/graphs/91ad5258d6de79bc963e629c92f78cf4cb3a1314.npz",
+    "data/real_qpu/inputs/graphs/920570da216406533b8c43a1d8107027f3ecf117.npz",
+    "data/real_qpu/inputs/graphs/920ef4b14f7aab842f37449400656bb11ee417b1.npz",
+    "data/real_qpu/inputs/graphs/92af09eee16b2e91163858b3c49e8d83c01f1168.npz",
+    "data/real_qpu/inputs/graphs/932ba0654c8a62606d84b6d8f618ea9a77147dc5.npz",
+    "data/real_qpu/inputs/graphs/93646b14983d4e08035a5812bc671e2f2639637c.npz",
+    "data/real_qpu/inputs/graphs/93e997dc26b50d0b7818a1642f0e2014e36a208b.npz",
+    "data/real_qpu/inputs/graphs/949cd098411004ec3ddc2a413e6ec85163ff44da.npz",
+    "data/real_qpu/inputs/graphs/94d42a22c3ac4e92f91d88e698b472878adbc0c2.npz",
+    "data/real_qpu/inputs/graphs/9527ba7d13004d7fc56ab0396b875a2546d0d3af.npz",
+    "data/real_qpu/inputs/graphs/952a9be9e9f6f8469eab2f26136cf0fddffd19d8.npz",
+    "data/real_qpu/inputs/graphs/95c25c03f59e935626c23dc7f2f7e2ad1d7eb336.npz",
+    "data/real_qpu/inputs/graphs/966c662f5f79b57ee07f0ec26d5a18d006d23103.npz",
+    "data/real_qpu/inputs/graphs/96f0a11add3753865e9b06bba5f63d649db5ebdb.npz",
+    "data/real_qpu/inputs/graphs/978c24024e4978d96596b388a5970a3859999aa7.npz",
+    "data/real_qpu/inputs/graphs/980dfc0556c2abea11a2abb602fd803cdb015527.npz",
+    "data/real_qpu/inputs/graphs/98829d51a72c5b6005c556d767267dd28e4fa0d9.npz",
+    "data/real_qpu/inputs/graphs/98af4372fbf82b0904652ce0e41119587fb3b711.npz",
+    "data/real_qpu/inputs/graphs/995f5101a289be19b9c40afe24f52a6f4a22a966.npz",
+    "data/real_qpu/inputs/graphs/9abc6bc233e0e8e811e930a45c104cbe76825f39.npz",
+    "data/real_qpu/inputs/graphs/9b426a963d81d6c62a8000390dede61ba1bc68fd.npz",
+    "data/real_qpu/inputs/graphs/9b553e73f23683de823f3fed14c91fbd8d31e045.npz",
+    "data/real_qpu/inputs/graphs/9b98c5753f69c9b8dcc4763103e7f4b450729629.npz",
+    "data/real_qpu/inputs/graphs/9c6aa7638b56bd5d7b6b54f84f338ababae99425.npz",
+    "data/real_qpu/inputs/graphs/9ca38857414491e0948c5e05d5c425841c6b2725.npz",
+    "data/real_qpu/inputs/graphs/9d0d5fa62e6cd98fa22033be4d5405d1ae3a60a2.npz",
+    "data/real_qpu/inputs/graphs/9d8b27cbdf9d3c40540ba8c56834e1308506e22b.npz",
+    "data/real_qpu/inputs/graphs/9e34bda8130336c25e9b1cdb4eccea6180f7d0a0.npz",
+    "data/real_qpu/inputs/graphs/9f3b7da2408b63d8a49f029eaaa00f89c6b8518a.npz",
+    "data/real_qpu/inputs/graphs/9f509519c68d13eb2374f46055c0fc7b91f76c85.npz",
+    "data/real_qpu/inputs/graphs/9f8a042bcb59ef3c4b3e64018966ba00491089a4.npz",
+    "data/real_qpu/inputs/graphs/9f8f22be1267a12befb44a383b6bee5b39b53121.npz",
+    "data/real_qpu/inputs/graphs/9faeba6e6787ff5ead6e826cbd1477f0b1d51192.npz",
+    "data/real_qpu/inputs/graphs/9fb88df78e9370782b345b99601ac1f1e5f9afd9.npz",
+    "data/real_qpu/inputs/graphs/a08e77391a87ef220ca367a996d1cc244afbe5b0.npz",
+    "data/real_qpu/inputs/graphs/a1448c1cf9412f5cfda2ee03c598681b8bd817d6.npz",
+    "data/real_qpu/inputs/graphs/a17a538af54fec4419059571d597c906a2bbcfe0.npz",
+    "data/real_qpu/inputs/graphs/a1d52a6565be180b7ac1d1b8a15f9a1cd7c29fa1.npz",
+    "data/real_qpu/inputs/graphs/a225018d6e9c86eb15f335db64a5ffe48b25657d.npz",
+    "data/real_qpu/inputs/graphs/a28b5d90242e29c4e7584481a041e0019939049e.npz",
+    "data/real_qpu/inputs/graphs/a376ee3ad49b6a2c22ef80a8ff5cb038bb755601.npz",
+    "data/real_qpu/inputs/graphs/a406948c6ecc658cf13a81f734f6d84ae40bc25c.npz",
+    "data/real_qpu/inputs/graphs/a61622ebee2f873879fae972573013fbe006a667.npz",
+    "data/real_qpu/inputs/graphs/a6996073be00e0d97f29056ff15ff7fe5cf44409.npz",
+    "data/real_qpu/inputs/graphs/a74e801b8e9bff6bc74e74385ef40e75e0777a75.npz",
+    "data/real_qpu/inputs/graphs/a8b3adc3d03df965293457f18ad64bc671d62825.npz",
+    "data/real_qpu/inputs/graphs/a8fb2e8ced5a99d448fcdb313621bb1f79d9011c.npz",
+    "data/real_qpu/inputs/graphs/a93391000e2bb0c18279e46d61c59102b65a24f1.npz",
+    "data/real_qpu/inputs/graphs/a9c46b058f02b9e00e5ff173b947ba841ecf9a45.npz",
+    "data/real_qpu/inputs/graphs/aab54d355416f35fc95bc688c48ab64b26d1f32c.npz",
+    "data/real_qpu/inputs/graphs/aaeb38bcbfac700ea48c1ce406123932fa9bbf1a.npz",
+    "data/real_qpu/inputs/graphs/aafd85461f7725bde1762ed43f5a635a1f6e465f.npz",
+    "data/real_qpu/inputs/graphs/ab6c067a2ba5ce6fb6e91b11acc3ebceab22367a.npz",
+    "data/real_qpu/inputs/graphs/ababbe52b6a75831bb887708beb8fd7316db3c26.npz",
+    "data/real_qpu/inputs/graphs/abf2e07512f4694c9c0a2c0643ceab8a37c5785c.npz",
+    "data/real_qpu/inputs/graphs/ac15330d6665952f88db7374ea15deb0bc4391cf.npz",
+    "data/real_qpu/inputs/graphs/ac874119efd1b0ae4ff4905413d1cf539d3d4b33.npz",
+    "data/real_qpu/inputs/graphs/ad08f9b95e7af68f34388fb908a24d9b8cc414d9.npz",
+    "data/real_qpu/inputs/graphs/ad754c18994d09d18f4288f74d6c33affcf2db76.npz",
+    "data/real_qpu/inputs/graphs/ad7adaffaabc8d800d61d31969af04ae52302728.npz",
+    "data/real_qpu/inputs/graphs/adc1829d9af0906a05565983d56ed45a3b5a4b58.npz",
+    "data/real_qpu/inputs/graphs/af090114ecedd71f72855c91ae531508b5578d65.npz",
+    "data/real_qpu/inputs/graphs/af3c6eb9d7299407779b71922ab7bde57d0ac6ff.npz",
+    "data/real_qpu/inputs/graphs/b0548850bf69af9343d9cb62d8089230e01f6316.npz",
+    "data/real_qpu/inputs/graphs/b100d47ee179fae5153cd1285e82374f4a3e3019.npz",
+    "data/real_qpu/inputs/graphs/b1d70beb5a125e9249f3b5760d3edc0b18ab98e4.npz",
+    "data/real_qpu/inputs/graphs/b2bd521efbe47e402ac485490a5f46ca2c9c25fd.npz",
+    "data/real_qpu/inputs/graphs/b36a152b4a5a19be6cc4bb03098299cb4c2bcd58.npz",
+    "data/real_qpu/inputs/graphs/b401b7da90d4243fb6facc10208e87b302b2832e.npz",
+    "data/real_qpu/inputs/graphs/b5651a4724ef1a24ad2749943a02c826fc0a029f.npz",
+    "data/real_qpu/inputs/graphs/b5c6dbdc1f4fc6738e3f8428e84088da75e84497.npz",
+    "data/real_qpu/inputs/graphs/b7f4a5508fac61aafb03944f497b32939105976a.npz",
+    "data/real_qpu/inputs/graphs/b9ba253a0a94245731b7276728b2b539c938cd4f.npz",
+    "data/real_qpu/inputs/graphs/b9e1728654ce84277040dc5488fd06983ab8d5d8.npz",
+    "data/real_qpu/inputs/graphs/ba2cdf455f5e116d6308a779c52794d7db6e844d.npz",
+    "data/real_qpu/inputs/graphs/ba2f22c5fa7479793801235ab63cd54a472e2ef9.npz",
+    "data/real_qpu/inputs/graphs/ba3bb841a91e5895a684d2a5c46ef64a59c3fd89.npz",
+    "data/real_qpu/inputs/graphs/ba60b901576373412a704b5f1e58a2de764c75e5.npz",
+    "data/real_qpu/inputs/graphs/bc63893a0b29a404e68241051926d123165b133c.npz",
+    "data/real_qpu/inputs/graphs/bcc48dcf585d1f22f53ec88cc4ed2307a3e3f6ae.npz",
+    "data/real_qpu/inputs/graphs/bd13a34ce688502eb956d2255569c2e049199cae.npz",
+    "data/real_qpu/inputs/graphs/bd5fdce5ce84ce721146ccaff5b5783ad64e9177.npz",
+    "data/real_qpu/inputs/graphs/bd8d57c4b11fd4cfa3dbd77b5d0fc869ef00a3dc.npz",
+    "data/real_qpu/inputs/graphs/be0cd9e7b24e5179b7662db8254de0a50cb48980.npz",
+    "data/real_qpu/inputs/graphs/bf0e2d6d4ff1459fd415b5742599664c9199db75.npz",
+    "data/real_qpu/inputs/graphs/c03127bf7eaa2adbe91f04e61ad0fbb43e87ce72.npz",
+    "data/real_qpu/inputs/graphs/c10933015c6eafd88f1e449df39edd9892e8f8ab.npz",
+    "data/real_qpu/inputs/graphs/c150cf446e2cf3361d93f5a9ce1ab07773e4de93.npz",
+    "data/real_qpu/inputs/graphs/c1648630b3778a6c2fd249b1c126ebe65dd77b3a.npz",
+    "data/real_qpu/inputs/graphs/c1d048f4226ea982a3e7a243db3f5d69167cad9f.npz",
+    "data/real_qpu/inputs/graphs/c217c95a87ce3a71a381b182eb085b596f62b584.npz",
+    "data/real_qpu/inputs/graphs/c2869e145439bd60416d3193bc630e997aadc356.npz",
+    "data/real_qpu/inputs/graphs/c373744e2f00b45a8602116521fa9053e816bef3.npz",
+    "data/real_qpu/inputs/graphs/c3f0e74852a4af8f08df309e9d24d3b1e1373265.npz",
+    "data/real_qpu/inputs/graphs/c47969da398120ea76801f0f8ee1c383c9a45d6e.npz",
+    "data/real_qpu/inputs/graphs/c483dfbd10583a18880743e603130e09bc49033d.npz",
+    "data/real_qpu/inputs/graphs/c69fd4a41dc86dcb004c3a28fef279ca6b90fe89.npz",
+    "data/real_qpu/inputs/graphs/c7ca38b28c58ade5f7d5865a2fc8345469c7ec18.npz",
+    "data/real_qpu/inputs/graphs/c7f492275e73686dd6d66e8ca36f83efc86820eb.npz",
+    "data/real_qpu/inputs/graphs/c974e7b84799e65c4e029f5e8f71f291a6ae9507.npz",
+    "data/real_qpu/inputs/graphs/c9bdf880bd64a264ee5ec885496454b936c4f639.npz",
+    "data/real_qpu/inputs/graphs/c9f34fa80f706194240c0a4bfc9c0ab35c0fc8d6.npz",
+    "data/real_qpu/inputs/graphs/c9fe27fa9c6d934da2864e5d1a44d4bf981e913f.npz",
+    "data/real_qpu/inputs/graphs/ca3f14b2275792b0ffe82ff726d05bdea133bc88.npz",
+    "data/real_qpu/inputs/graphs/ca8fa8b8fb82f169583bc1508f642bc09bd62f62.npz",
+    "data/real_qpu/inputs/graphs/cb767ac4fbe636c3378c9bd128ab292f5ccce53e.npz",
+    "data/real_qpu/inputs/graphs/cc54947b29d961c3011b0df3c318ac2c33d86c93.npz",
+    "data/real_qpu/inputs/graphs/cc9ee27cca39350285f025c9f462e0a022004644.npz",
+    "data/real_qpu/inputs/graphs/cd370ccebd0d31e98089801c058aa3d3be29f6a5.npz",
+    "data/real_qpu/inputs/graphs/ce09fca51abab5300b98f010783adc822e2117d8.npz",
+    "data/real_qpu/inputs/graphs/cebaca4b44902a979591296ec162399bda0d760d.npz",
+    "data/real_qpu/inputs/graphs/ced746e008b0fb3d8025ba7af9f8f48cc725aeed.npz",
+    "data/real_qpu/inputs/graphs/d08de4faf643ba4d79b33cd149e8fa4c15ddf600.npz",
+    "data/real_qpu/inputs/graphs/d0e9b174bd168179f5164f7b4843c3f5549db958.npz",
+    "data/real_qpu/inputs/graphs/d12b5d5dcb4e0863e021b160fcd0d94e6cb46e8b.npz",
+    "data/real_qpu/inputs/graphs/d131de7ef6bc98dc29fa2646654f2d78ca297030.npz",
+    "data/real_qpu/inputs/graphs/d15f97dfe3e46c22b1486344a0cb0fbde0633960.npz",
+    "data/real_qpu/inputs/graphs/d2021b127b04ed9b23f3b198c01e7aadca27f8fa.npz",
+    "data/real_qpu/inputs/graphs/d20c5413925c9e3df91b8ba74c3c5b4522dbdf5c.npz",
+    "data/real_qpu/inputs/graphs/d2bd17f3924fed70d70cf3ca5b72de264c10e317.npz",
+    "data/real_qpu/inputs/graphs/d4153171f88396c44bf8b27877190cdcb19acb38.npz",
+    "data/real_qpu/inputs/graphs/d4263dc91c4a32deadcc7de3afa0453ca92e6cb1.npz",
+    "data/real_qpu/inputs/graphs/d43b646942ff8b19d658324a6bfc3c73469d6fe9.npz",
+    "data/real_qpu/inputs/graphs/d4960d8a6ed2c3bedf70adf8dc2468c87a94e131.npz",
+    "data/real_qpu/inputs/graphs/d4c33957f6e1303422dcebccc5f6bc64c944386c.npz",
+    "data/real_qpu/inputs/graphs/d55cac0c4d82f9b2af149e6f63665a80c0ae6b2c.npz",
+    "data/real_qpu/inputs/graphs/d61d9024e80d11e9b512a4b301c0c9857c5a4656.npz",
+    "data/real_qpu/inputs/graphs/d7b835c0030364fb44c8921bc7044d2c0f55f91b.npz",
+    "data/real_qpu/inputs/graphs/d7e37aa1b921eb67b854f59d6840206b648b3254.npz",
+    "data/real_qpu/inputs/graphs/d82a651ad4e6496107280a843d8fdfdfcd90f362.npz",
+    "data/real_qpu/inputs/graphs/d8e5856e2c60989a949ac59ed4db701ab3b61a3c.npz",
+    "data/real_qpu/inputs/graphs/d9554fd9532a610ad04eb57db45e2b6eb583ec92.npz",
+    "data/real_qpu/inputs/graphs/d9599d2034552b013f0d1c12678734133333124a.npz",
+    "data/real_qpu/inputs/graphs/db38ad4ce02816b285a1cb6d188b4367dc20f047.npz",
+    "data/real_qpu/inputs/graphs/dbc38a191355e0b910176ccc1b7bda8b841bf5c3.npz",
+    "data/real_qpu/inputs/graphs/dbcf2d7e057cc9e4cb0d82beb3cf9e4330dfb0df.npz",
+    "data/real_qpu/inputs/graphs/dc78d487e53b70e565929116247a1e4ae53c3c7e.npz",
+    "data/real_qpu/inputs/graphs/dc8b846b1052d5b1cc62965a5ec9090d4e578d95.npz",
+    "data/real_qpu/inputs/graphs/dd3af77fcbdc7331485c03b4cb9af89548e0fffe.npz",
+    "data/real_qpu/inputs/graphs/de53369c8b14c092f8a7a19cb3c8ffb386550dff.npz",
+    "data/real_qpu/inputs/graphs/de8057c05729243a43674d7c2bb1e5092e560d90.npz",
+    "data/real_qpu/inputs/graphs/e0065f9b4750d4654ab31ef7a57c7abae21a7088.npz",
+    "data/real_qpu/inputs/graphs/e08413ac18bb15808be594b4c70a4f4dbc46c913.npz",
+    "data/real_qpu/inputs/graphs/e133423ed9f6eec3d24fc57fe72cbad91cbd9f66.npz",
+    "data/real_qpu/inputs/graphs/e2bb92087841a4a8a052ac8dac12b25f9773d732.npz",
+    "data/real_qpu/inputs/graphs/e359e9e400cb0f351f51da85b5c43b0adf32aa7a.npz",
+    "data/real_qpu/inputs/graphs/e3a58ca316bbf7d970f956c3b73d049ed12c460b.npz",
+    "data/real_qpu/inputs/graphs/e447c231197288eb11d8fda8db5b3e6280e5855b.npz",
+    "data/real_qpu/inputs/graphs/e48bc9d02add4a54f609004c9344dde786190da9.npz",
+    "data/real_qpu/inputs/graphs/e53ccf865472287ca07c92ab0f3942811779793a.npz",
+    "data/real_qpu/inputs/graphs/e589c4dba73b290b0fbacd5a12d764783214cc8f.npz",
+    "data/real_qpu/inputs/graphs/e704c19e1e13b23c6878d68fd65df43c44003be9.npz",
+    "data/real_qpu/inputs/graphs/e8e7ce4896cf6ee5d7fcf35529b124b1c214ca5f.npz",
+    "data/real_qpu/inputs/graphs/e937f5b5d4b71de5ef1f03361bc54cd29f57e7a3.npz",
+    "data/real_qpu/inputs/graphs/e9aa2aaa4f54cff91264244f82823e18793afb41.npz",
+    "data/real_qpu/inputs/graphs/ea35b8b3423c0301cb5243785df60d99310a61e7.npz",
+    "data/real_qpu/inputs/graphs/ea67a5991e29af80b8928fbfa689a25c1cc971bb.npz",
+    "data/real_qpu/inputs/graphs/eac2c88d1867deb13bc290244568c52a0c718a6d.npz",
+    "data/real_qpu/inputs/graphs/eb3caeba60cccb14d8ad391cd83ffb26a1c62a21.npz",
+    "data/real_qpu/inputs/graphs/eb6cc98f7600fddd1c162d859f8bab2a8be636b6.npz",
+    "data/real_qpu/inputs/graphs/ebbcf371a3c050380dbbc3933072a79db042ff66.npz",
+    "data/real_qpu/inputs/graphs/ecdd4950c1475f8ad256f37635ca2fab65763203.npz",
+    "data/real_qpu/inputs/graphs/ee34ae39689430a24cb03636fa74013b212f3a1c.npz",
+    "data/real_qpu/inputs/graphs/ee3d105bb1de4bbd6e841e47b88983a0e3590310.npz",
+    "data/real_qpu/inputs/graphs/ee9b36f4f56c48aa876ff8d8f92c754d5c8e0be7.npz",
+    "data/real_qpu/inputs/graphs/eecc63e7413c0aa6184544cdddba6f0526e8991d.npz",
+    "data/real_qpu/inputs/graphs/ef0bf240a6efb80301d97718588996bce4dc5485.npz",
+    "data/real_qpu/inputs/graphs/f0aec5d23502114fbdf4b3351fe167d81c951df8.npz",
+    "data/real_qpu/inputs/graphs/f12ce516f43861f9a08a2158aaa0c94a20a1cc74.npz",
+    "data/real_qpu/inputs/graphs/f145e0c1aae1a3719bedd0f42eb0ef614cb83807.npz",
+    "data/real_qpu/inputs/graphs/f1bcb4a5efc1de775c4b4a69f2831ae0916ada29.npz",
+    "data/real_qpu/inputs/graphs/f25f9ce19177c5e4ecbf9dfc76e96e44aa940260.npz",
+    "data/real_qpu/inputs/graphs/f321ff7d6d1bef1eabd0f87fb00163b6f74a501a.npz",
+    "data/real_qpu/inputs/graphs/f3f8879c084dd6ef06eba7fe05fba00279bd6524.npz",
+    "data/real_qpu/inputs/graphs/f42cf67dd4d0c597bf8903945f986396aaf70e65.npz",
+    "data/real_qpu/inputs/graphs/f469510c50c22472bb451eb0d58f61db54358eda.npz",
+    "data/real_qpu/inputs/graphs/f4daf2e3aae84fd4142e60232f347b6fe0c8af9f.npz",
+    "data/real_qpu/inputs/graphs/f58c1c60a74169cddde520942679b6fd9ebd79c9.npz",
+    "data/real_qpu/inputs/graphs/f60da18d325d433e3eec7262d2b4ee8addba6d24.npz",
+    "data/real_qpu/inputs/graphs/f7c1c70516894acdbf41050121eb4bf83eecad9a.npz",
+    "data/real_qpu/inputs/graphs/f7cb3d004edb01e5ec22585cbabb1ef7ec67ef2f.npz",
+    "data/real_qpu/inputs/graphs/f82abadc84932fb2d99fdeb4633c7d54402dc714.npz",
+    "data/real_qpu/inputs/graphs/f858a8ae29e4fd67d9e22e155b6ecd1dc89a42fa.npz",
+    "data/real_qpu/inputs/graphs/f8aece94b9b3b455c0acf76acd05a998e60f9c21.npz",
+    "data/real_qpu/inputs/graphs/f90a15d4f01810904812eb7693bf0f10954c21ee.npz",
+    "data/real_qpu/inputs/graphs/f95078beecdb40ed4c7b837c83767151186333fe.npz",
+    "data/real_qpu/inputs/graphs/f9b4d211440e113ef5c391d743731d2c12c11cce.npz",
+    "data/real_qpu/inputs/graphs/fba90ebdef65ca3dc7dbc592b0a99a2ce91dd5aa.npz",
+    "data/real_qpu/inputs/graphs/fbfcb9081a3298706ac9a9ea9906590728d541bf.npz",
+    "data/real_qpu/inputs/graphs/fd361f393cb1aef6edfc100c2e38c8a32c325094.npz",
+    "data/real_qpu/inputs/graphs/fda3a584c8c4771c5426fc440a83479cde0362c4.npz",
+    "data/real_qpu/inputs/graphs/fe7504cb21ad20f89494a1099102eb9e38f93fef.npz",
+    "data/real_qpu/inputs/graphs/fefbfd57de05bac9494e08c190f339a35b280a46.npz",
+    "data/real_qpu/inputs/graphs/ffca92ef2f5626ffc7759a105377626358cbdd9b.npz",
+    "data/real_qpu/inputs/inner_splits.csv",
+    "data/real_qpu/inputs/input_index.csv",
+    "data/real_qpu/inputs/input_index_manifest.json",
+    "data/real_qpu/inputs/mali_batch_profile.json",
+    "data/real_qpu/inputs/mali_feature_ledger.csv",
+    "data/real_qpu/inputs/mali_neural_dependency_lock.txt",
+    "data/real_qpu/inputs/outer_splits.csv",
+    "data/real_qpu/inputs/panel.csv",
+    "data/real_qpu/inputs/panel_manifest.json",
+    "data/real_qpu/inputs/targets.csv",
+    "data/real_qpu/predictions/analytical/attempts.csv",
+    "data/real_qpu/predictions/analytical/calibration_fits.csv",
+    "data/real_qpu/predictions/analytical/run_manifest.json",
+    "data/real_qpu/predictions/hyb/attempts.csv",
+    "data/real_qpu/predictions/hyb/fold_fits.csv",
+    "data/real_qpu/predictions/hyb/run_manifest.json",
+    "data/real_qpu/predictions/neural/final_validation.json",
+    "data/real_qpu/predictions/neural/fold_0/mali_global_mlp/seed_1234/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_0/mali_global_mlp/seed_1234/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_0/mali_global_mlp/seed_1234/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_0/mali_global_mlp/seed_31415/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_0/mali_global_mlp/seed_31415/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_0/mali_global_mlp/seed_31415/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_0/mali_global_mlp/seed_42/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_0/mali_global_mlp/seed_42/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_0/mali_global_mlp/seed_42/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_0/mali_logical_graph/seed_1234/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_0/mali_logical_graph/seed_1234/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_0/mali_logical_graph/seed_1234/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_0/mali_logical_graph/seed_31415/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_0/mali_logical_graph/seed_31415/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_0/mali_logical_graph/seed_31415/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_0/mali_logical_graph/seed_42/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_0/mali_logical_graph/seed_42/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_0/mali_logical_graph/seed_42/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_0_transform.json",
+    "data/real_qpu/predictions/neural/fold_1/mali_global_mlp/seed_1234/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_1/mali_global_mlp/seed_1234/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_1/mali_global_mlp/seed_1234/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_1/mali_global_mlp/seed_31415/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_1/mali_global_mlp/seed_31415/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_1/mali_global_mlp/seed_31415/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_1/mali_global_mlp/seed_42/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_1/mali_global_mlp/seed_42/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_1/mali_global_mlp/seed_42/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_1/mali_logical_graph/seed_1234/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_1/mali_logical_graph/seed_1234/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_1/mali_logical_graph/seed_1234/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_1/mali_logical_graph/seed_31415/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_1/mali_logical_graph/seed_31415/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_1/mali_logical_graph/seed_31415/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_1/mali_logical_graph/seed_42/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_1/mali_logical_graph/seed_42/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_1/mali_logical_graph/seed_42/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_1_transform.json",
+    "data/real_qpu/predictions/neural/fold_2/mali_global_mlp/seed_1234/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_2/mali_global_mlp/seed_1234/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_2/mali_global_mlp/seed_1234/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_2/mali_global_mlp/seed_31415/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_2/mali_global_mlp/seed_31415/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_2/mali_global_mlp/seed_31415/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_2/mali_global_mlp/seed_42/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_2/mali_global_mlp/seed_42/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_2/mali_global_mlp/seed_42/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_2/mali_logical_graph/seed_1234/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_2/mali_logical_graph/seed_1234/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_2/mali_logical_graph/seed_1234/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_2/mali_logical_graph/seed_31415/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_2/mali_logical_graph/seed_31415/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_2/mali_logical_graph/seed_31415/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_2/mali_logical_graph/seed_42/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_2/mali_logical_graph/seed_42/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_2/mali_logical_graph/seed_42/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_2_transform.json",
+    "data/real_qpu/predictions/neural/fold_3/mali_global_mlp/seed_1234/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_3/mali_global_mlp/seed_1234/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_3/mali_global_mlp/seed_1234/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_3/mali_global_mlp/seed_31415/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_3/mali_global_mlp/seed_31415/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_3/mali_global_mlp/seed_31415/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_3/mali_global_mlp/seed_42/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_3/mali_global_mlp/seed_42/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_3/mali_global_mlp/seed_42/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_3/mali_logical_graph/seed_1234/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_3/mali_logical_graph/seed_1234/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_3/mali_logical_graph/seed_1234/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_3/mali_logical_graph/seed_31415/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_3/mali_logical_graph/seed_31415/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_3/mali_logical_graph/seed_31415/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_3/mali_logical_graph/seed_42/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_3/mali_logical_graph/seed_42/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_3/mali_logical_graph/seed_42/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_3_transform.json",
+    "data/real_qpu/predictions/neural/fold_4/mali_global_mlp/seed_1234/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_4/mali_global_mlp/seed_1234/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_4/mali_global_mlp/seed_1234/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_4/mali_global_mlp/seed_31415/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_4/mali_global_mlp/seed_31415/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_4/mali_global_mlp/seed_31415/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_4/mali_global_mlp/seed_42/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_4/mali_global_mlp/seed_42/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_4/mali_global_mlp/seed_42/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_4/mali_logical_graph/seed_1234/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_4/mali_logical_graph/seed_1234/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_4/mali_logical_graph/seed_1234/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_4/mali_logical_graph/seed_31415/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_4/mali_logical_graph/seed_31415/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_4/mali_logical_graph/seed_31415/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_4/mali_logical_graph/seed_42/cell_manifest.json",
+    "data/real_qpu/predictions/neural/fold_4/mali_logical_graph/seed_42/predictions.csv",
+    "data/real_qpu/predictions/neural/fold_4/mali_logical_graph/seed_42/test_failures.csv",
+    "data/real_qpu/predictions/neural/fold_4_transform.json",
+    "data/real_qpu/predictions/polynomial/predictions.csv",
+    "data/real_qpu/predictions/polynomial/run_manifest.json",
+    "data/real_qpu/reconstruction/logical_outer_splits.csv",
+    "data/real_qpu/reconstruction/model_input_groups.csv",
+    "data/simulator/aer/graphs/azizov/source_graphs/part-001.jsonl",
+    "data/simulator/aer/graphs/azizov/transpiled_graphs/part-001.jsonl",
+    "data/simulator/aer/graphs/azizov/transpiled_graphs/part-002.jsonl",
+    "data/simulator/aer/graphs/azizov/transpiled_graphs/part-003.jsonl",
+    "data/simulator/aer/graphs/environment_and_context_lock.json",
+    "data/simulator/aer/graphs/feature_dictionary.json",
+    "data/simulator/aer/graphs/fold_assignments_and_hash_audit.csv",
+    "data/simulator/aer/graphs/materialize_static_pack.py",
+    "data/simulator/aer/graphs/source_dag_topology.jsonl",
+    "data/simulator/aer/graphs/source_hashes.json",
+    "data/simulator/aer/graphs/static_qa.json",
+    "data/simulator/statevector/inputs/dense_features_by_hash.jsonl",
+    "protocol/reproduction.json",
+    "provenance/qonductor_job_circuit_join.json",
+    "provenance/replay/real_qpu_method_comparison.csv",
+    "provenance/replay/recorded_method_index.csv",
+    "provenance/replay/simulator_method_comparison.csv",
+    "provenance/replay_sources/test_common_panel_reporting.py",
+    "provenance/reproduction.json",
+    "provenance/source_index.json",
+    "provenance/superseded_training_stop.json",
+    "requirements-report.txt",
+    "requirements.txt",
+    "results/real_qpu/analysis/input_support.csv",
+    "results/real_qpu/analysis/run_manifest.json",
+    "results/real_qpu/analysis/tail_cases.csv",
+    "results/real_qpu/summary/run_manifest.json",
+    "scripts/analyze_results.py",
+    "scripts/benchmark.py",
+    "scripts/render_results.py",
+    "scripts/reproduce.py",
+    "tests/test_benchmark_preflight.py",
+    "tests/test_pasqal_analog_portability.py",
+    "tests/test_reproduction.py"
+  ],
+  "historical_paths": "Paths inside saved experiment records identify external/private inputs; they are not package-relative requirements."
+}

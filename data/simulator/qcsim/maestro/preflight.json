@@ -1,0 +1,21 @@
+{
+  "calibration_cells": 112,
+  "environment_sha256": "64098a6279716cd1aa945ca2b58e6404d045ce123869e9d754d9e4462bf1b148",
+  "maestro_imported": false,
+  "native_pins": {
+    "boost_library": "/home/server/Documents/maestro/build/boost_1_89_0/lib/libboost_json.so.1.89.0",
+    "boost_library_sha256": "679b2401d19b891fc2659cddeab4db2a4aaca494b379c9531c66c858057e8c12",
+    "native_module": "/home/server/Documents/quantum-runtime-estimator-replications/work/maestro_optimizer_off_detached_20261003/build/maestro.cpython-310-x86_64-linux-gnu.so",
+    "native_module_sha256": "9e4f3d1cc69fe2db1c6276e3252c30543194662cea368a058c9a7e3cda5452d0",
+    "openmp_library": "/usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0",
+    "openmp_library_sha256": "645478cbe100d1465b9d45f7047bca3965358f4d399937e544f55ac7a924d5a3"
+  },
+  "panel_hashes": 150,
+  "phase": "preflight",
+  "pilot_cells": 10,
+  "plan_sha256": "88c766e29860be277afbaec75c04f324bf27231e072c76d8ea8ce613a81734aa",
+  "protocol_sha256": "365b46f59275643406c80c96703bb0734527cb6a1cd32f5364685ba42547c736",
+  "status": "pass",
+  "timing_performed": false,
+  "training_performed": false
+}

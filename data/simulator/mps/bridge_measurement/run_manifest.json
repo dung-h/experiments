@@ -1,0 +1,57 @@
+{
+  "artifact_id": "cudaq-mps-common-panel-v1-20260928",
+  "bridge_manifest": {
+    "path": "benchmark_v1/execution/manifests/cudaq_verified_bridge_v1.json",
+    "sha256": "7cc55f45a27e313d9d5e47ea9b79ca6f18e1b7379f1c24e1a468ccafed3f3a87"
+  },
+  "checkpoint_only": false,
+  "clock_contract": "host perf_counter around CUDA-Q tensornet-mps get_state; build/first/warm are distinct; dense reference and overlap are separately recorded after timing",
+  "concurrency": "one sequential child process and one GPU timing worker",
+  "created_utc": "2026-09-28T03:36:31.289787+00:00",
+  "environment_lock": {
+    "path": "benchmark_v1/execution/manifests/simulator_environment_lock_v1.json",
+    "sha256": "08624ffa11ba12805e15eec93be573068b02cd362b1092c19694369ec76b21a8"
+  },
+  "mps": {
+    "abs_cutoff": 1e-10,
+    "max_bond": 16,
+    "precision": "fp64",
+    "svd_algorithm": "gesvdj"
+  },
+  "outputs": {
+    "attempt_records": {
+      "path": "attempt_records.jsonl",
+      "sha256": "2c77d505950cb269041ae09b78738c74c021c6444ba7b3300205975ab7860017"
+    },
+    "environment": {
+      "path": "environment.json",
+      "sha256": "b0ab34b8cda4e20556875eff9269eab410ec6493e607ee12b8dc8f47901c4bd6"
+    },
+    "raw_csv": {
+      "path": "cudaq_mps_common_raw.csv",
+      "sha256": "41aaffa3977eebb7d045555baa43dec9a5ecd81dff51aa23943f8d00f6ccc495"
+    }
+  },
+  "panel_manifest": {
+    "path": "artifacts/benchmark_v1/sim_common_q16_manifest_20260927/sim_common_q16_manifest.csv",
+    "sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e"
+  },
+  "panel_rows_attempted": 204,
+  "panel_rows_frozen": 204,
+  "qiskit_site_packages": "/home/server/Documents/quantum-runtime-estimator-replications/.venv-qre-cudaq-common-v1/lib/python3.13/site-packages",
+  "quality": {
+    "excluded_from_timing": true,
+    "reference": "CUDA-Q nvidia fp64 get_state on same adapted unitary",
+    "threshold": 0.99
+  },
+  "raw_status_counts": {
+    "adapter_error": 108,
+    "ok": 3438,
+    "quality_failed": 126
+  },
+  "runner_sha256": "18c8e974fb221d2adabc00da4ac6408f9ecba6d4337fe8aa32091d75811eb528",
+  "sessions": 3,
+  "timing_performed": true,
+  "warm_repetitions": 5,
+  "warmups": 3
+}

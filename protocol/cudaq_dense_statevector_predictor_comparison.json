@@ -1,0 +1,86 @@
+{
+  "protocol_id": "cudaq-dense-statevector-nine-predictor-comparison-v1",
+  "status": "frozen_for_preflight_and_execution",
+  "domain": "local_cudaq_dense_statevector",
+  "claim_boundary": "Nine empirical predictors/baselines evaluated on two local CUDA-Q dense sample contexts. This is not an NVIDIA cost-model claim, Maestro reproduction, or simulator-independent runtime law.",
+  "target": {
+    "api": "cudaq.sample",
+    "shots": 32,
+    "target": "nvidia",
+    "contexts": ["fp32", "fp64"],
+    "evaluation_target_clock": "cudaq_dense_sample_32_warm_execution_seconds",
+    "method_output_clock": "predicted_cudaq_dense_sample_32_warm_execution_seconds",
+    "hash_target_reduction": "For each exact-QASM hash and precision, reduce five successful t_warm_execution_s repetitions to a median in each of three sessions, then take the median of the three session medians.",
+    "first_build_extraction_e2e": "Descriptive clocks only; do not mix them into or substitute them for the warm target.",
+    "source": "Reuse the hash-level targets already validated by R5 target revision v2. Do not retime rows as part of R8."
+  },
+  "population": {
+    "panel_manifest": "artifacts/benchmark_v1/sim_common_q16_manifest_20260927/sim_common_q16_manifest.csv",
+    "panel_id": "sim_common_q16_v1",
+    "assigned_members": 204,
+    "panel_unique_qasm_hashes": 191,
+    "primary_oof_stratum": "core_q2_q9",
+    "primary_oof_hashes_per_precision": 150,
+    "frontier_q10_q16": "Retain in coverage/scaling tables; do not add to primary OOF fit or claim width-OOD accuracy.",
+    "unit_of_observation": "exact qasm_sha256 after alias reduction; one target and at most one OOF prediction per hash, method, precision",
+    "target_eligibility": "R5 targets_recovered_v2 only; require target_status=ok and exact normalized_ir_sha256/unitary_sha256 join with R3. No failure imputation.",
+    "measurement_context_sha256": "daac3bf1dadfac952291c02ad50d0d3fb96520a242f6d80ebe260f09e68cba71",
+    "target_revisions": {
+      "r3_ir_manifest": "d9a35d022df246c381c098a11ff405d74b5cbbd416ac9b62c126f48616e3bad2",
+      "r3_feature_jsonl": "cb8d92a255c218fd804a4a960dda78979699ac94ff1653b39c24fd6dc6f66def",
+      "r3_ir_csv": "68c7cd713d854814e258701b973c43e8802c24a09b7cf6908ec3c324e6e5609c",
+      "r5_manifest": "bfc22149ecc05a85a23598f20fb46cff0e0eb17479a4a5b7f8d35ab8707ca200",
+      "r5_hash_targets": "1b88fef5015d5403f89956d8f6d6f92baced9aaecc149728e641cee10588c170",
+      "r5_member_coverage": "93bef4133cc8043b7aa59ca540861d61370b2fa49501e5b40e4be94fb757c901",
+      "c44_hash_assignment": "a25e2e740fd3058e487f713cd0fc074dd8761120a5aface275a212693ac05437",
+      "panel_manifest_sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e"
+    }
+  },
+  "representation": {
+    "source": "R3 repaired CUDA-Q-convertible normalized circuit IR; include terminal measurements; do not use Aer transpilation or MPS measurement-stripped features.",
+    "dag_format": "s71-operation-dag-v1",
+    "global_feature_order": ["active_width", "structural_depth", "one_qubit_count", "two_qubit_count", "swap_like_count", "measurement_count", "shots"],
+    "gate_vocabulary": "Fit on outer-training hashes only; map unseen outer-test operation names to a single unknown token.",
+    "normalization": "Model globals use log1p of nonnegative raw values followed by mean/std fitted on outer-training hashes only. Replace fitted std below 1e-6 with 1.0.",
+    "work_scaled_multiqubit_count": "Count normalized DAG operation nodes with arity >=3, excluding measure, barrier, and snapshot; this is the existing project convention multi_qubit_gate_count. It is distinct from the two-qubit count and is used only by work_scaled_ridge.",
+    "forbidden_predictors": ["family", "QASM hash/path", "outer fold", "precision-specific held-out runtime", "held-out status/telemetry", "any post-execution feature"]
+  },
+  "split": {
+    "source": "artifacts/benchmark_v1/c44_aer_q16_full_panel_evaluation_20260927/aer_q16_reduced_warm.csv",
+    "grouping_unit": "exact qasm_sha256",
+    "folds": 5,
+    "hashes_by_fold": {"0": 37, "1": 28, "2": 26, "3": 25, "4": 34},
+    "assignment_policy": "Join R5 targets to the frozen C44 exact-hash fold; never regenerate or stratify a replacement split. Verify exact 150-hash coverage and no train/test hash overlap independently for both precision contexts.",
+    "claim_boundary": "Exact-QASM instance-group OOF within one local simulator target and precision; not family holdout or width holdout. FP32 and FP64 are separate models and result tables."
+  },
+  "methods": {
+    "outer_train_median": {"id": "outer_train_median", "fidelity_class": "empirical_baseline", "prediction": "Median target_seconds among outer-training hashes."},
+    "linear_regression": {"id": "linear_regression", "features": "Seven globals after log1p and train-only StandardScaler", "target": "log1p(seconds)", "estimator": {"class": "sklearn.linear_model.LinearRegression", "fit_intercept": true, "n_jobs": 1}},
+    "ridge_alpha1": {"id": "ridge_alpha1", "features": "Seven globals after log1p and train-only StandardScaler", "target": "log1p(seconds)", "estimator": {"class": "sklearn.linear_model.Ridge", "alpha": 1.0, "fit_intercept": true, "solver": "svd"}},
+    "rbf_svr": {"id": "rbf_svr", "features": "Seven globals after log1p and train-only StandardScaler", "target": "log1p(seconds)", "estimator": {"class": "sklearn.svm.SVR", "kernel": "rbf", "C": 10.0, "epsilon": 0.01, "gamma": "scale", "tol": 0.001, "max_iter": -1}},
+    "random_forest": {"id": "random_forest", "features": "Seven globals after log1p and train-only StandardScaler", "target": "log1p(seconds)", "estimator": {"class": "sklearn.ensemble.RandomForestRegressor", "n_estimators": 300, "max_depth": null, "min_samples_split": 2, "min_samples_leaf": 2, "max_features": 1.0, "bootstrap": true, "random_state": 1234, "n_jobs": 2}},
+    "xgboost": {"id": "xgboost", "features": "Seven globals after log1p and train-only StandardScaler", "target": "log1p(seconds)", "estimator": {"class": "xgboost.XGBRegressor", "objective": "reg:squarederror", "n_estimators": 300, "max_depth": 3, "learning_rate": 0.05, "subsample": 1.0, "colsample_bytree": 1.0, "reg_lambda": 1.0, "reg_alpha": 0.0, "tree_method": "hist", "device": "cpu", "random_state": 1234, "n_jobs": 2}},
+    "mali_style_dense_graph": {"id": "mali_style_dense_graph", "fidelity_class": "architecture_adaptation", "description": "Local Ma-Li-style normalized operation DAG plus seven globals; not a source-native Ma-Li reproduction.", "architecture": "Use the existing UnifiedGraphModel: three TransformerConv(64) layers with ReLU, global mean pool, seven-to-64-to-64 global branch, concatenate, 128-to-512-to-512-to-128-to-1 ReLU head.", "node_features": "Outer-train gate vocabulary one-hot plus unknown bucket; arity one-hot clipped at 3; parameter-present; normalized min/mean/max wire position and position-present flag, using the existing S71 graph encoder.", "optimizer": "Adam lr=0.0005, weight_decay=0.0001", "loss": "unweighted MSE on log1p(seconds)", "precision": "float32 without AMP", "epochs": 500, "early_stopping": false, "effective_batch_size": 32, "seeds": [42, 1234, 31415], "seed_reduction": "retain seed predictions and report row-wise median plus seed range", "device": "CUDA required; no CPU fallback"},
+    "matched_metadata_mlp": {"id": "matched_metadata_mlp", "fidelity_class": "matched_feature_baseline", "architecture": "Seven-to-64-to-64-to-512-to-512-to-128-to-1 fully connected ReLU MLP, as in the frozen R7 matched baseline.", "optimizer": "Adam lr=0.0005, weight_decay=0.0001", "loss": "unweighted MSE on log1p(seconds)", "precision": "float32 without AMP", "epochs": 500, "early_stopping": false, "effective_batch_size": 32, "seeds": [42, 1234, 31415], "seed_reduction": "retain seed predictions and report row-wise median plus seed range", "device": "CUDA required; no CPU fallback"},
+    "work_scaled_ridge": {"id": "work_scaled_ridge", "fidelity_class": "empirical_baseline", "description": "Internal work-scaled Ridge comparison only; not Maestro, a published law, or an identified launch-overhead model.", "features": ["2^n", "2^n*one_qubit_count", "2^n*two_qubit_count", "2^n*work_scaled_multiqubit_count", "shots"], "scaling": "StandardScaler fitted on outer-training rows only", "target": "raw seconds", "estimator": {"class": "sklearn.linear_model.Ridge", "alpha": 1.0, "fit_intercept": true}, "negative_predictions": "clip to zero"}
+  },
+  "execution": {
+    "preflight_before_fit": ["verify all immutable input hashes", "verify exact 150-hash target/feature/fold join separately by precision", "verify all targets finite positive and ok", "verify no exact-hash overlap and frozen 37/28/26/25/34 fold counts", "verify 124 arity>=3 gate nodes across the entire feature population with excluded measurement/barrier/snapshot operations", "verify software versions and model params"],
+    "technical_canaries": "CPU deterministic unit tests and a finite CUDA forward/backward + inference smoke test for both neural methods on the exact R8 graph schema; the CUDA gate runs only after the exclusive R7 GPU fit releases its lease.",
+    "fold0_gate": "Fit all nine methods in both precisions on fold 0; verify attempt coverage, target firewall, transforms, checkpoints/prediction identity, finite nonnegative outputs and three-seed reductions. Continue only on technical PASS, never on an accuracy threshold.",
+    "automatic_sequence": "After fold-0 technical QA, execute folds 1-4 in order per precision/method under exclusive GPU ownership for neural fits. Classical fits may run during R7 under a two-native-thread cap and otherwise no more than four aggregate CPU threads while GPU training runs.",
+    "no_hpo_or_substitution": true,
+    "keep_all_assigned_attempts": true,
+    "timing_concurrency": "No R8 CUDA timing; R8 neural training runs one GPU worker after R7. Do not overlap R7/R8/R9/R10 GPU workloads.",
+    "attempt_root": "work/benchmark_recovery/r8_dense_predictors/attempt_001",
+    "final_artifact_roots": ["artifacts/benchmark_v3/simulator/dense_statevector_predictors/fp32", "artifacts/benchmark_v3/simulator/dense_statevector_predictors/fp64"],
+    "environment": {"python": "3.10.x", "numpy": "1.26.4", "scikit_learn": "1.7.2", "xgboost": "2.1.4", "torch": "2.7.1+cu128", "torch_geometric": "2.6.1", "cuda": "12.8", "gpu": "RTX 5070 Ti"}
+  },
+  "completion_and_reporting": {
+    "attempt_denominator": "150 hashes per method per precision (1,350 attempts per precision, 2,700 across both precision contexts).",
+    "metrics": ["coverage", "MAE", "MedAE", "RMSE", "log1p-MAE", "R2", "p90 absolute error", "p99 absolute error", "maximum absolute error", "per-seed dispersion"],
+    "common_comparison": "Report pairwise scores only on identical successful test hashes; separately retain assigned and predicted coverage for every method.",
+    "status_policy": "Never discard assigned identities. Preserve failed/unavailable attempt rows with explicit reason; do not impute predictions.",
+    "reader_claim": "Nine methods/baselines benchmarked on the same 150 exact-QASM hashes per precision under a local CUDA-Q dense sample(32) warm-execution target. FP32/FP64 are separate contexts."
+  }
+}

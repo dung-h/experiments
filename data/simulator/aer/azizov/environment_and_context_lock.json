@@ -1,0 +1,39 @@
+{
+  "backend": {
+    "basis_gate_match": true,
+    "class": "qiskit.providers.fake_provider.FakeSherbrooke",
+    "name": "fake_sherbrooke",
+    "num_qubits": 127,
+    "recorded_historical_conf_sha256": "d3ff7eeec717f9a04aae5ca83e4d9805eb7f39cc26f85f47666c6b9696f8a443",
+    "recorded_noise_model_sha256": "64d58378f06c47a1bd3d115a5ebea38748c2a1b9702937d497f99d0691b43aa5",
+    "recorded_snapshot_sha256": "509ab97f3bf4cd0c2ddbabe2cdc790e2e440726cb2b65b468c05fc54846ec9c1",
+    "snapshot_noise_hash_scope": "Existing C44 context hashes are verified as locked provenance values; no Aer simulator is run or noise-model calibration is recomputed.",
+    "target_operation_names": [
+      "delay",
+      "ecr",
+      "measure",
+      "rz",
+      "sx",
+      "x"
+    ]
+  },
+  "cuda_or_gpu_state_inspected": false,
+  "frozen_context_path": "artifacts/benchmark_v1/sim_aer_q9_full_20260927/aer_q9_full.environment.json",
+  "frozen_context_sha256": "cf4c721c88aed65f6ed39345925eeb790bb58ae790332909c31eff890e47c5ec",
+  "model_fit_called": false,
+  "package_lock_path": "artifacts/benchmark_v1/sim_aer_q9_full_20260927/aer_q9_full.pip-freeze.txt",
+  "package_lock_sha256": "195dd1a5f87204994a84a32a64f191802d73f295949f01ac71f17385891410d6",
+  "python_version": "3.10.21",
+  "qiskit_aer_distribution": "0.12.2",
+  "qiskit_distribution": "0.44.2",
+  "qiskit_module_version": "0.25.2",
+  "qiskit_terra_distribution": "0.25.2.1",
+  "simulator_runtime_called": false,
+  "status": "pass",
+  "transpilation": {
+    "call": "transpile(qc, backend=FakeSherbrooke(), optimization_level=1, seed_transpiler=1234)",
+    "optimization_level": 1,
+    "seed_transpiler": 1234
+  },
+  "verification_scope": "Exact Python/Qiskit/Aer distributions, frozen environment metadata/lock byte hashes, FakeSherbrooke backend identity/width/basis; all-hash transpile-summary replay is recorded separately."
+}

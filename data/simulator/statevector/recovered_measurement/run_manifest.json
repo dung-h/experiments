@@ -1,0 +1,63 @@
+{
+  "artifact_id": "cudaq-dense-recovery-r5-v1",
+  "bridge_manifest": {
+    "path": "benchmark_v1/execution/manifests/cudaq_verified_bridge_v1.json",
+    "sha256": "7cc55f45a27e313d9d5e47ea9b79ca6f18e1b7379f1c24e1a468ccafed3f3a87"
+  },
+  "campaign_budget_seconds": 43200,
+  "campaign_status": "complete",
+  "cell_timeout_seconds": 900,
+  "clock_contract": "host perf_counter around CUDA-Q sample and separate result iteration; first/warm/build/extraction/end-to-end are distinct",
+  "concurrency": "one sequential CUDA-Q timing worker under shared timing flock and host GPU lease",
+  "created_utc": "2026-10-03T19:35:07.447497+00:00",
+  "dense_worker_sha256": "7b58892dd0c9049dfdf860e6cdccb3bbe3c1422a60ec54a855ebc9be93e3c71c",
+  "environment_lock": {
+    "path": "benchmark_v1/execution/manifests/simulator_environment_lock_v1.json",
+    "sha256": "08624ffa11ba12805e15eec93be573068b02cd362b1092c19694369ec76b21a8"
+  },
+  "outputs": {
+    "attempt_records": {
+      "path": "attempt_records.jsonl",
+      "sha256": "6642e1a88011e1d60f7cbb9101f874d6c48574c71e7a2edab6f981f5be1ca37a"
+    },
+    "environment": {
+      "path": "environment.json",
+      "sha256": "cd0d393a6a4d2fc73bc16b63ebbe28858808a1c31a90d6a275b6d544c40ec4bf"
+    },
+    "raw_csv": {
+      "path": "cudaq_dense_common_raw.csv",
+      "sha256": "d4ee655c888e839ad47a37bc2b45b0e97c12514793ea347d385ec46521b48ae9"
+    }
+  },
+  "panel_manifest": {
+    "path": "artifacts/benchmark_v1/sim_common_q16_manifest_20260927/sim_common_q16_manifest.csv",
+    "sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e"
+  },
+  "panel_rows_attempted": 11,
+  "panel_rows_frozen": 204,
+  "precisions": [
+    "fp32",
+    "fp64"
+  ],
+  "qiskit_site_packages": "/home/server/Documents/quantum-runtime-estimator-replications/.venv-qre-cudaq-common-v1/lib/python3.13/site-packages",
+  "raw_status_counts": {
+    "ok": 396
+  },
+  "rccx_adapter_sha256": "18f85cb270394872cd11448fdc1cef2d4369e11b8c7f9ce23ad61131675cf2e6",
+  "recovery_completed_cells": 66,
+  "recovery_expected_cells": 66,
+  "recovery_plan_sha256": "bbba4d4f0bf096a1e0e808a1c09e04ded7d911904f1a917344fa3cee3502827a",
+  "recovery_scope": "six old RCCX adapter-error hashes and five unchanged drift controls",
+  "resource_snapshot_before": {
+    "gpu_memory": "NVIDIA GeForce RTX 5070 Ti, 305 MiB, 16303 MiB, 13 %",
+    "gpu_processes": "181789, /usr/bin/ptyxis, 41 MiB",
+    "ram": "Mem:            45Gi       9.0Gi       6.9Gi       5.2Gi        35Gi        36Gi"
+  },
+  "runner_sha256": "f2380679ae172b13917dd610a89c00621b401772b58a8a1a9d4c3e17974d510b",
+  "sessions": 3,
+  "shots": 32,
+  "started_utc": "2026-10-03T19:34:18.468278+00:00",
+  "timing_performed": true,
+  "warm_repetitions": 5,
+  "warmups": 3
+}

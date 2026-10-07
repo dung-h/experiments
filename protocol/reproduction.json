@@ -1,0 +1,167 @@
+{
+  "scope": "Pasqal optional construction and gated measurement only; not a package-wide fresh-refit capability map",
+  "environments": [
+    {
+      "environment_id": "pasqal_source_program_preprocessing",
+      "status": "ready",
+      "role": "Reconstruct official Pasqal pulse programs from the selected crossed-grid source manifest; no EMU-MPS simulation or timing.",
+      "pins": {
+        "python": "3.10.21",
+        "packages": {
+          "numpy": "2.2.6",
+          "pulser-core": "1.9.1"
+        }
+      },
+      "requirements": {
+        "path": "requirements-pasqal-preprocess.txt",
+        "sha256": "5aaac6844f854c5d5d33464c1d23317cdc821f3a36e629653c84a454e0e5421e",
+        "status": "packaged",
+        "root_kind": "package"
+      },
+      "pin_evidence": "Python 3.10.21, NumPy 2.2.6 and pulser-core 1.9.1 were checked in the retained composite Pasqal environment; source constructors import the pulser namespace supplied by pulser-core.",
+      "missing": "Install the optional requirements file with the declared Python version before running source-program preprocessing."
+    },
+    {
+      "environment_id": "pasqal_analog_measurement",
+      "status": "not_ready",
+      "role": "Analog emu-MPS measurement, which is not the digital simulator context.",
+      "observed_packages": {
+        "python": "3.10.21",
+        "numpy_from_PYTHONPATH_overlay": "2.2.6",
+        "pulser-core": "1.9.1",
+        "emu-mps": "2.9.1",
+        "torch": "2.7.1+cu128"
+      },
+      "pins": {
+        "python": "3.10.21",
+        "packages": {
+          "numpy": "2.2.6",
+          "pulser-core": "1.9.1",
+          "emu-mps": "2.9.1",
+          "torch": "2.7.1+cu128"
+        }
+      },
+      "direct_requirements": {
+        "path": "requirements-pasqal-measurement.txt",
+        "sha256": "385595bca4c47dc6bb1a9719152ebd106ef8e4dedf2ae25e8e0068404ae3b274",
+        "status": "packaged",
+        "root_kind": "package",
+        "scope": "Observed direct package versions only; not a transitive dependency lock."
+      },
+      "historical_package_lock_digest": {
+        "sha256": "2197ecc01b7e759f116896da7308646a3a5a4d1257f36a80abfc7e6c679766d4",
+        "valid_package_lock": false,
+        "reason": "This digest matches the error text from pip freeze --all failing because pip is absent in the recorded interpreter. It does not identify the installed package set."
+      },
+      "missing": "The old run used a composite interpreter plus PYTHONPATH overlay, and the recorded package-lock digest is not a lock. Direct versions are now disclosed, but a verified transitive CUDA environment lock and clean-install runner check remain outstanding.",
+      "review": {
+        "scope": "Pasqal adapter only; package-wide S10 incomplete",
+        "code_status": "synthetic_quality_and_resume_paths_tested",
+        "measurement_executed": false,
+        "historical_environment_reproduced": false,
+        "next_step": "Resolve and verify a clean prospective transitive CUDA environment; register verified_transitive_lock path/sha256/status before a separate execution authorization."
+      }
+    }
+  ],
+  "families": [
+    {
+      "family_id": "pasqal_emu_mps_analog",
+      "display_name": "Pasqal emu-MPS analog companion measurements",
+      "capabilities": [
+        {
+          "capability_id": "analog_program_preprocessing",
+          "action": "preprocess",
+          "status": "ready",
+          "environment_id": "pasqal_source_program_preprocessing",
+          "entrypoint": "scripts/benchmark.py preprocess --family pasqal_emu_mps_analog --capability analog_program_preprocessing --output-dir <new-empty-path>",
+          "prerequisites": [
+            {
+              "path": "protocol/measurement/pasqal_emu_mps_formula_crossed_pilot.json",
+              "sha256": "5e340dedc36a8e53ce858eeb8be78a212dd672fb3609e9df35426fd9bcf11e0d",
+              "status": "packaged",
+              "root_kind": "package",
+              "source": "selected 18-cell crossed-grid contract with source repository, commit, document hash, families and layouts",
+              "consumer": "official source-program identity and deterministic layout selection",
+              "inclusion_decision": "Use this selected crossed-grid contract; do not substitute the older single-layout source pilot."
+            },
+            {
+              "path": "methods/simulator/analog_programs.py",
+              "sha256": "e37dbe09b53155f77673d2bc6b5b02612e24e8fa161094bf70a3484d2d4c2435",
+              "status": "packaged",
+              "root_kind": "package",
+              "source": "current public adapter",
+              "consumer": "map program IDs to source program"
+            },
+            {
+              "path": "requirements-pasqal-preprocess.txt",
+              "sha256": "5aaac6844f854c5d5d33464c1d23317cdc821f3a36e629653c84a454e0e5421e",
+              "status": "packaged",
+              "root_kind": "package",
+              "source": "optional, version-pinned source-construction environment",
+              "consumer": "install and verify NumPy/Pulser versions before constructing source programs"
+            },
+            {
+              "path": "methods/simulator/preprocess_pasqal_analog.py",
+              "sha256": "7242c1b1cd0e5241262d0dcea52b6f90590c006992486aef61f0436b42eb6f8b",
+              "status": "packaged",
+              "root_kind": "package",
+              "source": "manifest-driven source program and crossed-cell materializer",
+              "consumer": "write six source-program identities and eighteen measurement-cell identities to a new output directory"
+            }
+          ],
+          "reason": "The optional source-construction environment is pinned and the adapter checks those versions before creating six program descriptors and eighteen crossed-cell identities. This capability constructs inputs only; it does not run EMU-MPS or measure time."
+        },
+        {
+          "capability_id": "new_analog_measurements",
+          "action": "measure",
+          "status": "not_ready",
+          "environment_id": "pasqal_analog_measurement",
+          "entrypoint": "methods/simulator/run_pasqal_analog_measurement.py",
+          "prerequisites": [
+            {
+              "path": "protocol/measurement/pasqal_emu_mps_formula_crossed_pilot.json",
+              "sha256": "5e340dedc36a8e53ce858eeb8be78a212dd672fb3609e9df35426fd9bcf11e0d",
+              "status": "packaged",
+              "root_kind": "package",
+              "source": "analog protocol",
+              "consumer": "18-cell companion design"
+            },
+            {
+              "path": "methods/simulator/analog_programs.py",
+              "sha256": "e37dbe09b53155f77673d2bc6b5b02612e24e8fa161094bf70a3484d2d4c2435",
+              "status": "packaged",
+              "root_kind": "package",
+              "source": "source-pinned analog program constructors",
+              "consumer": "reconstruct the two documented source programs on the frozen crossed layouts"
+            },
+            {
+              "path": "methods/simulator/run_pasqal_emu_mps_quality.py",
+              "sha256": "6d54dafb10c314815d6b6c2f67b2c5ec8694f0e3cd5cf8119a3fe26ab6a63c05",
+              "status": "packaged",
+              "root_kind": "package",
+              "source": "retained historical measurement runner",
+              "consumer": "audit runner integration before any separately authorized new measurement"
+            },
+            {
+              "path": "methods/simulator/run_pasqal_analog_measurement.py",
+              "sha256": "74ca170a0a78eda2d83dcda4d850230f981ea03915463488b6d1ac85cf78adcd",
+              "status": "packaged",
+              "root_kind": "package",
+              "source": "portable runner bound to the selected crossed-grid contract",
+              "consumer": "future, explicitly authorized local measurements"
+            },
+            {
+              "path": "requirements-pasqal-measurement.txt",
+              "sha256": "385595bca4c47dc6bb1a9719152ebd106ef8e4dedf2ae25e8e0068404ae3b274",
+              "status": "packaged",
+              "root_kind": "package",
+              "source": "observed direct measurement dependency versions",
+              "consumer": "prepare a candidate EMU-MPS measurement environment"
+            }
+          ],
+          "reason": "The package-local runner is bound to the selected crossed grid and requires an explicit --execute flag. New measurements remain not ready because the historical package-lock digest is invalid and no transitive CUDA environment lock or clean-install check is available. The historical runner remains unchanged. This is an analog companion, not a digital common-panel prediction."
+        }
+      ]
+    }
+  ]
+}

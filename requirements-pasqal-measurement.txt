@@ -1,0 +1,6 @@
+# Direct package versions observed for the archived local EMU-MPS measurement.
+# This is not a transitive lock; the historical package-lock digest was invalid.
+--extra-index-url https://download.pytorch.org/whl/cu128
+-r requirements-pasqal-preprocess.txt
+emu-mps==2.9.1
+torch==2.7.1+cu128

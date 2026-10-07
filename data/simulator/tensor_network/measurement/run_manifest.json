@@ -1,0 +1,56 @@
+{
+  "artifact_id": "cutensornet-scalar-common-panel-v1-20260928",
+  "checkpoint_only": false,
+  "clock_contract": "network build, path search, RUNTIME_EST, first CUDA-event contraction and warm CUDA-event contractions are separate; scalar zero-bitstring amplitude only",
+  "concurrency": "one sequential child process and one GPU timing worker",
+  "created_utc": "2026-09-27T23:04:51.397023+00:00",
+  "environment_lock": {
+    "path": "benchmark_v1/execution/manifests/simulator_environment_lock_v1.json",
+    "sha256": "08624ffa11ba12805e15eec93be573068b02cd362b1092c19694369ec76b21a8"
+  },
+  "optimizer": {
+    "cost_function": "TIME_TUNED",
+    "samples": 32,
+    "seed": 137,
+    "threads": 1
+  },
+  "outputs": {
+    "attempt_records": {
+      "path": "attempt_records.jsonl",
+      "sha256": "65789abe4c48439c448aa25bb0e97a8e4d087477867163a7393f69b4001dd553"
+    },
+    "environment": {
+      "path": "environment.json",
+      "sha256": "478bd141f4224ea2d35d99cac9ab4774fa250240b30b1b99409f2aa6c3c24e2a"
+    },
+    "raw_csv": {
+      "path": "cutensornet_scalar_common_raw.csv",
+      "sha256": "843a28edae4afc90eec83a491fea21519d67d5f4454093d436200ca65d23535d"
+    }
+  },
+  "panel_manifest": {
+    "path": "artifacts/benchmark_v1/sim_common_q16_manifest_20260927/sim_common_q16_manifest.csv",
+    "sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e"
+  },
+  "panel_rows_attempted": 204,
+  "panel_rows_frozen": 204,
+  "raw_status_counts": {
+    "ok": 3618,
+    "timeout": 54
+  },
+  "runner_sha256": "209b3d1f6b85eb15fe8afb6f2fd2e9a0a294883dd5e6931b9d36181a4ed1f39d",
+  "selection_manifest": null,
+  "sessions": 3,
+  "timeouts": {
+    "contraction_timeout_seconds": 900,
+    "parent_cell_timeout_seconds": 1800,
+    "planner_timeout_seconds": 1800
+  },
+  "timing_performed": true,
+  "warm_repetitions": 5,
+  "warmups": 3,
+  "workspace": {
+    "bytes": 14947909632,
+    "fraction_of_detected_vram": 0.9
+  }
+}

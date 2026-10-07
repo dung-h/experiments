@@ -1,0 +1,23 @@
+{
+  "cupy": {
+    "driver_api": 13020,
+    "name": "NVIDIA GeForce RTX 5070 Ti",
+    "runtime_api": 13020,
+    "vram_bytes": 16608788480
+  },
+  "gpu_concurrency": 1,
+  "interpreter": "/home/server/Documents/quantum-runtime-estimator-replications/.venv-qre-cutensornet-common-v1/bin/python",
+  "nvidia_smi": "NVIDIA GeForce RTX 5070 Ti, 595.91.07, 16303 MiB",
+  "optimizer": {
+    "cost_function": "TIME_TUNED",
+    "samples": 32,
+    "seed": 137,
+    "threads": 1
+  },
+  "package_lock": "cuda-bindings==13.4.3\ncuda-core==0.7.0\ncuda-pathfinder==1.8.2\ncuda-toolkit==13.4.1.0\ncudensitymat-cu13==0.6.0\ncupauliprop-cu13==0.4.0\ncupy-cuda13x==14.2.0\ncuquantum-python-cu13==26.6.0\ncustabilizer-cu13==0.4.0\ncustatevec-cu13==1.15.0\ncutensor-cu13==2.8.1\ncutensornet-cu13==2.14.0\ndill==0.4.1\nnumpy==2.5.3\nnvidia-cublas==13.7.0.27\nnvidia-cuda-nvrtc==13.4.59\nnvidia-cuda-runtime==13.4.49\nnvidia-cufft==12.4.0.34\nnvidia-curand==10.4.4.49\nnvidia-cusolver==12.3.2.15\nnvidia-cusparse==12.8.6.49\nnvidia-nvjitlink==13.4.52\nnvmath-python==0.9.0\npip==26.2.1\nqiskit==2.5.2\nrustworkx==0.18.1\nscipy==1.18.1\nstevedore==5.9.1\ntyping_extensions==4.16.0",
+  "package_lock_sha256": "bd296e96b301015228b1befc4606c388da346fea2740795d161dd48eeec8ffe0",
+  "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "workspace_bytes": 14947909632,
+  "workspace_fraction": 0.9
+}

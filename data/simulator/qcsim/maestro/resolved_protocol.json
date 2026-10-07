@@ -1,0 +1,372 @@
+{
+  "calibration": {
+    "allocation": "deterministic synthetic words independent of panel instances/runtime; source-hash disjointness checked before execution",
+    "coefficient_formula": "slope1q/(2*2^n); (slopeCX-slopeWrapper)/2^n; endpoint slopes within each session; median over sessions",
+    "cx_word": "identical wrapper, with CX a,b between RX and RZ",
+    "fit_repeats": [
+      256,
+      1024
+    ],
+    "fit_scope": "synthetic calibration only, shared independently of all outer test labels; optional residual calibration would be a separate outer-train-only method",
+    "held_out_linearity_repeat": 512,
+    "interpolation": "PCHIP in n; all common-panel widths are knots; no extrapolation or bridging invalid knots",
+    "model_limit": "one pooled RX/RZ coefficient may not capture gate-specific or entanglement-dependent costs; b(n)+m(n)*shots is calibrated on full-register zero-state sampling, not on measured-subset size, classical-result width or output support. Applying this fixed predictor to terminal partial/extra-classical-bit circuits is an explicit adaptation limitation, not an eligibility failure. No inferred m/n scaling, no accuracy-based exclusion and no panel-label-based coefficient fitting.",
+    "one_qubit_word": "cycle i: q=i%n, RZ(0.013+0.0001*i) then RX(0.021+0.0001*i)",
+    "operation_cells": 72,
+    "operation_classes": [
+      "one_qubit_noncommuting",
+      "two_qubit_wrapper_control",
+      "two_qubit_cx_interleaved"
+    ],
+    "operation_shots": 1,
+    "prediction": "2^n*(C1q(n)*normalized_1q_count + Ccx(n)*normalized_cx_count) + b(n) + m(n)*shots",
+    "preparation": "RX(pi/2) q0; CX q0,q(n-1); then RX(0.23+0.01*q) on every qubit; omitted for zero-state sampling",
+    "repeats": [
+      256,
+      512,
+      1024
+    ],
+    "sampling_cells": 40,
+    "sampling_formula": "unweighted affine OLS on zero-state sampling medians; intercept is empirical, not physical launch overhead",
+    "sampling_shots": [
+      1,
+      10,
+      100,
+      1000,
+      10000
+    ],
+    "total_cells": 112,
+    "widths": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "wrapper_word": "cycle i: a=i%(n-1), b=a+1, RX(0.017+0.0001*i) a then RZ(0.031+0.0001*i) b"
+  },
+  "comparison": {
+    "comparator_inputs": [
+      "active_width",
+      "measurement_stripped_structural_depth",
+      "one_qubit_gate_count",
+      "two_qubit_gate_count",
+      "multi_qubit_gate_count",
+      "swap_like_gate_count"
+    ],
+    "failure_threshold_based_on_accuracy": false,
+    "graph": "Reuse S85 source-DAG encoding and three TransformerConv(64) architecture, six globals ->64->64, head128->512->512->128->1; train-only gate vocabulary and log1p/standardized global inputs. Fresh FP32 Adam lr=5e-4 weight_decay=1e-4, batch32, epochs500, seeds42/1234/31415; no HPO/early stopping; median of seed seconds predictions. Do not invoke its old MPS-label runner unchanged.",
+    "median_baseline": "Median of finite outer-training hash runtimes, in seconds, not median of test labels.",
+    "metrics": [
+      "coverage",
+      "MAE",
+      "MedAE",
+      "log1p_MAE",
+      "R2",
+      "p90",
+      "p99",
+      "max"
+    ],
+    "neural_seeds": [
+      42,
+      1234,
+      31415
+    ],
+    "neural_training_device": "cuda",
+    "outer_folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "paired_bootstrap": "10000 exact-hash replicates, seed_registry.bootstrap stream; observed delta separate from bootstrap mean",
+    "pure_graph_helper": "benchmark_v1/scripts/run_mps_fixed_chi16_runtime_adaptation_v1.py",
+    "pure_graph_helper_sha256": "7731c6ef22704089122fd704f138bd207856909437bce9e03c7f6012812b5bd6",
+    "ridge": "log1p six inputs then inner-training StandardScaler; Ridge alpha in [0.01,0.1,1,10,100] selected by four-way exact-hash GroupKFold on outer-train using mean held-out seconds MAE; ties choose smallest alpha. Refit transformations/model on full outer-train; target log1p, output max(0,expm1).",
+    "same_qasm_engine_shots_clock_labels": true,
+    "same_target_baselines": [
+      "outer_train_median",
+      "nested_grouped_ridge",
+      "source_dag_graph_adaptation_cuda"
+    ],
+    "source_topology": "artifacts/benchmark_v3/simulator/azizov_common_core_gnn_v1_materialization/source_dag_topology.jsonl",
+    "source_topology_sha256": "bc8816576992cd14088371265dc0f766eafcf51bc4bf39631ec17ab9f4784f3a"
+  },
+  "context": {
+    "cpu_affinity": "capture allowed CPU set once and retain across arms/calibration/panel; do not select it using runtime",
+    "engine": "QCSim CPU Statevector",
+    "gpu_engine": false,
+    "identity": "actual worker binary/library hashes, versions, resolved simulator config, CPU, affinity and thread-pool fingerprint",
+    "native_threads_primary": 1,
+    "optimize_circuit": false,
+    "precision": "FP64 / std::complex<double>",
+    "precision_validation": "pin the native binding and QCSimState source/build hashes; require explicit SimulatorType.QCSim and SimulationType.Statevector in the resolved configuration and result metadata. use_double_precision is GPU-MPS/TN-only and remains false for CPU QCSim.",
+    "primary_thread_policy_selected_before_timing": true,
+    "qcsim_openmp_note": "Pinned QCSim uses explicit OpenMP num_threads(processor_count) based on hardware_concurrency; OMP_NUM_THREADS alone is not a hard cap. Set OMP_THREAD_LIMIT=1 before worker import for the primary arm; the unset arm removes both OMP variables.",
+    "repetition_seeded_execution": true,
+    "resolved_optimizer_flag_required": "Set SimulatorConfig.optimize_circuit=False through the patched binding before the existing execute_core timer. Record requested and resolved flag on every attempt; fail before execution if the property is absent.",
+    "seed_context_id": "maestro-qcsim-cpu-statevector-fp64|optimize_circuit=0|native_threads=1|shots={cell_shots}",
+    "seed_derivation": "uint32 from first four SHA256 digest bytes, big-endian, of root_seed|registered simulator stream|qasm_sha256|context_id|repetition. For synthetic cells qasm_sha256 is the exact synthetic-QASM hash. repetition is 1..15 for the three sessions x five calls.",
+    "seed_registry": "benchmark_v1/registry/seed_registry.json",
+    "seed_registry_sha256": "ae48f16dac27cdf3c9f42ce89acf4a67cb1b318f9c23f32e88d2c61d4323e864",
+    "seed_stream": "20260925-simulator",
+    "shots": 1000,
+    "thread_environment_before_import": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OMP_THREAD_LIMIT": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "use_double_precision": false
+  },
+  "evaluation": {
+    "calibration_scope": "All 112 synthetic cells at optimizer-off, independently of panel labels. Invalid width coefficients remain unavailable under the unchanged positivity/resolution/stability/linearity gates. No clamping, gate relaxation, invalid-knot bridging or test-label calibration.",
+    "claim_boundary": "This evaluates a local component adaptation on an explicitly modified engine configuration. It neither repairs the optimizer-on predictor score nor reproduces Maestro's full published estimator. Sampling-fit limitations from the parent remain applicable.",
+    "comparators": "Evaluate parent median, nested Ridge and fresh CUDA graph comparisons on the new optimizer-off panel labels, with the same C44 folds and three seeds. Report component-predictor coverage separately and paired error only on identical successful test hashes.",
+    "evaluation_target_clock": "maestro_qcsim_process_isolated_reported_execution",
+    "execution_context_id": "maestro_qcsim_cpu_sv_fp64_optimizer_off_threads1_shots1000",
+    "method_output_clock": "predicted_maestro_qcsim_reported_execution_seconds",
+    "new_labels_required": true,
+    "reuse_optimizer_on_labels": false,
+    "reuse_probe_coefficients_or_timings": false
+  },
+  "execution": {
+    "additional_human_signature_required": false,
+    "future_continuation": "independent protocol review and current-host static preflight -> pilot -> full calibration/panel only after explicit authorization and technical gates",
+    "historical_coefficient_reuse": false,
+    "new_run_required": true,
+    "now": "worker/evaluator implementation and static checks complete; no measurement/training performed",
+    "old_pilot_or_attempt003_resume": false,
+    "raw_overwrite": false,
+    "registry_promotion": false
+  },
+  "execution_context_id": "maestro_qcsim_cpu_sv_fp64_optimizer_off_threads1_shots1000",
+  "fidelity_class": "adaptation",
+  "local_execution_environment": {
+    "native_module_path": "/home/server/Documents/quantum-runtime-estimator-replications/work/maestro_optimizer_off_detached_20261003/build/maestro.cpython-310-x86_64-linux-gnu.so",
+    "native_module_sha256": "9e4f3d1cc69fe2db1c6276e3252c30543194662cea368a058c9a7e3cda5452d0",
+    "numpy": "2.2.6",
+    "openmp_runtime": {
+      "evidence": "ldd on the pinned Maestro native module resolves libgomp.so.1",
+      "library_path": "/usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0",
+      "library_sha256": "645478cbe100d1465b9d45f7047bca3965358f4d399937e544f55ac7a924d5a3"
+    },
+    "optimizer_off_patch_sha256": "386a945dde3a503488d9abd68b1235e2785327175963f888c1296c20fb014c13",
+    "optimizer_off_source_revision": "2ef7000395fc2a173ab1b4221ec9a235da0392c6",
+    "portability": "This machine's QCSim build and QASM corpus are outside the publish candidate; these pins validate the current host only, not clean-clone reproduction.",
+    "python": "3.10.21",
+    "python_executable": "/home/server/Documents/.venv-qonductor/bin/python",
+    "qcsim_precision_sources": {
+      "basis": "simple_execute binds Circuits::Circuit<double>; QCSimState stores std::complex<double>. The `use_double_precision` configuration field is for GPU-MPS/tensor-network setup, not a CPU-QCSim precision switch.",
+      "bindings_source_sha256": "01b02a6fcc145979bfa7e0800d70f6050a27f97fef36c14dab006bab8596fccc",
+      "configuration": "explicit SimulatorType.QCSim and SimulationType.Statevector; keep CPU-irrelevant use_double_precision at false/default and validate result simulator/method IDs.",
+      "qcsim_state_source_sha256": "e19758535fbad2521064ca7e2136dda187ddf726dbf9eb294141b39289f57188"
+    },
+    "qiskit": "2.5.2",
+    "qoro_maestro_distribution": "0.3.1",
+    "runtime_link_dependency": {
+      "library_path": "/home/server/Documents/maestro/build/boost_1_89_0/lib/libboost_json.so.1.89.0",
+      "library_sha256": "679b2401d19b891fc2659cddeab4db2a4aaca494b379c9531c66c858057e8c12",
+      "loader_environment": "Set LD_LIBRARY_PATH to /home/server/Documents/maestro/build/boost_1_89_0/lib before importing the native extension. Without it, import fails with libboost_json.so.1.89.0 not found.",
+      "native_import_check": "Importing the native binding with the pinned library path passes and exposes simple_execute, SimulatorConfig, QCSim and Statevector; no circuit was run during this check."
+    },
+    "scipy": "1.15.3",
+    "upstream_source_revision": "2ef7000395fc2a173ab1b4221ec9a235da0392c6"
+  },
+  "measurement": {
+    "append_only_attempts": true,
+    "clock": "maestro_qcsim_process_isolated_reported_execution",
+    "label_reduction": "median repetitions per session, then median sessions per exact source hash",
+    "no_concurrent_heavy_workloads": true,
+    "persistent_process_warm_claim": false,
+    "process_policy": "fresh spawned process for every call, consume queue before join, one monotonic deadline",
+    "repetitions_per_session": 5,
+    "resume": "completed identity-pinned cells only; interrupted/error/timeout attempts remain recorded and are never replaced",
+    "retained_clocks": [
+      "reported_time_seconds",
+      "host_wall_seconds",
+      "outer_wall_seconds"
+    ],
+    "selected_field": "reported_time_seconds from result.time_taken",
+    "sessions": 3,
+    "shared_timing_and_gpu_lease": true,
+    "timeout_seconds": 180,
+    "worker_count": 1
+  },
+  "measurement_artifact_contract": {
+    "attempt_columns": [
+      "phase",
+      "record_type",
+      "cell_id",
+      "qasm_sha256",
+      "normalized_qasm_sha256",
+      "normalized_width",
+      "normalized_1q_gate_count",
+      "normalized_cx_gate_count",
+      "measurement_map",
+      "measurement_map_sha256",
+      "measured_qubit_count",
+      "measured_classical_bit_count",
+      "measured_classical_extent",
+      "declared_classical_width",
+      "measurement_terminal",
+      "measurement_map_injective",
+      "outer_fold",
+      "thread_arm",
+      "session",
+      "repetition",
+      "attempt_ordinal",
+      "seed_uint32",
+      "status",
+      "engine_reported_seconds",
+      "host_wall_seconds",
+      "outer_wall_seconds",
+      "simulator_id",
+      "method_id",
+      "protocol_sha256",
+      "plan_sha256",
+      "worker_sha256",
+      "environment_sha256",
+      "error"
+    ],
+    "calibration_model_json": "schema_id=maestro-cpu-component-calibration-v1; artifact_status=PASS|FAIL describes structural/hash/provenance validation only; status=complete|complete_with_unavailable_knots preserves scientific calibration availability. Include shot_count=1000, exact coefficient_formula, input_attempt_sha256 containing the attempts-ledger SHA256, attempts_sha256, panel_targets_sha256, calibration_source_qasm_sha256 containing all 112 exact synthetic cell-QASM hashes, and width_coefficients for every width 2..9 with status=valid (C1q,Ccx,b,m finite nonnegative) or unavailable (reason). Retain detailed knots, per-session increments, held-out R512 checks, sampling-fit diagnostics and interpolation validity.",
+    "full_attempts": "full/attempts.jsonl; all 112 calibration cells and 150 exact-QASM panel hashes, 3 sessions x 5 fresh-process repetitions each. The 10 primary-arm pilot calibration cells may be referenced/reused only when the cell, seed, runner and environment fingerprints match exactly; diagnostic unset-arm attempts are not used as primary labels.",
+    "no_retry_policy": "A terminal failure is retained and remains unavailable; do not retry or replace it. Resume only never-started identities from the same pinned plan/environment.",
+    "optimizer_flag_columns": [
+      "optimizer_enabled_requested",
+      "optimizer_enabled_resolved"
+    ],
+    "panel_targets_csv": "Exactly one row per exact source QASM hash: source_qasm_sha256, outer_fold, runtime_seconds, target_status, original measurement_map (ordered source qbit/cbit index pairs), measurement_map_sha256, measured_qubit_count, measured_classical_bit_count, measured_classical_extent, declared_classical_width, terminal/injective flags, normalized_qasm_sha256, normalized_width, normalized_1q_gate_count, normalized_cx_gate_count. The normalized-QASM hash/counts describe exactly the deterministic RX/RZ/CX QASM passed to the engine, not raw source-DAG counts; leave those fields blank only if normalization is unsupported. Require all attempt rows for a panel hash to agree. Use target_status=runtime_observed and the median of all 15 finite engine-reported samples only when all 15 succeeded; otherwise leave runtime_seconds blank and use unavailable_<terminal_status> or unavailable. Alias rows never multiply the hash-level weight.",
+    "pilot_attempts": "pilot/attempts.jsonl; 10 selected calibration cells x two arms x 3 sessions x 5 fresh-process repetitions = 300 terminal attempt rows",
+    "root": "artifacts/benchmark_v3/simulator/maestro_cpu_component_optimizer_off",
+    "score_method_ids": [
+      "maestro_style_cpu_sv_component_adaptation",
+      "outer_train_median",
+      "nested_grouped_ridge",
+      "source_dag_graph_adaptation_cuda"
+    ],
+    "score_outputs": [
+      "component_predictions.csv",
+      "oof_predictions.csv",
+      "method_metrics.csv",
+      "result_manifest.json"
+    ],
+    "scratch": "Keep pilot, partial attempts and preflight files under work/ until final validation; do not write them into the public artifact root.",
+    "terminal_statuses": [
+      "ok",
+      "unsupported",
+      "timeout",
+      "resource_limit",
+      "worker_error",
+      "invalid_engine_identity",
+      "nonfinite_runtime"
+    ]
+  },
+  "method_id": "maestro_style_cpu_sv_component_optimizer_off_adaptation",
+  "normalization": {
+    "approximation_degree": 1.0,
+    "basis_gates": [
+      "rx",
+      "rz",
+      "cx"
+    ],
+    "equivalence": "zero and two independently seeded product inputs, fidelity >= 0.9999999999, outside timing",
+    "equivalence_fidelity_minimum": 0.9999999999,
+    "equivalence_input_seed": 12345,
+    "failure_policy": "retain source hash and unsupported reason; never add measurements or omit operations",
+    "measurement_mapping": "nonempty terminal injective qubit-to-classical-bit map; allow partial measured-qubit subsets and unused classical bits; preserve ordered map and both register widths exactly; barriers after first measure allowed, any other operation unavailable",
+    "no_routing": true,
+    "optimization_level": 0,
+    "qasm2_custom_instruction_policy": "strict QASM2 parse with Qiskit 2.5.2 LEGACY_CUSTOM_INSTRUCTIONS to recognize gates already used in the exact source QASM; do not rewrite source text or silently drop operations",
+    "qiskit_version": "2.5.2",
+    "seed_transpiler": 12345,
+    "vector_norm_atol": 1e-06
+  },
+  "panel": {
+    "aliases": 162,
+    "deduplicate_before_measurement": true,
+    "fold_assignment": "unchanged C44 core exact-QASM folds 37/28/26/25/34",
+    "fold_source": "artifacts/benchmark_v1/c44_aer_q16_full_panel_evaluation_20260927/aer_q16_reduced_warm.csv",
+    "fold_source_sha256": "a25e2e740fd3058e487f713cd0fc074dd8761120a5aface275a212693ac05437",
+    "hashes": 150,
+    "manifest": "artifacts/benchmark_v1/sim_common_q16_manifest_20260927/sim_common_q16_manifest.csv",
+    "manifest_sha256": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e",
+    "new_matching_engine_labels_required": true,
+    "reuse_aer_or_cudaq_labels": false,
+    "width_frontier_included": false,
+    "width_range": [
+      2,
+      9
+    ]
+  },
+  "pilot": {
+    "arms": [
+      "unset_native_thread_environment",
+      "primary_native_threads_1"
+    ],
+    "cells": "nine operation cells at n=9 plus zero-state n=9 shots=1000",
+    "default_arm_role": "context-sensitivity diagnostic; its success/failure does not choose primary policy or determine predictor accuracy",
+    "linearity_and_identification": "R512 is validation only; nonpositive, unresolved, nonlinear or unstable coefficients stay unavailable",
+    "order": "freeze randomized paired-arm order before calls; seed = first four SHA256 bytes big-endian of root_seed|execution_order_stream|protocol_id|pilot|0 from seed_registry.json",
+    "order_seed": 20260925,
+    "primary_acceptance": "all ten primary cells complete, finite, context-correct and pass original MAD/range stability thresholds",
+    "projected_duration": "Report projected wall time from observed pilot throughput with assumptions and uncertainty; informational only, not a pass/fail gate. Do not invent a cutoff.",
+    "repetitions_per_session": 5,
+    "reuse_primary_pilot_rows": "allowed only for identical primary calibration cell/session/repetition descriptors and worker context",
+    "sampling_pilot_scope": "The pilot includes only the n=9 zero-state sampling cell at 1000 shots. It checks within-cell repetition/session stability only; it does not fit or validate the five-knot sampling model. The b,m fit and all five sampling-knot residual checks run only after the full 40-cell sampling calibration is complete.",
+    "sessions": 3,
+    "stability": {
+      "absolute_seconds": 5e-05,
+      "relative": 0.2
+    },
+    "stability_rules": {
+      "cell": "Within each session, median absolute deviation of five repetitions <= max(50e-6,0.2*session_median); range of three session medians <= max(50e-6,0.2*median_of_session_medians). Apply to every calibration cell.",
+      "heldout": "For each operation word and session, predicted_T512=T256+(T1024-T256)/3; require abs(T512-predicted_T512)<=max(50e-6,0.2*T512).",
+      "identified_increment": "For 1Q use each session's T1024-T256; for CX use each session's (T1024-T256)_CX-(T1024-T256)_wrapper. All three increments must be finite and positive; their median must exceed 50e-6 and their range must be <=max(50e-6,0.2*median_increment).",
+      "sampling": "Fit unweighted OLS on the five shot-level session-median reductions; b and m finite and nonnegative. At every shot knot require abs(observed-(b+m*shots))<=max(50e-6,0.2*observed); invalid knot remains unavailable."
+    },
+    "timed_calls": 300
+  },
+  "population": {
+    "assigned_hashes": 150,
+    "calibration_cells": 112,
+    "full_attempt_identities": 3930,
+    "pilot_attempts": 300,
+    "repetitions_per_session": 5,
+    "sessions": 3,
+    "unsupported_policy": "Apply the parent's terminal injective measurement-map policy. Retain all assigned hashes and explicit unsupported/failure states. Do not flatten repeated measurements or expand the frontier.",
+    "width_range": [
+      2,
+      9
+    ]
+  },
+  "protocol_id": "maestro-cpu-component-optimizer-off-v1",
+  "reader_label": "Maestro-style CPU component predictor, circuit optimizer disabled",
+  "resolved_from": {
+    "overlay_protocol_path": "benchmark_v1/protocol/maestro_cpu_component_optimizer_off.json",
+    "overlay_protocol_sha256": "2b1cbb5606603046fb6e2c4b778aff2d6235e32a4fb8156026a791087df2b610",
+    "parent_protocol_path": "benchmark_v1/protocol/maestro_cpu_component_benchmark.json",
+    "parent_protocol_sha256": "48eb56f29a54c1f5249f153fd91a4588bc87b7e464c9a2c998358f0478a17354",
+    "resolver_script_sha256": "d6fc66df325cce1417e32728dd8893dca609893be6146242f0f1a72049c06aaa"
+  },
+  "source": {
+    "closed_composer_required": false,
+    "local_choices": [
+      "two coarse operation classes",
+      "single native-thread policy",
+      "q2-q9 calibration",
+      "independent amplitude equivalence instead of original selector evaluation"
+    ],
+    "paper": "https://arxiv.org/html/2512.04216v1#S3.SS3",
+    "paper_support": "operation complexity times host-calibrated coefficients, Hermite interpolation and affine shot cost; GPU prediction was future work",
+    "public_api": "maestro.simple_execute / explicit QCSim Statevector",
+    "selector_required": false,
+    "upstream_revision": "2ef7000395fc2a173ab1b4221ec9a235da0392c6"
+  },
+  "status": "resolved_runtime_protocol"
+}
