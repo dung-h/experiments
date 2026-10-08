@@ -62,6 +62,11 @@
       },
       "checkout_script": "tracks/quantum_rings/clone_upstreams.sh",
       "report": "artifacts/quantum_rings/REPORT.md"
+    },
+    "qpack": {
+      "repository": "https://gitlab.com/libket/qpack.git",
+      "commit": "9beaf65e951e01181b1e324cbb1b227af10eef96",
+      "scope": "MCP QAOA source records; source observations and circuit bytes not redistributed"
     }
   }
 }

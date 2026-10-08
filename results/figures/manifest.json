@@ -1,206 +1,7 @@
 {
-  "artifact_id": "benchmark-publication-results",
-  "bootstrap_policy": "Only existing pair-ledger intervals are displayed. No bootstrap, refit, model selection, or comparison search is performed here.",
-  "figure_outputs": [
-    {
-      "path": "results/figures/coverage_and_quality.png",
-      "sha256": "5a5e6a34d4b7d494f873e3d30b6f61b1594a11d8a71927502d56c9893c445972"
-    },
-    {
-      "path": "results/figures/coverage_and_quality.svg",
-      "sha256": "87b903a347fbb98e91b32cc822c269126468df579efd965232489c080a3d096c"
-    },
-    {
-      "path": "results/figures/dataset_composition.png",
-      "sha256": "11997b36464661ee4c9cc1b76b15c87af60d6f073840a6479648fed6e541b238"
-    },
-    {
-      "path": "results/figures/dataset_composition.svg",
-      "sha256": "a48473f48dbe76782cccc092188dc5eb53603fe53b348e13900c4acfde893975"
-    },
-    {
-      "path": "results/figures/paired_method_differences.png",
-      "sha256": "44c2b2d02b79b23e7f98413223676949e2883a3ce039343106f4bc8f283ee003"
-    },
-    {
-      "path": "results/figures/paired_method_differences.svg",
-      "sha256": "7cf4a29c3ccb8b12d068c572de1033567d7dbd85f6adb05d77667862a925f551"
-    },
-    {
-      "path": "results/figures/simulator_method_errors.png",
-      "sha256": "50ad9640f04963d46713881f0970c5dcf247f633af06f3da9acc80fb87204a4e"
-    },
-    {
-      "path": "results/figures/simulator_method_errors.svg",
-      "sha256": "dcda2d27a6fae18ead8b6b5c2fbb0bb4322400adbd48f479542fe11838dac892"
-    }
-  ],
+  "artifact_id": "simulator-results-figures",
+  "scope": "Saved simulator figures only; QPU accuracy and mixed-population plots not published",
   "figures": [
-    {
-      "bootstrap_seeds": [],
-      "counts": {
-        "qpu_archive_rows": 8767,
-        "qpu_excluded_rows": 1417,
-        "qpu_input_tiers": {
-          "archive_supported_recipe_adaptation": 230,
-          "candidate_recipe_sensitivity_only": 2835,
-          "qpack_reconstruction_qualified": 3945,
-          "source_has_logical_input": 340
-        },
-        "qpu_selected_by_source": {
-          "mali_real_qpu": 340,
-          "qonductor_single_circuit_ibm": 3065,
-          "qpack_mcp": 3945
-        },
-        "qpu_selected_rows": 7350,
-        "qpu_source_groups": {
-          "mali_real_qpu": 148,
-          "qonductor_single_circuit_ibm": 52,
-          "qpack_mcp": 6
-        },
-        "simulator_core_members": 162,
-        "simulator_core_unique_hashes": 150,
-        "simulator_families": 22,
-        "simulator_members": 204,
-        "simulator_unique_qasm_hashes": 191
-      },
-      "figure_id": "dataset_composition",
-      "filters": {
-        "qpu_archive": "All rows in canonical_observations.csv; grouped by source_id.",
-        "qpu_panel": "All selected rows in panel.csv; grouped by source_id, logical_input_tier, and group_id.",
-        "qpu_profile": "Exactly slice_type=all and slice_value=all from the saved selected-panel dataset_profile.csv.",
-        "simulator_panel": "All rows; width_qubits and family fields from the QASM manifest; no deduplication for member counts."
-      },
-      "outputs": {
-        "png": {
-          "path": "results/figures/dataset_composition.png",
-          "sha256": "11997b36464661ee4c9cc1b76b15c87af60d6f073840a6479648fed6e541b238"
-        },
-        "svg": {
-          "path": "results/figures/dataset_composition.svg",
-          "sha256": "a48473f48dbe76782cccc092188dc5eb53603fe53b348e13900c4acfde893975"
-        }
-      },
-      "source_paths": [
-        "data/real_qpu/archive/canonical_observations.csv",
-        "data/real_qpu/inputs/panel.csv",
-        "results/real_qpu/analysis/dataset_profile.csv",
-        "data/simulator/circuits/sim_common_q16_manifest.csv"
-      ],
-      "units": {
-        "qpu_counts": "circuit-run observations",
-        "qpu_profile": {
-          "depth": "operations",
-          "shots": "shots",
-          "width": "qubits"
-        },
-        "simulator_matrix": "panel members"
-      }
-    },
-    {
-      "bootstrap_seeds": [
-        42,
-        706035046,
-        890932996,
-        1209588799,
-        3020981271,
-        3370693982
-      ],
-      "counts": {
-        "aer_pairs": 2,
-        "joint_mps_pairs": 2,
-        "pair_support": [
-          {
-            "bootstrap_seed": 42,
-            "label": "Full panel: Ma–Li graph − matched MLP",
-            "n": 7350,
-            "n_groups": 206
-          },
-          {
-            "bootstrap_seed": 42,
-            "label": "Full panel: Ma–Li graph − polynomial",
-            "n": 7350,
-            "n_groups": 206
-          },
-          {
-            "bootstrap_seed": 42,
-            "label": "Qualified-input sensitivity: Ma–Li graph − matched MLP",
-            "n": 4515,
-            "n_groups": 165
-          },
-          {
-            "bootstrap_seed": 42,
-            "label": "Qualified-input sensitivity: Ma–Li graph − polynomial",
-            "n": 4515,
-            "n_groups": 165
-          },
-          {
-            "bootstrap_seed": 890932996,
-            "label": "Aer: source GNN − transpiled GNN",
-            "n": 150,
-            "n_groups": null
-          },
-          {
-            "bootstrap_seed": 3020981271,
-            "label": "Aer: transpiled GNN − XGBoost",
-            "n": 150,
-            "n_groups": null
-          },
-          {
-            "bootstrap_seed": 706035046,
-            "label": "Joint MPS C44: family-conditioned − family-agnostic",
-            "n": 840,
-            "n_groups": 140
-          },
-          {
-            "bootstrap_seed": 3370693982,
-            "label": "Joint MPS C44: family-conditioned − family-agnostic",
-            "n": 840,
-            "n_groups": 140
-          },
-          {
-            "bootstrap_seed": 1209588799,
-            "label": "QCSim: component adaptation − nested Ridge",
-            "n": 143,
-            "n_groups": null
-          }
-        ],
-        "qcsim_pairs": 1,
-        "qpu_pairs": 4,
-        "saved_pairs_plotted": 9
-      },
-      "figure_id": "paired_method_differences",
-      "filters": {
-        "aer": "status=evaluated; population=all_finite_targets; exact source-GNN/transpiled-GNN and transpiled-GNN/transpiled-XGBoost candidate/reference IDs.",
-        "joint_mps": "split=c44; exact same_actual_rung/runtime MAE and rung_quality_brier/Brier metrics; family_conditioned candidate against family_agnostic_ablation reference.",
-        "point_and_interval": "Use only saved observed deltas and saved CI endpoints; never bootstrap_mean_* as a point estimate.",
-        "qcsim": "comparison_scope=paired_bootstrap_delta; component optimizer-off adaptation candidate against nested_grouped_ridge reference.",
-        "qpu": "comparison=focused_pair; method_a=mali_logical_graph; method_b in {mali_global_mlp,qonductor_feature_polynomial_common_panel}; populations exactly common_panel and qualified_input_evaluation_subset_models_fit_on_7350."
-      },
-      "interpretation": "Intervals are saved exploratory intervals conditional on the saved OOF fits; they do not quantify refit variation and are not multiplicity-adjusted. The plotted point is the directly observed delta, not the bootstrap replicate mean.",
-      "outputs": {
-        "png": {
-          "path": "results/figures/paired_method_differences.png",
-          "sha256": "44c2b2d02b79b23e7f98413223676949e2883a3ce039343106f4bc8f283ee003"
-        },
-        "svg": {
-          "path": "results/figures/paired_method_differences.svg",
-          "sha256": "7cf4a29c3ccb8b12d068c572de1033567d7dbd85f6adb05d77667862a925f551"
-        }
-      },
-      "source_paths": [
-        "results/real_qpu/analysis/analysis_pairs.csv",
-        "results/real_qpu/analysis/run_manifest.json",
-        "data/simulator/aer_and_mps_analysis/aer_azizov_paired_bootstrap.csv",
-        "data/simulator/mps/joint/analysis/paired_comparisons.csv",
-        "data/simulator/qcsim/maestro/evaluation/method_metrics.csv"
-      ],
-      "units": {
-        "joint_quality": "dimensionless Brier-score difference",
-        "qcsim_runtime": "milliseconds of MAE difference (seconds ledger × 1,000)",
-        "qpu_aer_joint_runtime": "seconds of MAE difference"
-      }
-    },
     {
       "bootstrap_seeds": [],
       "counts": {
@@ -530,9 +331,35 @@
       }
     }
   ],
-  "generator": {
+  "source_hashes_sha256": {
+    "data/simulator/analog/qa_final/qa.json": "5884d49b374e6139306c48dc67989684ef0c0c0a7a5953d562f7768ac4302027",
+    "data/simulator/mps/joint/analysis/selection_decisions.csv": "ac023a59af2c4e6dd9eabec8f4f8b61109c2b3a05a30a6508dc0564e64ab9bdd",
+    "data/simulator/tensor_network/analysis/paired_ratio_rows.csv": "1b8b78138da0e5df263dc2701a9e50752141559e425fcc6186fd0d2372a196ae",
+    "data/simulator/tensor_network/analysis/qa.json": "19097e1f9c604af356457ecd6dbc2dc289830d8490207375bc41a430808d3eb7",
+    "results/simulator/method_comparison.csv": "8dac2290caa6c28eebcd2862b4bd0f5c3d95fa9025ca7c47c8e2a13bfc62b147"
+  },
+  "figure_outputs": [
+    {
+      "path": "results/figures/simulator_method_errors.png",
+      "sha256": "50ad9640f04963d46713881f0970c5dcf247f633af06f3da9acc80fb87204a4e"
+    },
+    {
+      "path": "results/figures/simulator_method_errors.svg",
+      "sha256": "dcda2d27a6fae18ead8b6b5c2fbb0bb4322400adbd48f479542fe11838dac892"
+    },
+    {
+      "path": "results/figures/coverage_and_quality.png",
+      "sha256": "5a5e6a34d4b7d494f873e3d30b6f61b1594a11d8a71927502d56c9893c445972"
+    },
+    {
+      "path": "results/figures/coverage_and_quality.svg",
+      "sha256": "87b903a347fbb98e91b32cc822c269126468df579efd965232489c080a3d096c"
+    }
+  ],
+  "original_generator": {
     "path": "scripts/render_results.py",
-    "sha256": "d33a91e133882640cd9297f0675348adcb3ea9850d144e5b77a101801af9f0c4"
+    "sha256": "d33a91e133882640cd9297f0675348adcb3ea9850d144e5b77a101801af9f0c4",
+    "included_in_public_checkout": false
   },
   "plotting_environment": {
     "backend": "Agg",
@@ -544,40 +371,6 @@
     "python": "3.10.21",
     "svg_hashsalt": "quantum-runtime-benchmark-publication"
   },
-  "source_hashes_sha256": {
-    "data/real_qpu/archive/canonical_observations.csv": "920d745e03dd00e8155118d9323baea18ff865e4df2620f3a059bd5503a05ba4",
-    "data/real_qpu/inputs/panel.csv": "9ace84d3ec33ea050594ae57afdb76a4370f9717f361d78707f9d4ad4cd6238f",
-    "data/simulator/aer_and_mps_analysis/aer_azizov_paired_bootstrap.csv": "771cb644ecf2fabe8986164c0379ada85fab4f08be9a363eeac8ee5b8a85a336",
-    "data/simulator/analog/qa_final/qa.json": "5884d49b374e6139306c48dc67989684ef0c0c0a7a5953d562f7768ac4302027",
-    "data/simulator/circuits/sim_common_q16_manifest.csv": "9b33added9a2d94f9f621021cec16362561fe58454e233c495e25568a666fb8e",
-    "data/simulator/mps/joint/analysis/method_metrics.csv": "edf6b4a99c07260da98be4c25d6d58fab59a8043b2aa88c1b8f9926ba46cfee9",
-    "data/simulator/mps/joint/analysis/paired_comparisons.csv": "5bff79822b8a6d370a14a1e93ae109cd28161fb06d96fbd026ccdb1190fc4ff8",
-    "data/simulator/mps/joint/analysis/selection_decisions.csv": "ac023a59af2c4e6dd9eabec8f4f8b61109c2b3a05a30a6508dc0564e64ab9bdd",
-    "data/simulator/qcsim/maestro/evaluation/method_metrics.csv": "97a888124ddd67ed978431e871cb23e50e22aed23cb4e6e719de07c45893ce20",
-    "data/simulator/tensor_network/analysis/paired_ratio_rows.csv": "1b8b78138da0e5df263dc2701a9e50752141559e425fcc6186fd0d2372a196ae",
-    "data/simulator/tensor_network/analysis/qa.json": "19097e1f9c604af356457ecd6dbc2dc289830d8490207375bc41a430808d3eb7",
-    "results/real_qpu/analysis/analysis_metrics.csv": "f784cd177c852f9bc866052427d0a48ddd5bc99d0ed0d4628f733bb389dbda47",
-    "results/real_qpu/analysis/analysis_pairs.csv": "ab901c77f9f3fe3a067136518d7af40d65149f6985c046f7106d72f0d3d21e5e",
-    "results/real_qpu/analysis/dataset_profile.csv": "0dbafd3fed00820636049b638d85aeb4676e460574f5a4d3aa69a8243820ebb9",
-    "results/real_qpu/analysis/run_manifest.json": "02230b7bd6ef01bc55f76be3a78a85657a9cc53ed2003c31f7a42df0d2ff159a",
-    "results/real_qpu/method_comparison.csv": "36622338d1b5c91e5d1530c71691b007ac8c3758493d7810d5db82ea7588a3ef",
-    "results/real_qpu/summary/method_metrics.csv": "128bb71f75acfada81f7cebd0924a380f4a523961d36fb52b0a57cbb413801ee",
-    "results/simulator/method_comparison.csv": "8dac2290caa6c28eebcd2862b4bd0f5c3d95fa9025ca7c47c8e2a13bfc62b147"
-  },
-  "table_outputs": [
-    {
-      "path": "results/real_qpu/method_comparison.md",
-      "sha256": "0f57fd51cf629eda550dc5ff9241763b5e80e970dc9c050a2ad5978e72d350ae"
-    },
-    {
-      "path": "results/simulator/method_comparison.md",
-      "sha256": "4e72bb5d9fb39d4a4d1429f507682fbe53274b4b7131e445fe526ac18ef6feae"
-    }
-  ],
-  "table_row_counts": {
-    "qpu_method_rows": 13,
-    "qpu_slices": 7,
-    "simulator_companions": 5,
-    "simulator_prediction_rows": 49
-  }
+  "verification": "Current inventory verifies saved figure bytes; scripts/check_simulator_results.py checks saved scores, not full figure regeneration.",
+  "bootstrap_policy": "Any plotted diagnostic values retain their original saved-evidence context; no QPU inference is made."
 }

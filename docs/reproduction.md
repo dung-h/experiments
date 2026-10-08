@@ -40,8 +40,9 @@ emitted predictions from scored targets. Predictor coverage is scored/assigned,
 not necessarily predicted/assigned.
 
 The simulator tree includes local attempts, target reductions, quality records,
-fold assignments, predictions and metrics. The two reader CSVs contain the
-reported aggregate scores. The figures and slide deck are retained outputs;
+fold assignments, predictions and metrics. The simulator reader CSV contains the
+reported aggregate scores. Current QPU results are pending; the dataset report
+publishes selection and aggregate profile information. Simulator figures are retained outputs;
 the verifier checks their bytes, not their full regeneration.
 
 ## External inputs

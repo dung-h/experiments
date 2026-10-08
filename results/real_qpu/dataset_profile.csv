@@ -1,0 +1,4 @@
+source_id,observations,groups,allocated_width_min,allocated_width_median,allocated_width_max,depth_min,depth_median,depth_max,shots_min,shots_median,shots_max,target_seconds_min,target_seconds_median,target_seconds_max
+mali_real_qpu,340,148,9,79,127,205,294,6068,1024,1024,1024,3.107238810333333,8.6370684775,13.696209741
+qonductor_single_circuit_ibm,230,11,3,5,7,5,8,15,1000,1000,20000,1.0578825989999998,3.0964956425,10.882240227
+qpack_mcp,3945,6,2,4,7,14,41,131,4096,4096,4096,3.504635810852051,6.58969521522522,9.464657068252563

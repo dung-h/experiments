@@ -2,6 +2,7 @@
 """Check published files, documentation links and data-selection boundaries."""
 from __future__ import annotations
 
+import csv
 import hashlib
 import json
 import re
@@ -9,6 +10,63 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def verify_qpu_dataset(root: Path) -> None:
+    """Check public aggregate selection accounting, not excluded source labels."""
+    path = root / "protocol/real_qpu_dataset.json"
+    if not path.exists():
+        return  # Small publication-verifier fixtures need no experiment metadata.
+    dataset = json.loads(path.read_text())
+    sources = dataset["sources"]
+    expected = {"mali_real_qpu": 340, "qonductor_single_circuit_ibm": 230,
+                "qpack_mcp": 3945}
+    if dataset["observations"] != 4515 or {
+            key: value["observations"] for key, value in sources.items()} != expected:
+        raise ValueError("QPU dataset selection counts disagree")
+    if sum(value["groups"] for value in sources.values()) != dataset["groups"] or dataset["groups"] != 165:
+        raise ValueError("QPU dataset group counts disagree")
+    q = dataset["source_filters"]["qonductor_single_circuit_ibm"]
+    classes = q["logical_recovery_classifications"]
+    if (sum(classes.values()) != q["ibm_source_screen"]
+            or classes["archive_resolved_recipe"] != q["retained"]
+            or q["excluded"] + q["retained"] != q["ibm_source_screen"]
+            or sum(q["retained_families"].values()) != 230):
+        raise ValueError("Qonductor source-filter accounting disagrees")
+    folds = dataset["split"]["outer_test_source_counts"]
+    if len(folds) != 5 or any(set(fold) != set(expected) or min(fold.values()) <= 0 for fold in folds):
+        raise ValueError("QPU split source support disagrees")
+    if {key: sum(fold[key] for fold in folds) for key in expected} != expected:
+        raise ValueError("QPU split observation counts disagree")
+    if sum(dataset["backend_counts"].values()) != 4515:
+        raise ValueError("QPU backend counts disagree")
+    contract = json.loads((root / "protocol/real_qpu_common_panel.json").read_text())
+    if contract["assigned_rows"] != 4515 or contract["source_counts"] != expected:
+        raise ValueError("QPU public execution summary disagrees")
+    with (root / "results/real_qpu/dataset_profile.csv").open(newline="") as stream:
+        profile = {row["source_id"]: row for row in csv.DictReader(stream)}
+    if set(profile) != set(expected):
+        raise ValueError("QPU aggregate profile source coverage disagrees")
+    for key, value in sources.items():
+        if (int(profile[key]["observations"]) != value["observations"]
+                or int(profile[key]["groups"]) != value["groups"]):
+            raise ValueError("QPU aggregate profile counts disagree")
+    with (root / "results/real_qpu/source_filtering.csv").open(newline="") as stream:
+        filtering = {row["source_id"]: row for row in csv.DictReader(stream)}
+    if set(filtering) != set(expected):
+        raise ValueError("QPU source-filter table coverage disagrees")
+    for key, count in expected.items():
+        row = filtering[key]
+        if int(row["retained_n"]) != count or int(row["source_screen_n"]) != (
+                count + int(row["excluded_within_screen_n"])):
+            raise ValueError("QPU source-filter table counts disagree")
+    if dataset["selection"]["exact_historical_logical_instance_claim"]:
+        raise ValueError("Unsupported exact historical logical-instance claim")
+    if dataset["status"]["scores_from_other_training_populations_reused"]:
+        raise ValueError("Unsupported reuse of fitted QPU scores")
+    if any(not re.fullmatch(r"[0-9a-f]{64}", digest)
+           for digest in dataset["evidence_sha256"].values()):
+        raise ValueError("Invalid QPU evidence digest")
 
 
 def verify(root: Path = ROOT) -> int:
@@ -47,6 +105,7 @@ def verify(root: Path = ROOT) -> int:
             resolved = (path.parent / target).resolve()
             if not resolved.is_relative_to(root) or not resolved.is_file():
                 raise ValueError(f"broken documentation link: {path.relative_to(root)} -> {target}")
+    verify_qpu_dataset(root)
     return len(index)
 
 

@@ -1,0 +1,287 @@
+{
+  "dataset_id": "real_qpu",
+  "observations": 4515,
+  "independence_unit": "conservative_circuit_workflow_model_input_group",
+  "groups": 165,
+  "sources": {
+    "mali_real_qpu": {
+      "observations": 340,
+      "groups": 148,
+      "backend_counts": {
+        "ibm_kyoto": 148,
+        "ibm_osaka": 192
+      },
+      "tier_counts": {
+        "source_has_logical_input": 340
+      },
+      "shots": {
+        "min": 1024,
+        "median": 1024,
+        "max": 1024
+      },
+      "g44": {
+        "min": 9,
+        "median": 79,
+        "max": 127
+      },
+      "g45": {
+        "min": 205,
+        "median": 294,
+        "max": 6068
+      },
+      "target_seconds": {
+        "min": 3.107238810333333,
+        "median": 8.6370684775,
+        "max": 13.696209741
+      }
+    },
+    "qonductor_single_circuit_ibm": {
+      "observations": 230,
+      "groups": 11,
+      "backend_counts": {
+        "ibm_lagos": 5,
+        "ibm_nairobi": 19,
+        "ibm_perth": 25,
+        "ibmq_belem": 24,
+        "ibmq_jakarta": 41,
+        "ibmq_lima": 41,
+        "ibmq_manila": 33,
+        "ibmq_quito": 42
+      },
+      "tier_counts": {
+        "archive_supported_recipe_adaptation": 230
+      },
+      "shots": {
+        "min": 1000,
+        "median": 1000,
+        "max": 20000
+      },
+      "g44": {
+        "min": 3,
+        "median": 5,
+        "max": 7
+      },
+      "g45": {
+        "min": 5,
+        "median": 8,
+        "max": 15
+      },
+      "target_seconds": {
+        "min": 1.0578825989999998,
+        "median": 3.0964956425,
+        "max": 10.882240227
+      }
+    },
+    "qpack_mcp": {
+      "observations": 3945,
+      "groups": 6,
+      "backend_counts": {
+        "ibm_lagos": 363,
+        "ibm_nairobi": 1546,
+        "ibm_perth": 326,
+        "ibmq_jakarta": 367,
+        "ibmq_manila": 334,
+        "ibmq_quito": 1009
+      },
+      "tier_counts": {
+        "qpack_reconstruction_qualified": 3945
+      },
+      "shots": {
+        "min": 4096,
+        "median": 4096,
+        "max": 4096
+      },
+      "g44": {
+        "min": 2,
+        "median": 4,
+        "max": 7
+      },
+      "g45": {
+        "min": 14,
+        "median": 41,
+        "max": 131
+      },
+      "target_seconds": {
+        "min": 3.504635810852051,
+        "median": 6.58969521522522,
+        "max": 9.464657068252563
+      }
+    }
+  },
+  "source_filters": {
+    "mali_real_qpu": {
+      "source_screen": 340,
+      "retained": 340,
+      "excluded": 0,
+      "logical_input": "source QASM linked to source observations",
+      "label": "mean of three archived IBM Result.time_taken values, seconds",
+      "timestamps_available": false
+    },
+    "qonductor_single_circuit_ibm": {
+      "one_circuit_jobs_all_providers": 4613,
+      "non_ibm_outside_screen": 131,
+      "ibm_source_screen": 4482,
+      "submitted_qasm_association_pass": 4482,
+      "logical_recovery_classifications": {
+        "candidate_unverified": 3681,
+        "unresolved": 557,
+        "archive_resolved_recipe": 230,
+        "structural_only": 14
+      },
+      "retained": 230,
+      "excluded": 4252,
+      "retained_families": {
+        "dj": 48,
+        "ghz": 113,
+        "qftentangled": 7,
+        "qpeexact": 5,
+        "wstate": 57
+      },
+      "distinct_retained_submitted_qasm_hashes": 32,
+      "ideal_output_check": {
+        "distinct_submitted_circuits": 32,
+        "status": "pass",
+        "scope": "zero-initial-state measured output only; not full unitary or historical DAG identity"
+      },
+      "logical_input": "archive-supported MQTBench 1.0.3 recipe adaptation",
+      "label": "archived provider-observed one-circuit job time, seconds",
+      "error_mitigation_metadata": "unknown; no per-row field in the frozen extraction"
+    },
+    "qpack_mcp": {
+      "source_screen": "MCP circuit-execution events only; not all QPack tasks",
+      "mcp_source_records": 6,
+      "optimizer_workflows": 46,
+      "retained": 3945,
+      "excluded_from_mcp_extraction": 0,
+      "other_tasks_outside_scope": "including multi-measurement-circuit VQE; repository-wide count not inferred",
+      "structural_groups": 6,
+      "logical_input": "source-backed MCP QAOA structural reconstruction",
+      "per_iteration_angles_recovered": false,
+      "historical_submitted_qasm_recovered": false,
+      "representative_angles": {
+        "rz": 0.3,
+        "rx": 0.2
+      },
+      "label": "circuit_execution_duration_ms / 1000",
+      "shots": 4096,
+      "timestamps_available": false
+    }
+  },
+  "selection": {
+    "included_tiers": [
+      "source_has_logical_input",
+      "archive_supported_recipe_adaptation",
+      "qpack_reconstruction_qualified"
+    ],
+    "excluded_input_evidence": [
+      "candidate_unverified",
+      "structural_only",
+      "unresolved"
+    ],
+    "criteria": "attributable source; observed finite positive label with known units; admissible circuit boundary; known backend/shots; accepted input evidence tier",
+    "runtime_error_used_for_selection": false,
+    "study_design": "retrospective; not analyst-blind preregistration",
+    "exact_historical_logical_instance_claim": false
+  },
+  "target": {
+    "clock": "archived_observed_service_execution_time",
+    "unit": "seconds",
+    "source_boundaries_identical": false,
+    "queue_optimizer_workflow_time_substitution": false,
+    "runtime_labels_synthesized": false
+  },
+  "grouping": {
+    "rule": "conservative transitive circuit/workflow/model-visible structural components; parameter-invariant structures joined when declared inputs omit angles; backend and shots do not separate a shared structure",
+    "source_groups": {
+      "mali_real_qpu": 148,
+      "qonductor_single_circuit_ibm": 11,
+      "qpack_mcp": 6
+    }
+  },
+  "split": {
+    "outer_folds": 5,
+    "inner_folds": 4,
+    "outer_seed": 42,
+    "inner_seeds": [
+      43,
+      44,
+      45,
+      46,
+      47
+    ],
+    "allocation": "fresh deterministic source-balanced whole-group allocation without labels",
+    "source_support_all_outer_tests_and_inner_validations": true,
+    "group_leakage_detected": false,
+    "outer_test_source_counts": [
+      {
+        "mali_real_qpu": 68,
+        "qonductor_single_circuit_ibm": 47,
+        "qpack_mcp": 823
+      },
+      {
+        "mali_real_qpu": 68,
+        "qonductor_single_circuit_ibm": 46,
+        "qpack_mcp": 888
+      },
+      {
+        "mali_real_qpu": 68,
+        "qonductor_single_circuit_ibm": 39,
+        "qpack_mcp": 498
+      },
+      {
+        "mali_real_qpu": 68,
+        "qonductor_single_circuit_ibm": 36,
+        "qpack_mcp": 860
+      },
+      {
+        "mali_real_qpu": 68,
+        "qonductor_single_circuit_ibm": 62,
+        "qpack_mcp": 876
+      }
+    ]
+  },
+  "backend_counts": {
+    "ibm_kyoto": 148,
+    "ibm_lagos": 368,
+    "ibm_nairobi": 1565,
+    "ibm_osaka": 192,
+    "ibm_perth": 351,
+    "ibmq_belem": 24,
+    "ibmq_jakarta": 408,
+    "ibmq_lima": 41,
+    "ibmq_manila": 367,
+    "ibmq_quito": 1051
+  },
+  "feature_profile_units": {
+    "g44": "allocated source/reconstructed quantum width, not active algorithm width",
+    "g45": "source/reconstructed depth under pinned upstream definitions",
+    "shots": "requested shots",
+    "target_seconds": "archived observed execution/service seconds, source-specific recorded boundary"
+  },
+  "evidence_sha256": {
+    "selected_ids": "ee7bf39a459ba533d1b47b20d4cac98629e348af2ee9ff4ae605044e11f3827d",
+    "candidates.json": "4d05fba4486140eb3b5051b62ee9eb6e5748d996e1e5dfb8a5bc266d6fa725c6",
+    "inner_splits.csv": "057aa6396e772a76a838467c6658b9ee3a89c2f35e9cb307a6ac9ae862b1ffd2",
+    "outer_splits.csv": "eb80db3c5443498f8f262c3479cb09fb34028c85a26203284118968ff96196c2",
+    "panel.csv": "b4ade914955d7807e466cf5cf0c5265d21b39a81fdcee8e91dc2fb6300eb978a",
+    "input_manifest": "687c3357cda8523d988641935bd6c5c99d5fed164e85ef6e649bed6e9556d2cb",
+    "qonductor_logical_recovery_ledger": "b78f084605a0f63af8780d0842694085cf0f54b77033d4ceb20bb0911b8ac6aa",
+    "qonductor_submitted_qasm_row_audit": "7be88e92e447a41afe3ae798e6296972b80e597ddf3e3688afbbefa189bc9516",
+    "qonductor_circuits_zip": "c9f259d38b24658e303c73c020c0c35e38d26d835061b19afc67626f8b70f51b",
+    "qonductor_benchmarks_zip": "b138f3dc97a921ea6df455b1852bd21bff3dae5f19a583ba6d82d7ca1b055de9",
+    "qonductor_quantum_scheduler_db": "5c3ba115956ead6c131fa4bfed32112edc7b818ff0de79e92626e92f19d0183c",
+    "mqtbench_103_wheel": "42affe45f6e6c63d0bdc37093399622ce7c53232c9f486fdc43f345d3b08d30c"
+  },
+  "public_distribution": {
+    "source_observations": false,
+    "row_level_derivatives": false,
+    "circuit_bytes": false,
+    "selection_code_and_aggregate_metadata": true
+  },
+  "status": {
+    "dataset": "prepared_and_checked",
+    "fresh_fits": "in_progress",
+    "complete_qpu_metrics": "pending_final_execution_and_qa",
+    "scores_from_other_training_populations_reused": false
+  }
+}

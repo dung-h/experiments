@@ -1,231 +1,119 @@
 # Training and measurement
 
-This guide describes how the saved benchmark observations and predictions were
-produced. The supported reader workflow is [saved-evidence verification](reproduction.md):
-it checks file integrity and simulator metrics using retained labels and
-out-of-fold predictions, requires no GPU or QPU account, and performs no training
-or simulator measurement. It cannot recompute QPU scores from this public selection.
-The procedures below
-are execution specifications for separately authorized refits or new measurements.
-They do not turn source-local scores, analytical clocks and different simulator
-engines into one leaderboard.
+## Real-QPU dataset
 
-The [data dictionary](data_and_feature_dictionary.md) defines the fields and
-representation stages. The [methodology](methodology.md) defines comparisons;
-[results](results.md) reports the measured outcomes. Protocol status fields may
-describe a design-time state. Completion is established by attempt ledgers and
-run manifests, not by the existence of a protocol or a runnable script.
+The real-QPU benchmark contains 4,515 observations in 165 conservative groups.
+[Dataset construction](data_preprocessing.md) records source filters, units,
+reconstruction qualifications, missingness and the fresh fold counts.
+The [machine-readable execution summary](../protocol/real_qpu_common_panel.json)
+pins the active local contract and prepared inputs. This publication does not
+change that running contract, its checkpoints or its raw source evidence.
 
-## Frozen populations and identities
+## Fresh fitting and grouped validation
 
-The QPU target is archived one-circuit service/execution time in seconds. Its
-7,350-observation common panel contains 340 Ma–Li observations, 3,065 Qonductor
-observations and 3,945 QPack observations. Ma–Li has exact logical QASM; the
-Qonductor subset contains 230 archive-supported recipe adaptations and 2,835
-candidate-recipe sensitivity rows; QPack uses six structural QAOA templates with
-representative angles. Reconstruction provides inputs, never replacement runtime
-labels. Keep recorded shots: Ma–Li uses 1,024, Qonductor varies from 1 to 20,000,
-and QPack uses 4,096. QPack milliseconds are converted to seconds. Provider
-service boundaries and missing historical calibration remain qualified by source.
+All methods share five outer test folds. Outer allocation seed is 42; the
+four-way inner folds use seeds 43–47. Splits operate on whole conservative
+circuit/workflow/model-input groups, without target-based allocation. Every
+observation is tested once; no group crosses a train/test or inner partition.
+All three sources are represented in every outer test and inner validation set.
 
-The panel manifest (not bundled),
-outer assignments (not bundled),
-inner assignments (not bundled) and
-target ledger (not bundled) are the
-authority for these identities. The archived 8,767-observation ledger and earlier
-compiled-input comparison are separate populations. Excluded bridge rows still
-contribute equality links to transitive leakage groups; removing a bridge from
-the panel does not sever its identity link. There are 206 groups: 148 Ma–Li, 52
-Qonductor and six QPack groups. Source slices and the 4,515-row reconstruction
-sensitivity subset reuse full-panel fits; they are not new training runs.
+Both neural methods use seeds 42, 1234 and 31415. Each cell starts afresh;
+no weights, OOF predictions, fitted masks or calibrators from another training
+population are reused. Graph and MLP fit on inner1–3 and select the minimum
+inner0 validation MSE over the complete epoch budget, with earliest ties.
+There is no full-outer-train neural refit. Regressors tune on all four inner
+folds then refit outer train.
 
-The digital simulator [member manifest](../data/simulator/circuits/sim_common_q16_manifest.csv)
-selects existing Ma–Li source QASM at the revision in
-[the upstream lock](../provenance/upstream.json). It contains 204 members,
-191 exact-QASM SHA-256 hashes, 13 duplicate-hash groups and 22 families. Its core
-has 162 members / 150 hashes at widths 2–9; the frontier has 42 members at widths
-10–16. Members are filenames; hashes are deduplicated prediction observations.
-The same exact hash and every alias share one fold. The frozen simulator folds
-contain 37, 28, 26, 25 and 34 hashes. Frontier circuits do not contribute to core
-training, preprocessing, vocabulary, model selection or prediction accuracy.
+### Ma–Li-style graph and matched MLP
 
-No circuits were generated to fill missing family/width combinations. Every width
-2–16 occurs somewhere, but family support is irregular. The following absent
-widths are obtained directly from the member manifest; they are absent inputs,
-not failed simulator executions.
+The raw schema is 51 global positions and 178 positions per graph node,
+using pinned upstream model/feature helpers. See the
+[ordered feature dictionary](data_and_feature_dictionary.md).
+Column selection, means, sample standard deviations and constant-position
+zeroing use gradient-fit inputs only; record each fold's actual transforms.
+Nominal-index T1/T2 are declared node context, not historical physical placement.
 
-| Family | Absent widths within 2–16 |
+| Setting | Value |
 | --- | --- |
-| ae | 11, 13–16 |
-| dj | 8, 12–15 |
-| ghz | 16 |
-| graphstate | 2, 10, 11, 14–16 |
-| grover-noancilla | 9–16 |
-| grover-v-chain | 6, 8, 10–16 |
-| portfolioqaoa, portfoliovqe | 2, 11–16 |
-| qaoa | 2, 15, 16 |
-| qft | 11–16 |
-| qftentangled | 12–16 |
-| qnn, qpeexact, qpeinexact | 11–16 |
-| qwalk-noancilla | 2, 10–16 |
-| qwalk-v-chain | 2, 4, 6, 8, 10–16 |
-| random, realamprandom, su2random, twolocalrandom | 11–16 |
-| vqe | 2, 11 |
-| wstate | 16 |
+| Device | CUDA, one neural GPU worker |
+| Seeds | 42, 1234, 31415 |
+| Cells | Two methods × five folds × three seeds = 30 |
+| Epochs | 500 per cell |
+| Effective batch | 32 observations, node-budgeted graph microbatches |
+| Node budget | 250,000 |
+| Optimizer | Adam, learning rate 0.0005, weight decay 0.0001 |
+| Loss | Unweighted raw-seconds MSE |
+| Precision | Float32, no AMP |
+| Graph cache cap | 8 GiB |
+| GPU allocation policy | 12 GiB budget, 4 GiB reserve |
+| CPU threads for neural worker | 8 |
+| Checkpoint | Atomic every epoch, including optimizer, RNG and identity pins |
+| Output reduction | Median prediction per held-out observation, only after all three seeds exist |
 
-Before a refit or measurement, resolve source paths by content hash, verify exact
-member bytes and width, and join targets/features/splits by canonical observation
-ID or exact QASM hash as appropriate. A filename, matching width, family name or
-backend capacity is insufficient identity evidence. A new environment or repaired
-adapter creates a separately identified measurement context; it cannot inherit
-historical timings under a new fingerprint.
+The observed environment is Torch 2.7.1+cu128 / CUDA 12.8 on an RTX 5070 Ti
+with 16 GiB VRAM. Preprocessing and analytical context use Qiskit 2.5.2 and
+qiskit-ibm-runtime 0.49.0. These are recorded environment facts, not a claim
+that installing any newer package preserves the same representation.
 
-## QPU graph and matched global MLP
+No fixed circuit timeout stops this training run. Correctness or nonfinite
+errors stop a cell; poor validation/test accuracy does not. Resume requires
+matching runner, model, transform, context and environment identity.
 
-The [common-panel execution contract](../protocol/common_panel_completion.json)
-specifies the current neural runs. Its representation override is logical-recipe
-input, rather than the older compiled-input population in the reusable
-[full-feature contract](../protocol/mali_full_features.json).
-[The runner](../methods/real_qpu/train_mali.py) explicitly loads
-the current partitions instead of invoking the older corpus loader unchanged.
+### Qonductor-style regression families
 
-For outer fold `f`, reserve every row assigned to `f` as test. Partition its
-outer-training groups into four frozen inner folds: fit gradients and transforms
-on inner folds 1–3 and select the model on inner fold 0. The graph and MLP have
-identical fit, validation and test IDs, seeded example order, effective batch and
-raw-seconds mean-squared-error objective. Neither fitting, transforms nor
-checkpoint selection reads outer-test labels. Test labels are joined only after
-prediction. There is no final refit incorporating inner validation for this QPU
-experiment.
+Inputs follow the pinned upstream five-field route:
+`swap` (CX/CZ/ECR count), operand-stack depth, touched width, shots and
+circuit count fixed to one. No source ID, backend one-hot or source-specific
+missing mask is added.
 
-Both methods start with 51 raw global fields: 44 named operation counts, allocated
-quantum width, depth and five structural descriptors. Fit-only positive-column-sum
-masking retains 40 fields in every fold. Means and unbiased sample standard
-deviations use one weight per fit observation in float64, with transformed
-storage in float32. A standard deviation at or below `1e-6` zeroes that column
-in fit, validation and test. Apply exactly the saved mask and statistics to held-out
-rows; do not remask the whole dataset or substitute seven summary features.
+| Family | Frozen candidate budget |
+| --- | ---: |
+| Extra Trees | 64 |
+| Random Forest | 64 |
+| Gradient Boosting | 64 |
+| AdaBoost | 48 |
+| Histogram Gradient Boosting | 64 |
+| Polynomial Regression | 3 degrees |
+| **Total** | **307** |
 
-The graph additionally uses 178 node fields. Barriers and final measurements are
-removed; directed DAG dependencies and complete graphs are retained. The node
-schema includes gate type, compact used-wire positions, nominal T1/T2 by logical
-wire index and node enumeration. Its source encoding quirks, including zero
-wire/T1/T2 slots for one-operand operations, are retained and documented in the
-feature contract. Pool node statistics across fit nodes in float64, so their
-weighting differs from row-weighted globals. Eleven node columns are constant
-and zeroed; 167 vary. Nominal T1/T2 is not execution-day calibration. Source IDs,
-explicit backend IDs, shots and numerical gate error/duration are not neural
-inputs. Complete graph/node/global signatures and fit-only statistics are retained
-in the input index (not bundled)
-and fold transforms (not bundled).
+Sampler seed is 0. Select by mean raw-seconds R² across four inner folds,
+using earliest ties, then refit outer train. A family selector, if reported,
+also uses inner scores only. This bounded search is an adaptation of the
+upstream estimator/grid, not the full original exhaustive search.
 
-The graph branch has three `TransformerConv(178,178)` layers, one head, ReLU after
-each and global mean pooling. The global branch is retained-width→64→64. The
-concatenated 242-vector passes through 512→512→128→1, with ReLU except at the
-output. The matched MLP uses retained-width→64→64→512→512→128→1. The final
-output is unconstrained. Both use Adam, learning rate `0.0005`, weight decay
-`0.0001`, constant learning rate, raw-seconds MSE and 500 complete epochs.
-Select the lowest inner-validation MSE state, choosing the earliest exact tie.
-There is no early termination, target log transform, hyperparameter search or
-post-hoc clipping of neural seconds.
+CPU regression and analytical workers may run alongside GPU fitting under
+the contract's four-worker cap and RAM reserve. This does not authorize
+simulator timing during heavy training or interference with a measurement clock.
 
-The actual execution telemetry (not bundled)
-records effective batch 32 and physical graph microbatch node budget 250,000 for
-all folds. Whole-graph gradient accumulation implements that effective batch;
-nodes are never truncated, sampled or split across graph examples. The profile
-considered batches 2, 8, 32, 128, 512, 2,048 and 4,096 and node budgets 250,000
-and 500,000 with synthetic zero targets. It chose the smallest shared feasible
-batch within 5% of best measured graph throughput, then the smallest node budget
-in that band. This is a compute adaptation from the source batch-2 regime.
+### Analytical methods
 
-Actual cells record RTX 5070 Ti, PyTorch `2.7.1+cu128`, CUDA runtime `12.8`, FP32
-and AMP disabled. The runner sets 12 PyTorch intra-op threads and four inter-op
-threads. The execution contract budgets one GPU worker, 12 GiB used GPU memory,
-4 GiB free reserve, 8 GiB host cache, 36 GiB aggregate RSS and 8 GiB available
-host RAM; auxiliary CPU work has a four-thread aggregate cap. These budgets are
-requirements, not measured memory usage for every cell. Preserve cell identity,
-imported helper hashes, transform, profile and environment. An atomic checkpoint
-includes model, optimizer, scheduler, RNG, completed epoch and best validation
-state. Resume restores those identities and RNG and replays an incomplete epoch;
-it does not restart with a changed optimizer or profile.
+Keep raw schedules/cost/throughput values and fitted service-time outputs
+separate. Fit affine/log-affine calibration on successful outer-train rows
+only. Hyb nominal log-cost Ridge selects alpha from 0.1, 1, 10, 100 using
+source-balanced inner MAE and is fitted anew. No snapshot is chosen using
+held-out performance.
 
-There are 30 cells: two models × five outer folds × seeds 42, 1234 and 31415.
-The reader prediction is the median of all three finite seconds predictions per
-row. A missing seed is unavailable; never select a favorable seed. Retain seed
-outputs and dispersion. The cell manifests (not bundled)
-pin the actual code, model, profile and partitions. Technical canaries verify
-transform parity, complete-largest-graph memory disposition, full-batch versus
-microbatch loss/gradient/Adam parity and checkpoint continuation. Fold-0 acceptance
-checks identities and finite outputs, not prediction quality. Saved terminal
-receipts are authoritative where progress telemetry still says `training`.
+QCRE invokes the pinned original estimator through BQSKit on the unitary
+view; it explicitly omits final measurement and barriers. Qiskit retains its
+declared scheduled-duration semantics. Scholten uses nominal throughput and
+a compiled wire-depth proxy; that proxy is not original QV-effective depth.
+Missing original-paper template/kernel inputs remain unavailable. Raw duration
+reuse is allowed only with matching hashes and declared semantics, never as a
+shortcut to reuse a learned prediction.
 
-## Polynomial, Ridge and analytical calibration
+## Reporting and current status
 
-The common-panel polynomial is a CPU adaptation with its own compiled/submitted
-input route. Its ordered fields are upstream `swap`, operand-stack `depth`,
-touched `num_qubits`, recorded `shots` and `circuit_count=1`. Here `swap` counts
-CX/CZ/ECR operations, unlike the literal SWAP count in neural globals. Preserve
-the upstream counter and depth semantics. Do not apply a logarithm, scaler or
-constant-field pruning. Within each outer-training population, fit polynomial
-degrees 2, 3 and 4 in each of the four grouped inner folds; select highest mean
-raw-seconds R², breaking exact ties toward lower degree. Refit the selected
-polynomial on complete outer-train and predict outer-test. Every fold selected
-degree 2. Finite negative predictions are retained in MAE and R². The
-polynomial manifest (not bundled)
-records Python `3.10.21`, CPU execution and two threads. This is distinct from
-the older five-log-feature polynomial experiment.
+The complete fresh-fit real-QPU result table is pending final execution and QA.
+Each method is assigned all 4,515 observations, including unavailable inputs.
+Every score reports its successful row set, coverage, units and output clock.
+Pair methods on identical successful held-out IDs; retain an ID-set digest.
+Neural seed reduction, source-balanced metrics and tails precede ranking claims.
 
-Analytical input compilation and calibration are also separate stages. Reuse a
-raw calculation only after verifying circuit representation, snapshot, row IDs,
-units, shots and method hashes. Matching an observation ID alone does not verify
-its inputs. Nominal same-backend FakeBackend assets are not job-day calibration.
-Raw single-shot schedule, shot-scaled schedule, effective cost and nominal
-throughput retain distinct output clocks. None is silently relabelled observed
-service time.
-
-For affine service-time calibration, fit OLS `y=a+b*x` on eligible successful
-outer-training rows only. For log-affine calibration, fit
-`log1p(y)=a+b*log1p(x)` there and invert before scoring. The declared calibrated
-prediction floor is zero. Preserve raw failures and their reasons through
-calibration; an unavailable schedule does not acquire a fabricated prediction.
-No outer-test values choose coefficients, snapshot, formula or eligibility.
-The analytical manifest (not bundled)
-and [panel contract](../protocol/real_qpu_common_panel.json) specify
-the projection and calibration variants.
-
-For Hyb-style cost, the [analytical contract](../protocol/analytical_extension.json)
-computes
-`log(T_gate)+T_gate/T2_eff−sum_b N_b*log1p(−mean_error_b)` using one-qubit,
-two-qubit and readout buckets. Repeated operations contribute repeatedly to each
-operation-weighted mean; `T2_eff` is the minimum finite positive T2 over relevant
-operands, and `T_gate` is the serial duration sum with routing already present.
-Directives skipped by the formula are counted separately. A nonempty bucket
-with mean error exactly one has zero survival and an unavailable log cost.
-One individual error of one does not automatically mean the entire bucket mean
-is one. Missing/invalid durations, probabilities or T2 remain explicit failures.
-For shot-scaled raw cost, add `log(shots)` before exponentiation. Finite log cost
-remains eligible for calibrated Ridge even when its raw exponential overflows.
-
-Hyb Ridge uses `StandardScaler` and Ridge with alpha candidates
-`{0.1,1,10,100}`. Its inputs are `asinh(log_effective_cost_seconds)` and
-`log1p(shots)`; target is `log1p(service_seconds)`. For each outer fold, fit the
-scaler separately inside each inner-fit, select smallest mean source-balanced
-seconds MAE over all four inner folds, breaking exact ties toward smaller alpha,
-then refit scaler and model on eligible full outer-train. Output is `expm1`,
-floored at zero with nonfinite predictions failed and no upper clipping.
-The gate-time control uses its own duration-only eligibility; it must not inherit
-noise/T2/zero-survival exclusions. Kyoto composite calibration is a separately
-declared sensitivity, not selected for its test score. The nominal log-cost
-route has 7,202 eligible rows and 148 zero-survival rows; composite log-cost has
-7,350. Hyb run evidence (not bundled)
-records Python `3.10.21`, NumPy `2.2.6`, scikit-learn `1.7.2` and a one-thread
-CPU limit.
-
-Scholten-style nominal throughput computes shots × compiled quantum-wire depth
-÷ declared nominal throughput. Keep the throughput definition, context and
-missingness per row: no CLOPS-h/CLOPS-v conversion or calibration imputation.
-Scheduled duration, a serial gate-cost formula and a service-time Ridge prediction
-are different outputs even when compared diagnostically with one label ledger.
+Grouped paired bootstrap uses 10,000 replicates and seed 42. The observed
+paired error difference is the point estimate; bootstrap mean and percentile
+interval are separate. These intervals condition on saved fits and do not
+include refitting uncertainty. Source slices reuse unified fits and are not
+separate source-local training runs.
 
 ## Digital simulator measurement
 
@@ -583,7 +471,7 @@ labels, attempts, predictions, splits and historical manifests. Verify technical
 canaries and fold-0 identities before continuing unchanged settings; poor accuracy
 alone is not a failed gate. Report assigned, observed, predicted and quality-pass
 counts independently. Pair methods on exactly identical successful held-out IDs
-with a saved ID-set hash and retain unavailable reasons. Current QPU and simulator
+with a saved ID-set hash and retain unavailable reasons. The QPU protocol and saved simulator
 intervals use 10,000 paired group/hash bootstrap replicates over saved fits; they
 do not include refitting uncertainty, establish unseen-family/backend/width
 generalization or authorize a cross-engine ranking.

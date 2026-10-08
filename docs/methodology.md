@@ -31,12 +31,11 @@ not runtime evaluation coverage. Legacy fields retain their source status-ledger
 meaning rather than being silently reinterpreted.
 
 The simulator CSV uses `expected_assigned_n`, `attempted_n`, `predicted_n` and
-`metric_n` for the corresponding predictor counts. The QPU CSV uses `assigned`,
-`observed` and `predicted`; for its 13 selected routes, every emitted prediction
-has an observed target, so predicted also equals scored. This is not a general
-benchmark property. QCSim controls emit 150 predictions but score 143 targets;
-joint MPS emits 900 predictions but scores 840 targets. Native measurement rows
-use session/stage counts and are not predictor scores.
+`metric_n` for predictor counts. The QPU assigned denominator is 4,515 for
+every method; scored counts will come from complete fresh-fit outputs.
+QCSim controls emit 150 predictions but score 143 targets; joint MPS emits
+900 predictions but scores 840 targets. Native measurement rows use session
+or stage counts, not predictor scores.
 
 ## Comparisons and missing data
 
@@ -54,12 +53,12 @@ technical correctness must be assessed separately.
 
 ## Input evidence and method fidelity
 
-The current QPU panel contains 7,350 observations from an 8,767-observation
-archive: 340 Ma–Li source logical inputs, 230 Qonductor archive-supported recipes,
-2,835 Qonductor unverified candidate recipes and 3,945 QPack representative-angle
-structural reconstructions. Only inputs are reconstructed; labels remain archived
-observations. Recipe availability does not prove exact historical logical-circuit
-recovery. The 1,417 excluded Qonductor observations remain outside this panel.
+The QPU dataset contains 4,515 observations: 340 Ma–Li source logical inputs,
+230 Qonductor archive-supported recipes and 3,945 QPack representative-angle
+structural reconstructions. Only inputs are reconstructed; all labels remain
+archived observations. Recipe qualification does not establish exact historical
+logical-circuit identity. Source-specific exclusions are documented directly
+from the original source audits.
 
 Unified learned and calibrated analytical pipelines are adaptations. Native
 cuTensorNet estimates apply to the selected contraction plan. Pasqal is an analog

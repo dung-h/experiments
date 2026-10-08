@@ -1,55 +1,23 @@
-# Real-QPU runtime prediction
+# Real-QPU results
 
-This table reports the 13 selected routes from the [reader CSV](method_comparison.csv), in its stored order. The scored target is archived one-circuit observed service/execution time in seconds. Every row is evaluated on the same 7,350-observation common panel with grouped five-fold out-of-fold predictions; the labels are not 7,350 independent circuits. The source CSV and [summary ledger](summary/method_metrics.csv) retain full-precision values and row-set hashes.
+Assigned dataset: **4,515 observations** (Ma–Li 340; Qonductor 230; QPack 3,945).
+All method families share the fresh five-fold outer test assignments.
 
-The archived source ledger contains 8,767 observations. The current panel includes 7,350: 340 Ma–Li, 3,065 Qonductor and 3,945 QPack observations. The other 1,417 Qonductor rows have no admissible logical input for this panel; their submitted physical QASM remains in the separate compiled-input evidence. The selected panel has 206 leakage groups: 148 Ma–Li, 52 Qonductor and 6 QPack. Grouped splits keep linked circuits together.
+**Status: fresh-fit execution and final QA pending.** Error scores and paired
+intervals are not yet published for this dataset. An empty score is not zero,
+unavailable method support or evidence that a method failed.
 
-Ma–Li contributes source logical inputs (340). Qonductor contributes 230 archive-supported recipe adaptations and 2,835 candidate-recipe sensitivity inputs. QPack contributes 3,945 reconstruction-qualified inputs built from six structural QAOA templates with representative angles. These reconstructions supply model inputs; they do not replace observed runtime labels. Shots remain source-recorded: 1,024 for Ma–Li, 1–20,000 for Qonductor and 4,096 for QPack. QPack millisecond labels were converted to seconds. The per-source input and label rules are in [preprocessing](../../docs/data_preprocessing.md) and [training and measurement](../../docs/training_and_measurement.md).
+| Method family | Assigned observations | Required evaluation |
+| --- | ---: | --- |
+| Ma–Li-style logical graph | 4,515 | Three-seed grouped OOF |
+| Matched global MLP | 4,515 | Three-seed grouped OOF |
+| Qonductor-style six regressors | 4,515 each | Nested grouped OOF |
+| QCRE schedule and calibrated variants | 4,515 each | Explicit coverage and fresh outer-train calibration |
+| Qiskit duration and calibrated variants | 4,515 each | Explicit coverage and fresh outer-train calibration |
+| Hyb-HANAS-style cost variants | 4,515 each | Explicit coverage and fresh fold-local calibration |
+| Scholten-style nominal throughput | 4,515 each | Nominal adaptation; explicit missing support |
 
-All methods below target archived_observed_service_execution_time. Output-clock names identify what each route actually predicts. A scheduled duration, nominal throughput proxy and calibrated service-time prediction are different outputs, even when each is scored against the same observed label.
-
-The [counting rules](../../docs/methodology.md#counting-evaluation-outcomes) apply to these observation counts. All 7,350 assigned labels are observed; each route's predicted count also equals its scored count here. Coverage is scored/assigned, not a claim that every route predicts the full panel. Routes with missing inputs retain their unavailable counts and require a shared successful-row comparison before ranking against full-coverage methods.
-
-<!-- generated: qpu_methods:start -->
-| Order | Method and fidelity | Main input | Assigned / observed / predicted / unavailable | Coverage | MAE (s) | R² | p99 / maximum absolute error (s) | Source-balanced MAE (s) | Evaluation target clock | Method output clock |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | Ma–Li-style full-feature graph adaptation (mali_logical_graph); architecture adaptation | Logical DAG: 178 node fields plus nominal-index T1/T2; 40 fit-retained globals from 51 raw fields | 7,350 / 7,350 / 7,350 / 0 | 100.0% | 1.2186 | 0.4291 | 7.082 / 76.094 | 1.1351 | archived_observed_service_execution_time | predicted_observed_service_seconds |
-| 2 | Matched Ma–Li-style global MLP (51 raw / 40 retained) (mali_global_mlp); architecture adaptation | Logical global features: 51 raw fields; 40 retained by the fit-only mask | 7,350 / 7,350 / 7,350 / 0 | 100.0% | 1.7322 | 0.1873 | 8.742 / 71.729 | 1.5703 | archived_observed_service_execution_time | predicted_observed_service_seconds |
-| 3 | Qonductor-style unified polynomial adaptation (qonductor_feature_polynomial_common_panel); adaptation | CX/CZ/ECR count (upstream field named swap), operand-stack depth, touched width, shots, one circuit | 7,350 / 7,350 / 7,350 / 0 | 100.0% | 1.4006 | −0.5867 | 4.003 / 187.054 | 1.1928 | archived_observed_service_execution_time | predicted_observed_service_seconds |
-| 4 | QCRE shot-scaled schedule, outer-train affine (qcre_shot_scaled_schedule_seconds__outer_train_affine); adaptation | Compiled duration-weighted critical path × shots; outer-train-only affine calibration | 7,350 / 7,350 / 7,350 / 0 | 100.0% | 1.5550 | 0.6752 | 4.757 / 10.499 | 1.5983 | archived_observed_service_execution_time | calibrated_observed_service_seconds |
-| 5 | Hyb-HANAS-style nominal log-cost ridge adaptation (hyb_nominal_r2_log_cost_ridge_v1); adaptation | Nominal r2 log-effective-cost and shots; outer-train log1p-target Ridge | 7,350 / 7,350 / 7,202 / 148 | 98.0% | 1.3700 | 0.3418 | 5.998 / 92.303 | 1.4971 | archived_observed_service_execution_time | calibrated_observed_service_seconds |
-| 6 | Hyb-HANAS-style Kyoto composite log-cost ridge adaptation (hyb_kyoto_composite_r2_log_cost_ridge_v1); adaptation | Kyoto composite r2 log-effective-cost and shots; outer-train log1p-target Ridge | 7,350 / 7,350 / 7,350 / 0 | 100.0% | 1.3691 | 0.3553 | 5.969 / 91.867 | 1.4519 | archived_observed_service_execution_time | calibrated_observed_service_seconds |
-| 7 | Hyb-HANAS-style Kyoto composite gate-time ridge adaptation (hyb_kyoto_composite_r2_gate_time_ridge_v1); adaptation | Kyoto composite log gate-time and shots; outer-train log1p-target Ridge | 7,350 / 7,350 / 7,350 / 0 | 100.0% | 1.3705 | 0.4161 | 6.173 / 81.722 | 1.3094 | archived_observed_service_execution_time | calibrated_observed_service_seconds |
-| 8 | Scholten-style nominal throughput adaptation, outer-train affine (scholten_unified_nominal_throughput__outer_train_affine); nominal sensitivity adaptation | Compiled quantum-wire depth, shots and recorded nominal throughput; outer-train-only affine calibration | 7,350 / 7,350 / 5,199 / 2,151 | 70.7% | 1.3642 | 0.7078 | 5.162 / 31.594 | 1.3565 | archived_observed_service_execution_time | calibrated_observed_service_seconds |
-| 9 | QCRE snapshot weighted critical-path schedule (raw) (qcre_snapshot_critical_path__raw); timing aware adaptation | Compiled critical path weighted by nominal instruction durations | 7,350 / 7,350 / 7,350 / 0 | 100.0% | 5.7390 | −3.1028 | 14.676 / 103.931 | 6.5112 | archived_observed_service_execution_time | scheduled_critical_path_seconds |
-| 10 | QCRE snapshot schedule scaled by requested shots (raw) (qcre_shot_scaled_schedule_seconds__raw); timing aware adaptation | Nominal duration-weighted critical path scaled by requested shots | 7,350 / 7,350 / 7,350 / 0 | 100.0% | 5.1411 | −1.8121 | 9.675 / 15.679 | 4.6064 | archived_observed_service_execution_time | shot_scaled_scheduled_seconds |
-| 11 | Qiskit estimate_duration snapshot schedule (raw) (qiskit_estimate_duration_snapshot__raw); deterministic scheduler reference | Compiled circuit and nominal Target instruction-duration map, single shot | 7,350 / 7,350 / 7,350 / 0 | 100.0% | 5.7390 | −3.1028 | 14.676 / 103.931 | 6.5112 | archived_observed_service_execution_time | scheduled_single_shot_seconds |
-| 12 | Qiskit scheduled duration, outer-train affine diagnostic (qiskit_estimate_duration_snapshot__outer_train_affine); adaptation | Nominal scheduled duration with outer-train-only service-time calibration | 7,350 / 7,350 / 7,350 / 0 | 100.0% | 1.8458 | 0.1591 | 8.197 / 78.402 | 2.3862 | archived_observed_service_execution_time | calibrated_observed_service_seconds |
-| 13 | Scholten-style nominal throughput, single-circuit adaptation (raw) (scholten_unified_nominal_throughput__raw); nominal sensitivity adaptation | Compiled quantum-wire depth, requested shots and recorded nominal throughput | 7,350 / 7,350 / 5,199 / 2,151 | 70.7% | 1,036.6415 | −1,533,205.8573 | 21,083.713 / 108,966.384 | 2,190.8295 | archived_observed_service_execution_time | nominal_throughput_proxy_seconds |
-<!-- generated: qpu_methods:end -->
-
-The unavailable counts are method-level output gaps; the source CSV records zero failed predictions for these rows. MAE and R² use each row's predicted, scored observations. Scholten's calibrated subset score is based on 5,199 rows, so it is not a full-panel comparison. Its raw proxy retains the large scale error. The recorded throughput definition is kept per backend; CLOPS_h was not converted to CLOPS_v, and neither T1/T2 nor gate duration was used to fill missing throughput.
-
-## Source and input-tier slices
-
-These are descriptive slices of the same full-panel out-of-fold predictions for the three learned methods. They are not separate training runs. Counts show assigned observations, scored observations and scored leakage groups. Group counts by input tier overlap and should not be summed as independent groups.
-
-<!-- generated: qpu_slices:start -->
-| Slice | Assigned / scored / groups | Graph MAE / R² (s) | Matched MLP MAE / R² (s) | Polynomial MAE / R² (s) |
-| --- | --- | --- | --- | --- |
-| Source: Ma–Li | 340 / 340 / 148 | 0.7614 / 0.6977 | 1.0653 / 0.3106 | 0.6266 / 0.8292 |
-| Source: Qonductor | 3,065 / 3,065 / 52 | 1.9688 / 0.3923 | 2.2864 / 0.2637 | 1.7764 / −0.7244 |
-| Source: QPack | 3,945 / 3,945 / 6 | 0.6752 / 0.3337 | 1.3592 / −1.8050 | 1.1753 / −0.5015 |
-| Input tier: source logical input | 340 / 340 / 148 | 0.7614 / 0.6977 | 1.0653 / 0.3106 | 0.6266 / 0.8292 |
-| Input tier: archive-supported recipe adaptation | 230 / 230 / 11 | 1.3437 / 0.0606 | 2.1161 / −1.1205 | 1.7562 / −0.3685 |
-| Input tier: candidate-recipe sensitivity only | 2,835 / 2,835 / 49 | 2.0195 / 0.3905 | 2.3002 / 0.2715 | 1.7780 / −0.7426 |
-| Input tier: QPack reconstruction-qualified | 3,945 / 3,945 / 6 | 0.6752 / 0.3337 | 1.3592 / −1.8050 | 1.1753 / −0.5015 |
-<!-- generated: qpu_slices:end -->
-
-The saved paired comparison reports the direct observed graph-minus-MLP MAE difference as −0.5136 s (10,000 grouped bootstrap replicates; 95% interval −0.9074 to −0.1748 s). Graph-minus-polynomial is −0.1819 s (95% interval −0.4883 to +0.1968 s), which includes zero. These intervals are exploratory and conditional on the saved fits; the point differences are observed deltas, not bootstrap means. See the [paired ledger](analysis/analysis_pairs.csv) for exact row-set, group and seed fields.
-
-The graph branch improves over its matched MLP on the pooled panel, but it also adds node features and nominal-index T1/T2; this comparison does not isolate graph topology as a cause. The polynomial is a separate five-input compiled-circuit route. Its negative pooled R² is an observed fit result, not proof of an implementation error. Source slices vary substantially, and QPack represents only six groups. No method is a universal winner established by this table.
-
-The 4,515-row reconstruction sensitivity subset reuses models fitted on all 7,350 common-panel observations. It does not represent retraining on only exact or archive-supported logical inputs. Exact per-source and per-tier slices, p99/max errors, statuses and row-set hashes are in the [analysis ledger](analysis/analysis_metrics.csv); pooled scores, source-balanced values and scored row-set hashes are in the [summary ledgers](summary/method_metrics.csv) and [coverage ledger](summary/coverage.csv). Missing values in those ledgers remain missing; unavailable reasons are in [unavailable_reasons.csv](summary/unavailable_reasons.csv).
-
-For the relation to the original papers, including the meaning of each adaptation and limits on the claims, see [paper comparison](../../docs/paper_comparison.md) and [methodology](../../docs/methodology.md).
+See the [dataset report](../../docs/data_preprocessing.md),
+[QPU protocol](../../docs/real_qpu_benchmark.md) and
+[execution summary](../../protocol/real_qpu_common_panel.json).
+A populated numerical CSV will be added only after the complete run is checked.

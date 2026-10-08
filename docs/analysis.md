@@ -8,11 +8,11 @@ The analysis does not fit predictors or generate missing runtime labels.
 
 ## Populations and missing results
 
-The original QPU ledger has 8,767 observations. The common logical-input
-panel has 7,350. Its selection is independent of prediction accuracy, but
-input availability still changes the distribution. Keep both populations
-visible and report why 1,417 observations are outside the common panel.
-See [preprocessing](data_preprocessing.md) for the reconstruction tiers.
+The real-QPU population contains 4,515 observations in 165 groups. Selection
+uses source provenance and input qualification, not prediction accuracy. Its
+source imbalance and reconstruction uncertainty remain part of the analysis.
+See [preprocessing](data_preprocessing.md) for original-source inclusion and
+exclusion counts. Fresh QPU scores and inferential findings are pending.
 
 Simulator member counts, exact-QASM counts, context counts, measured-label
 counts and predictor counts are different denominators. A hash measured at

@@ -4,7 +4,7 @@ Comparison of runtime prediction methods on archived real-QPU observations
 and simulator measurements collected on a local workstation.
 
 This repository contains the study protocol, preprocessing and analysis code,
-aggregate results, local simulator measurements and presentation. It does not
+aggregate dataset descriptions and local simulator measurements. It does not
 redistribute the source real-QPU datasets or their row-level derived inputs.
 
 ## Start here
@@ -19,7 +19,7 @@ redistribute the source real-QPU datasets or their row-level derived inputs.
 
 | Track | Evaluation population | Results |
 | --- | --- | --- |
-| Real QPU | 8,767 source observations; 7,350-observation shared logical-input panel | [Table](results/real_qpu/method_comparison.md) · [CSV](results/real_qpu/method_comparison.csv) |
+| Real QPU | **4,515 observations**: Ma–Li 340 + Qonductor 230 + QPack 3,945; 165 groups | [Dataset report](docs/data_preprocessing.md) · [Results pending fresh-fit QA](results/real_qpu/method_comparison.md) |
 | Simulator | 204 circuit members / 191 QASM hashes through 16 qubits; predictor core of 150 hashes at 2–9 qubits | [Table](results/simulator/method_comparison.md) · [CSV](results/simulator/method_comparison.csv) |
 
 QPU methods use the same observation panel and outer folds, with declared
@@ -33,16 +33,15 @@ adaptations, not paper-exact reproductions.
 - `data/simulator/`: locally measured times, failures, quality records, features,
   frozen partitions and saved predictions. Source QASM and serialized source
   DAGs are not included.
-- `results/`: aggregate comparison tables, analysis and four figures.
+- `results/`: QPU selection/profile counts, simulator comparison tables and figures.
 - `methods/`: project extraction, reconstruction, fitting and analysis code.
 - `protocol/`: recorded method and execution settings.
 - `docs/`: dataset preparation, experiment procedure, findings and limitations.
-- `presentation/`: [PowerPoint](presentation/benchmark.pptx) and [PDF](presentation/benchmark.pdf).
 - `provenance/`: upstream revisions, publication selection and file hashes.
 
 The real-QPU source labels, per-observation features, split membership and
 predictions remain outside this repository. Their origins and processing are
-documented; aggregate results are retained. See [data availability](docs/distribution.md).
+documented; current QPU accuracy results await the complete fresh-fit run and QA. See [data availability](docs/distribution.md).
 
 ## Check this checkout
 
@@ -57,5 +56,9 @@ retrain models, regenerate QPU scores or run simulators. Some retained runners
 still use the original experiment paths and need external inputs and a matching
 environment. See [reproduction scope](docs/reproduction.md) before running them.
 
-Historical IDs and paths inside saved records identify the producing run.
+Qonductor logical inputs are archive-supported recipes; QPack inputs are
+representative-angle structural reconstructions. They are not exact recovered
+historical logical circuits. The dataset report states the evidence and limits.
+
+Historical IDs and paths inside saved implementation records identify the producing run.
 They are provenance, not additional release directories or downloadable inputs.

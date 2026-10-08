@@ -1,296 +1,44 @@
 {
-  "scope": "Qonductor logical-input recovery; strong-agent S1-S4 handoff",
-  "authority": "supplemental candidate-recovery contract; no historical eligibility or score replacement",
-  "permissions": {
-    "training": false,
-    "simulator_timing": false,
-    "live_qpu": false,
-    "canonical_mutation": false,
-    "split_mutation": false,
-    "current_mutation": false,
-    "commit_push": false
+  "source": "Qonductor-SC25",
+  "commit": "5d1ac8a90cd574a23e7544e1044681641354ff67",
+  "ibm_one_circuit_source_rows": 4482,
+  "classifications": {
+    "candidate_unverified": 3681,
+    "unresolved": 557,
+    "archive_resolved_recipe": 230,
+    "structural_only": 14
   },
+  "accepted_classification": "archive_resolved_recipe",
+  "retained_rows": 230,
+  "retained_families": {
+    "dj": 48,
+    "ghz": 113,
+    "qftentangled": 7,
+    "qpeexact": 5,
+    "wstate": 57
+  },
+  "evidence_required": [
+    "one-circuit job/circuit database association",
+    "exact submitted QASM member and digest",
+    "matching pinned physical benchmark archive entry",
+    "admissible family-specific logical-width/recipe interpretation",
+    "supported static measurement semantics",
+    "declared zero-initial-state measured-output validation"
+  ],
+  "source_archives_are_physical_not_logical": true,
   "generator": {
-    "package": "mqt.bench",
-    "version": "1.0.3",
-    "wheel_sha256": "42affe45f6e6c63d0bdc37093399622ce7c53232c9f486fdc43f345d3b08d30c",
-    "historical_version_status": "candidate version, not a collection-time lock",
-    "required_pipeline": "get_benchmark(level=indep, compiler=qiskit), not only create_circuit/decompose; pin transitive dependencies and helper source; disclose any shim"
+    "mqtbench": "1.0.3",
+    "level": "indep",
+    "compiler": "qiskit",
+    "wheel_sha256": "42affe45f6e6c63d0bdc37093399622ce7c53232c9f486fdc43f345d3b08d30c"
   },
-  "source_sha256": {
-    "ghz": "324de8cdd37c8b4d98d66873b7d08c3688ce0c9d2ee41485c746e222e986eee0",
-    "wstate": "d6a551bb3a2bea66ddd8023a093911f12bc5b2808ade8c35fde6e25066ffd4ca",
-    "qft": "27bd1d57df5d86356364fa18104d785e2bec52ab32697fe42f4694e651a01a83",
-    "qwalk": "6aa5ec72b7e77a19f880b6ff25493cf1a7da53db1c41756f5f4d935e6a3a494a",
-    "ae": "406a3fb6858439c25e813ef732b38f1d9b432325ca9acf9eeed07e24a34c9394",
-    "dj": "1211bbc2ed66b5b42c1ed3e9f5315ba4879635f3166cd8082ab550f1127ca72c",
-    "qpeexact": "9e783014fe194f8ea471ad169f7f92208d852281b93be92305a7ec4fb1b58d03",
-    "qpeinexact": "b90f3f30cfba7916e07ed63756a5ece1b2004afb3549c723b1935579a17f087b",
-    "qftentangled": "765a99a99360fe0018d3472783e2cd085206e319288b2b2fadec4390f2854fbd",
-    "graphstate": "8ba1706bbba2c9df2f4689eb39e96ed96c552dc93f0157f3adea970e5c0259be",
-    "random": "68f3b656180a0a10fec3ee7b7eb0e491204b6b6c9520d38235042e3ca5e0b5eb",
-    "realamprandom": "44e2dce9754fb75d3fab00a62b2cfa74fb2ad8c067784171a02c308a909578fc",
-    "su2random": "46a63bb4190f5a8a5e44572a507c1ddd9d8622cbb8ecc0cf97bb411059e05f6f",
-    "twolocalrandom": "8a75acc298b8acf8d2c360e1391a56b3fcabcb9443454b7fe4b9eb76585f0526",
-    "grover": "b6f4405ad1773be70c34956fca4ba10db722c54bcaf5862dceaf41d9c9ea625b",
-    "qnn": "99c1a62e240a40d514f7022bd1c671bf442a013bd34bac1fed8b22ef93e5c1be",
-    "qaoa": "460e1e9bc376e2bd21253b0a17f1b2fd1e03ba937aaa08e89651a905f233a6b6",
-    "vqe": "a029e9fe66a3d1544859dc8287c54bc8c71a33943a0a9b95bde260b133ae616e",
-    "portfolioqaoa": "fd724062bdc40da4f9669258f831cc7f6852316f5f60692387e284d136158f71",
-    "portfoliovqe": "24482920465a743b004fae0f6cbad57890dfac04f464765d98f7113e6b64ddee"
-  },
-  "width_rules": {
-    "measured_all": [
-      "ghz",
-      "wstate",
-      "qwalk-noancilla",
-      "ae",
-      "qftentangled",
-      "graphstate",
-      "random",
-      "realamprandom",
-      "su2random",
-      "twolocalrandom",
-      "qnn",
-      "vqe",
-      "portfolioqaoa",
-      "portfoliovqe",
-      "grover-noancilla"
-    ],
-    "measured_plus_one": [
-      "dj",
-      "qpeexact",
-      "qpeinexact"
-    ],
-    "qft": "two equal-sized registers, exactly one fully written, one unused; width = written destination count, not total classical allocation",
-    "qaoa": "source does not call measure_all; inspect actual indep/compiler/wrapper route before enabling a measurement-derived rule",
-    "status": "candidate width under pinned generator assumptions only; never automatically verified logical instance",
-    "guardrails": [
-      "AST parser, no regex-only measurement/control interpretation",
-      "unique terminal one-to-one measurements",
-      "no reset, dynamic control or nonterminal measurement",
-      "preserve bit ordering and physical wire labels",
-      "one complete written register for measured_all/plus_one; unsupported shapes go to investigation",
-      "backend capacity is a bound only, never a width estimator"
-    ]
-  },
-  "instance_policies": {
-    "deterministic_or_seeded": [
-      "ghz",
-      "wstate",
-      "qft",
-      "qwalk-noancilla",
-      "ae",
-      "dj",
-      "qftentangled",
-      "qpeexact",
-      "qpeinexact",
-      "realamprandom",
-      "su2random",
-      "twolocalrandom",
-      "grover-noancilla"
-    ],
-    "random": "seed=10 and transpiler seed=10 in source, but basis list created from set and dependency/hash-seed context matter; no historical identity from repeatability alone",
-    "graphstate": "unseeded random_regular_graph; width does not determine edge instance",
-    "qnn": "unseeded ansatz parameters; source structure possible, angles unresolved",
-    "portfolio": "unseeded random financial data and optimizer-derived angles; source structural template only unless additional instance evidence is recovered",
-    "qaoa_vqe": "optimizer-derived angles; inspect maxcut helper graph and dependency context; no new optimization to pretend to recover historical angles",
-    "circuit_names": "circuit-* is investigation_required, not proof of non-MQT origin"
-  },
-  "evidence": {
-    "baseline_observations": 4482,
-    "exact_archive_matches": 244,
-    "materialized_qonductor_recipes": 230,
-    "archive_graphstate_rows": 14,
-    "unmatched_bytes": 4238,
-    "broad_family_screen_counts": {
-      "version_pinned_logical_candidate": 3065,
-      "structural_candidate_only": 605,
-      "structural_recipe_only": 661,
-      "unavailable_named_source": 151
-    },
-    "broad_screen_limit": "family-level probe at widths 5/7, not row-level instance recovery",
-    "reused_qpack_structural_rows": 3945,
-    "reused_materialization": "artifacts/benchmark_v1/mali_structural_dag_materialized_v3_20260928/evaluation_manifest.json",
-    "reuse_boundary": "preserve historical graph schema/angle-insensitive qualification; not automatic compatibility with full-feature Ma-Li encoder"
-  },
-  "row_schema": [
-    "canonical_observation_id",
-    "source_row_index",
-    "source_qasm_sha256",
-    "family",
-    "backend",
-    "registers",
-    "used_quantum_wires",
-    "measurement_pairs",
-    "control_flow",
-    "reset_present",
-    "terminal_measurement_only",
-    "candidate_widths",
-    "candidate_reason",
-    "archive_identity",
-    "generator_version",
-    "generator_source_sha256",
-    "generator_arguments",
-    "dependency_context",
-    "candidate_qasm_sha256",
-    "materialized_path",
-    "structure_evidence",
-    "semantic_evidence",
-    "mapping_evidence",
-    "angles_status",
-    "instance_status",
-    "method_eligibility",
-    "leakage_group_candidates",
-    "failure_reason"
+  "prohibited_inferences": [
+    "backend capacity equals logical width",
+    "sum of classical register sizes equals logical width",
+    "matching family/width proves historical logical identity",
+    "zero-state output equality proves full-unitary or historical DAG identity"
   ],
-  "instance_statuses": [
-    "archive_resolved_recipe",
-    "candidate_unverified",
-    "structural_only",
-    "ambiguous",
-    "semantic_checked_reconstruction",
-    "unresolved"
-  ],
-  "validation": {
-    "forbidden": [
-      "select by runtime/test error",
-      "infer source identity from gate counts or width alone",
-      "infer circuit size from classical allocation sum",
-      "strip measurements and claim unitary equivalence of original measured process",
-      "simulate large dense states",
-      "silently rewrite frozen splits",
-      "promote routine-agent results to benchmark training"
-    ],
-    "small_case": "at most 9 logical qubits for dense semantic checks, sequential <=2 GiB task RAM and capped CPU threads; larger checks require a separate bounded design",
-    "semantic_requirements": [
-      "explicit measured-wire mapping and output ordering",
-      "ancilla initialization/final handling",
-      "global phase convention",
-      "channel/distribution comparison when not unitary",
-      "correct initial-state scope: fixed-input agreement is not full channel equivalence"
-    ],
-    "split_gate": "new recipe equivalence may reveal cross-fold duplicates; report collisions; do not edit frozen splits or launch logical training",
-    "preflight": "at least one QASM per observed family/measurement pattern plus archived positive matches and dynamic negative case, label-free selection; record errors before bulk generation"
-  },
-  "routine_queue": [
-    {
-      "id": "C1",
-      "task": "AST-based deduplicated inventory and mapping back to all canonical Qonductor rows"
-    },
-    {
-      "id": "C2",
-      "task": "reuse pinned legacy archive/recipe/materialization evidence; validate paths/hashes and encoder compatibility"
-    },
-    {
-      "id": "C3",
-      "task": "apply reviewed family width rules and retain empty/multiple candidate sets"
-    },
-    {
-      "id": "C4",
-      "task": "materialize generator candidates after preflight; no optimizer-based angle recovery"
-    },
-    {
-      "id": "C5",
-      "task": "run bounded structural/semantic checks, preserve scope and ambiguity"
-    },
-    {
-      "id": "C6",
-      "task": "write one recovery_rows.csv and manifest.json under artifacts/real_qpu/logical_recovery; aggregate coverage and leakage flags"
-    }
-  ],
-  "scheduling": "C1/C2 can be parallel CPU preprocessing with total <=4 threads and 4 GiB RAM while unrelated training is active; C3 follows C1, C4 follows candidate preflight, C5 follows C4, C6 joins all; no subagent permission inferred",
-  "strong_final_review": "S5-S7 required before choosing new Ma-Li logical inputs/training; this contract authorizes no fitting",
-  "bounded_review": {
-    "kind": "read-only AST inspection, not simulation or recovered-instance validation",
-    "qiskit": "2.5.2",
-    "selection": "smallest submitted-QASM ZIP member by bytes per selected family, ties in canonical order, no labels",
-    "observations": [
-      {
-        "family": "ghz",
-        "source_row_index": 125,
-        "candidate_width": 4
-      },
-      {
-        "family": "wstate",
-        "source_row_index": 80,
-        "candidate_width": 3
-      },
-      {
-        "family": "qft",
-        "source_row_index": 430,
-        "registers": {
-          "c": 4,
-          "meas": 4
-        },
-        "candidate_width": 4
-      },
-      {
-        "family": "qwalk-noancilla",
-        "source_row_index": 345,
-        "candidate_width": 3
-      },
-      {
-        "family": "ae",
-        "source_row_index": 420,
-        "candidate_width": 3
-      },
-      {
-        "family": "dj",
-        "source_row_index": 365,
-        "candidate_width": 3,
-        "archive_width": 3
-      },
-      {
-        "family": "qpeexact",
-        "source_row_index": 185,
-        "candidate_width": 4,
-        "archive_width": 4
-      },
-      {
-        "family": "qpeinexact",
-        "source_row_index": 250,
-        "candidate_width": 4
-      },
-      {
-        "family": "graphstate",
-        "source_row_index": 90,
-        "candidate_width": 3
-      },
-      {
-        "family": "qnn",
-        "source_row_index": 160,
-        "candidate_width": 3
-      },
-      {
-        "family": "qaoa",
-        "source_row_index": 390,
-        "status": "investigation_required",
-        "reason": "actual QASM contains measurements absent from inspected create_circuit source; trace dependency/wrapper"
-      },
-      {
-        "family": "vqe",
-        "source_row_index": 115,
-        "candidate_width": 3
-      },
-      {
-        "family": "portfolioqaoa",
-        "source_row_index": 285,
-        "status": "investigation_required",
-        "reason": "meas[3] and meas0[3], six measurements repeat quantum wires; never infer width=6 or silently drop outputs"
-      },
-      {
-        "family": "portfoliovqe",
-        "source_row_index": 355,
-        "candidate_width": 3
-      },
-      {
-        "family": "random",
-        "source_row_index": 450,
-        "candidate_width": 3
-      }
-    ],
-    "boundary": "does not fulfill full-family/measurement-pattern routine preflight; no new recovered-observation count",
-    "focused_tests_passed": 28
-  }
+  "evidence_limits": "Retained recipes are structural method-input adaptations linked through physical archive evidence, not original logical circuit bytes.",
+  "evidence_ledger_sha256": "b78f084605a0f63af8780d0842694085cf0f54b77033d4ceb20bb0911b8ac6aa",
+  "report": "docs/data_preprocessing.md"
 }

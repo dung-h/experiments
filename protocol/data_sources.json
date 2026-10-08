@@ -1,5 +1,5 @@
 {
-  "registry_id": "data-registry-v1",
+  "registry_id": "upstream-source-screen",
   "sources": [
     {
       "id": "mali_real_qpu",
@@ -9,7 +9,11 @@
       "exact_qasm": true,
       "timestamp_available": false,
       "target": "mean_of_three_recorded_time_taken_runs",
-      "label_reuse_policy": "archived_only"
+      "label_reuse_policy": "archived_only",
+      "retained_observations": 340,
+      "retained_input_tiers": [
+        "source_has_logical_input"
+      ]
     },
     {
       "id": "qonductor_single_circuit_ibm",
@@ -24,8 +28,12 @@
       "label_reuse_policy": "archived_only",
       "submitted_qasm_status": "exact physical submitted circuit available for every row",
       "logical_reconstruction_audit": "artifacts/benchmark_v1/qonductor_logical_reconstruction_20260926/audit.json",
-      "logical_reconstruction_boundary": "candidate generated from MQT Bench 1.0.3 recipe is not byte-exact original pre-transpile QASM"
-      ,"materialized_candidate_artifact": "artifacts/benchmark_v1/qonductor_submitted_dag_candidates_20260926/manifest.json"
+      "logical_reconstruction_boundary": "candidate generated from MQT Bench 1.0.3 recipe is not byte-exact original pre-transpile QASM",
+      "materialized_candidate_artifact": "artifacts/benchmark_v1/qonductor_submitted_dag_candidates_20260926/manifest.json",
+      "retained_observations": 230,
+      "retained_input_tiers": [
+        "archive_supported_recipe_adaptation"
+      ]
     },
     {
       "id": "qpack_mcp",
@@ -38,8 +46,7 @@
       "target_source_field": "Circuit execution durations [ms]",
       "target_unit_conversion": "milliseconds / 1000",
       "label_reuse_policy": "archived_only",
-      "identity_policy": "optimizer_workflow_is_split_group_only_no_exact_qasm",
-      "qasm_dependent_methods_eligible": false,
+      "identity_policy": "workflow and shared angle-insensitive structure form conservative groups; not exact historical QASM",
       "exact_qasm_dependent_methods_eligible": false,
       "structural_reconstruction_eligible": true,
       "structural_reconstruction_conditions": [
@@ -47,7 +54,12 @@
         "reconstructed problem/size/P qubits and depth match the recorded JSON",
         "method does not require per-iteration angle values or submitted physical routing",
         "keep every optimizer workflow in one split group"
-      ]
+      ],
+      "retained_observations": 3945,
+      "retained_input_tiers": [
+        "qpack_reconstruction_qualified"
+      ],
+      "nominal_compiled_adaptation": "Representative-angle compilation is allowed only as a disclosed approximation, not a recovered submitted circuit."
     },
     {
       "id": "mali_qasm_corpus",
@@ -79,5 +91,7 @@
     "allowed_original_variant": "CLOPS_v",
     "clops_h_is_not_convertible_to_clops_v": true,
     "missingness": "forbid_imputation"
-  }
+  },
+  "scope": "Original source inputs and simulator provenance; expected_rows is a source-screen count, not the retained QPU dataset size.",
+  "current_real_qpu_dataset": "protocol/real_qpu_dataset.json"
 }

@@ -1,367 +1,301 @@
-# Data construction and preprocessing
+# Construction of the real-QPU dataset
 
-The QPU benchmark predicts archived execution/service time. Its canonical
-ledger contains 8,767 observations, while the current logical-input comparison
-contains 7,350 eligible observations. Circuit reconstruction supplies a model
-input; it never supplies a replacement runtime label. This page describes the
-source joins, selection, representation assumptions and actual handling of
-missing inputs. The [feature dictionary](data_and_feature_dictionary.md) gives
-the ordered feature schema, and the [QPU guide](real_qpu_benchmark.md) gives the
-current comparison and its limits.
+The real-QPU benchmark contains **4,515 archived runtime observations**:
+340 from Ma–Li, 230 from Qonductor and 3,945 from QPack. This is the only
+real-QPU evaluation population in this publication. Every method is assigned
+these same observations and the same outer test folds.
 
-## Source records, identities and labels
+An observation is a recorded circuit execution in a particular context, not
+necessarily a distinct circuit. The dataset has **165 conservative
+circuit/workflow groups**. Runtime labels are taken from the original sources;
+reconstructing an input never generates, estimates or replaces a label.
 
-The canonical ledger (not bundled)
-preserves `source_id`, `source_row_index`, `canonical_row_id`, `source_row_id`,
-native and converted targets, archived metadata, circuit/workflow identities,
-and the serialized source row with its SHA-256. Its
-manifest (not bundled)
-records source-extract and split hashes. The source extracts and their complete
-upstream circuit archives are external inputs, not additional files bundled
-by that manifest.
+## Source selection
 
-Construction joins each source extract to its source split in original row
-order: lengths must match, and `source_row_index` must equal the consecutive
-source row numbers. The canonical ID is `source_id|row<index>`. Consequently,
-the index is an identity within the pinned extract, not a new globally stable
-database key. Preserve the extract hash, source row ID and circuit digest
-when tracing it back to the source. The canonical target column is
-`target_seconds`, and its clock is
-`archived_observed_service_execution_time`.
+| Source | Source records examined for this scope | Inclusion rule | Retained observations | Groups |
+| --- | ---: | --- | ---: | ---: |
+| Ma–Li | 340 real-QPU observations | Recorded execution time linked to source logical QASM | 340 | 148 |
+| Qonductor | 4,482 IBM one-circuit jobs | Exact submitted QASM association plus an archive-supported, admissible logical recipe | 230 | 11 |
+| QPack | 3,945 MCP circuit-execution events in six source records | Single-circuit QAOA structural reconstruction from recorded MCP settings | 3,945 | 6 |
+| **Benchmark** | — | **Union of the three retained sets** | **4,515** | **165** |
 
-| Source | Canonical observations | Label conversion and source join | Circuit evidence |
-| --- | ---: | --- | --- |
-| Ma–Li | 340 | The extract's `time_taken` is the mean of three archived IBM `Result.time_taken` values for one circuit at 1,024 shots. It is already in seconds. Source circuit name/backend and source split identify the logical QASM member; its bytes must match `qasm_bytes_sha256`. | Exact logical, pre-transpilation QASM was used by the run. Complete original QASM is not distributed here. |
-| Qonductor | 4,482 | `taken_time_seconds` remains in seconds. The direct association follows the SQLite job/circuit relationship to the submitted ZIP member, then checks its SHA-256 against the canonical row. Each retained job contains one circuit. | Exact submitted physical QASM was verified for every source row; this does not recover original logical QASM. |
-| QPack MCP | 3,945 | `circuit_execution_duration_ms / 1000` converts one measured QAOA circuit's IBM `Result.time_taken` to seconds. Source row and workflow identity link each optimizer evaluation to its configuration. | Recorded problem/size/depth/QAOA layer configuration supports six structural recipes; optimized angles, exact submitted QASM and routing are absent. |
+The QPack number is the MCP extraction, not the size of every dataset in the
+QPack repository. Its other experiments are outside the source screen. Counts
+in the source-audit tables below describe filtering the original archives, not
+additional benchmark populations.
 
-The [source registry](../protocol/data_sources.json) and
-[canonical materializer](../methods/real_qpu/materialize_canonical_corpus.py)
-record extraction boundaries. QPack's 46 optimizer workflows are groups of repeated
-evaluations; their total duration is not the label. IC/RH VQE evaluations,
-which aggregate multiple measurement circuits, are outside this one-circuit
-ledger. Queue, job-wrapper, optimizer and total-workflow durations are not
-substituted for circuit execution time. A common IBM field name supports a
-shared prediction target but does not establish identical provider-internal
-overhead across sources or historical collection periods.
+The source pins are in [upstream metadata](../provenance/upstream.json).
+The machine-readable selection, evidence digests and split counts are in
+[dataset metadata](../protocol/real_qpu_dataset.json). The
+[aggregate profile](../results/real_qpu/dataset_profile.csv) contains no row-level
+runtime labels.
 
-The direct Qonductor job/circuit provenance audit (not bundled)
-records 4,482 successful DB/ZIP/digest associations and zero failures. The
-database has 4,613 one-circuit jobs across providers; the additional 131 are
-outside the frozen IBM extract. Five failed legacy `sum_*` feature-alias checks
-are a separate issue: they do not invalidate those five job-to-QASM joins.
-The canonical columns retain the archive values; a method that requires
-parsed circuit features must use its declared extractor instead of repairing
-those columns by assumption.
+## Shared inclusion criteria
 
-## Logical reconstruction and current cohort selection
+A record must have an attributable source, a finite positive observed runtime,
+known units, backend and shots, an admissible circuit-level boundary, and one
+of these three input tiers:
 
-The current cohort is selected by `status=available` in the pinned logical
-feature ledger, without selecting by target value or prediction error. The
-feature manifest (not bundled)
-accounts for all 8,767 assignments: 7,350 available and 1,417 unavailable.
-The panel manifest (not bundled)
-pins the selected IDs and split construction.
+| Tier | What is established | What is not established |
+| --- | --- | --- |
+| `source_has_logical_input` | Ma–Li source logical QASM linked to the source observation | Exact physical compilation and job-day calibration |
+| `archive_supported_recipe_adaptation` | Qonductor submitted physical QASM linked to the job and matching the pinned benchmark archive; qualified family/width recipe reconstruction | Byte-identical original pre-compilation logical QASM or full-unitary equivalence |
+| `qpack_reconstruction_qualified` | QPack MCP structure, problem size and QAOA depth supported by source records | Optimized angles and submitted physical circuit for each historical iteration |
 
-| Current tier | Rows | Assumption and permitted interpretation |
+These are qualifications for the declared structural benchmark, not three
+equivalent kinds of exact historical circuit recovery. Family names, matching
+widths or similar runtime alone do not establish a circuit-to-label link.
+Inputs with only unverified recipe candidates, structural hints or unresolved
+logical parameters are excluded. Prediction errors are not a selection criterion.
+
+Selection is retrospective. Provenance-based filtering reduces uncertainty
+but also changes the sampled distribution; it is not analyst-blind
+preregistration or evidence that excluded circuits are unimportant.
+
+## Ma–Li: 340 observations
+
+Source: [Quantum-Execution-Time-Prediction](https://github.com/mooselab/Quantum-Execution-Time-Prediction),
+revision `32c392a6ece276f1ff046d4e30052d0571ff6dc6`.
+
+1. Read the real-QPU records and their referenced source QASM.
+2. Retain the logical circuit reference rather than substituting a newly
+   generated same-family circuit.
+3. Use the mean of the three archived IBM `Result.time_taken` values as
+   `target_seconds`. Requested shots are 1,024.
+4. Preserve backend and source identity. There are 192 Osaka and 148 Kyoto
+   observations. Job timestamps are not available in this extract.
+5. Hash circuit content and model-visible structure before assigning groups.
+   Repeated observations are retained, but the same group never crosses a split.
+
+All 340 records meet this source-input screen. The source audit found 192
+referenced QASM files with 170 distinct byte contents. These file counts are
+not observation counts. The conservative split grouping produces 148 groups;
+it also joins parameter variants whose declared structural inputs omit angles.
+
+The ten retained source families are QPE-inexact (36), random (30),
+SU2-random (38), QNN (26), QFT-entangled (47), QWalk-noancilla (2),
+TwoLocal-random (40), QPE-exact (35), RealAmplitudes-random (40) and QFT (46).
+
+## Qonductor: original IBM jobs to 230 observations
+
+Source: [Qonductor-SC25](https://github.com/manosgior/Qonductor-SC25),
+revision `5d1ac8a90cd574a23e7544e1044681641354ff67`.
+
+### Job and physical-circuit association
+
+The source database audit identifies 4,613 one-circuit jobs across providers.
+The IBM extraction contains 4,482; the 131 other-provider jobs are outside this
+IBM snapshot-based screen.
+
+For each IBM job, follow the database job/circuit foreign-key association,
+require both recorded circuit counts to equal one, resolve the member in
+`circuits.zip`, and hash the submitted QASM. The direct association audit
+passes for all 4,482 IBM records. This establishes the **submitted physical
+circuit**, not its original logical circuit.
+
+The benchmark archive `benchmarks.zip` also contains compiled physical QASM.
+Its filename and content match can support an originating benchmark recipe.
+It must not be described as an archive of recovered logical source QASM.
+
+### Logical-recipe qualification
+
+The logical-recovery ledger partitions the 4,482 IBM records as follows:
+
+| Ledger classification | Observations | Decision |
 | --- | ---: | --- |
-| `source_has_logical_input` | 340 | Ma–Li source logical QASM is loaded and its exact archived byte hash checked. |
-| `archive_supported_recipe_adaptation` | 230 | Qonductor submitted physical QASM hash matches a member of the separate benchmark archive. Its filename identifies family and logical width; MQT Bench 1.0.3 reconstructs that recipe. This is a supported recipe adaptation, not the original pre-transpilation bytes. |
-| `candidate_recipe_sensitivity_only` | 2,835 | A pinned generator and reviewed measurement/register rules yield a candidate logical recipe. Its historical instance identity is unverified. |
-| `qpack_reconstruction_qualified` | 3,945 | Six recorded MaxCut QAOA structures are rebuilt with representative angles. The input is qualified structural reconstruction, not an exact optimized or routed instance. |
-| **Current panel** | **7,350** | **340 + 230 + 2,835 + 3,945; all labels remain from the archive.** |
+| Archive-resolved recipe | 230 | Retain as an archive-supported recipe adaptation |
+| Candidate, not verified | 3,681 | Exclude: insufficient archive-supported recipe evidence |
+| Structural-only graphstate | 14 | Exclude: exact archive match does not establish the random logical instance |
+| Unresolved | 557 | Exclude: logical width or recipe remains unresolved |
+| **Source total** | **4,482** | **230 retained; 4,252 excluded** |
 
-The remaining 1,417 observations are Qonductor rows whose logical input is
-unavailable. They remain in the canonical ledger and older physical/compiled
-evidence. They do not enter the current logical-input cohort. The selection
-changes the workload distribution, so comparing the older and current panels
-does not isolate an effect of circuit representation.
+The 230 retained observations comprise **GHZ 113, W-state 57, DJ 48,
+QFT-entangled 7 and QPE-exact 5**. They are not the QWalk family. There are
+32 distinct submitted physical QASM hashes and 11 logical structural groups.
 
-Qonductor reconstruction begins by parsing the submitted QASM and checking
-measurement destinations, register allocation, measured wires, terminal
-measurement status, reset and dynamic control. Reviewed families can propose
-width from one fully written measurement register; generator-specific rules
-account for an unmeasured wire where appropriate. QFT uses the written
-register rather than total classical allocation. Non-bijective measurements,
-partially written registers, unreviewed multiple written registers,
-unsupported measurement lifecycle and archive-width conflicts do not become
-unique logical identities. Backend capacity and archived aggregate width
-are not inverse-transpilation rules.
+The qualification procedure is:
 
-The [archive reconstruction protocol](../protocol/qonductor_logical_recovery.json)
-records a narrower archive-evidence partition: 230 reproducible recipe rows,
-14 graphstate identities with structural-only evidence, and 4,238 rows without
-that archive join. This partition and the later candidate eligibility tiers
-describe the same 4,482 observations under different evidence questions; their
-counts must not be added. The current candidate tier requires a generated,
-hash-pinned recipe and successful feature materialization. A candidate-width
-hypothesis or family name alone is insufficient. Ideal zero-input output
-checks do not prove arbitrary-input unitary equivalence or historical-instance
-identity.
+1. Parse the submitted circuit, measurement destinations, classical registers
+   and used quantum wires. Separate allocated backend width from logical width.
+2. Require a filename/content-hash match to the pinned benchmark archive.
+   Use its recipe metadata together with family-specific generator semantics.
+3. Check that the logical-width/recipe interpretation is admissible. Backend
+   capacity, a summed classical-register width or family name alone is not enough.
+4. Generate the declared logical recipe with **MQTBench 1.0.3**, using the
+   independent Qiskit level and recorded family/width settings.
+5. Validate the declared terminal-measurement mapping and supported static
+   semantics. Check ideal measured outputs from the zero initial state for
+   the 32 distinct submitted circuits against their accepted recipes.
+6. Retain each original job label and its physical QASM association; attach the
+   reconstructed logical recipe as a separate, qualified method input.
 
-QPack reconstruction uses the pinned LibKet/QPack structure and recorded size
-and layer count. Representative nonzero rotations are `rz(0.3)` and `rx(0.2)`.
-The neural schema records operation identities and structural features rather
-than numerical angles. Nominal analytical compilation sees the values, so cancellation,
-synthesis and schedule are representative-angle results. They cannot be
-claimed as each optimizer iteration's actual compiled schedule. The
-[logical-input review](../protocol/logical_input_review.json)
-retains the reconstruction qualification. The detailed original replay audit
-and optimized-angle payload are not packaged; a provenance reference to them
-does not create a runnable source extraction path.
+The 32 ideal-output checks pass. Their scope is zero-initial-state measured
+behavior, not all-input unitary equivalence, identity of the historical DAG,
+historical routing or noise behavior. The author archive does not supply the
+missing original logical bytes. This limitation remains even for retained rows.
 
-The 4,515-row sensitivity subset removes only the 2,835 candidate-recipe rows.
-It reuses predictions fitted on the full 7,350-row cohort. Its remaining
-230 archive-supported and 3,945 QPack rows are still reconstructions, and it
-is neither an all-exact-input cohort nor a separate refitting experiment.
+All 230 retained records have timestamps, known shots and one-circuit job
+identity. Widths are 3–7 logical qubits; shots range from 1,000 to 20,000.
+The backend slice is Perth 25, Nairobi 19, Jakarta 41, Lima 41, Quito 42,
+Belem 24, Manila 33 and Lagos 5.
 
-## Packaged joins and representation checks
+The target is the archived provider-observed one-circuit job time in seconds,
+not a gate/pulse schedule. There is no explicit per-observation
+error-mitigation field in the frozen extract. Missing mitigation metadata
+does not mean mitigation was absent.
 
-The packaged panel (not bundled) joins to
-targets (not bundled), the
-neural feature ledger (not bundled),
-input index (not bundled),
-outer split (not bundled) and
-inner split (not bundled)
-by `canonical_observation_id`; the neural ledger calls the same key
-`canonical_row_id`. The panel stores source, reconstruction tier, logical
-instruction digest, graph path/hash, nominal snapshot/property hash and group.
-The target sidecar adds archived backend, shots and seconds. These fields
-have different roles: a graph digest is an input identity, while the canonical
-ID identifies an observation that may share that input with other observations.
+### Inspectable preprocessing code
 
-The retained [neural runner](../methods/real_qpu/train_mali.py)
-checks duplicate IDs and exact 7,350-to-7,350 joins, verifies source and ledger
-globals, requires finite inputs and positive finite targets/shots, checks graph
-file hashes and paths, and validates the 178-position node shape and directed
-edge indices. The input receipt (not bundled)
-records 470 distinct graph files for 7,350 observations, including a largest
-graph of 25,080 nodes and 38,322 edges. Fewer graph files than observations
-does not mean that labels have been averaged or observations deduplicated.
+The published [recovery rules](../methods/real_qpu/qonductor_recovery_rules.py),
+[archive recovery](../methods/real_qpu/build_qonductor_logical_recovery.py) and
+[recipe validation](../methods/real_qpu/validate_qonductor_archive_recipes.py)
+show the recorded logic. They require external source archives and helpers;
+their original workspace paths are not a portable download command.
 
-The neural route uses logical recipes before transpilation. The polynomial
-and timing routes instead use pinned compiled/submitted inputs: Ma–Li and
-QPack are nominally target-compiled, while Qonductor uses its exact submitted
-physical circuit. Thus a shared cohort and split do not give all methods
-identical input information. The older compiled-input and historical mixed-
-stage results retain their own identities and are not silently relabelled as
-the current logical-input experiment.
+## QPack: 3,945 MCP evaluations
 
-## Width, families, timestamps and shots
+Source: [LibKet/QPack](https://gitlab.com/libket/qpack),
+revision `9beaf65e951e01181b1e324cbb1b227af10eef96`.
 
-The [dataset profile](../results/real_qpu/analysis/dataset_profile.csv)
-reports current logical-feature widths and depths, rather than treating
-source metadata fields as interchangeable with those quantities.
+1. Select the MCP/MaxCut QAOA source records whose circuit-execution events
+   fit this single-circuit boundary. Six records contain 46 optimizer workflows
+   and 3,945 per-iteration events.
+2. Take `Circuit execution durations [ms]` /
+   `circuit_execution_duration_ms` and divide by 1,000. Do not substitute
+   queue time, whole-job elapsed time, optimizer duration or whole-workflow time.
+3. Preserve the problem size, QAOA depth, backend, 4,096 shots and workflow
+   identity. Job IDs and per-event timestamps are not recovered.
+4. Reconstruct the circuit structure from the pinned MCP recipe and recorded
+   settings. Use representative nonzero angles (`rz(0.3)`, `rx(0.2)`).
+   Per-iteration optimized angles and submitted physical QASM are unavailable.
+5. Group all shared model-visible structures across workflows and backends.
+   The 46 workflows reduce to six conservative structural groups.
 
-| Source in the current panel | Rows / transitive groups | Logical allocated width: min / median / max | Logical depth: min / median / max | Recorded shots: min / median / max |
+All 3,945 selected MCP events are retained. Their problem-size counts are
+2: 860, 3: 876, 4: 888, 5: 823, 6: 267 and 7: 231. Other QPack experiments,
+including VQE evaluations requiring several measurement circuits, are excluded
+from this circuit-level screen; no total for every source task is inferred.
+
+The Ma–Li-style graph/global schema omits numerical angles, so this is a
+declared angle-insensitive structural adaptation. It is not recovery of exact
+historical circuit instances. Nominal transpilation can still be angle-sensitive;
+the representative compiled view is an approximation for physical-feature and
+analytical methods. No runtime is simulated to replace these historical labels.
+
+## Joining and normalizing the sources
+
+The canonical row identity combines source ID and source-row identity within
+the pinned extract. Preserve the source reference and raw-record digest.
+A circuit hash is not a job ID: several observed runtimes can legitimately
+share a circuit or workflow structure.
+
+Three circuit identities serve different purposes:
+
+- **Source logical identity:** source QASM, or the separately qualified recipe.
+- **Submitted physical identity:** actual archived submitted QASM, available
+  for Qonductor. A reconstructed circuit must never receive this status.
+- **Nominal compiled identity:** a deterministic target compilation used by
+  physical-feature and analytical methods; it is not the historical submission.
+
+Each representation has its own digest and lifecycle label. Digest equality
+proves equality of the encoded bytes under that definition, not equality of
+two different lifecycle stages. Joining a recipe to an observation does not
+create another runtime observation.
+
+All target units become seconds. Shots, backend and source remain separate
+context fields. Backend aliases normalize `ibmq_*` and `ibm_*` for snapshot
+lookup without erasing the archived name.
+
+Ma–Li and QPack lack job timestamps. Same-backend FakeBackend snapshots are
+therefore **nominal context**, not proved job-day calibration. Logical wire
+indices used for T1/T2 are not recovered historical physical placements.
+Source execution boundaries are similar enough for the declared archived
+service/execution-time adaptation, but are not identical pure hardware clocks.
+Source-stratified reporting is required to expose that heterogeneity.
+
+## Retained data profile
+
+The following summaries are computed on retained observations, not generated
+circuit runtimes. Width is the allocated source/reconstructed register width;
+it is not necessarily active algorithm width.
+
+| Source | Allocated width min / median / max | Logical/source depth min / median / max | Shots min / median / max | Observed seconds min / median / max |
 | --- | --- | --- | --- | --- |
-| Ma–Li | 340 / 148 | 9 / 79 / 127 | 205 / 294 / 6,068 | 1,024 / 1,024 / 1,024 |
-| Qonductor | 3,065 / 52 | 3 / 6 / 103 | 5 / 20 / 1,508 | 1 / 4,000 / 20,000 |
-| QPack | 3,945 / 6 | 2 / 4 / 7 | 14 / 41 / 131 | 4,096 / 4,096 / 4,096 |
+| Ma–Li | 9 / 79 / 127 | 205 / 294 / 6,068 | 1,024 / 1,024 / 1,024 | 3.107 / 8.637 / 13.696 |
+| Qonductor | 3 / 5 / 7 | 5 / 8 / 15 | 1,000 / 1,000 / 20,000 | 1.058 / 3.096 / 10.882 |
+| QPack | 2 / 4 / 7 | 14 / 41 / 131 | 4,096 / 4,096 / 4,096 | 3.505 / 6.590 / 9.465 |
 
-`num_qubits` in the neural schema is allocated quantum width, not active width,
-physical backend capacity or quantum-plus-classical allocation. Polynomial
-`num_qubits` instead counts touched qubits under the upstream extractor.
-The canonical Qonductor `width_qubits` copies legacy `sum_qubits`: its range
-is 7–136,337 even within the current selected rows. It must not be interpreted
-as logical width or hardware capacity. This archived metadata remains for
-traceability; the current logical-width evidence comes from the parsed recipe
-feature ledger. The five legacy-alias failures make the distinction explicit.
+The combined dataset contains ten archived backend names. Backend counts,
+source-specific counts and unrounded profile values are in the metadata and
+aggregate CSV. Large differences in allocated width/depth do not by themselves
+establish differences in hardware execution time: compiled views, shots and
+provider timing boundaries matter. Retained Qonductor inputs are predominantly
+small, archive-resolved recipes; the excluded source records are not represented
+by this benchmark. QPack's many repeated evaluations must not be interpreted
+as many independent structures.
 
-The following family counts are obtained by joining current panel IDs to the
-canonical `family` field. They describe source names and do not certify semantic
-equivalence across generators.
+## Missing information and exclusions
 
-| Source | Current family distribution, observations |
+| Item | Handling |
 | --- | --- |
-| Ma–Li | qft 46; qftentangled 47; qnn 26; qpeexact 35; qpeinexact 36; qwalk-noancilla 2; random 30; realamprandom 40; su2random 38; twolocalrandom 40 |
-| Qonductor | ae 295; dj 251; ghz 227; grover-noancilla 209; qft 198; qftentangled 204; qpeexact 196; qpeinexact 219; qwalk-noancilla 230; random 229; realamprandom 242; su2random 187; twolocalrandom 203; wstate 175 |
-| QPack | MCP 3,945; width counts are 2:860, 3:876, 4:888, 5:823, 6:267 and 7:231 |
+| Missing runtime, unknown units, nonfinite/nonpositive label | Reject as an observed target; never synthesize a runtime |
+| Unverified logical recipe | Exclude from this dataset |
+| QPack historical angles/routing | Retain qualified structural reconstruction; disclose approximation |
+| Missing timestamp/job-day calibration | Keep missing; use declared nominal snapshot context |
+| Missing mitigation metadata | Keep unknown; do not silently assign “none” |
+| Missing gate duration/error/T1/T2 required by a method | Mark that method unavailable with a reason; do not drop the dataset row |
+| Missing historical throughput or effective-depth inputs | Separate nominal adaptation from unavailable original-paper route |
+| Valid zero operation count | Keep zero; it is not a missing feature |
+| Failed computation or invalid prediction | Retain assigned denominator; record failure, not zero runtime |
 
-The full Qonductor ledger additionally contains graphstate 228,
-portfolioqaoa 211, portfoliovqe 222, qaoa 195, qnn 213, vqe 197 and 151
-observations under 29 `circuit-*` source names. Those counts sum to the 1,417
-rows outside the current panel. Selection therefore removes whole source
-family categories as well as changing the width distribution.
+See the [feature dictionary](data_and_feature_dictionary.md) for every ordered
+neural input and the [QPU protocol](real_qpu_benchmark.md) for regression and
+analytical inputs.
 
-All 4,482 canonical Qonductor rows have `timestamp_utc`, spanning
-2023-07-16T15:07:55.627934+00:00 through
-2023-10-21T11:22:17.130022+00:00. Its 3,065 selected rows span
-2023-08-13T14:30:07.382619+00:00 through the same last timestamp.
-Ma–Li and QPack have no canonical job timestamps. These are archive timestamps,
-not a guarantee of a specific job-start boundary, and the grouped split is
-not a future-time test.
+## Splits and independence
 
-No source-wide verified error-mitigation or resilience configuration is
-available in the canonical extract. Its status is unknown; absence of a field
-does not establish that mitigation was disabled. Shots remain the recorded
-per-observation value. Labels are not divided by shots or rescaled to a
-fabricated common shot count. The neural graph/global schema does not append
-shots; polynomial, throughput and cost methods consume them where declared.
+The 4,515 observations receive **fresh five-fold outer assignments**, with
+four inner folds within each outer train set. Seed 42 fixes outer allocation;
+inner seeds are 43–47. Allocation is deterministic, group-based and
+source-balanced, without runtime targets.
 
-## Group identity and fitting scope
+Conservative groups join shared circuit/workflow and parameter-invariant
+model-input structures. Exclusion does not split an existing group into new
+independent samples. No group crosses outer train/test or inner partitions.
+All three sources appear in every outer test and inner validation set.
 
-The grouping relation is a transitive union of exact archived QASM hashes,
-QPack workflow hashes and parameter-invariant circuit-input digests. The latter
-hash circuit quantum/classical allocation, instruction names, ordered operands
-and conditions while omitting numerical parameters. It groups repeated declared
-structure; it does not prove quantum equivalence. Transitive component IDs are
-formed over the full canonical corpus and retained when selecting the current
-panel, including equality links through excluded bridge rows.
+| Outer test fold | Ma–Li | Qonductor | QPack | Total |
+| ---: | ---: | ---: | ---: | ---: |
+| 0 | 68 | 47 | 823 | 938 |
+| 1 | 68 | 46 | 888 | 1,002 |
+| 2 | 68 | 39 | 498 | 605 |
+| 3 | 68 | 36 | 860 | 964 |
+| 4 | 68 | 62 | 876 | 1,006 |
+| **Total** | **340** | **230** | **3,945** | **4,515** |
 
-The current panel has 206 groups: Ma–Li 148, Qonductor 52 and QPack 6. The
-46 original QPack workflows merge into six groups through structural identity.
-They remain 3,945 observations, but they do not provide 3,945 independent
-structures or 46 independent current split groups. Tier group counts can
-overlap, so the archive-supported 11 groups and candidate 49 groups are not
-60 independent Qonductor groups.
+Unequal fold sizes follow whole-group allocation. They are not failed balancing
+or permission to split circuits across train and test. These folds test
+held-out groups within the combined source distribution; they are not a
+backend-held-out, family-held-out or temporal evaluation.
 
-The [split freezer](../methods/real_qpu/prepare_panel.py) assigns
-whole components to five outer folds using normalized source-count balance,
-largest relative groups first, and deterministic SHA-256 seed/group/fold tie
-breaks. Four inner folds partition each outer-training set. The source labels
-guide balance; runtime labels and prediction errors do not guide selection or
-assignment. These are group-held-out tests, not guaranteed unseen-family,
-unseen-backend or future-period tests.
+QPack supplies 87.4% of observations but only six groups. Report pooled and
+source-balanced errors, source slices, tails and group-resampled paired
+uncertainty. Neither 4,515 rows nor 165 groups implies 4,515 independent circuits.
 
-Graph and matched MLP fit gradients and transforms on inner folds 1–3, select
-the epoch using inner fold 0, and do not refit on that validation set. Their
-reader output is the per-observation median of seeds 42, 1234 and 31415.
-Polynomial and Ridge select their hyperparameters on grouped inner folds and
-refit on eligible outer-train. Schedule/throughput affine calibration uses
-successful outer-train inputs only. The execution disclosure records prior
-inspection of aggregate target summaries; the benchmark is retrospective and
-exploratory even though the reviewed fitting paths exclude outer-test labels
-from transforms, training, selection and calibration.
+## Current result and reproduction status
 
-## Zeros, unavailable inputs and failures
+Dataset preparation and split checks pass. Fresh learned fits and fresh
+fold-local analytical calibrations use this population; the complete QPU
+result table is pending execution and final QA. No scores from another
+training population are relabeled as results on this dataset.
 
-Several numerically similar cases have different meanings. They are retained
-separately in the ledgers and coverage accounting.
+The publication includes processing code, selection rules, source pins,
+aggregate counts and evidence digests. Original third-party observations,
+row-level derivatives and source circuits are not redistributed. A Git clone
+can verify the published inventory and saved simulator evidence; it cannot
+recompute omitted QPU labels or complete fresh fits without those external
+inputs. See [reproduction scope](reproduction.md).
 
-| Case | Meaning and implemented treatment |
-| --- | --- |
-| Absent named gate | A valid parsed circuit contains zero occurrences of that named operation. Its gate-count feature is zero. This is measured structural absence. |
-| Encoder padding | Inactive one-hot positions and unused operand slots are zero; sparse wire sentinel 255 means no encoded operand. One-qubit and named higher-arity operations preserve the upstream encoder's operand/T1/T2 padding behavior. Padding is not a zero calibration measurement. |
-| Constant fit feature | Fit-only normalization sets low-variance positions to zero. It does not replace missing raw values. |
-| Missing nominal calibration | A required property/hash/unit/T1/T2/duration/error is absent or invalid. The consuming method is unavailable; zero is not a substitute. A virtual gate duration is zero only when the frozen target actually supplies zero. |
-| Missing runtime target | There is no observed quantity to score. Neither reconstruction, a predicted value nor a nominal schedule creates a label. All 8,767 canonical targets here are finite and positive, including all current 7,350 labels. |
-| Prediction failure or overflow | Inputs/label may exist, but the computation produces no valid prediction. The attempt records failure/overflow and remains in assigned coverage. Accuracy uses the declared successful subset. |
-
-The neural preprocessing implementation is in the retained
-[full-feature runner](../methods/real_qpu/mali_model.py).
-Starting from 51 raw globals, it retains columns whose gradient-fit population
-sum is positive, then computes means and sample standard deviations on that
-same population. A standard deviation above `1e-6` enables scaling; other
-retained fields become zero. All five current folds retain 40 global positions.
-Node statistics are node-weighted sample moments over fit graphs only. All
-178 positions remain in the graph, with 167 varying and 11 constant positions
-zeroed. These are schema and transform rules, not mean/zero imputation of
-missing observations. The MLP uses the same transformed global vector.
-
-Logical graph materialization requires positive valid T1/T2 for required
-logical wire indices in a hash-pinned nominal snapshot, converts supplied units
-to microseconds, and maps logical wire `i` to nominal qubit `i`. It rejects
-unknown gates, unsupported classical operations, nonterminal measurement and
-dynamic control instead of flattening them into a static graph. These T1/T2
-values are real snapshot properties but are not attested job-day calibration.
-The graph/global schema contains neither numerical gate errors/durations nor
-explicit source/backend IDs. Snapshot choice can still carry backend context
-through the supplied T1/T2 values.
-
-Polynomial uses `[swap, depth, num_qubits, shots, circuit_count]` in the saved
-polynomial manifest (not bundled).
-Here `swap` counts CX/CZ/ECR, depth follows the upstream operand stack,
-`num_qubits` is touched width, and circuit count is one. It applies polynomial
-expansion without logging, scaling or constant-column pruning, selects degree
-2/3/4 by mean inner raw-seconds R² with lower-degree tie break, and refits on
-outer-train. The common-panel runner requires complete eligible features for
-all 7,350 rows; it does not complete an aggregate by dropping missing feature
-rows. All folds selected degree 2. Finite negative predictions remain in
-raw-seconds scoring; the separate log metric floors predictions at zero.
-
-QCRE/Qiskit schedule projection reuses hash-pinned raw outputs on current IDs
-and fits new affine or log-affine calibration on successful outer-train rows.
-Unavailable raw inputs remain unavailable after calibration. Calibrated
-predictions have a zero floor, while raw schedule outputs retain their schedule
-clock. Calibration does not fill rows that lack durations or a supported
-circuit route. In older full-corpus static routes, Qonductor `row4477` has
-dynamic control and explicit unavailability; metadata-only treatments and the
-separate retrospective control-flow case have their own contracts. That row
-does not become a member of this logical cohort.
-
-Hyb cost construction uses operation-weighted mean error in one-qubit,
-two-qubit and readout buckets, minimum positive operand T2, and serial used
-gate/readout duration. The [analytical extension protocol](../protocol/analytical_extension.json)
-defines the log-domain cost. A nonempty bucket whose mean error equals one
-has true zero survival: nominal log cost is unavailable for 148 current
-Ma–Li rows. An individual error-one operation does not automatically imply
-zero bucket survival if the bucket mean is below one. Probabilities are not
-epsilon-clipped to make the cost finite.
-
-Raw exponential Hyb cost records float64 overflow rather than substituting a
-capped cost: nominal variants have 198 overflow rows plus 148 unavailable;
-composite variants have 346 overflow rows. A finite log cost can still be
-used by log-cost Ridge without exponentiating it first. Its features are
-`asinh(log_cost)` and `log1p(shots)`; its target is `log1p(service_seconds)`.
-Scaling is fitted inside each inner training partition, alpha is selected by
-mean source-balanced inner MAE, and final scaling/Ridge use eligible
-outer-train. Inverse `expm1` predictions are floored at zero; nonfinite inverse
-outputs and overflow receive explicit statuses. The gate-time control requires
-valid positive gate time and shots, and does not inherit noise/T2/zero-survival
-exclusions. The Kyoto composite is a separately declared nominal sensitivity
-using CSV fields plus pinned older asset fields; it is not selected by test
-error. The saved Hyb manifest (not bundled)
-records 7,202 nominal log-cost predictions and 7,350 predictions for both
-composite Ridge variants.
-
-Scholten-style throughput uses recorded shots, declared compiled quantum-wire
-depth and sourced nominal throughput. It does not infer CLOPS from T1/T2 or
-convert between throughput definitions. The 2,151 current rows with no sourced
-nominal throughput remain unavailable. Affine calibration therefore predicts
-5,199 rows, not the complete cohort. A successful-subset error cannot be
-ranked against full-panel errors without pairing identical successful IDs.
-
-The saved [unavailability table](../results/real_qpu/summary/unavailable_reasons.csv),
-[coverage table](../results/real_qpu/summary/coverage.csv) and
-per-method attempts distinguish input unavailability, invalid probability,
-zero survival, overflow and prediction failure. The reporting code checks the
-assigned envelope and seed completeness; a missing seed blocks the final
-neural median instead of silently taking the median of fewer seeds. Large
-errors and poor R² remain outcomes, not reasons to remove rows.
-
-## Reproduction and provenance boundary
-
-The earlier local evidence package replayed saved labels, IDs, splits, derived
-inputs, attempts and predictions. This public checkout retains the processing
-description, aggregate QPU results and local simulator records, but excludes
-the per-observation QPU evidence. Fresh source extraction additionally requires
-complete upstream archives, pinned parser/generator code and calibration
-assets. The [upstream lock](../provenance/upstream.json), input manifests and
-[source registry](../protocol/data_sources.json)
-identify these dependencies. Preprocessing and fitting source helpers are
-included under semantic method paths for inspection; complete upstream archives
-and some full materialized compiled inputs remain external. Including source
-does not establish fresh-clone extraction or refitting.
-See [reproduction](reproduction.md) for the public checkout's verification scope.
-
-For the preprocessing audit, the inspected development helpers
-`prepare_logical_benchmark.py`, `mali_full_features.py`,
-`run_common_panel_qonductor.py`, `run_common_panel_hyb.py` and
-`run_common_panel_analytical.py` matched their SHA-256 entries in the retained
-feature and method manifests. Their preserved source bytes, the canonical
-materializer, candidate-width/recovery code, native feature adapters and
-analytical component builders are included under semantic method paths.
-Historical import names and paths remain provenance inside those source bytes;
-the publication mapping identifies their public locations. They expose the
-implemented mechanics and prerequisite checks, rather than promise executable
-extraction without the external inputs. Construction source behavior is supported
-by the preserved row fields, decisions and manifests; extraction was not
-independently re-executed for this publication.
-
-Simulator labels use a separate circuit-hash/configuration identity and their
-own measurement boundaries. Unmeasured/unsupported configurations do not
-acquire labels from a runtime prediction. Finite MPS timing and quality pass
-are separate fields; a completed approximation is not evidence of fidelity.
-Those rules are described in [methodology](methodology.md) and the simulator
-results, rather than pooled with QPU service-time observations.
+The simulator dataset remains a separate locally measured track. Its engines,
+resource limits and clock/quality definitions are in
+[training and measurement](training_and_measurement.md#digital-simulator-measurement).

@@ -1,33 +1,15 @@
 # Data lineage and feature dictionary
 
-This page defines the **7,350-row logical-input real-QPU panel** and its
-model inputs. It is separate from the archived 8,767-row corpus and the older
-compiled-input comparison. Neither circuit reconstruction nor feature
-materialization creates or replaces a runtime label.
+The real-QPU dataset contains **4,515 observations**, in 165 conservative groups:
+Ma–Li 340 source logical inputs, Qonductor 230 archive-supported recipe
+adaptations and QPack 3,945 structural reconstructions. The
+[dataset report](data_preprocessing.md) defines selection, row identity,
+label units and reconstruction limits. No reconstruction creates a runtime label.
 
-## Row identity and target
-
-Each included observation has a canonical source-row ID, source ID, frozen
-group ID, backend label, requested shots, input-qualification tier and
-`target_seconds`. The target remains the source archive's recorded execution
-or service time in seconds. Ma–Li averages its three archived execution-time
-values at 1,024 shots; Qonductor retains one-circuit job labels; QPack converts
-its per-circuit evaluation time from milliseconds to seconds. See
-[data construction](data_preprocessing.md#source-records-identities-and-labels) for source-specific
-limits.
-
-The panel is 340 Ma–Li + 3,065 Qonductor + 3,945 QPack = 7,350 rows. Its
-Qonductor rows split into 230 `archive_supported_recipe_adaptation` and 2,835
-`candidate_recipe_sensitivity_only`. The latter tier is excluded only in the
-4,515-row sensitivity report; it is included in the primary 7,350 panel. The
-remaining 1,417 source Qonductor jobs are not silently reconstructed into this
-logical-input panel. QPack rows are `qpack_reconstruction_qualified`, not
-exact submitted QASM. Ma–Li rows retain source logical input.
-
-The frozen outer and inner files are keyed by canonical observation ID and
-group ID. The five outer folds assign whole groups. There are 206 transitive
-groups in the 7,350 panel. QPack contributes six groups, so row count should
-not be mistaken for independent workflow count.
+All methods share fresh outer test assignments. Backend and shots remain
+context fields; a circuit hash is not an observation ID. No group crosses
+outer or inner partitions. Six QPack structural groups contain many repeated
+workflow/context observations.
 
 ## Global input: 51 ordered positions
 
@@ -69,8 +51,9 @@ clipped or filled with invented epsilons.
 The extractor uses pinned Ma–Li helper functions with a documented public-API
 compatibility port for loose OpenQASM 3 wire indices. The raw 51-position
 schema is retained. The upstream positive-column-sum mask is computed on the
-gradient-fit population only; it retains 40 positions in each fold. The model
-receives those 40 transformed globals, not all 51 unfiltered values. Means and
+gradient-fit population only. Its retained positions and statistics must be
+recorded separately for each fresh fold; their counts are not assumed from
+another run. Means and
 sample standard deviations also use gradient-fit inputs; constant fields are
 zeroed. No validation/test inputs or held-out labels enter these transforms.
 
@@ -94,15 +77,14 @@ operations and named higher-arity gates do not receive extra wire/T1/T2
 slots, while two-qubit operations use both operands.
 
 T1/T2 values are taken from the nominal snapshot mapped to logical wire
-index; they are calibration context, not synthetic measurements and not
+index and converted to microseconds; they are calibration context, not synthetic measurements and not
 proof of historical job-day calibration. The graph input does **not** encode
 numerical gate-error or gate-duration values. A configuration flag for gate
 error is not equivalent to the model consuming those errors.
 
-All 178 node positions are passed to the graph model. The saved train-only
-mask reports 167 variable positions and 11 constant positions set to zero in
-each fold. The matched MLP receives the same 40 transformed values from the
-51-position raw schema, not the graph.
+All 178 node positions are passed to the graph model. Constant positions are
+zeroed using the gradient-fit inputs only, with each fresh fold's mask recorded.
+The matched MLP receives the same transformed global schema, not the graph.
 Neither model appends shots, source ID or backend one-hot features. Shots are
 part of the dataset and analytical/polynomial method inputs where declared;
 they are not silently added to the Ma–Li-style 51-feature input.
@@ -121,16 +103,13 @@ out-of-distribution claim.
 
 Each neural transform is fit on inner folds 1–3 within outer-train. Inner
 fold 0 selects the epoch but supplies neither transform statistics nor gradient
-updates; there is no subsequent full outer-train neural refit. The support report lists
-training-only and training-plus-validation membership separately. All exact
-global, graph and combined signatures have zero training-fold matches in the
-current 7,350-row panel; this high-dimensional exact-match result is a support
-diagnostic, not evidence that all circuits are structurally novel.
+updates; there is no subsequent full outer-train neural refit. Support diagnostics must be recomputed using the new fold transforms. No
+exact-match or unseen-structure result is presumed before that check completes.
 
 Rebuildable machine-readable definitions and evidence:
 
 - [Frozen reporting protocol](../protocol/reporting.json)
 - Panel inputs and split manifest (not bundled)
-- [Per-fold feature masks](../results/real_qpu/analysis/fold_feature_masks.csv)
+- Fresh per-fold feature masks (not bundled; pending complete run)
 - Per-row exact-input support (not bundled)
 - Hash-pinned replay manifest (not bundled)

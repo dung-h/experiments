@@ -13,8 +13,8 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 837,
-      "sha256": "b42baf4f4fda781a4ab3ad84acc9ce99c41fa421b9abce671ac8af3fb3565558"
+      "bytes": 1279,
+      "sha256": "1925a58be90cffccf61e26e57e391970136bec7d6c805f2bb378c309de9c38d8"
     },
     {
       "path": "NOTICE.md",
@@ -23,8 +23,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3249,
-      "sha256": "f9a57dd64b0267fa27d140cda90455e75cda95eac5ffde13e88515d1781935d9"
+      "bytes": 3476,
+      "sha256": "4357ceffb85ef1654f97acd1a6d43fcbc41f10c44b6b655c1fa90eec9b10a8c7"
     },
     {
       "path": "data/simulator/README.md",
@@ -1328,18 +1328,18 @@
     },
     {
       "path": "docs/analysis.md",
-      "bytes": 5532,
-      "sha256": "78e76ef1fc73d86f794ab143134438961321427a475d5a07c18beee456703a84"
+      "bytes": 5548,
+      "sha256": "e58fc12b282eec2c757edbdabefa6f1c9ba104f30cc944c1d5795ed49af4eab6"
     },
     {
       "path": "docs/data_and_feature_dictionary.md",
-      "bytes": 7921,
-      "sha256": "4afe1ab79457f02ac8b97819101822e1882daa7cdcc9340f63e412fe61359506"
+      "bytes": 6716,
+      "sha256": "7538abb276aeae302b50559e7ab1870e215221b3e0a97cf4ff0d5dc2e31b0583"
     },
     {
       "path": "docs/data_preprocessing.md",
-      "bytes": 24681,
-      "sha256": "cfca7a253b8cfe301328ebf63061e0583cacfbf9a7f9c947299be49f679dbdf0"
+      "bytes": 16915,
+      "sha256": "46c008a263aa91262a7c7da4f32d62c43a49e873d0dede48caccdee163bc8cff"
     },
     {
       "path": "docs/distribution.md",
@@ -1348,38 +1348,38 @@
     },
     {
       "path": "docs/methodology.md",
-      "bytes": 4429,
-      "sha256": "2ff0996783b31a743c54f452acfd12f88945205a32d77e08b6e944311c7c0af2"
+      "bytes": 4249,
+      "sha256": "f211bae418c791b87829993ec0351e9767b539196ded12e33b6d045ff523b1fd"
     },
     {
       "path": "docs/paper_comparison.md",
-      "bytes": 18373,
-      "sha256": "43e52bdfd070c18d09108338b9fa4566fef25e8f960f800cd34aa5decf49e758"
+      "bytes": 15913,
+      "sha256": "01035d99beb99f7260c990400e4114b45258ec203fcdce8875fe40cd593f62bf"
     },
     {
       "path": "docs/real_qpu_benchmark.md",
-      "bytes": 9249,
-      "sha256": "8174e8375577931f539cdc236df29238832515ead796866a840a4a3e0c1b3b8f"
+      "bytes": 5251,
+      "sha256": "e8118ee35ca6226ef902fcc9f1daaabd9c84f752f8146931456d143e3ec93f69"
     },
     {
       "path": "docs/reproduction.md",
-      "bytes": 6419,
-      "sha256": "c9b89563e9b2a62d527cbd846a18c6e4c7fb9c79bbfc271e8856f913bffd4758"
+      "bytes": 6523,
+      "sha256": "a150f40da25cf1355b2fd12b82b0ea35f8bfadd87898c2860c407bc8f108347c"
     },
     {
       "path": "docs/results.md",
-      "bytes": 1845,
-      "sha256": "6b564c3d45db5a6790e16ba3b22fe5c4a7377f2d1cb50082cf809fafa111ab6e"
+      "bytes": 1279,
+      "sha256": "5bbfcce75abd8e190021b4f22bb89ea82b4e2e683018dd3c8181531548620535"
     },
     {
       "path": "docs/scientific_review.md",
-      "bytes": 12879,
-      "sha256": "59fbd032b030f85c15f9769aa37340821f62ffaf85db275f873d49ca0595431d"
+      "bytes": 5857,
+      "sha256": "86db6de4fe8ac7e52abd63b16e617dc6c78791bf921108fd7b48af4a85a7b047"
     },
     {
       "path": "docs/training_and_measurement.md",
-      "bytes": 38111,
-      "sha256": "7e7bb1e262e9348de14f90abfc610be96a70a5378784ef2ef54e04b9bdcd41f6"
+      "bytes": 29877,
+      "sha256": "f40b988f410a1c4cb2e5d055d983663070a1a6a3ac6239eb478ca5c18b2f97c9"
     },
     {
       "path": "methods/real_qpu/aggregate_predictions.py",
@@ -1692,21 +1692,6 @@
       "sha256": "29aa726d77b04485ba0ffc8add40207efda233269928cc565e641e5f8a067a2b"
     },
     {
-      "path": "presentation/benchmark.pdf",
-      "bytes": 358852,
-      "sha256": "25a61751172911a66c36197e71f1ee1fe44104db4801d38f69ebb91d246c971e"
-    },
-    {
-      "path": "presentation/benchmark.pptx",
-      "bytes": 59834,
-      "sha256": "98116fc0400c29f8b21197796511408942696c75c67e952d52f181fb0c4f6bc3"
-    },
-    {
-      "path": "protocol/analytical_extension.json",
-      "bytes": 21632,
-      "sha256": "0c3a0d972b819cbca2546a5b62d2376afe894c1363360635866a2eb430506545"
-    },
-    {
       "path": "protocol/azizov_common_core_gnn.json",
       "bytes": 14786,
       "sha256": "5c800d77b5230342afce1e0f0f38c711b20e7317b3023d2ba20e1c2a2451549b"
@@ -1718,13 +1703,8 @@
     },
     {
       "path": "protocol/circuit_representation.json",
-      "bytes": 1983,
-      "sha256": "56c016e8073d489baa2e6bf82e91940c3be4e052964764763d84ffb8ae645d8f"
-    },
-    {
-      "path": "protocol/common_panel_completion.json",
-      "bytes": 19989,
-      "sha256": "ee1625355e4aa7636f8a647abc545477e31c6c3aa11c3bf48184de510b2c766c"
+      "bytes": 1843,
+      "sha256": "fdefceeda5c3268baa86b9932b0d13067ace99ffbbd989d57bfbd2f2c00732e6"
     },
     {
       "path": "protocol/cudaq_dense_statevector_predictor_comparison.json",
@@ -1733,13 +1713,8 @@
     },
     {
       "path": "protocol/data_sources.json",
-      "bytes": 3664,
-      "sha256": "2c993c21e10cfe3d6668e5d278dff0da693f29820ab3c5d5e832252783ecdd65"
-    },
-    {
-      "path": "protocol/estimator_execution.json",
-      "bytes": 28945,
-      "sha256": "31eb25fdf11f8b9c0676f12dd3217ba44ab17f20fed32014005985a925da6c21"
+      "bytes": 4379,
+      "sha256": "fa27c87fe038e49bae85790c925bc208fe28085fc56bec1367cff6938d43f73b"
     },
     {
       "path": "protocol/family_aware_joint_runtime_quality_mps.json",
@@ -1752,11 +1727,6 @@
       "sha256": "753db02950abb1a3db52f6ac39bfab91c841e0acf56dca69e4a95def0bee9e80"
     },
     {
-      "path": "protocol/logical_input_review.json",
-      "bytes": 8873,
-      "sha256": "35b06125fc953d79e64ee41841a209d1371e84a2672d72cc4be774263438df96"
-    },
-    {
       "path": "protocol/maestro_cpu_component_benchmark.json",
       "bytes": 18538,
       "sha256": "48eb56f29a54c1f5249f153fd91a4588bc87b7e464c9a2c998358f0478a17354"
@@ -1765,16 +1735,6 @@
       "path": "protocol/maestro_cpu_component_optimizer_off.json",
       "bytes": 5952,
       "sha256": "2b1cbb5606603046fb6e2c4b778aff2d6235e32a4fb8156026a791087df2b610"
-    },
-    {
-      "path": "protocol/mali_batch_optimization.json",
-      "bytes": 2747,
-      "sha256": "c3a1ef59e174ab77cbdf894a03f40a56c102c5b7ca77d805239e2fa1971b06a1"
-    },
-    {
-      "path": "protocol/mali_full_features.json",
-      "bytes": 28998,
-      "sha256": "2ae0d35eb83124e5ca592dc00f9e0b44f46dbd296011e536c3ad5a54a0252c6f"
     },
     {
       "path": "protocol/measurement/cudaq_verified_bridge.json",
@@ -1793,33 +1753,28 @@
     },
     {
       "path": "protocol/qonductor_logical_recovery.json",
-      "bytes": 11513,
-      "sha256": "10f20a32a37bbba0f9d0dcdd5089cffc2e7ee45a9177dc9e99ac2dced96a52ef"
-    },
-    {
-      "path": "protocol/qonductor_native_features.json",
-      "bytes": 24387,
-      "sha256": "f7d62c2a10eef7e347b8e691c1e0463777abd86d6328ef9c3051e194997b0484"
+      "bytes": 1649,
+      "sha256": "ba3d26708c0b2b69762c141b4cd6439804ef335b315a9a83c519bf66840a5fa8"
     },
     {
       "path": "protocol/real_qpu_common_panel.json",
-      "bytes": 7054,
-      "sha256": "061d44d5c624da56064226f660f086275b389a7f9769bab7aab9dbf4e6980747"
+      "bytes": 6792,
+      "sha256": "60c925e2c95d18d9806de62f0238747bbbf47a134ec353db94a7c315a2520ca3"
+    },
+    {
+      "path": "protocol/real_qpu_dataset.json",
+      "bytes": 8839,
+      "sha256": "74992616eeed152ed5ff58e8ddb171f51ff3b102e2a7bab0b99a83dae33436a9"
     },
     {
       "path": "protocol/reporting.json",
-      "bytes": 33418,
-      "sha256": "03853edab47eab046d98843ce0099bc60719d7aba8d0181d7c9a8a38d94ae537"
+      "bytes": 1678,
+      "sha256": "c536bceb5a30d24de69e4f1b5a7a2ee5b18ef7727bbeb5c4966fdce0a9f19c56"
     },
     {
       "path": "protocol/reproduction.json",
       "bytes": 8967,
       "sha256": "862c8c7d348f26551a05f41603c2fe9262e42cc9ea72272fbedf536034734576"
-    },
-    {
-      "path": "protocol/scholten_unified_nominal.json",
-      "bytes": 10195,
-      "sha256": "4bc35e8576df8c943818800fb521298d93e6b793df02de56d564c6960fce5e40"
     },
     {
       "path": "protocol/seeds.json",
@@ -1838,13 +1793,13 @@
     },
     {
       "path": "provenance/publication.json",
-      "bytes": 162782,
-      "sha256": "d6e80c669482ec9366a3926884455a12ca56df0fd10a3aa3a7cdd9e6bfb7560b"
+      "bytes": 1523,
+      "sha256": "c34e6d958dcd763ce8fc1b21e886b72660fec8bdcb5a502a5a48911867d16483"
     },
     {
       "path": "provenance/upstream.json",
-      "bytes": 3260,
-      "sha256": "1ee1722b0109283874c2c20c431b6536c292873da2ceaf59c4fbde70b68ce976"
+      "bytes": 3499,
+      "sha256": "014e86cac868c5b280200a9a476f3f15cc0c8d932d380a70879d4b1b7d5c6062"
     },
     {
       "path": "requirements-pasqal-measurement.txt",
@@ -1867,29 +1822,9 @@
       "sha256": "87b903a347fbb98e91b32cc822c269126468df579efd965232489c080a3d096c"
     },
     {
-      "path": "results/figures/dataset_composition.png",
-      "bytes": 416101,
-      "sha256": "11997b36464661ee4c9cc1b76b15c87af60d6f073840a6479648fed6e541b238"
-    },
-    {
-      "path": "results/figures/dataset_composition.svg",
-      "bytes": 249387,
-      "sha256": "a48473f48dbe76782cccc092188dc5eb53603fe53b348e13900c4acfde893975"
-    },
-    {
       "path": "results/figures/manifest.json",
-      "bytes": 23042,
-      "sha256": "00f0a4e3878ec78bd766b3eef9a091ccd735e280e0898aa8234ccd953c30c21f"
-    },
-    {
-      "path": "results/figures/paired_method_differences.png",
-      "bytes": 420517,
-      "sha256": "44c2b2d02b79b23e7f98413223676949e2883a3ce039343106f4bc8f283ee003"
-    },
-    {
-      "path": "results/figures/paired_method_differences.svg",
-      "bytes": 206837,
-      "sha256": "7cf4a29c3ccb8b12d068c572de1033567d7dbd85f6adb05d77667862a925f551"
+      "bytes": 14105,
+      "sha256": "8a6ff582eb54fc04f11e205e23ff835609c9f02f45d03ec8964f49974e227587"
     },
     {
       "path": "results/figures/simulator_method_errors.png",
@@ -1902,59 +1837,19 @@
       "sha256": "dcda2d27a6fae18ead8b6b5c2fbb0bb4322400adbd48f479542fe11838dac892"
     },
     {
-      "path": "results/real_qpu/analysis/analysis_metrics.csv",
-      "bytes": 383969,
-      "sha256": "f784cd177c852f9bc866052427d0a48ddd5bc99d0ed0d4628f733bb389dbda47"
-    },
-    {
-      "path": "results/real_qpu/analysis/analysis_pairs.csv",
-      "bytes": 27022,
-      "sha256": "ab901c77f9f3fe3a067136518d7af40d65149f6985c046f7106d72f0d3d21e5e"
-    },
-    {
-      "path": "results/real_qpu/analysis/dataset_profile.csv",
-      "bytes": 2296,
-      "sha256": "0dbafd3fed00820636049b638d85aeb4676e460574f5a4d3aa69a8243820ebb9"
-    },
-    {
-      "path": "results/real_qpu/analysis/fold_feature_masks.csv",
-      "bytes": 91329,
-      "sha256": "4653970e68311d83818bd1a6909609e424184844cbef6be85d811aa770cc6718"
-    },
-    {
-      "path": "results/real_qpu/method_comparison.csv",
-      "bytes": 8435,
-      "sha256": "36622338d1b5c91e5d1530c71691b007ac8c3758493d7810d5db82ea7588a3ef"
+      "path": "results/real_qpu/dataset_profile.csv",
+      "bytes": 533,
+      "sha256": "0155dc5d065418baafc146a8c867d903e3b03835bbb3e809a1e890bd7a40ec98"
     },
     {
       "path": "results/real_qpu/method_comparison.md",
-      "bytes": 11222,
-      "sha256": "b90a0cb531b8f303b26376beb34b13f13c078d2a4eca19403184a175c1216792"
+      "bytes": 1344,
+      "sha256": "e5a930e4eae5035df43fd9ec326f5e6fc886f63d7943252fe5361049153ec58c"
     },
     {
-      "path": "results/real_qpu/summary/coverage.csv",
-      "bytes": 13766,
-      "sha256": "2a23907c47a1b86ce6eaaaf6bce2fd0d62f85560e959ac89f3e00e2d40fc56d1"
-    },
-    {
-      "path": "results/real_qpu/summary/method_metrics.csv",
-      "bytes": 20130,
-      "sha256": "128bb71f75acfada81f7cebd0924a380f4a523961d36fb52b0a57cbb413801ee"
-    },
-    {
-      "path": "results/real_qpu/summary/paired_metrics.csv",
-      "bytes": 184512,
-      "sha256": "c392bd5ccb01a0aa43dcc4dd4ab3996e1a82036694cf6b235713b4d834de997d"
-    },
-    {
-      "path": "results/real_qpu/summary/source_and_reconstruction_metrics.csv",
-      "bytes": 139588,
-      "sha256": "355f484fa582f9bb43b1535c73d23ba5bc69c1a950221b00a30d73c6ca3621c9"
-    },
-    {
-      "path": "results/real_qpu/summary/unavailable_reasons.csv",
-      "bytes": 3618,
-      "sha256": "ac2c936a7e494e1cbd685f107f752752799d096a40215dbcf18876eb9ece1011"
+      "path": "results/real_qpu/source_filtering.csv",
+      "bytes": 277,
+      "sha256": "4f3f774407737d52eebe95c7580f7013bf19cf2b18a75f52bde15dfcf52d4c0f"
     },
     {
       "path": "results/simulator/method_comparison.csv",
@@ -1973,13 +1868,18 @@
     },
     {
       "path": "scripts/verify.py",
-      "bytes": 2665,
-      "sha256": "308a1f95d0447b6702baf9d95a126dae6543619b3869e497a7eab3b9cf77577a"
+      "bytes": 6258,
+      "sha256": "0d964d79d5bae88577bece5337979c0b20cc25607233f146b34f853392fea229"
     },
     {
       "path": "tests/test_publication.py",
       "bytes": 3577,
       "sha256": "71ae13b8f2d50e4a6d0121211b54fdcab3d0a2ff548254c4070c57da60b7c3c2"
+    },
+    {
+      "path": "tests/test_qpu_dataset.py",
+      "bytes": 2814,
+      "sha256": "2451f2f576f0074cf5c8b7fee487f0e1930dc98da3b6b53054aaf16ea68f2a7f"
     },
     {
       "path": "tests/test_simulator_results.py",

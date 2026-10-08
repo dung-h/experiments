@@ -1,15 +1,50 @@
 {
-  "contract_id": "rqpu-circuit-representation-v3",
-  "status": "signed_pending_c134_materialization",
-  "decision_path": "benchmark_v1/decisions/circuit_representation_v3.md",
-  "base_evidence_authority": "benchmark_v1/protocol/representation_authority_v2.json",
-  "common_views": {
-    "mali_real_qpu": {"rows": 340, "representation_id": "exact_logical_to_pinned_target_v3", "input": "exact logical QASM", "feature_route": "deterministic pinned-target transpilation", "identity_claim": "exact_logical_input"},
-    "qonductor_single_circuit_ibm": {"rows": 4482, "representation_id": "exact_submitted_physical_v3", "input": "exact submitted physical QASM", "feature_route": "direct parse; no common-feature retranspilation", "identity_claim": "exact_submitted_input"},
-    "qpack_mcp": {"rows": 3945, "representation_id": "pinned_angle_insensitive_to_target_v3", "input": "pinned angle-insensitive structural reconstruction", "feature_route": "deterministic pinned-target transpilation", "identity_claim": "reconstruction_qualified"}
+  "scope": "real-QPU benchmark",
+  "assigned_observations": 4515,
+  "qualification": {
+    "included_tiers": [
+      "source_has_logical_input",
+      "archive_supported_recipe_adaptation",
+      "qpack_reconstruction_qualified"
+    ],
+    "excluded_input_evidence": [
+      "candidate_unverified",
+      "structural_only",
+      "unresolved"
+    ],
+    "criteria": "attributable source; observed finite positive label with known units; admissible circuit boundary; known backend/shots; accepted input evidence tier",
+    "runtime_error_used_for_selection": false,
+    "study_design": "retrospective; not analyst-blind preregistration",
+    "exact_historical_logical_instance_claim": false
   },
-  "required_sidecar_fields": ["canonical_row_id", "source_id", "representation_id", "lifecycle_stage", "representation_digest", "compiled_or_submitted_digest", "target_snapshot_id", "active_width", "structural_depth", "one_qubit_count", "two_qubit_count", "swap_like_count", "measurement_count", "shots", "circuit_count", "availability_status", "terminal_reason"],
-  "fixed_value": {"circuit_count": 1},
-  "qonductor_audit": {"rows": 4482, "required_semantic_checks": ["archive_sum_depth_vs_qasm_two_qubit_count", "archive_sum_qubits_vs_qasm_structural_depth", "archive_sum_2q_gates_vs_qasm_active_width"], "retain_c122_only_if": "all mappings are semantically faithful or a signed correction sidecar establishes their precise meaning"},
-  "prohibitions": ["physical_to_logical_inverse_claim", "qpack_angles_or_route_fabrication", "missing_feature_imputation", "representation_tier_as_primary_model_feature", "observed_runtime_feature_use"]
+  "sources": {
+    "mali_real_qpu": {
+      "observations": 340,
+      "logical": "source QASM linked to archived observations",
+      "physical": "nominal target compilation; not original submission"
+    },
+    "qonductor_single_circuit_ibm": {
+      "observations": 230,
+      "logical": "archive-supported MQTBench 1.0.3 recipe",
+      "physical": "exact submitted QASM via database/archive join",
+      "claim": "not exact recovered historical logical DAG"
+    },
+    "qpack_mcp": {
+      "observations": 3945,
+      "logical": "source-backed angle-insensitive MCP QAOA structure",
+      "physical": "representative-angle nominal compilation",
+      "claim": "historical angles/routing not recovered"
+    }
+  },
+  "identities": [
+    "source logical digest",
+    "submitted physical digest when available",
+    "nominal compiled digest",
+    "conservative model-input/workflow group"
+  ],
+  "no_family_width_only_job_link": true,
+  "no_runtime_label_reconstruction": true,
+  "nominal_snapshot_is_not_historical_jobday": true,
+  "parameter_values_omitted_by_declared_graph_global_schema": true,
+  "definitions": "docs/data_preprocessing.md"
 }
