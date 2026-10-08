@@ -19,7 +19,7 @@ redistribute the source real-QPU datasets or their row-level derived inputs.
 
 | Track | Evaluation population | Results |
 | --- | --- | --- |
-| Real QPU | **4,515 observations**: Ma–Li 340 + Qonductor 230 + QPack 3,945; 165 groups | [Dataset report](docs/data_preprocessing.md) · [Results pending fresh-fit QA](results/real_qpu/method_comparison.md) |
+| Real QPU | **4,515 observations**: Ma–Li 340 + Qonductor 230 + QPack 3,945; 165 groups | [Table](results/real_qpu/method_comparison.md) · [CSV](results/real_qpu/method_comparison.csv) · [Same-row comparisons](results/real_qpu/shared_row_comparisons.csv) |
 | Simulator | 204 circuit members / 191 QASM hashes through 16 qubits; predictor core of 150 hashes at 2–9 qubits | [Table](results/simulator/method_comparison.md) · [CSV](results/simulator/method_comparison.csv) |
 
 QPU methods use the same observation panel and outer folds, with declared
@@ -33,7 +33,7 @@ adaptations, not paper-exact reproductions.
 - `data/simulator/`: locally measured times, failures, quality records, features,
   frozen partitions and saved predictions. Source QASM and serialized source
   DAGs are not included.
-- `results/`: QPU selection/profile counts, simulator comparison tables and figures.
+- `results/`: both method tables, source profiles, coverage, paired comparisons and figures.
 - `methods/`: project extraction, reconstruction, fitting and analysis code.
 - `protocol/`: recorded method and execution settings.
 - `docs/`: dataset preparation, experiment procedure, findings and limitations.
@@ -41,17 +41,20 @@ adaptations, not paper-exact reproductions.
 
 The real-QPU source labels, per-observation features, split membership and
 predictions remain outside this repository. Their origins and processing are
-documented; current QPU accuracy results await the complete fresh-fit run and QA. See [data availability](docs/distribution.md).
+documented; current aggregate QPU scores come from completed fresh fits and
+independent saved-evidence checks. See [data availability](docs/distribution.md).
 
 ## Check this checkout
 
 ```bash
 python3 scripts/verify.py
+python3 -B scripts/check_qpu_results.py
 python3 -B scripts/check_simulator_results.py
 python3 -B -m unittest discover -s tests
 ```
 
-These checks verify published files, reporting scope and saved simulator scores. They do not
+These checks verify published files, reporting scope, QPU aggregate consistency
+and saved simulator scores. They do not
 retrain models, regenerate QPU scores or run simulators. Some retained runners
 still use the original experiment paths and need external inputs and a matching
 environment. See [reproduction scope](docs/reproduction.md) before running them.

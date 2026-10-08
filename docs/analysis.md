@@ -12,7 +12,8 @@ The real-QPU population contains 4,515 observations in 165 groups. Selection
 uses source provenance and input qualification, not prediction accuracy. Its
 source imbalance and reconstruction uncertainty remain part of the analysis.
 See [preprocessing](data_preprocessing.md) for original-source inclusion and
-exclusion counts. Fresh QPU scores and inferential findings are pending.
+exclusion counts. Fresh QPU scores, source slices and same-row comparisons
+are in the [QPU table](../results/real_qpu/method_comparison.md).
 
 Simulator member counts, exact-QASM counts, context counts, measured-label
 counts and predictor counts are different denominators. A hash measured at

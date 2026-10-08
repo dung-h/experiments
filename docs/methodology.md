@@ -32,7 +32,11 @@ meaning rather than being silently reinterpreted.
 
 The simulator CSV uses `expected_assigned_n`, `attempted_n`, `predicted_n` and
 `metric_n` for predictor counts. The QPU assigned denominator is 4,515 for
-every method; scored counts will come from complete fresh-fit outputs.
+every method. Its CSV uses `assigned_rows`, `predicted_rows` and `coverage`;
+all current QPU observations have valid targets, so the successful prediction
+count is also the scored count. The 32 variants include six regressor families,
+an inner-selected family selector and distinct raw/calibrated analytical routes;
+they are not 32 paper methods.
 QCSim controls emit 150 predictions but score 143 targets; joint MPS emits
 900 predictions but scores 840 targets. Native measurement rows use session
 or stage counts, not predictor scores.

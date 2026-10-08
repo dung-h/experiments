@@ -24,13 +24,39 @@ claim of 4,515 exact recovered historical circuits. QPack contributes most
 rows and only six structural groups. Nominal snapshots and heterogeneous
 source execution boundaries remain limitations.
 
-## QPU scores are not yet a finding
+## Completed QPU evidence
 
-Fresh Graph/MLP/regression fits and fold-local analytical calibrations are
-running under the prepared 4,515-observation contract. Complete OOF scores,
-required seed reduction, failure coverage, source slices and paired intervals
-must pass final QA before publication. No previous-population error scores,
-masks or intervals are relabeled as this run's results.
+The independent local finalizer checked all 30 completed CUDA cells, five
+regression folds, 105 analytical fit receipts and five Hyb Ridge fit receipts.
+It independently recalculated the 32 variant metrics, source/backend/tier
+slices and 465 same-row comparisons from saved targets/predictions. It also
+reproduced the two main 10,000-replicate grouped-bootstrap intervals. Input,
+split, model/checkpoint and normalization hashes matched the frozen contract.
+No previous-population fitted predictions or calibration parameters were used.
+
+The targeted finalization tests passed (30 tests); the development test suite
+passed with 1,040 tests and one skip. These are implementation checks, not
+additional independent benchmark observations. The public checkout has a
+smaller standard-library suite and an aggregate-consistency checker; it cannot
+repeat the private per-row numerical audit because those data are excluded.
+The source hashes and precise validation scope are in
+[result provenance](../provenance/real_qpu.json).
+
+Graph has MAE 0.834 s / R² 0.468 on all 4,515 observations. Matched MLP has
+0.893 s / 0.363, and inner-selected regression 0.887 s / 0.411. MLP-minus-graph
+MAE is +0.059 s, interval [−0.485,+0.329]; graph-minus-selector is −0.053 s,
+interval [−0.318,+0.458]. Both comparisons are unresolved. Selector's
+source-balanced MAE is 0.879 s versus graph 0.898 s. The graph comparison
+adds the full node/context branch, not topology alone.
+
+QCRE/Qiskit cover 4,515. Raw Hyb covers 4,175: 148 Kyoto true-zero-survival
+rows and 192 Osaka exponent overflows are retained as failures. Log-cost Ridge
+retains those Osaka inputs and covers 4,367, but cannot turn zero survival into
+a finite cost. Scholten nominal covers 3,399; 1,116 rows lack eligible
+throughput. Its original effective-depth route remains unavailable. These
+coverage limits are part of the result, not grounds to pick another snapshot
+after examining test error. Three negative polynomial predictions remain in
+raw-seconds metrics. All source slices reuse the same unified fits.
 
 ## Independently verified simulator findings
 

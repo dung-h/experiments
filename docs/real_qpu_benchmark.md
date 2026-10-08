@@ -69,11 +69,13 @@ unavailable for that method while the observation stays in the denominator.
 
 ## Results and acceptance
 
-The [QPU result page](../results/real_qpu/method_comparison.md) is pending the
-complete fresh-fit run and final QA. No model ranking, error score or interval
-is claimed yet for this population.
+The [QPU result page](../results/real_qpu/method_comparison.md) reports the
+completed fresh-fit run: 30 CUDA cells, five outer regression folds and
+fold-local analytical calibration. Independent saved-evidence QA passed.
+The 32 variants share the assigned population, not necessarily identical
+successful subsets. Their clocks, coverage and claim boundaries remain explicit.
 
-Before publishing scores, require exact selected IDs and hashes, intact group
+Final validation checked exact selected IDs and hashes, intact group
 splits, recorded train-only transforms, complete required seeds, finite outputs
 or explicit terminal reasons, and one held-out prediction per assigned
 method/observation. Compare errors on identical successful test IDs, alongside

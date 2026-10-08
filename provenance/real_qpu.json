@@ -1,0 +1,165 @@
+{
+  "scope": "Aggregate export of the completed reconstruction-qualified real-QPU comparison; simulator evidence unchanged",
+  "observations": 4515,
+  "groups": 165,
+  "method_variants": 32,
+  "paired_comparisons": 465,
+  "publication_runs_training_or_measurement": false,
+  "pins": {
+    "contract": "e8986cb6435037294c31eecce3536c402a0978b54f21bcdd278a35db8aa4ac32",
+    "manifest": "687c3357cda8523d988641935bd6c5c99d5fed164e85ef6e649bed6e9556d2cb",
+    "runner": "58c20f6077c0796ae85b3625b53a4000a1cda84995dfce2538f97b6a974126dd"
+  },
+  "private_validation": {
+    "status": "PASS",
+    "receipt_sha256": "3c3f50799acaccb83d72f9b7065e116853d7ba7c9d2375ee9984b72894d506ab",
+    "neural_cells": 30,
+    "regression_outer_folds": 5,
+    "calibration_fit_receipts": 105,
+    "hyb_ridge_fit_receipts": 5,
+    "attempt_rows": 144480,
+    "checks": [
+      "frozen input/code/graph/split hashes",
+      "group leakage and fresh partition support",
+      "30 completed CUDA cell/checkpoint/prediction identities",
+      "fit-only global masks/normalization",
+      "three-seed median reproduction",
+      "regression inner-selected candidates/family and saved predictions",
+      "105 analytical outer-train fit ID receipts and saved calibration equations",
+      "5 Hyb Ridge eligible outer-train receipts",
+      "QCRE source/snapshot/cache lineage and raw/shot scaling",
+      "32 complete method attempt envelopes and target/context joins",
+      "independent pooled/source/backend/tier metrics",
+      "465 identical-success-row pair identities and observed MAE differences",
+      "independent reproduction of graph/MLP and graph/selector bootstrap intervals"
+    ],
+    "targeted_tests_passed": 30,
+    "development_tests_passed": 1040,
+    "development_tests_skipped": 1
+  },
+  "aggregate_source_files": [
+    {
+      "path": "results/real_qpu/dataset_profile.json",
+      "source_file": "dataset_profile.json",
+      "source_sha256": "c283a7a84f6cd68c30f5416584f959a1c47a7f9608b5c102e5c9c851e7ebf7a7"
+    },
+    {
+      "path": "results/real_qpu/failure_counts.csv",
+      "source_file": "failure_counts.csv",
+      "source_sha256": "7d4d7456d4c24ed426384acc2f60752d235647413a234fbf5639ea4e631f6fe2"
+    },
+    {
+      "path": "results/real_qpu/method_comparison.csv",
+      "source_file": "method_comparison.csv",
+      "source_sha256": "7e862f8f26e4ceb2ef1d95fb3f2cd0b1de6d905871022ff740a2881ea8116ca1"
+    },
+    {
+      "path": "results/real_qpu/seed_metrics.csv",
+      "source_file": "seed_metrics.csv",
+      "source_sha256": "88bccaa011d1b306c9abb0c3a3f700b267c482ec3688aa7a320659549c82e879"
+    },
+    {
+      "path": "results/real_qpu/shared_row_comparisons.csv",
+      "source_file": "shared_row_comparisons.csv",
+      "source_sha256": "f620fd6cf157b8a3cb7491a6d8fe9f116c75e65e60b774101ee95bb360110919"
+    },
+    {
+      "path": "results/real_qpu/source_and_backend_metrics.csv",
+      "source_file": "stratified_metrics.csv",
+      "source_sha256": "8b1b8e611628117164963449ddb41e5025663e883c39427851cd202db42ca0a1"
+    }
+  ],
+  "producing_code": [
+    {
+      "path": "methods/real_qpu/run_qualified_logical_benchmark.py",
+      "source_module": "run_qualified_logical_benchmark",
+      "source_sha256": "58c20f6077c0796ae85b3625b53a4000a1cda84995dfce2538f97b6a974126dd"
+    },
+    {
+      "path": "methods/real_qpu/resume_qualified_analytical.py",
+      "source_module": "resume_qualified_analytical",
+      "source_sha256": "8f2826837b53b5cdee117c3f24b00cac848695172912ba54da2725b1b80a093e"
+    },
+    {
+      "path": "methods/real_qpu/finalize_qualified_benchmark.py",
+      "source_module": "finalize_qualified_benchmark",
+      "source_sha256": "95b0fb50cb72a6b346b0c8055544bec8bf8aef303edf4d779ad84b8d8e504987"
+    },
+    {
+      "path": "methods/real_qpu/freeze_strict_logical_panel.py",
+      "source_module": "freeze_strict_logical_panel",
+      "source_sha256": "136ca31e5716e5e9675e15d903aa5b2a5bb407cb38bb0fc43c640938fa2c501d"
+    },
+    {
+      "path": "methods/real_qpu/run_strict_logical_analytical.py",
+      "source_module": "run_strict_logical_analytical",
+      "source_sha256": "d0f27224cdc0332bd24caa350c93ffd182ae89616bb772c74754d1217550690e"
+    },
+    {
+      "path": "methods/real_qpu/run_strict_logical_qonductor.py",
+      "source_module": "run_strict_logical_qonductor",
+      "source_sha256": "f81394aa74cb11b34ec43f76615383803a7ae5e3137d1ddef5931a11084f70ed"
+    },
+    {
+      "path": "methods/real_qpu/run_qonductor_grouped_reproduction.py",
+      "source_module": "run_qonductor_grouped_reproduction",
+      "source_sha256": "7de7d682c95af0df33f95cef6b29fe2555d0ce743675a17c93388ae4c380380d"
+    },
+    {
+      "path": "methods/real_qpu/mali_full_features.py",
+      "source_module": "mali_full_features",
+      "source_sha256": "7aacb91d57b4efed1cc0c7d5314633bf81fd475a5e4c1b0c904065dde33735d1"
+    },
+    {
+      "path": "methods/real_qpu/mali_model.py",
+      "source_module": "run_mali_full_features",
+      "source_sha256": "02fd605cb28da81908e10e31e012cc51440541991b2b9cba92f9675fe7678d7e"
+    },
+    {
+      "path": "methods/real_qpu/run_mali_batched.py",
+      "source_module": "run_mali_batched",
+      "source_sha256": "31ecca0d1794fa654281b04a04a70245bf7672be4ecc92ad4593a43df4bbd13a"
+    },
+    {
+      "path": "methods/real_qpu/run_common_panel_hyb.py",
+      "source_module": "run_common_panel_hyb",
+      "source_sha256": "ecb732b6672bdda6a495cbf1623ab31feffdadb775aa2c75aec37630495acc67"
+    },
+    {
+      "path": "methods/real_qpu/qonductor_native_adapter.py",
+      "source_module": "qonductor_native_adapter",
+      "source_sha256": "c33742ca4e5ce735d41c5e57ea45ff7548fcca22f72562f1ef139ad2e292d2f4"
+    },
+    {
+      "path": "methods/real_qpu/qasm3_hardware_wire_adapter.py",
+      "source_module": "qasm3_hardware_wire_adapter",
+      "source_sha256": "9241c8f4a19ce595bf0b2b168e70c1e302fd64de73bce4c42ad8f5d1caa747d1"
+    },
+    {
+      "path": "methods/real_qpu/run_archived_analytical_wave.py",
+      "source_module": "run_archived_analytical_wave_v3",
+      "source_sha256": "e217e4105807e45f96f83a7dc0ba57dbe11333c693a019ccca2b60bd88baad27"
+    },
+    {
+      "path": "methods/simulator/gpu_lease.py",
+      "source_module": "gpu_lease",
+      "source_sha256": "06915539e483e06ed8cb76e783eb649103fb06fecd9a69c8d1698b7e59b85421"
+    }
+  ],
+  "environment": {
+    "neural_torch": "2.7.1+cu128",
+    "neural_cuda": "12.8",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti",
+    "analytical_qiskit": "2.5.2",
+    "qiskit_ibm_runtime": "0.49.0"
+  },
+  "public_validation_scope": "Source hashes and aggregate accounting; excluded per-row labels/predictions prevent independent public QPU metric or bootstrap recomputation",
+  "limitations": [
+    "Reconstruction-qualified, not all exact historical logical instances",
+    "Nominal, not proven job-day snapshots",
+    "Method-specific inputs and archived source clock boundaries differ",
+    "Partial analytical coverage and few QPack structural groups",
+    "No new feature ablation, simulator run or public release"
+  ],
+  "code_portability": "Producing files are exact source copies, with semantic publication paths. Recorded external/local input roots and original module names require reconstruction before refit; public standard-library checks do not import these runners."
+}

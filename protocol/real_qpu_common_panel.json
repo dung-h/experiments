@@ -138,7 +138,7 @@
     "input_manifest_sha256": "687c3357cda8523d988641935bd6c5c99d5fed164e85ef6e649bed6e9556d2cb",
     "active_runner_sha256": "58c20f6077c0796ae85b3625b53a4000a1cda84995dfce2538f97b6a974126dd"
   },
-  "status": "fresh-fit execution in progress; final QPU scores not yet published",
+  "status": "complete; independent saved-evidence validation PASS; aggregate results published",
   "publication_summary_not_execution_authority": true,
   "no_new_experiment_authorized_by_this_file": true
 }

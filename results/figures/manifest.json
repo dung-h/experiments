@@ -1,6 +1,40 @@
 {
-  "artifact_id": "simulator-results-figures",
-  "scope": "Saved simulator figures only; QPU accuracy and mixed-population plots not published",
+  "artifact_id": "benchmark-results-figures",
+  "bootstrap_policy": "QPU plot uses saved observed deltas and 10000-replicate/seed42 grouped intervals; no new bootstrap or fitting.",
+  "figure_outputs": [
+    {
+      "path": "results/figures/simulator_method_errors.png",
+      "sha256": "50ad9640f04963d46713881f0970c5dcf247f633af06f3da9acc80fb87204a4e"
+    },
+    {
+      "path": "results/figures/simulator_method_errors.svg",
+      "sha256": "dcda2d27a6fae18ead8b6b5c2fbb0bb4322400adbd48f479542fe11838dac892"
+    },
+    {
+      "path": "results/figures/coverage_and_quality.png",
+      "sha256": "5a5e6a34d4b7d494f873e3d30b6f61b1594a11d8a71927502d56c9893c445972"
+    },
+    {
+      "path": "results/figures/coverage_and_quality.svg",
+      "sha256": "87b903a347fbb98e91b32cc822c269126468df579efd965232489c080a3d096c"
+    },
+    {
+      "path": "results/figures/dataset_composition.png",
+      "sha256": "ac83a6ece018f883c50d5ba7d1b5c07e21057b994d00d7bd38e16453c0d5c5d2"
+    },
+    {
+      "path": "results/figures/dataset_composition.svg",
+      "sha256": "d5636445825c08397e59d1bc3ab4a1e5a187ec3375d98d2260313f8f69cc5122"
+    },
+    {
+      "path": "results/figures/paired_method_differences.png",
+      "sha256": "bcf1a2a69e3fe782ef11e7ad3adff8032333a4f776dbb76969f1c52c594caf2e"
+    },
+    {
+      "path": "results/figures/paired_method_differences.svg",
+      "sha256": "73c54e4c1b2e53d876c667c58d8f6656d46244895cc66554f6a3e584b6330d41"
+    }
+  ],
   "figures": [
     {
       "bootstrap_seeds": [],
@@ -329,37 +363,58 @@
         "tensor_network_x": "qubits",
         "tensor_network_y": "dimensionless ratio of estimated time to warm scalar contraction time"
       }
-    }
-  ],
-  "source_hashes_sha256": {
-    "data/simulator/analog/qa_final/qa.json": "5884d49b374e6139306c48dc67989684ef0c0c0a7a5953d562f7768ac4302027",
-    "data/simulator/mps/joint/analysis/selection_decisions.csv": "ac023a59af2c4e6dd9eabec8f4f8b61109c2b3a05a30a6508dc0564e64ab9bdd",
-    "data/simulator/tensor_network/analysis/paired_ratio_rows.csv": "1b8b78138da0e5df263dc2701a9e50752141559e425fcc6186fd0d2372a196ae",
-    "data/simulator/tensor_network/analysis/qa.json": "19097e1f9c604af356457ecd6dbc2dc289830d8490207375bc41a430808d3eb7",
-    "results/simulator/method_comparison.csv": "8dac2290caa6c28eebcd2862b4bd0f5c3d95fa9025ca7c47c8e2a13bfc62b147"
-  },
-  "figure_outputs": [
-    {
-      "path": "results/figures/simulator_method_errors.png",
-      "sha256": "50ad9640f04963d46713881f0970c5dcf247f633af06f3da9acc80fb87204a4e"
     },
     {
-      "path": "results/figures/simulator_method_errors.svg",
-      "sha256": "dcda2d27a6fae18ead8b6b5c2fbb0bb4322400adbd48f479542fe11838dac892"
+      "counts": {
+        "groups": 165,
+        "observations": 4515
+      },
+      "figure_id": "dataset_composition",
+      "interpretation": "Declared reconstruction-qualified cohort; no universal graph advantage",
+      "outputs": {
+        "png": {
+          "path": "results/figures/dataset_composition.png",
+          "sha256": "ac83a6ece018f883c50d5ba7d1b5c07e21057b994d00d7bd38e16453c0d5c5d2"
+        },
+        "svg": {
+          "path": "results/figures/dataset_composition.svg",
+          "sha256": "d5636445825c08397e59d1bc3ab4a1e5a187ec3375d98d2260313f8f69cc5122"
+        }
+      },
+      "source_paths": [
+        "results/real_qpu/dataset_profile.json",
+        "results/real_qpu/shared_row_comparisons.csv"
+      ],
+      "units": "counts"
     },
     {
-      "path": "results/figures/coverage_and_quality.png",
-      "sha256": "5a5e6a34d4b7d494f873e3d30b6f61b1594a11d8a71927502d56c9893c445972"
-    },
-    {
-      "path": "results/figures/coverage_and_quality.svg",
-      "sha256": "87b903a347fbb98e91b32cc822c269126468df579efd965232489c080a3d096c"
+      "counts": {
+        "groups": 165,
+        "observations": 4515
+      },
+      "figure_id": "paired_method_differences",
+      "interpretation": "Declared reconstruction-qualified cohort; no universal graph advantage",
+      "outputs": {
+        "png": {
+          "path": "results/figures/paired_method_differences.png",
+          "sha256": "bcf1a2a69e3fe782ef11e7ad3adff8032333a4f776dbb76969f1c52c594caf2e"
+        },
+        "svg": {
+          "path": "results/figures/paired_method_differences.svg",
+          "sha256": "73c54e4c1b2e53d876c667c58d8f6656d46244895cc66554f6a3e584b6330d41"
+        }
+      },
+      "source_paths": [
+        "results/real_qpu/dataset_profile.json",
+        "results/real_qpu/shared_row_comparisons.csv"
+      ],
+      "units": "MAE difference in seconds"
     }
   ],
   "original_generator": {
+    "included_in_public_checkout": false,
     "path": "scripts/render_results.py",
-    "sha256": "d33a91e133882640cd9297f0675348adcb3ea9850d144e5b77a101801af9f0c4",
-    "included_in_public_checkout": false
+    "sha256": "d33a91e133882640cd9297f0675348adcb3ea9850d144e5b77a101801af9f0c4"
   },
   "plotting_environment": {
     "backend": "Agg",
@@ -371,6 +426,21 @@
     "python": "3.10.21",
     "svg_hashsalt": "quantum-runtime-benchmark-publication"
   },
-  "verification": "Current inventory verifies saved figure bytes; scripts/check_simulator_results.py checks saved scores, not full figure regeneration.",
-  "bootstrap_policy": "Any plotted diagnostic values retain their original saved-evidence context; no QPU inference is made."
+  "qpu_generator": {
+    "matplotlib": "3.10.9",
+    "path": "scripts/render_qpu_figures.py",
+    "requirements": "requirements-figures.txt",
+    "sha256": "f11202c1be37965ecfd5ee71f69f18a09aacecdac61177b1e171d32a5c041f10"
+  },
+  "scope": "Current 4515-observation QPU aggregates and unchanged simulator context figures",
+  "source_hashes_sha256": {
+    "data/simulator/analog/qa_final/qa.json": "5884d49b374e6139306c48dc67989684ef0c0c0a7a5953d562f7768ac4302027",
+    "data/simulator/mps/joint/analysis/selection_decisions.csv": "ac023a59af2c4e6dd9eabec8f4f8b61109c2b3a05a30a6508dc0564e64ab9bdd",
+    "data/simulator/tensor_network/analysis/paired_ratio_rows.csv": "1b8b78138da0e5df263dc2701a9e50752141559e425fcc6186fd0d2372a196ae",
+    "data/simulator/tensor_network/analysis/qa.json": "19097e1f9c604af356457ecd6dbc2dc289830d8490207375bc41a430808d3eb7",
+    "results/real_qpu/dataset_profile.json": "c283a7a84f6cd68c30f5416584f959a1c47a7f9608b5c102e5c9c851e7ebf7a7",
+    "results/real_qpu/shared_row_comparisons.csv": "f620fd6cf157b8a3cb7491a6d8fe9f116c75e65e60b774101ee95bb360110919",
+    "results/simulator/method_comparison.csv": "8dac2290caa6c28eebcd2862b4bd0f5c3d95fa9025ca7c47c8e2a13bfc62b147"
+  },
+  "verification": "Inventory checks four saved figure pairs. QPU figures can be regenerated byte-for-byte with --check; simulator figures remain saved outputs."
 }

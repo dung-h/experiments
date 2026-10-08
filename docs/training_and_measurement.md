@@ -103,11 +103,18 @@ shortcut to reuse a learned prediction.
 
 ## Reporting and current status
 
-The complete fresh-fit real-QPU result table is pending final execution and QA.
+The fresh-fit real-QPU result table is complete and its saved-evidence QA passed.
 Each method is assigned all 4,515 observations, including unavailable inputs.
 Every score reports its successful row set, coverage, units and output clock.
 Pair methods on identical successful held-out IDs; retain an ID-set digest.
 Neural seed reduction, source-balanced metrics and tails precede ranking claims.
+
+All 30 neural cells completed 500 epochs; the saved fit-only positive-sum mask
+retains 40 of 51 globals in every fold. There are five completed nested-regression
+folds, 105 affine/log-affine fit receipts and five Hyb Ridge fit receipts. The
+finalizer checked identities, train-only transforms, seed medians, formulas,
+coverage and saved metrics; it did not rerun a simulator or a neural forward pass.
+See [result provenance](../provenance/real_qpu.json).
 
 Grouped paired bootstrap uses 10,000 replicates and seed 42. The observed
 paired error difference is the point estimate; bootstrap mean and percentile

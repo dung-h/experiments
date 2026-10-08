@@ -284,10 +284,12 @@ uncertainty. Neither 4,515 rows nor 165 groups implies 4,515 independent circuit
 
 ## Current result and reproduction status
 
-Dataset preparation and split checks pass. Fresh learned fits and fresh
-fold-local analytical calibrations use this population; the complete QPU
-result table is pending execution and final QA. No scores from another
-training population are relabeled as results on this dataset.
+Dataset preparation, split checks and final saved-evidence QA pass. Fresh
+learned fits and fresh fold-local analytical calibrations use this population;
+the [complete QPU table](../results/real_qpu/method_comparison.md) contains
+32 variants. No scores from another training population are relabeled as
+results on this dataset. [Detailed source profiles](../results/real_qpu/dataset_profile.json)
+include width, depth, gate count, shots and archived runtime distributions.
 
 The publication includes processing code, selection rules, source pins,
 aggregate counts and evidence digests. Original third-party observations,

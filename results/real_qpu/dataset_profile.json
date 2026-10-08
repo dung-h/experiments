@@ -1,0 +1,314 @@
+{
+  "exclusions": {
+    "qonductor_unverified_recipe_candidates": 2835,
+    "qonductor_without_qualified_logical_extraction": 1417
+  },
+  "fold_transforms": [
+    {
+      "fit_rows": 2949,
+      "fold": 0,
+      "raw_globals": 51,
+      "raw_node_fields": 178,
+      "retained_globals": 40,
+      "test_rows": 938,
+      "validation_rows": 628,
+      "variable_globals": 40,
+      "variable_node_fields": 167
+    },
+    {
+      "fit_rows": 2530,
+      "fold": 1,
+      "raw_globals": 51,
+      "raw_node_fields": 178,
+      "retained_globals": 40,
+      "test_rows": 1002,
+      "validation_rows": 983,
+      "variable_globals": 40,
+      "variable_node_fields": 167
+    },
+    {
+      "fit_rows": 2930,
+      "fold": 2,
+      "raw_globals": 51,
+      "raw_node_fields": 178,
+      "retained_globals": 40,
+      "test_rows": 605,
+      "validation_rows": 980,
+      "variable_globals": 40,
+      "variable_node_fields": 167
+    },
+    {
+      "fit_rows": 2560,
+      "fold": 3,
+      "raw_globals": 51,
+      "raw_node_fields": 178,
+      "retained_globals": 40,
+      "test_rows": 964,
+      "validation_rows": 991,
+      "variable_globals": 40,
+      "variable_node_fields": 167
+    },
+    {
+      "fit_rows": 2517,
+      "fold": 4,
+      "raw_globals": 51,
+      "raw_node_fields": 178,
+      "retained_globals": 40,
+      "test_rows": 1006,
+      "validation_rows": 992,
+      "variable_globals": 40,
+      "variable_node_fields": 167
+    }
+  ],
+  "groups": 165,
+  "missing_global_features": 0,
+  "notes": [
+    "A repeated observation may change backend, shots or measurement occasion; repeated circuit hashes are not automatically duplicate labels.",
+    "Named gate count sums only the 44 encoded operation names, not measurement/barrier or all operations.",
+    "Missing analytical predictions are not zero-filled. Encoder padding zeros are not measured zero T1/T2.",
+    "Source boundaries and nominal snapshots differ; pooled correlations are not causal hardware effects."
+  ],
+  "qualification": "reconstruction-qualified; not all exact historical logical instances",
+  "rows": 4515,
+  "source_counts": {
+    "mali_real_qpu": 340,
+    "qonductor_single_circuit_ibm": 230,
+    "qpack_mcp": 3945
+  },
+  "source_profiles": {
+    "mali_real_qpu": {
+      "backend_counts": {
+        "ibm_kyoto": 148,
+        "ibm_osaka": 192
+      },
+      "distinct_compiled_qasm_hashes": 300,
+      "distinct_logical_input_digests": 170,
+      "distinct_source_qasm_hashes": 170,
+      "distributions": {
+        "compiled_depth": {
+          "max": 55429.0,
+          "median": 22297.0,
+          "min": 7987.0,
+          "p25": 17446.0,
+          "p75": 29118.75,
+          "p90": 33289.6
+        },
+        "compiled_two_qubit_count": {
+          "max": 67605.0,
+          "median": 45734.5,
+          "min": 11930.0,
+          "p25": 37132.5,
+          "p75": 53435.25,
+          "p90": 58446.0
+        },
+        "logical_allocated_width": {
+          "max": 127.0,
+          "median": 79.0,
+          "min": 9.0,
+          "p25": 65.0,
+          "p75": 117.0,
+          "p90": 123.0
+        },
+        "logical_depth": {
+          "max": 6068.0,
+          "median": 294.0,
+          "min": 205.0,
+          "p25": 249.0,
+          "p75": 362.0,
+          "p90": 555.7000000000002
+        },
+        "named_logical_gate_count": {
+          "max": 9860.0,
+          "median": 7314.0,
+          "min": 5304.0,
+          "p25": 6499.25,
+          "p75": 8064.0,
+          "p90": 8869.900000000003
+        },
+        "runtime_seconds": {
+          "max": 13.696209741,
+          "median": 8.6370684775,
+          "min": 3.107238810333333,
+          "p25": 7.465246982583333,
+          "p75": 9.802153542583332,
+          "p90": 10.573076911533335
+        },
+        "shots": {
+          "max": 1024.0,
+          "median": 1024.0,
+          "min": 1024.0,
+          "p25": 1024.0,
+          "p75": 1024.0,
+          "p90": 1024.0
+        }
+      },
+      "groups": 148,
+      "row_fraction": 0.0753045404208195,
+      "rows": 340,
+      "shot_counts": {
+        "1024.0": 340
+      }
+    },
+    "qonductor_single_circuit_ibm": {
+      "backend_counts": {
+        "ibm_lagos": 5,
+        "ibm_nairobi": 19,
+        "ibm_perth": 25,
+        "ibmq_belem": 24,
+        "ibmq_jakarta": 41,
+        "ibmq_lima": 41,
+        "ibmq_manila": 33,
+        "ibmq_quito": 42
+      },
+      "distinct_compiled_qasm_hashes": 32,
+      "distinct_logical_input_digests": 11,
+      "distinct_source_qasm_hashes": 11,
+      "distributions": {
+        "compiled_depth": {
+          "max": 69.0,
+          "median": 17.0,
+          "min": 7.0,
+          "p25": 14.0,
+          "p75": 21.0,
+          "p90": 24.0
+        },
+        "compiled_two_qubit_count": {
+          "max": 54.0,
+          "median": 8.0,
+          "min": 2.0,
+          "p25": 5.0,
+          "p75": 10.0,
+          "p90": 11.0
+        },
+        "logical_allocated_width": {
+          "max": 7.0,
+          "median": 5.0,
+          "min": 3.0,
+          "p25": 5.0,
+          "p75": 7.0,
+          "p90": 7.0
+        },
+        "logical_depth": {
+          "max": 15.0,
+          "median": 8.0,
+          "min": 5.0,
+          "p25": 6.0,
+          "p75": 11.0,
+          "p90": 11.0
+        },
+        "named_logical_gate_count": {
+          "max": 25.0,
+          "median": 7.0,
+          "min": 4.0,
+          "p25": 5.0,
+          "p75": 17.0,
+          "p90": 17.0
+        },
+        "runtime_seconds": {
+          "max": 10.882240227,
+          "median": 3.0964956425,
+          "min": 1.0578825989999998,
+          "p25": 2.584052531,
+          "p75": 4.11919124875,
+          "p90": 5.548788054
+        },
+        "shots": {
+          "max": 20000.0,
+          "median": 1000.0,
+          "min": 1000.0,
+          "p25": 1000.0,
+          "p75": 4000.0,
+          "p90": 8000.0
+        }
+      },
+      "groups": 11,
+      "row_fraction": 0.05094130675526024,
+      "rows": 230,
+      "shot_counts": {
+        "1000.0": 116,
+        "12000.0": 12,
+        "16000.0": 3,
+        "20000.0": 3,
+        "4000.0": 82,
+        "8000.0": 14
+      }
+    },
+    "qpack_mcp": {
+      "backend_counts": {
+        "ibm_lagos": 363,
+        "ibm_nairobi": 1546,
+        "ibm_perth": 326,
+        "ibmq_jakarta": 367,
+        "ibmq_manila": 334,
+        "ibmq_quito": 1009
+      },
+      "distinct_compiled_qasm_hashes": 10,
+      "distinct_logical_input_digests": 6,
+      "distinct_source_qasm_hashes": 6,
+      "distributions": {
+        "compiled_depth": {
+          "max": 233.0,
+          "median": 85.0,
+          "min": 28.0,
+          "p25": 68.0,
+          "p75": 171.0,
+          "p90": 211.0
+        },
+        "compiled_two_qubit_count": {
+          "max": 186.0,
+          "median": 39.0,
+          "min": 6.0,
+          "p25": 30.0,
+          "p75": 117.0,
+          "p90": 165.0
+        },
+        "logical_allocated_width": {
+          "max": 7.0,
+          "median": 4.0,
+          "min": 2.0,
+          "p25": 3.0,
+          "p75": 5.0,
+          "p90": 6.0
+        },
+        "logical_depth": {
+          "max": 131.0,
+          "median": 41.0,
+          "min": 14.0,
+          "p25": 32.0,
+          "p75": 95.0,
+          "p90": 113.0
+        },
+        "named_logical_gate_count": {
+          "max": 154.0,
+          "median": 52.0,
+          "min": 17.0,
+          "p25": 39.0,
+          "p75": 110.0,
+          "p90": 132.0
+        },
+        "runtime_seconds": {
+          "max": 9.464657068252563,
+          "median": 6.58969521522522,
+          "min": 3.504635810852051,
+          "p25": 5.076691150665283,
+          "p75": 6.896289825439453,
+          "p90": 7.1131082534790036
+        },
+        "shots": {
+          "max": 4096.0,
+          "median": 4096.0,
+          "min": 4096.0,
+          "p25": 4096.0,
+          "p75": 4096.0,
+          "p90": 4096.0
+        }
+      },
+      "groups": 6,
+      "row_fraction": 0.8737541528239202,
+      "rows": 3945,
+      "shot_counts": {
+        "4096.0": 3945
+      }
+    }
+  }
+}

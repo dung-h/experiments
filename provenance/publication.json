@@ -1,5 +1,5 @@
 {
-  "scope": "4,515-observation real-QPU methodology and aggregate dataset information; independently checked local simulator evidence",
+  "scope": "4,515-observation real-QPU methodology and validated aggregate results; independently checked local simulator evidence",
   "real_qpu_dataset": {
     "observations": 4515,
     "source_counts": {
@@ -8,8 +8,9 @@
       "qpack_mcp": 3945
     },
     "groups": 165,
-    "complete_metrics_status": "pending fresh-fit execution and final QA",
-    "metadata": "protocol/real_qpu_dataset.json"
+    "complete_metrics_status": "complete; independent saved-evidence validation PASS",
+    "metadata": "protocol/real_qpu_dataset.json",
+    "result_provenance": "provenance/real_qpu.json"
   },
   "third_party_qpu_observations_included": false,
   "third_party_qpu_row_level_derivatives_included": false,

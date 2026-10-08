@@ -4,7 +4,9 @@ The only current real-QPU evaluation dataset is 4,515 observations:
 Ma–Li 340, Qonductor 230 and QPack 3,945, in 165 conservative groups.
 Use docs/data_preprocessing.md and protocol/real_qpu_dataset.json for selection
 and input qualification. Do not restore other cohort counts or scores as current
-results. Fresh-fit QPU scores remain pending until complete execution and QA.
+results. Fresh-fit QPU execution and saved-evidence QA are complete. Publish
+only the validated aggregate tables; do not launch another experiment while
+editing reports or checking the publication.
 
 This checkout publishes methodology, aggregate dataset information and local
 simulator evidence. Do not add third-party QPU observations, row-level derivatives,

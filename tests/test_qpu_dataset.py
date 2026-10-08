@@ -24,7 +24,7 @@ class QpuDatasetTests(unittest.TestCase):
         self.assertEqual(data["sources"]["qpack_mcp"]["groups"], 6)
         self.assertEqual(data["source_filters"]["qonductor_single_circuit_ibm"]["retained"], 230)
 
-    def test_qpu_paper_comparison_is_pending_and_has_five_columns(self):
+    def test_qpu_paper_comparison_is_complete_and_has_five_columns(self):
         text = (ROOT / "docs/paper_comparison.md").read_text()
         names = ["Ma–Li graph transformer", "Qonductor polynomial",
                  "Scholten CLOPS model", "QCRE and Qiskit scheduled duration",
@@ -32,7 +32,8 @@ class QpuDatasetTests(unittest.TestCase):
         for name in names:
             row = next(line for line in text.splitlines() if line.startswith("| " + name + " |"))
             self.assertEqual(len(row.split(" | ")), 5)
-            self.assertIn("pending", row.split(" | ")[3].lower())
+            self.assertNotIn("pending", row.split(" | ")[3].lower())
+            self.assertIn("4,515", row.split(" | ")[3])
 
     def test_other_cohort_counts_rejected(self):
         data = copy.deepcopy(json.loads((ROOT / "protocol/real_qpu_dataset.json").read_text()))
@@ -47,8 +48,8 @@ class QpuDatasetTests(unittest.TestCase):
     def test_old_scores_not_published_as_new_results(self):
         data = json.loads((ROOT / "protocol/real_qpu_dataset.json").read_text())
         self.assertFalse(data["status"]["scores_from_other_training_populations_reused"])
-        self.assertEqual(data["status"]["complete_qpu_metrics"], "pending_final_execution_and_qa")
-        self.assertFalse((ROOT / "results/real_qpu/method_comparison.csv").exists())
+        self.assertEqual(data["status"]["complete_qpu_metrics"], "complete_independent_saved_evidence_qa_pass")
+        self.assertTrue((ROOT / "results/real_qpu/method_comparison.csv").exists())
         for path in [ROOT / "README.md", ROOT / "AGENTS.md", *(ROOT / "docs").glob("*.md")]:
             text = path.read_text()
             for stale in ("8,767", "7,350", "8767", "7350"):

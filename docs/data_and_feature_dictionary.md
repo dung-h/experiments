@@ -52,8 +52,9 @@ The extractor uses pinned Ma–Li helper functions with a documented public-API
 compatibility port for loose OpenQASM 3 wire indices. The raw 51-position
 schema is retained. The upstream positive-column-sum mask is computed on the
 gradient-fit population only. Its retained positions and statistics must be
-recorded separately for each fresh fold; their counts are not assumed from
-another run. Means and
+recorded separately for each fresh fold. This completed run retains 40 globals
+per fold, with 167 variable node positions among the 178 supplied positions.
+There are no missing raw global features. Means and
 sample standard deviations also use gradient-fit inputs; constant fields are
 zeroed. No validation/test inputs or held-out labels enter these transforms.
 
@@ -89,6 +90,16 @@ Neither model appends shots, source ID or backend one-hot features. Shots are
 part of the dataset and analytical/polynomial method inputs where declared;
 they are not silently added to the Ma–Li-style 51-feature input.
 
+## Qonductor-style compiled features
+
+The ordered regression input is `swap`, `depth`, `num_qubits`, `shots`,
+`circuit_count`. Here `swap` preserves the author's CX/CZ/ECR counter; it is
+not the literal operation count at global position 23. Depth is operand-stack
+depth and width is touched/active width in the submitted or nominal compiled
+view. Shots are archived context and circuit count is one. No source ID,
+backend one-hot or source-specific missing mask is appended. A valid missing
+operation name counts as zero; unavailable feature support is never zero-filled.
+
 ## Signatures and split diagnostics
 
 The support audit hashes the exact transformed model tensors: float32 global
@@ -110,6 +121,6 @@ Rebuildable machine-readable definitions and evidence:
 
 - [Frozen reporting protocol](../protocol/reporting.json)
 - Panel inputs and split manifest (not bundled)
-- Fresh per-fold feature masks (not bundled; pending complete run)
+- Saved per-fold feature masks (aggregate counts in [dataset profile](../results/real_qpu/dataset_profile.json); per-row tensors not bundled)
 - Per-row exact-input support (not bundled)
 - Hash-pinned replay manifest (not bundled)

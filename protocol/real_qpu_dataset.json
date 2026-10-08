@@ -280,8 +280,8 @@
   },
   "status": {
     "dataset": "prepared_and_checked",
-    "fresh_fits": "in_progress",
-    "complete_qpu_metrics": "pending_final_execution_and_qa",
+    "fresh_fits": "complete",
+    "complete_qpu_metrics": "complete_independent_saved_evidence_qa_pass",
     "scores_from_other_training_populations_reused": false
   }
 }

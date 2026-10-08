@@ -2,7 +2,9 @@
   "real_qpu": {
     "assigned_observations": 4515,
     "groups": 165,
-    "status": "fresh_fit_and_final_qa_pending",
+    "status": "complete_independent_saved_evidence_qa_pass",
+    "method_variants": 32,
+    "paired_comparisons": 465,
     "single_public_dataset": true,
     "metrics": [
       "coverage",

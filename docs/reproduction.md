@@ -8,6 +8,7 @@ training dataset or a one-command end-to-end replication package.
 | --- | --- |
 | File integrity and documentation checks | Included, standard-library commands below |
 | Saved simulator score checks | Included for all 49 predictor rows; checks published fields against retained targets/predictions |
+| QPU aggregate consistency | Included: coverage, source accounting, same-row deltas and imported evidence hashes; not per-row numerical recomputation |
 | QPU score recomputation | Not supported here: row-level targets, predictions and split membership are excluded |
 | Bootstrap or checkpoint replay | Not performed by the public checks; retained intervals and checkpoint metadata are historical evidence |
 | Fresh extraction, neural fitting or simulator measurement | Not turnkey: external circuits/helpers, frozen inputs and engine environments must first be resolved |
@@ -16,6 +17,7 @@ training dataset or a one-command end-to-end replication package.
 
 ```bash
 python3 scripts/verify.py
+python3 -B scripts/check_qpu_results.py
 python3 -B scripts/check_simulator_results.py
 python3 -B -m unittest discover -s tests
 ```
@@ -41,9 +43,22 @@ not necessarily predicted/assigned.
 
 The simulator tree includes local attempts, target reductions, quality records,
 fold assignments, predictions and metrics. The simulator reader CSV contains the
-reported aggregate scores. Current QPU results are pending; the dataset report
-publishes selection and aggregate profile information. Simulator figures are retained outputs;
-the verifier checks their bytes, not their full regeneration.
+reported aggregate scores. The QPU reader CSV publishes all 32 validated
+variants; its aggregate checker validates counts, paired arithmetic, source
+weighting and source hashes, not excluded per-row predictions. Two QPU figures
+can be regenerated from included aggregates with the optional plotting
+environment. The two unchanged simulator figures are retained outputs; their
+bytes, rather than full regeneration, are checked.
+
+```bash
+python3.10 -m venv /tmp/quantum-runtime-figures
+/tmp/quantum-runtime-figures/bin/pip install -r requirements-figures.txt
+/tmp/quantum-runtime-figures/bin/python -B scripts/render_qpu_figures.py --check
+```
+
+`--check` renders into an automatically cleaned temporary directory and
+compares bytes. It does not modify the published files. Without this flag,
+the script updates the two QPU figures and their manifest, not measurements.
 
 ## External inputs
 
@@ -70,6 +85,15 @@ explain the experiment; they are not all portable entry points for this reduced
 checkout. External input trees, upstream helper modules and engine environments
 must be resolved before execution. Missing data is never replaced with invented
 runtime labels or silently imputed features.
+
+The producing QPU files are `run_qualified_logical_benchmark.py`,
+`resume_qualified_analytical.py` and `finalize_qualified_benchmark.py` in
+`methods/real_qpu/`. Their bytes match the completed run. Helper names and
+original local paths are recorded in [result provenance](../provenance/real_qpu.json).
+In particular, the original module `run_mali_full_features` is published as
+`mali_model.py`; recorded runner imports are not silently rewritten into a
+new untested portable implementation. The public commands above use only
+included aggregates and saved simulator evidence.
 
 Fresh neural fits require CUDA and the recorded partitions, seeds and
 fit-only transforms. Simulator measurement requires the selected engine,
@@ -110,6 +134,6 @@ labels, folds and historical manifests are unchanged.
 Keep this selection separate from the development worktree. Do not add QPU
 row-level data, source circuit archives or serialized source graphs while fixing
 documentation. Recompute the current file inventory after authorized changes,
-then run all three verification commands above. Test the exact pending release
+then run the four verification commands above. Test the exact pending release
 commit in a fresh checkout before pushing, without installing simulator engines
 or executing experiment runners. A historical clone receipt is not that check.
