@@ -17,6 +17,9 @@ QPU or simulator executions.
 
 - [Scientific synthesis](docs/thesis/README.md) and [canonical tables](docs/thesis/canonical_tables.md).
 - [Final RQ closure](results/research_questions/closure/README.md).
+- Full generalization [126 seed metrics](results/generalization/full_grid/seed_metrics.csv),
+  [median-of-three results](results/generalization/full_grid/median_metrics.csv)
+  and [case-level paired evidence](results/generalization/full_grid/paired_comparisons.csv).
 - [QPU accuracy–cost](results/accuracy_cost/qpu/accuracy_cost_tradeoff.md) and
   [Dense accuracy–cost](results/accuracy_cost/dense/accuracy_cost_tradeoff.md).
 - [Preprocessing fidelity](results/reproducibility/preprocessing/root_cause_analysis.md)

@@ -23,8 +23,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4856,
-      "sha256": "2070d97b9b0bbd645c78130b1a109b7d6e9f12ecdc0d4e833bb9760d3daa7b85"
+      "bytes": 5123,
+      "sha256": "4ed358a64fe317f8d226305c024588875adac031665a62a6966830cbcb8941bf"
     },
     {
       "path": "data/simulator/README.md",
@@ -1692,6 +1692,11 @@
       "sha256": "2ad0d6a17afba759cc02881cc4f345b324133629bf5f4b9285bf38f1a13fb837"
     },
     {
+      "path": "methods/research_support/export_complete_grid_publication.py",
+      "bytes": 3678,
+      "sha256": "5478fb4d1f730f4f29bea8f0627e53b5c0c31f7cf1c5608e8a87e7180fd95aed"
+    },
+    {
       "path": "methods/research_support/export_thesis_tables.mjs",
       "bytes": 1817,
       "sha256": "627c8e6981ea0a91fb84202838b1a849045b353a93ad443f7c9d3c5e3e4b8c8a"
@@ -2065,6 +2070,11 @@
       "path": "protocol/snapshot_policy.json",
       "bytes": 2232,
       "sha256": "becf6da59b17fbf406f5c48f68fc71eb0a89acd47e9763e17a84c6fc4ee5f538"
+    },
+    {
+      "path": "provenance/complete_grid_publication.json",
+      "bytes": 6018,
+      "sha256": "5d5821afcb66cd70096b5000f526cac5b55137c0d54951000ec42c47c66fbc45"
     },
     {
       "path": "provenance/completed_science.json",
@@ -2672,6 +2682,61 @@
       "sha256": "dcda2d27a6fae18ead8b6b5c2fbb0bb4322400adbd48f479542fe11838dac892"
     },
     {
+      "path": "results/generalization/full_grid/case_status.csv",
+      "bytes": 13424,
+      "sha256": "982c6e074f7b6f477bb3333802a0cf5d2e24ecc6f58a892e0e6cf74b4f3ecdc4"
+    },
+    {
+      "path": "results/generalization/full_grid/distribution_shift.csv",
+      "bytes": 36518,
+      "sha256": "b957d20744c76c29ec6bd96cbd2f178b04abc4e6f863d6a4204fa3b163a86d67"
+    },
+    {
+      "path": "results/generalization/full_grid/feature_masking.csv",
+      "bytes": 15848,
+      "sha256": "d0f3295cc33a9c3c847eac75f73d8ec7cec6e9e0cd999d7b5b4b7c469447c8cb"
+    },
+    {
+      "path": "results/generalization/full_grid/input_support.csv",
+      "bytes": 86876,
+      "sha256": "f4caaa416140cd917a319c43befcefec0bae30aecac2c4e68d7309883f28e83f"
+    },
+    {
+      "path": "results/generalization/full_grid/median_metrics.csv",
+      "bytes": 52038,
+      "sha256": "6615c45c10678172f8ae1ed67682cb986a9e696a1a46662e2e64d491684c013b"
+    },
+    {
+      "path": "results/generalization/full_grid/method_metrics.csv",
+      "bytes": 808836,
+      "sha256": "559de395c14ee3d990e3054bcf04451e3ec9ad82ff6648d81b57d24da012e801"
+    },
+    {
+      "path": "results/generalization/full_grid/paired_comparisons.csv",
+      "bytes": 50219,
+      "sha256": "32419bab13514a11e2aa335ee15ed73dc6c8c6347d76f50c2a6a2fe136e6b3df"
+    },
+    {
+      "path": "results/generalization/full_grid/seed_metrics.csv",
+      "bytes": 34236,
+      "sha256": "19d6e766dd3247dfc9bc5bd4c39ea4f887ea4940a1fe3521e2e306a2304b1635"
+    },
+    {
+      "path": "results/generalization/full_grid/selector_identity_audit.csv",
+      "bytes": 11689,
+      "sha256": "239fbd9856a2b2201afbfb8a028f3abb172b3e69d3f8b039aef6f49ccb15fdc6"
+    },
+    {
+      "path": "results/generalization/full_grid/source_metrics.csv",
+      "bytes": 948387,
+      "sha256": "85f87ab71dbf13d490ac68328f7950221ef24afb759b4046fedf83a61400ce5f"
+    },
+    {
+      "path": "results/generalization/full_grid/train_references.csv",
+      "bytes": 55960,
+      "sha256": "4724724bf044e4deff6ba6147dbda527c6a6b61b078d6e451bc47ccd1f8ca48e"
+    },
+    {
       "path": "results/generalization/report.md",
       "bytes": 11026,
       "sha256": "2b5c40b66c38aa7b96556c06218716a7459ac370e46c9067e22ea0f53930ec49"
@@ -3215,6 +3280,11 @@
       "path": "scripts/verify.py",
       "bytes": 6258,
       "sha256": "0d964d79d5bae88577bece5337979c0b20cc25607233f146b34f853392fea229"
+    },
+    {
+      "path": "tests/test_complete_grid_publication.py",
+      "bytes": 1474,
+      "sha256": "f5477bab1efcce9a61562937bb468a71966e1987578b473ed9c0fb2f56ecfa0e"
     },
     {
       "path": "tests/test_completed_science.py",

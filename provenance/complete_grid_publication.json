@@ -1,0 +1,103 @@
+{
+  "scope": "Full 21-case aggregate supplement; no observation-level predictions or group ledgers",
+  "files": [
+    {
+      "source_path": "artifacts/real_qpu/generalization/complete_grid_v1/results/full_grid_20261011/case_status.csv",
+      "source_sha256": "982c6e074f7b6f477bb3333802a0cf5d2e24ecc6f58a892e0e6cf74b4f3ecdc4",
+      "public_path": "results/generalization/full_grid/case_status.csv",
+      "published_sha256": "982c6e074f7b6f477bb3333802a0cf5d2e24ecc6f58a892e0e6cf74b4f3ecdc4",
+      "transformation": "exact aggregate CSV bytes"
+    },
+    {
+      "source_path": "artifacts/real_qpu/generalization/complete_grid_v1/results/full_grid_20261011/seed_metrics.csv",
+      "source_sha256": "19d6e766dd3247dfc9bc5bd4c39ea4f887ea4940a1fe3521e2e306a2304b1635",
+      "public_path": "results/generalization/full_grid/seed_metrics.csv",
+      "published_sha256": "19d6e766dd3247dfc9bc5bd4c39ea4f887ea4940a1fe3521e2e306a2304b1635",
+      "transformation": "exact aggregate CSV bytes"
+    },
+    {
+      "source_path": "artifacts/real_qpu/generalization/complete_grid_v1/results/full_grid_20261011/method_metrics.csv",
+      "source_sha256": "559de395c14ee3d990e3054bcf04451e3ec9ad82ff6648d81b57d24da012e801",
+      "public_path": "results/generalization/full_grid/method_metrics.csv",
+      "published_sha256": "559de395c14ee3d990e3054bcf04451e3ec9ad82ff6648d81b57d24da012e801",
+      "transformation": "exact aggregate CSV bytes"
+    },
+    {
+      "source_path": "artifacts/real_qpu/generalization/complete_grid_v1/results/full_grid_20261011/selector_identity_audit.csv",
+      "source_sha256": "239fbd9856a2b2201afbfb8a028f3abb172b3e69d3f8b039aef6f49ccb15fdc6",
+      "public_path": "results/generalization/full_grid/selector_identity_audit.csv",
+      "published_sha256": "239fbd9856a2b2201afbfb8a028f3abb172b3e69d3f8b039aef6f49ccb15fdc6",
+      "transformation": "exact aggregate CSV bytes"
+    },
+    {
+      "source_path": "artifacts/real_qpu/generalization/complete_grid_v1/results/full_grid_20261011/reader_tables/median_metrics.csv",
+      "source_sha256": "6615c45c10678172f8ae1ed67682cb986a9e696a1a46662e2e64d491684c013b",
+      "public_path": "results/generalization/full_grid/median_metrics.csv",
+      "published_sha256": "6615c45c10678172f8ae1ed67682cb986a9e696a1a46662e2e64d491684c013b",
+      "transformation": "exact aggregate CSV bytes"
+    },
+    {
+      "source_path": "artifacts/real_qpu/generalization/complete_grid_v1/results/full_grid_20261011/reader_tables/train_references.csv",
+      "source_sha256": "4724724bf044e4deff6ba6147dbda527c6a6b61b078d6e451bc47ccd1f8ca48e",
+      "public_path": "results/generalization/full_grid/train_references.csv",
+      "published_sha256": "4724724bf044e4deff6ba6147dbda527c6a6b61b078d6e451bc47ccd1f8ca48e",
+      "transformation": "exact aggregate CSV bytes"
+    },
+    {
+      "source_path": "artifacts/real_qpu/generalization/complete_grid_v1/results/full_grid_20261011/reader_tables/input_support.csv",
+      "source_sha256": "f4caaa416140cd917a319c43befcefec0bae30aecac2c4e68d7309883f28e83f",
+      "public_path": "results/generalization/full_grid/input_support.csv",
+      "published_sha256": "f4caaa416140cd917a319c43befcefec0bae30aecac2c4e68d7309883f28e83f",
+      "transformation": "exact aggregate CSV bytes"
+    },
+    {
+      "source_path": "artifacts/real_qpu/generalization/complete_grid_v1/results/full_grid_20261011/reader_tables/feature_masking.csv",
+      "source_sha256": "d0f3295cc33a9c3c847eac75f73d8ec7cec6e9e0cd999d7b5b4b7c469447c8cb",
+      "public_path": "results/generalization/full_grid/feature_masking.csv",
+      "published_sha256": "d0f3295cc33a9c3c847eac75f73d8ec7cec6e9e0cd999d7b5b4b7c469447c8cb",
+      "transformation": "exact aggregate CSV bytes"
+    },
+    {
+      "source_path": "artifacts/real_qpu/generalization/complete_grid_v1/results/full_grid_20261011/reader_tables/source_metrics.csv",
+      "source_sha256": "85f87ab71dbf13d490ac68328f7950221ef24afb759b4046fedf83a61400ce5f",
+      "public_path": "results/generalization/full_grid/source_metrics.csv",
+      "published_sha256": "85f87ab71dbf13d490ac68328f7950221ef24afb759b4046fedf83a61400ce5f",
+      "transformation": "exact aggregate CSV bytes"
+    },
+    {
+      "source_path": "artifacts/real_qpu/generalization/complete_grid_v1/results/full_grid_20261011/reader_tables/distribution_shift.csv",
+      "source_sha256": "b957d20744c76c29ec6bd96cbd2f178b04abc4e6f863d6a4204fa3b163a86d67",
+      "public_path": "results/generalization/full_grid/distribution_shift.csv",
+      "published_sha256": "b957d20744c76c29ec6bd96cbd2f178b04abc4e6f863d6a4204fa3b163a86d67",
+      "transformation": "exact aggregate CSV bytes"
+    },
+    {
+      "source_path": "artifacts/real_qpu/generalization/complete_grid_v1/results/full_grid_20261011/reader_tables/paired_comparisons.csv",
+      "source_sha256": "11da43817bcf700aa228f17096b98cc1e6732e66360d2cdd55f200693b2f44d9",
+      "public_path": "results/generalization/full_grid/paired_comparisons.csv",
+      "published_sha256": "32419bab13514a11e2aa335ee15ed73dc6c8c6347d76f50c2a6a2fe136e6b3df",
+      "transformation": "exact saved-row selection: support_scope/all_test, neural vs neural/train-only references/CPU selector",
+      "selected_rows": 63
+    },
+    {
+      "source_path": "scripts/export_complete_grid_publication.py",
+      "source_sha256": "5478fb4d1f730f4f29bea8f0627e53b5c0c31f7cf1c5608e8a87e7180fd95aed",
+      "public_path": "methods/research_support/export_complete_grid_publication.py",
+      "published_sha256": "5478fb4d1f730f4f29bea8f0627e53b5c0c31f7cf1c5608e8a87e7180fd95aed",
+      "transformation": "exact controlled-export source"
+    }
+  ],
+  "CPU_cases": 21,
+  "neural_cases": 21,
+  "seed_metric_rows": 126,
+  "private_row_level_QPU_included": false,
+  "excluded": [
+    "neural_seed_attempts.csv",
+    "seed_dispersion.csv",
+    "group_metrics.csv",
+    "reader_tables/group_metrics.csv",
+    "complete58MBpaired_registry"
+  ],
+  "values_changed": false,
+  "new_experiments": false
+}
