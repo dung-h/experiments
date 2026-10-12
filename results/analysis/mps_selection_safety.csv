@@ -1,0 +1,5 @@
+context_id,method_id,assigned_hashes,selected_observed,quality_violations,quality_violation_fraction_observed,unassessed_selections
+cudaq_mps_ladder_c44,family_agnostic_ablation,150,140,64,0.45714285714285713,10
+cudaq_mps_ladder_c44,family_conditioned,150,140,64,0.45714285714285713,10
+cudaq_mps_ladder_family_holdout,family_agnostic_ablation,150,140,63,0.45000000000000001,10
+cudaq_mps_ladder_family_holdout,family_conditioned,150,140,65,0.4642857142857143,10

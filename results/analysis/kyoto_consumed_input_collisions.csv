@@ -1,0 +1,4 @@
+seed,retained_globals,fit_vectors,test_vectors,test_vector_classes,post_float32_transform_collisions,observation_id_overlap,backend_or_source_one_hot,method
+42,40,165,148,117,148,0,False,mali_global_mlp
+1234,40,165,148,117,148,0,False,mali_global_mlp
+31415,40,165,148,117,148,0,False,mali_global_mlp

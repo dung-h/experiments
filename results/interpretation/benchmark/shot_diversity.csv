@@ -1,0 +1,36 @@
+stratum,key,observation_rows,structural_groups,distinct_shot_values,min_shots,max_shots,shot_counts_json,systematic_qpu_shot_holdout_status
+source_id,mali_real_qpu,340,148,1,1024.0,1024.0,"{""1024.0"": 340}",NOT ANSWERED
+source_id,qonductor_single_circuit_ibm,230,11,6,1000.0,20000.0,"{""1000.0"": 116, ""4000.0"": 82, ""8000.0"": 14, ""12000.0"": 12, ""16000.0"": 3, ""20000.0"": 3}",NOT ANSWERED
+source_id,qpack_mcp,3945,6,1,4096.0,4096.0,"{""4096.0"": 3945}",NOT ANSWERED
+source_id/backend,mali_real_qpu/ibm_kyoto,148,117,1,1024.0,1024.0,"{""1024.0"": 148}",NOT ANSWERED
+source_id/backend,mali_real_qpu/ibm_osaka,192,148,1,1024.0,1024.0,"{""1024.0"": 192}",NOT ANSWERED
+source_id/backend,qonductor_single_circuit_ibm/ibm_belem,24,3,2,1000.0,4000.0,"{""1000.0"": 19, ""4000.0"": 5}",NOT ANSWERED
+source_id/backend,qonductor_single_circuit_ibm/ibm_jakarta,41,4,6,1000.0,20000.0,"{""1000.0"": 8, ""4000.0"": 18, ""8000.0"": 4, ""12000.0"": 5, ""16000.0"": 3, ""20000.0"": 3}",NOT ANSWERED
+source_id/backend,qonductor_single_circuit_ibm/ibm_lagos,5,1,1,1000.0,1000.0,"{""1000.0"": 5}",NOT ANSWERED
+source_id/backend,qonductor_single_circuit_ibm/ibm_lima,41,4,3,1000.0,8000.0,"{""1000.0"": 29, ""4000.0"": 9, ""8000.0"": 3}",NOT ANSWERED
+source_id/backend,qonductor_single_circuit_ibm/ibm_manila,33,4,2,1000.0,4000.0,"{""1000.0"": 22, ""4000.0"": 11}",NOT ANSWERED
+source_id/backend,qonductor_single_circuit_ibm/ibm_nairobi,19,3,2,1000.0,4000.0,"{""1000.0"": 6, ""4000.0"": 13}",NOT ANSWERED
+source_id/backend,qonductor_single_circuit_ibm/ibm_perth,25,5,2,1000.0,4000.0,"{""1000.0"": 10, ""4000.0"": 15}",NOT ANSWERED
+source_id/backend,qonductor_single_circuit_ibm/ibm_quito,42,3,4,1000.0,12000.0,"{""1000.0"": 17, ""4000.0"": 11, ""8000.0"": 7, ""12000.0"": 7}",NOT ANSWERED
+source_id/backend,qpack_mcp/ibm_jakarta,367,4,1,4096.0,4096.0,"{""4096.0"": 367}",NOT ANSWERED
+source_id/backend,qpack_mcp/ibm_lagos,363,4,1,4096.0,4096.0,"{""4096.0"": 363}",NOT ANSWERED
+source_id/backend,qpack_mcp/ibm_manila,334,4,1,4096.0,4096.0,"{""4096.0"": 334}",NOT ANSWERED
+source_id/backend,qpack_mcp/ibm_nairobi,1546,6,1,4096.0,4096.0,"{""4096.0"": 1546}",NOT ANSWERED
+source_id/backend,qpack_mcp/ibm_perth,326,4,1,4096.0,4096.0,"{""4096.0"": 326}",NOT ANSWERED
+source_id/backend,qpack_mcp/ibm_quito,1009,4,1,4096.0,4096.0,"{""4096.0"": 1009}",NOT ANSWERED
+source_id/family,mali_real_qpu/qft,46,26,1,1024.0,1024.0,"{""1024.0"": 46}",NOT ANSWERED
+source_id/family,mali_real_qpu/qftentangled,47,26,1,1024.0,1024.0,"{""1024.0"": 47}",NOT ANSWERED
+source_id/family,mali_real_qpu/qnn,26,14,1,1024.0,1024.0,"{""1024.0"": 26}",NOT ANSWERED
+source_id/family,mali_real_qpu/qpeexact,35,22,1,1024.0,1024.0,"{""1024.0"": 35}",NOT ANSWERED
+source_id/family,mali_real_qpu/qpeinexact,36,22,1,1024.0,1024.0,"{""1024.0"": 36}",NOT ANSWERED
+source_id/family,mali_real_qpu/qwalk-noancilla,2,1,1,1024.0,1024.0,"{""1024.0"": 2}",NOT ANSWERED
+source_id/family,mali_real_qpu/random,30,16,1,1024.0,1024.0,"{""1024.0"": 30}",NOT ANSWERED
+source_id/family,mali_real_qpu/realamprandom,40,22,1,1024.0,1024.0,"{""1024.0"": 40}",NOT ANSWERED
+source_id/family,mali_real_qpu/su2random,38,21,1,1024.0,1024.0,"{""1024.0"": 38}",NOT ANSWERED
+source_id/family,mali_real_qpu/twolocalrandom,40,22,1,1024.0,1024.0,"{""1024.0"": 40}",NOT ANSWERED
+source_id/family,qonductor_single_circuit_ibm/dj,48,3,5,1000.0,16000.0,"{""1000.0"": 26, ""4000.0"": 15, ""8000.0"": 1, ""12000.0"": 5, ""16000.0"": 1}",NOT ANSWERED
+source_id/family,qonductor_single_circuit_ibm/ghz,113,3,6,1000.0,20000.0,"{""1000.0"": 57, ""4000.0"": 35, ""8000.0"": 9, ""12000.0"": 7, ""16000.0"": 2, ""20000.0"": 3}",NOT ANSWERED
+source_id/family,qonductor_single_circuit_ibm/qftentangled,7,1,2,1000.0,4000.0,"{""1000.0"": 2, ""4000.0"": 5}",NOT ANSWERED
+source_id/family,qonductor_single_circuit_ibm/qpeexact,5,1,1,4000.0,4000.0,"{""4000.0"": 5}",NOT ANSWERED
+source_id/family,qonductor_single_circuit_ibm/wstate,57,3,3,1000.0,8000.0,"{""1000.0"": 31, ""4000.0"": 22, ""8000.0"": 4}",NOT ANSWERED
+source_id/family,qpack_mcp/MCP,3945,6,1,4096.0,4096.0,"{""4096.0"": 3945}",NOT ANSWERED
