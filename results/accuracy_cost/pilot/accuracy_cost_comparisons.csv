@@ -1,0 +1,12 @@
+context,method,accuracy_n,accuracy_assigned,frozen_mae_seconds,frozen_r2,timing_n,B1_median_request_ms,accuracy_population_vs_timing,target_clock
+cudaq_dense_statevector_fp32,mali_style_dense_graph,150,150,0.0017159400695527279,0.13453781167675194,30,3.230237,different denominators; not per-observation Pareto frontier,FP32 warm sample wall-clock
+cudaq_dense_statevector_fp32,matched_metadata_mlp,150,150,0.0015777218337946887,0.14206277869990747,30,0.4924454999999999,different denominators; not per-observation Pareto frontier,FP32 warm sample wall-clock
+cudaq_dense_statevector_fp32,outer_train_median,150,150,0.0017490204669108251,-0.030202976603751708,30,0.007936,different denominators; not per-observation Pareto frontier,FP32 warm sample wall-clock
+cudaq_dense_statevector_fp64,mali_style_dense_graph,150,150,0.0017302181986451515,0.13554069824258741,30,3.2085874999999997,different denominators; not per-observation Pareto frontier,FP64 warm sample wall-clock
+cudaq_dense_statevector_fp64,matched_metadata_mlp,150,150,0.0015900815471347168,0.14424058611073276,30,0.48615575,different denominators; not per-observation Pareto frontier,FP64 warm sample wall-clock
+cudaq_dense_statevector_fp64,outer_train_median,150,150,0.0017529017866278656,-0.030570386954233308,30,0.00804025,different denominators; not per-observation Pareto frontier,FP64 warm sample wall-clock
+qcsim_statevector_cpu_fp64_1000_shots,maestro_style_cpu_sv_component_optimizer_off_adaptation,143,150,0.00010370132150117413,0.94903224034119771,29,0.0017585,different denominators; not per-observation Pareto frontier,fresh-process engine-reported execution; optimizer off/1000shots
+qcsim_statevector_cpu_fp64_1000_shots,outer_train_median,143,150,0.0003057820174825125,-0.042635500563666273,30,0.0007355,different denominators; not per-observation Pareto frontier,fresh-process engine-reported execution; optimizer off/1000shots
+qualified_qpu_4515,mali_global_mlp,4515,4515,0.89342298010082932,0.36315832410711923,50,0.60276325,different denominators; not per-observation Pareto frontier,archived_observed_service_execution_time
+qualified_qpu_4515,mali_logical_graph,4515,4515,0.83413332819560748,0.46809087553927997,50,5.888531250000001,different denominators; not per-observation Pareto frontier,archived_observed_service_execution_time
+qualified_qpu_4515,outer_train_median,4515,4515,1.1382755517197642,-0.14355758757093651,50,0.010141,different denominators; not per-observation Pareto frontier,archived_observed_service_execution_time

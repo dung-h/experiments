@@ -1,0 +1,4 @@
+context,shared_requests,structural_groups,equal_group_mean_graph_minus_mlp_ms,bootstrap_low_ms,bootstrap_high_ms,bootstrap_unit,bootstrap_seed,repetitions_not_independent
+qpu,50,49,5.324746719387755,5.143610678826531,5.5017339218112244,structural group,42,True
+dense_fp32,30,30,2.7610037333333333,2.6580674779166666,2.8813788025,structural group,42,True
+dense_fp64,30,30,2.68691905,2.6346053775,2.7504598404166667,structural group,42,True

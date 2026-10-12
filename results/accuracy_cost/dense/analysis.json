@@ -1,0 +1,503 @@
+{
+  "contexts": {
+    "fp32": {
+      "families": {
+        "ae": 5,
+        "dj": 5,
+        "ghz": 4,
+        "graphstate": 4,
+        "grover-noancilla": 3,
+        "grover-v-chain": 3,
+        "portfolioqaoa": 3,
+        "portfoliovqe": 2,
+        "qaoa": 1
+      },
+      "historical_execution": {
+        "graph": {
+          "B2_above_historical_execution_n": 30,
+          "label": "historical cross-environment simulator runtime",
+          "median_B2_over_historical_execution": 30.250970252723096,
+          "n": 30
+        },
+        "mlp": {
+          "B2_above_historical_execution_n": 30,
+          "label": "historical cross-environment simulator runtime",
+          "median_B2_over_historical_execution": 15.414715592582713,
+          "n": 30
+        }
+      },
+      "paired": {
+        "median_of_paired_latency_ratios": 1.9145351169347458,
+        "median_paired_latency_difference_ms": 3.555169,
+        "observed_mae_graph_minus_mlp_seconds": 0.00023009969930474963,
+        "ratio_of_marginal_latency_medians": 1.964950272823098
+      },
+      "scaling": [
+        {
+          "feature": "width",
+          "max": 9,
+          "method": "graph",
+          "min": 2,
+          "pearson": 0.28640073841414976,
+          "spearman": 0.6054882412140539
+        },
+        {
+          "feature": "depth",
+          "max": 3034,
+          "method": "graph",
+          "min": 3,
+          "pearson": 0.9986518295187606,
+          "spearman": 0.9602498975912814
+        },
+        {
+          "feature": "gates",
+          "max": 3152,
+          "method": "graph",
+          "min": 4,
+          "pearson": 0.9977037631975288,
+          "spearman": 0.9941026480216246
+        },
+        {
+          "feature": "nodes",
+          "max": 3152,
+          "method": "graph",
+          "min": 4,
+          "pearson": 0.9977037631975288,
+          "spearman": 0.9941026480216246
+        },
+        {
+          "feature": "edges",
+          "max": 6168,
+          "method": "graph",
+          "min": 3,
+          "pearson": 0.9993982366138662,
+          "spearman": 0.9919893436511342
+        },
+        {
+          "feature": "width",
+          "max": 9,
+          "method": "mlp",
+          "min": 2,
+          "pearson": 0.28515882080050325,
+          "spearman": 0.5609207052436515
+        },
+        {
+          "feature": "depth",
+          "max": 3034,
+          "method": "mlp",
+          "min": 3,
+          "pearson": 0.9992109095244802,
+          "spearman": 0.9673760563860221
+        },
+        {
+          "feature": "gates",
+          "max": 3152,
+          "method": "mlp",
+          "min": 4,
+          "pearson": 0.9984140168846516,
+          "spearman": 0.9852009005578088
+        },
+        {
+          "feature": "nodes",
+          "max": 3152,
+          "method": "mlp",
+          "min": 4,
+          "pearson": 0.9984140168846516,
+          "spearman": 0.9852009005578088
+        },
+        {
+          "feature": "edges",
+          "max": 6168,
+          "method": "mlp",
+          "min": 3,
+          "pearson": 0.999484766064585,
+          "spearman": 0.9830885868664672
+        }
+      ],
+      "summary": [
+        {
+          "context": "dense_fp32",
+          "mae_seconds": 0.001753429142991081,
+          "mean_signed_residual_seconds": 0.0005221433675615117,
+          "medae_seconds": 0.0006072786782169715,
+          "median_request_median_B2_ms": 7.25009225,
+          "median_request_p95_B2_ms": 7.620789125,
+          "method": "graph",
+          "n": 30,
+          "population": "exact_timed_subset",
+          "r2": 0.6783657854820451,
+          "rmse_seconds": 0.0035967864653569915
+        },
+        {
+          "context": "dense_fp32",
+          "mae_seconds": 0.0015233294436863313,
+          "mean_signed_residual_seconds": 0.00049059610949674,
+          "medae_seconds": 0.0003785365042858757,
+          "median_request_median_B2_ms": 3.68970775,
+          "median_request_p95_B2_ms": 3.9718615,
+          "method": "mlp",
+          "n": 30,
+          "population": "exact_timed_subset",
+          "r2": 0.7148416771916386,
+          "rmse_seconds": 0.003386698694894943
+        },
+        {
+          "context": "dense_fp32",
+          "mae_seconds": 0.0021353613003157077,
+          "mean_signed_residual_seconds": -0.0019889673373351493,
+          "medae_seconds": 0.00017965123697649688,
+          "median_request_median_B2_ms": "NOT_MEASURED",
+          "median_request_p95_B2_ms": "NOT_MEASURED",
+          "method": "median_reference",
+          "n": 30,
+          "population": "exact_timed_subset",
+          "r2": -0.0989077828557583,
+          "rmse_seconds": 0.006648354355353433
+        }
+      ],
+      "uncertainty": {
+        "groups": 30,
+        "mae_difference_graph_minus_mlp_seconds": [
+          5.6416867543399955e-05,
+          0.00045900444635966163
+        ],
+        "marginal_median_latency_ratio": [
+          1.9162801583980307,
+          2.0139734716332045
+        ],
+        "observations": 30,
+        "paired_latency_difference_ms": [
+          3.2751924999999993,
+          3.92449975
+        ],
+        "replicates": 2000,
+        "seed": 20261011,
+        "unit": "paired structural-group cluster, row-weighted MAE; median request latency difference; ratio of marginal latency medians"
+      }
+    },
+    "fp64": {
+      "families": {
+        "ae": 5,
+        "dj": 5,
+        "ghz": 4,
+        "graphstate": 4,
+        "grover-noancilla": 3,
+        "grover-v-chain": 3,
+        "portfolioqaoa": 3,
+        "portfoliovqe": 2,
+        "qaoa": 1
+      },
+      "historical_execution": {
+        "graph": {
+          "B2_above_historical_execution_n": 30,
+          "label": "historical cross-environment simulator runtime",
+          "median_B2_over_historical_execution": 34.334298055057026,
+          "n": 30
+        },
+        "mlp": {
+          "B2_above_historical_execution_n": 30,
+          "label": "historical cross-environment simulator runtime",
+          "median_B2_over_historical_execution": 17.403482932896182,
+          "n": 30
+        }
+      },
+      "paired": {
+        "median_of_paired_latency_ratios": 1.917203633229077,
+        "median_paired_latency_difference_ms": 3.465644,
+        "observed_mae_graph_minus_mlp_seconds": 0.0001896802365081385,
+        "ratio_of_marginal_latency_medians": 1.9598919359756108
+      },
+      "scaling": [
+        {
+          "feature": "width",
+          "max": 9,
+          "method": "graph",
+          "min": 2,
+          "pearson": 0.3111859295988713,
+          "spearman": 0.5936052561001584
+        },
+        {
+          "feature": "depth",
+          "max": 3034,
+          "method": "graph",
+          "min": 2,
+          "pearson": 0.9997553366982257,
+          "spearman": 0.971589100691027
+        },
+        {
+          "feature": "gates",
+          "max": 3152,
+          "method": "graph",
+          "min": 4,
+          "pearson": 0.9998085535643378,
+          "spearman": 0.9860910753041904
+        },
+        {
+          "feature": "nodes",
+          "max": 3152,
+          "method": "graph",
+          "min": 4,
+          "pearson": 0.9998085535643378,
+          "spearman": 0.9860910753041904
+        },
+        {
+          "feature": "edges",
+          "max": 6168,
+          "method": "graph",
+          "min": 2,
+          "pearson": 0.9999066981360625,
+          "spearman": 0.9840881821248317
+        },
+        {
+          "feature": "width",
+          "max": 9,
+          "method": "mlp",
+          "min": 2,
+          "pearson": 0.30679046495047596,
+          "spearman": 0.5744421544030397
+        },
+        {
+          "feature": "depth",
+          "max": 3034,
+          "method": "mlp",
+          "min": 2,
+          "pearson": 0.9998290151549244,
+          "spearman": 0.9682464776381908
+        },
+        {
+          "feature": "gates",
+          "max": 3152,
+          "method": "mlp",
+          "min": 4,
+          "pearson": 0.9996306325096606,
+          "spearman": 0.9636141629580555
+        },
+        {
+          "feature": "nodes",
+          "max": 3152,
+          "method": "mlp",
+          "min": 4,
+          "pearson": 0.9996306325096606,
+          "spearman": 0.9636141629580555
+        },
+        {
+          "feature": "edges",
+          "max": 6168,
+          "method": "mlp",
+          "min": 2,
+          "pearson": 0.9998326284810395,
+          "spearman": 0.9602760076591248
+        }
+      ],
+      "summary": [
+        {
+          "context": "dense_fp64",
+          "mae_seconds": 0.0008079790864333821,
+          "mean_signed_residual_seconds": 9.38784772491393e-05,
+          "medae_seconds": 0.0003573168796719983,
+          "median_request_median_B2_ms": 7.07609625,
+          "median_request_p95_B2_ms": 7.512216824999999,
+          "method": "graph",
+          "n": 30,
+          "population": "exact_timed_subset",
+          "r2": 0.9250812037880595,
+          "rmse_seconds": 0.0016250050065766545
+        },
+        {
+          "context": "dense_fp64",
+          "mae_seconds": 0.0006182988499252436,
+          "mean_signed_residual_seconds": 8.767376566538587e-05,
+          "medae_seconds": 0.0003180680505465716,
+          "median_request_median_B2_ms": 3.61045225,
+          "median_request_p95_B2_ms": 3.8929926249999998,
+          "method": "mlp",
+          "n": 30,
+          "population": "exact_timed_subset",
+          "r2": 0.962712928068043,
+          "rmse_seconds": 0.001146405994657583
+        },
+        {
+          "context": "dense_fp64",
+          "mae_seconds": 0.001437863934552297,
+          "mean_signed_residual_seconds": -0.0012683474696435345,
+          "medae_seconds": 0.0001715139987936709,
+          "median_request_median_B2_ms": "NOT_MEASURED",
+          "median_request_p95_B2_ms": "NOT_MEASURED",
+          "method": "median_reference",
+          "n": 30,
+          "population": "exact_timed_subset",
+          "r2": -0.046615067173850555,
+          "rmse_seconds": 0.006073692482948284
+        }
+      ],
+      "uncertainty": {
+        "groups": 30,
+        "mae_difference_graph_minus_mlp_seconds": [
+          2.7736609020697263e-05,
+          0.0004135997958898464
+        ],
+        "marginal_median_latency_ratio": [
+          1.8970877960339763,
+          2.0104388025326574
+        ],
+        "observations": 30,
+        "paired_latency_difference_ms": [
+          3.1007815,
+          3.8293017500000004
+        ],
+        "replicates": 2000,
+        "seed": 20261011,
+        "unit": "paired structural-group cluster, row-weighted MAE; median request latency difference; ratio of marginal latency medians"
+      }
+    }
+  },
+  "full_context_accuracy": [
+    {
+      "context": "dense_fp32",
+      "mae_seconds": 0.0017159400695527438,
+      "mean_signed_residual_seconds": -0.00016446050018809427,
+      "medae_seconds": 0.0004239435220370069,
+      "method": "graph",
+      "n": 150,
+      "population": "full_frozen_core_OOF",
+      "r2": 0.1345378116767516,
+      "rmse_seconds": 0.008692055444874855
+    },
+    {
+      "context": "dense_fp32",
+      "mae_seconds": 0.0015777218337946883,
+      "mean_signed_residual_seconds": -0.00020681364772220454,
+      "medae_seconds": 0.0003251862435718067,
+      "method": "mlp",
+      "n": 150,
+      "population": "full_frozen_core_OOF",
+      "r2": 0.1420627786999069,
+      "rmse_seconds": 0.008654185374953513
+    },
+    {
+      "context": "dense_fp64",
+      "mae_seconds": 0.0017302181986451615,
+      "mean_signed_residual_seconds": -0.000167005696130218,
+      "medae_seconds": 0.0004327795759309083,
+      "method": "graph",
+      "n": 150,
+      "population": "full_frozen_core_OOF",
+      "r2": 0.13554069824258785,
+      "rmse_seconds": 0.008636725151971551
+    },
+    {
+      "context": "dense_fp64",
+      "mae_seconds": 0.0015900815471347112,
+      "mean_signed_residual_seconds": -0.00020758544337392475,
+      "medae_seconds": 0.0003329506653244607,
+      "method": "mlp",
+      "n": 150,
+      "population": "full_frozen_core_OOF",
+      "r2": 0.14424058611073176,
+      "rmse_seconds": 0.008593155405291413
+    }
+  ],
+  "shares": [
+    {
+      "context": "dense_fp32",
+      "denominator_total_ns": 12940410658,
+      "method": "mali_style_dense_graph",
+      "shares": {
+        "IPC_and_unattributed_bridge": 0.015572579520528537,
+        "aggregation": 0.00021961559606634859,
+        "coordinator_residual": 0.0029947184076451433,
+        "host_deserialization": 0.017765648716710148,
+        "inference_inverse_D2H": 0.23441138308270834,
+        "preparation": 0.676273963808854,
+        "serialization": 0.017381348238817228,
+        "tensor_and_H2D": 0.035380742628670296
+      },
+      "stage_sums_ns": {
+        "IPC_and_unattributed_bridge": 201515574,
+        "aggregation": 2841916,
+        "coordinator_residual": 38752886,
+        "host_deserialization": 229894790,
+        "inference_inverse_D2H": 3033379560,
+        "preparation": 8751262809,
+        "serialization": 224921784,
+        "tensor_and_H2D": 457841339
+      }
+    },
+    {
+      "context": "dense_fp32",
+      "denominator_total_ns": 6889396174,
+      "method": "matched_metadata_mlp",
+      "shares": {
+        "IPC_and_unattributed_bridge": 0.011365192104279762,
+        "aggregation": 0.000376510790566709,
+        "coordinator_residual": 0.005518701064613794,
+        "host_deserialization": 0.004929005117771298,
+        "inference_inverse_D2H": 0.06622116924001996,
+        "preparation": 0.8616415675734661,
+        "serialization": 0.008664445546806494,
+        "tensor_and_H2D": 0.04128340856247586
+      },
+      "stage_sums_ns": {
+        "IPC_and_unattributed_bridge": 78299311,
+        "aggregation": 2593932,
+        "coordinator_residual": 38020518,
+        "host_deserialization": 33957869,
+        "inference_inverse_D2H": 456223870,
+        "preparation": 5936190119,
+        "serialization": 59692798,
+        "tensor_and_H2D": 284417757
+      }
+    },
+    {
+      "context": "dense_fp64",
+      "denominator_total_ns": 10669240170,
+      "method": "mali_style_dense_graph",
+      "shares": {
+        "IPC_and_unattributed_bridge": 0.014667303435536029,
+        "aggregation": 0.000258800060360812,
+        "coordinator_residual": 0.0035295618432029355,
+        "host_deserialization": 0.015662054779670406,
+        "inference_inverse_D2H": 0.2804637309987558,
+        "preparation": 0.6279987109897442,
+        "serialization": 0.016016150754623044,
+        "tensor_and_H2D": 0.041403687138106667
+      },
+      "stage_sums_ns": {
+        "IPC_and_unattributed_bridge": 156488983,
+        "aggregation": 2761200,
+        "coordinator_residual": 37657743,
+        "host_deserialization": 167102224,
+        "inference_inverse_D2H": 2992334905,
+        "preparation": 6700269074,
+        "serialization": 170880159,
+        "tensor_and_H2D": 441745882
+      }
+    },
+    {
+      "context": "dense_fp64",
+      "denominator_total_ns": 5593362078,
+      "method": "matched_metadata_mlp",
+      "shares": {
+        "IPC_and_unattributed_bridge": 0.013211222153961191,
+        "aggregation": 0.00045871873914471087,
+        "coordinator_residual": 0.006749215136363643,
+        "host_deserialization": 0.006004628617214292,
+        "inference_inverse_D2H": 0.0827050333143121,
+        "preparation": 0.8308880262337274,
+        "serialization": 0.009882808806070644,
+        "tensor_and_H2D": 0.050100346999206014
+      },
+      "stage_sums_ns": {
+        "IPC_and_unattributed_bridge": 73895149,
+        "aggregation": 2565780,
+        "coordinator_residual": 37750804,
+        "host_deserialization": 33586062,
+        "inference_inverse_D2H": 462599197,
+        "preparation": 4647457577,
+        "serialization": 55278128,
+        "tensor_and_H2D": 280229381
+      }
+    }
+  ],
+  "status": "SUCCESS"
+}

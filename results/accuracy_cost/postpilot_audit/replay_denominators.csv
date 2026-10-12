@@ -1,0 +1,12 @@
+context,method,selected_ids,comparisons,per_seed_comparisons,ensemble_comparisons,native_comparisons,passed,unavailable
+dense_fp32,mali_style_dense_graph,30,120,90,30,0,120,0
+dense_fp32,matched_metadata_mlp,30,120,90,30,0,120,0
+dense_fp32,outer_train_median,30,30,0,0,30,30,0
+dense_fp64,mali_style_dense_graph,30,120,90,30,0,120,0
+dense_fp64,matched_metadata_mlp,30,120,90,30,0,120,0
+dense_fp64,outer_train_median,30,30,0,0,30,30,0
+maestro,maestro_style_cpu_sv_component_optimizer_off_adaptation,30,30,0,0,30,29,1
+maestro,outer_train_median,30,30,0,0,30,30,0
+qpu,mali_global_mlp,50,200,150,50,0,200,0
+qpu,mali_logical_graph,50,200,150,50,0,200,0
+qpu,outer_train_median,50,50,0,0,50,50,0

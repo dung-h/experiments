@@ -1,0 +1,263 @@
+{
+  "correlations_descriptive_only": {
+    "all_selected": {
+      "graph_depth": 0.3149191305689742,
+      "graph_gates": 0.42142363078298595,
+      "graph_width": 0.8914805471651268,
+      "mlp_depth": 0.3825147431136955,
+      "mlp_gates": 0.5197140883612593,
+      "mlp_width": 0.8520788200989963
+    },
+    "mali_real_qpu": {
+      "graph_depth": -0.13733858694623508,
+      "graph_gates": 0.03917491935611423,
+      "graph_width": 0.8630219772542512,
+      "mlp_depth": -0.02473188896402321,
+      "mlp_gates": 0.2028779343190944,
+      "mlp_width": 0.8021671618638436
+    },
+    "qonductor_single_circuit_ibm": {
+      "graph_depth": 0.900937462695559,
+      "graph_gates": 0.9642857142857145,
+      "graph_width": 0.9285714285714288,
+      "mlp_depth": 0.8468812149338255,
+      "mlp_gates": 0.8928571428571429,
+      "mlp_width": 0.8571428571428573
+    }
+  },
+  "paired": {
+    "median_of_paired_latency_ratios": 2.3709988865833393,
+    "median_paired_latency_difference_ms": 183.04332150000002,
+    "observed_mae_graph_minus_mlp_seconds": -0.08834426643654947,
+    "ratio_of_marginal_latency_medians": 2.2242556308525323
+  },
+  "shares": [
+    {
+      "denominator_total_ns": 404973388736,
+      "method": "mali_logical_graph",
+      "shares": {
+        "IPC_and_unattributed_bridge": 0.051787842152937094,
+        "aggregation": 1.397951854977462e-05,
+        "coordinator_residual": 0.0002554826659670901,
+        "host_deserialization": 0.0919014028086225,
+        "inference_inverse_D2H": 0.023029963467747532,
+        "preparation": 0.761086175620114,
+        "serialization": 0.06666892867274446,
+        "tensor_and_H2D": 0.005256225093317535
+      },
+      "stage_sums_ns": {
+        "IPC_and_unattributed_bridge": 20972697932,
+        "aggregation": 5661333,
+        "coordinator_residual": 103463681,
+        "host_deserialization": 37217622525,
+        "inference_inverse_D2H": 9326522348,
+        "preparation": 308219647661,
+        "serialization": 26999141968,
+        "tensor_and_H2D": 2128631288
+      }
+    },
+    {
+      "denominator_total_ns": 178686912580,
+      "method": "mali_global_mlp",
+      "shares": {
+        "IPC_and_unattributed_bridge": 0.007865674876276941,
+        "aggregation": 3.195291091866489e-05,
+        "coordinator_residual": 0.0004954756603137454,
+        "host_deserialization": 0.0004192529207557927,
+        "inference_inverse_D2H": 0.0043708738694017675,
+        "preparation": 0.9724880083324567,
+        "serialization": 0.012445842932141618,
+        "tensor_and_H2D": 0.0018829184977347823
+      },
+      "stage_sums_ns": {
+        "IPC_and_unattributed_bridge": 1405493159,
+        "aggregation": 5709567,
+        "coordinator_residual": 88535016,
+        "host_deserialization": 74915010,
+        "inference_inverse_D2H": 781017957,
+        "preparation": 173770879730,
+        "serialization": 2223909248,
+        "tensor_and_H2D": 336452893
+      }
+    }
+  ],
+  "source_balanced_macro_mae_seconds": {
+    "graph": 0.9326910228231157,
+    "median_reference": 3.0879911140834757,
+    "mlp": 0.9961082368792453
+  },
+  "source_counts": {
+    "mali_real_qpu": 38,
+    "qonductor_single_circuit_ibm": 7
+  },
+  "status": "SUCCESS",
+  "summaries": [
+    {
+      "mae_seconds": 0.724176697021094,
+      "mean_signed_residual_seconds": 0.16157621447521156,
+      "medae_seconds": 0.479326275266601,
+      "median_request_median_B2_ms": 332.557293,
+      "median_request_p95_B2_ms": 343.18168099999997,
+      "method": "graph",
+      "n": 45,
+      "r2": 0.8976867320714272,
+      "rmse_seconds": 0.9475399431446588,
+      "source": "all_selected"
+    },
+    {
+      "mae_seconds": 0.8125209634576435,
+      "mean_signed_residual_seconds": 0.3072284185649061,
+      "medae_seconds": 0.535864568500978,
+      "median_request_median_B2_ms": 149.5139715,
+      "median_request_p95_B2_ms": 161.0664207,
+      "method": "mlp",
+      "n": 45,
+      "r2": 0.819780020637797,
+      "rmse_seconds": 1.2575724544385458,
+      "source": "all_selected"
+    },
+    {
+      "mae_seconds": 2.8641263459175117,
+      "mean_signed_residual_seconds": -1.2998138569698297,
+      "medae_seconds": 2.6305666661449787,
+      "median_request_median_B2_ms": "NOT_MEASURED",
+      "median_request_p95_B2_ms": "NOT_MEASURED",
+      "method": "median_reference",
+      "n": 45,
+      "r2": -0.17817348614127115,
+      "rmse_seconds": 3.215408613586476,
+      "source": "all_selected"
+    },
+    {
+      "mae_seconds": 0.6300089369814714,
+      "mean_signed_residual_seconds": 0.08283990535170381,
+      "medae_seconds": 0.47438465917903727,
+      "median_request_median_B2_ms": 357.89728275,
+      "median_request_p95_B2_ms": 368.468615725,
+      "method": "graph",
+      "n": 38,
+      "r2": 0.8735935853565961,
+      "rmse_seconds": 0.8113649777939788,
+      "source": "mali_real_qpu"
+    },
+    {
+      "mae_seconds": 0.7296105819124038,
+      "mean_signed_residual_seconds": 0.22192928265457632,
+      "medae_seconds": 0.5038559746695963,
+      "median_request_median_B2_ms": 153.866288,
+      "median_request_p95_B2_ms": 164.963270725,
+      "method": "mlp",
+      "n": 38,
+      "r2": 0.7519413830607345,
+      "rmse_seconds": 1.1366031621697956,
+      "source": "mali_real_qpu"
+    },
+    {
+      "mae_seconds": 2.763026128036109,
+      "mean_signed_residual_seconds": -2.1679556911725855,
+      "medae_seconds": 2.497226088769491,
+      "median_request_median_B2_ms": "NOT_MEASURED",
+      "median_request_p95_B2_ms": "NOT_MEASURED",
+      "method": "median_reference",
+      "n": 38,
+      "r2": -0.8953103081552296,
+      "rmse_seconds": 3.1417517330568656,
+      "source": "mali_real_qpu"
+    },
+    {
+      "mae_seconds": 1.23537310866476,
+      "mean_signed_residual_seconds": 0.5890018925742538,
+      "medae_seconds": 1.5864573795025636,
+      "median_request_median_B2_ms": 9.6221195,
+      "median_request_p95_B2_ms": 10.087154,
+      "method": "graph",
+      "n": 7,
+      "r2": -0.4422836895635769,
+      "rmse_seconds": 1.4825912951996563,
+      "source": "qonductor_single_circuit_ibm"
+    },
+    {
+      "mae_seconds": 1.2626058918460867,
+      "mean_signed_residual_seconds": 0.7702808706495538,
+      "medae_seconds": 0.8893238292800292,
+      "median_request_median_B2_ms": 3.8299209999999997,
+      "median_request_p95_B2_ms": 4.04390695,
+      "method": "mlp",
+      "n": 7,
+      "r2": -1.0693360929797042,
+      "rmse_seconds": 1.7758718214543883,
+      "source": "qonductor_single_circuit_ibm"
+    },
+    {
+      "mae_seconds": 3.412956100130842,
+      "mean_signed_residual_seconds": 3.412956100130842,
+      "medae_seconds": 3.3423584851956787,
+      "median_request_median_B2_ms": "NOT_MEASURED",
+      "median_request_p95_B2_ms": "NOT_MEASURED",
+      "method": "median_reference",
+      "n": 7,
+      "r2": -7.451810376950654,
+      "rmse_seconds": 3.588979454472369,
+      "source": "qonductor_single_circuit_ibm"
+    }
+  ],
+  "uncertainty": {
+    "all_selected": {
+      "groups": 44,
+      "mae_difference_graph_minus_mlp_seconds": [
+        -0.3548650735233648,
+        0.1378862161955058
+      ],
+      "marginal_median_latency_ratio": [
+        2.067538851043498,
+        2.4085255418188094
+      ],
+      "observations": 45,
+      "paired_latency_difference_ms": [
+        150.23852350000004,
+        219.50463274999998
+      ],
+      "replicates": 2000,
+      "seed": 20261011,
+      "unit": "paired structural-group cluster, row-weighted MAE; median request latency difference; ratio of marginal latency medians"
+    },
+    "mali_real_qpu": {
+      "groups": 37,
+      "mae_difference_graph_minus_mlp_seconds": [
+        -0.40985907664732296,
+        0.12686176500357105
+      ],
+      "marginal_median_latency_ratio": [
+        2.1090199453714207,
+        2.438538972082125
+      ],
+      "observations": 38,
+      "paired_latency_difference_ms": [
+        162.080745,
+        227.08486325
+      ],
+      "replicates": 2000,
+      "seed": 20261011,
+      "unit": "paired structural-group cluster, row-weighted MAE; median request latency difference; ratio of marginal latency medians"
+    },
+    "qonductor_single_circuit_ibm": {
+      "groups": 7,
+      "mae_difference_graph_minus_mlp_seconds": [
+        -0.8043819274221149,
+        0.7319414956229073
+      ],
+      "marginal_median_latency_ratio": [
+        2.4771378020795045,
+        2.517590671300797
+      ],
+      "observations": 7,
+      "paired_latency_difference_ms": [
+        5.573688499999999,
+        6.033076999999999
+      ],
+      "replicates": 2000,
+      "seed": 20261011,
+      "unit": "paired structural-group cluster, row-weighted MAE; median request latency difference; ratio of marginal latency medians"
+    }
+  }
+}
