@@ -20,6 +20,8 @@ libraries and pinned upstream helpers. Those external components keep their
 own terms. See [source notices](../NOTICE.md). No blanket license for upstream
 code or third-party datasets is granted by this repository.
 
-The project code has no root license selected yet. Citation metadata and a
-project-wide code license can be added separately; they do not change the
-recorded experiment or the data exclusions.
+MIT has been selected for verified original project-owned code only. A root
+license grant and CITATION authors are not finalized here: copyright holders,
+authors and scope must be confirmed rather than inferred from Git history.
+Upstream notices and third-party terms are unchanged. This scientific reporting
+publication does not grant MIT rights over external code, datasets or assets.

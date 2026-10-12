@@ -1,5 +1,12 @@
 # Benchmark results
 
+The completed [scientific synthesis](thesis/README.md) adds the full 21-case
+generalization assessment and matched warm accuracy–cost evidence. See the
+[canonical tables](thesis/canonical_tables.md) and
+[final research-question closure](../results/research_questions/closure/README.md).
+The parent tables below retain their validated 4,515-observation and
+context-specific meanings; AM1 subsets do not replace those populations.
+
 The real-QPU comparison uses **4,515 archived observations** and 165 conservative
 groups. Every method receives the same five outer test partitions. There are
 32 reported variants, including raw and separately calibrated analytical outputs,

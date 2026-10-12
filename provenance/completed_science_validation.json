@@ -1,0 +1,32 @@
+{
+  "scope": "Fresh publication-preparation checks, not scientific execution or QPU refit reproduction",
+  "development_suite": {
+    "command": "CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 /home/server/Documents/.venv-qonductor/bin/python -B -m pytest -q -p no:cacheprovider benchmark_v1/tests artifacts/benchmark_deep_dive/scripts/test_analysis.py",
+    "passed": 1268, "failed": 0, "skipped": 1, "warnings": 139, "status": "PASS"
+  },
+  "final_rq_closure": {
+    "command": "python3 -B benchmark_v1/scripts/build_final_rq_closure_v2.py --check",
+    "status": "PASS", "source_files_unchanged": 110, "saved_evidence_validators": 4,
+    "readme_namespace_matches": 6, "named_declarations_resolved": 182,
+    "blocking_scientific_gaps": 0
+  },
+  "thesis_synthesis": {
+    "command": "python3 -B benchmark_v1/scripts/build_thesis_synthesis.py --check",
+    "status": "PASS", "source_files_unchanged": 131, "markdown_reports": 17,
+    "CSV_tables": 8, "local_links_checked": 130
+  },
+  "public_checks": {
+    "commands": [
+      "python3 -B scripts/verify.py", "python3 -B scripts/check_qpu_results.py",
+      "python3 -B scripts/check_simulator_results.py", "python3 -B scripts/check_completed_science.py",
+      "python3 -B -m unittest discover -s tests"
+    ],
+    "public_unittest_count": 33, "new_Dense_pairs_reconciled": 60,
+    "new_Dense_B2_repetitions_reconciled": 3600, "QPU_aggregate_only": true,
+    "fresh_clean_checkout": "Repeat these checks on the committed publication branch before push; this receipt does not substitute for that verification"
+  },
+  "new_training_inference_measurement": false,
+  "private_evidence_modified": false,
+  "canva_modified": false,
+  "license_citation_metadata_invented": false
+}

@@ -9,6 +9,25 @@ redistribute the source real-QPU datasets or their row-level derived inputs.
 
 ## Start here
 
+The experimental phase is closed. The current scientific verdict is
+**SCIENTIFICALLY SUFFICIENT WITH MATERIAL LIMITATIONS**. The completed
+generalization grid has 21 CPU and 21 neural cases (126 model–seed cells).
+New AM1 work measures matched warm full-pipeline prediction cost, not new
+QPU or simulator executions.
+
+- [Scientific synthesis](docs/thesis/README.md) and [canonical tables](docs/thesis/canonical_tables.md).
+- [Final RQ closure](results/research_questions/closure/README.md).
+- [QPU accuracy–cost](results/accuracy_cost/qpu/accuracy_cost_tradeoff.md) and
+  [Dense accuracy–cost](results/accuracy_cost/dense/accuracy_cost_tradeoff.md).
+- [Preprocessing fidelity](results/reproducibility/preprocessing/root_cause_analysis.md)
+  and [publication scope](docs/completed_science_publication.md).
+
+RQ2 portability remains partially answered and non-blocking. Graph is not a
+universal winner. AM1 uses 45 QPU observations and 30 circuits per Dense
+precision; these are not full-cohort overhead measurements. The public
+payload contains aggregate QPU reporting only, plus the project's own Dense
+timing and prediction records. Private QPU derivatives remain excluded.
+
 1. [Dataset construction](docs/data_preprocessing.md): source joins, units,
    circuit reconstruction, selection and missing data.
 2. [Feature dictionary](docs/data_and_feature_dictionary.md): ordered inputs,
@@ -50,6 +69,7 @@ independent saved-evidence checks. See [data availability](docs/distribution.md)
 python3 scripts/verify.py
 python3 -B scripts/check_qpu_results.py
 python3 -B scripts/check_simulator_results.py
+python3 -B scripts/check_completed_science.py
 python3 -B -m unittest discover -s tests
 ```
 
