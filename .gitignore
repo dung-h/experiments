@@ -4,3 +4,7 @@ __pycache__/
 .venv*/
 .replay/
 scratch/
+# Machine-local secrets/OS metadata, not scientific sources.
+/.env
+/.env.local
+/.DS_Store

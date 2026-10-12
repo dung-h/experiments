@@ -8,8 +8,8 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 64,
-      "sha256": "763f4b2c128dec0aaf08600e4bb45c1ea567cef262d199bc2e84edf35ad9abae"
+      "bytes": 154,
+      "sha256": "697e4b3b0846ce44ada3ea6fa22364d4d8e6574a431671932ce71a7766c93fdd"
     },
     {
       "path": "AGENTS.md",
@@ -23,8 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 5123,
-      "sha256": "4ed358a64fe317f8d226305c024588875adac031665a62a6966830cbcb8941bf"
+      "bytes": 3861,
+      "sha256": "4b81bd379fe203267d9ea54dc145e71aa4fc3586044418255cba070fee1db1b6"
+    },
+    {
+      "path": "data/README.md",
+      "bytes": 868,
+      "sha256": "7196f421998594c556389ffa21957112989a919ea81c2683b1bf9e1e18c4eb3e"
     },
     {
       "path": "data/simulator/README.md",
@@ -1327,6 +1332,11 @@
       "sha256": "4251ce42b7e1f797e9900d00dfbdaa809f1ab29944092a8c7fa7a48323961ff3"
     },
     {
+      "path": "docs/README.md",
+      "bytes": 2014,
+      "sha256": "08992c027f5046c0bcec1250273071acb845c349c77916518065caf30630025d"
+    },
+    {
       "path": "docs/analysis.md",
       "bytes": 5616,
       "sha256": "21ab6c19f61902edc11b714fa4bcee12982e681e014de040d2965de8b06cb438"
@@ -1350,6 +1360,16 @@
       "path": "docs/distribution.md",
       "bytes": 1560,
       "sha256": "dda19153a21542e92f04904c3f9ef4c780e5e3e59c2c247bb1ea7988eb6fdf8c"
+    },
+    {
+      "path": "docs/historical_packages.md",
+      "bytes": 3742,
+      "sha256": "88dbde8f11e23dc34a8cbd5c071e78989f3b8b7e63adab8f398af611abcb4bab"
+    },
+    {
+      "path": "docs/metadata_todo.md",
+      "bytes": 1503,
+      "sha256": "ce1857a5a842102846d39bd52fd26b7e3d62dfbb70bf85f513581a0f37e12b33"
     },
     {
       "path": "docs/methodology.md",
@@ -1470,6 +1490,11 @@
       "path": "docs/training_and_measurement.md",
       "bytes": 30335,
       "sha256": "03b28d8ff71de1867da3a84bf36a61ec2e92549f07f8957e90de10d48db87d57"
+    },
+    {
+      "path": "methods/README.md",
+      "bytes": 1007,
+      "sha256": "054805c86170f03a7aee3f514ac48c1f7d77ab147467778f7b02bcf33d8ea00a"
     },
     {
       "path": "methods/real_qpu/README.md",
@@ -2072,6 +2097,11 @@
       "sha256": "becf6da59b17fbf406f5c48f68fc71eb0a89acd47e9763e17a84c6fc4ee5f538"
     },
     {
+      "path": "provenance/README.md",
+      "bytes": 1586,
+      "sha256": "48d220163a9552deb6bdeacccdeacac2667c568fa78cced6cf053b766025b58b"
+    },
+    {
       "path": "provenance/complete_grid_publication.json",
       "bytes": 6018,
       "sha256": "5d5821afcb66cd70096b5000f526cac5b55137c0d54951000ec42c47c66fbc45"
@@ -2115,6 +2145,11 @@
       "path": "requirements-pasqal-preprocess.txt",
       "bytes": 179,
       "sha256": "5aaac6844f854c5d5d33464c1d23317cdc821f3a36e629653c84a454e0e5421e"
+    },
+    {
+      "path": "results/README.md",
+      "bytes": 3183,
+      "sha256": "0107be5b9aea83981a7fd81de846aca8115e4ed9d28007b5ef567f28c38a80b1"
     },
     {
       "path": "results/accuracy_cost/dense/README.md",
@@ -3280,6 +3315,11 @@
       "path": "scripts/verify.py",
       "bytes": 6258,
       "sha256": "0d964d79d5bae88577bece5337979c0b20cc25607233f146b34f853392fea229"
+    },
+    {
+      "path": "tests/README.md",
+      "bytes": 1143,
+      "sha256": "7d8bc43382400453d95fcc63aab106925060b5156e044377a283f22db03d8789"
     },
     {
       "path": "tests/test_complete_grid_publication.py",

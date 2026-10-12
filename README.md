@@ -1,90 +1,75 @@
 # Quantum Runtime Estimation Benchmark
 
-Comparison of runtime prediction methods on archived real-QPU observations
-and simulator measurements collected on a local workstation.
+Systematic comparison of quantum circuit runtime estimators, with explicit
+runtime semantics, input qualifications and comparable held-out evaluations.
+The contribution is a benchmark and its findings, not a universal Graph model.
 
-This repository contains the study protocol, preprocessing and analysis code,
-aggregate dataset descriptions and local simulator measurements. It does not
-redistribute the source real-QPU datasets or their row-level derived inputs.
+**Scientific verdict: SCIENTIFICALLY SUFFICIENT WITH MATERIAL LIMITATIONS.**
+Experiments are closed. Start with [thesis synthesis](docs/thesis/README.md),
+[canonical tables](docs/thesis/canonical_tables.md) or [results by RQ](results/README.md).
 
-## Start here
+## Tracks and runtime semantics
 
-The experimental phase is closed. The current scientific verdict is
-**SCIENTIFICALLY SUFFICIENT WITH MATERIAL LIMITATIONS**. The completed
-generalization grid has 21 CPU and 21 neural cases (126 model–seed cells).
-New AM1 work measures matched warm full-pipeline prediction cost, not new
-QPU or simulator executions.
+| Track | Target and evaluation population |
+| --- | --- |
+| A: Real QPU | Source-retained circuit-level observed execution/service time. 4,515 qualified observations: Ma–Li 340, Qonductor 230, QPack 3,945; 165 structural groups. |
+| B: Simulator | Runtime within a specified engine, hardware, precision, API and quality context. Predictor core: 150 hashes at 2–9 qubits; measured panel: 204 circuit members / 191 hashes through 16 qubits. |
 
-- [Scientific synthesis](docs/thesis/README.md) and [canonical tables](docs/thesis/canonical_tables.md).
-- [Final RQ closure](results/research_questions/closure/README.md).
-- Full generalization [126 seed metrics](results/generalization/full_grid/seed_metrics.csv),
-  [median-of-three results](results/generalization/full_grid/median_metrics.csv)
-  and [case-level paired evidence](results/generalization/full_grid/paired_comparisons.csv).
-- [QPU accuracy–cost](results/accuracy_cost/qpu/accuracy_cost_tradeoff.md) and
-  [Dense accuracy–cost](results/accuracy_cost/dense/accuracy_cost_tradeoff.md).
-- [Preprocessing fidelity](results/reproducibility/preprocessing/root_cause_analysis.md)
-  and [publication scope](docs/completed_science_publication.md).
+QPU service time is not queue time, scheduled duration, QPU usage or workflow
+turnaround. Simulator sample, state extraction, engine-reported time,
+contraction and analog emulation have different boundaries. No cross-context leaderboard.
 
-RQ2 portability remains partially answered and non-blocking. Graph is not a
-universal winner. AM1 uses 45 QPU observations and 30 circuits per Dense
-precision; these are not full-cohort overhead measurements. The public
-payload contains aggregate QPU reporting only, plus the project's own Dense
-timing and prediction records. Private QPU derivatives remain excluded.
+## Research questions
 
-1. [Dataset construction](docs/data_preprocessing.md): source joins, units,
-   circuit reconstruction, selection and missing data.
-2. [Feature dictionary](docs/data_and_feature_dictionary.md): ordered inputs,
-   extraction rules and fit-only transformations.
-3. [Training and measurement](docs/training_and_measurement.md): folds, seeds,
-   hardware, shots, clocks and quality thresholds.
-4. [Results](docs/results.md) and [paper comparison](docs/paper_comparison.md).
+1. **RQ1:** Predictive accuracy and comparative effectiveness.
+2. **RQ2:** Generalization beyond training/calibration distributions.
+3. **RQ3:** Error behavior, robustness and failure modes.
+4. **RQ4:** Accuracy–cost trade-off and scalability.
+5. **RQ5:** Method fidelity, applicability and practical selection.
 
-| Track | Evaluation population | Results |
-| --- | --- | --- |
-| Real QPU | **4,515 observations**: Ma–Li 340 + Qonductor 230 + QPack 3,945; 165 groups | [Table](results/real_qpu/method_comparison.md) · [CSV](results/real_qpu/method_comparison.csv) · [Same-row comparisons](results/real_qpu/shared_row_comparisons.csv) |
-| Simulator | 204 circuit members / 191 QASM hashes through 16 qubits; predictor core of 150 hashes at 2–9 qubits | [Table](results/simulator/method_comparison.md) · [CSV](results/simulator/method_comparison.csv) |
+[Final closure](results/research_questions/closure/final_rq_status.md) keeps
+RQ2 partially answered and non-blocking; RQ4 is answered within measured scope.
 
-QPU methods use the same observation panel and outer folds, with declared
-method-specific inputs. Simulator methods are compared within the same engine,
-precision, execution clock and quality context. Scores across these contexts
-are not a single leaderboard. Unified implementations are identified as
-adaptations, not paper-exact reproductions.
+## Strongest validated findings
 
-## Contents
+- QPU pooled MAE: Graph 0.8341 s, MLP 0.8934 s, selector 0.8867 s.
+  Competitive paired uncertainty is unresolved; weighting changes rankings.
+- Full generalization grid: 21 CPU and 21 neural cases, 126 seed cells.
+  QNN/Random overprediction and Kyoto input collisions limit transfer claims.
+- QPU exact45: Graph warm full-B2 costs about 2.22× MLP without an
+  established paired accuracy advantage.
+- Dense FP32/FP64: MLP has lower MAE and B2 on exact30 subsets,
+  not a universal advantage or replacement for full150 accuracy.
+- Each frozen MPS c44 selector violates the fidelity gate on 64/140 assessed
+  choices. Prediction accuracy alone does not establish safe approximation.
 
-- `data/simulator/`: locally measured times, failures, quality records, features,
-  frozen partitions and saved predictions. Source QASM and serialized source
-  DAGs are not included.
-- `results/`: both method tables, source profiles, coverage, paired comparisons and figures.
-- `methods/`: project extraction, reconstruction, fitting and analysis code.
-- `protocol/`: recorded method and execution settings.
-- `docs/`: dataset preparation, experiment procedure, findings and limitations.
-- `provenance/`: upstream revisions, publication selection and file hashes.
+## Repository map
 
-The real-QPU source labels, per-observation features, split membership and
-predictions remain outside this repository. Their origins and processing are
-documented; current aggregate QPU scores come from completed fresh fits and
-independent saved-evidence checks. See [data availability](docs/distribution.md).
+| Location | Use |
+| --- | --- |
+| [docs](docs/README.md) | Canonical thesis, dataset/methodology guides, historical-package index |
+| [results](results/README.md) | Comparisons and supporting evidence by RQ |
+| [data](data/README.md) | Own simulator evidence; no private QPU rows |
+| [methods](methods/README.md) | Implementations and historical support with prerequisites |
+| [provenance](provenance/README.md) | Source/published hashes and export boundary |
+| [tests](tests/README.md) | Public saved-evidence checks, not independent refits |
 
-## Check this checkout
+## Public reproduction boundary
 
 ```bash
-python3 scripts/verify.py
+python3 -B scripts/verify.py
 python3 -B scripts/check_qpu_results.py
 python3 -B scripts/check_simulator_results.py
 python3 -B scripts/check_completed_science.py
 python3 -B -m unittest discover -s tests
 ```
 
-These checks verify published files, reporting scope, QPU aggregate consistency
-and saved simulator scores. They do not
-retrain models, regenerate QPU scores or run simulators. Some retained runners
-still use the original experiment paths and need external inputs and a matching
-environment. See [reproduction scope](docs/reproduction.md) before running them.
+These checks validate files, QPU aggregates and retained simulator scores/timings.
+They do not train models, run inference or execute simulators. Private QPU
+labels, row derivatives, splits, checkpoints and source QASM are not bundled.
+Historical runners need external inputs/environments; see [reproduction](docs/reproduction.md)
+and [data availability](docs/distribution.md).
 
-Qonductor logical inputs are archive-supported recipes; QPack inputs are
-representative-angle structural reconstructions. They are not exact recovered
-historical logical circuits. The dataset report states the evidence and limits.
-
-Historical IDs and paths inside saved implementation records identify the producing run.
-They are provenance, not additional release directories or downloadable inputs.
+Published scientific baseline: `08ae5ac593a217678ec1015e093a78b59ac1a8af` on
+`benchmark-review`. Navigation changes are pending review.
+[Metadata TODO](docs/metadata_todo.md) lists unresolved license/citation fields.
