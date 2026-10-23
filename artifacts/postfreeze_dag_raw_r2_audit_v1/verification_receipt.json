@@ -1,0 +1,24 @@
+{
+  "input": "artifacts/validation/mali_physical_dag_v1/topology_controls_validation/seed_mean_oof_predictions.csv",
+  "split_manifest": "artifacts/validation/mali_deep_protocol_v1/split_audit/row_manifest.csv",
+  "canonical_summary": "artifacts/validation/mali_physical_dag_v1/topology_controls_validation/summary.json",
+  "n_rows": 340,
+  "n_raw_qasm_groups": 170,
+  "row_ids_identical_across_variants": true,
+  "targets_identical_across_variants": true,
+  "predictions_nonnegative": {
+    "node_only": true,
+    "true_dag": true,
+    "reversed_dag": true,
+    "shuffled_dag": true
+  },
+  "bootstrap_replicates": 5000,
+  "bootstrap_seed": 20261021,
+  "canonical_metric_max_abs_difference": {
+    "node_only": 0.0,
+    "true_dag": 0.0,
+    "reversed_dag": 0.0,
+    "shuffled_dag": 0.0
+  },
+  "note": "Raw R2 is recomputed after every group-resample on the pooled resampled rows; it is not an average of group R2 values."
+}

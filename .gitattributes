@@ -6,3 +6,13 @@ tracks/cdaa_qcre/independent/** whitespace=-trailing-space
 
 # Baseline CSVs are repository data, not platform-specific text files.
 artifacts/**/*.csv text eol=lf
+
+# Preserve the original bytes of hash-indexed post-freeze evidence exports.
+artifacts/postfreeze_track_a_transfer_sample_efficiency_v1/** -text whitespace=cr-at-eol
+artifacts/postfreeze_track_a_transpiled_representation_v1/** -text whitespace=cr-at-eol
+artifacts/postfreeze_dag_raw_r2_audit_v1/** -text whitespace=cr-at-eol,-blank-at-eof
+docs/audits/qpu_timing_boundary/** -text whitespace=cr-at-eol
+
+# Imported report snapshots retain their original final blank lines.
+artifacts/postfreeze_final_completion_v1/** whitespace=-blank-at-eof
+docs/final_completion/*.md whitespace=-blank-at-eof

@@ -1,0 +1,11 @@
+learner,contrast,left_view,right_view,point_group_balanced_mae_delta_seconds,ci95_low,ci95_high,empirical_bootstrap_improvement_fraction,bootstrap_replicates,bootstrap_seed,resampling_unit,sign_convention
+ridge,H1_transpiled_static_minus_source_static,P0,S0,0.3359418358272944,0.16080987480617318,0.5108253206784684,0.0001,10000,42,structural_group,negative_favors_left
+ridge,H3_timing_minus_transpiled_static,P1,P0,-0.41230803883760225,-0.5620200511586483,-0.27179664955550026,1.0,10000,42,structural_group,negative_favors_left
+ridge,H2_hybrid_minus_source_static,H0,S0,-0.20628947711829423,-0.4043775416734048,-0.06216166614448107,0.9995,10000,42,structural_group,negative_favors_left
+ridge,H2_hybrid_minus_transpiled_static,H0,P0,-0.5422313129455885,-0.7396226660193272,-0.3712549589617288,1.0,10000,42,structural_group,negative_favors_left
+ridge,hybrid_timing_minus_hybrid_static,H1,H0,0.010322732034035925,-0.054419551194321125,0.09790106400243584,0.436,10000,42,structural_group,negative_favors_left
+hgb,H1_transpiled_static_minus_source_static,P0,S0,-0.0030243604230911748,-0.07077174820138434,0.055686074446130995,0.5195,10000,42,structural_group,negative_favors_left
+hgb,H3_timing_minus_transpiled_static,P1,P0,0.0026144078934193147,-0.025256501925501926,0.030085305352998908,0.429,10000,42,structural_group,negative_favors_left
+hgb,H2_hybrid_minus_source_static,H0,S0,0.017494470000702058,-0.021167430715086113,0.05686810663774212,0.1855,10000,42,structural_group,negative_favors_left
+hgb,H2_hybrid_minus_transpiled_static,H0,P0,0.020518830423793245,-0.037119551020136275,0.08548356493209182,0.2618,10000,42,structural_group,negative_favors_left
+hgb,hybrid_timing_minus_hybrid_static,H1,H0,-0.036408045521472865,-0.07176881029356938,-0.004818669996406734,0.9874,10000,42,structural_group,negative_favors_left

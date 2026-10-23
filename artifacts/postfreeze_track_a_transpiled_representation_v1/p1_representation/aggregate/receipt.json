@@ -1,0 +1,24 @@
+{
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 42,
+    "unit": "structural_group"
+  },
+  "input_hashes": {
+    "artifacts/postfreeze_track_a_transpiled_representation_v1/p1_representation/hgb/outer_predictions.csv": "bd0f1e50c30270120c36e36bab01ef3b0bbf9dddb71c802e09860004f82f0445",
+    "artifacts/postfreeze_track_a_transpiled_representation_v1/p1_representation/ridge/outer_predictions.csv": "fca69f3e21d6d68b6a2938ecc7de58f35a97afb5c1bba6eba7f4d861b040f36d"
+  },
+  "learners": [
+    "ridge",
+    "hgb"
+  ],
+  "predictions_per_view": 4515,
+  "status": "PASS",
+  "views": [
+    "S0",
+    "P0",
+    "P1",
+    "H0",
+    "H1"
+  ]
+}

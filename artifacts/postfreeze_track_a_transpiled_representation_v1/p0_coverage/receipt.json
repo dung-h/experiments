@@ -1,0 +1,23 @@
+{
+  "available_rows": 4515,
+  "duration_proxy_available_rows": 4515,
+  "failures": 0,
+  "graph_files_examined": 346,
+  "inputs": {
+    "artifacts/benchmark_v3/real_qpu/compiled_unified/representation_rows.csv": "cad9f42f414c5fc551aef1a52d715dcb13aee6636cda9972d8bf970e2d84e802",
+    "artifacts/postfreeze_track_a_transpiled_representation_v1/PROTOCOL.md": "09519f8281f9a2e7785ca539c897dae6afb0f59f0e3d8e364c7ce0b699537aa8",
+    "artifacts/real_qpu/qualified_logical_panel/analytical/attempts.csv": "df87419ffe4d10b5a201108f40f4a8817713112e14a306e0e55ccf55ef7a1ed8",
+    "artifacts/real_qpu/qualified_logical_panel/panel.csv": "b4ade914955d7807e466cf5cf0c5265d21b39a81fdcee8e91dc2fb6300eb978a"
+  },
+  "joined_rows": 4515,
+  "panel_groups": 165,
+  "panel_rows": 4515,
+  "panel_sources": {
+    "mali_real_qpu": 340,
+    "qonductor_single_circuit_ibm": 230,
+    "qpack_mcp": 3945
+  },
+  "scope": "read_only_p0_coverage_provenance",
+  "status": "PASS",
+  "unique_graph_files": 346
+}

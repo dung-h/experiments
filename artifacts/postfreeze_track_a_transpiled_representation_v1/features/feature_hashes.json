@@ -1,0 +1,7 @@
+{
+  "artifacts/postfreeze_track_a_transpiled_representation_v1/features/feature_dictionary.json": "dc201219dc49f363ca69bed16787be930c273a815fd38e388ce402eddbe4e61c",
+  "artifacts/postfreeze_track_a_transpiled_representation_v1/features/representation_manifest.csv": "4e899bf5f8b2958b48c6d5bc43032598878dea0bf27c9e3f0b51b0a42bd7d16e",
+  "artifacts/postfreeze_track_a_transpiled_representation_v1/features/source_static.csv": "2eaccb2edf7b0aafc6786736ef40190de0bf0c561b3fac85431d8c8a1a49894d",
+  "artifacts/postfreeze_track_a_transpiled_representation_v1/features/timing_features.csv": "bc05c3bc120836692e3e5d7d0ed8194555cd6edbe6d626371432b9ae483d1887",
+  "artifacts/postfreeze_track_a_transpiled_representation_v1/features/transpiled_static.csv": "48659d83401e0c65a9bd1debe38f65b9339d1b9bf16fb094bdf3d948ff3dca38"
+}

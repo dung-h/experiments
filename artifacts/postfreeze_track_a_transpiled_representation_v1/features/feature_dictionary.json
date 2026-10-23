@@ -1,0 +1,131 @@
+{
+  "forbidden_primary": [
+    "source_id",
+    "backend",
+    "snapshot_id",
+    "hashes",
+    "provenance flags",
+    "target",
+    "fold"
+  ],
+  "schema_version": "p1-label-blind-v1",
+  "shared_context": {
+    "fields": [
+      "log1p_shots"
+    ],
+    "transform": "already log1p(shots); outer-train scaler"
+  },
+  "source_static": {
+    "fields": [
+      "g00",
+      "g01",
+      "g02",
+      "g03",
+      "g04",
+      "g05",
+      "g06",
+      "g07",
+      "g08",
+      "g09",
+      "g10",
+      "g11",
+      "g12",
+      "g13",
+      "g14",
+      "g15",
+      "g16",
+      "g17",
+      "g18",
+      "g19",
+      "g20",
+      "g21",
+      "g22",
+      "g23",
+      "g24",
+      "g25",
+      "g26",
+      "g27",
+      "g28",
+      "g29",
+      "g30",
+      "g31",
+      "g32",
+      "g33",
+      "g34",
+      "g35",
+      "g36",
+      "g37",
+      "g38",
+      "g39",
+      "g40",
+      "g41",
+      "g42",
+      "g43",
+      "g44",
+      "g45",
+      "g46",
+      "g47",
+      "g48",
+      "g49",
+      "g50"
+    ],
+    "transform": "g00-g43 log1p; g44-g45 log1p; g46-g50 natural scale; outer-train scaler"
+  },
+  "timing": {
+    "fields": [
+      "nominal_single_shot_duration_seconds"
+    ],
+    "not_claimed": "historical execution-day timing",
+    "provenance": "saved nominal single-shot proxy; log1p then outer-train scaler"
+  },
+  "transpiled_static": {
+    "base_fields": [
+      "active_physical_width",
+      "physical_depth",
+      "native_operation_count",
+      "native_2q_operation_count",
+      "native_measurement_count",
+      "native_swap_like_count",
+      "dag_node_count",
+      "dag_edge_count"
+    ],
+    "native_opcode_schema": [
+      "id",
+      "x",
+      "y",
+      "z",
+      "h",
+      "s",
+      "sdg",
+      "t",
+      "tdg",
+      "sx",
+      "sxdg",
+      "rx",
+      "ry",
+      "rz",
+      "p",
+      "u",
+      "u1",
+      "u2",
+      "u3",
+      "cx",
+      "cz",
+      "ecr",
+      "swap",
+      "measure",
+      "reset",
+      "barrier",
+      "delay"
+    ],
+    "other_policy": "sum saved opcodes outside fixed semantic schema",
+    "transform": "all counts/depth log1p; outer-train scaler"
+  },
+  "views": {
+    "H0": "source_static + transpiled_static + log1p_shots",
+    "H1": "source_static + transpiled_static + timing + log1p_shots",
+    "P0": "transpiled_static + log1p_shots",
+    "P1": "transpiled_static + timing + log1p_shots",
+    "S0": "source_static + log1p_shots"
+  }
+}

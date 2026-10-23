@@ -1,0 +1,57 @@
+{
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 42,
+    "unit": "structural_group"
+  },
+  "cohort": {
+    "groups": 165,
+    "rows": 4515,
+    "source_counts": {
+      "mali_real_qpu": 340,
+      "qonductor_single_circuit_ibm": 230,
+      "qpack_mcp": 3945
+    }
+  },
+  "feature_hashes": {
+    "artifacts/postfreeze_track_a_transpiled_representation_v1/features/feature_dictionary.json": "dc201219dc49f363ca69bed16787be930c273a815fd38e388ce402eddbe4e61c",
+    "artifacts/postfreeze_track_a_transpiled_representation_v1/features/representation_manifest.csv": "4e899bf5f8b2958b48c6d5bc43032598878dea0bf27c9e3f0b51b0a42bd7d16e",
+    "artifacts/postfreeze_track_a_transpiled_representation_v1/features/source_static.csv": "2eaccb2edf7b0aafc6786736ef40190de0bf0c561b3fac85431d8c8a1a49894d",
+    "artifacts/postfreeze_track_a_transpiled_representation_v1/features/timing_features.csv": "bc05c3bc120836692e3e5d7d0ed8194555cd6edbe6d626371432b9ae483d1887",
+    "artifacts/postfreeze_track_a_transpiled_representation_v1/features/transpiled_static.csv": "48659d83401e0c65a9bd1debe38f65b9339d1b9bf16fb094bdf3d948ff3dca38"
+  },
+  "no_test_feature_selection": true,
+  "panel_sha256": "b4ade914955d7807e466cf5cf0c5265d21b39a81fdcee8e91dc2fb6300eb978a",
+  "primary_learner": {
+    "alpha_grid": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1,
+      1,
+      10,
+      100,
+      1000
+    ],
+    "name": "Ridge",
+    "selection": "four inner group folds, group-balanced MAE in raw seconds"
+  },
+  "secondary_learner": {
+    "name": "HistGradientBoostingRegressor",
+    "selection": "same inner folds; fixed small predeclared grid"
+  },
+  "split_hashes": {
+    "artifacts/real_qpu/qualified_logical_panel/inner_splits.csv": "057aa6396e772a76a838467c6658b9ee3a89c2f35e9cb307a6ac9ae862b1ffd2",
+    "artifacts/real_qpu/qualified_logical_panel/outer_splits.csv": "eb80db3c5443498f8f262c3479cb09fb34028c85a26203284118968ff96196c2"
+  },
+  "status": "FROZEN_BEFORE_P1_FITTING",
+  "target_column": "target_seconds",
+  "target_transform": "log1p(seconds)",
+  "views": {
+    "H0": "source_static + transpiled_static + log1p_shots",
+    "H1": "source_static + transpiled_static + timing + log1p_shots",
+    "P0": "transpiled_static + log1p_shots",
+    "P1": "transpiled_static + timing + log1p_shots",
+    "S0": "source_static + log1p_shots"
+  }
+}

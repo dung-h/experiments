@@ -1,0 +1,4 @@
+source_id,observation_rows,available_rows,unique_groups,unique_graph_files,unique_physical_graph_keys
+mali_real_qpu,340,340,148,300,300
+qonductor_single_circuit_ibm,230,230,11,32,48
+qpack_mcp,3945,3945,6,14,26

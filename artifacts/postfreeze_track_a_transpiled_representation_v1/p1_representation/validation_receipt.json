@@ -1,0 +1,19 @@
+{
+  "aggregate_receipt_sha256": "e7dd08cfb9dc47bdb7a3c092dedf4c77dfbadb6f93ed4891de0ae22e9fa9e4ab",
+  "errors": [],
+  "groups": 165,
+  "learners": [
+    "ridge",
+    "hgb"
+  ],
+  "p1_manifest_sha256": "256175c6c0774a0f7a855c4e5bded35684182a33c4ae920a5a5e64b9e45812db",
+  "rows": 4515,
+  "status": "PASS",
+  "views": [
+    "S0",
+    "P0",
+    "P1",
+    "H0",
+    "H1"
+  ]
+}

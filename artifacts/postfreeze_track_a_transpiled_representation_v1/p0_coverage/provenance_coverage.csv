@@ -1,0 +1,3 @@
+structure_provenance,timing_provenance,observation_rows,available_rows,unique_groups
+EXACT_SUBMITTED_PHYSICAL,FROZEN_SNAPSHOT_PROXY,230,230,11
+FROZEN_RECONSTRUCTION,FROZEN_SNAPSHOT_PROXY,4285,4285,154
