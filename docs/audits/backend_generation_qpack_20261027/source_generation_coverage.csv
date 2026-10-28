@@ -1,0 +1,17 @@
+family,generation,backend,source_id,rows,groups
+Eagle,Eagle r3,ibm_kyoto,mali_real_qpu,148,117
+Eagle,Eagle r3,ibm_osaka,mali_real_qpu,192,148
+Falcon,Falcon r4T,ibmq_belem,qonductor_single_circuit_ibm,24,3
+Falcon,Falcon r4T,ibmq_lima,qonductor_single_circuit_ibm,41,4
+Falcon,Falcon r4T,ibmq_quito,qonductor_single_circuit_ibm,42,3
+Falcon,Falcon r4T,ibmq_quito,qpack_mcp,1009,4
+Falcon,Falcon r5.11H,ibm_lagos,qonductor_single_circuit_ibm,5,1
+Falcon,Falcon r5.11H,ibm_lagos,qpack_mcp,363,4
+Falcon,Falcon r5.11H,ibm_nairobi,qonductor_single_circuit_ibm,19,3
+Falcon,Falcon r5.11H,ibm_nairobi,qpack_mcp,1546,6
+Falcon,Falcon r5.11H,ibm_perth,qonductor_single_circuit_ibm,25,5
+Falcon,Falcon r5.11H,ibm_perth,qpack_mcp,326,4
+Falcon,Falcon r5.11H,ibmq_jakarta,qonductor_single_circuit_ibm,41,4
+Falcon,Falcon r5.11H,ibmq_jakarta,qpack_mcp,367,4
+Falcon,Falcon r5.11L,ibmq_manila,qonductor_single_circuit_ibm,33,4
+Falcon,Falcon r5.11L,ibmq_manila,qpack_mcp,334,4

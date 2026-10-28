@@ -1,5 +1,20 @@
 # Quantum Runtime Estimator: replication studies
 
+## Current post-freeze report supplements
+
+The [recent QPU findings guide](docs/publication/RECENT_QPU_FINDINGS.md) indexes
+the completed shots-input ablation and analytical source/correlation/backend
+audits. It also records qualifications to older timing-boundary and measurement
+wording. The [literature-review presentation plan](docs/literature_review/PRESENTATION_PLAN.md)
+organizes a proposed nine-slide review with per-paper evidence requirements.
+
+These are aggregate reports and source, with private QPU rows/checkpoints
+retained locally. Verify this supplement with
+`python3 scripts/verify_recent_qpu_findings.py`; the earlier transfer and
+representation package remains indexed by
+`docs/final_completion/PUBLICATION_INDEX.json`. The finding clusters below
+are historical studies with their original populations and limitations.
+
 This repository is a reproducibility capsule. It records code, patches,
 expected outputs and failure analysis for distinct runtime-estimation
 studies. It does not merge their targets into one training table.

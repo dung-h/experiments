@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "validated_at_utc": "2026-10-27T04:39:42.813823+00:00",
+  "head_unchanged": "146886cff0d3f329291197be0d742b4743735c88",
+  "branch": "main",
+  "git_diff_check": "PASS",
+  "staged_state": "EMPTY",
+  "feature_and_result_hashes": "PASS",
+  "independent_checks": 226083,
+  "source_whitespace_check": "PASS",
+  "no_commit_or_push": true,
+  "outputs": {
+    "artifacts/postfreeze_notads_hyperq_track_a_v1/REPORT.md": "c76296050d6888eef63392036a3e1db4f3dd12a5aa1c1795a5489acdd43f8d58",
+    "artifacts/postfreeze_notads_hyperq_track_a_v1/feature_receipt.json": "6e75b367bf21c234dd67e621839b7c3f6bd998f6212981544d6be65c740195e9",
+    "artifacts/postfreeze_notads_hyperq_track_a_v1/independent_validation.json": "787c91b2945fbf503b419a2c9f160ef63a8458e5d05c9f0cdd42441c247fc7c1",
+    "artifacts/postfreeze_notads_hyperq_track_a_v1/completion_receipt.json": "9484ac85364219c1a0e61e0dbdb88383f341bc1a0a77bbb9d3729dc34106d5ce"
+  }
+}

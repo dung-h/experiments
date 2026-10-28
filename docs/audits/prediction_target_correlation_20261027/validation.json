@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "rows": 4515,
+  "groups": 165,
+  "methods": 45,
+  "head": "146886cff0d3f329291197be0d742b4743735c88",
+  "inputs": {
+    "artifacts/real_qpu/qualified_logical_panel/summary/oof_predictions.csv": "c46634505e9d84f83c65f28c3097c6dbb964ee7d3932e85862d2ed4953ea41bc",
+    "artifacts/postfreeze_notads_hyperq_track_a_v1/predictions.csv": "a9073eff60648f32c9073c1a77b20829b4660247ddbef7a0649e688879224530",
+    "artifacts/postfreeze_notads_hyperq_track_a_v1/features.csv": "c817fb86117fc6537840fce54ed9c815ce194d20d0e6fe7039c40052cb46fed4"
+  },
+  "script_sha256": "49d26ef8f723870732bb8b4f6b5a41ac29f4939378b5c6eef2133acbc6dbfe88",
+  "no_fitting": true,
+  "no_circuit_execution": true,
+  "no_bootstrap_inference": true
+}

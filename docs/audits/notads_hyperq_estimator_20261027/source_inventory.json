@@ -1,0 +1,296 @@
+{
+  "repo": "1640675651/HyperQ",
+  "commit": "11a2e17e1204fee7c51df36415b62ce6c87b45e2",
+  "files": [
+    {
+      "path": "CombinerJob.py",
+      "sha256": "4a8cac5f02ff03ee264f7cec57f6fafc5d8749f1d876c76d55811cea932a67e0",
+      "line_count": 46,
+      "hits": [
+        {
+          "line": 45,
+          "text": "        return self.job.result().metadata['execution']['execution_spans'].duration"
+        }
+      ]
+    },
+    {
+      "path": "HypervisorBackend.py",
+      "sha256": "bc5b52e8b4f17cbe7c66f92b500aff6582dda47beb71f9125e5f668802243539",
+      "line_count": 836,
+      "hits": [
+        {
+          "line": 6,
+          "text": "from qiskit_ibm_runtime import SamplerV2 as Sampler"
+        },
+        {
+          "line": 49,
+          "text": "        self.sampler = Sampler(mode=backend)"
+        },
+        {
+          "line": 104,
+          "text": "            return CombinerJob(self.sampler.run([direction_corrected_circ], shots=shots), mappings, clbit_cnt, backend=self)"
+        },
+        {
+          "line": 106,
+          "text": "            return CombinerJob(self.sampler.run([direction_corrected_circ]), mappings, clbit_cnt, backend=self)"
+        },
+        {
+          "line": 178,
+          "text": "                link_err.append(backend.properties().gate_error('ecr', (q1, q2))) # use backend.properties(refresh=True) if calibration data changes"
+        },
+        {
+          "line": 180,
+          "text": "                readout_err.append(backend.properties().readout_error(q))"
+        },
+        {
+          "line": 340,
+          "text": "                        region_height[r+a][c+b] += executables[i].qc[v].depth()"
+        },
+        {
+          "line": 372,
+          "text": "        #print('estimated util before time scheduling =', util_volume / (9 * max_height))"
+        },
+        {
+          "line": 393,
+          "text": "                r, c = timefit(n, m, region_status, region_height, qc.depth()+50, util_volume, max_height, MAX_REUSE) # the function should not edit any data structure"
+        },
+        {
+          "line": 395,
+          "text": "                    update_params = (r, c, n, m, region_status, region_height, qc.depth()+50, max_height)"
+        },
+        {
+          "line": 412,
+          "text": "        #print('estimated util after time scheduling =', util_volume / (9 * max_height))"
+        },
+        {
+          "line": 457,
+          "text": "                qvm_status.append([[exe.half_qc.depth(), 1]])"
+        },
+        {
+          "line": 461,
+          "text": "                qvm_status.append([[exe.qc[exe_ver].depth(), 1]])"
+        },
+        {
+          "line": 476,
+          "text": "                    region_height[y][x] = max(region_height[y][x], exe.half_qc.depth())"
+        },
+        {
+          "line": 478,
+          "text": "                    qvm_status[j].append([exe.half_qc.depth(), 1])"
+        },
+        {
+          "line": 510,
+          "text": "            circ_depth = exe.half_qc.depth()"
+        },
+        {
+          "line": 611,
+          "text": "            depth = vc.depth()"
+        }
+      ]
+    },
+    {
+      "path": "README.md",
+      "sha256": "c325dde9b57ce106c56c792c60194b18b017e2fee8468e9a5a146a67abc18d7c",
+      "line_count": 127,
+      "hits": [
+        {
+          "line": 127,
+          "text": "Note: At the time when the paper was written, we used IBM qiskit provider's backend.run() API with dynamic=True option. Now this API is deprecated and we changed our code to use the Sampler API. With this new API, HyperQ cannot reach ideal speedup or encounters error with time scheduling. We believe there are some instruction-level scheduling that we don't have control."
+        }
+      ]
+    },
+    {
+      "path": "benchmark.py",
+      "sha256": "1e8f9f4142691fe2dcb3c17171bbc8f127a0f25a5f22e2129d70af787aee92c1",
+      "line_count": 198,
+      "hits": [
+        {
+          "line": 17,
+          "text": "from qiskit_ibm_runtime import SamplerV2 as Sampler"
+        },
+        {
+          "line": 197,
+          "text": "# print('average estimated qubit-level parallization =',tot_par/job_cnt)"
+        }
+      ]
+    },
+    {
+      "path": "benchmark_baseline.py",
+      "sha256": "7c51310a9f5840deb374481e6d6d4a440b3f5e962db8792726ee906781410934",
+      "line_count": 166,
+      "hits": [
+        {
+          "line": 10,
+          "text": "from qiskit_ibm_runtime import SamplerV2 as Sampler"
+        },
+        {
+          "line": 60,
+          "text": "real_sampler = Sampler(mode=real_backend)"
+        },
+        {
+          "line": 153,
+          "text": "    job = real_sampler.run([circ_transpiled])"
+        }
+      ]
+    },
+    {
+      "path": "benchmark_ideal.py",
+      "sha256": "f1370d665c373c4fe70d81edb2fa93edf1256f576b5ea49d0137f5fe62acd4c0",
+      "line_count": 58,
+      "hits": []
+    },
+    {
+      "path": "benchmark_poisson.py",
+      "sha256": "64c1456211842e0399eefe3fa5ff75e637f6b6761cc9dd414a526149e8ac11e7",
+      "line_count": 259,
+      "hits": [
+        {
+          "line": 220,
+          "text": "        print('batch', batch_cnt, 'takes', job.job.result().metadata['execution']['execution_spans'].duration)"
+        },
+        {
+          "line": 226,
+          "text": "                job_finish_time[poisson_job_index[j]] = t + job.job.result().metadata['execution']['execution_spans'].duration"
+        },
+        {
+          "line": 240,
+          "text": "        while t1 < t + job.job.result().metadata['execution']['execution_spans'].duration and len(poisson_exec_queue) < MAX_QUEUE_SIZE and job_cnt < tot_job_cnt:"
+        },
+        {
+          "line": 243,
+          "text": "            if t1 < t + job.job.result().metadata['execution']['execution_spans'].duration:"
+        },
+        {
+          "line": 248,
+          "text": "        t += job.job.result().metadata['execution']['execution_spans'].duration"
+        }
+      ]
+    },
+    {
+      "path": "benchmark_poisson_baseline.py",
+      "sha256": "32a565a1d060724055d94857fb0a4fe06e18c66e18b6c7eb2e182212d93390bc",
+      "line_count": 104,
+      "hits": []
+    },
+    {
+      "path": "fidelity/fidelity.py",
+      "sha256": "d34313a7b39c5cf32d5a38ddcd7e5154823caf82fb47ee7908e9376c007ae97e",
+      "line_count": 65,
+      "hits": []
+    },
+    {
+      "path": "fidelity/fidelity_compare.py",
+      "sha256": "23da28a3789a493f6aed8c6296c10e211a4e8f9feed44bfa8babac059e157c43",
+      "line_count": 85,
+      "hits": []
+    },
+    {
+      "path": "gen_job_queue.py",
+      "sha256": "5ea3700fda19a362712a60213ce4fd987612ee28c77a24dac135cab9df4de2c4",
+      "line_count": 12,
+      "hits": []
+    },
+    {
+      "path": "getdata/get_calibration.py",
+      "sha256": "022296f7023a30fde23453911355d57b24018985ab6c279fbf68f69bcfd3b47b",
+      "line_count": 75,
+      "hits": [
+        {
+          "line": 22,
+          "text": "        link_err.append(properties.gate_error('ecr', (q1, q2)))"
+        },
+        {
+          "line": 24,
+          "text": "        readout_err.append(properties.readout_error(q))"
+        }
+      ]
+    },
+    {
+      "path": "getdata/get_job_time.py",
+      "sha256": "b26851ad523712681d400f76e83194f4b126aaac73737f8c401c773433a63f3c",
+      "line_count": 46,
+      "hits": [
+        {
+          "line": 46,
+          "text": "    print(workload[i][0], execution.duration)"
+        }
+      ]
+    },
+    {
+      "path": "getdata/get_result.py",
+      "sha256": "373860c6fe6f6e6b1bca5ebed175f786950221b092b1adc54995ba0876a2d067",
+      "line_count": 53,
+      "hits": []
+    },
+    {
+      "path": "getdata/get_result_baseline.py",
+      "sha256": "93cdadc0395f245f0e9bd4a66192d6236e96693c28cbdf9480dab8ccad67c0f1",
+      "line_count": 46,
+      "hits": []
+    },
+    {
+      "path": "getdata/get_result_poisson.py",
+      "sha256": "ef634dfcc160ebaa39e62a60de67ab6b2286b8bef490388fd60b55da86ee516d",
+      "line_count": 54,
+      "hits": []
+    },
+    {
+      "path": "getdata/throughput_utilization.py",
+      "sha256": "b0f7e14279ed8e5aaac9ad0fefaed907597312d4291ecfa068649139a5786c6b",
+      "line_count": 130,
+      "hits": []
+    },
+    {
+      "path": "getdata/throughput_utilization_poisson.py",
+      "sha256": "a742b4d037925344ad6c6038a8616bf17c7700cc3d67cde34329d6e5e49a87fd",
+      "line_count": 115,
+      "hits": []
+    },
+    {
+      "path": "qasmbench.py",
+      "sha256": "10c995d0278f276bb3ee8670cf031197c09139656b42388c7719e88e6c9fbf24",
+      "line_count": 337,
+      "hits": []
+    },
+    {
+      "path": "utils.py",
+      "sha256": "ec19b3a7a6ca3ed17734f0a5af2a051b8660f88848b88697b2ed0df6c356e945",
+      "line_count": 118,
+      "hits": []
+    },
+    {
+      "path": "vm_executable.py",
+      "sha256": "f65ac336296470a5bb550bf23f8ec1427c1259de8a8742a7ae7e5092315bd4e6",
+      "line_count": 34,
+      "hits": []
+    }
+  ],
+  "status": "ALL_CURRENT_PYTHON_FILES_AND_README_FETCHED",
+  "python_file_count": 20,
+  "hypervisor_history_review": [
+    {
+      "commit": "c1db87cb6b92795e83be7af4b4173cda86254650",
+      "result": "Scheduler uses qc.depth(), plus 50 depth units for reuse; no gate-duration/weighted-path implementation found in this file."
+    },
+    {
+      "commit": "d9c6e7d87ba48a98d9f9a7892c82cee7758a51ea",
+      "result": "Scheduler uses qc.depth(), plus 50 depth units for reuse; no gate-duration/weighted-path implementation found in this file."
+    },
+    {
+      "commit": "09fc8041616354f45f445859f5f1f6e4141a67bd",
+      "result": "Scheduler uses qc.depth(), plus 50 depth units for reuse; no gate-duration/weighted-path implementation found in this file."
+    }
+  ],
+  "notads": {
+    "repo": "debasmita2102/NoTODS",
+    "commit": "ea1303e545bb4c94bcbda1020a6d845ada6a9506",
+    "file": "NoTODS.py",
+    "sha256": "b4fc26e8c95d5b36f6b5e4ee6f13abe0eeec8b8bc3fd4138479c9b13db169a6f",
+    "weights_lines": [
+      41,
+      42
+    ],
+    "formula_line": 154,
+    "constraint_line": 179
+  }
+}

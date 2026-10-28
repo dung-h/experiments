@@ -1,0 +1,383 @@
+{
+  "scope": "aggregate_reports_and_source_only",
+  "source_head": "146886cff0d3f329291197be0d742b4743735c88",
+  "publication_base": "128cd80494ce6b45ca1eec93e671c8732498915e",
+  "private_qpu_rows_included": false,
+  "training_or_measurement_executed_by_export": false,
+  "excluded": [
+    "per-row/group QPU targets and predictions",
+    "QASM/graphs",
+    "checkpoints",
+    "split/membership ledgers",
+    "bootstrap identity archives",
+    "raw logs",
+    "unfinished random-row study"
+  ],
+  "reproduction_limit": "Public verifier checks aggregates and hashes; original producers require retained private inputs and historical dependencies.",
+  "files": [
+    {
+      "path": "artifacts/postfreeze_mali_shots_ablation_v1/FINAL_REPORT.md",
+      "source_sha256": "1efc07a9565cb1a5140004e5ec54aa27884dccc4e1207e0f41e6ffd201c27907",
+      "published_sha256": "1efc07a9565cb1a5140004e5ec54aa27884dccc4e1207e0f41e6ffd201c27907",
+      "bytes": 6299,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "artifacts/postfreeze_mali_shots_ablation_v1/PROTOCOL.md",
+      "source_sha256": "5473b8f7b2b92a58baa29b4104d3ce908a351d7ca7c7da2763ba563bbf543d2e",
+      "published_sha256": "5473b8f7b2b92a58baa29b4104d3ce908a351d7ca7c7da2763ba563bbf543d2e",
+      "bytes": 2269,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "artifacts/postfreeze_mali_shots_ablation_v1/aggregate/fold_group_balanced_effects.csv",
+      "source_sha256": "f4e3621db97ecb2e4a34c998a68d584bcaded72b483478c28e85ff2890910fe7",
+      "published_sha256": "29431b0cb3c04872a82f2a3c8a4bae92b39b27aea9dcad6d51183e7045a0cdec",
+      "bytes": 881,
+      "transformation": "exact allowlisted bytes; publication whitespace normalized to LF and one final newline"
+    },
+    {
+      "path": "artifacts/postfreeze_mali_shots_ablation_v1/aggregate/metrics.csv",
+      "source_sha256": "c38eddf249576d9c7d4f4092eb5dc6c751ac120078ff798ecc8ce589b6bbfad1",
+      "published_sha256": "18970bd030e43995fddfe512ec7e9c1864f25c4e5c733f7a14d72ac4d7345348",
+      "bytes": 1251,
+      "transformation": "exact allowlisted bytes; publication whitespace normalized to LF and one final newline"
+    },
+    {
+      "path": "artifacts/postfreeze_mali_shots_ablation_v1/aggregate/paired_comparisons.csv",
+      "source_sha256": "180e417f19cb6259053eeba8003d5b7ccfa0487dc3a31acdbb6c4e6300e67685",
+      "published_sha256": "c77308e7abe48bd0547e8fdcceda0c0b0b252f3cbbcd6ff018d9cb7928bb7799",
+      "bytes": 682,
+      "transformation": "exact allowlisted bytes; publication whitespace normalized to LF and one final newline"
+    },
+    {
+      "path": "artifacts/postfreeze_mali_shots_ablation_v1/aggregate/seed_metrics.csv",
+      "source_sha256": "d7fcb15f5ca24f29c59babcd872ab24edec9a57d5429262cdf3fd4be2b05e778",
+      "published_sha256": "686a1a12619499290e938393c0aa3e47f3e7a04dd00ec16ba899b44deda4c1a7",
+      "bytes": 1276,
+      "transformation": "exact allowlisted bytes; publication whitespace normalized to LF and one final newline"
+    },
+    {
+      "path": "artifacts/postfreeze_mali_shots_ablation_v1/aggregate/slice_metrics.csv",
+      "source_sha256": "991a8b559cb05b2d9bd3d008c80d3f79a741858973b46efbc77b2319e1dcb80f",
+      "published_sha256": "c4b9e3638214ab370e9766cb6ac0b25ebf4742659572397fed2697b0c0adc9e5",
+      "bytes": 7230,
+      "transformation": "exact allowlisted bytes; publication whitespace normalized to LF and one final newline"
+    },
+    {
+      "path": "artifacts/postfreeze_mali_shots_ablation_v1/audit_preprocessing_v1/receipt.json",
+      "source_sha256": "f1702440fead3ab0a4723b6ea2dbedf06dc422fb99f737b26bc93e357f353ea9",
+      "published_sha256": "a4e94cb37f586d36067b3816ae974719343170c0d77b9e912b44e824cd258bc0",
+      "bytes": 752,
+      "transformation": "explicit aggregate receipt projection; private replay fixtures omitted"
+    },
+    {
+      "path": "artifacts/postfreeze_mali_shots_ablation_v1/completion_receipt.json",
+      "source_sha256": "a51430a9e38107bf96fa89bb9151ba09255384cc85bb6a9aaeac2fa5aa82dc82",
+      "published_sha256": "a51430a9e38107bf96fa89bb9151ba09255384cc85bb6a9aaeac2fa5aa82dc82",
+      "bytes": 1299,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "artifacts/postfreeze_notads_hyperq_track_a_v1/PROTOCOL.md",
+      "source_sha256": "363fb8e49477916856f79d00ef0bb777ea74eb526e1346a8f03caaa66c37eb18",
+      "published_sha256": "363fb8e49477916856f79d00ef0bb777ea74eb526e1346a8f03caaa66c37eb18",
+      "bytes": 5300,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "artifacts/postfreeze_notads_hyperq_track_a_v1/PROTOCOL_AMENDMENT_01.md",
+      "source_sha256": "db964032d1c635eaae74be406099afc56a22a0f4281f708a10838cc4901ccb28",
+      "published_sha256": "db964032d1c635eaae74be406099afc56a22a0f4281f708a10838cc4901ccb28",
+      "bytes": 1965,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "artifacts/postfreeze_notads_hyperq_track_a_v1/README.md",
+      "source_sha256": "a7c7b66177f14ae3afff5b61833b42c238181b00d743815e6ae83b30dac732a6",
+      "published_sha256": "a7c7b66177f14ae3afff5b61833b42c238181b00d743815e6ae83b30dac732a6",
+      "bytes": 1085,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "artifacts/postfreeze_notads_hyperq_track_a_v1/REPORT.md",
+      "source_sha256": "c76296050d6888eef63392036a3e1db4f3dd12a5aa1c1795a5489acdd43f8d58",
+      "published_sha256": "c76296050d6888eef63392036a3e1db4f3dd12a5aa1c1795a5489acdd43f8d58",
+      "bytes": 10393,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "artifacts/postfreeze_notads_hyperq_track_a_v1/completion_receipt.json",
+      "source_sha256": "9484ac85364219c1a0e61e0dbdb88383f341bc1a0a77bbb9d3729dc34106d5ce",
+      "published_sha256": "9484ac85364219c1a0e61e0dbdb88383f341bc1a0a77bbb9d3729dc34106d5ce",
+      "bytes": 1015,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "artifacts/postfreeze_notads_hyperq_track_a_v1/final_validation_receipt.json",
+      "source_sha256": "c7901c9be68c8d6b51a67ffdbd01926395ad3f09a064c775118ce6f60b03d5c1",
+      "published_sha256": "c7901c9be68c8d6b51a67ffdbd01926395ad3f09a064c775118ce6f60b03d5c1",
+      "bytes": 943,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "artifacts/postfreeze_notads_hyperq_track_a_v1/metrics.csv",
+      "source_sha256": "4fa4f8333f776c6f32e94a0e2324afcf2cd6ebc9cfcf654b6a8b4c548ed7dbe5",
+      "published_sha256": "4fa4f8333f776c6f32e94a0e2324afcf2cd6ebc9cfcf654b6a8b4c548ed7dbe5",
+      "bytes": 18729,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "artifacts/postfreeze_notads_hyperq_track_a_v1/paired_comparisons.csv",
+      "source_sha256": "6790da6683f5876044e4351b3808aa258b1f9824225aecdd8cb441e75d330835",
+      "published_sha256": "6790da6683f5876044e4351b3808aa258b1f9824225aecdd8cb441e75d330835",
+      "bytes": 630,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/backend_generation_qpack_20261027/REPORT.md",
+      "source_sha256": "ecea8519ffcfee974cc3a59ed7ef276be2a35125f05937bf4e5131e2e62689f5",
+      "published_sha256": "ecea8519ffcfee974cc3a59ed7ef276be2a35125f05937bf4e5131e2e62689f5",
+      "bytes": 8473,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/backend_generation_qpack_20261027/backend_inventory.csv",
+      "source_sha256": "8e549aeb176e7cc1deafec22506235c2fa5f44cf01080687a187ddfdb8762894",
+      "published_sha256": "8e549aeb176e7cc1deafec22506235c2fa5f44cf01080687a187ddfdb8762894",
+      "bytes": 3677,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/backend_generation_qpack_20261027/evaluate.py",
+      "source_sha256": "0302a4fef85f7c004d5efb7dd40c5a25e2e045e5432109057b74ae5e1d97ffc0",
+      "published_sha256": "0302a4fef85f7c004d5efb7dd40c5a25e2e045e5432109057b74ae5e1d97ffc0",
+      "bytes": 8377,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/backend_generation_qpack_20261027/method_stratum_metrics.csv",
+      "source_sha256": "16b4ccd102e52dcb3424c4c1739c6507cb74123d260b92d6aa787f85f02c91c3",
+      "published_sha256": "16b4ccd102e52dcb3424c4c1739c6507cb74123d260b92d6aa787f85f02c91c3",
+      "bytes": 146511,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/backend_generation_qpack_20261027/source_generation_coverage.csv",
+      "source_sha256": "c024080b9f8aaa9ae13f0af2f8969e9b4521949c0ab45ef7b94fafff53d7bfab",
+      "published_sha256": "c024080b9f8aaa9ae13f0af2f8969e9b4521949c0ab45ef7b94fafff53d7bfab",
+      "bytes": 950,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/backend_generation_qpack_20261027/validation.json",
+      "source_sha256": "811e719588b3b9e88880f424d91e9947da8dbc78d8cd39ba0c0f5591cc796a0f",
+      "published_sha256": "811e719588b3b9e88880f424d91e9947da8dbc78d8cd39ba0c0f5591cc796a0f",
+      "bytes": 3123,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/notads_hyperq_estimator_20261027/REPORT.md",
+      "source_sha256": "7d134a3b25a439ece6d3a5cf28ee8c0ce5125b75012abc0589bf66846035a0f2",
+      "published_sha256": "7d134a3b25a439ece6d3a5cf28ee8c0ce5125b75012abc0589bf66846035a0f2",
+      "bytes": 6763,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/notads_hyperq_estimator_20261027/source_inventory.json",
+      "source_sha256": "0c33516a562dd0fddbb867c4e88dadd569b548e7b9261ce91deff27b08f1b065",
+      "published_sha256": "0c33516a562dd0fddbb867c4e88dadd569b548e7b9261ce91deff27b08f1b065",
+      "bytes": 9922,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/prediction_target_correlation_20261027/REPORT.md",
+      "source_sha256": "87becad8454dcc685ce6ae17ae54d6e140acd6092509650417e046a6a79de2df",
+      "published_sha256": "87becad8454dcc685ce6ae17ae54d6e140acd6092509650417e046a6a79de2df",
+      "bytes": 4272,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/prediction_target_correlation_20261027/correlations.csv",
+      "source_sha256": "b066e1573b5e5a2e9da6bb37d1e3040260898734d57e6c138610b5f9121bc5f9",
+      "published_sha256": "b066e1573b5e5a2e9da6bb37d1e3040260898734d57e6c138610b5f9121bc5f9",
+      "bytes": 21495,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/prediction_target_correlation_20261027/evaluate.py",
+      "source_sha256": "49d26ef8f723870732bb8b4f6b5a41ac29f4939378b5c6eef2133acbc6dbfe88",
+      "published_sha256": "49d26ef8f723870732bb8b4f6b5a41ac29f4939378b5c6eef2133acbc6dbfe88",
+      "bytes": 3680,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/prediction_target_correlation_20261027/fold_rank_check.csv",
+      "source_sha256": "580c6790112846f8e70492d46741330ab69f1d2f9ba59eadb6bfd5bec50393b2",
+      "published_sha256": "580c6790112846f8e70492d46741330ab69f1d2f9ba59eadb6bfd5bec50393b2",
+      "bytes": 226,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/prediction_target_correlation_20261027/validation.json",
+      "source_sha256": "4fddc67ca63c45508baa0c1865e9c14f990ce4a944332c851a20618a719a930e",
+      "published_sha256": "4fddc67ca63c45508baa0c1865e9c14f990ce4a944332c851a20618a719a930e",
+      "bytes": 737,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/qpu_timing_boundary/RESULT_TIME_TAKEN_PROVENANCE_NOTE.md",
+      "source_sha256": "1d22b9a87d9073559636a2a92e444adcf4c46e994ca8b14b8ea37669925e2626",
+      "published_sha256": "4267de80ee4f23d29d1c3f384f105906d932fafb7052895650b5267df4539672",
+      "bytes": 3311,
+      "transformation": "exact allowlisted bytes; publication whitespace normalized to LF and one final newline"
+    },
+    {
+      "path": "docs/audits/qpu_timing_boundary/ibm_usage_formula_20261027/PROTOCOL.md",
+      "source_sha256": "9a9540e00210c6b411cb2a32f39f3828f5d1ec5f53ac3f931957346e77a072fb",
+      "published_sha256": "9a9540e00210c6b411cb2a32f39f3828f5d1ec5f53ac3f931957346e77a072fb",
+      "bytes": 2156,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/qpu_timing_boundary/ibm_usage_formula_20261027/REPORT.md",
+      "source_sha256": "3cd9a522b2f5516d797e19f7a69e54e6b4818c41b4bf50da15935c1e394e1a66",
+      "published_sha256": "3cd9a522b2f5516d797e19f7a69e54e6b4818c41b4bf50da15935c1e394e1a66",
+      "bytes": 5194,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/qpu_timing_boundary/ibm_usage_formula_20261027/evaluate.py",
+      "source_sha256": "b0f48098747ea5deee9d2585e7975cb0ce1ef6e8c046bdffdcaad0399bd7bc29",
+      "published_sha256": "b0f48098747ea5deee9d2585e7975cb0ce1ef6e8c046bdffdcaad0399bd7bc29",
+      "bytes": 4702,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/qpu_timing_boundary/ibm_usage_formula_20261027/independent_verification.json",
+      "source_sha256": "7596a93caa01ec35011b8791dbcf3150735a2c9ee5547053c62c0eba6560014f",
+      "published_sha256": "7596a93caa01ec35011b8791dbcf3150735a2c9ee5547053c62c0eba6560014f",
+      "bytes": 238,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/qpu_timing_boundary/ibm_usage_formula_20261027/metrics.csv",
+      "source_sha256": "a3ea0b4e23df6da4269e6e4d33c9ba150fe7f0ddef1540512899179320a77207",
+      "published_sha256": "a3ea0b4e23df6da4269e6e4d33c9ba150fe7f0ddef1540512899179320a77207",
+      "bytes": 2040,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/audits/qpu_timing_boundary/ibm_usage_formula_20261027/validation_receipt.json",
+      "source_sha256": "94b40b2dc6a2371056dfbb1ab0e7faaf3a5e8591631e1866072c4964af0f176b",
+      "published_sha256": "94b40b2dc6a2371056dfbb1ab0e7faaf3a5e8591631e1866072c4964af0f176b",
+      "bytes": 1303,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/literature_review/PRESENTATION_PLAN.md",
+      "source_sha256": "b82b86c4e6c94b75f9e9653f2f0154cd11541c6f56ec2a95fc12b43f268be39b",
+      "published_sha256": "b82b86c4e6c94b75f9e9653f2f0154cd11541c6f56ec2a95fc12b43f268be39b",
+      "bytes": 11716,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "docs/publication/RECENT_QPU_FINDINGS.md",
+      "source_sha256": "b304d09a6e1a396a6d62a6d6ce3f798432575443865c1cbdf5b8288475a78967",
+      "published_sha256": "b304d09a6e1a396a6d62a6d6ce3f798432575443865c1cbdf5b8288475a78967",
+      "bytes": 4125,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "research/postfreeze_mali_shots_ablation_v1/aggregate.py",
+      "source_sha256": "bec6849f93846755d4d2e69700177bcb3fa66cfc92544ba280f4fb66d551936b",
+      "published_sha256": "bec6849f93846755d4d2e69700177bcb3fa66cfc92544ba280f4fb66d551936b",
+      "bytes": 12046,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "research/postfreeze_mali_shots_ablation_v1/analyze_failures.py",
+      "source_sha256": "6e86310e80ab7d71496a409a761757c8baccf635f98e792a65976e0fd2b18728",
+      "published_sha256": "6e86310e80ab7d71496a409a761757c8baccf635f98e792a65976e0fd2b18728",
+      "bytes": 18108,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "research/postfreeze_mali_shots_ablation_v1/audit_preprocessing.py",
+      "source_sha256": "85ccc985188a739756dda539b67d7a837bb5440185fcac5debc189abb9fb123a",
+      "published_sha256": "85ccc985188a739756dda539b67d7a837bb5440185fcac5debc189abb9fb123a",
+      "bytes": 11415,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "research/postfreeze_mali_shots_ablation_v1/lock_protocol.py",
+      "source_sha256": "4adcc7145cf93b835dd8cc091893c4480e789cfd1e6aac0f00cc9d649bd8f71a",
+      "published_sha256": "4adcc7145cf93b835dd8cc091893c4480e789cfd1e6aac0f00cc9d649bd8f71a",
+      "bytes": 9711,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "research/postfreeze_mali_shots_ablation_v1/preflight.py",
+      "source_sha256": "0d864b74995f3df3f7811c0ee6f63ac8d4e7b56a2d9e1995a18337793351a559",
+      "published_sha256": "0d864b74995f3df3f7811c0ee6f63ac8d4e7b56a2d9e1995a18337793351a559",
+      "bytes": 6096,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "research/postfreeze_mali_shots_ablation_v1/run.py",
+      "source_sha256": "9a13448251bac3de674a82c224e6b172b8d5281cfd3d14b8dc7fb30474f9c970",
+      "published_sha256": "9a13448251bac3de674a82c224e6b172b8d5281cfd3d14b8dc7fb30474f9c970",
+      "bytes": 20233,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "research/postfreeze_mali_shots_ablation_v1/shots_core.py",
+      "source_sha256": "3b6f2b97b1b7d61c1baa2d7e446c6a5f217488cffff730d21e84f0210b29ee3d",
+      "published_sha256": "3b6f2b97b1b7d61c1baa2d7e446c6a5f217488cffff730d21e84f0210b29ee3d",
+      "bytes": 3722,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "research/postfreeze_mali_shots_ablation_v1/validate.py",
+      "source_sha256": "133423bd94d58611510ce270631e161b4a381dcbe1b5dd03fb0f2561e801a492",
+      "published_sha256": "133423bd94d58611510ce270631e161b4a381dcbe1b5dd03fb0f2561e801a492",
+      "bytes": 6344,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "research/postfreeze_notads_hyperq_track_a_v1/path_kernel.cpp",
+      "source_sha256": "08ceec97d070620e18dd3f8a3821816f194bf0e4bc6a49350a8884093d7fb187",
+      "published_sha256": "08ceec97d070620e18dd3f8a3821816f194bf0e4bc6a49350a8884093d7fb187",
+      "bytes": 1941,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "research/postfreeze_notads_hyperq_track_a_v1/run.py",
+      "source_sha256": "03e7f8ae754746f64a122198ac7f056adf32819e7246548e327caba9d2f20c75",
+      "published_sha256": "03e7f8ae754746f64a122198ac7f056adf32819e7246548e327caba9d2f20c75",
+      "bytes": 19306,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "research/postfreeze_notads_hyperq_track_a_v1/validate_saved.py",
+      "source_sha256": "31a5188cc9dfc9dcadb5f64b770195cc569a42d9c7c260873a4b4a41861e096f",
+      "published_sha256": "31a5188cc9dfc9dcadb5f64b770195cc569a42d9c7c260873a4b4a41861e096f",
+      "bytes": 6270,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "scripts/export_recent_qpu_findings.py",
+      "source_sha256": "c1b566c52eb9953ba6feadf32242540a4b23ba729e8b3bc30b294e29363ba174",
+      "published_sha256": "c1b566c52eb9953ba6feadf32242540a4b23ba729e8b3bc30b294e29363ba174",
+      "bytes": 5941,
+      "transformation": "exact allowlisted bytes"
+    },
+    {
+      "path": "scripts/verify_recent_qpu_findings.py",
+      "source_sha256": "dbcb736f829321ac8336a4fdd433beb689c1beeb95f7e6d55532d4b9c0cb0bd0",
+      "published_sha256": "dbcb736f829321ac8336a4fdd433beb689c1beeb95f7e6d55532d4b9c0cb0bd0",
+      "bytes": 2121,
+      "transformation": "exact allowlisted bytes"
+    }
+  ]
+}

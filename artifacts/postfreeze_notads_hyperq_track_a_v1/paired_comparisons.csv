@@ -1,0 +1,4 @@
+method_a,method_b,delta_group_balanced_mae_seconds,ci95_low_seconds,ci95_high_seconds,replicates,seed,resampling_unit,inference
+notads_paper_shots_affine,notads_code_shots_affine,0.0015816535077262093,-0.03217374296167072,0.05711484176390892,10000,42,structural group,descriptive; no confirmatory discovery claim
+hyperq_paper_shots_affine,notads_code_shots_affine,0.007237445893009965,0.0008382134135353593,0.013635405225173706,10000,42,structural group,descriptive; no confirmatory discovery claim
+hyperq_paper_shots,qiskit_saved_shots_reference,0.0,0.0,0.0,10000,42,structural group,descriptive; no confirmatory discovery claim

@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "rows": 4515,
+  "groups": 165,
+  "head": "146886cff0d3f329291197be0d742b4743735c88",
+  "input_hashes": {
+    "artifacts/real_qpu/qualified_logical_panel/summary/oof_predictions.csv": "c46634505e9d84f83c65f28c3097c6dbb964ee7d3932e85862d2ed4953ea41bc",
+    "artifacts/postfreeze_notads_hyperq_track_a_v1/features.csv": "c817fb86117fc6537840fce54ed9c815ce194d20d0e6fe7039c40052cb46fed4",
+    "artifacts/postfreeze_notads_hyperq_track_a_v1/predictions.csv": "a9073eff60648f32c9073c1a77b20829b4660247ddbef7a0649e688879224530",
+    "artifacts/benchmark_v3/recovery_real_qpu_20260929_v3/c133_snapshot_registry_v3.csv": "3ba985a105d06f536b14ffdde85e463a4d0444078c1c3865427090ad1c438937",
+    "artifacts/real_qpu/qualified_logical_panel/summary/method_metrics.csv": "9d242cf2ddfdb34eaff480ea53d5c900e8b6d039d2d9d8729e5cfb2c843e44ad"
+  },
+  "config_hashes": {
+    "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qiskit_ibm_runtime/fake_provider/backends/kyoto/conf_kyoto.json": "548333db6f1d9040c18c79eb68229bafa202c656d26281c5fb2e0cf21058de2b",
+    "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qiskit_ibm_runtime/fake_provider/backends/lagos/conf_lagos.json": "94f6becf0d32d7caf5ca0eaed770123af80555a7e465af57fade6a2f36e9c718",
+    "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qiskit_ibm_runtime/fake_provider/backends/nairobi/conf_nairobi.json": "744b70045055b06e85624a9bf6b7e7ea435ca408d2d09764a52c182981b3fe2a",
+    "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qiskit_ibm_runtime/fake_provider/backends/osaka/conf_osaka.json": "2ae8907958284151961f754a474677ff66a987a9ca21e0a7c830dc92bb141a98",
+    "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qiskit_ibm_runtime/fake_provider/backends/perth/conf_perth.json": "c8e57d759f162a66e36b628c4ce4bae086a99e3dd335c92249ed20b4f8118c5a",
+    "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qiskit_ibm_runtime/fake_provider/backends/belem/conf_belem.json": "171ee3f6674b62c25c3f1c9dcc956246df4b1c9df5335d554d142da4a13f1cd6",
+    "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qiskit_ibm_runtime/fake_provider/backends/jakarta/conf_jakarta.json": "15b25bc0c7fdf72a4db606cfd20dfc4363a20c5233c6325cfd3d8115ea859d0b",
+    "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qiskit_ibm_runtime/fake_provider/backends/lima/conf_lima.json": "3318b0befae2779ec367f7cd07f02e7ebca20b54b15dc64c7c255349a31291d7",
+    "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qiskit_ibm_runtime/fake_provider/backends/manila/conf_manila.json": "f73e604ae003fb189cfdb35f7bafa818707cb8b80ff590fb07aa0ae032b636d9",
+    "/home/server/Documents/.venv-qonductor/lib/python3.10/site-packages/qiskit_ibm_runtime/fake_provider/backends/quito/conf_quito.json": "081a62058c0a0a5a2e07c7903680aacb0c537d23aa0bf4577905f85469776824"
+  },
+  "script_sha256": "0302a4fef85f7c004d5efb7dd40c5a25e2e045e5432109057b74ae5e1d97ffc0",
+  "original_mae_replay": "PASS",
+  "no_fitting": true,
+  "no_execution": true
+}

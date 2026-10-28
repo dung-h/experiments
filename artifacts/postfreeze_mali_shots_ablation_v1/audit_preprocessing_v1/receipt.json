@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "scope": "independent preprocessing, actual input, learned weights and saved checkpoint CPU replay",
+  "checks_count": 27380,
+  "folds": 5,
+  "global_input_rows_checked": 22575,
+  "checkpoint_replays": 30,
+  "source_shots": {
+    "mali_real_qpu": [
+      1024
+    ],
+    "qonductor_single_circuit_ibm": [
+      1000,
+      4000,
+      8000,
+      12000,
+      16000,
+      20000
+    ],
+    "qpack_mcp": [
+      4096
+    ]
+  },
+  "model_source_sha256": "d6d250b2cb3082efc756ae9c5c269d4fe40bbdf49c743c535cddf6a0691c5683",
+  "max_cpu_prediction_replay_difference": 4.76837158203125e-07,
+  "sensitive_fixture_checkpoints": 30,
+  "wall_seconds": 4.41868413600605,
+  "cpu_threads": 2,
+  "no_training": true,
+  "no_simulation": true
+}

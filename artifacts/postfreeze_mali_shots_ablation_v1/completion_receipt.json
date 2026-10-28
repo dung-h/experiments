@@ -1,0 +1,35 @@
+{
+  "study": "postfreeze_mali_shots_ablation_v1",
+  "status": "COMPLETE_VALIDATED",
+  "protocol_sha256": "0b7816c59fdc2a2ceacbe9d55c816db09c25a992c71ff577adc9328a4675f58b",
+  "git_head": "146886cff0d3f329291197be0d742b4743735c88",
+  "cohort_rows": 4515,
+  "structural_groups": 165,
+  "outer_folds": 5,
+  "new_training_cells": 30,
+  "completed_cells": 30,
+  "new_seed_prediction_rows": 27090,
+  "aggregate_oof_rows": 18060,
+  "baseline_reuse_status": "PASS",
+  "validation_status": "PASS",
+  "validation_checks": 54390,
+  "no_qpu_jobs": true,
+  "no_simulator_runs": true,
+  "no_model_search": true,
+  "no_commit_or_push": true,
+  "root_disk_incident": {
+    "status": "RECOVERED_AND_RESUMED",
+    "failed_cell_checkpoint_loaded": true,
+    "resume_next_epoch": 331,
+    "all_cells_later_validated": true
+  },
+  "duplicate_backup_checkpoint_cleanup": {
+    "count": 1240,
+    "bytes": 9561859468,
+    "main_repo_copies_retained": true,
+    "receipt_external": "/mnt/windows/Datamining/checkpoint_cleanup_receipt_20261027.json",
+    "receipt_sha256": "c7163909eed9fe722447796a551e1b9a1ede1ab5bc06edbb017bef4a05d5a1db",
+    "audit_manifest_sha256": "7cde151d1b51eec7afdde4413b740a885dbfefa2fb329feb2f162f9ce2c31f02"
+  },
+  "final_report": "artifacts/postfreeze_mali_shots_ablation_v1/FINAL_REPORT.md"
+}

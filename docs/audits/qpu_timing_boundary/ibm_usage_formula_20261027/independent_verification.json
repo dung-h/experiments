@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "checks": 13569,
+  "implementation": "Independent arithmetic expressions and math.fsum reductions; original panel/timing joined by ID",
+  "rows": 4515,
+  "metric_rows": 8,
+  "no_model_or_circuit_execution": true
+}

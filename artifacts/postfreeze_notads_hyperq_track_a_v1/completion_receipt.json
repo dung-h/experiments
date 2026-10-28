@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "observations": 4515,
+  "groups": 165,
+  "folds": 5,
+  "prediction_methods": 9,
+  "prediction_rows": 40635,
+  "calibration_fits": 30,
+  "feature_sha256": "c817fb86117fc6537840fce54ed9c815ce194d20d0e6fe7039c40052cb46fed4",
+  "no_neural_tree_training": true,
+  "scalar_affine_fitting": "outer-train only; two coefficients; no selection",
+  "no_QPU_or_simulator_jobs": true,
+  "no_retranspilation": true,
+  "output_sha256": {
+    "predictions.csv": "a9073eff60648f32c9073c1a77b20829b4660247ddbef7a0649e688879224530",
+    "metrics.csv": "4fa4f8333f776c6f32e94a0e2324afcf2cd6ebc9cfcf654b6a8b4c548ed7dbe5",
+    "calibration_fits.csv": "bd3e6ee45591ed39c2ec4f1015ca31aa2619c63d536795cdecdb2473a3179e54",
+    "leakage_receipts.csv": "58e3a5b3bb69a85c2897f4df280a0dc49f84f53f1d5133fc4087d0559f215cc5",
+    "paired_comparisons.csv": "6790da6683f5876044e4351b3808aa258b1f9824225aecdd8cb441e75d330835",
+    "bootstrap_draws.npz": "7f2aa18264b5c5c60d7fff3690c2b5213f0a5b5df8c4ef2324c44bf482a34c52"
+  }
+}

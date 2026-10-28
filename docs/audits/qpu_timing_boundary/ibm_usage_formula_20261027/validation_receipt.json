@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "rows": 4515,
+  "groups": 165,
+  "exact_id_join": "PASS",
+  "source_counts": {
+    "mali_real_qpu": 340,
+    "qonductor_single_circuit_ibm": 230,
+    "qpack_mcp": 3945
+  },
+  "head": "146886cff0d3f329291197be0d742b4743735c88",
+  "python": "3.14.4",
+  "no_fit": true,
+  "no_circuit_execution": true,
+  "input_sha256": {
+    "artifacts/real_qpu/qualified_logical_panel/panel.csv": "b4ade914955d7807e466cf5cf0c5265d21b39a81fdcee8e91dc2fb6300eb978a",
+    "artifacts/postfreeze_track_a_transpiled_representation_v1/features/timing_features.csv": "bc05c3bc120836692e3e5d7d0ed8194555cd6edbe6d626371432b9ae483d1887",
+    "artifacts/postfreeze_track_a_transpiled_representation_v1/p0_coverage/observation_coverage.csv": "d0f34c8506a1f2bd130b73a390bf35ae683076d05a6145364d809f1599e98853",
+    "docs/audits/qpu_timing_boundary/ibm_usage_formula_20261027/PROTOCOL.md": "9a9540e00210c6b411cb2a32f39f3828f5d1ec5f53ac3f931957346e77a072fb",
+    "docs/audits/qpu_timing_boundary/ibm_usage_formula_20261027/evaluate.py": "b0f48098747ea5deee9d2585e7975cb0ce1ef6e8c046bdffdcaad0399bd7bc29"
+  },
+  "output_sha256": {
+    "predictions.csv": "e566d6f00283d8f74d36309c5e1fbb1bc13ac71fefdda6f7a413ec13d3990187",
+    "metrics.csv": "a3ea0b4e23df6da4269e6e4d33c9ba150fe7f0ddef1540512899179320a77207"
+  }
+}
