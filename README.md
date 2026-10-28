@@ -5,8 +5,10 @@
 The [recent QPU findings guide](docs/publication/RECENT_QPU_FINDINGS.md) indexes
 the completed shots-input ablation and analytical source/correlation/backend
 audits. It also records qualifications to older timing-boundary and measurement
-wording. The [literature-review presentation plan](docs/literature_review/PRESENTATION_PLAN.md)
-organizes a proposed nine-slide review with per-paper evidence requirements.
+wording. The [thesis report writing plan](docs/thesis/REPORT_WRITING_PLAN.md)
+organizes literature review, benchmark design, QPU/simulator results and
+discussion as a written report. The earlier nine-slide outline is a historical
+presentation draft and is not the report outline.
 
 These are aggregate reports and source, with private QPU rows/checkpoints
 retained locally. Verify this supplement with

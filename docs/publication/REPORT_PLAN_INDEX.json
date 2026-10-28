@@ -1,0 +1,13 @@
+{
+  "scope": "documentation_plan_only",
+  "source_head": "146886cff0d3f329291197be0d742b4743735c88",
+  "purpose": "Written thesis outline including literature review, benchmark methods/results and discussion; replaces slide-outline interpretation for report planning",
+  "files": [
+    {
+      "path": "docs/thesis/REPORT_WRITING_PLAN.md",
+      "sha256": "85b03925b34d5870007979c0c22476ed17cc872b9e047c38d01873d48dd28aef",
+      "bytes": 21618
+    }
+  ],
+  "no_scientific_results_changed": true
+}
